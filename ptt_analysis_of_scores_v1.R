@@ -5,6 +5,8 @@
 data = read.csv("ptt_SENIORHIGH_data.csv")
 View(data)
 
+# First version: Draft
+
 # ------------------------------------------------------------------------
 
 uni_HS_score = data$HighSchool_PR[which(data$HighSchool_PR != -1)]
