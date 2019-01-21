@@ -14,7 +14,8 @@ Variables:
   The college entrance exam score in Taiwan (the one in January or February each year),
   ranging from 0-75
 
-* A missing score is recorded as "-1" in the variable.
+* In HighSchool_PR and CollegeEntrance_Score,
+  any missing score is recorded as "-1" in the variable.
 
 + HS_Inaccurate:
   A "1" means the reported score of high school entrance exam is inaccurate,
