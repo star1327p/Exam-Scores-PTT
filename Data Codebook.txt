@@ -1,0 +1,25 @@
+Data Source:
+https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html
+
+Variables:
+
++ pttID: 
+  Unique identifier of each person
+
++ HighSchool_PR: 
+  The score percentile (PR) of high school entrance exam in Taiwan,
+  ranging from 0 to 99
+
++ CollegeEntrance_Score:
+  The college entrance exam score in Taiwan (the one in January or February each year),
+  ranging from 0-75
+
+* A missing score is recorded as "-1" in the variable.
+
++ HS_Inaccurate:
+  A "1" means the reported score of high school entrance exam is inaccurate,
+  based on the person's description.
+
++ College_Inaccurate:
+  A "1" means the reported score of college entrance exam is inaccurate,
+  based on the person's description.
