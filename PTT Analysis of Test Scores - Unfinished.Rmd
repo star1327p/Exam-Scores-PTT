@@ -1,0 +1,59 @@
+---
+title: "PTT Analysis of Entrance Exam Scores in Taiwan"
+author: "Christine P. Chai"
+date: "January 21, 2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+I just started the template.
+
+# Executive Summary
+
+\textcolor{red}{Write something here}
+
+# Introduction
+
+I am curious about the relationship between the high school entrance exam score percentiles and the college entrance scores in Taiwan. It seems obvious that a greater percentage of students from top high schools get admitted to prestigious universities^[<http://ymlee.pixnet.net/blog/post/23123081-%E5%8F%B0%E5%A4%A7%E7%9A%84%E6%90%96%E7%B1%83--%E5%85%A8%E5%9C%8B%E5%89%8D30%E5%BC%B7%E6%98%8E%E6%98%9F%E9%AB%98%E4%B8%AD%E5%87%BA%E7%88%90>]. 
+
+However, the high school entrance exam is much easier than the college entrance exam, so some people studied little in middle school and was able to get into a good high school. Then some of these people kept studying little and ended up with a bad score on the college entrance exam. On the other hand, I have also seen some students from mediocre high schools worked very hard during the three years, and eventually earned a stellar score in the college exam.
+
+Therefore, I decided to gather data and create my own analysis.
+
+# Data Collection
+
+It is a challenge to obtain individual pairs of data as a representative sample. Although it is easy to send out a spreadsheet and ask my friends to report their scores anonymously, this approach can result in a large selection bias. Many of my friends graduated from the same high school or college as I did, so we are likely to have similar entrance exam scores.
+
+Hence I retrieved data from the SENIORHIGH (high school)^[<https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>] discussion section on PTT^[If you have a PTT account, you can log into the website using a browser. <https://iamchucky.github.io/PttChrome/?site=ptt.cc>], the largest terminal-based bulletin board in Taiwan. I assume the data to be more representative (than if I had collected on my own) because anyone can get a PTT account and reply to the post. The majority of scores were reported in May 2015, and a few scores were reported in the following month or later.
+
+
+# \textcolor{red}{Unfinished below}
+
+## Background
+
+High school entrance exam score percentiles
+
+College entrance scores (Spring and Summer?)
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
