@@ -1,7 +1,7 @@
 ---
 title: "PTT Analysis of Entrance Exam Scores in Taiwan"
 author: "Christine P. Chai"
-date: "January 21, 2019"
+date: "July 19, 2019"
 output: pdf_document
 ---
 
@@ -17,7 +17,7 @@ I just started the template.
 
 # Introduction
 
-I am curious about the relationship between the high school entrance exam score percentiles and the college entrance scores in Taiwan. It seems obvious that a greater percentage of students from top high schools get admitted to prestigious universities^[<http://ymlee.pixnet.net/blog/post/23123081-%E5%8F%B0%E5%A4%A7%E7%9A%84%E6%90%96%E7%B1%83--%E5%85%A8%E5%9C%8B%E5%89%8D30%E5%BC%B7%E6%98%8E%E6%98%9F%E9%AB%98%E4%B8%AD%E5%87%BA%E7%88%90>]. 
+I am curious about the relationship between the high school entrance exam score percentiles and the college entrance scores in Taiwan. It seems obvious that a greater percentage of students from top high schools get admitted to prestigious universities^[<https://bit.ly/2JSPXKc>]. 
 
 However, the high school entrance exam is much easier than the college entrance exam, so some people studied little in middle school and was able to get into a good high school. Then some of these people kept studying little and ended up with a bad score on the college entrance exam. On the other hand, I have also seen some students from mediocre high schools worked very hard during the three years, and eventually earned a stellar score in the college exam.
 
@@ -34,7 +34,7 @@ Hence I retrieved data from the SENIORHIGH (high school)^[<https://www.ptt.cc/bb
 
 ## Background
 
-High school entrance exam score percentiles
+In Taiwan, the high school entrance exam score percentiles are between 1% and 99%, and people often refer to the percentile rank (PR value) as from 1 to 99. This scoring system existed from 2001 to 2013^[<https://bit.ly/2JNQaOI>]. The actual exam score ranges were different; for example, the maximum possible score was 300 in Year 2004, but it was increased to 312 in Year 2006. Therefore, the percentile ranks (PR values) serves as a normalized tool to compare academic achievents across different years.
 
 College entrance scores (Spring and Summer?)
 
