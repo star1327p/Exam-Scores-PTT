@@ -1,7 +1,7 @@
 ---
 title: "PTT Analysis of Entrance Exam Scores in Taiwan"
 author: "Christine P. Chai"
-date: "July 19, 2019"
+date: "October 20, 2019"
 output: pdf_document
 ---
 
@@ -23,19 +23,32 @@ However, the high school entrance exam is much easier than the college entrance 
 
 Therefore, I decided to gather data and create my own analysis.
 
-# Data Collection
-
-It is a challenge to obtain individual pairs of data as a representative sample. Although it is easy to send out a spreadsheet and ask my friends to report their scores anonymously, this approach can result in a large selection bias. Many of my friends graduated from the same high school or college as I did, so we are likely to have similar entrance exam scores.
-
-Hence I retrieved data from the SENIORHIGH (high school)^[<https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>] discussion section on PTT^[If you have a PTT account, you can log into the website using a browser. <https://iamchucky.github.io/PttChrome/?site=ptt.cc>], the largest terminal-based bulletin board in Taiwan. I assume the data to be more representative (than if I had collected on my own) because anyone can get a PTT account and reply to the post. The majority of scores were reported in May 2015, and a few scores were reported in the following month or later.
-
 # Background
 
 In Taiwan, the high school entrance exam score percentiles are between 1% and 99%, and people often refer to the percentile rank (PR value) as from 1 to 99. This scoring system existed from 2001 to 2013^[<https://bit.ly/2JNQaOI>]. The actual exam score ranges were different. For example, the maximum possible score was originally set to 300, but it was increased to 312 in Year 2007. Then the maximum possible score was increased to 412 in Year 2009. Therefore, the percentile ranks (PR values) serves as a normalized tool to compare academic achievents across different years.
 
 The college entrance exams are held twice a year in Taiwan. The first exam, typically held in late January or early February, is called the General Scholastic Ability Test (GSAT)^[<https://bit.ly/2W0fdUq>]. The second exam is called the Advanced Subjects Test (AST)^[<https://bit.ly/2J7YxoW>], and it is almost always held on July 1st, 2nd, and 3rd. The GSAT scores are normalized to a range of 0 to 75, regardless of the difficulty level of GSAT each year. On the other hand, the scores of AST can vary widely because each subject is scored separately from 0 to 100. Since the AST scores fluctuate more due to the difficulty level of the exam questions each year, I decided to use the GSAT scores as a benchmark of the college exam scores.
 
+# Data Description
+
+It is a challenge to obtain individual pairs of data as a representative sample. Although it is easy to send out a spreadsheet and ask my friends to report their scores anonymously, this approach can result in a large selection bias. Many of my friends graduated from the same high school or college as I did, so we are likely to have similar entrance exam scores.
+
+Hence I retrieved data from the SENIORHIGH (high school)^[<https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>] discussion section on PTT^[If you have a PTT account, you can log into the website using a browser. <https://iamchucky.github.io/PttChrome/?site=ptt.cc>], the largest terminal-based bulletin board in Taiwan. I assume the data to be more representative (than if I had collected on my own) because anyone can get a PTT account and reply to the post. The majority of scores were reported in May 2015, and a few scores were reported in the following month or later.
+
 # \textcolor{red}{Unfinished below}
+
+In the data *ptt_SENIORHIGH_data.csv*, the main variables are:
+
+* **pttID**: Each person's ID on PTT, which can be anonymous. This column serves as the unique identifier of each person.
+* **HighSchool_PR**: Each person's percentile rank (PR value) of the high school entrance exam.
+* **CollegeEntrance_Score**: Each person's GSAT score, which is regarded as the person's college entrance score.
+
+Here are some indicators:
+
+* **HS_Inaccurate**: TBD
+* **College_Inaccurate**: TBD
+
+
 
 ## Raw data
 
@@ -47,6 +60,7 @@ Showing the first 10 rows of data.
 # 197 rows of (high school entrance exam percentile, 1st college entrance exam score)
 
 data = read.csv("ptt_SENIORHIGH_data.csv")
+names(data)[1] = "pttID"
 
 data[1:10,]
 ```
