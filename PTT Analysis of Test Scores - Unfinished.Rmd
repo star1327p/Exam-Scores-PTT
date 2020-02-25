@@ -1,7 +1,7 @@
 ---
 title: "PTT Analysis of Entrance Exam Scores in Taiwan"
 author: "Christine P. Chai"
-date: "October 20, 2019"
+date: "February 24, 2020"
 output: pdf_document
 ---
 
@@ -19,15 +19,17 @@ I just started the template.
 
 I am curious about the relationship between the high school entrance exam score percentiles and the college entrance scores in Taiwan. It seems obvious that a greater percentage of students from top high schools get admitted to prestigious universities^[<https://bit.ly/2JSPXKc>]. 
 
-However, the high school entrance exam is much easier than the college entrance exam, so some people studied little in middle school and was able to get into a good high school. Then some of these people kept studying little and ended up with a bad score on the college entrance exam. On the other hand, I have also seen some students from mediocre high schools worked very hard during the three years, and eventually earned a stellar score in the college exam.
+However, the high school entrance exam is much easier than the college entrance exam, so some people studied little in middle school and was able to get into a good high school. Then some of these people kept studying little and ended up with a bad score on the college entrance exam. On the other hand, I have also seen some students from mediocre high schools worked very hard during the three years, and eventually earned a stellar score in the college exam.  
 
 Therefore, I decided to gather data and create my own analysis.
 
 # Background
 
-In Taiwan, the high school entrance exam score percentiles are between 1% and 99%, and people often refer to the percentile rank (PR value) as from 1 to 99. This scoring system existed from 2001 to 2013^[<https://bit.ly/2JNQaOI>]. The actual exam score ranges were different. For example, the maximum possible score was originally set to 300, but it was increased to 312 in Year 2007. Then the maximum possible score was increased to 412 in Year 2009. Therefore, the percentile ranks (PR values) serves as a normalized tool to compare academic achievents across different years.
+In Taiwan, the high school entrance exam score percentiles are between 1% and 99%, and people often refer to the percentile rank (PR value) as from 1 to 99. This scoring system existed from 2001 to 2013^[<https://bit.ly/2JNQaOI>]. The actual exam score ranges were different. For example, the maximum possible score was originally set to 300, but it was increased to 312 in Year 2007. Then the maximum possible score was increased to 412 in Year 2009. Therefore, the percentile ranks (PR values) serves as a normalized tool to compare academic achievements across different years.
 
 The college entrance exams are held twice a year in Taiwan. The first exam, typically held in late January or early February, is called the General Scholastic Ability Test (GSAT)^[<https://bit.ly/2W0fdUq>]. The second exam is called the Advanced Subjects Test (AST)^[<https://bit.ly/2J7YxoW>], and it is almost always held on July 1st, 2nd, and 3rd. The GSAT scores are normalized to a range of 0 to 75, regardless of the difficulty level of GSAT each year. On the other hand, the scores of AST can vary widely because each subject is scored separately from 0 to 100. Since the AST scores fluctuate more due to the difficulty level of the exam questions each year, I decided to use the GSAT scores as a benchmark of the college exam scores.
+
+**Remark**: The GSAT consists of five subjects, each of which are graded on a 0 to 15 point scale. Starting in 2019, students may choose four of the five subjects for the GSAT. The maximum possible score (i.e., full marks) dropped from 75 to 60.
 
 # Data Description
 
@@ -35,18 +37,18 @@ It is a challenge to obtain individual pairs of data as a representative sample.
 
 Hence I retrieved data from the SENIORHIGH (high school)^[<https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>] discussion section on PTT^[If you have a PTT account, you can log into the website using a browser. <https://iamchucky.github.io/PttChrome/?site=ptt.cc>], the largest terminal-based bulletin board in Taiwan. I assume the data to be more representative (than if I had collected on my own) because anyone can get a PTT account and reply to the post. The majority of scores were reported in May 2015, and a few scores were reported in the following month or later.
 
-# \textcolor{red}{Unfinished below}
-
 In the data *ptt_SENIORHIGH_data.csv*, the main variables are:
 
 * **pttID**: Each person's ID on PTT, which can be anonymous. This column serves as the unique identifier of each person.
-* **HighSchool_PR**: Each person's percentile rank (PR value) of the high school entrance exam.
-* **CollegeEntrance_Score**: Each person's GSAT score, which is regarded as the person's college entrance score.
+* **HighSchool_PR**: Each person's percentile rank (PR) of the high school entrance exam in Taiwan, ranging from 0 to 99.
+* **CollegeEntrance_Score**: Each person's General Scholastic Ability Test (GSAT) score, ranging from 0 to 75.
+
+Note that in **HighSchool_PR** and **CollegeEntrance_Score**, any missing score is recorded as "-1" in the variable.
 
 Here are some indicators:
 
-* **HS_Inaccurate**: TBD
-* **College_Inaccurate**: TBD
+* **HS_Inaccurate**: A "1" means the reported score of high school entrance exam is inaccurate, based on the person's description.
+* **College_Inaccurate**: A "1" means the reported score of college entrance exam is inaccurate, based on the person's description.
 
 
 
@@ -65,14 +67,17 @@ names(data)[1] = "pttID"
 data[1:10,]
 ```
 
-## R Markdown
+# \textcolor{red}{Unfinished below}
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## Exploratory Data Analysis
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Univariate
 
-```{r cars}
-summary(cars)
+```{r high-school-pr}
+# High school entrance exam scores: Remove missing values
+uni_HS_score = data$HighSchool_PR[which(data$HighSchool_PR != -1)]
+
+summary(uni_HS_score)
 ```
 
 ## Including Plots

@@ -7,12 +7,12 @@ Variables:
   Unique identifier of each person
 
 + HighSchool_PR: 
-  The score percentile (PR) of high school entrance exam in Taiwan,
-  ranging from 0 to 99
+  The percentile rank (PR) of high school entrance exam in Taiwan,
+  ranging from 0 to 99.
 
 + CollegeEntrance_Score:
   The college entrance exam score in Taiwan (the one in January or February each year),
-  ranging from 0-75
+  ranging from 0 to 75.
 
 * In HighSchool_PR and CollegeEntrance_Score,
   any missing score is recorded as "-1" in the variable.
