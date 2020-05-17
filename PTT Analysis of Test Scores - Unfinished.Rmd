@@ -1,7 +1,7 @@
 ---
 title: "PTT Analysis of Entrance Exam Scores in Taiwan"
 author: "Christine P. Chai"
-date: "February 24, 2020"
+date: "May 17, 2020"
 output: pdf_document
 ---
 
@@ -29,7 +29,7 @@ In Taiwan, the high school entrance exam score percentiles are between 1% and 99
 
 The college entrance exams are held twice a year in Taiwan. The first exam, typically held in late January or early February, is called the General Scholastic Ability Test (GSAT)^[<https://bit.ly/2W0fdUq>]. The second exam is called the Advanced Subjects Test (AST)^[<https://bit.ly/2J7YxoW>], and it is almost always held on July 1st, 2nd, and 3rd. The GSAT scores are normalized to a range of 0 to 75, regardless of the difficulty level of GSAT each year. On the other hand, the scores of AST can vary widely because each subject is scored separately from 0 to 100. Since the AST scores fluctuate more due to the difficulty level of the exam questions each year, I decided to use the GSAT scores as a benchmark of the college exam scores.
 
-**Remark**: The GSAT consists of five subjects, each of which are graded on a 0 to 15 point scale. Starting in 2019, students may choose four of the five subjects for the GSAT. The maximum possible score (i.e., full marks) dropped from 75 to 60.
+**Remark**: The GSAT consists of five subjects, each of which are graded on a 0 to 15 point scale. Starting in 2019, students may choose four of the five subjects for the GSAT. The maximum possible score (i.e., full marks) is reduced from 75 to 60.
 
 # Data Description
 
@@ -37,30 +37,26 @@ It is a challenge to obtain individual pairs of data as a representative sample.
 
 Hence I retrieved data from the SENIORHIGH (high school)^[<https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>] discussion section on PTT^[If you have a PTT account, you can log into the website using a browser. <https://iamchucky.github.io/PttChrome/?site=ptt.cc>], the largest terminal-based bulletin board in Taiwan. I assume the data to be more representative (than if I had collected on my own) because anyone can get a PTT account and reply to the post. The majority of scores were reported in May 2015, and a few scores were reported in the following month or later.
 
-In the data *ptt_SENIORHIGH_data.csv*, the main variables are:
+The data *ptt_SENIORHIGH_data.csv* contain 197 rows, and the main variables are:
 
 * **pttID**: Each person's ID on PTT, which can be anonymous. This column serves as the unique identifier of each person.
 * **HighSchool_PR**: Each person's percentile rank (PR) of the high school entrance exam in Taiwan, ranging from 0 to 99.
-* **CollegeEntrance_Score**: Each person's General Scholastic Ability Test (GSAT) score, ranging from 0 to 75.
+* **College_Score**: Each person's General Scholastic Ability Test (GSAT) score, ranging from 0 to 75.
 
-Note that in **HighSchool_PR** and **CollegeEntrance_Score**, any missing score is recorded as "-1" in the variable.
+There are 6 missing values in **HighSchool_PR** and 3 missing values in **College_Score**, so I recorded each of them as "-1" (an invalid value). 
 
-Here are some indicators:
+In some cases, the reported scores can be inaccurate based on the respondent's description, so I created two indicators for this issue:  
 
-* **HS_Inaccurate**: A "1" means the reported score of high school entrance exam is inaccurate, based on the person's description.
-* **College_Inaccurate**: A "1" means the reported score of college entrance exam is inaccurate, based on the person's description.
+* **HS_Inacc**: A "1" means the reported score of high school entrance exam is inaccurate.
+* **College_Inacc**: A "1" means the reported score of college entrance exam is inaccurate.
 
-
+For instance, some people reported their percentile rank (PR) from the mock exam, rather than the actual high school entrance exam. Since there are two college entrance exams in each school year, some people may do much better on the second exam than the first one. Then they were admitted to a more prestigious school than the first exam score had indicated, so this is also a form of inaccuracy.
 
 ## Raw data
 
 Showing the first 10 rows of data.
 
 ```{r raw-data}
-# Data Source: ptt - SENIORHIGH
-# https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html
-# 197 rows of (high school entrance exam percentile, 1st college entrance exam score)
-
 data = read.csv("ptt_SENIORHIGH_data.csv")
 names(data)[1] = "pttID"
 
@@ -71,7 +67,9 @@ data[1:10,]
 
 ## Exploratory Data Analysis
 
-Univariate
+High school PR + bar plot
+
+Below shows the descriptive statistics of **HighSchool_PR**, after I removed the missing values. Approximately 75% of the respondents have a percentile rank (PR) at least 85, indicating that most of the respondents scored in the top 15% of the high school entrance exam.  
 
 ```{r high-school-pr}
 # High school entrance exam scores: Remove missing values
@@ -79,6 +77,23 @@ uni_HS_score = data$HighSchool_PR[which(data$HighSchool_PR != -1)]
 
 summary(uni_HS_score)
 ```
+
+\bigskip
+
+College entrance exam score + bar plot
+
+Reference score table^[<https://bit.ly/3bAYOvO>]
+
+```{r college-score}
+# College entrance exam scores: Remove missing values
+uni_college_score = data$College_Score[which(data$College_Score != -1)]
+
+summary(uni_college_score)
+```
+
+\bigskip
+
+Then bivariate plot.
 
 ## Including Plots
 
