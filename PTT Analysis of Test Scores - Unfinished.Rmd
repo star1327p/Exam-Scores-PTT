@@ -1,7 +1,7 @@
 ---
 title: "PTT Analysis of Entrance Exam Scores in Taiwan"
 author: "Christine P. Chai"
-date: "May 17, 2020"
+date: "May 19, 2020"
 output: pdf_document
 ---
 
@@ -21,7 +21,7 @@ I am curious about the relationship between the high school entrance exam score 
 
 However, the high school entrance exam is much easier than the college entrance exam, so some people studied little in middle school and was able to get into a good high school. Then some of these people kept studying little and ended up with a bad score on the college entrance exam. On the other hand, I have also seen some students from mediocre high schools worked very hard during the three years, and eventually earned a stellar score in the college exam.  
 
-Therefore, I decided to gather data and create my own analysis.
+Therefore, I decided to gather data and create my own analysis. The target audience of this document would be students taking Statistics 101.
 
 # Background
 
@@ -63,44 +63,46 @@ names(data)[1] = "pttID"
 data[1:10,]
 ```
 
-# \textcolor{red}{Unfinished below}
+# Exploratory Data Analysis
 
-## Exploratory Data Analysis
+The first step in a data project is exploratory data analysis, before we perform any statistical modeling. Therefore, I start with observing the trends of the two main variables, **HighSchool_PR** and **College_Score**.  
 
-High school PR + bar plot
+## High School Entrance Exam Scores (Percentile Rank)
 
-Below shows the descriptive statistics of **HighSchool_PR**, after I removed the missing values. Approximately 75% of the respondents have a percentile rank (PR) at least 85, indicating that most of the respondents scored in the top 15% of the high school entrance exam.  
+Below shows the descriptive statistics of **HighSchool_PR**, i.e., the percentile rank of high school entrance exam scores. The missing values are removed beforehand. Approximately 75% of the respondents have a percentile rank (PR) at least 85, indicating that most of the respondents scored in the top 15% of the high school entrance exam. The histogram is also extremely left-skewed.
 
 ```{r high-school-pr}
 # High school entrance exam scores: Remove missing values
 uni_HS_score = data$HighSchool_PR[which(data$HighSchool_PR != -1)]
 
 summary(uni_HS_score)
+
+hist(uni_HS_score, main = "Histogram of High School Entrance Exam Scores",
+     xlab="Percentile Rank (PR)")
 ```
 
-\bigskip
+## College Entrance Exam Scores 
 
-College entrance exam score + bar plot
+## \textcolor{red}{Unfinished below}
 
-Reference score table^[<https://bit.ly/3bAYOvO>]
+Similarly, I also show the descriptive statistics of **College_Score**, i.e., the college entrance exam scores between 0 and 75. The histogram is also left-skewed, but less extreme than **HighSchool_PR**.  
+
+According to the reference score table^[<https://bit.ly/3bAYOvO>] from Wikipedia, the 88th percentile of the college entrance score fluctuates around 60 in Years 2004-2010, and 62-65 in Years 2011-2018. Since the median of **College_Score** is 64.5, we can infer that at least 50% of the respondents scored in the top 12% of the college entrance exam.  
+
+On the other hand, the reference score table also shows that the 75th percentile of the college entrance score is between 53 and 58 in Years 2004-2018. The PTT data's 1st quantile is already at 58, so we can also infer that at least 75% of the respondents scored in the top 25% of the college entrance exam.
+
 
 ```{r college-score}
 # College entrance exam scores: Remove missing values
 uni_college_score = data$College_Score[which(data$College_Score != -1)]
 
 summary(uni_college_score)
+
+hist(uni_college_score, main = "Histogram of College Entrance Exam Scores",
+     xlab="Score (max possible is 75)",xlim=c(30,80))
 ```
 
 \bigskip
 
 Then bivariate plot.
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
