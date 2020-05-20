@@ -6,6 +6,7 @@ data = read.csv("ptt_SENIORHIGH_data.csv")
 View(data)
 
 # Second version: Added titles and labels to the data visualizations.
+# Clarification: Percentile Rank = PR
 # Next step: Create an .Rmd file!
 
 # ------------------------------------------------------------------------
@@ -13,7 +14,7 @@ View(data)
 # High school entrance exam scores: Remove missing values
 uni_HS_score = data$HighSchool_PR[which(data$HighSchool_PR != -1)]
 hist(uni_HS_score, main = "Histogram of High School Entrance Exam Scores",
-     xlab="Score Percentile (PR)")
+     xlab="Percentile Rank (PR)")
 summary(uni_HS_score)
 #  Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 # 51.00   85.00   92.00   89.82   97.00   99.00 
@@ -24,7 +25,7 @@ table(uni_HS_top)
 # HighSchool 90 91 92 93 94 95 96 97 98 99 
 # Frequency   7  6  9 11 12  7  5 18 15 27 
 hist(uni_HS_top, main = "Histogram of Top High School Entrance Exam Scores",
-     xlab="Score Percentile (PR) (90 and above)",xlim=c(90,100))
+     xlab="Percentile Rank (PR) (90 and above)",xlim=c(90,100))
 
 # ------------------------------------------------------------------------
 
@@ -64,7 +65,7 @@ cor(data_corr$HighSchool_PR, data_corr$CollegeEntrance_Score)
 
 plot(data_corr$HighSchool_PR, data_corr$CollegeEntrance_Score,
      main = "Correlation Between High School and College Entrance Sores",
-     xlab="High School Entrance Score Percentile (PR)",
+     xlab="High School Entrance Score Percentile Rank (PR)",
      ylab="College Entrance Score")
 
 # ------------------------------------------------------------------------
@@ -73,7 +74,7 @@ plot(data_corr$HighSchool_PR, data_corr$CollegeEntrance_Score,
 data_topHS = data_corr[which(data_corr$HighSchool_PR >= 90),]
 plot(data_topHS$HighSchool_PR, data_topHS$CollegeEntrance_Score,
      main ="Given a good high school entrance exam score (PR 90 and above)",
-     xlab="High School Entrance Score Percentile (PR)",
+     xlab="High School Entrance Score Percentile Rank (PR)",
      ylab="College Entrance Score")
 cor(data_topHS$HighSchool_PR, data_topHS$CollegeEntrance_Score)
 # 0.5475427
@@ -82,7 +83,7 @@ cor(data_topHS$HighSchool_PR, data_topHS$CollegeEntrance_Score)
 data_topCollege = data_corr[which(data_corr$CollegeEntrance_Score >= 65),]
 plot(data_topCollege$HighSchool_PR, data_topCollege$CollegeEntrance_Score,
      main ="Given a good college entrance exam score (65 and above)",
-     xlab="High School Entrance Score Percentile (PR)",
+     xlab="High School Entrance Score Percentile Rank (PR)",
      ylab="College Entrance Score")
 cor(data_topCollege$HighSchool_PR, data_topCollege$CollegeEntrance_Score)
 # 0.05652606 
