@@ -1,7 +1,7 @@
 ---
 title: "PTT Analysis of Entrance Exam Scores in Taiwan"
 author: "Christine P. Chai"
-date: "May 19, 2020"
+date: "May 23, 2020"
 output: pdf_document
 ---
 
@@ -83,14 +83,15 @@ hist(uni_HS_score, main = "Histogram of High School Entrance Exam Scores",
 
 ## College Entrance Exam Scores 
 
-## \textcolor{red}{Unfinished below}
-
 Similarly, I also show the descriptive statistics of **College_Score**, i.e., the college entrance exam scores between 0 and 75. The histogram is also left-skewed, but less extreme than **HighSchool_PR**.  
 
 According to the reference score table^[<https://bit.ly/3bAYOvO>] from Wikipedia, the 88th percentile of the college entrance score fluctuates around 60 in Years 2004-2010, and 62-65 in Years 2011-2018. Since the median of **College_Score** is 64.5, we can infer that at least 50% of the respondents scored in the top 12% of the college entrance exam.  
 
-On the other hand, the reference score table also shows that the 75th percentile of the college entrance score is between 53 and 58 in Years 2004-2018. The PTT data's 1st quantile is already at 58, so we can also infer that at least 75% of the respondents scored in the top 25% of the college entrance exam.
+On the other hand, the reference score table also shows that the 75th percentile of the college entrance score is between 53 and 58 in Years 2004-2018. The PTT data's 1st quantile is already at 58, so we can also infer that at least 75% of the respondents scored in the top 25% of the college entrance exam.  
 
+## \textcolor{red}{Unfinished below}
+
+Write an inference paragraph: What are the general demographics of students who use PTT?
 
 ```{r college-score}
 # College entrance exam scores: Remove missing values
@@ -102,7 +103,26 @@ hist(uni_college_score, main = "Histogram of College Entrance Exam Scores",
      xlab="Score (max possible is 75)",xlim=c(30,80))
 ```
 
-\bigskip
+## Bivariate
 
 Then bivariate plot.
 
+```{r bivariate}
+missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
+# Indices: 6  19  71  85  88  96 132 183 195 => nine in total
+
+# Remove missing data
+data_corr = data[-missing_rows,]
+
+plot(data_corr$HighSchool_PR, data_corr$College_Score,
+     main = "High School and College Entrance Exam Scores",
+     xlab="High School Entrance Exam Score Percentile Rank (PR)",
+     ylab="College Entrance Score")
+```
+
+
+The correlation coefficient is approximately 0.50.
+
+```{r correlation}
+cor(data_corr$HighSchool_PR, data_corr$College_Score)
+```
