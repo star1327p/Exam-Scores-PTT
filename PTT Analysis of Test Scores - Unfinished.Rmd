@@ -35,7 +35,7 @@ The college entrance exams are held twice a year in Taiwan. The first exam, typi
 
 It is a challenge to obtain individual pairs of data as a representative sample. Although it is easy to send out a spreadsheet and ask my friends to report their scores anonymously, this approach can result in a large selection bias. Many of my friends graduated from the same high school or college as I did, so we are likely to have similar entrance exam scores.
 
-Hence I retrieved data from the SENIORHIGH (high school)^[<https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>] discussion section on PTT^[If you have a PTT account, you can log into the website using a browser. <https://iamchucky.github.io/PttChrome/?site=ptt.cc>], the largest terminal-based bulletin board in Taiwan. I assume the data to be more representative (than if I had collected on my own) because anyone can get a PTT account and reply to the post. The majority of scores were reported in May 2015, and a few scores were reported in the following month or later.
+Hence I retrieved data from the SENIORHIGH (high school)^[<https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>] discussion section on PTT^[If you have a PTT account, you can log into the website using a browser. <https://iamchucky.github.io/PttChrome/?site=ptt.cc>], the largest terminal-based bulletin board in Taiwan.^[<https://en.wikipedia.org/wiki/PTT_Bulletin_Board_System>] I assume the data to be more representative (than if I had collected on my own) because anyone can get a PTT account and reply to the post. The majority of scores were reported in May 2015, and a few scores were reported in the following month or later.
 
 The data *ptt_SENIORHIGH_data.csv* contain 197 rows, and the main variables are:
 
@@ -89,9 +89,7 @@ According to the reference score table^[<https://bit.ly/3bAYOvO>] from Wikipedia
 
 On the other hand, the reference score table also shows that the 75th percentile of the college entrance score is between 53 and 58 in Years 2004-2018. The PTT data's 1st quantile is already at 58, so we can also infer that at least 75% of the respondents scored in the top 25% of the college entrance exam.  
 
-## \textcolor{red}{Unfinished below}
-
-Write an inference paragraph: What are the general demographics of students who use PTT?
+Since PTT contains forums for several prestigious universities in Taiwan, it is no surprise that many users attended these colleges because they scored high on the college entrance exam. Nevertheless, PTT did not limit registration to students of these colleges in the past, so the population of PTT is slightly more diverse. Note that as of 2020, PTT changed their eligibility requirements, and limited new account registrations to only people with an email address from National Taiwan University.^[Screenshot obtained on May 26, 2020: <https://imgur.com/33fwrGH>]
 
 ```{r college-score}
 # College entrance exam scores: Remove missing values
@@ -102,6 +100,8 @@ summary(uni_college_score)
 hist(uni_college_score, main = "Histogram of College Entrance Exam Scores",
      xlab="Score (max possible is 75)",xlim=c(30,80))
 ```
+
+## \textcolor{red}{Unfinished below}
 
 ## Bivariate
 
