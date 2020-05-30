@@ -65,11 +65,11 @@ data[1:10,]
 
 # Exploratory Data Analysis
 
-The first step in a data project is exploratory data analysis, before we perform any statistical modeling. Therefore, I start with observing the trends of the two main variables, **HighSchool_PR** and **College_Score**.  
+The first step in a data project is exploratory data analysis, before we perform any statistical modeling. Therefore, we start with observing the trends of the two main variables, **HighSchool_PR** and **College_Score**.  
 
 ## High School Entrance Exam Scores (Percentile Rank)
 
-Below shows the descriptive statistics of **HighSchool_PR**, i.e., the percentile rank of high school entrance exam scores. The missing values are removed beforehand. Approximately 75% of the respondents have a percentile rank (PR) at least 85, indicating that most of the respondents scored in the top 15% of the high school entrance exam. The histogram is also extremely left-skewed.
+Below shows the descriptive statistics of **HighSchool_PR**, i.e., the percentile rank of high school entrance exam scores. The missing values are removed beforehand. Approximately 75% of the respondents have a percentile rank (PR) at least 85, indicating that most of the respondents scored in the top 15% of the high school entrance exam. The histogram is also extremely left-skewed.  
 
 ```{r high-school-pr}
 # High school entrance exam scores: Remove missing values
@@ -83,7 +83,7 @@ hist(uni_HS_score, main = "Histogram of High School Entrance Exam Scores",
 
 ## College Entrance Exam Scores 
 
-Similarly, I also show the descriptive statistics of **College_Score**, i.e., the college entrance exam scores between 0 and 75. The histogram is also left-skewed, but less extreme than **HighSchool_PR**.  
+Similarly, we also show the descriptive statistics of **College_Score**, i.e., the college entrance exam scores between 0 and 75. The histogram is also left-skewed, but less extreme than **HighSchool_PR**.  
 
 According to the reference score table^[<https://bit.ly/3bAYOvO>] from Wikipedia, the 88th percentile of the college entrance score fluctuates around 60 in Years 2004-2010, and 62-65 in Years 2011-2018. Since the median of **College_Score** is 64.5, we can infer that at least 50% of the respondents scored in the top 12% of the college entrance exam.  
 
@@ -101,11 +101,9 @@ hist(uni_college_score, main = "Histogram of College Entrance Exam Scores",
      xlab="Score (max possible is 75)",xlim=c(30,80))
 ```
 
-## \textcolor{red}{Unfinished below}
+## Bivariate Exploration
 
-## Bivariate
-
-Then bivariate plot.
+Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score**, but we have to remove the records with at least one missing score. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores.
 
 ```{r bivariate}
 missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
@@ -120,9 +118,34 @@ plot(data_corr$HighSchool_PR, data_corr$College_Score,
      ylab="College Entrance Score")
 ```
 
+## \textcolor{red}{Unfinished below}
 
-The correlation coefficient is approximately 0.50.
+The correlation coefficient is approximately 0.50, showing a medium strength of positive association between **HighSchool_PR** and **College_Score**. We can interpret that a better score in the high school entrance exam is likely to lead to a better college entrance exam score, but the relationship is not as strong after **HighSchool_PR** reaches 80.
 
 ```{r correlation}
 cor(data_corr$HighSchool_PR, data_corr$College_Score)
 ```
+
+Linear regression and model validation ??  
+
+Lots of assumptions are violated. $\Rightarrow$ Transformation needed.
+
+# A Closer Look at the Top Scorers
+
+Write something here
+
+## High School Entrance Exam Scores (Percentile Rank)
+
+Write something here
+
+## College Entrance Exam Scores
+
+Write something here
+
+## Bivariate Exploration
+
+Write something here
+
+# More Sections coming up
+
+# Final: Personal Remarks
