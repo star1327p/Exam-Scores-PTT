@@ -1,8 +1,13 @@
 ---
 title: "PTT Analysis of Entrance Exam Scores in Taiwan"
 author: "Christine P. Chai"
-date: "May 23, 2020"
-output: pdf_document
+date: "May 30, 2020"
+output: 
+        pdf_document:
+                number_sections: true
+                citation_package: natbib
+bibliography: references.bib
+link-citations: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -11,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 I just started the template.
 
-# Executive Summary
+\section*{Executive Summary}
 
 \textcolor{red}{Write something here}
 
@@ -128,7 +133,11 @@ cor(data_corr$HighSchool_PR, data_corr$College_Score)
 
 Linear regression and model validation ??  
 
-Lots of assumptions are violated. $\Rightarrow$ Transformation needed.
+Lots of assumptions are violated. $\Rightarrow$ Transformation needed.  
+
+Test citation: \cite{diez2012openintro}  
+
+Still need to add the LaTeX file to improve the citation format.
 
 # A Closer Look at the Top Scorers
 
@@ -148,4 +157,10 @@ Write something here
 
 # More Sections coming up
 
+More stuff
+
 # Final: Personal Remarks
+
+Even more stuff
+
+# References
