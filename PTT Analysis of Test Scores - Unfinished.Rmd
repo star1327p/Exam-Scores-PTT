@@ -7,6 +7,7 @@ output:
                 number_sections: true
                 citation_package: natbib
 bibliography: references.bib
+biblio-style: plain
 link-citations: yes
 ---
 
@@ -131,13 +132,11 @@ The correlation coefficient is approximately 0.50, showing a medium strength of 
 cor(data_corr$HighSchool_PR, data_corr$College_Score)
 ```
 
-Linear regression and model validation ??  
+However, it is inappropriate to perform linear regression directly, because the data do not meet the constant variability assumption \cite{diez2012openintro}.
+ 
 
 Lots of assumptions are violated. $\Rightarrow$ Transformation needed.  
 
-Test citation: \cite{diez2012openintro}  
-
-Still need to add the LaTeX file to improve the citation format.
 
 # A Closer Look at the Top Scorers
 
