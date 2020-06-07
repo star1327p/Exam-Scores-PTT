@@ -130,19 +130,17 @@ The correlation coefficient is approximately 0.507, showing a medium strength of
 cor(data_corr$HighSchool_PR, data_corr$College_Score)
 ```
 
+# Statistical Modeling Decisions
+
+We are going to decide whether we should run a linear regression on **HighSchool_PR** and **College_Score**. If yes, we would implement the model and check the residuals. If no, we need to explore other options in analyzing the data.
+
 ## Should we run a linear regression?
 
 It is inappropriate to perform linear regression directly, because the data do not meet the constant variability assumption \cite{diez2012openintro}. One possible remedy is apply the square root transformation to **College_Score**, in order to reduce the variability. But the scatterplot below shows little to no improvement in variability, and the correlation coefficient even drops from 0.507 to 0.504. Hence we determine that it is not a good idea to run a linear regression model on the whole dataset.   
 
-\textcolor{red}{Unfinished below}
-
-Instead, we should take a closer look at the top scorers, i.e., those with **HighSchool_PR** 80 or higher.  
-
-Implications in reality ??
-
 ```{r transform-test}
 # data version: already removed missing data
-data_corr = data[-missing_rows,]
+# data_corr = data[-missing_rows,]
 
 plot(data_corr$HighSchool_PR, sqrt(data_corr$College_Score),
      main = "High School and College Entrance Exam Scores",
@@ -153,6 +151,34 @@ plot(data_corr$HighSchool_PR, sqrt(data_corr$College_Score),
 ```{r transform-correlation}
 cor(data_corr$HighSchool_PR, sqrt(data_corr$College_Score))
 ```
+
+## \textcolor{red}{Unfinished below}: Segmenting the Data
+
+Instead, we should segment the data and further examine the top scorers in the dataset, i.e., those with **HighSchool_PR** 80 or higher. Most of these respondents have **College_Score** of 60 or higher, but the range of **College_Score** is wide. Here, we add horizontal and vertical lines to clarify the graph.
+
+```{r high-scorer-obs}
+plot(data_corr$HighSchool_PR, data_corr$College_Score,
+     main = "High School and College Entrance Exam Scores",
+     xlab="High School Entrance Exam Score Percentile Rank (PR)",
+     ylab="College Entrance Score")
+
+abline(h=60,v=80)
+```
+
+We can also create a contingency table for the two indicators:  
+
+- **HighSchool_80up**: Indicator of whether **HighSchool_PR** is 80 or higher
+- **College_60up**: Indicator of whether **College_Score** is 60 or higher
+
+```{r high-scorer-matrix}
+data_corr$HS_80up = data_corr$HighSchool_PR >= 80
+data_corr$CS_60up = data_corr$College_Score >=60
+
+table(data_corr$HS_80up, data_corr$CS_60up,
+      dnn=c("HighSchool_80up","College_60up"))
+```
+
+Create a percentage version of the matrix
 
 # A Closer Look at the Top Scorers
 
