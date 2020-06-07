@@ -1,7 +1,7 @@
 ---
 title: "PTT Analysis of Entrance Exam Scores in Taiwan"
 author: "Christine P. Chai"
-date: "May 30, 2020"
+date: \today
 output: 
         pdf_document:
                 number_sections: true
@@ -15,7 +15,7 @@ link-citations: yes
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-I just started the template.
+Ongoing work.
 
 \section*{Executive Summary}
 
@@ -58,7 +58,7 @@ In some cases, the reported scores can be inaccurate based on the respondent's d
 
 For instance, some people reported their percentile rank (PR) from the mock exam, rather than the actual high school entrance exam. Since there are two college entrance exams in each school year, some people may do much better on the second exam than the first one. Then they were admitted to a more prestigious school than the first exam score had indicated, so this is also a form of inaccuracy.
 
-## Raw data
+## Raw Data
 
 Showing the first 10 rows of data.
 
@@ -136,7 +136,7 @@ We are going to decide whether we should run a linear regression on **HighSchool
 
 ## Should we run a linear regression?
 
-It is inappropriate to perform linear regression directly, because the data do not meet the constant variability assumption \cite{diez2012openintro}. One possible remedy is apply the square root transformation to **College_Score**, in order to reduce the variability. But the scatterplot below shows little to no improvement in variability, and the correlation coefficient even drops from 0.507 to 0.504. Hence we determine that it is not a good idea to run a linear regression model on the whole dataset.   
+It is inappropriate to perform linear regression directly, because the data do not meet the constant variability assumption \cite{diez2012openintro}. In the bivariate exploratory plot, we can see that the variability of **College_Score** increases as **HighSchool_PR** increases. One possible remedy is apply the square root transformation to **College_Score**, in order to reduce the variability. But the scatterplot below shows little to no improvement in variability, and the correlation coefficient even drops from 0.507 to 0.504. Hence we determine that it is not a good idea to run a linear regression model on the whole dataset.   
 
 ```{r transform-test}
 # data version: already removed missing data
@@ -152,7 +152,7 @@ plot(data_corr$HighSchool_PR, sqrt(data_corr$College_Score),
 cor(data_corr$HighSchool_PR, sqrt(data_corr$College_Score))
 ```
 
-## \textcolor{red}{Unfinished below}: Segmenting the Data
+## Segmenting the Data
 
 Instead, we should segment the data and further examine the top scorers in the dataset, i.e., those with **HighSchool_PR** 80 or higher. Most of these respondents have **College_Score** of 60 or higher, but the range of **College_Score** is wide. Here, we add horizontal and vertical lines to clarify the graph.
 
@@ -174,15 +174,39 @@ We can also create a contingency table for the two indicators:
 data_corr$HS_80up = data_corr$HighSchool_PR >= 80
 data_corr$CS_60up = data_corr$College_Score >=60
 
-table(data_corr$HS_80up, data_corr$CS_60up,
-      dnn=c("HighSchool_80up","College_60up"))
+contingency = table(data_corr$HS_80up, data_corr$CS_60up,
+                    dnn=c("HighSchool_80up","College_60up"))
+
+contingency
 ```
 
-Create a percentage version of the matrix
+Below is the percentage version of the contingency table, and we can see that more than 63.5% of the respondents have both **HighSchool_PR** $\geq$ 80 and **College_Score** $\geq$ 60. This is also evidence that the PTT users tend to come from the population who scored well on the high school and college entrance exams.  
+
+```{r high-scorer-percentage}
+prop.table(contingency)
+```
+
+We can also round the percentage table to four decimal places in the ratio, so we will have two decimal places after the integer percentage. For example, 0.4528 becomes 45.28%.
+
+```{r high-scorer-rounding}
+round(prop.table(contingency),4)
+```
+
+## \textcolor{red}{Unfinished below}
+
+\textcolor{red}{Also need to add: Figure captions and referencing to a plot.}  
+
+Conditional probability  
+
+Mathematical equation required.
 
 # A Closer Look at the Top Scorers
 
-Write something here
+Write something here  
+
+**HighSchool_PR** threshold: 80, 90, and 95
+
+**College_Score** thresholds: 60, 65, and 70
 
 ## High School Entrance Exam Scores (Percentile Rank)
 
