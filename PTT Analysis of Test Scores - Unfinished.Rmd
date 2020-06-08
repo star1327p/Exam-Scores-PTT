@@ -111,7 +111,7 @@ hist(uni_college_score, main = "Histogram of College Entrance Exam Scores",
 
 Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score**, but we have to remove the records with at least one missing score. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores.
 
-```{r bivariate}
+```{r bivariate, fig.cap="Test Caption\\label{fig:bivariate}"}
 missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
 # Indices: 6  19  71  85  88  96 132 183 195 => nine in total
 
@@ -198,7 +198,11 @@ round(prop.table(contingency),4)
 
 Conditional probability  
 
-Mathematical equation required.
+$$P(A|B) = \frac{P(A \cap B)}{P(B)}$$
+
+Mathematical equation required.  
+
+Test figure \ref{fig:bivariate}.
 
 # A Closer Look at the Top Scorers
 
