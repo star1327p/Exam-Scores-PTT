@@ -103,7 +103,7 @@ uni_college_score = data$College_Score[which(data$College_Score != -1)]
 
 summary(uni_college_score)
 
-hist(uni_college_score, main = "Histogram of College Entrance Exam Scores",
+hist(uni_college_score, main="Histogram of College Entrance Exam Scores",
      xlab="Score (max possible is 75)",xlim=c(30,80))
 ```
 
@@ -111,7 +111,7 @@ hist(uni_college_score, main = "Histogram of College Entrance Exam Scores",
 
 Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score**, but we have to remove the records with at least one missing score. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores.
 
-```{r bivariate, fig.cap="Test Caption\\label{fig:bivariate}"}
+```{r bivariate}
 missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
 # Indices: 6  19  71  85  88  96 132 183 195 => nine in total
 
@@ -192,17 +192,18 @@ We can also round the percentage table to four decimal places in the ratio, so w
 round(prop.table(contingency),4)
 ```
 
-## \textcolor{red}{Unfinished below}
+## Conditional Probability 
 
-\textcolor{red}{Also need to add: Figure captions and referencing to a plot.}  
+Using conditional probability, we can answer this question from the data: If a person scores at least 80 on the high school entrance score percentile rank (PR), how likely is he/she going to obtain a score at least 60 on the college entrance exam?  
 
-Conditional probability  
+\section*{\textcolor{red}{Unfinished below}}  
 
-$$P(A|B) = \frac{P(A \cap B)}{P(B)}$$
+In mathematical terms, this is equivalent to finding $P(\text{College$\_$60up is true } \vert \text{ HighSchool$\_$80up is true})$. Recall the conditional probability formula:  
 
-Mathematical equation required.  
+$$P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{P(B|A)P(A)}{P(B)}$$
+ 
 
-Test figure \ref{fig:bivariate}.
+
 
 # A Closer Look at the Top Scorers
 
