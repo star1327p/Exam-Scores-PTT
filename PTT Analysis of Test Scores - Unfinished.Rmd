@@ -211,9 +211,16 @@ In this data, we have
 
 \section*{\textcolor{red}{Unfinished below}}  
 
-Plugging in the numbers
+Plugging in the numbers, we get  
 
-Note that we use number of respondents rather than percentage.
+$$\begin{aligned} 
+& P(\text{College$\_$60up is true } \vert \text{ HighSchool$\_$80up is true})\\
+&= \frac{P(\text{HighSchool$\_$80up is true} \cap \text{College$\_$60up is true})}{P(\text{HighSchool$\_$80up is true})} \\
+&= \frac{\text{$\#$ of respondents with HighSchool$\_$PR $\geq$ 80 and College$\_$Score $\geq$ 60}}{\text{$\#$ of respondents with HighSchool$\_$PR $\geq$ 80}} 
+\end{aligned}$$
+
+
+Note that we use number of respondents rather than percentage to avoid rounding errors.
 
 # A Closer Look at the Top Scorers
 
