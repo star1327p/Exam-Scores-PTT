@@ -196,14 +196,24 @@ round(prop.table(contingency),4)
 
 Using conditional probability, we can answer this question from the data: If a person scores at least 80 on the high school entrance score percentile rank (PR), how likely is he/she going to obtain a score at least 60 on the college entrance exam?  
 
-\section*{\textcolor{red}{Unfinished below}}  
-
 In mathematical terms, this is equivalent to finding $P(\text{College$\_$60up is true } \vert \text{ HighSchool$\_$80up is true})$. Recall the conditional probability formula:  
 
-$$P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{P(B|A)P(A)}{P(B)}$$
+$$P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{P(B|A)P(A)}{P(B)}$$  
+
+In this data, we have   
+
+- $P(\text{HighSchool$\_$80up is true})$ = # of respondents with **HighSchool_PR** $\geq$ 80 / all respondents.
  
+- $P(\text{College$\_$60up is true})$ = # of respondents with **College_Score** $\geq$ 60 / all respondents.
 
+- $P(\text{HighSchool$\_$80up is true} \cap \text{College$\_$60up is true})$  
+= # of respondents with **HighSchool_PR** $\geq$ 80 and **College_Score** $\geq$ 60 / all respondents.  
 
+\section*{\textcolor{red}{Unfinished below}}  
+
+Plugging in the numbers
+
+Note that we use number of respondents rather than percentage.
 
 # A Closer Look at the Top Scorers
 
