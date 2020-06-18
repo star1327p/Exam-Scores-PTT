@@ -235,8 +235,6 @@ nrow(data_corr) # number of all respondents without missing data
 
 # A Closer Look at the Top Scorers
 
-\section*{\textcolor{red}{Unfinished below}}  
-
 We are going to take a closer look at the top scorers, given the observation in Section \ref{examine-further}. In Taiwan's education system, the top tier of high schools and colleges can be further segmented. The top of the top tier can be very different than the bottom of top tier. Therefore, we consider the following subcategories:     
 
 * **HighSchool_PR** ranges: 80-89, 90-94, 95-99
@@ -244,11 +242,28 @@ We are going to take a closer look at the top scorers, given the observation in 
 
 ## High School Entrance Exam Scores (Percentile Rank)
 
-Write something here
+\section*{\textcolor{red}{Unfinished below}}
+
+Before we start the analysis, we need to ensure consistency in the data. For instance, there are 191 records of valid high school entrance exam scores in the data. But if we consider only the ones with a valid college entrance exam score, the number of available records drops to 188. Although which version we use does not matter much when we look at the univariate distribution, this is going to be problematic when we combine the univariate analysis with the bivariate analysis. Thus, we should use only the 188 records whose college entrance exam scores are also valid. 
+
+```{r high-school-pr80up-univ}
+# High school entrance exam scores: Remove missing values
+# uni_HS_score = data$HighSchool_PR[which(data$HighSchool_PR != -1)]
+length(uni_HS_score)
+
+```
+
+
+```{r high-school-pr80up-bivar}
+# Consider only the records with both valid HighSchool_PR and College_Score
+length(data_corr$HighSchool_PR)
+```
 
 ## College Entrance Exam Scores
 
-Write something here
+Write something here  
+
+Similar starting paragraph with code as the previous section.
 
 ## Bivariate Exploration
 
