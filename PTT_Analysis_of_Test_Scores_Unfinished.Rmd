@@ -275,11 +275,20 @@ length(data_corr$College_Score)
 
 * **HighSchool_PR** ranges: 80-89, 90-94, 95-99
 
-Write something here
+We use the `R` function `table` to show the frequency of each **HighSchool_PR** at least 80. In the table below, the first row is the PR (percentile rank), and the second row is the counts. Although we truncated the **HighSchool_PR** to 80 and above, the distribution is still left-skewed. 
 
 ```{r high-school-pr-segments}
 HS_PR_seg = data_corr$HighSchool_PR[which(data_corr$HS_80up == TRUE)]
 table(HS_PR_seg)
+```
+
+\textcolor{red}{Also create a range table of 80-89, 90-94, 95-99.}  
+
+Or if you prefer a histogram, we can also create one.
+
+```{r high-school-pr-seg-hist}
+hist(HS_PR_seg, xlab="Percentile Rank (PR)",
+     main="Histogram of High School Entrance Exam Scores (PR >= 80)")
 ```
 
 ## College Entrance Exam Scores
@@ -287,6 +296,11 @@ table(HS_PR_seg)
 * **College_Score** ranges: 60-64, 65-69, 70-75 
 
 Write something here
+
+```{r college-score-segments}
+CS_Score_seg = data_corr$College_Score[which(data_corr$CS_60up == TRUE)]
+table(CS_Score_seg)
+```
 
 ## Bivariate Exploration
 
