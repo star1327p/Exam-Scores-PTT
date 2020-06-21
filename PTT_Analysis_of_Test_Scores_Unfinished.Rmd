@@ -271,18 +271,12 @@ length(data_corr$College_Score)
 
 ## High School Entrance Exam Scores (Percentile Rank)
 
-\section*{\textcolor{red}{Unfinished below}}
+We use the `R` function `table` to show the frequency of each **HighSchool_PR** value that is at least 80. In the table below, the first row is the PR (percentile rank), and the second row is the counts. Although we truncated the **HighSchool_PR** to 80 and above, the distribution is still left-skewed. The **HighSchool_PR** 99 has the highest counts, followed by **HighSchool_PR** 97 and **HighSchool_PR** 98.
 
-* **HighSchool_PR** ranges: 80-89, 90-94, 95-99
-
-We use the `R` function `table` to show the frequency of each **HighSchool_PR** at least 80. In the table below, the first row is the PR (percentile rank), and the second row is the counts. Although we truncated the **HighSchool_PR** to 80 and above, the distribution is still left-skewed. 
-
-```{r high-school-pr-segments}
+```{r high-school-pr-sequential}
 HS_PR_seg = data_corr$HighSchool_PR[which(data_corr$HS_80up == TRUE)]
 table(HS_PR_seg)
 ```
-
-\textcolor{red}{Also create a range table of 80-89, 90-94, 95-99.}  
 
 Or if you prefer a histogram, we can also create one.
 
@@ -290,6 +284,28 @@ Or if you prefer a histogram, we can also create one.
 hist(HS_PR_seg, xlab="Percentile Rank (PR)",
      main="Histogram of High School Entrance Exam Scores (PR >= 80)")
 ```
+
+\section*{\textcolor{red}{Unfinished below}}
+
+* **HighSchool_PR** ranges: 80-89, 90-94, 95-99
+
+Therefore, we create the breakdown of the **HighSchool_PR** ranges: 80-89, 90-94, 95-99. There are 49 records in the 80-89 range, 44 records in 90-94, and 70 records in 95-99. We divided the 90-99 range into 90-94 and 95-99, but the number of **HighSchool_PR** records in the 95-99 range is still higher than any of the other two categories.  
+
+However, it is not a good idea to further divide the 95-99 range into 95-97 and 98-99, due to the lack of geographic information. In Taipei, the high school enrollment is extremely competitive. Students with **HighSchool_PR** 95 and those with **HighSchool_PR** 99 would get admitted to high schools of different ranking^[https://w199584.pixnet.net/blog/post/28321887]. But in other parts of Taiwan, most students with **HighSchool_PR** at least 95 would already qualify for the top local high school, and some rural parts even require a lower **HighSchool_PR** to get into the county's top high school^[http://www.edtung.com/TopNews/NewsContent.aspx?type=4&no=1278].
+
+```{r high-school-pr-segments}
+HS80to89 = length(which(HS_PR_seg >= 80 & HS_PR_seg <= 89))
+HS90to94 = length(which(HS_PR_seg >= 90 & HS_PR_seg <= 94))
+HS95to99 = length(which(HS_PR_seg >= 95 & HS_PR_seg <= 99))
+```
+
+```{r high-school-pr-segments-print}
+print(paste("HighSchool_PR 80-89:",HS80to89))
+print(paste("HighSchool_PR 90-94:",HS90to94))
+print(paste("HighSchool_PR 95-99:",HS95to99))
+```
+
+
 
 ## College Entrance Exam Scores
 
