@@ -136,7 +136,7 @@ We are going to decide whether we should run a linear regression on **HighSchool
 
 ## Should we run a linear regression?
 
-It is inappropriate to perform linear regression directly, because the data do not meet the constant variability assumption \cite{diez2012openintro}. In the bivariate exploratory plot, we can see that the variability of **College_Score** increases as **HighSchool_PR** increases. One possible remedy is apply the square root transformation to **College_Score**, in order to reduce the variability. But the scatterplot below shows little to no improvement in variability, and the correlation coefficient even drops from 0.507 to 0.504. Hence we determine that it is not a good idea to run a linear regression model on the whole dataset.   
+It is inappropriate to perform linear regression directly, because the data do not meet the constant variability assumption \cite{diez2019openintro}. In the bivariate exploratory plot, we can see that the variability of **College_Score** increases as **HighSchool_PR** increases. One possible remedy is apply the square root transformation to **College_Score**, in order to reduce the variability. But the scatterplot below shows little to no improvement in variability, and the correlation coefficient even drops from 0.507 to 0.504. Hence we determine that it is not a good idea to run a linear regression model on the whole dataset.   
 
 ```{r transform-test}
 # data version: already removed missing data
