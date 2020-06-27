@@ -309,7 +309,7 @@ print(paste("HighSchool_PR 95-99:",HS95to99))
 
 ## College Entrance Exam Scores
 
-Similar to the previous section, we also show the frequency of each **College_Score** value that is at least 60. The total counts is 128, fewer than the 163 counts with **HighSchool_PR** 80 or above. The distribution is relatively uniform for **College_Score** values between 60 and 73, with a steep decline in the counts of **College_Score** 74 and 75 (max possible score).   
+Similar to the previous section, we also show the frequency of each **College_Score** value that is at least 60. The total counts is 128, fewer than the 163 counts with **HighSchool_PR** 80 or above. The distribution is relatively uniform for **College_Score** values between 60 and 73, with a steep decline in the counts of **College_Score** 74 and 75 (max possible score). According to the statistics of the college entrance exam in Taiwan, **College_Score** 74 and 75 account for approximately 0.2% of all test takers each year, which is quite a small percentage.    
 
 ```{r college-score-sequential}
 CS_Score_seg = data_corr$College_Score[which(data_corr$CS_60up == TRUE)]
@@ -318,6 +318,15 @@ length(CS_Score_seg)
 
 ```{r college-score-table}
 table(CS_Score_seg)
+```
+
+Before we display the histogram, let's create a table to (approximately) convert **College_Score** into PR (Percentile Rank) using 2001-2014 data^[https://web.archive.org/web/20150207042900/http://www.ceec.edu.tw/AbilityExam/AbilityExamStat.htm]. This gives readers an understanding of what percentage of test takers (high school students in grade 12) get what scores. For example, a **College_Score** of 70 would be at the 98.5th percentile, i.e., PR 98.5.
+
+```{r college-score-pr}
+college_score = c(60,65,70,74,75)
+college_pr = c(88, 95, 98.5, 99.9, 100)
+
+data.frame(college_score, college_pr)
 ```
 
 Here is the histogram of the **College_Score** values 60 and above.
