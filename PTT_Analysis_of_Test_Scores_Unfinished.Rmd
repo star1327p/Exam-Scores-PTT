@@ -271,10 +271,14 @@ length(data_corr$College_Score)
 
 ## High School Entrance Exam Scores (Percentile Rank)
 
-We use the `R` function `table` to show the frequency of each **HighSchool_PR** value that is at least 80. In the table below, the first row is the PR (percentile rank), and the second row is the counts. Although we truncated the **HighSchool_PR** to 80 and above, the distribution is still left-skewed. The **HighSchool_PR** 99 has the highest counts, followed by **HighSchool_PR** 97 and **HighSchool_PR** 98.
+We use the `R` function `table` to show the frequency of each **HighSchool_PR** value that is at least 80, and we have 163 values in total. In the table below, the first row is the PR (percentile rank), and the second row is the counts. Although we truncated the **HighSchool_PR** to 80 and above, the distribution is still left-skewed. The **HighSchool_PR** 99 has the highest counts, followed by **HighSchool_PR** 97 and **HighSchool_PR** 98.
 
 ```{r high-school-pr-sequential}
 HS_PR_seg = data_corr$HighSchool_PR[which(data_corr$HS_80up == TRUE)]
+length(HS_PR_seg)
+```
+
+```{r high-school-pr-table}
 table(HS_PR_seg)
 ```
 
@@ -284,10 +288,6 @@ Or if you prefer a histogram, we can also create one.
 hist(HS_PR_seg, xlab="Percentile Rank (PR)",
      main="Histogram of High School Entrance Exam Scores (PR >= 80)")
 ```
-
-\section*{\textcolor{red}{Unfinished below}}
-
-* **HighSchool_PR** ranges: 80-89, 90-94, 95-99
 
 Therefore, we create the breakdown of the **HighSchool_PR** ranges: 80-89, 90-94, 95-99. There are 49 records in the 80-89 range, 44 records in 90-94, and 70 records in 95-99. We divided the 90-99 range into 90-94 and 95-99, but the number of **HighSchool_PR** records in the 95-99 range is still higher than any of the other two categories.  
 
@@ -309,13 +309,38 @@ print(paste("HighSchool_PR 95-99:",HS95to99))
 
 ## College Entrance Exam Scores
 
-* **College_Score** ranges: 60-64, 65-69, 70-75 
+Similar to the previous section, we also show the frequency of each **College_Score** value that is at least 60. The total counts is 128, fewer than the 163 counts with **HighSchool_PR** 80 or above. The distribution is relatively uniform for **College_Score** values between 60 and 73, with a steep decline in the counts of **College_Score** 74 and 75 (max possible score).   
 
-Write something here
+```{r college-score-sequential}
+CS_Score_seg = data_corr$College_Score[which(data_corr$CS_60up == TRUE)]
+length(CS_Score_seg)
+```
+
+```{r college-score-table}
+table(CS_Score_seg)
+```
+
+Here is the histogram of the **College_Score** values 60 and above.
+
+```{r college-score-seg-hist}
+hist(CS_Score_seg, xlab="Score (max possible is 75)",
+     main="Histogram of College Entrance Exam Scores Above 60")
+```
+
+\section*{\textcolor{red}{Unfinished below}}
+
+* **College_Score** ranges: 60-64, 65-69, 70-75  
 
 ```{r college-score-segments}
-CS_Score_seg = data_corr$College_Score[which(data_corr$CS_60up == TRUE)]
-table(CS_Score_seg)
+CS60to64 = length(which(CS_Score_seg >= 60 & CS_Score_seg <= 64))
+CS65to69 = length(which(CS_Score_seg >= 65 & CS_Score_seg <= 69))
+CS70to75 = length(which(CS_Score_seg >= 70 & CS_Score_seg <= 75))
+```
+
+```{r college-score-segments-print}
+print(paste("College_Score 60-64:",CS60to64))
+print(paste("College_Score 65-69:",CS65to69))
+print(paste("College_Score 70-75:",CS70to75))
 ```
 
 ## Bivariate Exploration
