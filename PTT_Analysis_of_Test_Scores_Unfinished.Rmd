@@ -309,7 +309,7 @@ print(paste("HighSchool_PR 95-99:",HS95to99))
 
 ## College Entrance Exam Scores
 
-Similar to the previous section, we also show the frequency of each **College_Score** value that is at least 60. The total counts is 128, fewer than the 163 counts with **HighSchool_PR** 80 or above. The distribution is relatively uniform for **College_Score** values between 60 and 73, with a steep decline in the counts of **College_Score** 74 and 75 (max possible score). According to the statistics of the college entrance exam in Taiwan, **College_Score** 74 and 75 account for approximately 0.2% of all test takers each year, which is quite a small percentage.    
+Similar to the previous section, we also show the frequency of each **College_Score** value that is at least 60. The total counts is 128, fewer than the 163 counts with **HighSchool_PR** 80 or above. The distribution is relatively uniform for **College_Score** values between 60 and 73, with a steep decline in the counts of **College_Score** 74 and 75 (max possible score). On the college entrance exam, only four respondents scored 74 and two scored 75. According to the historical statistics of the college entrance exam in Taiwan, **College_Score** 74 and 75 account for approximately 0.2% of all test takers each year, which is quite a small percentage.    
 
 ```{r college-score-sequential}
 CS_Score_seg = data_corr$College_Score[which(data_corr$CS_60up == TRUE)]
@@ -340,6 +340,8 @@ hist(CS_Score_seg, xlab="Score (max possible is 75)",
 
 * **College_Score** ranges: 60-64, 65-69, 70-75  
 
+We also create the breakdown of the **College_Score** ranges: 60-64, 65-69, 70-75. There are 36 records in the 60-64 range, 47 records in 65-69, and 45 records in 70-75. This is also relatively more uniform than the **HighSchool_PR** breakdown (49, 44, and 70 records each).
+
 ```{r college-score-segments}
 CS60to64 = length(which(CS_Score_seg >= 60 & CS_Score_seg <= 64))
 CS65to69 = length(which(CS_Score_seg >= 65 & CS_Score_seg <= 69))
@@ -356,6 +358,8 @@ print(paste("College_Score 70-75:",CS70to75))
 
 * **HighSchool_PR** ranges: 80-89, 90-94, 95-99
 * **College_Score** ranges: 60-64, 65-69, 70-75
+
+Create a 3x3 table for the ranges  
 
 Write something here
 
