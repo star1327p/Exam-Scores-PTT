@@ -107,7 +107,7 @@ hist(uni_college_score, main="Histogram of College Entrance Exam Scores",
      xlab="Score (max possible is 75)",xlim=c(30,80))
 ```
 
-## Bivariate Exploration
+## Bivariate Exploration {#bivariate}
 
 Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score**, but we have to remove the records with at least one missing score. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores.
 
@@ -269,7 +269,7 @@ length(uni_college_score)
 length(data_corr$College_Score)
 ```
 
-## High School Entrance Exam Scores (Percentile Rank)
+## High School Entrance Exam Scores (Percentile Rank) at least 80
 
 We use the `R` function `table` to show the frequency of each **HighSchool_PR** value that is at least 80, and we have 163 values in total. In the table below, the first row is the PR (percentile rank), and the second row is the counts. Although we truncated the **HighSchool_PR** to 80 and above, the distribution is still left-skewed. The **HighSchool_PR** 99 has the highest counts, followed by **HighSchool_PR** 97 and **HighSchool_PR** 98.
 
@@ -307,7 +307,7 @@ print(paste("HighSchool_PR 95-99:",HS95to99))
 
 
 
-## College Entrance Exam Scores
+## College Entrance Exam Scores at least 60
 
 Similar to the previous section, we also show the frequency of each **College_Score** value that is at least 60. The total counts is 128, fewer than the 163 counts with **HighSchool_PR** 80 or above. The distribution is relatively uniform for **College_Score** values between 60 and 73, with a steep decline in the counts of **College_Score** 74 and 75 (max possible score). On the college entrance exam, only four respondents scored 74 and two scored 75. According to the historical statistics of the college entrance exam in Taiwan, **College_Score** 74 and 75 account for approximately 0.2% of all test takers each year, which is quite a small percentage.    
 
@@ -336,10 +336,6 @@ hist(CS_Score_seg, xlab="Score (max possible is 75)",
      main="Histogram of College Entrance Exam Scores Above 60")
 ```
 
-\section*{\textcolor{red}{Unfinished below}}
-
-* **College_Score** ranges: 60-64, 65-69, 70-75  
-
 We also create the breakdown of the **College_Score** ranges: 60-64, 65-69, 70-75. There are 36 records in the 60-64 range, 47 records in 65-69, and 45 records in 70-75. This is also relatively more uniform than the **HighSchool_PR** breakdown (49, 44, and 70 records each).
 
 ```{r college-score-segments}
@@ -354,14 +350,16 @@ print(paste("College_Score 65-69:",CS65to69))
 print(paste("College_Score 70-75:",CS70to75))
 ```
 
-## Bivariate Exploration
+## Bivariate Exploration of High Scorers
 
-* **HighSchool_PR** ranges: 80-89, 90-94, 95-99
-* **College_Score** ranges: 60-64, 65-69, 70-75
+\section*{\textcolor{red}{Unfinished below}}
 
-Create a 3x3 table for the ranges  
+Section \ref{bivariate} explored the bivariate relationship between **HighSchool_PR** and **College_Score**, and this time we would like to focus on the high scorers: respondents with **HighSchool_PR** $\geq$ 80 and/or **College_Score** $\geq$ 60. There are 163 respondents with **HighSchool_PR** $\geq$ 80, 128 respondents with **College_Score** $\geq$ 60, and 120 respondents with both.  
 
-Write something here
+* **HighSchool_PR** ranges: 0-79, 80-89, 90-94, 95-99
+* **College_Score** ranges: 0-59, 60-64, 65-69, 70-75
+
+Create a 4x4 table for the ranges (why not a 3x3 table?) 
 
 # More Sections coming up
 
