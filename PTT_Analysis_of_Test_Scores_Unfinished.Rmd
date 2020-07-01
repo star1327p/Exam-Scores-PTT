@@ -352,14 +352,45 @@ print(paste("College_Score 70-75:",CS70to75))
 
 ## Bivariate Exploration of High Scorers
 
-\section*{\textcolor{red}{Unfinished below}}
-
-Section \ref{bivariate} explored the bivariate relationship between **HighSchool_PR** and **College_Score**, and this time we would like to focus on the high scorers: respondents with **HighSchool_PR** $\geq$ 80 and/or **College_Score** $\geq$ 60. There are 163 respondents with **HighSchool_PR** $\geq$ 80, 128 respondents with **College_Score** $\geq$ 60, and 120 respondents with both.  
+Section \ref{bivariate} explored the bivariate relationship between **HighSchool_PR** and **College_Score**, and this time we would like to focus on the high scorers: respondents with **HighSchool_PR** $\geq$ 80 and/or **College_Score** $\geq$ 60. There are 163 respondents with **HighSchool_PR** $\geq$ 80, 128 respondents with **College_Score** $\geq$ 60, and 120 respondents with both. Since the number of respondents with **HighSchool_PR** $\geq$ 80 does not equal to the number of respondents with **College_Score** $\geq$ 60, we should consider the full 188 records in the data. Hence we add the range 0-79 to **HighSchool_PR**, and the range 0-59 for **College_Score**. We would like to create a 4x4 table for the following ranges:
 
 * **HighSchool_PR** ranges: 0-79, 80-89, 90-94, 95-99
 * **College_Score** ranges: 0-59, 60-64, 65-69, 70-75
 
-Create a 4x4 table for the ranges (why not a 3x3 table?) 
+\section*{\textcolor{red}{Unfinished below}}
+
+Here, we use the `for` loop and `if-else` logic to map **HighSchool_PR** and **College_Score** into their corresponding ranges. Note that the `else if` statement is executed when and only when the `if` statement is not true, so we can assign the score to the appropriate category using sequential `if-else` statements for range boundaries.
+
+```{r contingency-4x4}
+data_corr$HS_range = "set"
+data_corr$CS_range = "set"
+
+for(ii in 1:nrow(data_corr)) {
+        # High School PR categories
+        if (data_corr$HighSchool_PR[ii] <= 79) {
+                data_corr$HS_range[ii] = "0-79"
+        } else if (data_corr$HighSchool_PR[ii] <= 89) {
+                data_corr$HS_range[ii] = "80-89"
+        } else if (data_corr$HighSchool_PR[ii] <= 94) {
+                data_corr$HS_range[ii] = "90-94"
+        } else {
+                data_corr$HS_range[ii] = "95-99"
+        }
+        
+        # College Score Categories
+        if (data_corr$College_Score[ii] <= 59) {
+                data_corr$CS_range[ii] = "0-59"
+        } else if (data_corr$College_Score[ii] <= 64) {
+                data_corr$CS_range[ii] = "60-64"
+        } else if (data_corr$College_Score[ii] <= 69) {
+                data_corr$CS_range[ii] = "65-69"
+        } else {
+                data_corr$CS_range[ii] = "70-75"
+        }
+}
+
+# Next: Create the real 4x4 table
+```
 
 # More Sections coming up
 
