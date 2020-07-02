@@ -357,9 +357,7 @@ Section \ref{bivariate} explored the bivariate relationship between **HighSchool
 * **HighSchool_PR** ranges: 0-79, 80-89, 90-94, 95-99
 * **College_Score** ranges: 0-59, 60-64, 65-69, 70-75
 
-\section*{\textcolor{red}{Unfinished below}}
-
-Here, we use the `for` loop and `if-else` logic to map **HighSchool_PR** and **College_Score** into their corresponding ranges. Note that the `else if` statement is executed when and only when the `if` statement is not true, so we can assign the score to the appropriate category using sequential `if-else` statements for range boundaries.
+Here, we use the `for` loop and `if-else` logic to map **HighSchool_PR** and **College_Score** into their corresponding ranges. The `else if` statement is executed when and only when the `if` statement is not true, so we can assign the score to the appropriate category using sequential `if-else` statements for range boundaries.
 
 ```{r contingency-4x4}
 data_corr$HS_range = "set"
@@ -388,16 +386,26 @@ for(ii in 1:nrow(data_corr)) {
                 data_corr$CS_range[ii] = "70-75"
         }
 }
+```
 
-# Next: Create the real 4x4 table
+\section*{\textcolor{red}{Unfinished below}}
+
+Create the real 4x4 table
+
+```{r table-4x4}
+table_4x4 = table(data_corr$HS_range, data_corr$CS_range,
+                  dnn=c("HighSchool_PR","College_Score"))
+table_4x4
 ```
 
 # More Sections coming up
 
-More stuff
+Write something here
 
 # Final: Personal Remarks
 
-Even more stuff
+Write something here  
+
+Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] typically requires **HighSchool_PR** 99 for admission.
 
 # References
