@@ -25,7 +25,7 @@ Ongoing work.
 
 We are curious about the relationship between the high school entrance exam score percentiles and the college entrance scores in Taiwan. It seems obvious that a greater percentage of students from top high schools get admitted to prestigious universities^[<https://bit.ly/2JSPXKc>]. 
 
-However, the high school entrance exam is much easier than the college entrance exam, so some people studied little in middle school and was able to get into a good high school. Then some of these people kept studying little and ended up with a bad score on the college entrance exam. On the other hand, we have also seen some students from mediocre high schools worked very hard during the three years, and eventually earned a stellar score in the college exam.  
+However, the high school entrance exam is much easier than the college entrance exam, so some people studied little in middle school and was able to get into a good high school. Then some of these people kept studying little and ended up with a bad score on the college entrance exam. On the other hand, we have also seen some students from mediocre high schools studied very hard, and eventually earned a stellar score in the college exam.  
 
 Therefore, we decided to gather data and create our own analysis. The target audience of this document would be students taking Statistics 101.
 
@@ -388,15 +388,19 @@ for(ii in 1:nrow(data_corr)) {
 }
 ```
 
-\section*{\textcolor{red}{Unfinished below}}
+We continue to use the `R` function `table` to create the 4x4 contingency table between the ranges of **HighSchool_PR** and **College_Score**. As we can see in the horizontal rows, the majority of respondents with **HighSchool_PR** less than 80 have a **College_Score** less than 60. For the respondents with **HighSchool_PR** between 80 and 94, the **College_Score** varies widely. The respondents with **HighSchool_PR** 95 or above performed the best in terms of **College_Score** -- most of them scored 65 or higher.  
 
-Create the real 4x4 table
+In the vertical columns, the respondents with **College_Score** less than 60 mostly had a **HighSchool_PR** 94 or below; few came from the group of **HighSchool_PR** 95-99. For the respondents with **College_Score** between 60 and 64, their **HighSchool_PR** varied widely. Approximately half of the respondents with **College_Score** had **HighSchool_PR** 95 or above. For the top group of **College_Score** 70 or above, more than three quarters (34 out of 45) came from the respondents with **HighSchool_PR** 95 or higher.
 
 ```{r table-4x4}
 table_4x4 = table(data_corr$HS_range, data_corr$CS_range,
                   dnn=c("HighSchool_PR","College_Score"))
 table_4x4
 ```
+
+\section*{\textcolor{red}{Unfinished below}}
+
+The contingency table shows some association between **HighSchool_PR** and **College_Score**: Respondents with a good **HighSchool_PR** score are more likely to achieve a good **College_Score**, but this is not guaranteed. Respondents who scored poorly in **HighSchool_PR** still had a small chance to do exceptionally well in **College_Score** later. Our findings align with the conventional wisdom that **HighSchool_PR** vs **College_Score** ...
 
 # More Sections coming up
 
