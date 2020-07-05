@@ -398,13 +398,25 @@ table_4x4 = table(data_corr$HS_range, data_corr$CS_range,
 table_4x4
 ```
 
+The contingency table shows a positive association between **HighSchool_PR** and **College_Score**: Respondents with a good **HighSchool_PR** score are more likely to achieve a good **College_Score**, but this is not guaranteed. Respondents who scored poorly in **HighSchool_PR** still had a small chance to do exceptionally well in **College_Score** later. Our findings align with the conventional wisdom that **HighSchool_PR** and **College_Score** are somewhat related, but a high score on **HighSchool_PR** does not guarantee a high score on **College_Score**.
+
 \section*{\textcolor{red}{Unfinished below}}
 
-The contingency table shows some association between **HighSchool_PR** and **College_Score**: Respondents with a good **HighSchool_PR** score are more likely to achieve a good **College_Score**, but this is not guaranteed. Respondents who scored poorly in **HighSchool_PR** still had a small chance to do exceptionally well in **College_Score** later. Our findings align with the conventional wisdom that **HighSchool_PR** vs **College_Score** ...
+# Advanced Content
 
-# More Sections coming up
+Consider: logistic regression  
 
-Write something here
+Cutoff points: **HighSchool_PR** at 90, and **College_Score** at 65  
+
+for balancing the number of datapoints in each category  
+
+Consider: logit(**College_Score** at least 65 or not) $\sim$ **HighSchool_PR** (continuous)
+
+# Discussion and Conclusion
+
+The Statistics 101 course provides a starting point for students to perform data analysis.  
+
+Write something more
 
 # Final: Personal Remarks
 
