@@ -62,7 +62,9 @@ Moreover, there are two college entrance exams in each school year, and some stu
 
 ## Raw Data
 
-Showing the first 10 rows of data.
+Showing the first 10 rows of data.  
+
+\textcolor{red}{Need to elaborate on the description, e.g. What is NA?}
 
 ```{r raw-data}
 data = read.csv("ptt_SENIORHIGH_data.csv")
@@ -429,7 +431,9 @@ Cutoff points: **HighSchool_PR** at 90, and **College_Score** at 65
 
 for balancing the number of datapoints in each category  
 
-Consider: logit(**College_Score** at least 65 or not) $\sim$ **HighSchool_PR** (continuous)
+Consider: logit(**College_Score** at least 65 or not) $\sim$ **HighSchool_PR** (continuous)  
+
+For the advanced readers, we recommend reading the textbook *Categorical Data Analysis* \cite{agresti2003categorical} to learn more about logistic regression and other generalized linear models for categorical data. 
 
 # Discussion and Conclusion
 
