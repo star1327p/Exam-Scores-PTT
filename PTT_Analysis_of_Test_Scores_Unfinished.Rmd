@@ -25,6 +25,8 @@ Ongoing work.
 
 We are curious about the relationship between the high school entrance exam score percentiles and the college entrance scores in Taiwan. It seems obvious that a greater percentage of students from top high schools get admitted to prestigious universities^[<https://bit.ly/2JSPXKc>]. However, the high school entrance exam is much easier than the college entrance exam, so some people studied little in middle school and was able to get into a good high school. Then some of these people kept studying little and ended up with a bad score on the college entrance exam. On the other hand, we have also seen some students from mediocre high schools studied very hard, and eventually earned a stellar score in the college exam. Therefore, we decided to gather data and create our own analysis. The target audience of this document would be students taking Statistics 101.  
 
+\textcolor{red}{Briefly introduce the data, e.g. PTT, number of respondents, etc.}  
+
 \textcolor{red}{Add the structure here}
 
 # Background
@@ -130,13 +132,30 @@ The correlation coefficient is approximately 0.507, showing a medium strength of
 cor(data_corr$HighSchool_PR, data_corr$College_Score)
 ```
 
+\textcolor{red}{Add the correlation coefficient equation here}
+
 # Statistical Modeling Decisions
 
-We are going to decide whether we should run a linear regression on **HighSchool_PR** and **College_Score**. If yes, we would implement the model and check the residuals. If no, we need to explore other options in analyzing the data.
+We are going to decide whether we should run a linear regression to predict **College_Score** from **HighSchool_PR**. If yes, we would implement the model and check the residuals. If no, we need to explore other options in analyzing the data.  
+
+A linear regression can be written in mathematical terms:
+
+$$Y = \alpha + \beta X + \epsilon$$
+
+$Y$ is the response variable, i.e., what we would like to predict. $X$ is the explanatory variable, i.e., the data used to make the predictions. $\alpha$ is the intercept, and it stands for the estimate $\hat{Y}$ when $X = 0$ (if applicable). $\beta$ is the coefficient, and when $X$ increases by one unit, we can expect $Y$ to increase by $\beta$ units. Last but not least, $\epsilon$ is the error term, which is normally distributed with mean zero.  
+
+*OpenIntro Statistics* \cite{diez2019openintro} states that four requirements need to be met for a linear regression:
+
+\begin{enumerate}
+\item \textbf{Linearity}: The data has a linear trend, not a curve.
+\item \textbf{Nearly normal residuals}: The residuals should be nearly normal, and we need to beware of outliers and influential points.
+\item \textbf{Constant variability}: The variability of $Y$ is constant and does not depend on the value of $X$.
+\item \textbf{Independent observations}: Each observation (datapoint) is independent of the others.
+\end{enumerate}
 
 ## Should we run a linear regression?
 
-It is inappropriate to perform linear regression directly, because the data do not meet the constant variability assumption \cite{diez2019openintro}. In the bivariate exploratory plot, we can see that the variability of **College_Score** increases as **HighSchool_PR** increases. One possible remedy is apply the square root transformation to **College_Score**, in order to reduce the variability. But the scatterplot below shows little to no improvement in variability, and the correlation coefficient even drops from 0.507 to 0.504. Hence we determine that it is not a good idea to run a linear regression model on the whole dataset.   
+It is inappropriate to perform linear regression directly, because the data do not meet the constant variability assumption. In the bivariate exploratory plot, we can see that the variability of **College_Score** ($Y$) increases as **HighSchool_PR** ($X$) increases. One possible remedy is apply the square root transformation to **College_Score**, in order to reduce the variability. But the scatterplot below shows little to no improvement in variability, and the correlation coefficient even drops from 0.507 to 0.504. Hence we determine that it is not a good idea to run a linear regression model on the whole dataset.   
 
 ```{r transform-test}
 # data version: already removed missing data
