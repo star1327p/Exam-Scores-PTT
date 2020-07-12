@@ -74,9 +74,7 @@ names(data)[1] = "pttID"
 data[1:10,]
 ```
 
-**Remark**: Data in the real world are messy.  
-
-\textcolor{red}{Write about data preprocessing}
+**Remark**: Data in the real world are messy, and data scientists spend lots of time cleaning (preprocessing) the data, i.e., preparing the data for analysis.^[<https://bit.ly/303IWxY>] But data cleaning is a necessary step for better analysis results, and there are some visualization examples that demonstrate the importance of preprocessing the data \cite{chai2020importance}. Our dataset `ptt_SENIORHIGH_data.csv` is relatively clean, but we still had to recode and flag missing values.
 
 # Exploratory Data Analysis
 
