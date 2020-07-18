@@ -137,10 +137,18 @@ The correlation coefficient is approximately 0.507, showing a medium strength of
 cor(data_corr$HighSchool_PR, data_corr$College_Score)
 ```
 
-In mathematical terms, the correlation coefficient between the random variables $X, Y$ is calculated by the equation below. $E[X]$ denotes the expectation value of $X$, a.k.a. the mean of $X$.
+To calculate the correlation coefficient between the random variables $X, Y$, we need to start with the covariance $\text{Cov}(X,Y)$ in the equation below. $E[X]$ denotes the expectation value of $X$, a.k.a. the mean of $X$.
 
-$$\text{Cov}(X,Y) = E[(X-E[X])(Y-E[Y])] = E[XY] - E[X]E[Y]$$
+$$\text{Cov}(X,Y) = E[(X-E[X])(Y-E[Y])] = E[XY] - E[X]E[Y].$$
 
+Then we also need to compute the standard deviation $\sigma_X$:
+
+$$\sigma_X = \sqrt{E[(X-E[X])^2]} = \sqrt{E[X^2]-(E[X])^2}.$$
+Same applies to the standard deviation $\sigma_Y$.  
+
+Finally, we can calculate the correlation coefficient as:
+
+$$\rho_{X,Y} = \dfrac{\text{Cov}(X,Y)}{\sigma_X \sigma_Y}.$$
 
 # Statistical Modeling Decisions
 
