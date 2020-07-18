@@ -137,7 +137,10 @@ The correlation coefficient is approximately 0.507, showing a medium strength of
 cor(data_corr$HighSchool_PR, data_corr$College_Score)
 ```
 
-\textcolor{red}{Add the correlation coefficient equation here}
+In mathematical terms, the correlation coefficient between the random variables $X, Y$ is calculated by the equation below. $E[X]$ denotes the expectation value of $X$, a.k.a. the mean of $X$.
+
+$$\text{Cov}(X,Y) = E[(X-E[X])(Y-E[Y])] = E[XY] - E[X]E[Y]$$
+
 
 # Statistical Modeling Decisions
 
@@ -434,7 +437,9 @@ Cutoff points: **HighSchool_PR** at 90, and **College_Score** at 65
 
 for balancing the number of datapoints in each category  
 
-Consider: logit(**College_Score** at least 65 or not) $\sim$ **HighSchool_PR** (continuous)  
+Consider: logit(P(**College_Score** at least 65)) $\sim$ **HighSchool_PR** (continuous)  
+
+$$\text{logit}(p) = \log (\dfrac{p}{1-p}) = \alpha + \beta X$$
 
 For the advanced readers, we recommend reading the textbook *Categorical Data Analysis* \cite{agresti2003categorical} to learn more about logistic regression and other generalized linear models for categorical data. 
 
