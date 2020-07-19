@@ -150,7 +150,7 @@ Finally, we can calculate the correlation coefficient as:
 
 $$\rho_{X,Y} = \dfrac{\text{Cov}(X,Y)}{\sigma_X \sigma_Y}.$$
 
-# Statistical Modeling Decisions
+# Statistical Modeling Decisions {#linear-reg}
 
 We are going to decide whether we should run a linear regression to predict **College_Score** from **HighSchool_PR**. If yes, we would implement the model and check the residuals. If no, we need to explore other options in analyzing the data.  
 
@@ -435,9 +435,11 @@ table_4x4
 
 The contingency table shows a positive association between **HighSchool_PR** and **College_Score**: Respondents with a good **HighSchool_PR** score are more likely to achieve a good **College_Score**, but this is not guaranteed. Respondents who scored poorly in **HighSchool_PR** still had a small chance to do exceptionally well in **College_Score** later. Our findings align with the conventional wisdom that **HighSchool_PR** and **College_Score** are somewhat related, but a high score on **HighSchool_PR** does not guarantee a high score on **College_Score**.
 
-\section*{\textcolor{red}{Unfinished below}}
-
 # Advanced Content
+
+This section contains advanced statistical methods beyond the Statistics 101 level, and we would like to give the readers a head start of generalized linear models. We explained the requirements of linear regression in Section \ref{linear-reg}, and now we would like to expand the regression model to additional forms. We decided to introduce generalized linear models early, because we would like to show that there exist methods to analyze the data `ptt_SENIORHIGH_data.csv` other than linear regression.
+
+\section*{\textcolor{red}{Unfinished below}}
 
 Consider: logistic regression  
 
