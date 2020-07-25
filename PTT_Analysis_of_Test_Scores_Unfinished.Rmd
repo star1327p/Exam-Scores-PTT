@@ -445,13 +445,24 @@ $$\text{logit}(p) = \log (\dfrac{p}{1-p}) = \alpha + \beta X$$
 
 \section*{\textcolor{red}{Unfinished below}}
 
-Consider: logistic regression  
+We would like to redefine the problem statement to "estimate the probability of **College_Score** at least 65, given the student's **HighSchool_PR**." Since the variance of **College_Score** depends on **HighSchool_PR**, the assumptions of linear regression are violated, making linear regression an inappropriate model. That's why we decided to focus on whether **College_Score** is at least a particular value instead, so the response variable is binary. We selected 65 as the cutoff point for **College_Score** because ...
+
+
+
+
 
 Cutoff points: **College_Score** at 65  
 
 for balancing the number of datapoints in each category  
 
-[write code to show **College_Score** at least 65 vs below 65]  
+[write code to show **College_Score** at least 65 vs below 65]
+
+```{r college-score-sep-65}
+print(paste("College_Score at least 65:", sum(data_corr$College_Score >= 65)))
+print(paste("College_Score below 65:", sum(data_corr$College_Score < 65)))
+```
+
+[More equations]
 
 Consider: logit(P(**College_Score** at least 65)) $\sim$ **HighSchool_PR** (continuous)  
 
