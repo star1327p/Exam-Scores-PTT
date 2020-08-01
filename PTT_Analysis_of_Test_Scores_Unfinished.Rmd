@@ -437,19 +437,23 @@ The contingency table shows a positive association between **HighSchool_PR** and
 
 # Advanced Content: Logistic Regression
 
-This section contains advanced statistical methods beyond the Statistics 101 level, and we would like to give the readers a head start of generalized linear models. We explained the requirements of linear regression in Section \ref{linear-reg}, and now we would like to expand the regression model to additional forms. We decided to introduce generalized linear models early on, because we would like to show that there exist methods to analyze the data `ptt_SENIORHIGH_data.csv` other than linear regression.  
+This section contains statistical methods beyond the Statistics 101 level, and we would like to give the readers a head start of generalized linear models. We explained the requirements of linear regression in Section \ref{linear-reg}, and now we would like to expand the regression model to additional forms. We decided to introduce generalized linear models early on, because we would like to show that there exist methods to analyze the data `ptt_SENIORHIGH_data.csv` other than linear regression.  
 
 ## Brief Introduction of Logistic Regression
 
-Logistic regression is used to model categorical outcomes, especially a binary response variable. For example, if the response variable is whether an event $Y$ occurs or not, then it can only have two values -- not occurred (0) and occurred (1). We model the probability that the event $Y$ occurred, denoted as $p = P(Y = 1)$, and it is between 0 and 1. But in a linear regression $y = \alpha + \beta x$, the response variable $y$ can be any real number. Therefore, we transform the probability $p$ to the log odds $\log (\dfrac{p}{1-p})$, so that its range spans the whole real line like $y$. Note that the odds $\dfrac{p}{1-p}$ is always positive, as long as $p$ is not exactly 0 or 1. The equation for logistic regression is written as below:
+Logistic regression is used to model categorical outcomes, especially a binary response variable. For example, if the response variable is whether an event $Y$ occurs or not, then it can only have two values -- not occurred (0) and occurred (1). We model the probability that the event $Y$ occurred, denoted as $p = P(Y = 1)$, and it is between 0 and 1. But in a linear regression $y = \alpha + \beta x$, the response variable $y$ can be any real number. Therefore, we transform the probability $p$ to the log odds $\log (\dfrac{p}{1-p})$, so that its range spans the whole real line like $y$. Note that the odds $\dfrac{p}{1-p}$ is always positive, as long as $p$ is not exactly 0 or 1.  
+
+The equation for logistic regression is written as below:
 
 $$\text{logit}(p) = \log (\dfrac{p}{1-p}) = \alpha + \beta X$$
 
-The notation is similar to a linear regression, but the interpretation is slightly different. $\alpha$ is the intercept, and $\beta$ is the coefficient. When $\beta$ increases by one unit, the log odds $\log (\dfrac{p}{1-p})$ increases by $\beta$ units. In other words, when $\beta$ increases by one unit, the odds $\dfrac{p}{1-p}$ is multiplied by $e = \exp(1) \approx 2.71828$.
+The notation is similar to a linear regression, but the interpretation is slightly different. $\alpha$ is the intercept, and $\beta$ is the coefficient. When $\beta$ increases by one unit, the log odds $\log (\dfrac{p}{1-p})$ increases by $\beta$ units. In other words, when $\beta$ increases by one unit, the odds $\dfrac{p}{1-p}$ is multiplied by $e = \exp(1) \approx 2.71828$.  
 
-\section*{\textcolor{red}{Unfinished below}}
+The probability $p$ can be estimated from the logistic regression model with the equation below.
 
-Type up the equation for $p$.
+$$p = \dfrac{\exp(\alpha+\beta X)}{1 + \exp(\alpha+\beta X)}$$
+
+For the advanced readers, we recommend reading the textbook *Categorical Data Analysis* \cite{agresti2003categorical} to learn more about logistic regression and other generalized linear models for categorical data. 
 
 ## Estimate the Probability of Scoring High on the College Entrance Exam
 
@@ -460,20 +464,24 @@ print(paste("College_Score at least 65:", sum(data_corr$College_Score >= 65)))
 print(paste("College_Score below 65:", sum(data_corr$College_Score < 65)))
 ```
 
+The event $Y$ we would like to observe is getting a **College_Score** at least 65. We define 
+
+$$p = P(Y=1) = P(\textbf{College}\_\textbf{Score} \geq 65),$$ 
+
+i.e., the probability of getting a **College_Score** at least 65. And the independent variable $X$ is the $\textbf{HighSchool}\_\textbf{PR}$, whose values are between 0 and 99. 
+
+\section*{\textcolor{red}{Unfinished below}}
 
 \textcolor{red}{Need: interpretation of logistic regression model}  
 
 \textcolor{red}{Need: link between original $Y$ and binary response variable}  
 
 
-Consider: logit(P(**College_Score** at least 65)) $\sim$ **HighSchool_PR** (continuous)  
+
+Consider: logit(P(**College_Score** $\geq$ 65)) $\sim$ **HighSchool_PR** (continuous)  
 
 $$\text{logit}(p) = \log (\dfrac{p}{1-p}) = \alpha + \beta X$$
 
-- $p = P(\textbf{College}\_\textbf{Score} \geq 65)$.
-- $\alpha$ is the intercept.
-- $\beta$ is the coefficient.
-- $X = \textbf{HighSchool}\_\textbf{PR}$, whose values are between 0 and 99.
 
 Explain why in `glm` (generalized linear regression), the `family` option is set to "binomial". Because the response variable is binary and can only have values 0 or 1. 
 
@@ -491,7 +499,7 @@ summary(model)
 
 \textcolor{red}{Need: model validation, interpretation of results, etc.}  
 
-For the advanced readers, we recommend reading the textbook *Categorical Data Analysis* \cite{agresti2003categorical} to learn more about logistic regression and other generalized linear models for categorical data. 
+
 
 # Discussion and Conclusion
 
