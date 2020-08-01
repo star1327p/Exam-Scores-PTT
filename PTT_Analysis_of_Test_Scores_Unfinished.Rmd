@@ -25,9 +25,15 @@ Ongoing work.
 
 We are curious about the relationship between the high school entrance exam score percentiles and the college entrance scores in Taiwan. It seems obvious that a greater percentage of students from top high schools get admitted to prestigious universities^[<https://bit.ly/2JSPXKc>]. However, the high school entrance exam is much easier than the college entrance exam, so some people studied little in middle school and was able to get into a good high school. Then some of these people kept studying little and ended up with a bad score on the college entrance exam. On the other hand, we have also seen some students from mediocre high schools studied very hard, and eventually earned a stellar score in the college exam. Therefore, we decided to gather data and create our own analysis. The target audience of this document would be students taking Statistics 101.  
 
-\textcolor{red}{Briefly introduce the data, e.g. PTT, number of respondents, etc.}  
+\section*{\textcolor{red}{Unfinished below}}
 
-\textcolor{red}{Add the structure here}
+Briefly introduce the data, e.g. PTT, number of respondents, etc.  
+
+Add that the author(s) grew up in Taiwan.
+
+\section*{\textcolor{red}{Unfinished above}}
+
+For the rest of this article, we begin with a short background of Taiwan's high school and college entrance exams, followed by the description of our dataset. We start the technical content with exploratory data analysis, in order to identify and visualize the distribution of exam scores. Next, we explain our decisions in statistical modeling, such as whether a linear regression is appropriate or not. We also take a closer look at the top scorers, because they typically came from prestigious high schools and/or colleges. Then we move on to introduce advanced models like logistic regression. Finally, we provide our discussion, state our conclusion, and give some personal remarks.
 
 # Background
 
@@ -41,7 +47,7 @@ The college entrance exams are held twice a year in Taiwan. The first exam, typi
 
 It is a challenge to obtain individual pairs of data as a representative sample. Although it is easy to send out a spreadsheet and ask our friends to report their scores anonymously, this approach can result in a large selection bias. Many of our friends graduated from the same high school and/or college, so we are likely to have similar entrance exam scores.
 
-Hence we retrieved data from the SENIORHIGH (high school)^[<https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>] discussion section on PTT^[If you have a PTT account, you can log into the website using a browser. <https://iamchucky.github.io/PttChrome/?site=ptt.cc>], the largest terminal-based bulletin board in Taiwan.^[<https://en.wikipedia.org/wiki/PTT_Bulletin_Board_System>] We assume the data to be more representative (than if we had collected on our own) because anyone can get a PTT account and reply to the post. The majority of scores were reported in May 2015, and a few scores were reported in the following month or later.
+Hence we retrieved data from the SENIORHIGH (high school)^[<https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>] discussion section on PTT^[If you have a PTT account, you can log into the website using a browser. <https://iamchucky.github.io/PttChrome/?site=ptt.cc>], the largest terminal-based bulletin board in Taiwan.^[<https://en.wikipedia.org/wiki/PTT_Bulletin_Board_System>] We assume the data to be more representative (than if we had collected on our own) because anyone could get a PTT account and reply to the post -- at least before the restriction was announced in 2018.^[<https://www.ettoday.net/news/20200304/1659455.htm>] The majority of scores were reported in May 2015, and a few scores were reported in the following month or later.
 
 The data `ptt_SENIORHIGH_data.csv` contain 197 rows, and the main variables are:
 
