@@ -23,13 +23,11 @@ Ongoing work.
 
 # Introduction
 
-We are curious about the relationship between the high school entrance exam score percentiles and the college entrance scores in Taiwan. It seems obvious that a greater percentage of students from top high schools get admitted to prestigious universities^[<https://bit.ly/2JSPXKc>]. However, the high school entrance exam is much easier than the college entrance exam, so some people studied little in middle school and was able to get into a good high school. Then some of these people kept studying little and ended up with a bad score on the college entrance exam. On the other hand, we have also seen some students from mediocre high schools studied very hard, and eventually earned a stellar score in the college exam. Therefore, we decided to gather data and create our own analysis. The target audience of this document would be students taking Statistics 101.  
+The author(s) grew up in Taiwan, so we are curious about the relationship between the high school entrance exam score percentiles and the college entrance scores in Taiwan. It seems obvious that a greater percentage of students from top high schools get admitted to prestigious universities^[<https://bit.ly/2JSPXKc>]. However, the high school entrance exam is much easier than the college entrance exam, so some people studied little in middle school and was able to get into a good high school. Then some of these people kept studying little and ended up with a bad score on the college entrance exam. On the other hand, we have also seen some students from mediocre high schools studied very hard, and eventually earned a stellar score in the college exam. Therefore, we decided to gather data and create our own analysis. The target audience of this document would be students taking Statistics 101.  
 
 \section*{\textcolor{red}{Unfinished below}}
 
 Briefly introduce the data, e.g. PTT, number of respondents, etc.  
-
-Add that the author(s) grew up in Taiwan.
 
 \section*{\textcolor{red}{Unfinished above}}
 
@@ -108,7 +106,7 @@ According to the reference score table^[<https://bit.ly/3bAYOvO>] from Wikipedia
 
 On the other hand, the reference score table also shows that the 75th percentile of the college entrance score is between 53 and 58 in Years 2004-2018. The PTT data's 1st quantile is already at 58, so we can also infer that at least 75% of the respondents scored in the top 25% of the college entrance exam.  
 
-Since PTT contains forums for several prestigious universities in Taiwan, it is no surprise that many users attended these colleges because they scored high on the college entrance exam. Nevertheless, PTT did not limit registration to students of these colleges in the past, so the population of PTT is slightly more diverse. Note that as of 2020, PTT changed their eligibility requirements, and limited new account registrations to only people with an email address from National Taiwan University.^[Screenshot obtained on May 26, 2020: <https://imgur.com/33fwrGH>]
+Since PTT contains forums for several prestigious universities in Taiwan, it is no surprise that many users attended these colleges because they scored well on the college entrance exam. Nevertheless, PTT did not limit registration to students of these colleges in the past, so the population of PTT is slightly more diverse. Note that as of 2020, PTT changed their eligibility requirements, and limited new account registrations to only people with an email address from National Taiwan University.^[Screenshot obtained on May 26, 2020: <https://imgur.com/33fwrGH>]
 
 ```{r college-score}
 # College entrance exam scores: Remove missing values
@@ -461,7 +459,7 @@ $$p = \dfrac{\exp(\alpha+\beta X)}{1 + \exp(\alpha+\beta X)}$$
 
 For the advanced readers, we recommend reading the textbook *Categorical Data Analysis* \cite{agresti2003categorical} to learn more about logistic regression and other generalized linear models for categorical data. 
 
-## Estimate the Probability of Scoring High on the College Entrance Exam
+## Estimate the Probability of Scoring Well on the College Entrance Exam
 
 We would like to redefine the problem statement to "estimate the probability of **College_Score** at least 65, given the student's **HighSchool_PR**." Since the variance of **College_Score** depends on **HighSchool_PR**, the assumptions of linear regression are violated, making linear regression an inappropriate model. That's why we decided to focus on whether **College_Score** is at least a particular value instead, so the response variable is binary. We selected 65 as the cutoff point for **College_Score** because this is close to the median, making the number of values about the same in the two categories. We would like to balance the number of datapoints in each category of the response variable.  
 
@@ -474,7 +472,13 @@ The event $Y$ we would like to observe is getting a **College_Score** at least 6
 
 $$p = P(Y=1) = P(\textbf{College}\_\textbf{Score} \geq 65),$$ 
 
-i.e., the probability of getting a **College_Score** at least 65. And the independent variable $X$ is the $\textbf{HighSchool}\_\textbf{PR}$, whose values are between 0 and 99. 
+i.e., the probability of getting a **College_Score** at least 65. And the independent variable $X$ is the $\textbf{HighSchool}\_\textbf{PR}$, whose values are between 0 and 99.  
+
+Then we implement the logistic regression with the equation
+
+$$\text{logit}(p) = \log (\dfrac{p}{1-p}) = \alpha + \beta X.$$
+
+
 
 \section*{\textcolor{red}{Unfinished below}}
 
@@ -482,11 +486,10 @@ i.e., the probability of getting a **College_Score** at least 65. And the indepe
 
 \textcolor{red}{Need: link between original $Y$ and binary response variable}  
 
+In terms of `R` code, the model is written as `glm(y ~ x)`.
 
+Consider: logit(P(**College_Score** $\geq$ 65)) $\sim \alpha + \beta *$ **HighSchool_PR**  
 
-Consider: logit(P(**College_Score** $\geq$ 65)) $\sim$ **HighSchool_PR** (continuous)  
-
-$$\text{logit}(p) = \log (\dfrac{p}{1-p}) = \alpha + \beta X$$
 
 
 Explain why in `glm` (generalized linear regression), the `family` option is set to "binomial". Because the response variable is binary and can only have values 0 or 1. 
