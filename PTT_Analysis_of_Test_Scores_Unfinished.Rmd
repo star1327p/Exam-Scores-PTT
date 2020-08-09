@@ -478,21 +478,13 @@ Then we implement the logistic regression with the equation
 
 $$\text{logit}(p) = \log (\dfrac{p}{1-p}) = \alpha + \beta X.$$
 
+The model is written as `glm(y ~ x, data=data, family="binomial")` in `R` code, where `glm` stands for generalized linear regression. The `family` option is set to binomial, because the response variable is binary and can only have values 0 or 1. Hence our logistic model can be written as
 
+$$\text{logit}(P(\textbf{College}\_\textbf{Score} \geq 65)) \sim \alpha + \beta * \textbf{HighSchool}\_\textbf{PR}.$$
 
 \section*{\textcolor{red}{Unfinished below}}
 
 \textcolor{red}{Need: interpretation of logistic regression model}  
-
-\textcolor{red}{Need: link between original $Y$ and binary response variable}  
-
-In terms of `R` code, the model is written as `glm(y ~ x)`.
-
-Consider: logit(P(**College_Score** $\geq$ 65)) $\sim \alpha + \beta *$ **HighSchool_PR**  
-
-
-
-Explain why in `glm` (generalized linear regression), the `family` option is set to "binomial". Because the response variable is binary and can only have values 0 or 1. 
 
 ```{r logistic-code}
 # 1. Create the binary variable first.
@@ -508,7 +500,15 @@ summary(model)
 
 \textcolor{red}{Need: model validation, interpretation of results, etc.}  
 
+Statistical significance  
 
+When **HighSchool_PR** increases by one, the log odds $\log (\dfrac{p}{1-p})$ of getting **College_Score** at least 65 increases by approximately 0.15.  
+
+Transform log odds $\log (\dfrac{p}{1-p})$ back to odds $\dfrac{p}{1-p}$  
+
+\textcolor{red}{How good does this model fit the data?}    
+
+Predictive modeling
 
 # Discussion and Conclusion
 
