@@ -504,9 +504,36 @@ Statistical significance
 
 When **HighSchool_PR** increases by one, the log odds $\log (\dfrac{p}{1-p})$ of getting **College_Score** at least 65 increases by approximately 0.15. After transforming log odds $\log (\dfrac{p}{1-p})$ back to odds $\dfrac{p}{1-p}$, we get that the odds are multiplied by $e = \exp(0.15) \approx 1.161$. In other words, when **HighSchool_PR** increases by one, the odds of getting **College_Score** at least 65 increases by approximately 16.1%.     
 
+```{r header-code,include=FALSE}
+data = read.csv("ptt_SENIORHIGH_data.csv")
+names(data)[1] = "pttID"
+
+missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
+data_corr = data[-missing_rows,]
+
+data_corr$CS_65up = data_corr$College_Score >=65
+
+print("This is a test.")
+```
+
 \textcolor{red}{How good does this model fit the data?}    
 
 Predictive modeling
+
+```{r model-validation}
+# objects(model) # to find out what functions are available in the model
+
+# model$fitted.values # probability values for all 197 datapoints.
+# predict(model, data_corr, type="response")
+
+# Also need to plot the HighSchool_PR vs predicted probability of College_Score at least 65.
+
+# Use the predict function for certain HighSchool_PR points 
+# (e.g. 80, 90, 95, 99)
+
+# https://www.theanalysisfactor.com/r-tutorial-glm1/
+# https://www.theanalysisfactor.com/r-glm-plotting/
+```
 
 # Discussion and Conclusion
 
