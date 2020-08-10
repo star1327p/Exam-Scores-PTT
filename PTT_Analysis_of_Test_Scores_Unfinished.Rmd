@@ -451,7 +451,7 @@ The equation for logistic regression is written as below:
 
 $$\text{logit}(p) = \log (\dfrac{p}{1-p}) = \alpha + \beta X$$
 
-The notation is similar to a linear regression, but the interpretation is slightly different. $\alpha$ is the intercept, and $\beta$ is the coefficient. When $\beta$ increases by one unit, the log odds $\log (\dfrac{p}{1-p})$ increases by $\beta$ units. In other words, when $\beta$ increases by one unit, the odds $\dfrac{p}{1-p}$ is multiplied by $e = \exp(1) \approx 2.71828$.  
+The notation is similar to a linear regression, but the interpretation is slightly different. $\alpha$ is the intercept, and $\beta$ is the coefficient. When $\beta$ increases by one unit, the log odds $\log (\dfrac{p}{1-p})$ increases by $\beta$ units. In other words, when $\beta$ increases by one unit, the odds $\dfrac{p}{1-p}$ are multiplied by $e = \exp(1) \approx 2.71828$.  
 
 The probability $p$ can be estimated from the logistic regression model with the equation below.
 
@@ -502,9 +502,7 @@ summary(model)
 
 Statistical significance  
 
-When **HighSchool_PR** increases by one, the log odds $\log (\dfrac{p}{1-p})$ of getting **College_Score** at least 65 increases by approximately 0.15.  
-
-Transform log odds $\log (\dfrac{p}{1-p})$ back to odds $\dfrac{p}{1-p}$  
+When **HighSchool_PR** increases by one, the log odds $\log (\dfrac{p}{1-p})$ of getting **College_Score** at least 65 increases by approximately 0.15. After transforming log odds $\log (\dfrac{p}{1-p})$ back to odds $\dfrac{p}{1-p}$, we get that the odds are multiplied by $e = \exp(0.15) \approx 1.161$. In other words, when **HighSchool_PR** increases by one, the odds of getting **College_Score** at least 65 increases by approximately 16.1%.     
 
 \textcolor{red}{How good does this model fit the data?}    
 
