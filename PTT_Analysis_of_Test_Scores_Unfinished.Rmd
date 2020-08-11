@@ -482,9 +482,7 @@ The model is written as `glm(y ~ x, data=data, family="binomial")` in `R` code, 
 
 $$\text{logit}(P(\textbf{College}\_\textbf{Score} \geq 65)) \sim \alpha + \beta * \textbf{HighSchool}\_\textbf{PR}.$$
 
-\section*{\textcolor{red}{Unfinished below}}
-
-\textcolor{red}{Need: interpretation of logistic regression model}  
+Let's implement the logistic regression model in `R` as below.
 
 ```{r logistic-code}
 # 1. Create the binary variable first.
@@ -492,17 +490,22 @@ $$\text{logit}(P(\textbf{College}\_\textbf{Score} \geq 65)) \sim \alpha + \beta 
 # 3. summary(model)
 # https://stats.idre.ucla.edu/r/dae/logit-regression/
 
-data_corr$CS_65up = data_corr$College_Score >=65
+data_corr$CS_65up = data_corr$College_Score >= 65
 model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
 summary(model)
 
 ```
 
-\textcolor{red}{Need: model validation, interpretation of results, etc.}  
+The `Pr(>|z|)` is the p-value of each independent variable, and we can see that **HighSchool_PR** is statistically significant. When **HighSchool_PR** increases by one, the log odds $\log (\dfrac{p}{1-p})$ of getting **College_Score** at least 65 increases by approximately 0.15. After transforming log odds $\log (\dfrac{p}{1-p})$ back to odds $\dfrac{p}{1-p}$, we get that the odds are multiplied by $e = \exp(0.15) \approx 1.161$. In other words, when **HighSchool_PR** increases by one, the odds of getting **College_Score** at least 65 increases by approximately 16.1%. 
 
-Statistical significance  
+\section*{\textcolor{red}{Unfinished below}}
 
-When **HighSchool_PR** increases by one, the log odds $\log (\dfrac{p}{1-p})$ of getting **College_Score** at least 65 increases by approximately 0.15. After transforming log odds $\log (\dfrac{p}{1-p})$ back to odds $\dfrac{p}{1-p}$, we get that the odds are multiplied by $e = \exp(0.15) \approx 1.161$. In other words, when **HighSchool_PR** increases by one, the odds of getting **College_Score** at least 65 increases by approximately 16.1%.     
+Coefficient: Give the 95% confidence interval and the corresponding odds increase (code needed, confint?)   
+
+Intercept: Interpretation also needed  
+
+Need: model validation
+
 
 ```{r header-code,include=FALSE}
 data = read.csv("ptt_SENIORHIGH_data.csv")
