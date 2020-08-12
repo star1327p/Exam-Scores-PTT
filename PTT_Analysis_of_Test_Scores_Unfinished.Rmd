@@ -500,7 +500,37 @@ The `Pr(>|z|)` is the p-value of each independent variable, and we can see that 
 
 \section*{\textcolor{red}{Unfinished below}}
 
+Find all available outputs from the model.
+
+```{r objects-model}
+objects(model)
+```
+
+For better reproducibility of coefficients
+
+```{r coefficients}
+model$coefficients
+```
+
+Exponential version
+
+```{r exp-coefficients}
+exp(model$coefficients)
+```
+
 Coefficient: Give the 95% confidence interval and the corresponding odds increase (code needed, confint?)   
+
+Statistical significance at 5%: 95% confidence interval does not contain 0.
+
+```{r confint}
+confint(model)
+```
+
+Added exponential to transform log odds back to odds
+
+```{r exp-confint}
+exp(confint(model))
+```
 
 Intercept: Interpretation also needed  
 
@@ -541,6 +571,8 @@ Predictive modeling
 # Discussion and Conclusion
 
 The Statistics 101 course provides a starting point for students to perform data analysis.  
+
+Linear regression is widely used, but it is not a panacea for data analysis. The model assumptions need to be met in the data, as stated in Section ???.   
 
 Write something more
 
