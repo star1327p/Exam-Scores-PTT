@@ -482,7 +482,7 @@ The model is written as `glm(y ~ x, data=data, family="binomial")` in `R` code, 
 
 $$\text{logit}(P(\textbf{College}\_\textbf{Score} \geq 65)) \sim \alpha + \beta * \textbf{HighSchool}\_\textbf{PR}.$$
 
-Let's implement the logistic regression model in `R` as below.
+Let's create the logistic regression model in `R` as below.
 
 ```{r logistic-code}
 # 1. Create the binary variable first.
@@ -498,25 +498,27 @@ summary(model)
 
 The `Pr(>|z|)` is the p-value of each independent variable, and we can see that **HighSchool_PR** is statistically significant. When **HighSchool_PR** increases by one, the log odds $\log (\dfrac{p}{1-p})$ of getting **College_Score** at least 65 increases by approximately 0.15. After transforming log odds $\log (\dfrac{p}{1-p})$ back to odds $\dfrac{p}{1-p}$, we get that the odds are multiplied by $e = \exp(0.15) \approx 1.161$. In other words, when **HighSchool_PR** increases by one, the odds of getting **College_Score** at least 65 increases by approximately 16.1%. 
 
-\section*{\textcolor{red}{Unfinished below}}
-
-Find all available outputs from the model.
-
-```{r objects-model}
-objects(model)
-```
-
-For better reproducibility of coefficients
+For better reproducibility of coefficients, these can be retrieved using the code below.
 
 ```{r coefficients}
 model$coefficients
 ```
 
-Exponential version
+Here is the exponential of the coefficients, because we need to transform log odds into odds.
 
 ```{r exp-coefficients}
 exp(model$coefficients)
 ```
+
+\section*{\textcolor{red}{Unfinished below}}
+
+**Remark**: Find all available outputs from the model.
+
+```{r objects-model}
+objects(model)
+```
+
+Intercept: Interpretation also needed  
 
 Coefficient: Give the 95% confidence interval and the corresponding odds increase (code needed, confint?)   
 
@@ -532,7 +534,6 @@ Added exponential to transform log odds back to odds
 exp(confint(model))
 ```
 
-Intercept: Interpretation also needed  
 
 Need: model validation
 
@@ -572,7 +573,7 @@ Predictive modeling
 
 The Statistics 101 course provides a starting point for students to perform data analysis.  
 
-Linear regression is widely used, but it is not a panacea for data analysis. The model assumptions need to be met in the data, as stated in Section ???.   
+Linear regression is widely used, but it is not a panacea for data analysis. The model assumptions need to be met in the data, as stated at the beginning of Section \ref{linear-reg}.   
 
 Write something more
 
