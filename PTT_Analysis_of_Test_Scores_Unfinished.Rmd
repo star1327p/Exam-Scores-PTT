@@ -504,6 +504,12 @@ For better reproducibility of coefficients, these can be retrieved using the cod
 model$coefficients
 ```
 
+We can also round the coefficients to the third digit after the decimal point. But for better precision, we do not recommend rounding numbers until we reach the final calculation results. 
+
+```{r coefficients-rounded}
+round(model$coefficients, digits=3)
+```
+
 Here is the exponential of the coefficients, because we need to transform log odds into odds.
 
 ```{r exp-coefficients}
