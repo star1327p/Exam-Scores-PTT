@@ -457,6 +457,8 @@ The probability $p$ can be estimated from the logistic regression model with the
 
 $$p = \dfrac{\exp(\alpha+\beta X)}{1 + \exp(\alpha+\beta X)}$$
 
+The intercept $\alpha$ serves as a baseline when $X = 0$, and the probability $p$ can be estimated by $p = \dfrac{\exp(\alpha)}{1 + \exp(\alpha)}$. Just like in an ordinary linear regression, the intercept may or may not have practical meaning. For example, if we examine the relationship between people's height and weight, nobody is going to have height of 0 inches.  
+
 For the advanced readers, we recommend reading the textbook *Categorical Data Analysis* \cite{agresti2003categorical} to learn more about logistic regression and other generalized linear models for categorical data. 
 
 ## Estimate the Probability of Scoring Well on the College Entrance Exam
@@ -518,13 +520,16 @@ exp(model$coefficients)
 
 \section*{\textcolor{red}{Unfinished below}}
 
-**Remark**: Find all available outputs from the model.
+**Remark**: The readers may wonder how the author(s) remember all of the `R` commands for the model. The fact is that we don't need to! We can use the function `objects` to find all available outputs from the model, and the object names are descriptive.
 
 ```{r objects-model}
 objects(model)
 ```
 
-Intercept: Interpretation also needed  
+\textcolor{red}{Intercept: Interpretation also needed}  
+
+Intercept serves as a baseline ... (unfinished here)
+
 
 Coefficient: Give the 95% confidence interval and the corresponding odds increase (code needed, confint?)   
 
