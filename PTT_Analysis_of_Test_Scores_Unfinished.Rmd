@@ -538,7 +538,9 @@ p_intercept = exp(alpha)/(1+exp(alpha))
 p_intercept
 ```
 
-In comparison, when **HighSchool_PR** is 99 (unfinished here)
+In comparison, when **HighSchool_PR** is 99 (unfinished here)  
+
+there is an estimated 76.9% chance to achieve a **College_Score** of 65 or higher.
 
 ```{r pr99, message=FALSE}
 p_pr99 = exp(alpha + beta*99)/(1+exp(alpha + beta*99))
