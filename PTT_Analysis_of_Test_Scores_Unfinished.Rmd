@@ -528,9 +528,22 @@ objects(model)
 
 \textcolor{red}{Intercept: Interpretation also needed}  
 
-Intercept serves as a baseline ... (unfinished here)  
+The intercept serves as a baseline for the logistic regression model when **HighSchool_PR** is 0. We can predict $p$ under this condition, and find out how likely this (fictitious) person is going to get **College_Score** at least 65. The estimated probability is extremely low, less than 0.01%. Nevertheless, the value of **HighSchool_PR** starts at 1, so the intercept does not have an intrinsic meaning. (And typically most students who score less than 10 in **HighSchool_PR** would not be interested in attending college, either.)
 
-when **HighSchool_PR** is 0.  
+```{r intercept, message=FALSE}
+alpha = as.numeric(model$coefficients[1])
+beta = as.numeric(model$coefficients[2])
+
+p_intercept = exp(alpha)/(1+exp(alpha))
+p_intercept
+```
+
+In comparison, when **HighSchool_PR** is 99 (unfinished here)
+
+```{r pr99, message=FALSE}
+p_pr99 = exp(alpha + beta*99)/(1+exp(alpha + beta*99))
+p_pr99
+```
 
 Coefficient: Give the 95% confidence interval and the corresponding odds increase (code needed, confint?)   
 
