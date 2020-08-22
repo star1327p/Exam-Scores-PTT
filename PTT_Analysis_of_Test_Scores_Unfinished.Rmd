@@ -528,8 +528,9 @@ objects(model)
 
 \textcolor{red}{Intercept: Interpretation also needed}  
 
-Intercept serves as a baseline ... (unfinished here)
+Intercept serves as a baseline ... (unfinished here)  
 
+when **HighSchool_PR** is 0.  
 
 Coefficient: Give the 95% confidence interval and the corresponding odds increase (code needed, confint?)   
 
