@@ -15,7 +15,7 @@ link-citations: yes
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Ongoing work.
+Ongoing work since 2019.
 
 \section*{Executive Summary}
 
@@ -498,7 +498,9 @@ summary(model)
 
 ```
 
-The `Pr(>|z|)` is the p-value of each independent variable, and we can see that **HighSchool_PR** is statistically significant. When **HighSchool_PR** increases by one, the log odds $\log (\dfrac{p}{1-p})$ of getting **College_Score** at least 65 increases by approximately 0.15. After transforming log odds $\log (\dfrac{p}{1-p})$ back to odds $\dfrac{p}{1-p}$, we get that the odds are multiplied by $e = \exp(0.15) \approx 1.161$. In other words, when **HighSchool_PR** increases by one, the odds of getting **College_Score** at least 65 increases by approximately 16.1%. 
+### Model Interpretation: Point Estimates
+
+The `Pr(>|z|)` is the p-value of each independent variable, and we can see that **HighSchool_PR** is statistically significant because p-value < 0.05. When **HighSchool_PR** increases by one, the log odds $\log (\dfrac{p}{1-p})$ of getting **College_Score** at least 65 increases by approximately 0.15. After transforming log odds $\log (\dfrac{p}{1-p})$ back to odds $\dfrac{p}{1-p}$, we get that the odds are multiplied by $e = \exp(0.15) \approx 1.161$. In other words, when **HighSchool_PR** increases by one, the odds of getting **College_Score** at least 65 increases by approximately 16.1%. 
 
 For better reproducibility of coefficients, these can be retrieved using the code below.
 
@@ -518,16 +520,6 @@ Here is the exponential of the coefficients, because we need to transform log od
 exp(model$coefficients)
 ```
 
-\section*{\textcolor{red}{Unfinished below}}
-
-**Remark**: The readers may wonder how the author(s) remember all of the `R` commands for the model. The fact is that we don't need to! We can use the function `objects` to find all available outputs from the model, and the object names are descriptive.
-
-```{r objects-model}
-objects(model)
-```
-
-\textcolor{red}{Intercept: Interpretation also needed}  
-
 The intercept serves as a baseline for the logistic regression model when **HighSchool_PR** is 0. We can predict $p$ under this condition, and find out how likely this (fictitious) person is going to get **College_Score** at least 65. The estimated probability is extremely low, less than 0.01%. Nevertheless, the value of **HighSchool_PR** starts at 1, so the intercept does not have an intrinsic meaning. (And typically most students who score less than 10 in **HighSchool_PR** would not be interested in attending college, either.)
 
 ```{r intercept, message=FALSE}
@@ -538,14 +530,18 @@ p_intercept = exp(alpha)/(1+exp(alpha))
 p_intercept
 ```
 
-In comparison, when **HighSchool_PR** is 99 (unfinished here)  
-
-there is an estimated 76.9% chance to achieve a **College_Score** of 65 or higher.
+In comparison, when **HighSchool_PR** is 99, the model estimates that the student has a 76.9% chance to achieve a **College_Score** of 65 or higher.
 
 ```{r pr99, message=FALSE}
 p_pr99 = exp(alpha + beta*99)/(1+exp(alpha + beta*99))
 p_pr99
 ```
+
+\textcolor{red}{Add: In the data, how many students with PR 99 scored 65 or better on the college entrance exam? Write code to answer this.}
+
+### Model Interpretation: 95% Confidence Intervals
+
+\section*{\textcolor{red}{Unfinished below}}
 
 Coefficient: Give the 95% confidence interval and the corresponding odds increase (code needed, confint?)   
 
@@ -561,8 +557,15 @@ Added exponential to transform log odds back to odds
 exp(confint(model))
 ```
 
+\textcolor{red}{what about the 95\% confidence interval for the predicted probability for PR 99?}
 
-Need: model validation
+**Remark**: The readers may wonder how the author(s) remember all of the `R` commands for the model. The fact is that we don't need to! We can use the function `objects` to find all available outputs from the model, and the object names are descriptive.
+
+```{r objects-model}
+objects(model)
+```
+
+Need: model validation (separate section)
 
 
 ```{r header-code,include=FALSE}
