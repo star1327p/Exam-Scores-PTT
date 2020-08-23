@@ -543,9 +543,11 @@ p_pr99
 
 \section*{\textcolor{red}{Unfinished below}}
 
-Coefficient: Give the 95% confidence interval and the corresponding odds increase (code needed, confint?)   
+In addition to the point estimates, we also need to provide the corresponding 95% confidence intervals to account for uncertainty. The lower bound is the 2.5th percentile, and the upper bound is the 97.5th percentile. Statistical significance at 5% means that the 95% confidence interval does not include 0. Let's start with the intercept and the coefficient for **HighSchool_PR** using the  `R` function `confint`. Neither the intercept nor the coeffient's confidence interval include 0, so both are statistically significant.  
 
-Statistical significance at 5%: 95% confidence interval does not contain 0.
+\textcolor{red}{Interpretation needed}  
+
+Why is the intercept's interval so large?
 
 ```{r confint}
 confint(model)
@@ -559,7 +561,7 @@ exp(confint(model))
 
 \textcolor{red}{what about the 95\% confidence interval for the predicted probability for PR 99?}
 
-**Remark**: The readers may wonder how the author(s) remember all of the `R` commands for the model. The fact is that we don't need to! We can use the function `objects` to find all available outputs from the model, and the object names are descriptive.
+**Remark**: The readers may wonder how the author(s) remember all of the `R` commands for the model. In fact, we don't need to! We can use the function `objects` to find all available outputs from the model, and the object names are descriptive.
 
 ```{r objects-model}
 objects(model)
