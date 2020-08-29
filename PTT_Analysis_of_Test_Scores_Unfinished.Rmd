@@ -547,7 +547,11 @@ In addition to the point estimates, we also need to provide the corresponding 95
 
 \textcolor{red}{Interpretation needed}  
 
-Why is the intercept's interval so large?
+Although the intercept $\alpha$'s confidence interval seems wide, the exponential version $\exp(\alpha)$ is extremely small for both ends. Especially when the intercept (baseline for **HighSchool_PR** = 0) does not have practical meaning in this data, we do not need to be overly concerned about the intercept.  
+
+On the other hand, the coefficient $\beta$ has a point estimate of approximately 0.15, with a 95% confidence interval [0.101, 0.206]. When **HighSchool_PR** increases by one, we can expect an increase between 0.101 and 0.206 in the log odds $\log (\dfrac{p}{1-p})$ of getting **College_Score** at least 65.  
+
+Add the interpretation of the exponential version.
 
 ```{r confint}
 confint(model)
