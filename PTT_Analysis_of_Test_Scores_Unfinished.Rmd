@@ -539,6 +539,25 @@ p_pr99
 
 \textcolor{red}{Add: In the data, how many students with PR 99 scored 65 or better on the college entrance exam? Write code to answer this.}
 
+```{r pr99-and-cs65}
+num_pr99 = sum(data_corr$HighSchool_PR == 99)
+num_cs65 = sum(data_corr$College_Score >= 65)
+num_pr99_and_cs65 = sum(data_corr$HighSchool_PR == 99 & data_corr$College_Score >= 65)
+```
+
+```{r pr99-and-cs65-print}
+print(paste("Number of respondents with HighSchool_PR 99:",num_pr99))
+print(paste("Number of respondents with College_Score 65 or better:",num_cs65))
+print(paste("Number of respondents with HighSchool_PR 99 and College_Score 65 or better:",
+            num_pr99_and_cs65))
+```
+
+In fact, only one of the 25 respondents with **HighSchool_PR** 99 scored below 65 in the **College_Score**. In this group, 14 of the respondents has a **College_Score** between 71 and 73.  
+
+```{r pr99-data}
+sort(data_corr$College_Score[which(data_corr$HighSchool_PR==99)])
+```
+
 ### Model Interpretation: 95% Confidence Intervals
 
 \section*{\textcolor{red}{Unfinished below}}
