@@ -580,7 +580,18 @@ exp(confint(model))
 
 \section*{\textcolor{red}{Unfinished below}}
 
-\textcolor{red}{what about the 95\% confidence interval for the predicted probability for PR 99?}
+\textcolor{red}{what about the 95\% confidence interval for the predicted probability for PR 99?}  
+
+Why is the interval so large?
+
+```{r pr99-confint, message=FALSE}
+
+ci_matrix = confint(model)
+alpha_ci = ci_matrix[1,]
+beta_ci = ci_matrix[2,]
+p_pr99_ci = exp(alpha_ci + beta_ci*99)/(1+exp(alpha_ci + beta_ci*99))
+p_pr99_ci
+```
 
 **Remark**: The readers may wonder how the author(s) remember all of the `R` commands for the model. In fact, we don't need to! We can use the function `objects` to find all available outputs from the model, and the object names are descriptive.
 
