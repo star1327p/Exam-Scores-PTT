@@ -564,27 +564,21 @@ sort(data_corr$College_Score[which(data_corr$HighSchool_PR==99)])
 
 ### Model Interpretation: 95% Confidence Intervals
 
-\section*{\textcolor{red}{Unfinished below}}
-
 In addition to the point estimates, we also need to provide the corresponding 95% confidence intervals to account for uncertainty. The lower bound is the 2.5th percentile, and the upper bound is the 97.5th percentile. Statistical significance at 5% means that the 95% confidence interval does not include 0. Let's start with the intercept and the coefficient for **HighSchool_PR** using the  `R` function `confint`. Neither the intercept nor the coeffient's confidence interval includes 0, so both are statistically significant.  
 
-\textcolor{red}{Interpretation needed}  
+Although the intercept $\alpha$'s confidence interval seems wide, the exponential version $\exp(\alpha)$ is extremely small for both ends. Especially when the intercept (baseline for **HighSchool_PR** = 0) does not have practical meaning in this data, we do not need to be overly concerned about the intercept.    
 
-Although the intercept $\alpha$'s confidence interval seems wide, the exponential version $\exp(\alpha)$ is extremely small for both ends. Especially when the intercept (baseline for **HighSchool_PR** = 0) does not have practical meaning in this data, we do not need to be overly concerned about the intercept.  
-
-On the other hand, the coefficient $\beta$ has a point estimate of approximately 0.15, with a 95% confidence interval [0.101, 0.206]. When **HighSchool_PR** increases by one, we can expect an increase between 0.101 and 0.206 in the log odds $\log (\dfrac{p}{1-p})$ of getting **College_Score** at least 65.  
-
-\textcolor{red}{Add the interpretation of the exponential version.}
+On the other hand, the coefficient $\beta$ has a point estimate of approximately 0.15, with a 95% confidence interval [0.101, 0.206]. When **HighSchool_PR** increases by one, we can expect an increase between 0.101 and 0.206 in the log odds $\log (\dfrac{p}{1-p})$ of getting **College_Score** at least 65. We can also transform log odds $\log (\dfrac{p}{1-p})$ back to odds $\dfrac{p}{1-p}$, and get an expected increase factor between 1.106 and 1.229. We are 95% confident that the odds of getting **College_Score** at least 65 would increase by between 10.6% and 22.9%, given that **HighSchool_PR** increases by one.    
 
 ```{r confint}
 confint(model)
 ```
 
-Added exponential to transform log odds back to odds
-
 ```{r exp-confint}
 exp(confint(model))
 ```
+
+\section*{\textcolor{red}{Unfinished below}}
 
 \textcolor{red}{what about the 95\% confidence interval for the predicted probability for PR 99?}
 
