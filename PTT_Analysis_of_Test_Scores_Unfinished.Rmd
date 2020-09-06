@@ -582,7 +582,11 @@ exp(confint(model))
 
 \textcolor{red}{what about the 95\% confidence interval for the predicted probability for PR 99?}  
 
-Why is the interval so large?
+We can also calculate the 95\% confidence interval for the predicted probability of getting **College_Score** at least 65, given that the respondent scored a 99 on **HighSchool_PR**. However, the confidence interval is [0.00012, 0.99999], which does not make practical sense because a probability has natural boundaries of [0,1].  
+
+Why is the interval so large?  
+
+The linear component is $\alpha + \beta X$, so the range depends on the value of **HighSchool_PR**. When **HighSchool_PR** is large (say, 99), the 95% confidence interval of $\alpha + \beta X$ becomes extremely wide.
 
 ```{r pr99-confint, message=FALSE}
 
