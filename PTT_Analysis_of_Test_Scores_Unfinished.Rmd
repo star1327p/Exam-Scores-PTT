@@ -578,15 +578,9 @@ confint(model)
 exp(confint(model))
 ```
 
-\section*{\textcolor{red}{Unfinished below}}
-
-\textcolor{red}{what about the 95\% confidence interval for the predicted probability for PR 99?}  
-
 We can also calculate the 95\% confidence interval for the predicted probability of getting **College_Score** at least 65, given that the respondent scored a 99 on **HighSchool_PR**. However, the confidence interval is [0.00012, 0.99999], which does not make practical sense because a probability has natural boundaries of [0,1].  
 
-Why is the interval so large?  
-
-The linear component is $\alpha + \beta X$, so the range depends on the value of **HighSchool_PR**. When **HighSchool_PR** is large (say, 99), the 95% confidence interval of $\alpha + \beta X$ becomes extremely wide.
+Why is this interval so wide? The linear component is $\alpha + \beta X$, so the range depends on the value of **HighSchool_PR**. When **HighSchool_PR** is large (say, 99), the 95% confidence interval of $\alpha + \beta X$ becomes extremely wide. The interval would be narrow for a small value of **HighSchool_PR**, such as less than 10. But people with extremely low **HighSchool_PR** are unlikely to be interested in taking the college entrance exam at all. Hence we are not going to calculate the 95\% confidence interval for small **HighSchool_PR** values. 
 
 ```{r pr99-confint, message=FALSE}
 
@@ -603,6 +597,10 @@ p_pr99_ci
 objects(model)
 ```
 
+\subsubsection{Model Validation}
+
+\section*{\textcolor{red}{Unfinished below}}
+
 Need: model validation (separate section)
 
 
@@ -614,6 +612,8 @@ missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
 data_corr = data[-missing_rows,]
 
 data_corr$CS_65up = data_corr$College_Score >=65
+
+model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
 
 print("This is a test.")
 ```
@@ -635,6 +635,12 @@ Predictive modeling
 
 # https://www.theanalysisfactor.com/r-tutorial-glm1/
 # https://www.theanalysisfactor.com/r-glm-plotting/
+
+# Draft of graph
+# Add jittering? Too many repetitive values in HighSchool_PR!
+yy = model$fitted.values
+xx = data_corr$HighSchool_PR
+plot(xx, yy)
 ```
 
 # Discussion and Conclusion
