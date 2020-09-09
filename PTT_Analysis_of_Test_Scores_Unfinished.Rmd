@@ -199,7 +199,7 @@ Instead, we should segment the data and further examine the top scorers in the d
 plot(data_corr$HighSchool_PR, data_corr$College_Score,
      main = "High School and College Entrance Exam Scores",
      xlab="High School Entrance Exam Score Percentile Rank (PR)",
-     ylab="College Entrance Score")
+     ylab="College Entrance Exam Score")
 
 abline(h=60,v=80)
 ```
@@ -620,7 +620,9 @@ print("This is a test.")
 
 \textcolor{red}{How good does this model fit the data?}    
 
-Predictive modeling
+Predictive modeling  
+
+Deeper black circles
 
 ```{r model-validation}
 # objects(model) # to find out what functions are available in the model
@@ -640,7 +642,9 @@ Predictive modeling
 # Add jittering? Too many repetitive values in HighSchool_PR!
 yy = model$fitted.values
 xx = data_corr$HighSchool_PR
-plot(xx, yy)
+plot(xx, yy, main="Predicted Probability of College Score >= 65 with High School PR",
+     xlab="High School Entrance Exam Score Percentile Rank (PR)",
+     ylab="Probability of College Score >= 65")
 ```
 
 # Discussion and Conclusion
