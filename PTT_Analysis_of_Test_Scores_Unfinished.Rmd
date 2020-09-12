@@ -583,7 +583,6 @@ We can also calculate the 95\% confidence interval for the predicted probability
 Why is this interval so wide? The linear component is $\alpha + \beta X$, so the range depends on the value of **HighSchool_PR**. When **HighSchool_PR** is large (say, 99), the 95% confidence interval of $\alpha + \beta X$ becomes extremely wide. The interval would be narrow for a small value of **HighSchool_PR**, such as less than 10. But people with extremely low **HighSchool_PR** are unlikely to be interested in taking the college entrance exam at all. Hence we are not going to calculate the 95\% confidence interval for small **HighSchool_PR** values. 
 
 ```{r pr99-confint, message=FALSE}
-
 ci_matrix = confint(model)
 alpha_ci = ci_matrix[1,]
 beta_ci = ci_matrix[2,]
@@ -637,12 +636,25 @@ Deeper black circles
 
 # https://www.theanalysisfactor.com/r-tutorial-glm1/
 # https://www.theanalysisfactor.com/r-glm-plotting/
+```
 
+```{r validation-draft}
 # Draft of graph
 # Add jittering? Too many repetitive values in HighSchool_PR!
 yy = model$fitted.values
 xx = data_corr$HighSchool_PR
 plot(xx, yy, main="Predicted Probability of College Score >= 65 with High School PR",
+     xlab="High School Entrance Exam Score Percentile Rank (PR)",
+     ylab="Probability of College Score >= 65")
+```
+
+
+```{r validation-jittering}
+set.seed(21)
+new_xx = jitter(xx)
+new_yy = jitter(yy)
+plot(new_xx, new_yy, 
+     main="Jittered Probability of College Score >= 65 with High School PR",
      xlab="High School Entrance Exam Score Percentile Rank (PR)",
      ylab="Probability of College Score >= 65")
 ```
