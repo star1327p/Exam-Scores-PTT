@@ -94,8 +94,8 @@ uni_HS_score = data$HighSchool_PR[which(data$HighSchool_PR != -1)]
 
 summary(uni_HS_score)
 
-hist(uni_HS_score, main = "Histogram of High School Entrance Exam Scores",
-     xlab="Percentile Rank (PR)")
+hist(uni_HS_score, main = "Histogram of HighSchool_PR",
+     xlab="HighSchool_PR")
 ```
 
 ## College Entrance Exam Scores 
@@ -114,8 +114,8 @@ uni_college_score = data$College_Score[which(data$College_Score != -1)]
 
 summary(uni_college_score)
 
-hist(uni_college_score, main="Histogram of College Entrance Exam Scores",
-     xlab="Score (max possible is 75)",xlim=c(30,80))
+hist(uni_college_score, main="Histogram of College_Score",
+     xlab="College_Score (max possible is 75)",xlim=c(30,80))
 ```
 
 ## Bivariate Exploration {#bivariate}
@@ -131,8 +131,8 @@ data_corr = data[-missing_rows,]
 
 plot(data_corr$HighSchool_PR, data_corr$College_Score,
      main = "High School and College Entrance Exam Scores",
-     xlab="High School Entrance Exam Score Percentile Rank (PR)",
-     ylab="College Entrance Score")
+     xlab="HighSchool_PR",
+     ylab="College_Score")
 ```
 
 The correlation coefficient is approximately 0.507, showing a medium strength of positive association between **HighSchool_PR** and **College_Score**. We can interpret that a better score in the high school entrance exam is likely to lead to a better college entrance exam score, but the relationship is not as strong after **HighSchool_PR** reaches 80.
@@ -183,8 +183,8 @@ It is inappropriate to perform linear regression directly, because the data do n
 
 plot(data_corr$HighSchool_PR, sqrt(data_corr$College_Score),
      main = "High School and College Entrance Exam Scores",
-     xlab="High School Entrance Exam Score Percentile Rank (PR)",
-     ylab="Square Root of College Entrance Score")
+     xlab="HighSchool_PR",
+     ylab="Square Root of College_Score")
 ```
 
 ```{r transform-correlation}
@@ -198,8 +198,8 @@ Instead, we should segment the data and further examine the top scorers in the d
 ```{r high-scorer-obs}
 plot(data_corr$HighSchool_PR, data_corr$College_Score,
      main = "High School and College Entrance Exam Scores",
-     xlab="High School Entrance Exam Score Percentile Rank (PR)",
-     ylab="College Entrance Exam Score")
+     xlab="HighSchool_PR",
+     ylab="College_Score")
 
 abline(h=60,v=80)
 ```
@@ -324,8 +324,8 @@ table(HS_PR_seg)
 Or if you prefer a histogram, we can also create one.
 
 ```{r high-school-pr-seg-hist}
-hist(HS_PR_seg, xlab="Percentile Rank (PR)",
-     main="Histogram of High School Entrance Exam Scores (PR >= 80)")
+hist(HS_PR_seg, xlab="HighSchool_PR",
+     main="Histogram of HighSchool_PR 80 and above")
 ```
 
 Therefore, we create the breakdown of the **HighSchool_PR** ranges: 80-89, 90-94, 95-99. There are 49 records in the 80-89 range, 44 records in 90-94, and 70 records in 95-99. We divided the 90-99 range into 90-94 and 95-99, but the number of **HighSchool_PR** records in the 95-99 range is still higher than any of the other two categories.  
@@ -371,8 +371,8 @@ data.frame(college_score, college_pr)
 Here is the histogram of the **College_Score** values 60 and above.
 
 ```{r college-score-seg-hist}
-hist(CS_Score_seg, xlab="Score (max possible is 75)",
-     main="Histogram of College Entrance Exam Scores Above 60")
+hist(CS_Score_seg, xlab="College_Score (max possible is 75)",
+     main="Histogram of College_Score 60 and above")
 ```
 
 We also create the breakdown of the **College_Score** ranges: 60-64, 65-69, 70-75. There are 36 records in the 60-64 range, 47 records in 65-69, and 45 records in 70-75. This is also relatively more uniform than the **HighSchool_PR** breakdown (49, 44, and 70 records each).
@@ -638,25 +638,29 @@ Deeper black circles
 # https://www.theanalysisfactor.com/r-glm-plotting/
 ```
 
+We can visualize the predicted probability of getting **College_Score** at least 65 and the **HighSchool_PR** values in the data.
+
 ```{r validation-draft}
 # Draft of graph
-# Add jittering? Too many repetitive values in HighSchool_PR!
 yy = model$fitted.values
 xx = data_corr$HighSchool_PR
-plot(xx, yy, main="Predicted Probability of College Score >= 65 with High School PR",
-     xlab="High School Entrance Exam Score Percentile Rank (PR)",
-     ylab="Probability of College Score >= 65")
+plot(xx, yy, ylim=c(0,1),
+     main="Predicted Probability of College_Score >= 65 with HighSchool_PR",
+     xlab="HighSchool_PR",
+     ylab="Probability of College_Score >= 65")
 ```
 
+Since there are many repetitive values in **HighSchool_PR**, let's apply the `jitter` function to add noise to the data for display. We can see that the deeper circles indicate more values in the data.
 
 ```{r validation-jittering}
+# Add jittering because of many repetitive values in HighSchool_PR
 set.seed(21)
 new_xx = jitter(xx)
 new_yy = jitter(yy)
-plot(new_xx, new_yy, 
-     main="Jittered Probability of College Score >= 65 with High School PR",
-     xlab="High School Entrance Exam Score Percentile Rank (PR)",
-     ylab="Probability of College Score >= 65")
+plot(new_xx, new_yy, ylim=c(0,1),
+     main="Jittered Probability of College_Score >= 65 with HighSchool_PR",
+     xlab="HighSchool_PR",
+     ylab="Probability of College_Score >= 65")
 ```
 
 # Discussion and Conclusion
