@@ -600,7 +600,7 @@ objects(model)
 
 \section*{\textcolor{red}{Unfinished below}}
 
-Need: model validation (separate section)
+In addition to the coefficient estimates, we also need to perform model validation to examine how well the model fits the data.
 
 
 ```{r header-code,include=FALSE}
@@ -617,13 +617,13 @@ model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
 print("This is a test.")
 ```
 
-\textcolor{red}{How good does this model fit the data?}    
+ 
 
 Predictive modeling  
 
 Deeper black circles
 
-```{r model-validation}
+```{r model-validation, include=FALSE}
 # objects(model) # to find out what functions are available in the model
 
 # model$fitted.values # probability values for all 197 datapoints.
@@ -638,10 +638,12 @@ Deeper black circles
 # https://www.theanalysisfactor.com/r-glm-plotting/
 ```
 
-We can visualize the predicted probability of getting **College_Score** at least 65 and the **HighSchool_PR** values in the data.
+Let's start with visualizing the predicted probability of getting **College_Score** at least 65 and the **HighSchool_PR** values in the data.  
+
+\textcolor{red}{Graph description}   
 
 ```{r validation-draft}
-# Draft of graph
+# First version of graph
 yy = model$fitted.values
 xx = data_corr$HighSchool_PR
 plot(xx, yy, ylim=c(0,1),
