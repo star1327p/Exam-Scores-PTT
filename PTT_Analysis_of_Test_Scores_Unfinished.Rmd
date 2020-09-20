@@ -596,12 +596,7 @@ p_pr99_ci
 objects(model)
 ```
 
-\subsubsection{Model Validation}
-
-\section*{\textcolor{red}{Unfinished below}}
-
-In addition to the coefficient estimates, we also need to perform model validation to examine how well the model fits the data.
-
+\subsubsection{Overall Model Results}
 
 ```{r header-code,include=FALSE}
 data = read.csv("ptt_SENIORHIGH_data.csv")
@@ -616,12 +611,6 @@ model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
 
 print("This is a test.")
 ```
-
- 
-
-Predictive modeling  
-
-Deeper black circles
 
 ```{r model-validation, include=FALSE}
 # objects(model) # to find out what functions are available in the model
@@ -638,9 +627,15 @@ Deeper black circles
 # https://www.theanalysisfactor.com/r-glm-plotting/
 ```
 
-Let's start with visualizing the predicted probability of getting **College_Score** at least 65 and the **HighSchool_PR** values in the data.  
+In addition to the coefficient estimates, we also need to perform model validation to examine how well the model fits the data. Let's start with visualizing the predicted probability of getting **College_Score** at least 65 and the **HighSchool_PR** values in the data. The former can be obtained from the `fitted.values` object of the model. The highest predicted probability occurs at **HighSchool_PR** 99, but the predicted probability of getting **College_Score** at least 65 is still less than 80%. (So high school students should still study hard for the college entrance exam, despite getting an excellent **HighSchool_PR** score.)
 
-\textcolor{red}{Graph description}   
+```{r fitted-values-max}
+print(paste("The highest predicted probability is",max(model$fitted.values)))
+print(paste("This occurs at HighSchool_PR",
+      data_corr$HighSchool_PR[which.max(model$fitted.values)]))
+```
+
+The graph shows different trends for different segments of the **HighSchool_PR**. When **HighSchool_PR** is less than 70, the predicted probability of getting **College_Score** at least 65 is close to zero. But we should take this observation with caution, because we have few data points with **HighSchool_PR** less than 70. When **HighSchool_PR** is between 70 and 79, the predicted probability increases with an almost linear trend. Starting at **HighSchool_PR** 80, the predicted probability increases with a steeper slope. Finally, the growth of the predicted probability slows down when **HighSchool_PR** reaches 98 (the maximum possible **HighSchool_PR** is 99).    
 
 ```{r validation-draft}
 # First version of graph
@@ -652,7 +647,11 @@ plot(xx, yy, ylim=c(0,1),
      ylab="Probability of College_Score >= 65")
 ```
 
-Since there are many repetitive values in **HighSchool_PR**, let's apply the `jitter` function to add noise to the data for display. We can see that the deeper circles indicate more values in the data.
+\section*{\textcolor{red}{Unfinished below}}
+
+\textcolor{red}{Predictive modeling, contingency table, etc.} 
+
+Since there are many repetitive values in **HighSchool_PR**, let's apply the `jitter` function to add noise to the data for display. We can see that the deeper black circles indicate more values in the data.
 
 ```{r validation-jittering}
 # Add jittering because of many repetitive values in HighSchool_PR
@@ -664,6 +663,12 @@ plot(new_xx, new_yy, ylim=c(0,1),
      xlab="HighSchool_PR",
      ylab="Probability of College_Score >= 65")
 ```
+
+\subsubsection{Model Validation}
+
+Write something more  
+
+Create more graphs
 
 # Discussion and Conclusion
 
