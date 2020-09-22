@@ -647,11 +647,7 @@ plot(xx, yy, ylim=c(0,1),
      ylab="Probability of College_Score >= 65")
 ```
 
-\section*{\textcolor{red}{Unfinished below}}
-
-\textcolor{red}{Predictive modeling, contingency table, etc.} 
-
-Since there are many repetitive values in **HighSchool_PR**, let's apply the `jitter` function to add noise to the data for display. We can see that the deeper black circles indicate more values in the data.
+Since there are many repetitive values in **HighSchool_PR**, let's apply the `jitter` function to add random noise to the data for display. (Remember to set a random seed for reproducibility.) We can see that the deeper black circles indicate more records in the data, which are concentrated in the higher **HighSchool_PR** values.
 
 ```{r validation-jittering}
 # Add jittering because of many repetitive values in HighSchool_PR
@@ -663,6 +659,10 @@ plot(new_xx, new_yy, ylim=c(0,1),
      xlab="HighSchool_PR",
      ylab="Probability of College_Score >= 65")
 ```
+
+\section*{\textcolor{red}{Unfinished below}}
+
+\textcolor{red}{Predictive modeling, contingency table, etc.} 
 
 \subsubsection{Model Validation}
 
