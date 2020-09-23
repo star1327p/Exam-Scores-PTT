@@ -219,6 +219,14 @@ contingency = table(data_corr$HS_80up, data_corr$CS_60up,
 contingency
 ```
 
+To make the table easier to read, we revert the order of `FALSE` and `TRUE` in the contingency table by calling the indices in reverse order.
+
+```{r high-scorer-contingency}
+contingency = contingency[2:1, 2:1]
+contingency
+```
+
+
 Below is the percentage version of the contingency table, and we can see that more than 63.5% of the respondents have both **HighSchool_PR** $\geq$ 80 and **College_Score** $\geq$ 60. This is also evidence that the PTT users tend to come from the population who scored well on the high school and college entrance exams.  
 
 ```{r high-scorer-percentage}
@@ -662,7 +670,26 @@ plot(new_xx, new_yy, ylim=c(0,1),
 
 \section*{\textcolor{red}{Unfinished below}}
 
-\textcolor{red}{Predictive modeling, contingency table, etc.} 
+\textcolor{red}{Predictive modeling, contingency table, etc.}  
+
+Contingency table
+
+```{r prediction-draft}
+# Data
+# nrow(data_corr) # 188
+# sum(data_corr$CS_65up) # 92
+# sum(data_corr$CS_65up)/nrow(data_corr) # 0.489
+actual_65up = data_corr$CS_65up
+
+# Predicted results
+predicted_65up = model$fitted.values >= 0.5
+
+# Contingency table
+contingency = table(actual_65up, predicted_65up)
+# revert the order of FALSE and TRUE
+contingency = contingency[2:1, 2:1] 
+contingency
+```
 
 \subsubsection{Model Validation}
 
