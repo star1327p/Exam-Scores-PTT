@@ -672,9 +672,13 @@ plot(new_xx, new_yy, ylim=c(0,1),
 
 \textcolor{red}{Predictive modeling, contingency table, etc.}  
 
-Contingency table
+Contingency table  
 
-```{r prediction-draft}
+Prediction: If predicted probability of **College_Score** at least 65 is greater than or equal to 0.5, we assign the predicted value as `TRUE`.  
+
+Need to say the actual data's proportions.
+
+```{r prediction-table}
 # Data
 # nrow(data_corr) # 188
 # sum(data_corr$CS_65up) # 92
@@ -689,6 +693,12 @@ contingency = table(actual_65up, predicted_65up)
 # revert the order of FALSE and TRUE
 contingency = contingency[2:1, 2:1] 
 contingency
+```
+
+Below is the percentage version of the contingency table.
+
+```{r prediction-percentage}
+prop.table(contingency)
 ```
 
 \subsubsection{Model Validation}
