@@ -670,10 +670,7 @@ plot(new_xx, new_yy, ylim=c(0,1),
 
 \subsubsection{Model Validation: Contingency Table}
 
-\section*{\textcolor{red}{Unfinished below}}
-
-
-Let's start the model validation with in-sample prediction; that is, predict the outcome of whether **College_Score** is at least 65 for each value of **HighSchool_PR** in the data. If predicted probability of **College_Score** at least 65 (i.e., `fitted.values`) is greater than or equal to 0.5, we assign the predicted value as `TRUE`.  
+Let's start the model validation with in-sample prediction; that is, predict the outcome of whether **College_Score** is at least 65 for each value of **HighSchool_PR** in the data. If predicted probability of **College_Score** at least 65 (i.e., `fitted.values`) is greater than or equal to 0.5, we assign the predicted value as `TRUE`. We can safely use 0.5 as the probability threshold because the data are quite balanced. In other words, the proportion of **College_Score** at least 65 is close to 0.5 in the data (0.489, to be exact). If the data are imbalanced, say 80% of the records belong to one category, we should adjust the probability threshold in our classification prediction model.  
 
 ```{r data-proportions}
 # nrow(data_corr) # 188
@@ -688,7 +685,9 @@ print(paste("This is a proportion of",
             ", which is close to 0.5."))
 ```
 
-Need to say the actual data's proportions.
+\section*{\textcolor{red}{Unfinished below}}
+
+Create the contingency table.
 
 ```{r prediction-table}
 # Data
