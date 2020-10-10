@@ -711,7 +711,22 @@ prop.table(contingency)
 
 Create a table to show the true positives, true negatives, false positives, and false negatives.  
 
-Formulas: precision, recall
+```{r table-draft}
+
+sep_row = c("|","--------------","|","--------------")
+first_row = c("|","True Positive","|","False Negative")
+mid_row = c("|","--------------","|","--------------")
+second_row = c("|","False Positive","|","True Negative")
+
+table_df = data.frame(rbind(sep_row, first_row, mid_row, second_row))
+rownames(table_df) = c("-----------","Actual True","------------","Actual False")
+colnames(table_df) = c("|","Predicted True","|","Predicted False")
+
+table_df
+```
+
+
+\textcolor{red}{Formulas: precision, recall}
 
 \subsubsection{Model Validation: Breakdown by High School Entrance Exam Scores}
 
