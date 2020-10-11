@@ -713,20 +713,27 @@ Create a table to show the true positives, true negatives, false positives, and 
 
 ```{r table-draft}
 
-sep_row = c("|","--------------","|","--------------")
+sep_row = c("|","------------------","|","------------------")
 first_row = c("|","True Positive","|","False Negative")
-mid_row = c("|","--------------","|","--------------")
+mid_row = c("|","------------------","|","------------------")
 second_row = c("|","False Positive","|","True Negative")
 
 table_df = data.frame(rbind(sep_row, first_row, mid_row, second_row))
-rownames(table_df) = c("-----------","Actual True","------------","Actual False")
-colnames(table_df) = c("|","Predicted True","|","Predicted False")
+rownames(table_df) = c("--------------","Actual Positive",
+                       "---------------","Actual Negative")
+colnames(table_df) = c("|","Predicted Positive","|","Predicted Negative")
 
 table_df
 ```
 
 
-\textcolor{red}{Formulas: precision, recall}
+Formulas: precision, recall  
+
+Need to add the descriptions
+
+$$\text{precision} = \dfrac{\text{True Positive}}{\text{Predicted Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Positive}}$$
+
+$$\text{recall} = \dfrac{\text{True Positive}}{\text{Actual Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Negative}}$$
 
 \subsubsection{Model Validation: Breakdown by High School Entrance Exam Scores}
 
