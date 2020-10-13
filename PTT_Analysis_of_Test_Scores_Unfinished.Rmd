@@ -506,7 +506,7 @@ summary(model)
 
 ```
 
-### Model Interpretation: Point Estimates
+## Model Interpretation: Point Estimates
 
 The `Pr(>|z|)` is the p-value of each independent variable, and we can see that **HighSchool_PR** is statistically significant because p-value < 0.05. When **HighSchool_PR** increases by one, the log odds $\log (\dfrac{p}{1-p})$ of getting **College_Score** at least 65 increases by approximately 0.15. After transforming log odds $\log (\dfrac{p}{1-p})$ back to odds $\dfrac{p}{1-p}$, we get that the odds are multiplied by $e = \exp(0.15) \approx 1.161$. In other words, when **HighSchool_PR** increases by one, the odds of getting **College_Score** at least 65 increases by approximately 16.1%. 
 
@@ -570,7 +570,7 @@ print(paste("Number of respondents with HighSchool_PR 99 and College_Score 65 or
 sort(data_corr$College_Score[which(data_corr$HighSchool_PR==99)])
 ```
 
-### Model Interpretation: 95% Confidence Intervals
+## Model Interpretation: 95% Confidence Intervals
 
 In addition to the point estimates, we also need to provide the corresponding 95% confidence intervals to account for uncertainty. The lower bound is the 2.5th percentile, and the upper bound is the 97.5th percentile. Statistical significance at 5% means that the 95% confidence interval does not include 0. Let's start with the intercept and the coefficient for **HighSchool_PR** using the  `R` function `confint`. Neither the intercept nor the coeffient's confidence interval includes 0, so both are statistically significant.  
 
@@ -604,7 +604,7 @@ p_pr99_ci
 objects(model)
 ```
 
-\subsubsection{Overall Model Results}
+## Overall Model Results
 
 ```{r header-code,include=FALSE}
 data = read.csv("ptt_SENIORHIGH_data.csv")
@@ -668,7 +668,7 @@ plot(new_xx, new_yy, ylim=c(0,1),
      ylab="Probability of College_Score >= 65")
 ```
 
-\subsubsection{Model Validation: In-Sample Prediction}
+## Model Validation: In-Sample Prediction
 
 Let's start the model validation with in-sample prediction; that is, predict the outcome of whether **College_Score** is at least 65 for each value of **HighSchool_PR** in the data. If predicted probability of **College_Score** at least 65 (i.e., `fitted.values`) is greater than or equal to 0.5, we assign the predicted value as `TRUE`. We can safely use 0.5 as the probability threshold because the data are quite balanced. In other words, the proportion of **College_Score** at least 65 is close to 0.5 in the data (0.489, to be exact). If the data are imbalanced, say 80% of the records belong to one category, we should adjust the probability threshold in our classification prediction model.  
 
@@ -735,7 +735,7 @@ $$\text{precision} = \dfrac{\text{True Positive}}{\text{Predicted Positive}} = \
 
 $$\text{recall} = \dfrac{\text{True Positive}}{\text{Actual Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Negative}}$$
 
-\subsubsection{Model Validation: Breakdown by High School Entrance Exam Scores}
+## Model Validation: Breakdown by High School Entrance Exam Scores
 
 Write something more  
 
