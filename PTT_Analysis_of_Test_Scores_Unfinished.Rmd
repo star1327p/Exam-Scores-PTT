@@ -204,7 +204,7 @@ plot(data_corr$HighSchool_PR, data_corr$College_Score,
 abline(h=60,v=80)
 ```
 
-We can also create a contingency table for the two indicators:  
+We can also create a contingency table (a.k.a. cross tabulation) for the two indicators **HighSchool_80up** and **College_60up**, which displays the bivariate frequency distribution in terms of counts.  
 
 - **HighSchool_80up**: Indicator of whether **HighSchool_PR** is 80 or higher
 - **College_60up**: Indicator of whether **College_Score** is 60 or higher
@@ -233,7 +233,7 @@ Below is the percentage version of the contingency table, and we can see that mo
 prop.table(contingency)
 ```
 
-We can also round the percentage table to four decimal places in the ratio, so we will have two decimal places after the integer percentage. For example, 0.4528 becomes 45.28%.
+We can also round the percentage version to four decimal places in the ratio, so we will have two decimal places after the integer percentage. For example, 0.4528 becomes 45.28%.
 
 ```{r high-scorer-rounding}
 round(prop.table(contingency),4)
@@ -685,7 +685,7 @@ print(paste("This is a proportion of",
             ", which is close to 0.5."))
 ```
 
-Let's create a contingency table to show the comparison between the actual outcomes and predicted outcomes, i.e., whether each respondent obtained **College_Score** at least 65 or not.
+Let's create a confusion matrix to show the comparison between the actual outcomes and predicted outcomes, i.e., whether each respondent obtained **College_Score** at least 65 or not.
 
 ```{r prediction-table}
 # Data
@@ -694,24 +694,32 @@ actual_65up = data_corr$CS_65up
 # Predicted results
 predicted_65up = model$fitted.values >= 0.5
 
-# Contingency table
-contingency = table(actual_65up, predicted_65up)
+# Confusion matrix
+confusion = table(actual_65up, predicted_65up)
 # revert the order of FALSE and TRUE
-contingency = contingency[2:1, 2:1] 
-contingency
+confusion = confusion[2:1, 2:1] 
+confusion
 ```
 
-Below is the percentage version of the contingency table.
+Below is the percentage version of the confusion matrix.
 
 ```{r prediction-percentage}
-prop.table(contingency)
+prop.table(confusion)
 ```
 
 \section*{\textcolor{red}{Unfinished below}}
 
-Create a table to show the true positives, true negatives, false positives, and false negatives.  
+\textcolor{red}{Need to define the confusion matrix + distinct it from the contingency table.}  
 
-```{r table-draft}
+The table below shows the meaning of each cell of the confusion matrix. Assume that "positive" means getting **College_Score** at least 65, which is  equivalent to the `TRUE` label in `actual_65up` and `predicted_65up`. The term "negative" means not getting **College_Score** at least 65, so it is equivalent to the `FALSE` label. For each cell, we have:
+
+- True positive: 
+- True negative: 
+- False positive: 
+- False negative:
+
+```{r table-draft, echo=FALSE}
+# Display the output, but not the code.
 
 sep_row = c("|","------------------","|","------------------")
 first_row = c("|","True Positive","|","False Negative")
