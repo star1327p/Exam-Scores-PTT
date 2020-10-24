@@ -734,11 +734,15 @@ table_df
 
 Formulas: precision, recall  
 
-Need to add the descriptions
+Precision and recall are two widely-used metrics to measure the accuracy of the prediction model. Precision is defined as the percentage of true positives among all datapoints the model predicted to be positive. In our example, precision is the percentage of the respondents who actually got **College_Score** at least 65, among the respondents we predicted to make this achievement given their **HighSchool_PR**. 
 
 $$\text{precision} = \dfrac{\text{True Positive}}{\text{Predicted Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Positive}}$$
+Add the numbers and numeric formulas  
+
+Also write the description for the recall
 
 $$\text{recall} = \dfrac{\text{True Positive}}{\text{Actual Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Negative}}$$
+Add the numbers and numeric formulas
 
 ## Model Validation: Breakdown by High School Entrance Exam Scores
 
