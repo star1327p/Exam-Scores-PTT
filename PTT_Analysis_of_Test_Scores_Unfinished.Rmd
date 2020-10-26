@@ -746,6 +746,20 @@ Also write about false positive rate and false negative rate.
 
 Relationship between fpr, fnr, precision, recall.
 
+```{r tp-fn-fp-tn}
+# UNFINISHED HERE
+# row = actual_65up, column = predicted_65up
+tp = confusion["TRUE","TRUE"]
+fn = confusion["TRUE","FALSE"]
+fp = confusion["FALSE","TRUE"]
+tn = confusion["FALSE","FALSE"]
+
+# Don't just write the syntax like confusion[1,1]. This is really confusing!
+
+print(paste(tp,fn,fp,tn))
+confusion
+```
+
 ## Model Validation: Breakdown by High School Entrance Exam Scores
 
 Write something more  
