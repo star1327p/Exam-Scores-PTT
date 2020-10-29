@@ -768,9 +768,9 @@ Create more graphs
 
 # Discussion and Conclusion
 
-The Statistics 101 course provides a starting point for students to perform data analysis.  
+The Statistics 101 course provides a starting point for students to perform data analysis. Linear regression is widely used, but it is not a panacea for data analysis. The model assumptions need to be met in the data, as stated at the beginning of Section \ref{linear-reg}.   
 
-Linear regression is widely used, but it is not a panacea for data analysis. The model assumptions need to be met in the data, as stated at the beginning of Section \ref{linear-reg}.   
+For the next steps in learning statistics, we recommend reading *The Statistical Sleuth: A Course in Methods of Data Analysis* \cite{ramsey2013statistical}, which is the textbook for undergraduate-level regression analysis at Duke Statistical Science.^[<https://www2.stat.duke.edu/courses/Fall18/sta210.001/>] The book covers topics such as ANOVA (Analysis of Variance) and multiple linear regression. It also provides data files for case studies and exercises.^[<http://www.statisticalsleuth.com/>]  
 
 Write something more
 
