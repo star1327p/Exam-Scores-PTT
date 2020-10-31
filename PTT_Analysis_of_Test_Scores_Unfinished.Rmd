@@ -709,10 +709,10 @@ prop.table(confusion)
 
 The table below shows the meaning of each cell of the confusion matrix. Assume that "positive" means getting **College_Score** at least 65, which is  equivalent to the `TRUE` label in `actual_65up` and `predicted_65up`. The term "negative" means not getting **College_Score** at least 65, so it is equivalent to the `FALSE` label. For each cell, we have^[<https://developers.google.com/machine-learning/crash-course/classification/true-false-positive-negative>]:
 
-- **True Positive**: The datapoint is actually positive and is predicted as positive, so the model correctly predicts the positive outcome.
-- **True Negative**: The datapoint is actually negative and is predicted as negative, so the model correctly predicts the negative outcome.
-- **False Positive**: The datapoint is actually negative but is predicted as positive, so the model **in**correctly predicts the positive outcome, i.e., false alarm.
-- **False Negative**: The datapoint is actually positive but is predicted as negative, so the model **in**correctly predicts the negative outcome, i.e., error.
+- **True Positive (TP)**: The datapoint is actually positive and is predicted as positive, so the model correctly predicts the positive outcome.
+- **True Negative (TN)**: The datapoint is actually negative and is predicted as negative, so the model correctly predicts the negative outcome.
+- **False Positive (FP)**: The datapoint is actually negative but is predicted as positive, so the model **in**correctly predicts the positive outcome, i.e., false alarm.
+- **False Negative (FN)**: The datapoint is actually positive but is predicted as negative, so the model **in**correctly predicts the negative outcome, i.e., error.
 
 ```{r table-draft, echo=FALSE}
 # Display the output, but not the code.
@@ -730,17 +730,47 @@ colnames(table_df) = c("|","Predicted Positive","|","Predicted Negative")
 table_df
 ```
 
+We can retrieve each element in the confusion matrix by specifying the labels for each row and each column. The row indicates how many respondents actually obtained **College_Score** at least 65, and the column indicates how many respondents were predicted to have the positive outcome. Instead of writing the syntax like `confusion[1,2]`, we write it in a clearer way `confusion["TRUE","FALSE"]`. (Don't make the confusion matrix more confusing!) The readers can easily see that this is the number of respondents who we did not predict to have a **College_Score** at least 65, but they actually did. 
+
+```{r tp-fn-fp-tn}
+# row = actual_65up, column = predicted_65up
+tp = confusion["TRUE","TRUE"]
+fn = confusion["TRUE","FALSE"]
+fp = confusion["FALSE","TRUE"]
+tn = confusion["FALSE","FALSE"]
+
+print(paste(tp,fn,fp,tn))
+```
+
+We can also verify that the retrieved numbers are exactly the same as in the original confusion matrix.
+
+```{r verify}
+confusion
+```
+
 \section*{\textcolor{red}{Unfinished below}}
 
-Precision and recall are two widely-used metrics to measure the accuracy of the prediction model. Precision is defined as the percentage of true positives among all datapoints the model predicted to be positive. In our example, precision is the percentage of the respondents who actually got **College_Score** at least 65, among the respondents we predicted to make this achievement given their **HighSchool_PR**. 
+Precision and recall are two widely-used metrics to measure the accuracy of the prediction model. Precision is defined as the percentage of true positives among all datapoints the model predicted to be positive. In our example, precision is the percentage of the respondents who actually got **College_Score** at least 65, among the respondents we predicted to make this achievement given their **HighSchool_PR**.  
 
-$$\text{Precision} = \dfrac{\text{True Positive}}{\text{Predicted Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Positive}}$$
-\textcolor{red}{Add the numbers and numeric formulas}    
+$$\text{Precision} = \dfrac{\text{True Positive}}{\text{Predicted Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Positive}}$$  
+Plugging in the numbers from our model, we get
+
+$$\text{Precision} = \dfrac{72}{72+35} \approx 67.29\%.$$  
+
+The precision would be useful if we use the predictive information to decide to invest in which high school students based on their **HighSchool_PR**. If we predict a student to score **College_Score** at least 65, he/she has about a 67.29% chance to make it, which is more than two-thirds. Since there are different tiers of high schools in Taiwan based on **HighSchool_PR**, it is reasonable for most resources to focus on the top tier high schools, because these students have the highest chance to do well on the college entrance exam. Nevertheless, other social factors also play a role in the overall policy decision-making process. For example, the government may decide to put more resources into remote rural high schools to empower disadvantaged students to succeed, which is beneficial for upward social mobility.  
 
 On the other hand, recall is defined as the percentage of model-predicted positives among all datapoints that are actually positive. In our example, recall is the percentage of the respondents we predicted to have **College_Score** at least 65 given their **HighSchool_PR**, among the respondents who actually made this achievement. 
 
-$$\text{Recall} = \dfrac{\text{True Positive}}{\text{Actual Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Negative}}$$
-Add the numbers and numeric formulas  
+$$\text{Recall} = \dfrac{\text{True Positive}}{\text{Actual Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Negative}}$$  
+Plugging in the numbers from our model, we get 
+
+$$\text{Recall} = \dfrac{72}{72+20} \approx 78.26\%.$$  
+
+\textcolor{red}{Interpretation here}
+
+The model is imperfect.  
+
+Also write about the overall accuracy.  
 
 Also write about false positive rate and false negative rate.  
 
@@ -750,19 +780,7 @@ $$\text{False Positive Rate} = \dfrac{\text{False Positive}}{\text{Actual Negati
 
 $$\text{False Negative Rate} = \dfrac{\text{False Negative}}{\text{Actual Positive}} = \dfrac{\text{False Negative}}{\text{True Positive + False Negative}}$$
 
-```{r tp-fn-fp-tn}
-# UNFINISHED HERE
-# row = actual_65up, column = predicted_65up
-tp = confusion["TRUE","TRUE"]
-fn = confusion["TRUE","FALSE"]
-fp = confusion["FALSE","TRUE"]
-tn = confusion["FALSE","FALSE"]
-
-# Don't just write the syntax like confusion[1,1]. This is really confusing!
-
-print(paste(tp,fn,fp,tn))
-confusion
-```
+\textcolor{red}{Add the numbers and numeric formulas}
 
 ## Model Validation: Breakdown by High School Entrance Exam Scores
 
@@ -774,7 +792,7 @@ Create more graphs
 
 The Statistics 101 course provides a starting point for students to perform data analysis. Linear regression is widely used, but it is not a panacea for data analysis. The model assumptions need to be met in the data, as stated at the beginning of Section \ref{linear-reg}.   
 
-For the next steps in learning statistics, we recommend reading *The Statistical Sleuth: A Course in Methods of Data Analysis* \cite{ramsey2013statistical}, which is the textbook for undergraduate-level regression analysis at Duke Statistical Science.^[<https://www2.stat.duke.edu/courses/Fall18/sta210.001/>] The book covers topics such as ANOVA (Analysis of Variance) and multiple linear regression. It also provides data files for case studies and exercises.^[<http://www.statisticalsleuth.com/>]  
+For the next steps in learning statistics, we recommend reading *The Statistical Sleuth: A Course in Methods of Data Analysis* \cite{ramsey2013statistical}, which is the textbook for undergraduate-level regression analysis at Duke Statistical Science.^[<https://www2.stat.duke.edu/courses/Fall18/sta210.001/>] The book covers intermediate topics such as ANOVA (Analysis of Variance) and multiple linear regression. It also provides data files for case studies and exercises.^[<http://www.statisticalsleuth.com/>]  
 
 Write something more
 
