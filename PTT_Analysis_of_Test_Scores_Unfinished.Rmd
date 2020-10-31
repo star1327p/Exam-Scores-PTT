@@ -709,10 +709,10 @@ prop.table(confusion)
 
 The table below shows the meaning of each cell of the confusion matrix. Assume that "positive" means getting **College_Score** at least 65, which is  equivalent to the `TRUE` label in `actual_65up` and `predicted_65up`. The term "negative" means not getting **College_Score** at least 65, so it is equivalent to the `FALSE` label. For each cell, we have^[<https://developers.google.com/machine-learning/crash-course/classification/true-false-positive-negative>]:
 
-- **True positive**: The datapoint is actually positive and is predicted as positive, so the model correctly predicts the positive outcome.
-- **True negative**: The datapoint is actually negative and is predicted as negative, so the model correctly predicts the negative outcome.
-- **False positive**: The datapoint is actually negative but is predicted as positive, so the model **in**correctly predicts the positive outcome, i.e., false alarm.
-- **False negative**: The datapoint is actually positive but is predicted as negative, so the model **in**correctly predicts the negative outcome, i.e., error.
+- **True Positive**: The datapoint is actually positive and is predicted as positive, so the model correctly predicts the positive outcome.
+- **True Negative**: The datapoint is actually negative and is predicted as negative, so the model correctly predicts the negative outcome.
+- **False Positive**: The datapoint is actually negative but is predicted as positive, so the model **in**correctly predicts the positive outcome, i.e., false alarm.
+- **False Negative**: The datapoint is actually positive but is predicted as negative, so the model **in**correctly predicts the negative outcome, i.e., error.
 
 ```{r table-draft, echo=FALSE}
 # Display the output, but not the code.
@@ -734,17 +734,21 @@ table_df
 
 Precision and recall are two widely-used metrics to measure the accuracy of the prediction model. Precision is defined as the percentage of true positives among all datapoints the model predicted to be positive. In our example, precision is the percentage of the respondents who actually got **College_Score** at least 65, among the respondents we predicted to make this achievement given their **HighSchool_PR**. 
 
-$$\text{precision} = \dfrac{\text{True Positive}}{\text{Predicted Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Positive}}$$
+$$\text{Precision} = \dfrac{\text{True Positive}}{\text{Predicted Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Positive}}$$
 \textcolor{red}{Add the numbers and numeric formulas}    
 
 On the other hand, recall is defined as the percentage of model-predicted positives among all datapoints that are actually positive. In our example, recall is the percentage of the respondents we predicted to have **College_Score** at least 65 given their **HighSchool_PR**, among the respondents who actually made this achievement. 
 
-$$\text{recall} = \dfrac{\text{True Positive}}{\text{Actual Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Negative}}$$
+$$\text{Recall} = \dfrac{\text{True Positive}}{\text{Actual Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Negative}}$$
 Add the numbers and numeric formulas  
 
 Also write about false positive rate and false negative rate.  
 
 Relationship between fpr, fnr, precision, recall.
+
+$$\text{False Positive Rate} = \dfrac{\text{False Positive}}{\text{Actual Negative}} = \dfrac{\text{False Positive}}{\text{True Negative + False Positive}}$$
+
+$$\text{False Negative Rate} = \dfrac{\text{False Negative}}{\text{Actual Positive}} = \dfrac{\text{False Negative}}{\text{True Positive + False Negative}}$$
 
 ```{r tp-fn-fp-tn}
 # UNFINISHED HERE
