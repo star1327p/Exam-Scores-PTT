@@ -37,7 +37,7 @@ For the rest of this article, we begin with a short background of Taiwan's high 
 
 In Taiwan, the high school entrance exam score percentiles are between 1% and 99%, and people often refer to the percentile rank (PR value) as from 1 to 99. This scoring system existed from 2001 to 2013^[<https://bit.ly/2JNQaOI>]. The actual exam score ranges were different. For example, the maximum possible score was originally set to 300, but it was increased to 312 in Year 2007. Then the maximum possible score was increased to 412 in Year 2009. Therefore, the percentile ranks (PR values) serves as a normalized tool to compare academic achievements across different years.  
 
-The college entrance exams are held twice a year in Taiwan. The first exam, typically held in late January or early February, is called the General Scholastic Ability Test (GSAT)^[<https://bit.ly/2W0fdUq>]. The second exam is called the Advanced Subjects Test (AST)^[<https://bit.ly/2J7YxoW>], and it is almost always held on July 1st, 2nd, and 3rd. The GSAT scores are normalized to a range of 0 to 75, regardless of the difficulty level of GSAT each year. On the other hand, the scores of AST can vary widely because each subject is scored separately from 0 to 100. Since the AST scores fluctuate more due to the difficulty level of the exam questions each year, we decided to use the GSAT scores as a benchmark of the college exam scores.
+The college entrance exams are held twice a year in Taiwan; the first exam is for early admission and the second exam is for regular admission. The first exam, typically held in late January or early February, is called the General Scholastic Ability Test (GSAT)^[<https://bit.ly/2W0fdUq>]. The second exam is called the Advanced Subjects Test (AST)^[<https://bit.ly/2J7YxoW>], and it is almost always held on July 1st, 2nd, and 3rd. The GSAT scores are normalized to a range of 0 to 75, regardless of the difficulty level of GSAT each year. On the other hand, the scores of AST can vary widely because each subject is scored separately from 0 to 100. Since the AST scores fluctuate more due to the difficulty level of the exam questions each year, we decided to use the GSAT scores as a benchmark of the college exam scores.
 
 **Remark**: The GSAT consists of five subjects, each of which are graded on a 0 to 15 point scale. Starting in 2019, students may choose four of the five subjects for the GSAT. The maximum possible score (i.e., full marks) is reduced from 75 to 60.
 
@@ -803,6 +803,9 @@ Write something more
 
 Write something here  
 
-Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] typically requires **HighSchool_PR** 99 for admission.
+Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] typically requires **HighSchool_PR** 99 for admission.  
+
+The Department of Electrical Engineering at National Taiwan University (NTUEE)^[https://web.ee.ntu.edu.tw/eng/index.php] typically requires
+full marks in English, mathematics, and science in **College_Score** for the early admission.^[https://university.1111.com.tw/univ_depinfo9.aspx?sno=100102&mno=520101] Most students at NTUEE have a **College_Score** of 70 or higher, but still a significant number of students got admitted through the regular college entrance exam process in July.
 
 # References
