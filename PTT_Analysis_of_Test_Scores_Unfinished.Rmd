@@ -451,6 +451,8 @@ The contingency table shows a positive association between **HighSchool_PR** and
 
 This section contains statistical methods beyond the Statistics 101 level, and we would like to give the readers a head start of generalized linear models. We explained the requirements of linear regression in Section \ref{linear-reg}, and now we would like to expand the regression model to additional forms. We decided to introduce generalized linear models early on, because we would like to show that there exist methods to analyze the data `ptt_SENIORHIGH_data.csv` other than linear regression.  
 
+\textcolor{red}{Consider moving the model validation sections to a separate chapter. The machine learning concepts are not related to the logistic regression itself, so readers without a mathematical background can still learn these concepts.}
+
 ## Brief Introduction of Logistic Regression
 
 Logistic regression is used to model categorical outcomes, especially a binary response variable. For example, if the response variable is whether an event $Y$ occurs or not, then it can only have two values -- not occurred (0) and occurred (1). We model the probability that the event $Y$ occurred, denoted as $p = P(Y = 1)$, and it is between 0 and 1. But in a linear regression $y = \alpha + \beta x$, the response variable $y$ can be any real number. Therefore, we transform the probability $p$ to the log odds $\log (\dfrac{p}{1-p})$, so that its range spans the whole real line like $y$. Note that the odds $\dfrac{p}{1-p}$ is always positive, as long as $p$ is not exactly 0 or 1.  
@@ -750,7 +752,7 @@ confusion
 
 \section*{\textcolor{red}{Unfinished below}}
 
-Precision and recall are two widely-used metrics to measure the accuracy of the prediction model. Precision is defined as the percentage of true positives among all datapoints the model predicted to be positive. In our example, precision is the percentage of the respondents who actually got **College_Score** at least 65, among the respondents we predicted to make this achievement given their **HighSchool_PR**.  
+Precision and recall are two widely-used metrics to measure the performance of the prediction model. Precision is defined as the percentage of true positives among all datapoints the model predicted to be positive. In our example, precision is the percentage of the respondents who actually got **College_Score** at least 65, among the respondents we predicted to make this achievement given their **HighSchool_PR**.  
 
 $$\text{Precision} = \dfrac{\text{True Positive}}{\text{Predicted Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Positive}}$$  
 Plugging in the numbers from our model, we get
@@ -774,6 +776,13 @@ The recall would also be useful if we use the predictive information to decide t
 The model is imperfect.  
 
 Also write about the overall accuracy.  
+
+$$\text{Accuracy} = \dfrac{\text{True Positive + True Negative}}{\text{Actual Positive + Actual Negative}} = \dfrac{\text{True Positive + True Negative}}{\text{All Datapoints}}$$  
+Note that when the data are imbalanced (say, 80% of the records belong to one category), accuracy is not a good measure of model performance.^[https://www.analyticsvidhya.com/blog/2017/03/imbalanced-data-classification/]  
+
+The good news is that by setting the classification threshold to ... $\Rightarrow$ the data are relatively balanced (insert percentage here).
+
+\textcolor{red}{Add the numbers and numeric formulas}  
 
 Also write about false positive rate and false negative rate.  
 
