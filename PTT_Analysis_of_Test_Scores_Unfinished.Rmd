@@ -471,7 +471,7 @@ The intercept $\alpha$ serves as a baseline when $X = 0$, and the probability $p
 
 For the advanced readers, we recommend reading the textbook *Categorical Data Analysis* \cite{agresti2003categorical} to learn more about logistic regression and other generalized linear models for categorical data. 
 
-## Estimate the Probability of Scoring Well on the College Entrance Exam
+## Estimate the Probability of Scoring Well on the College Entrance Exam {#threshold-65}
 
 We would like to redefine the problem statement to "estimate the probability of **College_Score** at least 65, given the student's **HighSchool_PR**." Since the variance of **College_Score** depends on **HighSchool_PR**, the assumptions of linear regression are violated, making linear regression an inappropriate model. That's why we decided to focus on whether **College_Score** is at least a particular value instead, so the response variable is binary. We selected 65 as the cutoff point for **College_Score** because this is close to the median, making the number of values about the same in the two categories. We would like to balance the number of datapoints in each category of the response variable.  
 
@@ -777,10 +777,14 @@ The model is imperfect.
 
 Also write about the overall accuracy.  
 
-$$\text{Accuracy} = \dfrac{\text{True Positive + True Negative}}{\text{Actual Positive + Actual Negative}} = \dfrac{\text{True Positive + True Negative}}{\text{All Datapoints}}$$  
-Note that when the data are imbalanced (say, 80% of the records belong to one category), accuracy is not a good measure of model performance.^[https://www.analyticsvidhya.com/blog/2017/03/imbalanced-data-classification/]  
+$$\text{Accuracy} = \dfrac{\text{True Positive + True Negative}}{\text{Actual Positive + Actual Negative}} = \dfrac{\text{True Positive + True Negative}}{\text{All Datapoints}}$$ 
 
-The good news is that by setting the classification threshold to ... $\Rightarrow$ the data are relatively balanced (insert percentage here).
+Note that when the data are imbalanced (say, 80% of the records belong to one category), accuracy is not a good measure of model performance.^[https://www.analyticsvidhya.com/blog/2017/03/imbalanced-data-classification/] The good news is that we get a relatively balanced dataset by setting the classification threshold of **College_Score** to be 65, as we explained at the beginning of Section \ref{threshold-65}. In fact, 48.9% of the respondents have a **College_Score** of 65 or higher.  
+
+```{r data-proportion-check}
+print(paste("The proportion of respondents with College_Score 65 or higher is",
+            round(sum(data_corr$CS_65up)/nrow(data_corr), digits = 3)))
+```
 
 \textcolor{red}{Add the numbers and numeric formulas}  
 
