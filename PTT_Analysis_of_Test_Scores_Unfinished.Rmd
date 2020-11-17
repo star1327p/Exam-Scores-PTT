@@ -755,8 +755,8 @@ confusion
 Precision and recall are two widely-used metrics to measure the performance of the prediction model. Precision is defined as the percentage of true positives among all datapoints the model predicted to be positive. In our example, precision is the percentage of the respondents who actually got **College_Score** at least 65, among the respondents we predicted to make this achievement given their **HighSchool_PR**.  
 
 $$\text{Precision} = \dfrac{\text{True Positive}}{\text{Predicted Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Positive}}$$  
-Plugging in the numbers from our model, we get
 
+Plugging in the numbers from our model, we get
 $$\text{Precision} = \dfrac{72}{72+35} \approx 67.29\%.$$  
 
 The precision would be useful if we use the predictive information to decide to invest in which high school students based on their **HighSchool_PR**. If we predict a student to score **College_Score** at least 65, he/she has about a 67.29% chance to make it, which is more than two-thirds. Since there are different tiers of high schools in Taiwan based on **HighSchool_PR**, many resources are given to the top tier high schools, because these students have the highest chance to do well on the college entrance exam. Nevertheless, other social factors also play a role in the overall policy decision-making process. For example, the government may decide to put more resources into remote rural high schools to empower disadvantaged students to succeed, which is beneficial for upward social mobility.  
@@ -764,8 +764,8 @@ The precision would be useful if we use the predictive information to decide to 
 On the other hand, recall is defined as the percentage of model-predicted positives among all datapoints that are actually positive. In our example, recall is the percentage of the respondents we predicted to have **College_Score** at least 65 given their **HighSchool_PR**, among the respondents who actually made this achievement. 
 
 $$\text{Recall} = \dfrac{\text{True Positive}}{\text{Actual Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Negative}}$$  
-Plugging in the numbers from our model, we get 
 
+Plugging in the numbers from our model, we get 
 $$\text{Recall} = \dfrac{72}{72+20} \approx 78.26\%.$$  
 
 The recall would also be useful if we use the predictive information to decide to invest in which high school students based on their **HighSchool_PR**. We need to remember that among the high school graduates who got a **College_Score** at least 65, only 78.26% of them were predicted to have such potential. In other words, the remaining 21.74% of high school students did better than the predictive model had expected. It is possible that they were smart but accidentally did poorly on the high school entrance exam, and they would have achieved **College_Score** at least 65 regardless. Another possibility is that they did not study much in middle school and got a low **HighSchool_PR**, but they received extra help and/or studied much harder for the college entrance exam to get a **College_Score** at least 65. The lesson is that by pre-selecting students based on **HighSchool_PR**, we would still get some "dark horses", i.e., the students who performed much better on the **College_Score** than we had expected.  
@@ -777,7 +777,10 @@ The model is imperfect.
 
 Also write about the overall accuracy.  
 
-$$\text{Accuracy} = \dfrac{\text{True Positive + True Negative}}{\text{Actual Positive + Actual Negative}} = \dfrac{\text{True Positive + True Negative}}{\text{All Datapoints}}$$ 
+$$\text{Accuracy} = \dfrac{\text{True Positive + True Negative}}{\text{Actual Positive + Actual Negative}} = \dfrac{\text{True Positive + True Negative}}{\text{All Datapoints}}$$  
+
+Plugging in the numbers from our model, we get 
+$$\text{Accuracy} = \dfrac{72+61}{72+20+35+61} \approx 70.74\%.$$
 
 Note that when the data are imbalanced (say, 80% of the records belong to one category), accuracy is not a good measure of model performance.^[https://www.analyticsvidhya.com/blog/2017/03/imbalanced-data-classification/] The good news is that we get a relatively balanced dataset by setting the classification threshold of **College_Score** to be 65, as we explained at the beginning of Section \ref{threshold-65}. In fact, 48.9% of the respondents have a **College_Score** of 65 or higher.  
 
