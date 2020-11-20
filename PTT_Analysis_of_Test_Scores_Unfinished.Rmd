@@ -775,9 +775,7 @@ print(paste("The proportion of respondents with College_Score 65 or higher is",
             round(sum(data_corr$CS_65up)/nrow(data_corr), digits = 3)))
 ```
 
-\textcolor{red}{More context here}  
-
-**Precision** and **recall** are also two widely-used metrics to measure the performance of the prediction model. Precision is defined as the percentage of true positives among all datapoints the model predicted to be positive. In our example, precision is the percentage of the respondents who actually got **College_Score** at least 65, among the respondents we predicted to make this achievement given their **HighSchool_PR**.  
+**Precision** and **recall** are also two widely-used metrics to measure the performance of the prediction model, and most importantly, they do not depend much on the proportions of data categories. Precision is defined as the percentage of true positives among all datapoints the model predicted to be positive. In our example, precision is the percentage of the respondents who actually got **College_Score** at least 65, among the respondents we predicted to make this achievement given their **HighSchool_PR**.  
 
 $$\text{Precision} = \dfrac{\text{True Positive}}{\text{Predicted Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Positive}}$$  
 
@@ -812,7 +810,10 @@ $$\text{False Positive Rate} = \dfrac{\text{False Positive}}{\text{Actual Negati
 
 $$\text{False Negative Rate} = \dfrac{\text{False Negative}}{\text{Actual Positive}} = \dfrac{\text{False Negative}}{\text{True Positive + False Negative}}$$
 
-\textcolor{red}{Add the numbers and numeric formulas}
+\textcolor{red}{Add the interpretation here}
+
+
+$$\text{False Negative Rate} = 1 - \text{Recall}$$
 
 ## Model Validation: Breakdown by High School Entrance Exam Scores
 
