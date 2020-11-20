@@ -752,7 +752,32 @@ confusion
 
 \section*{\textcolor{red}{Unfinished below}}
 
-Precision and recall are two widely-used metrics to measure the performance of the prediction model. Precision is defined as the percentage of true positives among all datapoints the model predicted to be positive. In our example, precision is the percentage of the respondents who actually got **College_Score** at least 65, among the respondents we predicted to make this achievement given their **HighSchool_PR**.  
+## Model Validation: Interpretation of Confusion Matrix
+
+\textcolor{red}{Some context here}
+
+To measure the model performance, we start with the overall **accuracy** to calculate how many datapoints the model predicted correctly. A datapoint is correctly predicted if one of the two scenarios occurs:  
+
+- True Positive: The datapoint is actually positive and it is predicted as positive.
+- True Negative: The datapoint is actually negative and it is predicted as negative.
+
+In the context of our dataset, "positive" means getting a **College_Score** 65 or higher, and "negative" means getting a **College_Score** of 64 or lower. We run the model to predict the respondents' college entrance exam outcome given their **HighSchool_PR**. In mathematical terms, accuracy can be calculated as below:
+
+$$\text{Accuracy} = \dfrac{\text{True Positive + True Negative}}{\text{Actual Positive + Actual Negative}} = \dfrac{\text{True Positive + True Negative}}{\text{All Datapoints}}$$  
+
+Plugging in the numbers from our model, we get 
+$$\text{Accuracy} = \dfrac{72+61}{72+20+35+61} \approx 70.74\%.$$
+
+Note that when the data are imbalanced (say, 80% of the records belong to one category), accuracy is not a good measure of model performance.^[https://www.analyticsvidhya.com/blog/2017/03/imbalanced-data-classification/] The good news is that we get a relatively balanced dataset by setting the classification threshold of **College_Score** to be 65, as we explained at the beginning of Section \ref{threshold-65}. In fact, 48.9% of the respondents have a **College_Score** of 65 or higher.  
+
+```{r data-proportion-check}
+print(paste("The proportion of respondents with College_Score 65 or higher is",
+            round(sum(data_corr$CS_65up)/nrow(data_corr), digits = 3)))
+```
+
+\textcolor{red}{More context here}  
+
+**Precision** and **recall** are also two widely-used metrics to measure the performance of the prediction model. Precision is defined as the percentage of true positives among all datapoints the model predicted to be positive. In our example, precision is the percentage of the respondents who actually got **College_Score** at least 65, among the respondents we predicted to make this achievement given their **HighSchool_PR**.  
 
 $$\text{Precision} = \dfrac{\text{True Positive}}{\text{Predicted Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Positive}}$$  
 
@@ -775,19 +800,7 @@ The recall would also be useful if we use the predictive information to decide t
 
 The model is imperfect.  
 
-Also write about the overall accuracy.  
 
-$$\text{Accuracy} = \dfrac{\text{True Positive + True Negative}}{\text{Actual Positive + Actual Negative}} = \dfrac{\text{True Positive + True Negative}}{\text{All Datapoints}}$$  
-
-Plugging in the numbers from our model, we get 
-$$\text{Accuracy} = \dfrac{72+61}{72+20+35+61} \approx 70.74\%.$$
-
-Note that when the data are imbalanced (say, 80% of the records belong to one category), accuracy is not a good measure of model performance.^[https://www.analyticsvidhya.com/blog/2017/03/imbalanced-data-classification/] The good news is that we get a relatively balanced dataset by setting the classification threshold of **College_Score** to be 65, as we explained at the beginning of Section \ref{threshold-65}. In fact, 48.9% of the respondents have a **College_Score** of 65 or higher.  
-
-```{r data-proportion-check}
-print(paste("The proportion of respondents with College_Score 65 or higher is",
-            round(sum(data_corr$CS_65up)/nrow(data_corr), digits = 3)))
-```
 
 \textcolor{red}{Add the numbers and numeric formulas}  
 
