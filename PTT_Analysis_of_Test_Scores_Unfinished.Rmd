@@ -806,7 +806,13 @@ Relationship between fpr, fnr, precision, recall.
 
 $$\text{False Positive Rate} = \dfrac{\text{False Positive}}{\text{Actual Negative}} = \dfrac{\text{False Positive}}{\text{True Negative + False Positive}}$$
 
+Plugging in the numbers from our model, we get 
+$$\text{False Positive Rate} = \dfrac{35}{35+61} \approx 36.46\%.$$
+
 $$\text{False Negative Rate} = \dfrac{\text{False Negative}}{\text{Actual Positive}} = \dfrac{\text{False Negative}}{\text{True Positive + False Negative}}$$
+
+Plugging in the numbers from our model, we get 
+$$\text{False Negative Rate} = \dfrac{20}{72+20} \approx 21.74\%.$$
 
 \textcolor{red}{Add the interpretation here}
 
