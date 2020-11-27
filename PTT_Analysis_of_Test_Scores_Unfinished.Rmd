@@ -772,6 +772,8 @@ print(paste("The proportion of respondents with College_Score 65 or higher is",
             round(sum(data_corr$CS_65up)/nrow(data_corr), digits = 3)))
 ```
 
+\subsubsection*{Precision and Recall}
+
 **Precision** and **recall** are also two widely-used metrics to measure the performance of the prediction model, and most importantly, they do not depend much on the proportions of data categories. Precision is defined as the percentage of true positives among all datapoints the model predicted to be positive. In our example, precision is the percentage of the respondents who actually got **College_Score** at least 65, among the respondents we predicted to make this achievement given their **HighSchool_PR**.  
 
 $$\text{Precision} = \dfrac{\text{True Positive}}{\text{Predicted Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Positive}}$$  
@@ -792,15 +794,13 @@ The recall would also be useful if we use the predictive information to decide t
 
 \section*{\textcolor{red}{Unfinished below}}
 
+\subsubsection*{False Positive and False Negative Rates}
+
 \textcolor{red}{Interpretation here}
 
 The model is imperfect.  
 
-
-
-\textcolor{red}{Add the numbers and numeric formulas}  
-
-Also write about false positive rate and false negative rate.  
+Test citation \cite{diagnosis-test}.  
 
 Relationship between fpr, fnr, precision, recall.
 
