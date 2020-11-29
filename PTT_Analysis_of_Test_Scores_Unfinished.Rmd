@@ -794,13 +794,11 @@ The recall would also be useful if we use the predictive information to decide t
 
 \section*{\textcolor{red}{Unfinished below}}
 
-\subsubsection*{False Positive and False Negative Rates}
+\subsubsection*{False Positive Rate and False Negative Rate}
 
 \textcolor{red}{Interpretation here}
 
-The model is imperfect.  
-
-Test citation \cite{diagnosis-test}.  
+**False positive rate** and **false negative rate** are typically used to measure the accuracy of a medical screening test for a disease \cite{diagnosis-test}, where "positive" means having the disease. In our dataset, "positive" means something much better -- getting a **College_Score** 65 or higher.  
 
 Relationship between fpr, fnr, precision, recall.
 
