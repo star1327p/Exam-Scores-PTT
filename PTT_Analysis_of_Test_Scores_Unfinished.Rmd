@@ -451,7 +451,9 @@ The contingency table shows a positive association between **HighSchool_PR** and
 
 This section contains statistical methods beyond the Statistics 101 level, and we would like to give the readers a head start of generalized linear models. We explained the requirements of linear regression in Section \ref{linear-reg}, and now we would like to expand the regression model to additional forms. We decided to introduce generalized linear models early on, because we would like to show that there exist methods to analyze the data `ptt_SENIORHIGH_data.csv` other than linear regression.  
 
-\textcolor{red}{Consider moving the model validation sections to a separate chapter. The machine learning concepts are not related to the logistic regression itself, so readers without a mathematical background can still learn these concepts.}
+\textcolor{red}{Consider moving the model validation sections to a separate chapter. The machine learning concepts are not related to the logistic regression itself, so readers without a mathematical background can still learn these concepts.}  
+
+\textcolor{red}{In the model validation sections, we can regard the logistic regression model as a blackbox, which simply produces the binary classification output.}  
 
 ## Brief Introduction of Logistic Regression
 
@@ -796,16 +798,18 @@ The recall would also be useful if we use the predictive information to decide t
 
 \subsubsection*{False Positive Rate and False Negative Rate}
 
-\textcolor{red}{Interpretation here}
+**False positive rate** and **false negative rate** are typically used to measure the accuracy of a medical screening test for a disease \cite{diagnosis-test}, where "positive" means having the disease and "negative" means not having the disease. In our dataset, "positive" means something much better -- getting a **College_Score** 65 or higher. "Negative" means not achieving this.  
 
-**False positive rate** and **false negative rate** are typically used to measure the accuracy of a medical screening test for a disease \cite{diagnosis-test}, where "positive" means having the disease. In our dataset, "positive" means something much better -- getting a **College_Score** 65 or higher.  
-
-Relationship between fpr, fnr, precision, recall.
+False positive rate is the probability of an actual negative being classified as a positive, and it is also called a "false alarm". In medical terms, this means someone is tested positive for a disease, but actually does not have it. In our dataset, this means a student was predicted to get **College_Score** at least 65, but actually did not.  
 
 $$\text{False Positive Rate} = \dfrac{\text{False Positive}}{\text{Actual Negative}} = \dfrac{\text{False Positive}}{\text{True Negative + False Positive}}$$
 
 Plugging in the numbers from our model, we get 
 $$\text{False Positive Rate} = \dfrac{35}{35+61} \approx 36.46\%.$$
+
+\textcolor{red}{Add the interpretation here}
+
+On the other hand, false negative rate is the probability of an actual positive being classified as a negative. In medical terms, this means someone is tested negative for a disease, but actually has the disease. In our dataset, this means a student actually got **College_Score** at least 65, but we predicted him/her as not achieving this.
 
 $$\text{False Negative Rate} = \dfrac{\text{False Negative}}{\text{Actual Positive}} = \dfrac{\text{False Negative}}{\text{True Positive + False Negative}}$$
 
@@ -814,8 +818,13 @@ $$\text{False Negative Rate} = \dfrac{20}{72+20} \approx 21.74\%.$$
 
 \textcolor{red}{Add the interpretation here}
 
+Relationship between fpr, fnr, precision, recall.
 
 $$\text{False Negative Rate} = 1 - \text{Recall}$$
+
+In what situations is the false positive rate more important?  
+
+In what situations is the false negative rate more important?  
 
 ## Model Validation: Breakdown by High School Entrance Exam Scores
 
