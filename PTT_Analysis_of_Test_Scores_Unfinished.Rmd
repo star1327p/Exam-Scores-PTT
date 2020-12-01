@@ -783,7 +783,7 @@ $$\text{Precision} = \dfrac{\text{True Positive}}{\text{Predicted Positive}} = \
 Plugging in the numbers from our model, we get
 $$\text{Precision} = \dfrac{72}{72+35} \approx 67.29\%.$$  
 
-The precision would be useful if we use the predictive information to decide to invest in which high school students based on their **HighSchool_PR**. If we predict a student to score **College_Score** at least 65, he/she has about a 67.29% chance to make it, which is more than two-thirds. Since there are different tiers of high schools in Taiwan based on **HighSchool_PR**, many resources are given to the top tier high schools, because these students have the highest chance to do well on the college entrance exam. Nevertheless, other social factors also play a role in the overall policy decision-making process. For example, the government may decide to put more resources into remote rural high schools to empower disadvantaged students to succeed, which is beneficial for upward social mobility.  
+The precision would be useful if we use the predictive information to decide to invest in which high school students based on their **HighSchool_PR**. If we predict a student to get **College_Score** at least 65, he/she has about a 67.29% chance to make it, which is more than two-thirds. Since there are different tiers of high schools in Taiwan based on **HighSchool_PR**, many resources are given to the top tier high schools, because these students have the highest chance to do well on the college entrance exam. Nevertheless, other social factors also play a role in the overall policy decision-making process. For example, the government may decide to put more resources into remote rural high schools to empower disadvantaged students to succeed, which is beneficial for upward social mobility.
 
 On the other hand, recall is defined as the percentage of model-predicted positives among all datapoints that are actually positive. In our example, recall is the percentage of the respondents we predicted to have **College_Score** at least 65 given their **HighSchool_PR**, among the respondents who actually made this achievement. 
 
@@ -807,20 +807,22 @@ $$\text{False Positive Rate} = \dfrac{\text{False Positive}}{\text{Actual Negati
 Plugging in the numbers from our model, we get 
 $$\text{False Positive Rate} = \dfrac{35}{35+61} \approx 36.46\%.$$
 
-\textcolor{red}{Add the interpretation here}
+Given that a student did not get  **College_Score** at least 65, there is a 36.46\% chance that we predicted him/her to achieve this. We would like to give the benefit of the doubt, saying that the student simply did not do well on the first college entrance exam for early admission. It is possible that he/she was able to get into a better school through taking the second college entrance exam for regular admission.
 
 On the other hand, false negative rate is the probability of an actual positive being classified as a negative. In medical terms, this means someone is tested negative for a disease, but actually has the disease. In our dataset, this means a student actually got **College_Score** at least 65, but we predicted him/her as not achieving this.
 
 $$\text{False Negative Rate} = \dfrac{\text{False Negative}}{\text{Actual Positive}} = \dfrac{\text{False Negative}}{\text{True Positive + False Negative}}$$
 
+False negative rate means how likely the model missed actual positive datapoints, so this rate is the opposite of recall.
+
+$$\text{False Negative Rate} = 1 - \text{Recall}$$
+
 Plugging in the numbers from our model, we get 
 $$\text{False Negative Rate} = \dfrac{20}{72+20} \approx 21.74\%.$$
 
+Given that a student actually got **College_Score** at least 65, there is a 21.74\% chance that we did not predict him/her to achieve this. We need to remember that the model is imperfect, so there always exist students who did better in **College_Score** than the model had expected. To put it differently, **HighSchool_PR** is not a full indicator of achieving **College_Score** at least 65 or not. This is an encouraging message to students who did not do well in **HighSchool_PR**, because they still have a chance in **College_Score** to get admitted to a good school.
+
 \textcolor{red}{Add the interpretation here}
-
-Relationship between fpr, fnr, precision, recall.
-
-$$\text{False Negative Rate} = 1 - \text{Recall}$$
 
 In what situations is the false positive rate more important?  
 
