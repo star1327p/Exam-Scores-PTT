@@ -29,6 +29,10 @@ The author(s) grew up in Taiwan, so we are curious about the relationship betwee
 
 Briefly introduce the data, e.g. PTT, number of respondents, etc.  
 
+Since it is difficult to obtain a representative sample of people's scores on the high school entrance exam and college entrance exam. 
+
+We decided to gather data from PTT, the largest terminal-based bulletin board in Taiwan.
+
 \section*{\textcolor{red}{Unfinished above}}
 
 For the rest of this article, we begin with a short background of Taiwan's high school and college entrance exams, followed by the description of our dataset. We start the technical content with exploratory data analysis, in order to identify and visualize the distribution of exam scores. Next, we explain our decisions in statistical modeling, such as whether a linear regression is appropriate or not. We also take a closer look at the top scorers, because they typically came from prestigious high schools and/or colleges. Then we move on to introduce advanced models like logistic regression. Finally, we provide our discussion, state our conclusion, and give some personal remarks.
