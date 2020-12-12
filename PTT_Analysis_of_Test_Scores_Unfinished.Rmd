@@ -821,8 +821,12 @@ Given that a student actually got **College_Score** at least 65, there is a 21.7
 \textcolor{red}{Add the interpretation here}
 
 In what situations is the false positive rate more important?  
+e.g. Prompting users to re-enter login information to verify identity for social media  
 
 In what situations is the false negative rate more important?  
+e.g. Medical testing for a rare disease  
+
+Give the example of sensitivity vs specificity in clinical testing.
 
 ## Model Validation: Breakdown by High School Entrance Exam Scores
 
