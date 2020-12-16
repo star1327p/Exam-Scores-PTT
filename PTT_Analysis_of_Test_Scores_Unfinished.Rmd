@@ -879,7 +879,11 @@ Write something here
 Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] typically requires **HighSchool_PR** 99 for admission.  
 
 The Department of Electrical Engineering at National Taiwan University (NTUEE)^[https://web.ee.ntu.edu.tw/eng/index.php] typically requires
-full marks in English, mathematics, and science in **College_Score** for the early admission.^[https://university.1111.com.tw/univ_depinfo9.aspx?sno=100102&mno=520101] Most students at NTUEE have a **College_Score** of 70 or higher, but still a significant number of students got admitted through the regular college entrance exam process in July.
+full marks in English, mathematics, and science in **College_Score** for the early admission.^[https://university.1111.com.tw/univ_depinfo9.aspx?sno=100102&mno=520101] Most students at NTUEE have a **College_Score** of 70 or higher, but still a significant number of students got admitted through the regular college entrance exam process in July.  
+
+Finally, include my own scores as a datapoint for prediction.  
+
+\textcolor{red}{Don't show the numbers until I am ready to work on this section!}
 
 # Appendix
 
