@@ -782,7 +782,7 @@ print(paste("The proportion of respondents with College_Score 65 or higher is",
             round(sum(data_corr$CS_65up)/nrow(data_corr), digits = 3)))
 ```
 
-\subsubsection*{Precision and Recall}
+\subsubsection{Precision and Recall}
 
 **Precision** and **recall** are also two widely-used metrics to measure the performance of the prediction model, and most importantly, they do not depend much on the proportions of data categories. Precision is defined as the percentage of true positives among all datapoints the model predicted to be positive. In our example, precision is the percentage of the respondents who actually got **College_Score** at least 65, among the respondents we predicted to make this achievement given their **HighSchool_PR**.  
 
@@ -802,7 +802,7 @@ $$\text{Recall} = \dfrac{72}{72+20} \approx 78.26\%.$$
 
 The recall would also be useful if we use the predictive information to decide to invest in which high school students based on their **HighSchool_PR**. We need to remember that among the high school graduates who got a **College_Score** at least 65, only 78.26% of them were predicted to have such potential. In other words, the remaining 21.74% of high school students did better than the predictive model had expected. It is possible that they were smart but accidentally did poorly on the high school entrance exam, and they would have achieved **College_Score** at least 65 regardless. Another possibility is that they did not study much in middle school and got a low **HighSchool_PR**, but they received extra help and/or studied much harder for the college entrance exam to get a **College_Score** at least 65. The lesson is that by pre-selecting students based on **HighSchool_PR**, we would still get some "dark horses", i.e., the students who performed much better on the **College_Score** than we had expected.  
 
-\subsubsection*{False Positive Rate and False Negative Rate}
+\subsubsection{False Positive Rate and False Negative Rate}
 
 **False positive rate** and **false negative rate** are typically used to measure the accuracy of a medical screening test for a disease \cite{diagnosis-test}, where "positive" means having the disease and "negative" means not having the disease. In our dataset, "positive" means something much better -- getting a **College_Score** 65 or higher. "Negative" means not achieving this.  
 
@@ -828,20 +828,31 @@ $$\text{False Negative Rate} = \dfrac{20}{72+20} \approx 21.74\%.$$
 
 Given that a student actually got **College_Score** at least 65, there is a 21.74\% chance that we did not predict him/her to achieve this. We need to remember that the model is imperfect, so there always exist students who did better in **College_Score** than the model had expected. To put it differently, **HighSchool_PR** is not a full indicator of achieving **College_Score** at least 65 or not. This is an encouraging message to students who did not do well in **HighSchool_PR**, because they still have a chance in **College_Score** to get admitted to a good school.
 
-\section*{\textcolor{red}{Unfinished below}}
-
-\subsubsection*{Application Remarks}
+\subsubsection{More Applications}
 
 In our data analysis, false positive rate and false negative rate have about equal importance. But in certain situations, one can be much more important than the other. For instance, false positive rate is an essential measure in the effectiveness of prompting users to re-enter login information to verify identity for social media. The goal of re-entering credentials is to prevent unauthorized logins, but when people get prompted too many times while using their own account, they would get frustrated and leave the website. This leads to significant revenue loss in business.^[<https://fcase.io/a-major-challenge-false-positives/>]  
 
 On the contrary, we are more concerned about the false negative rate in medical testing for a rare disease. The goal of medical testing is to identify as many people with the disease as possible, so that these people can receive timely medical treatment. Hence we are more concerned when the test fails to detect a person who actually has the disease.^[<https://brownmath.com/stat/falsepos.htm>]   
 
+\section*{\textcolor{red}{Unfinished below}}
+
 Going off on a tangent here ...  
 
 Give the example of sensitivity vs specificity in clinical testing.  
 
-Sensitivity: True Positive Rate  
-Specificity: True Negative Rate  
+**Sensitivity: True Positive Rate**  
+
+$$\text{Sensitivity} = \dfrac{\text{True Positive}}{\text{Actual Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Negative}}$$
+In other words,
+
+$$\text{Sensitivity} = \text{Recall} = 1 - \text{False Negative Rate}.$$
+
+**Specificity: True Negative Rate**  
+
+$$\text{Specificity} = \dfrac{\text{True Negative}}{\text{Actual Negative}} = \dfrac{\text{True Negative}}{\text{True Negative + False Positive}}$$
+In other words,
+
+$$\text{Specificity} = 1 - \text{False Positive Rate}.$$
 
 Assume 0.1% of the population have the rare disease.  
 
