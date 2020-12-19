@@ -150,7 +150,7 @@ Finally, we can calculate the correlation coefficient as:
 
 $$\rho_{X,Y} = \dfrac{\text{Cov}(X,Y)}{\sigma_X \sigma_Y}.$$
 
-# Statistical Modeling Decisions {#linear-reg}
+# Linear Regression {#linear-reg}
 
 We are going to decide whether we should run a linear regression to predict **College_Score** from **HighSchool_PR**. If yes, we would implement the model and check the residuals. If no, we need to explore other options in analyzing the data.  
 
@@ -276,7 +276,7 @@ nrow(data_corr) # number of all respondents without missing data
 
 **Remark**: Conditional probability is the foundation of Bayesian statistics, which updates the existing probabilities given the new data. For the interested readers, we recommend the book \textit{An Introduction to Bayesian Thinking: A Companion to the Statistics with $\mathsf{R}$ Course} \cite{clyde2020bayesian101} as a starting point to learn Bayesian statistics. It is the supplementary materials for the Bayesian statistics course on Coursera from Duke University^[<https://www.coursera.org/learn/bayesian>].
 
-# A Closer Look at the Top Scorers
+# Top Scorers: A Closer Look
 
 We are going to take a closer look at the top scorers, given the observation in Section \ref{examine-further}. In Taiwan's education system, the top tier of high schools and colleges can be further segmented. The top of the top tier can be very different than the bottom of top tier. Therefore, we consider the following subcategories:     
 
@@ -443,11 +443,18 @@ table_4x4
 
 The contingency table shows a positive association between **HighSchool_PR** and **College_Score**: Respondents with a good **HighSchool_PR** score are more likely to achieve a good **College_Score**, but this is not guaranteed. Respondents who scored poorly in **HighSchool_PR** still had a small chance to do exceptionally well in **College_Score** later. Our findings align with the conventional wisdom that **HighSchool_PR** and **College_Score** are somewhat related, but a high score on **HighSchool_PR** does not guarantee a high score on **College_Score**.
 
-# Advanced Content: Logistic Regression
+# Logistic Regression
+
+\section*{\textcolor{red}{Unfinished Below}}
+
+Since we concluded in Section \ref{linear-reg} that it is inappropriate to perform a linear regression between **HighSchool_PR** and **College_Score**, let's try a different statistical model to evaluate the relationship between the two variables.  
+
+What is the problem statement? Can be changed.  
 
 This section contains statistical methods beyond the Statistics 101 level, and we would like to give the readers a head start of generalized linear models. We explained the requirements of linear regression in Section \ref{linear-reg}, and now we would like to expand the regression model to additional forms. We decided to introduce generalized linear models early on, because we would like to show that there exist methods to analyze the data `ptt_SENIORHIGH_data.csv` other than linear regression.  
 
-\section*{\textcolor{red}{Unfinished Below}}
+We would like to redefine the problem statement to "estimate the probability of **College_Score** at least 65, given the student's **HighSchool_PR**." Since the variance of **College_Score** depends on **HighSchool_PR**, the assumptions of linear regression are violated, making linear regression an inappropriate model. That's why we decided to focus on whether **College_Score** is at least a particular value instead, so the response variable is binary. We selected 65 as the cutoff point for **College_Score** because this is close to the median, making the number of values about the same in the two categories. We would like to balance the number of datapoints in each category of the response variable.
+
 
 Unsure if the section name should contain the term "Advanced Content", because we try to explain the logistic regression in basic terminology.  
 
