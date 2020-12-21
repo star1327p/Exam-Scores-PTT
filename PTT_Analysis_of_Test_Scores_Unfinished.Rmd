@@ -861,7 +861,27 @@ In other words,
 
 $$\text{Specificity} = 1 - \text{False Positive Rate}.$$
 
-Assume 0.1% of the population have the rare disease.  
+Assume 0.1% of the population have a specific disease.  
+
+In a population of 500,000 people, 500 people would have the disease.  
+
+Now we have a medical test that claims to be 99% accurate, which means the test has 99% sensitivity and 99% specificity. Hence the false positive rate and the false negative rate are both 1%.   
+
+For the 500 people who actually have the disease, 495 people tested positive and 5 people tested negative.  
+
+For the 499,500 people who do not have the disease, 4,995 people tested positive and the remaining 494,505 people tested negative.  
+
+Given that a patient tested positive, what is the probability that he/she actually have the disease?  
+
+$$\begin{aligned}
+& P(\text{Actual Positive}|\text{Test Positive}) = \dfrac{P(\text{Actual Positive} \cap \text{Test Positive})}{P(\text{Test Positive})}\\
+&= \dfrac{P(\text{Actual Positive} \cap \text{Test Positive})}{P(\text{Actual Positive} \cap \text{Test Positive}) + P(\text{Actual Negative} \cap \text{Test Positive})}\\
+&= \dfrac{495}{495 + 4995} \approx 9.16\%.
+\end{aligned}$$
+
+The patient does not have the disease for more than 90% of the time.  
+
+\textcolor{red}{Interpretation of the numbers here}
 
 <https://www.healthnewsreview.org/toolkit/tips-for-understanding-studies/understanding-medical-tests-sensitivity-specificity-and-positive-predictive-value/>
 
