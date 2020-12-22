@@ -879,11 +879,17 @@ $$\begin{aligned}
 &= \dfrac{495}{495 + 4995} \approx 9.16\%.
 \end{aligned}$$
 
+Therefore, the patient has only 9.16% of chance of actually having the disease, despite that he/she already tested positive.  
+
 The patient does not have the disease for more than 90% of the time.  
 
 \textcolor{red}{Interpretation of the numbers here}
 
-<https://www.healthnewsreview.org/toolkit/tips-for-understanding-studies/understanding-medical-tests-sensitivity-specificity-and-positive-predictive-value/>
+<https://www.healthnewsreview.org/toolkit/tips-for-understanding-studies/understanding-medical-tests-sensitivity-specificity-and-positive-predictive-value/>  
+
+<https://math.hmc.edu/funfacts/medical-tests-and-bayes-theorem/>
+
+<https://www.washingtonpost.com/news/posteverything/wp/2018/10/05/feature/doctors-are-surprisingly-bad-at-reading-lab-results-its-putting-us-all-at-risk/>  
 
 ## Breakdown by High School Entrance Exam Scores
 
