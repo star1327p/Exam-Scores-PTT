@@ -861,17 +861,13 @@ In other words,
 
 $$\text{Specificity} = 1 - \text{False Positive Rate}.$$
 
-Assume 0.1% of the population have a specific disease.  
+Let's see an example in medical testing. Assume 0.1% of the population have a specific disease. In a population of 500,000 people, 500 people would have the disease. Now we have a medical test that claims to be 99% accurate, which means the test has 99% sensitivity and 99% specificity. Hence the false positive rate and the false negative rate are both 1%.   
 
-In a population of 500,000 people, 500 people would have the disease.  
+- For the 500 people who actually have the disease, 495 tested positive and 5 tested negative.  
 
-Now we have a medical test that claims to be 99% accurate, which means the test has 99% sensitivity and 99% specificity. Hence the false positive rate and the false negative rate are both 1%.   
+- For the 499,500 people who do not have the disease, 4,995 people tested positive and the remaining 494,505 people tested negative.  
 
-For the 500 people who actually have the disease, 495 people tested positive and 5 people tested negative.  
-
-For the 499,500 people who do not have the disease, 4,995 people tested positive and the remaining 494,505 people tested negative.  
-
-Given that a patient tested positive, what is the probability that he/she actually have the disease?  
+Given that a patient tested positive, what is the probability that he/she actually has the disease?  
 
 $$\begin{aligned}
 & P(\text{Actual Positive}|\text{Test Positive}) = \dfrac{P(\text{Actual Positive} \cap \text{Test Positive})}{P(\text{Test Positive})}\\
@@ -879,9 +875,17 @@ $$\begin{aligned}
 &= \dfrac{495}{495 + 4995} \approx 9.16\%.
 \end{aligned}$$
 
-Therefore, the patient has only 9.16% of chance of actually having the disease, despite that he/she already tested positive.  
+Therefore, the patient has a 9.16% of chance of actually having the disease, despite that he/she already tested positive. The patient does not have the disease for more than 90% of the time.  
 
-The patient does not have the disease for more than 90% of the time.  
+\textcolor{red}{More interpretation here}  
+
+Since the disease infects only 0.1% of the population, the medical test creates many false positives, i.e., false alarms.  
+
+But the test is still quite informative ??  
+
+Given a positive test result, the probability of the patient having the disease increases to 9.16/0.1 = 91.6 times.  
+
+$$\dfrac{P(\text{Actual Positive}|\text{Test Positive})}{P(\text{Actual Positive})} = \dfrac{9.16\%}{0.1\%} = 91.6.$$
 
 \textcolor{red}{Interpretation of the numbers here}
 
@@ -909,7 +913,7 @@ Write something more
 
 Write something here  
 
-Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] typically requires **HighSchool_PR** 99 for admission. There are some exceptions, such as recruited athletes, students with disabilities^[<http://www.rootlaw.com.tw/LawArticle.aspx?LawID=A040080080001900-1020822>], and students under other extraordinary situations^[<https://bit.ly/2WtRY63>].  
+Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] typically requires **HighSchool_PR** 99 for admission. There are some exceptions, such as recruited athletes, students with disabilities,^[<http://www.rootlaw.com.tw/LawArticle.aspx?LawID=A040080080001900-1020822>] and students under other extraordinary situations.^[<https://bit.ly/2WtRY63>]  
 
 The Department of Electrical Engineering at National Taiwan University (NTUEE)^[https://web.ee.ntu.edu.tw/eng/index.php] typically requires
 full marks in English, mathematics, and science in **College_Score** for the early admission.^[https://university.1111.com.tw/univ_depinfo9.aspx?sno=100102&mno=520101] Most students at NTUEE have a **College_Score** of 70 or higher, but still a significant number of students got admitted through the regular college entrance exam process in July.  
