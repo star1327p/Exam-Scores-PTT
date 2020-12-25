@@ -847,6 +847,10 @@ Going off on a tangent here ...
 
 Give the example of sensitivity vs specificity in clinical testing.  
 
+\textcolor{red}{Need to describe the definitions}   
+
+<https://www.healthnewsreview.org/toolkit/tips-for-understanding-studies/understanding-medical-tests-sensitivity-specificity-and-positive-predictive-value/>    
+
 **Sensitivity: True Positive Rate**  
 
 $$\text{Sensitivity} = \dfrac{\text{True Positive}}{\text{Actual Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Negative}}$$
@@ -861,13 +865,15 @@ In other words,
 
 $$\text{Specificity} = 1 - \text{False Positive Rate}.$$
 
-Let's see an example in medical testing. Assume 0.1% of the population have a specific disease. In a population of 500,000 people, 500 people would have the disease. Now we have a medical test that claims to be 99% accurate, which means the test has 99% sensitivity and 99% specificity. Hence the false positive rate and the false negative rate are both 1%.   
+Let's see an example in medical testing.^[<https://math.hmc.edu/funfacts/medical-tests-and-bayes-theorem/>] Assume 0.1% of the population have a specific disease. In a population of 500,000 people, 500 people would have the disease. Now we have a medical test that claims to be 99% accurate, which means the test has 99% sensitivity and 99% specificity. Hence the false positive rate and the false negative rate are both 1%.   
 
 - For the 500 people who actually have the disease, 495 tested positive and 5 tested negative.  
 
 - For the 499,500 people who do not have the disease, 4,995 people tested positive and the remaining 494,505 people tested negative.  
 
-Given that a patient tested positive, what is the probability that he/she actually has the disease?  
+**Given that a patient tested positive, how likely does he/she actually have the disease?**  
+
+Using the Bayes theorem, we get 
 
 $$\begin{aligned}
 & P(\text{Actual Positive}|\text{Test Positive}) = \dfrac{P(\text{Actual Positive} \cap \text{Test Positive})}{P(\text{Test Positive})}\\
@@ -875,25 +881,12 @@ $$\begin{aligned}
 &= \dfrac{495}{495 + 4995} \approx 9.16\%.
 \end{aligned}$$
 
-Therefore, the patient has a 9.16% of chance of actually having the disease, despite that he/she already tested positive. The patient does not have the disease for more than 90% of the time.  
-
-\textcolor{red}{More interpretation here}  
-
-Since the disease infects only 0.1% of the population, the medical test creates many false positives, i.e., false alarms.  
-
-But the test is still quite informative ??  
-
-Given a positive test result, the probability of the patient having the disease increases to 9.16/0.1 = 91.6 times.  
+**The patient has a 9.16% of chance of actually having the disease, despite the positive test outcome. The patient does not have the disease for more than 90% of the time.** Since the disease infects only 0.1% of the population, the medical test creates many false positives, i.e., false alarms. Nevertheless, the test is still informative because given a positive test result, the probability of the patient having the disease increases by 91.6 times.  
 
 $$\dfrac{P(\text{Actual Positive}|\text{Test Positive})}{P(\text{Actual Positive})} = \dfrac{9.16\%}{0.1\%} = 91.6.$$
 
-\textcolor{red}{Interpretation of the numbers here}
+The statistical calculation tells us that we do not have to be overly concerned about a positive medical test outcome, because the chances are still low for the person to have the disease. However, upon learning the 99% sensitivity and 99% specificity of the test, many doctors seem to associate a positive test with a high probability of having the disease.^[<https://www.washingtonpost.com/news/posteverything/wp/2018/10/05/feature/doctors-are-surprisingly-bad-at-reading-lab-results-its-putting-us-all-at-risk/>] If any of the readers become a medical doctor in the future, please remember the lesson here and make better treatment decisions for the patients.
 
-<https://www.healthnewsreview.org/toolkit/tips-for-understanding-studies/understanding-medical-tests-sensitivity-specificity-and-positive-predictive-value/>  
-
-<https://math.hmc.edu/funfacts/medical-tests-and-bayes-theorem/>
-
-<https://www.washingtonpost.com/news/posteverything/wp/2018/10/05/feature/doctors-are-surprisingly-bad-at-reading-lab-results-its-putting-us-all-at-risk/>  
 
 ## Breakdown by High School Entrance Exam Scores
 
