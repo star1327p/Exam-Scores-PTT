@@ -853,14 +853,26 @@ Give the example of sensitivity vs specificity in clinical testing.
 
 **Sensitivity: True Positive Rate**  
 
-$$\text{Sensitivity} = \dfrac{\text{True Positive}}{\text{Actual Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Negative}}$$
+Sensitivity means that when a patient actually has the disease (actual positive), the medical test is able to sense it and produce a positive result. That is, the medical test is sensitive enough to identify patients who have the disease.  
+
+\textcolor{red}{Elaborate on the description}  
+
+In mathematical terms,
+
+$$\text{Sensitivity} = \dfrac{\text{True Positive}}{\text{Actual Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Negative}}.$$
 In other words,
 
 $$\text{Sensitivity} = \text{Recall} = 1 - \text{False Negative Rate}.$$
 
 **Specificity: True Negative Rate**  
 
-$$\text{Specificity} = \dfrac{\text{True Negative}}{\text{Actual Negative}} = \dfrac{\text{True Negative}}{\text{True Negative + False Positive}}$$
+Specificity means when a patient does not have the disease (actual negative), the medical test is able to produce a negative result. That is, the medical test is specific enough that it filters out patients who do not have the disease.  
+
+\textcolor{red}{Elaborate on the description}  
+
+In mathematical terms,
+
+$$\text{Specificity} = \dfrac{\text{True Negative}}{\text{Actual Negative}} = \dfrac{\text{True Negative}}{\text{True Negative + False Positive}}.$$
 In other words,
 
 $$\text{Specificity} = 1 - \text{False Positive Rate}.$$
