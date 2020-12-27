@@ -833,47 +833,25 @@ $$\text{False Negative Rate} = 1 - \text{Recall}$$
 Plugging in the numbers from our model, we get 
 $$\text{False Negative Rate} = \dfrac{20}{72+20} \approx 21.74\%.$$
 
-Given that a student actually got **College_Score** at least 65, there is a 21.74\% chance that we did not predict him/her to achieve this. We need to remember that the model is imperfect, so there always exist students who did better in **College_Score** than the model had expected. To put it differently, **HighSchool_PR** is not a full indicator of achieving **College_Score** at least 65 or not. This is an encouraging message to students who did not do well in **HighSchool_PR**, because they still have a chance in **College_Score** to get admitted to a good school.
+Given that a student actually got **College_Score** at least 65, there is a 21.74\% chance that we did not predict him/her to achieve this. We need to remember that the model is imperfect, so there always exist students who did better in **College_Score** than the model had expected. To put it differently, **HighSchool_PR** is not a full indicator of achieving **College_Score** at least 65 or not. This is an encouraging message to students who did not do well in **HighSchool_PR**, because they still have a chance in **College_Score** to get admitted to a good school.  
 
-\subsubsection{More Applications}
+In our data analysis, false positive rate and false negative rate have about equal importance. But in certain situations, one can be much more important than the other. For instance, false positive rate is an essential measure in the effectiveness of prompting users to re-enter login information to verify identity for social media. The goal of re-entering credentials is to prevent unauthorized logins, but when people get prompted too many times while using their own account, they would get frustrated and leave the website. This leads to significant revenue loss in business.^[<https://fcase.io/a-major-challenge-false-positives/>] On the contrary, we are more concerned about the false negative rate in medical testing for a rare disease. The goal of medical testing is to identify as many people with the disease as possible, so that these people can receive timely medical treatment. Hence we are more concerned when the test fails to detect a person who actually has the disease.^[<https://brownmath.com/stat/falsepos.htm>]   
 
-In our data analysis, false positive rate and false negative rate have about equal importance. But in certain situations, one can be much more important than the other. For instance, false positive rate is an essential measure in the effectiveness of prompting users to re-enter login information to verify identity for social media. The goal of re-entering credentials is to prevent unauthorized logins, but when people get prompted too many times while using their own account, they would get frustrated and leave the website. This leads to significant revenue loss in business.^[<https://fcase.io/a-major-challenge-false-positives/>]  
+\subsubsection{Sensitivity and Specificity}
 
-On the contrary, we are more concerned about the false negative rate in medical testing for a rare disease. The goal of medical testing is to identify as many people with the disease as possible, so that these people can receive timely medical treatment. Hence we are more concerned when the test fails to detect a person who actually has the disease.^[<https://brownmath.com/stat/falsepos.htm>]   
-
-\section*{\textcolor{red}{Unfinished below}}
-
-Going off on a tangent here ...  
-
-Give the example of sensitivity vs specificity in clinical testing.  
-
-\textcolor{red}{Need to describe the definitions}   
-
-<https://www.healthnewsreview.org/toolkit/tips-for-understanding-studies/understanding-medical-tests-sensitivity-specificity-and-positive-predictive-value/>    
-
-**Sensitivity: True Positive Rate**  
+We are going off on a tangent here, because this section is not directly related to the data of high school and college entrance exam scores. But we think it is importance to introduce the concepts of **sensitivity** and **specificity** to the readers, since they are also used to describe the overall testing results, especially in a clinical setting.^[<https://www.healthnewsreview.org/toolkit/tips-for-understanding-studies/understanding-medical-tests-sensitivity-specificity-and-positive-predictive-value/>]   
 
 Sensitivity means that when a patient actually has the disease (actual positive), the medical test is able to sense it and produce a positive result. That is, the medical test is sensitive enough to identify patients who have the disease.  
 
-\textcolor{red}{Elaborate on the description}  
-
-In mathematical terms,
-
 $$\text{Sensitivity} = \dfrac{\text{True Positive}}{\text{Actual Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Negative}}.$$
-In other words,
+Sensitivity is equivalent to the true positive rate (a.k.a. recall), or the opposite of the false negative rate.
 
 $$\text{Sensitivity} = \text{Recall} = 1 - \text{False Negative Rate}.$$
 
-**Specificity: True Negative Rate**  
-
-Specificity means when a patient does not have the disease (actual negative), the medical test is able to produce a negative result. That is, the medical test is specific enough that it filters out patients who do not have the disease.  
-
-\textcolor{red}{Elaborate on the description}  
-
-In mathematical terms,
+On the other hand, specificity means when a patient does not have the disease (actual negative), the medical test is able to produce a negative result. That is, the medical test is specific enough that it filters out patients who do not have the disease.   
 
 $$\text{Specificity} = \dfrac{\text{True Negative}}{\text{Actual Negative}} = \dfrac{\text{True Negative}}{\text{True Negative + False Positive}}.$$
-In other words,
+Specificity is equivalent to the true negative rate, or the opposite of the false positive rate.  
 
 $$\text{Specificity} = 1 - \text{False Positive Rate}.$$
 
@@ -899,8 +877,11 @@ $$\dfrac{P(\text{Actual Positive}|\text{Test Positive})}{P(\text{Actual Positive
 
 The statistical calculation tells us that we do not have to be overly concerned about a positive medical test outcome, because the chances are still low for the person to have the disease. However, upon learning the 99% sensitivity and 99% specificity of the test, many doctors seem to associate a positive test with a high probability of having the disease.^[<https://www.washingtonpost.com/news/posteverything/wp/2018/10/05/feature/doctors-are-surprisingly-bad-at-reading-lab-results-its-putting-us-all-at-risk/>] If any of the readers become a medical doctor in the future, please remember the lesson here and make better treatment decisions for the patients.
 
+\section*{\textcolor{red}{Unfinished below}}
 
 ## Breakdown by High School Entrance Exam Scores
+
+Before starting this section, complete the forewords for the sections "Logistic Regression" and "Model Validation".  
 
 Write something more  
 
