@@ -447,14 +447,15 @@ The contingency table shows a positive association between **HighSchool_PR** and
 
 \section*{\textcolor{red}{Unfinished Below}}
 
-Since we concluded in Section \ref{linear-reg} that it is inappropriate to perform a linear regression between **HighSchool_PR** and **College_Score**, let's try a different statistical model to evaluate the relationship between the two variables.  
+We decided to perform a logistic regression model to quantify the relationship between **HighSchool_PR** and **College_Score**, because we concluded in Section \ref{linear-reg} that it is inappropriate to perform an ordinary linear regression. (We also tried the square root transformation, but it did not work out, either.) Let's try a different statistical model to evaluate the relationship between the two variables. Typically when the ordinary linear regression model is ruled out, the next candidate is a generalized linear model, such as logistic regression and Poisson regression. Choosing a different model may involve modifying the details of the problem statement.   
 
-What is the problem statement? Can be changed.  
+The original problem statement is to investigate the relationship between **College_Score** and **HighSchool_PR**, but it is flexible and does not require the relationship to be linear. 
 
-This section contains statistical methods beyond the Statistics 101 level, and we would like to give the readers a head start of generalized linear models. We explained the requirements of linear regression in Section \ref{linear-reg}, and now we would like to expand the regression model to additional forms. We decided to introduce generalized linear models early on, because we would like to show that there exist methods to analyze the data `ptt_SENIORHIGH_data.csv` other than linear regression.  
+\textcolor{red}{What is the problem statement? Can be changed.}  
 
 We would like to redefine the problem statement to "estimate the probability of **College_Score** at least 65, given the student's **HighSchool_PR**." Since the variance of **College_Score** depends on **HighSchool_PR**, the assumptions of linear regression are violated, making linear regression an inappropriate model. That's why we decided to focus on whether **College_Score** is at least a particular value instead, so the response variable is binary. We selected 65 as the cutoff point for **College_Score** because this is close to the median, making the number of values about the same in the two categories. We would like to balance the number of datapoints in each category of the response variable.
 
+This section contains statistical methods beyond the Statistics 101 level, and we would like to give the readers a head start of generalized linear models. We explained the requirements of linear regression in Section \ref{linear-reg}, and now we would like to expand the regression model to additional forms. We decided to introduce generalized linear models early on, because we would like to show that there exist methods to analyze the data `ptt_SENIORHIGH_data.csv` other than linear regression.  
 
 Unsure if the section name should contain the term "Advanced Content", because we try to explain the logistic regression in basic terminology.  
 
@@ -885,7 +886,9 @@ Before starting this section, complete the forewords for the sections "Logistic 
 
 Write something more  
 
-Create more graphs
+Create more graphs  
+
+Consider cross validation
 
 # Discussion and Conclusion
 
