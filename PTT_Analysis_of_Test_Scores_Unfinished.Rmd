@@ -445,15 +445,14 @@ The contingency table shows a positive association between **HighSchool_PR** and
 
 # Logistic Regression
 
+We decided to perform a logistic regression model to quantify the relationship between **HighSchool_PR** and **College_Score**, because we concluded in Section \ref{linear-reg} that it is inappropriate to perform an ordinary linear regression. (We also tried the square root transformation, but it did not work out, either.) Let's try a different statistical model to evaluate the relationship between the two variables. Typically when the ordinary linear regression model is ruled out, the next candidate is a generalized linear model, such as logistic regression and Poisson regression. Choosing a different model may involve modifying the details of the problem statement. The original problem statement is to investigate the relationship between **College_Score** and **HighSchool_PR**, but it is flexible and does not require the relationship to be linear. 
+
+We would like to redefine the problem statement to "estimate the probability of **College_Score** at least 65, given the student's **HighSchool_PR**." Since the variance of **College_Score** depends on **HighSchool_PR**, the assumptions of linear regression are violated, making linear regression an inappropriate model. We decided to focus on whether **College_Score** is at least a particular value instead, so the response variable is binary. We selected 65 as the cutoff point for **College_Score** because this is close to the median, making the number of values about the same in the two categories. We would like to balance the number of datapoints in each category of the response variable.
+
 \section*{\textcolor{red}{Unfinished Below}}
 
-We decided to perform a logistic regression model to quantify the relationship between **HighSchool_PR** and **College_Score**, because we concluded in Section \ref{linear-reg} that it is inappropriate to perform an ordinary linear regression. (We also tried the square root transformation, but it did not work out, either.) Let's try a different statistical model to evaluate the relationship between the two variables. Typically when the ordinary linear regression model is ruled out, the next candidate is a generalized linear model, such as logistic regression and Poisson regression. Choosing a different model may involve modifying the details of the problem statement.   
+Logistic regression is a generalized linear model that uses a binary response variable, and the equation models the probability of an event occurring or not. That's why we set up the new problem statement this way, and Section \ref{logit-intro} gives a brief introduction to the logistic regression model.  
 
-The original problem statement is to investigate the relationship between **College_Score** and **HighSchool_PR**, but it is flexible and does not require the relationship to be linear. 
-
-\textcolor{red}{What is the problem statement? Can be changed.}  
-
-We would like to redefine the problem statement to "estimate the probability of **College_Score** at least 65, given the student's **HighSchool_PR**." Since the variance of **College_Score** depends on **HighSchool_PR**, the assumptions of linear regression are violated, making linear regression an inappropriate model. That's why we decided to focus on whether **College_Score** is at least a particular value instead, so the response variable is binary. We selected 65 as the cutoff point for **College_Score** because this is close to the median, making the number of values about the same in the two categories. We would like to balance the number of datapoints in each category of the response variable.
 
 This section contains statistical methods beyond the Statistics 101 level, and we would like to give the readers a head start of generalized linear models. We explained the requirements of linear regression in Section \ref{linear-reg}, and now we would like to expand the regression model to additional forms. We decided to introduce generalized linear models early on, because we would like to show that there exist methods to analyze the data `ptt_SENIORHIGH_data.csv` other than linear regression.  
 
@@ -465,7 +464,7 @@ In the model validation sections, we can regard the logistic regression model as
 
 \section*{\textcolor{red}{Unfinished Above}}
 
-## Brief Introduction of Logistic Regression
+## Brief Introduction of Logistic Regression {#logit-intro}
 
 Logistic regression is used to model categorical outcomes, especially a binary response variable. For example, if the response variable is whether an event $Y$ occurs or not, then it can only have two values -- not occurred (0) and occurred (1). We model the probability that the event $Y$ occurred, denoted as $p = P(Y = 1)$, and it is between 0 and 1. But in a linear regression $y = \alpha + \beta x$, the response variable $y$ can be any real number. Therefore, we transform the probability $p$ to the log odds $\log (\dfrac{p}{1-p})$, so that its range spans the whole real line like $y$. Note that the odds $\dfrac{p}{1-p}$ is always positive, as long as $p$ is not exactly 0 or 1.  
 
