@@ -907,7 +907,14 @@ Finally, include my own scores as a datapoint for prediction.
 
 \textcolor{red}{Don't show the numbers until I am ready to work on this section!}
 
-# Appendix
+\section*{Acknowledgments}
+
+The author would like to thank her Microsoft colleagues Smit Patel and Dylan Stout for troubleshooting GitHub issues.  
+
+More to add
+
+
+\section*{Appendix}
 
 RStudio, code reproducibility, etc.
 
