@@ -443,23 +443,15 @@ table_4x4
 
 The contingency table shows a positive association between **HighSchool_PR** and **College_Score**: Respondents with a good **HighSchool_PR** score are more likely to achieve a good **College_Score**, but this is not guaranteed. Respondents who scored poorly in **HighSchool_PR** still had a small chance to do exceptionally well in **College_Score** later. Our findings align with the conventional wisdom that **HighSchool_PR** and **College_Score** are somewhat related, but a high score on **HighSchool_PR** does not guarantee a high score on **College_Score**.
 
-# Logistic Regression
+# Logistic Regression {#logit-reg}
 
-We decided to perform a different model to quantify the relationship between **HighSchool_PR** and **College_Score**, because we concluded in Section \ref{linear-reg} that it is inappropriate to perform an ordinary linear regression. (We also tried the square root transformation, but it did not work out, either.) Let's try another statistical model to evaluate the relationship between the two variables. Typically when the ordinary linear regression model is ruled out, the next candidate is a generalized linear model, such as logistic regression and Poisson regression. Choosing a different model may involve modifying the details of the problem statement. The original problem statement is to investigate the relationship between **College_Score** and **HighSchool_PR**, but it is flexible and does not require the relationship to be linear. 
+We decided to perform a different model to quantify the relationship between **HighSchool_PR** and **College_Score**, because we concluded in Chapter \ref{linear-reg} that it is inappropriate to perform an ordinary linear regression. (We also tried the square root transformation, but it did not work out, either.) Let's try another statistical model to evaluate the relationship between the two variables. Typically when the ordinary linear regression model is ruled out, the next candidate is a generalized linear model, such as logistic regression and Poisson regression. Choosing a different model may involve modifying the details of the problem statement. The original problem statement is to investigate the relationship between **College_Score** and **HighSchool_PR**, but it is flexible and does not require the relationship to be linear. 
 
 We would like to redefine the problem statement to "estimate the probability of **College_Score** at least 65, given the student's **HighSchool_PR**." Since the variance of **College_Score** depends on **HighSchool_PR**, the assumptions of linear regression are violated, making linear regression an inappropriate model. We decided to focus on whether **College_Score** is at least a particular value instead, so the response variable is binary. We selected 65 as the cutoff point for **College_Score** because this is close to the median, making the number of values about the same in the two categories. We would like to balance the number of datapoints in each category of the response variable.  
 
-Logistic regression is a generalized linear model that uses a binary response variable, and the equation models the probability of an event occurring or not. That's why we set up the new problem statement this way, and Section \ref{logit-intro} gives a brief introduction to the logistic regression model. Although logistic regression is not typically covered at the Statistics 101 level, we would like to give the readers a head start of generalized linear models. We explained the requirements of linear regression in Section \ref{linear-reg}, and now we would like to expand the regression model to additional forms. We decided to introduce generalized linear models early on, because we would like to show that there exist methods to analyze the data `ptt_SENIORHIGH_data.csv` other than linear regression.  
+Logistic regression is a generalized linear model that uses a binary response variable, and the equation models the probability of an event occurring or not. That's why we set up the new problem statement this way, and Section \ref{logit-intro} gives a brief introduction to the logistic regression model. Although logistic regression is not typically covered at the Statistics 101 level, we would like to give the readers a head start of generalized linear models. We explained the requirements of linear regression in Section \ref{linear-reg}, and now we would like to expand the regression model to additional forms. We decided to introduce generalized linear models early on, because we would like to show that there exist methods to analyze the data `ptt_SENIORHIGH_data.csv` other than linear regression.    
 
-\section*{\textcolor{red}{Unfinished Below}}
-
-We try to explain the logistic regression in basic terminology.  
-
-We moved the model validation sections to a separate chapter. The machine learning concepts are not related to the logistic regression itself, so readers without a mathematical background can still learn these concepts.  
-
-In the model validation sections, we can regard the logistic regression model as a blackbox, which simply produces the binary classification output.  
-
-\section*{\textcolor{red}{Unfinished Above}}
+We try to explain the logistic regression in basic terminology. But if the readers feel like they cannot understand the mathematics, it is totally fine to skip this chapter and move on to Chapter \ref{validation} for model validation. The model evaluation concepts are not related to the logistic regression itself, so understanding the model details is not always a prerequisite. We can regard the model as a blackbox, which simply produces the binary classification output.  
 
 ## Brief Introduction of Logistic Regression {#logit-intro}
 
@@ -678,11 +670,17 @@ plot(new_xx, new_yy, ylim=c(0,1),
      ylab="Probability of College_Score >= 65")
 ```
 
-\section{\textcolor{red}{Model Validation}}
+# Model Validation {#validation}
+
+\section*{\textcolor{red}{Unfinished Below}}
 
 Write something here  
 
+Chapter \ref{logit-reg} is about logistic regression.  
+
 \textcolor{red}{In the model validation sections, we can regard the logistic regression model as a blackbox, which simply produces the binary classification output.}  
+
+\section*{\textcolor{red}{Unfinished Above}}
 
 ## In-Sample Prediction
 
