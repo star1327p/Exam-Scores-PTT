@@ -674,11 +674,9 @@ plot(new_xx, new_yy, ylim=c(0,1),
 
 \section*{\textcolor{red}{Unfinished Below}}
 
-Write something here  
+We built the logistic regression model in Chapter \ref{logit-reg}, and now it is time for model validation, i.e., evaluate the model performance. We will focus on machine learning concepts in this chapter, and the readers simply need to know that the model does binary classification.  
 
-Chapter \ref{logit-reg} is about logistic regression.  
-
-\textcolor{red}{In the model validation sections, we can regard the logistic regression model as a blackbox, which simply produces the binary classification output.}  
+Write something more 
 
 \section*{\textcolor{red}{Unfinished Above}}
 
@@ -876,7 +874,7 @@ The statistical calculation tells us that we do not have to be overly concerned 
 
 ## Breakdown by High School Entrance Exam Scores
 
-Before starting this section, complete the forewords for the sections "Logistic Regression" and "Model Validation".  
+Before starting this section, complete the foreword for the Model Validation chapter.  
 
 Write something more  
 
