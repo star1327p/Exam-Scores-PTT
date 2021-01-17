@@ -312,7 +312,7 @@ length(uni_college_score)
 length(data_corr$College_Score)
 ```
 
-## High School Entrance Exam Scores (Percentile Rank) at least 80
+## High School Entrance Exam Scores (Percentile Rank) at least 80 {#HighSchool-PR-80-up}
 
 We use the `R` function `table` to show the frequency of each **HighSchool_PR** value that is at least 80, and we have 163 values in total. In the table below, the first row is the PR (percentile rank), and the second row is the counts. Although we truncated the **HighSchool_PR** to 80 and above, the distribution is still left-skewed. The **HighSchool_PR** 99 has the highest counts, followed by **HighSchool_PR** 97 and **HighSchool_PR** 98.
 
@@ -876,9 +876,23 @@ The statistical calculation tells us that we do not have to be overly concerned 
 
 Before starting this section, complete the foreword for the Model Validation chapter.  
 
-Write something more  
+Examine the confusion matrices for each group of **HighSchool_PR**: below 80, 80-89, 90-94, 95-99.  
+
+Ensure that each group has a sufficiently large number of respondents.
+
+Refer to Section \ref{HighSchool-PR-80-up} for the details of this categorization.  
+
+
 
 Create more graphs  
+
+## More Topics TBD
+
+The goal of writing this document is to instruct the readers on how to perform data analysis using fundamental machine learning concepts.  
+
+Focus on demonstrating the methodology  
+
+Randomly divide the data into a training set and a testing set  
 
 Consider cross validation
 
