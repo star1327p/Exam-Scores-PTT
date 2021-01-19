@@ -674,9 +674,12 @@ plot(new_xx, new_yy, ylim=c(0,1),
 
 \section*{\textcolor{red}{Unfinished Below}}
 
-We built the logistic regression model in Chapter \ref{logit-reg}, and now it is time for model validation, i.e., evaluate the model performance. We will focus on machine learning concepts in this chapter, and the readers simply need to know that the model does binary classification.  
+We built the logistic regression model in Chapter \ref{logit-reg}, and now it is time for model validation, i.e., evaluate the model performance. We will focus on machine learning concepts in this chapter, and the readers simply need to know that **the model does binary classification**. For more about machine learning, we recommend the book *Introduction to Machine Learning* \cite{alpaydin2020introduction}. It explains a wide range of machine learning algorithms and applications, including the recent advances in deep learning and neural networks.  
 
-Write something more 
+Structure of this chapter  
+
+Write something more  
+
 
 \section*{\textcolor{red}{Unfinished Above}}
 
@@ -893,6 +896,7 @@ The goal of writing this document is to instruct the readers on how to perform d
 Focus on demonstrating the methodology  
 
 Randomly divide the data into a training set and a testing set  
+Set a random seed to ensure reproducibility
 
 Consider cross validation
 
