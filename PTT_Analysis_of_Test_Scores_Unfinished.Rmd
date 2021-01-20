@@ -672,11 +672,17 @@ plot(new_xx, new_yy, ylim=c(0,1),
 
 # Model Validation {#validation}
 
+We built the logistic regression model in Chapter \ref{logit-reg}, and now it is time for model validation, i.e., evaluate the model performance. We will focus on machine learning concepts in this chapter, and the readers simply need to know that **the model does binary classification**. For more about machine learning, we recommend the book *Introduction to Machine Learning* \cite{alpaydin2020introduction}. It explains a wide range of machine learning algorithms and applications, including the recent advances in deep learning and neural networks.
+
 \section*{\textcolor{red}{Unfinished Below}}
 
-We built the logistic regression model in Chapter \ref{logit-reg}, and now it is time for model validation, i.e., evaluate the model performance. We will focus on machine learning concepts in this chapter, and the readers simply need to know that **the model does binary classification**. For more about machine learning, we recommend the book *Introduction to Machine Learning* \cite{alpaydin2020introduction}. It explains a wide range of machine learning algorithms and applications, including the recent advances in deep learning and neural networks.  
-
 Structure of this chapter  
+
+We start with in-sample prediction to obtain the binary classification results, then we explain how to interpret the 2x2 confusion matrix output.  
+
+There are two actual outcomes for **College_Score** -- at least 65 or not. There are also two predicted outcomes for **College_Score**, and we compare the predicted outcomes with the actual ones.  
+
+Next, we would like to examine the model performance for different **HighSchool_PR** scores, in order to identify whether the model does better in higher or lower **HighSchool_PR**, or performs about the same.  
 
 Write something more  
 
@@ -915,7 +921,7 @@ Write something here
 Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] typically requires **HighSchool_PR** 99 for admission. There are some exceptions, such as recruited athletes, students with disabilities,^[<http://www.rootlaw.com.tw/LawArticle.aspx?LawID=A040080080001900-1020822>] and students under other extraordinary situations.^[<https://bit.ly/2WtRY63>]  
 
 The Department of Electrical Engineering at National Taiwan University (NTUEE)^[https://web.ee.ntu.edu.tw/eng/index.php] typically requires
-full marks in English, mathematics, and science in **College_Score** for the early admission.^[https://university.1111.com.tw/univ_depinfo9.aspx?sno=100102&mno=520101] Most students at NTUEE have a **College_Score** of 70 or higher, but still a significant number of students got admitted through the regular college entrance exam process in July.  
+full marks in English, mathematics, and science in **College_Score** for the early admission.^[https://university.1111.com.tw/univ_depinfo9.aspx?sno=100102&mno=520101] Most students at NTUEE have a **College_Score** of 70 or higher, while 75 was the max possible score. But still a significant number of students got admitted through the regular college entrance exam process in July.  
 
 Finally, include my own scores as a datapoint for prediction.  
 
