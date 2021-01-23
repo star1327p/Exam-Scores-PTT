@@ -678,11 +678,9 @@ We built the logistic regression model in Chapter \ref{logit-reg}, and now it is
 
 Structure of this chapter  
 
-We start with in-sample prediction to obtain the binary classification results, then we explain how to interpret the 2x2 confusion matrix output.  
+We start with in-sample prediction to obtain the binary classification results, then we explain how to interpret the 2x2 confusion matrix output. There are two actual outcomes for **College_Score** -- at least 65 or not. There are also two predicted outcomes for **College_Score**, and we compare the predicted outcomes with the actual ones. Next, we would like to examine the model performance for different **HighSchool_PR** scores, in order to identify whether the model does better in higher or lower **HighSchool_PR**, or performs about the same.  
 
-There are two actual outcomes for **College_Score** -- at least 65 or not. There are also two predicted outcomes for **College_Score**, and we compare the predicted outcomes with the actual ones.  
-
-Next, we would like to examine the model performance for different **HighSchool_PR** scores, in order to identify whether the model does better in higher or lower **HighSchool_PR**, or performs about the same.  
+Briefly explain over-fitting here, and bring out the topics of cross validation and out-of-sample prediction (training and testing parts).  
 
 Write something more  
 
@@ -691,7 +689,7 @@ Write something more
 
 ## In-Sample Prediction
 
-Let's start the model validation with in-sample prediction; that is, predict the outcome of whether **College_Score** is at least 65 for each value of **HighSchool_PR** in the data. If predicted probability of **College_Score** at least 65 (i.e., `fitted.values`) is greater than or equal to 0.5, we assign the predicted value as `TRUE`. We can safely use 0.5 as the probability threshold because the data are quite balanced. In other words, the proportion of **College_Score** at least 65 is close to 0.5 in the data (0.489, to be exact). If the data are imbalanced, say 80% of the records belong to one category, we should adjust the probability threshold in our classification prediction model.  
+Let's start the model validation with in-sample prediction; that is, using the data to predict the outcome of whether **College_Score** is at least 65 for each value of **HighSchool_PR** for values already in the data. If predicted probability of **College_Score** at least 65 (i.e., `fitted.values`) is greater than or equal to 0.5, we assign the predicted value as `TRUE`. We can safely use 0.5 as the probability threshold because the data are quite balanced. In other words, the proportion of **College_Score** at least 65 is close to 0.5 in the data (0.489, to be exact). If the data are imbalanced, say 80% of the records belong to one category, we should adjust the probability threshold in our classification prediction model.  
 
 ```{r data-proportions}
 # nrow(data_corr) # 188
@@ -901,10 +899,17 @@ The goal of writing this document is to instruct the readers on how to perform d
 
 Focus on demonstrating the methodology  
 
+Out-of-sample prediction
+
+Explain why overfitting is bad!
+
 Randomly divide the data into a training set and a testing set  
 Set a random seed to ensure reproducibility
 
-Consider cross validation
+Consider cross validation  
+
+If fine-tuning the model is needed: Training set, validation set, testing set  
+Avoid overfitting the testing set!
 
 # Discussion and Conclusion
 
