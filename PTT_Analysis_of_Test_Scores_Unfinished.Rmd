@@ -672,15 +672,20 @@ plot(new_xx, new_yy, ylim=c(0,1),
 
 # Model Validation {#validation}
 
-We built the logistic regression model in Chapter \ref{logit-reg}, and now it is time for model validation, i.e., evaluate the model performance. We will focus on machine learning concepts in this chapter, and the readers simply need to know that **the model does binary classification**. For more about machine learning, we recommend the book *Introduction to Machine Learning* \cite{alpaydin2020introduction}. It explains a wide range of machine learning algorithms and applications, including the recent advances in deep learning and neural networks.
+We built the logistic regression model in Chapter \ref{logit-reg}, and now it is time for model validation, i.e., evaluate the model performance. We will focus on machine learning concepts in this chapter, and the readers simply need to know that **the model does binary classification**. For more about machine learning, we recommend the book *Introduction to Machine Learning* \cite{alpaydin2020introduction}. It explains a wide range of machine learning algorithms and applications, including the recent advances in deep learning and neural networks.  
+
+We start with in-sample prediction to obtain the binary classification results, then we explain how to interpret the 2x2 confusion matrix output. There are two actual outcomes for **College_Score** -- at least 65 or not. There are also two predicted outcomes for **College_Score**, and we compare the predicted outcomes with the actual ones. Next, we would like to examine the model performance for different **HighSchool_PR** scores, in order to identify whether the model does better in higher or lower **HighSchool_PR**, or performs about the same.  
+
+However, the goal of building this model is to optimize the performance for future input, i.e., incoming students who just obtained their **HighSchool_PR** scores. In-sample prediction is insufficient because we need to test on unseen data to avoid overfitting.^[<https://elitedatascience.com/overfitting-in-machine-learning>] But why is overfitting bad? Because the model would do well on the existing data but perform poorly on the new data, which is undesirable. This is similar to a student who memorizes the answers to score 100% on quizzes without understanding the actual content. Then this student may not do well on the final exam because he/she has not seen the questions before. Thus, we need to perform out-of-sample prediction on the model; that is, train the model on some data and test it on different data.    
 
 \section*{\textcolor{red}{Unfinished Below}}
 
 Structure of this chapter  
 
-We start with in-sample prediction to obtain the binary classification results, then we explain how to interpret the 2x2 confusion matrix output. There are two actual outcomes for **College_Score** -- at least 65 or not. There are also two predicted outcomes for **College_Score**, and we compare the predicted outcomes with the actual ones. Next, we would like to examine the model performance for different **HighSchool_PR** scores, in order to identify whether the model does better in higher or lower **HighSchool_PR**, or performs about the same.  
 
-Briefly explain over-fitting here, and bring out the topics of cross validation and out-of-sample prediction (training and testing parts).  
+In the later sections, we will demonstrate two ways to implement out-of-sample prediction.  
+
+Bring out the topics of training-testing method and cross validation (after training-testing).  
 
 Write something more  
 
@@ -893,23 +898,21 @@ Refer to Section \ref{HighSchool-PR-80-up} for the details of this categorizatio
 
 Create more graphs  
 
-## More Topics TBD
+## Out-of-Sample Prediction
 
 The goal of writing this document is to instruct the readers on how to perform data analysis using fundamental machine learning concepts.  
 
 Focus on demonstrating the methodology  
-
-Out-of-sample prediction
 
 Explain why overfitting is bad!
 
 Randomly divide the data into a training set and a testing set  
 Set a random seed to ensure reproducibility
 
-Consider cross validation  
-
 If fine-tuning the model is needed: Training set, validation set, testing set  
-Avoid overfitting the testing set!
+Avoid overfitting the testing set!  
+
+Consider cross validation (put this topic after the training-testing method) 
 
 # Discussion and Conclusion
 
@@ -926,7 +929,7 @@ Write something here
 Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] typically requires **HighSchool_PR** 99 for admission. There are some exceptions, such as recruited athletes, students with disabilities,^[<http://www.rootlaw.com.tw/LawArticle.aspx?LawID=A040080080001900-1020822>] and students under other extraordinary situations.^[<https://bit.ly/2WtRY63>]  
 
 The Department of Electrical Engineering at National Taiwan University (NTUEE)^[https://web.ee.ntu.edu.tw/eng/index.php] typically requires
-full marks in English, mathematics, and science in **College_Score** for the early admission.^[https://university.1111.com.tw/univ_depinfo9.aspx?sno=100102&mno=520101] Most students at NTUEE have a **College_Score** of 70 or higher, while 75 was the max possible score. But still a significant number of students got admitted through the regular college entrance exam process in July.  
+full marks (15 out of 15) in English, mathematics, and science in **College_Score** for the early admission.^[https://university.1111.com.tw/univ_depinfo9.aspx?sno=100102&mno=520101] Most students at NTUEE had a **College_Score** of 70 or higher, at the time when 75 was the max possible score. But still a significant number of students got admitted through the regular college entrance exam process in July.  
 
 Finally, include my own scores as a datapoint for prediction.  
 
