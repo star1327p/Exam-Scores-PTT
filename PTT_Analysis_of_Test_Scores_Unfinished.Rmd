@@ -685,6 +685,14 @@ Structure of this chapter
 
 In the later sections, we will demonstrate two ways to implement out-of-sample prediction.  
 
+The first way is to divide the data into a training set and a testing set. Then we use the training set to train the model, and use the testing set to evaluate the model performance.  
+
+Need more explanation here  
+
+The second way is cross validation.  
+
+Also need more explanation here
+
 Bring out the topics of training-testing method and cross validation (after training-testing).  
 
 Write something more  
