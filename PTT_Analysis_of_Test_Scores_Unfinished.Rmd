@@ -683,13 +683,15 @@ However, the goal of building this model is to optimize the performance for futu
 Structure of this chapter  
 
 
-In the later sections, we will demonstrate two ways to implement out-of-sample prediction.  
-
-The first way is to divide the data into a training set and a testing set. Then we use the training set to train the model, and use the testing set to evaluate the model performance.  
+In the later sections, we will demonstrate two methods to implement out-of-sample prediction, and the first method is to **randomly divide the data into a training set and a testing set**. Then we use the training set to train the model for the parameters, and use the testing set to evaluate the model performance. In other words, the model is trained on some data independent of the testing set, because it would not see the testing data beforehand. Using unseen data is helpful to get a better measure of the prediction power of the model.  
 
 Need more explanation here  
 
-The second way is cross validation.  
+The second method is **cross validation**, which involves partitioning the data into a number of subsets, then we reserve one subset for testing and train the model on all the remaining subsets. Each subset take turns to be used for testing, and finally we combine the results to estimate the overall prediction performance.     
+
+K-fold cross validation, K = 10  
+
+Leave-one-out cross validation  
 
 Also need more explanation here
 
