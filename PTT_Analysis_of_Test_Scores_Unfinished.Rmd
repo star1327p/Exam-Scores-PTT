@@ -678,26 +678,10 @@ We start with in-sample prediction to obtain the binary classification results, 
 
 However, the goal of building this model is to optimize the performance for future input, i.e., incoming students who just obtained their **HighSchool_PR** scores. In-sample prediction is insufficient because we need to test on unseen data to avoid overfitting.^[<https://elitedatascience.com/overfitting-in-machine-learning>] But why is overfitting bad? Because the model would do well on the existing data but perform poorly on the new data, which is undesirable. This is similar to a student who memorizes the answers to score 100% on quizzes without understanding the actual content. Then this student may not do well on the final exam because he/she has not seen the questions before. Thus, we need to perform out-of-sample prediction on the model; that is, train the model on some data and test it on different data.  
 
-In the later sections, we will demonstrate two methods to implement out-of-sample prediction, and the first method is to **randomly divide the data into a training set and a testing set**. Then we use the training set to train the model for the parameters, and use the testing set to evaluate the model performance. In other words, the model is trained on some data independent of the testing set, because it would not see the testing data beforehand. Using unseen data is helpful to get a better measure of the prediction power of the model. An extension is to divide the data into **training, validation, and testing** sets. We still use the training set to train the model, but we use the validation set to fine-tune the model parameters.^[<https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7>] Finally we test the model using the testing set. By incorporating a validation set as a mid-step, we do not look at the model results for the testing set until the end. This further reduces the risk of overfitting the testing data.  
+In the later sections, we will demonstrate two methods to implement out-of-sample prediction, and the first method is to **randomly divide the data into a training set and a testing set**. Then we use the training set to train the model for the parameters, and use the testing set to evaluate the model performance. In other words, the model is trained on some data independent of the testing set, because it would not see the testing data beforehand. Using unseen data is helpful to get a better measure of the prediction power of the model. An extension is to divide the data into **training, validation, and testing** sets. We still use the training set to train the model, but we use the validation set to fine-tune the model parameters.^[<https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7>] Finally we test the model using the testing set. By incorporating a validation set as a mid-step, we do not look at the model results for the testing set until the end. This further reduces the risk of overfitting the testing data.    
 
-\section*{\textcolor{red}{Unfinished Below}}
+The second method is **cross validation**, which involves partitioning the data into a number of subsets, then we reserve one subset for testing and train the model on all the remaining subsets. Each subset take turns to be used for testing, and finally we combine the results to estimate the overall prediction performance. One common implementation is the **K-fold cross validation**, in which we randomly divide the data into $K$ subsets to cross-validate each other. (Typically $K=10$.) For each round of validation, we train the model on the $K-1$ subsets and test the model on the one subset which was excluded in the training. Finally, we combine all $K$ rounds of validation, and each subset gets its predicted result for performance evaluation. Another common implementation is the **leave-one-out cross validation**, in which each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction, but we need to perform $N$ rounds of validation, which may not be feasible when $N$ is extremely large. We will demonstrate both K-fold cross validation and leave-one-out cross validation in this chapter.
 
-Structure of this chapter  
-
-The second method is **cross validation**, which involves partitioning the data into a number of subsets, then we reserve one subset for testing and train the model on all the remaining subsets. Each subset take turns to be used for testing, and finally we combine the results to estimate the overall prediction performance. One common implementation is the **K-fold cross validation**, in which we randomly divide the data into $K$ subsets to cross-validate each other. (Typically $K=10$.) For each round of validation, we train the model on the $K-1$ subsets and test the model on the one subset which was excluded in the training. Finally, we combine all $K$ rounds of validation, and each subset gets its predicted result for performance evaluation.  
-
-Another common implementation is the **leave-one-out cross validation**, in which each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$.    
-
-Continue writing here  
-
-Why is leave-one-out cross validation better?  
-
-Bring out the topics of training-testing method and cross validation (after training-testing).  
-
-Write something more  
-
-
-\section*{\textcolor{red}{Unfinished Above}}
 
 ## In-Sample Prediction
 
@@ -893,7 +877,7 @@ The statistical calculation tells us that we do not have to be overly concerned 
 
 ## Breakdown by High School Entrance Exam Scores
 
-Before starting this section, complete the foreword for the Model Validation chapter.  
+Before starting this section, complete the foreword for the Model Validation chapter (done).  
 
 Examine the confusion matrices for each group of **HighSchool_PR**: below 80, 80-89, 90-94, 95-99.  
 
@@ -906,6 +890,8 @@ Refer to Section \ref{HighSchool-PR-80-up} for the details of this categorizatio
 Create more graphs  
 
 ## Out-of-Sample Prediction
+
+Demonstrate both K-fold cross validation and leave-one-out cross validation!  
 
 The goal of writing this document is to instruct the readers on how to perform data analysis using fundamental machine learning concepts.  
 
