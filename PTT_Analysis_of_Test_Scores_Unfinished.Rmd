@@ -608,20 +608,6 @@ objects(model)
 
 ## Overall Model Results
 
-```{r header-code,include=FALSE}
-data = read.csv("ptt_SENIORHIGH_data.csv")
-names(data)[1] = "pttID"
-
-missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
-data_corr = data[-missing_rows,]
-
-data_corr$CS_65up = data_corr$College_Score >=65
-
-model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
-
-print("This is a test.")
-```
-
 ```{r model-validation, include=FALSE}
 # objects(model) # to find out what functions are available in the model
 
@@ -906,6 +892,53 @@ If fine-tuning the model is needed: Training set, validation set, testing set
 Avoid overfitting the testing set!  
 
 Consider cross validation (put this topic after the training-testing method) 
+
+```{r header-code,include=FALSE}
+data = read.csv("ptt_SENIORHIGH_data.csv")
+names(data)[1] = "pttID"
+
+missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
+data_corr = data[-missing_rows,]
+
+data_corr$CS_65up = data_corr$College_Score >=65
+
+model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
+
+print("This is a test.")
+```
+
+```{out-of-sample-draft}
+set.seed(21)
+
+nn = nrow(data_corr) # total 188 rows of data
+
+row_inds = c(1:nn)
+
+ind_permute = sample(row_inds) 
+# random permutation of row indices 
+# => prepare for the training/testing partitions
+
+# 10-fold cross validation: 
+# Divide 188 records into 10 partitions of near-equal size
+
+# Number of records in each partition:
+# 19, 19, 19, 19, 19, 19, 19, 19, 18, 18
+
+k_fold = c(19, 19, 19, 19, 19, 19, 19, 19, 18, 18)
+
+k_accumulate = c(19, 38, 57, 76, 95, 114, 133, 152, 170, 188)
+
+partition_list = list(0,0,0,0,0,0,0,0,0,0)
+partition_list[[1]] = ind_permute[1:k_fold[1]]
+for (ii in 2:length(k_fold)) {
+  start = k_accumulate[ii-1]+1
+  end = start + k_fold[ii] - 1
+  partition_list[[ii]] = ind_permute[start:end]
+}
+
+# partition_list
+
+```
 
 # Discussion and Conclusion
 
