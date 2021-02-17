@@ -907,8 +907,42 @@ model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
 print("This is a test.")
 ```
 
-```{out-of-sample-draft}
-set.seed(21)
+Draft code for training and testing partitions
+
+```{train-test-draft}
+# Draft code for training and testing partitions
+
+set.seed(10)
+
+nn = nrow(data_corr) # total 188 rows of data
+
+row_inds = c(1:nn)
+
+ind_permute = sample(row_inds) 
+
+train_inds = ind_permute[1:94]
+test_inds = ind_permute[95:188]
+
+train_data = data_corr[train_inds,]
+test_data = data_corr[test_inds,]
+
+train_model = glm(CS_65up ~ HighSchool_PR, data=train_data, family="binomial")
+
+# train_model
+
+test_prob = predict.glm(train_model, test_data, type="response")
+# type="response" gives the predicted probabilities
+
+# UNFINISHED: Convert the test probabilities into binary classification results
+
+```
+
+Draft code for k-fold cross validation
+
+```{k-fold-draft}
+# Draft code for k-fold cross validation
+
+set.seed(21) # different seed than the training-testing partitions
 
 nn = nrow(data_corr) # total 188 rows of data
 
@@ -938,6 +972,7 @@ for (ii in 2:length(k_fold)) {
 
 # partition_list
 
+# UNFINISHED: Use the partitions for training and testing
 ```
 
 # Discussion and Conclusion
