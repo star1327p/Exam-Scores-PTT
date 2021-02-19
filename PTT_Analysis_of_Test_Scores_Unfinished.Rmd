@@ -907,9 +907,9 @@ model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
 print("This is a test.")
 ```
 
-Draft code for training and testing partitions
+**Draft code for training and testing partitions**
 
-```{train-test-draft}
+```{r train-test-draft}
 # Draft code for training and testing partitions
 
 set.seed(10)
@@ -933,13 +933,29 @@ train_model = glm(CS_65up ~ HighSchool_PR, data=train_data, family="binomial")
 test_prob = predict.glm(train_model, test_data, type="response")
 # type="response" gives the predicted probabilities
 
-# UNFINISHED: Convert the test probabilities into binary classification results
+# --------------------------------
 
+# Convert the test probabilities into binary classification results
+test_actual_65up = test_data$CS_65up
+test_pred_65up = test_prob > 0.5
+
+# Confusion matrix
+test_confusion = table(test_actual_65up, test_pred_65up)
+# revert the order of FALSE and TRUE
+test_confusion = test_confusion[2:1, 2:1]
+
+test_confusion
+
+# percentage version
+prop.table(test_confusion)
+
+# UNFINISHED: Organize the initial code and start writing the descriptions
+# Also consider making part of it into a function ??
 ```
 
-Draft code for k-fold cross validation
+**Draft code for k-fold cross validation**
 
-```{k-fold-draft}
+```{r k-fold-draft}
 # Draft code for k-fold cross validation
 
 set.seed(21) # different seed than the training-testing partitions
