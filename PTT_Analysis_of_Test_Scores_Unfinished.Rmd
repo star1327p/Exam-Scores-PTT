@@ -909,7 +909,7 @@ print("This is a test.")
 
 **Draft code for training and testing partitions**
 
-Below is the code to divide the data into the training and testing partitions. We randomly selected 50% of the data (94 out of the 188 records) to be in the training part, and the remaining 50% are in the testing part. We set a random seed to ensure reproducibility.
+Below is the code to divide the data into the training and testing partitions. We randomly selected 50% of the data (94 out of the 188 records) to be in the training part, and the remaining 50% are in the testing part. This can be done by a random permutation of the indices 1-194. Then the first half of the indices correspond to the training part, and the second half of the indices correspond to the testing part. We set a random seed to ensure reproducibility.
 
 ```{r train-test-partitions}
 set.seed(10)
@@ -927,9 +927,19 @@ train_data = data_corr[train_inds,]
 test_data = data_corr[test_inds,]
 ```
 
-\textcolor{red}{Unfinished below}  
+The `train_inds` are the indices for the training part of the data:
 
-Print the train_inds and test_inds
+```{r print-train-inds}
+print(train_inds)
+```
+
+The `test_inds` are the indices for the testing part of the data:
+
+```{r print-test-inds}
+print(test_inds)
+```
+
+\textcolor{red}{Unfinished below}  
 
 ```{r train-test-draft}
 # Draft code for training and testing partitions
