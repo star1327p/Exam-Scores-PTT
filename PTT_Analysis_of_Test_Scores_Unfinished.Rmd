@@ -682,7 +682,7 @@ In the later sections, we will demonstrate two methods to implement out-of-sampl
 The second method is **cross validation**, which involves partitioning the data into a number of subsets, then we reserve one subset for testing and train the model on all the remaining subsets. Each subset take turns to be used for testing, and finally we combine the results to estimate the overall prediction performance. One common implementation is the **K-fold cross validation**, in which we randomly divide the data into $K$ subsets to cross-validate each other. (Typically $K=10$.) For each round of validation, we train the model on the $K-1$ subsets and test the model on the one subset which was excluded in the training. Finally, we combine all $K$ rounds of validation, and each subset gets its predicted result for performance evaluation. Another common implementation is the **leave-one-out cross validation**, in which each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction, but we need to perform $N$ rounds of validation, which may not be feasible when $N$ is extremely large. We will demonstrate both K-fold cross validation and leave-one-out cross validation in this chapter.
 
 
-## In-Sample Prediction
+## In-Sample Prediction {#in-sample}
 
 Let's start the model validation with in-sample prediction; that is, using the data to predict the outcome of whether **College_Score** is at least 65 for each value of **HighSchool_PR** for values already in the data. If predicted probability of **College_Score** at least 65 (i.e., `fitted.values`) is greater than or equal to 0.5, we assign the predicted value as `TRUE`. We can safely use 0.5 as the probability threshold because the data are quite balanced. In other words, the proportion of **College_Score** at least 65 is close to 0.5 in the data (0.489, to be exact). If the data are imbalanced, say 80% of the records belong to one category, we should adjust the probability threshold in our classification prediction model.  
 
@@ -966,13 +966,9 @@ test_prob = predict.glm(train_model, test_data, type="response")
 # type="response" gives the predicted probabilities
 ```
 
+Then we follow the procedures in Section \ref{in-sample} to convert the test probabilities into binary classification results, i.e., the confusion matrix.
 
-\textcolor{red}{Unfinished below}  
-
-```{r train-test-draft}
-# Draft code for training and testing partitions
-
-# Convert the test probabilities into binary classification results
+```{r test-results}
 test_actual_65up = test_data$CS_65up
 test_pred_65up = test_prob > 0.5
 
@@ -982,15 +978,37 @@ test_confusion = table(test_actual_65up, test_pred_65up)
 test_confusion = test_confusion[2:1, 2:1]
 
 test_confusion
+```
 
-# percentage version
+We can also produce the percentage version.
+
+```{r test-percentages}
 prop.table(test_confusion)
+```
+
+\textcolor{red}{Unfinished below}  
+
+```{r train-test-draft}
+# Draft code for training and testing partitions
+
+# row = actual_65up, column = predicted_65up
+tp = test_confusion["TRUE","TRUE"]
+fn = test_confusion["TRUE","FALSE"]
+fp = test_confusion["FALSE","TRUE"]
+tn = test_confusion["FALSE","FALSE"]
+
+print(paste(tp,fn,fp,tn))
 
 # --------------------------------
 
 # UNFINISHED: Organize the initial code and start writing the descriptions
+# Next: Calculate the accuracy, recall, precision, fpr, fnr
+# => compare with the in-sample prediction.
+
 # Also consider making part of it into a function ??
 ```
+
+We are going to have fewer descriptions in the result evaluation of later sections, because we assume that at this point, the readers would already be familiar with the relevant concepts.
 
 **Draft code for k-fold cross validation**
 
