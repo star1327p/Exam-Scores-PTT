@@ -986,11 +986,9 @@ We can also produce the percentage version.
 prop.table(test_confusion)
 ```
 
-\textcolor{red}{Unfinished below}  
+Now we show the number of true positives, false negatives, false positives, and false negatives.
 
-```{r train-test-draft}
-# Draft code for training and testing partitions
-
+```{r test-all-four-cells}
 # row = actual_65up, column = predicted_65up
 tp = test_confusion["TRUE","TRUE"]
 fn = test_confusion["TRUE","FALSE"]
@@ -998,10 +996,13 @@ fp = test_confusion["FALSE","TRUE"]
 tn = test_confusion["FALSE","FALSE"]
 
 print(paste(tp,fn,fp,tn))
+```
 
-# --------------------------------
+\textcolor{red}{Unfinished below}  
 
-# UNFINISHED: Organize the initial code and start writing the descriptions
+```{r train-test-draft}
+# Draft code for training and testing partitions
+
 # Next: Calculate the accuracy, recall, precision, fpr, fnr
 # => compare with the in-sample prediction.
 
@@ -1046,6 +1047,13 @@ for (ii in 2:length(k_fold)) {
 # partition_list
 
 # UNFINISHED: Use the partitions for training and testing
+
+# Testing: exclude = 1 
+# Training: partition_list[-exclude] shows all elements except the exclude.
+# Code should be:
+# training_without_k = unlist(partition_list[-exclude])
+# This is an integer vector.
+
 ```
 
 # Discussion and Conclusion
