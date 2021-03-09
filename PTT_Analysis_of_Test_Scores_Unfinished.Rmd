@@ -1056,6 +1056,8 @@ for (ii in 2:length(k_fold)) {
 
 ```
 
+Test change for git commits.
+
 # Discussion and Conclusion
 
 The Statistics 101 course provides a starting point for students to perform data analysis. Linear regression is widely used, but it is not a panacea for data analysis. The model assumptions need to be met in the data, as stated at the beginning of Section \ref{linear-reg}.   
