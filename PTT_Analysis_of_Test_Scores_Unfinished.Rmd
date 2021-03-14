@@ -1048,11 +1048,29 @@ for (ii in 2:length(k_fold)) {
 
 # UNFINISHED: Use the partitions for training and testing
 
-# Testing: exclude = 1 
-# Training: partition_list[-exclude] shows all elements except the exclude.
-# Code should be:
-# training_without_k = unlist(partition_list[-exclude])
-# This is an integer vector.
+# Testing
+exclude = 1 
+testing_with_k = partition_list[[exclude]]
+test_kfold_data = data_corr[testing_with_k,]
+
+# Training
+# partition_list[-exclude] shows all elements except the exclude.
+training_without_k = unlist(partition_list[-exclude]) 
+# integer vector of training indices
+train_kfold_data = data_corr[training_without_k,]
+
+train_kfold_model = glm(CS_65up ~ HighSchool_PR, data=train_kfold_data, family="binomial")
+# summary(train_kfold_model)
+
+test_kfold_prob = predict.glm(train_kfold_model, test_kfold_data, type="response")
+# type="response" gives the predicted probabilities
+
+# test_kfold_prob
+
+# Next step: Start a for loop: exclude from 1 to 10
+# But how to combine the test_kfold_prob probabilities?
+# e.g. Create another numeric vector for the combined test results.
+#      Then paste the test_kfold_prob values to the corresponding indices.
 
 ```
 
