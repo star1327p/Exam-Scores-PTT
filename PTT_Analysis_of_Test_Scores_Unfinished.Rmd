@@ -920,11 +920,15 @@ model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
 print("This is a test.")
 ```
 
+### Separate Training and Testing Sets
+
+Write the description here  
+
 **Draft code for training and testing partitions**
 
 Below is the code to divide the data into the training and testing partitions. We randomly selected 50% of the data (94 out of the 188 records) to be in the training part, and the remaining 50% are in the testing part. This can be done by a random permutation of the indices 1-194. Then the first half of the indices correspond to the training records, and the second half of the indices correspond to the testing records. We set a random seed to ensure reproducibility.
 
-```{r train-test-partitions}
+```{r train-test-inds}
 set.seed(10)
 
 nn = nrow(data_corr) # total 188 rows of data
@@ -935,9 +939,6 @@ ind_permute = sample(row_inds)
 
 train_inds = ind_permute[1:94]
 test_inds = ind_permute[95:188]
-
-train_data = data_corr[train_inds,]
-test_data = data_corr[test_inds,]
 ```
 
 The `train_inds` are the indices for the training part of the data:
@@ -952,23 +953,50 @@ The `test_inds` are the indices for the testing part of the data:
 print(test_inds)
 ```
 
-Then we train the logistic regression model using the training part of the data:
+We can sort each set of the indices in ascending order, so it will be easier to refer to them later, i.e., better readability. When we obtain the testing results, the records would be in the same order as in the original dataset.
 
-```{r train-model}
+```{r sort-inds}
+train_inds = sort(train_inds)
+test_inds = sort(test_inds)
+```
+
+After sorting, the training indices are in ascending order.
+
+```{r print-train-inds-sorted}
+print(train_inds)
+```
+
+The testing indices are also sorted in ascending order.
+
+```{r print-test-inds-sorted}
+print(test_inds)
+```
+
+Now we slice the data into the training and testing parts using the two sets of indices.
+
+```{r train-test-partitions}
+train_data = data_corr[train_inds,]
+test_data = data_corr[test_inds,]
+```
+
+Then we train the logistic regression model using the 188 records in the training part, and the model summary shows the coefficient point estimates along with the standard error.
+
+```{r train-inds-model}
 train_model = glm(CS_65up ~ HighSchool_PR, data=train_data, family="binomial")
 summary(train_model)
 ```
 
-Next, we use the trained model to predict the testing part of the data. The function `predict.glm` allows us to fit the generalized linear model (GLM) on new data. The output is a numeric vector of probabilities corresponding to each record in the testing part.   
+Next, we use the trained model to predict the testing part of the data. The function `predict.glm` allows us to fit the generalized linear model (GLM) on new data. The type 'response' gives the predicted probabilities. The output is a numeric vector with the predicted probabilities, and the header is the record index from the original data. For example, the 1st record in the original data is included in the testing part, and the model predicts the respondent to have a 0.5% probability of obtaining **College_Score** 65 or higher.
 
-```{r test-model}
+```{r test-inds-model}
 test_prob = predict.glm(train_model, test_data, type="response")
-# type="response" gives the predicted probabilities
+round(test_prob, digits=3)
 ```
 
 Then we follow the procedures in Section \ref{in-sample} to convert the test probabilities into binary classification results, i.e., the confusion matrix.
 
-```{r test-results}
+```{r test-confusion-matrix}
+# Convert the test probabilities into binary classification results
 test_actual_65up = test_data$CS_65up
 test_pred_65up = test_prob > 0.5
 
@@ -980,9 +1008,9 @@ test_confusion = test_confusion[2:1, 2:1]
 test_confusion
 ```
 
-We can also produce the percentage version.
+We can also produce the percentage version of the confusion matrix.
 
-```{r test-percentages}
+```{r test-confusion-percentage}
 prop.table(test_confusion)
 ```
 
@@ -1006,10 +1034,32 @@ print(paste(tp,fn,fp,tn))
 # Next: Calculate the accuracy, recall, precision, fpr, fnr
 # => compare with the in-sample prediction.
 
-# Also consider making part of it into a function ??
+# UNFINISHED: Write the description and further analysis of the test results (confusion matrix).
+# Also, compare with the in-sample prediction results.
+
+# Wrote this function for reuse in k-fold validation code.
+prob_to_matrix <- function(test_data, test_prob) {
+  # Convert the test probabilities into binary classification results
+  test_actual_65up = test_data$CS_65up
+  test_pred_65up = test_prob >= 0.5
+  
+  # Confusion matrix
+  test_confusion = table(test_actual_65up, test_pred_65up)
+  # revert the order of FALSE and TRUE
+  test_confusion = test_confusion[2:1, 2:1]
+
+  return(test_confusion)
+}
+
+another_test = prob_to_matrix(test_data, test_prob)
+another_test
 ```
 
 We are going to have fewer descriptions in the result evaluation of later sections, because we assume that at this point, the readers would already be familiar with the relevant concepts.
+
+### K-Fold Cross Validation
+
+Write the description here  
 
 **Draft code for k-fold cross validation**
 
