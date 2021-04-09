@@ -960,13 +960,13 @@ train_inds = sort(train_inds)
 test_inds = sort(test_inds)
 ```
 
-After sorting, the training indices are in ascending order.
+After sorting, the 94 training indices are in ascending order.
 
 ```{r print-train-inds-sorted}
 print(train_inds)
 ```
 
-The testing indices are also sorted in ascending order.
+The 94 testing indices are also sorted in ascending order.
 
 ```{r print-test-inds-sorted}
 print(test_inds)
@@ -1026,7 +1026,19 @@ tn = test_confusion["FALSE","FALSE"]
 print(paste(tp,fn,fp,tn))
 ```
 
-\textcolor{red}{Unfinished below}  
+\textcolor{red}{Unfinished below} 
+
+$$\text{Accuracy} = \dfrac{TP+TN}{TP+FN+FP+TN} = \dfrac{34+34}{34+12+14+34} = \dfrac{68}{94} \approx 72.34\%$$
+
+$$\text{Precision} = \dfrac{TP}{TP+FP} = \dfrac{34}{34+14} = \dfrac{34}{48} \approx 70.83\%$$
+
+$$\text{Recall} = \dfrac{TP}{TP+FN} = \dfrac{34}{34+12} = \dfrac{34}{46} \approx 73.91\%$$
+
+$$\text{False Positive Rate (FPR)} = \dfrac{FP}{TN+FP} = \dfrac{14}{34+14} = \dfrac{14}{48} \approx 29.17\%$$
+
+$$\text{False Negative Rate (FNR)} = \dfrac{FN}{TP+FN} = \dfrac{12}{34+12} = \dfrac{12}{46} \approx 26.09\%$$
+
+ 
 
 ```{r train-test-draft}
 # Draft code for training and testing partitions
