@@ -1037,8 +1037,16 @@ $$\text{Recall} = \dfrac{TP}{TP+FN} = \dfrac{34}{34+12} = \dfrac{34}{46} \approx
 $$\text{False Positive Rate (FPR)} = \dfrac{FP}{TN+FP} = \dfrac{14}{34+14} = \dfrac{14}{48} \approx 29.17\%$$
 
 $$\text{False Negative Rate (FNR)} = \dfrac{FN}{TP+FN} = \dfrac{12}{34+12} = \dfrac{12}{46} \approx 26.09\%$$
+Sample table
 
- 
+ \begin{table}
+    \centering
+    \begin{tabular}{l|l|l}
+    actual $\backslash$ predicted & True           & False          \\ \hline
+    True                        & True Positive  & False Negative \\ \hline
+    False                       & False Positive & False Negative \\
+    \end{tabular}
+\end{table}
 
 ```{r train-test-draft}
 # Draft code for training and testing partitions
@@ -1099,11 +1107,13 @@ k_fold = c(19, 19, 19, 19, 19, 19, 19, 19, 18, 18)
 k_accumulate = c(19, 38, 57, 76, 95, 114, 133, 152, 170, 188)
 
 partition_list = list(0,0,0,0,0,0,0,0,0,0)
-partition_list[[1]] = ind_permute[1:k_fold[1]]
+
+# Need to sort the indices within each partition
+partition_list[[1]] = sort(ind_permute[1:k_fold[1]])
 for (ii in 2:length(k_fold)) {
   start = k_accumulate[ii-1]+1
   end = start + k_fold[ii] - 1
-  partition_list[[ii]] = ind_permute[start:end]
+  partition_list[[ii]] = sort(ind_permute[start:end])
 }
 
 # partition_list
@@ -1129,6 +1139,8 @@ test_kfold_prob = predict.glm(train_kfold_model, test_kfold_data, type="response
 
 # test_kfold_prob
 
+prob_to_matrix(test_kfold_data, test_kfold_prob)
+
 # Next step: Start a for loop: exclude from 1 to 10
 # But how to combine the test_kfold_prob probabilities?
 # e.g. Create another numeric vector for the combined test results.
@@ -1136,7 +1148,6 @@ test_kfold_prob = predict.glm(train_kfold_model, test_kfold_data, type="response
 
 ```
 
-Test change for git commits.
 
 # Discussion and Conclusion
 
