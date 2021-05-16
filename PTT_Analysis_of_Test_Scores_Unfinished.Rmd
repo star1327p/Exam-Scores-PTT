@@ -1166,6 +1166,7 @@ for (exclude in 1:length(k_fold)) {
   
   # Store the predicted probabilities of each partition in a list
   partition_probs[[exclude]] = test_kfold_prob
+  
   # Store the confusion matrix of each partition in another list
   partition_matrices[[exclude]] = prob_to_matrix(test_kfold_data, test_kfold_prob)
 
@@ -1175,8 +1176,35 @@ for (exclude in 1:length(k_fold)) {
 
 partition_matrices
 
+# This does not work.
+# sum(partition_matrices[[1]] + partition_matrices[[2]]) # 38
+
 ```
 
+Next step: Summarize the results in k-fold cross-validation
+
+```{r k-fold-evaluate}
+tp = 0
+fp = 0
+fn = 0
+tn = 0
+
+for (part in 1:length(k_fold)) {
+  tp = tp + partition_matrices[[part]][1]
+  fp = fp + partition_matrices[[part]][2]
+  fn = fn + partition_matrices[[part]][3]
+  tn = tn + partition_matrices[[part]][4]
+}
+
+# This does not work, either. Because unlist does not sort the indices.
+# prob_to_matrix(data_corr, unlist(partition_probs))
+
+print("Combined results:")
+print(paste("True positive:",tp))
+print(paste("False positive:",fp))
+print(paste("False negative:",fn))
+print(paste("True negative:",tn))
+```
 
 # Discussion and Conclusion
 
