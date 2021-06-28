@@ -1241,14 +1241,12 @@ The author declares that there is no conflict of interest.
 
 More to add
 
+```{r include-test-code, child = 'Test.Rmd'}
+```
 
-# Appendix {.unnumbered}
 
-RStudio, code reproducibility, etc.
-
-Need to specify the $\mathsf{R}$ libraries.  
-
-The code is mainly for demonstration purposes. To learn about better coding styles, we recommend the book *Code Complete* \cite{mcconnell2004code} instead.
+```{r include-appendix, child = 'Appendix.Rmd'}
+```
 
 
 # References {.unnumbered #references}
