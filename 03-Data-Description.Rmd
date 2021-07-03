@@ -1,0 +1,36 @@
+It is a challenge to obtain individual pairs of data as a representative sample. Although it is easy to send out a spreadsheet and ask our friends to report their scores anonymously, this approach can result in a large selection bias. Many of our friends graduated from the same high school and/or college, so we are likely to have similar entrance exam scores.
+
+Hence we retrieved data from the SENIORHIGH (high school)^[<https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>] discussion section on PTT^[If you have a PTT account, you can log into the website using a browser. <https://iamchucky.github.io/PttChrome/?site=ptt.cc>], the largest terminal-based bulletin board in Taiwan.^[<https://en.wikipedia.org/wiki/PTT_Bulletin_Board_System>] We assume the data to be more representative (than if we had collected on our own) because anyone could get a PTT account and reply to the post -- at least before the restriction was announced in 2018.^[<https://www.ettoday.net/news/20200304/1659455.htm>] The majority of scores were reported in May 2015, and a few scores were reported in the following month or later.
+
+The data `ptt_SENIORHIGH_data.csv` contain 197 rows, and the main variables are:
+
+* **pttID**: Each person's ID on PTT, which can be anonymous. This column serves as the unique identifier of each person.
+* **HighSchool_PR**: Each person's percentile rank (PR) of the high school entrance exam in Taiwan, ranging from 0 to 99.
+* **College_Score**: Each person's General Scholastic Ability Test (GSAT) score, ranging from 0 to 75.
+
+There are 6 missing values in **HighSchool_PR** and 3 missing values in **College_Score**, so we recorded each of them as "-1" (an invalid numerical value). 
+
+In some cases, the reported scores can be inaccurate based on the respondent's description, so we created two indicators for this issue:  
+
+* **HS_Inacc**: A "1" means the reported score of high school entrance exam is inaccurate.
+* **College_Inacc**: A "1" means the reported score of college entrance exam is inaccurate.
+
+Some people reported their percentile rank (PR) from the mock exam, rather than the actual high school entrance exam. In 2012 and 2013, the Ministry of Education in Taiwan allowed students to apply for high schools with their grades in middle school. During that time, if a student got admitted to a high school using this method, he/she would not need to take the high school entrance exam.^[<https://tsjh301.blogspot.com/2014/06/compulsory-education.html>]  
+
+Moreover, there are two college entrance exams in each school year, and some students may do much better on the second exam than the first one. Then they were admitted to a more prestigious school than the first exam score had indicated, so this is also a form of inaccuracy.
+
+## Data at a Glance
+
+We show the first 10 rows of data here, and `NA` (not available) denotes that the value is missing. Note that only **HS_Inacc** and **College_Inacc** contain `NA`s, because we already recoded missing values to "-1" (an invalid numeric value) for **HighSchool_PR** and **College_Score**.  
+
+We also observed that **pttID** contains some information for potential inference, although we are not going to use it. For example, the 6th respondent `robinyu85` could be someone named Robin Yu, and the 8th respondent `godpatrick11` may have the English name Patrick. Nevertheless, this kind of information is simply a heuristic, so it is neither sufficient nor appropriate to include in the data analysis.
+
+
+```{r raw-data}
+data = read.csv("ptt_SENIORHIGH_data.csv")
+names(data)[1] = "pttID"
+
+data[1:10,]
+```
+
+**Remark**: Data in the real world are messy, and data scientists spend lots of time cleaning (preprocessing) the data, i.e., preparing the data for analysis.^[<https://bit.ly/303IWxY>] But data cleaning is a necessary step for better analysis results, and there are some visualization examples that demonstrate the importance of preprocessing the data \cite{chai2020importance}. Our dataset `ptt_SENIORHIGH_data.csv` is relatively clean, but we still had to recode and flag missing values.

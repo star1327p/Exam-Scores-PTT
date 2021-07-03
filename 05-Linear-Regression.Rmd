@@ -1,0 +1,123 @@
+We are going to decide whether we should run a linear regression to predict **College_Score** from **HighSchool_PR**. If yes, we would implement the model and check the residuals. If no, we need to explore other options in analyzing the data.  
+
+A linear regression can be written in mathematical terms:
+
+$$Y = \alpha + \beta X + \epsilon$$
+
+$Y$ is the response variable, i.e., what we would like to predict. $X$ is the explanatory variable, i.e., the data used to make the predictions. $\alpha$ is the intercept, and it stands for the estimate $\hat{Y}$ when $X = 0$ (if applicable). $\beta$ is the coefficient, and when $X$ increases by one unit, we can expect $Y$ to increase by $\beta$ units. Last but not least, $\epsilon$ is the error term, which is normally distributed with mean zero.  
+
+*OpenIntro Statistics* \cite{diez2019openintro} states that four requirements need to be met for a linear regression:
+
+\begin{enumerate}
+\item \textbf{Linearity}: The data has a linear trend, not a curve.
+\item \textbf{Nearly normal residuals}: The residuals should be nearly normal, and we need to beware of outliers and influential points.
+\item \textbf{Constant variability}: The variability of $Y$ is constant and does not depend on the value of $X$.
+\item \textbf{Independent observations}: Each observation (datapoint) is independent of the others.
+\end{enumerate}
+
+## Should we run a linear regression?
+
+It is inappropriate to perform linear regression directly, because the data do not meet the constant variability assumption. In the bivariate exploratory plot, we can see that the variability of **College_Score** ($Y$) increases as **HighSchool_PR** ($X$) increases. One possible remedy is apply the square root transformation to **College_Score**, in order to reduce the variability. But the scatterplot below shows little to no improvement in variability, and the correlation coefficient even drops from 0.507 to 0.504. Hence we determine that it is not a good idea to run a linear regression model on the whole dataset.   
+
+```{r transform-test}
+# data version: already removed missing data
+# data_corr = data[-missing_rows,]
+
+plot(data_corr$HighSchool_PR, sqrt(data_corr$College_Score),
+     main = "High School and College Entrance Exam Scores",
+     xlab="HighSchool_PR",
+     ylab="Square Root of College_Score")
+```
+
+```{r transform-correlation}
+cor(data_corr$HighSchool_PR, sqrt(data_corr$College_Score))
+```
+
+## Segmenting the Data {#examine-further}
+
+Instead, we should segment the data and further examine the top scorers in the dataset, i.e., those with **HighSchool_PR** 80 or higher. Most of these respondents have **College_Score** of 60 or higher, but the range of **College_Score** is wide. Here, we add horizontal and vertical lines to clarify the graph.
+
+```{r high-scorer-obs}
+plot(data_corr$HighSchool_PR, data_corr$College_Score,
+     main = "High School and College Entrance Exam Scores",
+     xlab="HighSchool_PR",
+     ylab="College_Score")
+
+abline(h=60,v=80)
+```
+
+We can also create a contingency table (a.k.a. cross tabulation) for the two indicators **HighSchool_80up** and **College_60up**, which displays the bivariate frequency distribution in terms of counts.  
+
+- **HighSchool_80up**: Indicator of whether **HighSchool_PR** is 80 or higher
+- **College_60up**: Indicator of whether **College_Score** is 60 or higher
+
+```{r high-scorer-matrix}
+data_corr$HS_80up = data_corr$HighSchool_PR >= 80
+data_corr$CS_60up = data_corr$College_Score >=60
+
+contingency = table(data_corr$HS_80up, data_corr$CS_60up,
+                    dnn=c("HighSchool_80up","College_60up"))
+
+contingency
+```
+
+To make the table easier to read, we revert the order of `FALSE` and `TRUE` in the contingency table by calling the indices in reverse order.
+
+```{r high-scorer-contingency}
+contingency = contingency[2:1, 2:1]
+contingency
+```
+
+
+Below is the percentage version of the contingency table, and we can see that more than 63.5% of the respondents have both **HighSchool_PR** $\geq$ 80 and **College_Score** $\geq$ 60. This is also evidence that the PTT users tend to come from the population who scored well on the high school and college entrance exams.  
+
+```{r high-scorer-percentage}
+prop.table(contingency)
+```
+
+We can also round the percentage version to four decimal places in the ratio, so we will have two decimal places after the integer percentage. For example, 0.4528 becomes 45.28%.
+
+```{r high-scorer-rounding}
+round(prop.table(contingency),4)
+```
+
+## Conditional Probability 
+
+Using conditional probability, we can answer this question from the data: If a person scores at least 80 on the high school entrance score percentile rank (PR), how likely is he/she going to obtain a score at least 60 on the college entrance exam?  
+
+In mathematical terms, this is equivalent to finding $P(\text{College$\_$60up is true } \vert \text{ HighSchool$\_$80up is true})$. Recall the conditional probability formula and the Bayes theorem:  
+
+$$P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{P(B|A)P(A)}{P(B)}$$  
+
+In this data, we have   
+
+- $P(\text{HighSchool$\_$80up is true})$ = # of respondents with **HighSchool_PR** $\geq$ 80 / all respondents.
+ 
+- $P(\text{College$\_$60up is true})$ = # of respondents with **College_Score** $\geq$ 60 / all respondents.
+
+- $P(\text{HighSchool$\_$80up is true} \cap \text{College$\_$60up is true})$  
+= # of respondents with **HighSchool_PR** $\geq$ 80 and **College_Score** $\geq$ 60 / all respondents.  
+
+Plugging the numbers into the equation, we get  
+
+$$\begin{aligned} 
+& P(\text{College$\_$60up is true } \vert \text{ HighSchool$\_$80up is true})\\
+&= \frac{P(\text{HighSchool$\_$80up is true} \cap \text{College$\_$60up is true})}{P(\text{HighSchool$\_$80up is true})} \\
+&= \frac{\text{$\#$ of respondents with HighSchool$\_$PR $\geq$ 80 and College$\_$Score $\geq$ 60}}{\text{$\#$ of respondents with HighSchool$\_$PR $\geq$ 80}} \\
+&= \frac{120}{43+120} \approx 0.7362.
+\end{aligned}$$
+
+According to this data from PTT, there is a 73.62% chance for a person to score at least 60 on the college entrance exam, given that he/she scored at least 80 on the high school entrance score percentile rank (PR). Note that we use number of respondents rather than percentage to avoid rounding errors.  
+
+In comparison, if we do not know anything about the person's high school entrance score percentile rank (PR), we have a probability of 63.82% in observing the person scoring at least 60 on the college entrance exam. There is an increase of 9.80% in probability after we learn information about his/her high school entrance exam score.
+
+$$\begin{aligned}
+P(\text{College$\_$60up is true}) &= \text{$\#$ of respondents with College$\_$Score $\geq$ 60 / all respondents} \\
+&= \frac{120}{188} \approx 0.6382.
+\end{aligned}$$
+
+```{r unconditional}
+nrow(data_corr) # number of all respondents without missing data
+```
+
+**Remark**: Conditional probability is the foundation of Bayesian statistics, which updates the existing probabilities given the new data. For the interested readers, we recommend the book \textit{An Introduction to Bayesian Thinking: A Companion to the Statistics with $\mathsf{R}$ Course} \cite{clyde2020bayesian101} as a starting point to learn Bayesian statistics. It is the supplementary materials for the Bayesian statistics course on Coursera from Duke University^[<https://www.coursera.org/learn/bayesian>].

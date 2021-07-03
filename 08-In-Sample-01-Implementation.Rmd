@@ -1,0 +1,92 @@
+Let's start the model validation with in-sample prediction; that is, using the data to predict the outcome of whether **College_Score** is at least 65 for each value of **HighSchool_PR** for values already in the data. If predicted probability of **College_Score** at least 65 (i.e., `fitted.values`) is greater than or equal to 0.5, we assign the predicted value as `TRUE`. We can safely use 0.5 as the probability threshold because the data are quite balanced. In other words, the proportion of **College_Score** at least 65 is close to 0.5 in the data (0.489, to be exact). If the data are imbalanced, say 80% of the records belong to one category, we should adjust the probability threshold in our classification prediction model.  
+
+```{r data-proportions}
+# nrow(data_corr) # 188
+# sum(data_corr$CS_65up) # 92
+# sum(data_corr$CS_65up)/nrow(data_corr) # 0.489
+
+print(paste("There are",nrow(data_corr),"records in the data, with",
+            sum(data_corr$CS_65up),
+            "of them have College_Score at least 65."))
+print(paste("This is a proportion of",
+            round(sum(data_corr$CS_65up)/nrow(data_corr),digits=3),
+            ", which is close to 0.5."))
+```
+
+Let's create a confusion matrix to show the comparison between the actual outcomes and predicted outcomes, i.e., whether each respondent obtained **College_Score** at least 65 or not. Note that a confusion matrix is slightly different than the contingency table in Section \ref{examine-further}, although both record counts in a matrix. A confusion matrix involves the predicted results, while a contingency table simply observes the categories in the data.
+
+```{r prediction-table}
+# Data
+actual_65up = data_corr$CS_65up
+
+# Predicted results
+predicted_65up = model$fitted.values >= 0.5
+
+# Confusion matrix
+confusion = table(actual_65up, predicted_65up)
+# revert the order of FALSE and TRUE
+confusion = confusion[2:1, 2:1] 
+confusion
+```
+
+Below is the percentage version of the confusion matrix.
+
+```{r prediction-percentage}
+prop.table(confusion)
+```
+
+The table below shows the meaning of each cell of the confusion matrix. Assume that "positive" means getting **College_Score** at least 65, which is  equivalent to the `TRUE` label in `actual_65up` and `predicted_65up`. The term "negative" means not getting **College_Score** at least 65, so it is equivalent to the `FALSE` label. For each cell, we have^[<https://developers.google.com/machine-learning/crash-course/classification/true-false-positive-negative>]:
+  
+  - **True Positive (TP)**: The datapoint is actually positive and is predicted as positive, so the model correctly predicts the positive outcome.
+- **True Negative (TN)**: The datapoint is actually negative and is predicted as negative, so the model correctly predicts the negative outcome.
+- **False Positive (FP)**: The datapoint is actually negative but is predicted as positive, so the model **in**correctly predicts the positive outcome, i.e., false alarm.
+- **False Negative (FN)**: The datapoint is actually positive but is predicted as negative, so the model **in**correctly predicts the negative outcome, i.e., error.
+
+```{r table-latex, include=FALSE}
+# Not a good idea to use LaTeX table here, 
+# because the output needs to have a fixed location.
+# Decision: Use R code to generate the table instead.
+
+# \begin{table}
+#    \centering
+#    \begin{tabular}{l|l|l}
+#    actual $\backslash$ predicted & True           & False          \\ \hline
+#    True                        & True Positive  & False Negative \\ \hline
+#    False                       & False Positive & False Negative \\
+#    \end{tabular}
+# \end{table}
+```
+
+```{r table-draft, echo=FALSE}
+# echo=FALSE: Display the output, but not the code.
+
+sep_row = c("|","------------------","|","------------------")
+first_row = c("|","True Positive","|","False Negative")
+mid_row = c("|","------------------","|","------------------")
+second_row = c("|","False Positive","|","True Negative")
+
+table_df = data.frame(rbind(sep_row, first_row, mid_row, second_row))
+rownames(table_df) = c("--------------","Actual Positive",
+                       "---------------","Actual Negative")
+colnames(table_df) = c("|","Predicted Positive","|","Predicted Negative")
+
+table_df
+```
+
+We can retrieve each element in the confusion matrix by specifying the labels for each row and each column. The row indicates how many respondents actually obtained **College_Score** at least 65, and the column indicates how many respondents were predicted to have the positive outcome. Instead of writing the syntax like `confusion[1,2]`, we write it in a clearer way `confusion["TRUE","FALSE"]`. (Don't make the confusion matrix more confusing!) The readers can easily see that this is the number of respondents who we did not predict to have a **College_Score** at least 65, but they actually did. 
+
+```{r tp-fn-fp-tn}
+# row = actual_65up, column = predicted_65up
+tp = confusion["TRUE","TRUE"]
+fn = confusion["TRUE","FALSE"]
+fp = confusion["FALSE","TRUE"]
+tn = confusion["FALSE","FALSE"]
+
+print(paste(tp,fn,fp,tn))
+```
+
+We can also verify that the retrieved numbers are exactly the same as in the original confusion matrix.
+
+```{r verify}
+confusion
+```

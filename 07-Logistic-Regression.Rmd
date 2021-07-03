@@ -1,0 +1,211 @@
+We decided to perform a different model to quantify the relationship between **HighSchool_PR** and **College_Score**, because we concluded in Chapter \ref{linear-reg} that it is inappropriate to perform an ordinary linear regression. (We also tried the square root transformation, but it did not work out, either.) Let's try another statistical model to evaluate the relationship between the two variables. Typically when the ordinary linear regression model is ruled out, the next candidate is a generalized linear model, such as logistic regression and Poisson regression. Choosing a different model may involve modifying the details of the problem statement. The original problem statement is to investigate the relationship between **College_Score** and **HighSchool_PR**, but it is flexible and does not require the relationship to be linear. 
+
+We would like to redefine the problem statement to "estimate the probability of **College_Score** at least 65, given the student's **HighSchool_PR**." Since the variance of **College_Score** depends on **HighSchool_PR**, the assumptions of linear regression are violated, making linear regression an inappropriate model. We decided to focus on whether **College_Score** is at least a particular value instead, so the response variable is binary. We selected 65 as the cutoff point for **College_Score** because this is close to the median, making the number of values about the same in the two categories. We would like to balance the number of datapoints in each category of the response variable.  
+
+Logistic regression is a generalized linear model that uses a binary response variable, and the equation models the probability of an event occurring or not. That's why we set up the new problem statement this way, and Section \ref{logit-intro} gives a brief introduction to the logistic regression model. Although logistic regression is not typically covered at the Statistics 101 level, we would like to give the readers a head start of generalized linear models. We explained the requirements of linear regression in Section \ref{linear-reg}, and now we would like to expand the regression model to additional forms. We decided to introduce generalized linear models early on, because we would like to show that there exist methods to analyze the data `ptt_SENIORHIGH_data.csv` other than linear regression.    
+
+We try to explain the logistic regression in basic terminology. But if the readers feel like they cannot understand the mathematics, it is totally fine to skip this chapter and move on to Chapter \ref{validation} for model validation. The model evaluation concepts are not related to the logistic regression itself, so understanding the model details is not always a prerequisite. We can regard the model as a blackbox, which simply produces the binary classification output.  
+
+## Brief Introduction of Logistic Regression {#logit-intro}
+
+Logistic regression is used to model categorical outcomes, especially a binary response variable. For example, if the response variable is whether an event $Y$ occurs or not, then it can only have two values -- not occurred (0) and occurred (1). We model the probability that the event $Y$ occurred, denoted as $p = P(Y = 1)$, and it is between 0 and 1. But in a linear regression $y = \alpha + \beta x$, the response variable $y$ can be any real number. Therefore, we transform the probability $p$ to the log odds $\log (\dfrac{p}{1-p})$, so that its range spans the whole real line like $y$. Note that the odds $\dfrac{p}{1-p}$ is always positive, as long as $p$ is not exactly 0 or 1.  
+
+The equation for logistic regression is written as below:
+
+$$\text{logit}(p) = \log (\dfrac{p}{1-p}) = \alpha + \beta X$$
+
+The notation is similar to a linear regression, but the interpretation is slightly different. $\alpha$ is the intercept, and $\beta$ is the coefficient. When $\beta$ increases by one unit, the log odds $\log (\dfrac{p}{1-p})$ increases by $\beta$ units. In other words, when $\beta$ increases by one unit, the odds $\dfrac{p}{1-p}$ are multiplied by $e = \exp(1) \approx 2.71828$.  
+
+The probability $p$ can be estimated from the logistic regression model with the equation below.
+
+$$p = \dfrac{\exp(\alpha+\beta X)}{1 + \exp(\alpha+\beta X)}$$
+
+The intercept $\alpha$ serves as a baseline when $X = 0$, and the probability $p$ can be estimated by $p = \dfrac{\exp(\alpha)}{1 + \exp(\alpha)}$. Just like in an ordinary linear regression, the intercept may or may not have practical meaning. For example, if we examine the relationship between people's height and weight, nobody is going to have height of 0 inches.  
+
+For the advanced readers, we recommend reading the textbook *Categorical Data Analysis* \cite{agresti2003categorical} to learn more about logistic regression and other generalized linear models for categorical data. 
+
+## Estimate the Probability of Scoring Well on the College Entrance Exam {#threshold-65}
+
+We would like to redefine the problem statement to "estimate the probability of **College_Score** at least 65, given the student's **HighSchool_PR**." Since the variance of **College_Score** depends on **HighSchool_PR**, the assumptions of linear regression are violated, making linear regression an inappropriate model. That's why we decided to focus on whether **College_Score** is at least a particular value instead, so the response variable is binary. We selected 65 as the cutoff point for **College_Score** because this is close to the median, making the number of values about the same in the two categories. We would like to balance the number of datapoints in each category of the response variable.  
+
+```{r college-score-sep-65}
+print(paste("College_Score at least 65:", sum(data_corr$College_Score >= 65)))
+print(paste("College_Score below 65:", sum(data_corr$College_Score < 65)))
+```
+
+The event $Y$ we would like to observe is getting a **College_Score** at least 65. We define 
+
+$$p = P(Y=1) = P(\textbf{College}\_\textbf{Score} \geq 65),$$ 
+
+i.e., the probability of getting a **College_Score** at least 65. And the independent variable $X$ is the $\textbf{HighSchool}\_\textbf{PR}$, whose values are between 0 and 99.  
+
+Then we implement the logistic regression with the equation
+
+$$\text{logit}(p) = \log (\dfrac{p}{1-p}) = \alpha + \beta X.$$
+
+The model is written as `glm(y ~ x, data=data, family="binomial")` in `R` code, where `glm` stands for generalized linear regression. The `family` option is set to binomial, because the response variable is binary and can only have values 0 or 1. Hence our logistic model can be written as
+
+$$\text{logit}(P(\textbf{College}\_\textbf{Score} \geq 65)) \sim \alpha + \beta * \textbf{HighSchool}\_\textbf{PR}.$$
+
+Let's create the logistic regression model in `R` as below.
+
+```{r logistic-code}
+# 1. Create the binary variable first.
+# 2. model = glm( y ~ x, data=data, family="binomial")
+# 3. summary(model)
+# https://stats.idre.ucla.edu/r/dae/logit-regression/
+
+data_corr$CS_65up = data_corr$College_Score >= 65
+model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
+summary(model)
+
+```
+
+## Model Interpretation: Point Estimates
+
+The `Pr(>|z|)` is the p-value of each independent variable, and we can see that **HighSchool_PR** is statistically significant because p-value < 0.05. When **HighSchool_PR** increases by one, the log odds $\log (\dfrac{p}{1-p})$ of getting **College_Score** at least 65 increases by approximately 0.15. After transforming log odds $\log (\dfrac{p}{1-p})$ back to odds $\dfrac{p}{1-p}$, we get that the odds are multiplied by $e = \exp(0.15) \approx 1.161$. In other words, when **HighSchool_PR** increases by one, the odds of getting **College_Score** at least 65 increases by approximately 16.1%. 
+
+For better reproducibility of coefficients, these can be retrieved using the code below.
+
+```{r coefficients}
+model$coefficients
+```
+
+We can also round the coefficients to the third digit after the decimal point. But for better precision, we do not recommend rounding numbers until we reach the final calculation results. 
+
+```{r coefficients-rounded}
+round(model$coefficients, digits=3)
+```
+
+Here is the exponential of the coefficients, because we need to transform log odds into odds.
+
+```{r exp-coefficients}
+exp(model$coefficients)
+```
+
+The intercept serves as a baseline for the logistic regression model when **HighSchool_PR** is 0. We can predict $p$ under this condition, and find out how likely this (fictitious) person is going to get **College_Score** at least 65. The estimated probability is extremely low, less than 0.01%. Nevertheless, the value of **HighSchool_PR** starts at 1, so the intercept does not have an intrinsic meaning. (And typically most students who score less than 10 in **HighSchool_PR** would not be interested in attending college, either.)
+
+```{r intercept, message=FALSE}
+alpha = as.numeric(model$coefficients[1])
+beta = as.numeric(model$coefficients[2])
+
+p_intercept = exp(alpha)/(1+exp(alpha))
+p_intercept
+```
+
+In comparison, when **HighSchool_PR** is 99, the model estimates that the student has a 76.9% chance to achieve a **College_Score** of 65 or higher.
+
+```{r pr99, message=FALSE}
+p_pr99 = exp(alpha + beta*99)/(1+exp(alpha + beta*99))
+p_pr99
+```
+
+If we look at the data, there are 25 respondents with **HighSchool_PR** 99, and only one of them scored below 65 in the **College_Score**. The data shows the conditional probability to be 96%.  
+
+$$P(\textbf{College}\_\textbf{Score} \geq 65 | \textbf{HighSchool}\_\textbf{PR} = 99) = \dfrac{24}{25} = 96\%.$$
+
+In this **HighSchool_PR** 99 group, more than half of the respondents (14, to be exact) has a **College_Score** between 71 and 73. Nevertheless, **HighSchool_PR** 99 is not an (almost) necessary condition to achieve **College_Score** 65 or higher. In the group of **College_Score** 65 or higher, only 24 out of the 92 respondents had **HighSchool_PR** 99, which is less than a quarter.  
+
+$$P(\textbf{HighSchool}\_\textbf{PR} = 99 | \textbf{College}\_\textbf{Score} \geq 65) = \dfrac{24}{92} \approx 26\%.$$
+
+```{r pr99-and-cs65}
+num_pr99 = sum(data_corr$HighSchool_PR == 99)
+num_cs65 = sum(data_corr$College_Score >= 65)
+num_pr99_and_cs65 = sum(data_corr$HighSchool_PR == 99 & data_corr$College_Score >= 65)
+```
+
+```{r pr99-and-cs65-print}
+print(paste("Number of respondents with HighSchool_PR 99:",num_pr99))
+print(paste("Number of respondents with College_Score 65 or better:",num_cs65))
+print(paste("Number of respondents with HighSchool_PR 99 and College_Score 65 or better:",
+            num_pr99_and_cs65))
+```
+
+```{r pr99-data}
+sort(data_corr$College_Score[which(data_corr$HighSchool_PR==99)])
+```
+
+## Model Interpretation: 95% Confidence Intervals
+
+In addition to the point estimates, we also need to provide the corresponding 95% confidence intervals to account for uncertainty. The lower bound is the 2.5th percentile, and the upper bound is the 97.5th percentile. Statistical significance at 5% means that the 95% confidence interval does not include 0. Let's start with the intercept and the coefficient for **HighSchool_PR** using the  `R` function `confint`. Neither the intercept nor the coeffient's confidence interval includes 0, so both are statistically significant.  
+
+Although the intercept $\alpha$'s confidence interval seems wide, the exponential version $\exp(\alpha)$ is extremely small for both ends. Especially when the intercept (baseline for **HighSchool_PR** = 0) does not have practical meaning in this data, we do not need to be overly concerned about the intercept.    
+
+On the other hand, the coefficient $\beta$ has a point estimate of approximately 0.15, with a 95% confidence interval [0.101, 0.206]. When **HighSchool_PR** increases by one, we can expect an increase between 0.101 and 0.206 in the log odds $\log (\dfrac{p}{1-p})$ of getting **College_Score** at least 65. We can also transform log odds $\log (\dfrac{p}{1-p})$ back to odds $\dfrac{p}{1-p}$, and get an expected increase factor between 1.106 and 1.229. We are 95% confident that the odds of getting **College_Score** at least 65 would increase by between 10.6% and 22.9%, given that **HighSchool_PR** increases by one.    
+
+```{r confint}
+confint(model)
+```
+
+```{r exp-confint}
+exp(confint(model))
+```
+
+We can also calculate the 95\% confidence interval for the predicted probability of getting **College_Score** at least 65, given that the respondent scored a 99 on **HighSchool_PR**. However, the confidence interval is [0.00012, 0.99999], which does not make practical sense because a probability has natural boundaries of [0,1].  
+
+Why is this interval so wide? The linear component is $\alpha + \beta X$, so the range depends on the value of **HighSchool_PR**. When **HighSchool_PR** is large (say, 99), the 95% confidence interval of $\alpha + \beta X$ becomes extremely wide. The interval would be narrow for a small value of **HighSchool_PR**, such as less than 10. But people with extremely low **HighSchool_PR** are unlikely to be interested in taking the college entrance exam at all. Hence we are not going to calculate the 95\% confidence interval for small **HighSchool_PR** values. 
+
+```{r pr99-confint, message=FALSE}
+ci_matrix = confint(model)
+alpha_ci = ci_matrix[1,]
+beta_ci = ci_matrix[2,]
+p_pr99_ci = exp(alpha_ci + beta_ci*99)/(1+exp(alpha_ci + beta_ci*99))
+p_pr99_ci
+```
+
+**Remark**: The readers may wonder how the author(s) remember all of the `R` commands for the model. In fact, we don't need to! We can use the function `objects` to find all available outputs from the model, and the object names are descriptive.
+
+```{r objects-model}
+objects(model)
+```
+
+## Overall Model Results
+
+```{r model-validation, include=FALSE}
+# objects(model) # to find out what functions are available in the model
+
+# model$fitted.values # probability values for all 197 datapoints.
+# predict(model, data_corr, type="response")
+
+# Also need to plot the HighSchool_PR vs predicted probability of College_Score at least 65.
+
+# Use the predict function for certain HighSchool_PR points 
+# (e.g. 80, 90, 95, 99)
+
+# https://www.theanalysisfactor.com/r-tutorial-glm1/
+# https://www.theanalysisfactor.com/r-glm-plotting/
+```
+
+In addition to the coefficient estimates, we also need to perform model validation to examine how well the model fits the data. Let's start with visualizing the predicted probability of getting **College_Score** at least 65 and the **HighSchool_PR** values in the data. The former can be obtained from the `fitted.values` object of the model. The highest predicted probability occurs at **HighSchool_PR** 99, but the predicted probability of getting **College_Score** at least 65 is still less than 80%. (So high school students should still study hard for the college entrance exam, despite getting an excellent **HighSchool_PR** score.)
+
+```{r fitted-values-max}
+print(paste("The highest predicted probability is",max(model$fitted.values)))
+print(paste("This occurs at HighSchool_PR",
+      data_corr$HighSchool_PR[which.max(model$fitted.values)]))
+```
+
+The graph shows different trends for different segments of the **HighSchool_PR**. When **HighSchool_PR** is less than 70, the predicted probability of getting **College_Score** at least 65 is close to zero. But we should take this observation with caution, because we have few data points with **HighSchool_PR** less than 70. When **HighSchool_PR** is between 70 and 79, the predicted probability increases with an almost linear trend. Starting at **HighSchool_PR** 80, the predicted probability increases with a steeper slope. Finally, the growth of the predicted probability slows down when **HighSchool_PR** reaches 98 (the maximum possible **HighSchool_PR** is 99).    
+
+```{r validation-draft}
+# First version of graph
+yy = model$fitted.values
+xx = data_corr$HighSchool_PR
+plot(xx, yy, ylim=c(0,1),
+     main="Predicted Probability of College_Score >= 65 with HighSchool_PR",
+     xlab="HighSchool_PR",
+     ylab="Probability of College_Score >= 65")
+```
+
+Since there are many repetitive values in **HighSchool_PR**, let's apply the `jitter` function to add random noise to the data for display. (Remember to set a random seed for reproducibility.) We can see that the deeper black circles indicate more records in the data, which are concentrated in the higher **HighSchool_PR** values.
+
+```{r validation-jittering}
+# Add jittering because of many repetitive values in HighSchool_PR
+set.seed(21)
+new_xx = jitter(xx)
+new_yy = jitter(yy)
+plot(new_xx, new_yy, ylim=c(0,1),
+     main="Jittered Probability of College_Score >= 65 with HighSchool_PR",
+     xlab="HighSchool_PR",
+     ylab="Probability of College_Score >= 65")
+```
+

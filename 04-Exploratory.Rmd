@@ -1,0 +1,71 @@
+The first step in a data project is exploratory data analysis, before we perform any statistical modeling. Therefore, we start with observing the trends of the two main variables, **HighSchool_PR** and **College_Score**.  
+
+## High School Entrance Exam Scores (Percentile Rank)
+
+Below shows the descriptive statistics of **HighSchool_PR**, i.e., the percentile rank of high school entrance exam scores. The missing values are removed beforehand. Approximately 75% of the respondents have a percentile rank (PR) at least 85, indicating that most of the respondents scored in the top 15% of the high school entrance exam. The histogram is also extremely left-skewed.  
+
+```{r high-school-pr}
+# High school entrance exam scores: Remove missing values
+uni_HS_score = data$HighSchool_PR[which(data$HighSchool_PR != -1)]
+
+summary(uni_HS_score)
+
+hist(uni_HS_score, main = "Histogram of HighSchool_PR",
+     xlab="HighSchool_PR")
+```
+
+## College Entrance Exam Scores 
+
+Similarly, we also show the descriptive statistics of **College_Score**, i.e., the college entrance exam scores between 0 and 75. The histogram is also left-skewed, but less extreme than **HighSchool_PR**.  
+
+According to the reference score table^[<https://bit.ly/3bAYOvO>] from Wikipedia, the 88th percentile of the college entrance score fluctuates around 60 in Years 2004-2010, and 62-65 in Years 2011-2018. Since the median of **College_Score** is 64.5, we can infer that at least 50% of the respondents scored in the top 12% of the college entrance exam.  
+
+On the other hand, the reference score table also shows that the 75th percentile of the college entrance score is between 53 and 58 in Years 2004-2018. The PTT data's 1st quantile is already at 58, so we can also infer that at least 75% of the respondents scored in the top 25% of the college entrance exam.  
+
+Since PTT contains forums for several prestigious universities in Taiwan, it is no surprise that many users attended these colleges because they scored well on the college entrance exam. Nevertheless, PTT did not limit registration to students of these colleges in the past, so the population of PTT is slightly more diverse. Note that as of 2020, PTT changed their eligibility requirements, and limited new account registrations to only people with an email address from National Taiwan University.^[Screenshot obtained on May 26, 2020: <https://imgur.com/33fwrGH>]
+
+```{r college-score}
+# College entrance exam scores: Remove missing values
+uni_college_score = data$College_Score[which(data$College_Score != -1)]
+
+summary(uni_college_score)
+
+hist(uni_college_score, main="Histogram of College_Score",
+     xlab="College_Score (max possible is 75)",xlim=c(30,80))
+```
+
+## Bivariate Exploration {#bivariate}
+
+Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score**, but we have to remove the records with at least one missing score. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores.
+
+```{r bivariate}
+missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
+# Indices: 6  19  71  85  88  96 132 183 195 => nine in total
+
+# Remove missing data
+data_corr = data[-missing_rows,]
+
+plot(data_corr$HighSchool_PR, data_corr$College_Score,
+     main = "High School and College Entrance Exam Scores",
+     xlab="HighSchool_PR",
+     ylab="College_Score")
+```
+
+The correlation coefficient is approximately 0.507, showing a medium strength of positive association between **HighSchool_PR** and **College_Score**. We can interpret that a better score in the high school entrance exam is likely to lead to a better college entrance exam score, but the relationship is not as strong after **HighSchool_PR** reaches 80.
+
+```{r correlation}
+cor(data_corr$HighSchool_PR, data_corr$College_Score)
+```
+
+To calculate the correlation coefficient between the random variables $X, Y$, we need to start with the covariance $\text{Cov}(X,Y)$ in the equation below. $E[X]$ denotes the expectation value of $X$, a.k.a. the mean of $X$.
+
+$$\text{Cov}(X,Y) = E[(X-E[X])(Y-E[Y])] = E[XY] - E[X]E[Y].$$
+
+Then we also need to compute the standard deviation $\sigma_X$:
+
+$$\sigma_X = \sqrt{E[(X-E[X])^2]} = \sqrt{E[X^2]-(E[X])^2}.$$
+Same applies to the standard deviation $\sigma_Y$.  
+
+Finally, we can calculate the correlation coefficient as:
+
+$$\rho_{X,Y} = \dfrac{\text{Cov}(X,Y)}{\sigma_X \sigma_Y}.$$

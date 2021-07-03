@@ -1,0 +1,162 @@
+We are going to take a closer look at the top scorers, given the observation in Section \ref{examine-further}. In Taiwan's education system, the top tier of high schools and colleges can be further segmented. The top of the top tier can be very different than the bottom of top tier. Therefore, we consider the following subcategories:     
+
+* **HighSchool_PR** ranges: 80-89, 90-94, 95-99
+* **College_Score** ranges: 60-64, 65-69, 70-75
+
+## Data Consistency
+
+Before we start the analysis, we need to ensure consistency in the data. For instance, there are 191 records of valid high school entrance exam scores in the data. But if we consider only the ones with a valid college entrance exam score, the number of available records drops to 188. Although which version we use does not matter much when we look at the univariate distribution, this is going to be problematic when we combine the univariate analysis with the bivariate analysis. Thus, we should use only the 188 records whose college entrance exam scores are also valid. 
+
+```{r high-school-pr80up-univ}
+# High school entrance exam scores: Remove missing values
+# uni_HS_score = data$HighSchool_PR[which(data$HighSchool_PR != -1)]
+length(uni_HS_score)
+
+```
+
+```{r high-school-pr80up-bivar}
+# Consider only the records with both valid HighSchool_PR and College_Score
+length(data_corr$HighSchool_PR)
+```
+
+The same data consistency requirement also applies to the college entrance scores. There are 194 records of valid high school entrance exam scores in the data, but only 188 of them also have corresponding valid high school entrance exam scores. Accordingly, we should use only the 188 records whose high school entrance exam scores are also valid.
+
+```{r college-score60up}
+# College entrance exam scores: Remove missing values
+# uni_college_score = data$College_Score[which(data$College_Score != -1)]
+length(uni_college_score)
+```
+
+```{r college-score60up-bivar}
+# Consider only the records with both valid HighSchool_PR and College_Score
+length(data_corr$College_Score)
+```
+
+## High School Entrance Exam Scores (Percentile Rank) at least 80 {#HighSchool-PR-80-up}
+
+We use the `R` function `table` to show the frequency of each **HighSchool_PR** value that is at least 80, and we have 163 values in total. In the table below, the first row is the PR (percentile rank), and the second row is the counts. Although we truncated the **HighSchool_PR** to 80 and above, the distribution is still left-skewed. The **HighSchool_PR** 99 has the highest counts, followed by **HighSchool_PR** 97 and **HighSchool_PR** 98.
+
+```{r high-school-pr-sequential}
+HS_PR_seg = data_corr$HighSchool_PR[which(data_corr$HS_80up == TRUE)]
+length(HS_PR_seg)
+```
+
+```{r high-school-pr-table}
+table(HS_PR_seg)
+```
+
+Or if you prefer a histogram, we can also create one.
+
+```{r high-school-pr-seg-hist}
+hist(HS_PR_seg, xlab="HighSchool_PR",
+     main="Histogram of HighSchool_PR 80 and above")
+```
+
+Therefore, we create the breakdown of the **HighSchool_PR** ranges: 80-89, 90-94, 95-99. There are 49 records in the 80-89 range, 44 records in 90-94, and 70 records in 95-99. We divided the 90-99 range into 90-94 and 95-99, but the number of **HighSchool_PR** records in the 95-99 range is still higher than any of the other two categories.  
+
+However, it is not a good idea to further divide the 95-99 range into 95-97 and 98-99, due to the lack of geographic information. In Taipei, the high school enrollment is extremely competitive. Students with **HighSchool_PR** 95 and those with **HighSchool_PR** 99 would get admitted to high schools of different rankings^[https://w199584.pixnet.net/blog/post/28321887]. But in other parts of Taiwan, most students with **HighSchool_PR** at least 95 would already qualify for the top local high school, and some rural parts even require a lower **HighSchool_PR** to get into the county's top high school^[http://www.edtung.com/TopNews/NewsContent.aspx?type=4&no=1278].
+
+```{r high-school-pr-segments}
+HS80to89 = length(which(HS_PR_seg >= 80 & HS_PR_seg <= 89))
+HS90to94 = length(which(HS_PR_seg >= 90 & HS_PR_seg <= 94))
+HS95to99 = length(which(HS_PR_seg >= 95 & HS_PR_seg <= 99))
+```
+
+```{r high-school-pr-segments-print}
+print(paste("HighSchool_PR 80-89:",HS80to89))
+print(paste("HighSchool_PR 90-94:",HS90to94))
+print(paste("HighSchool_PR 95-99:",HS95to99))
+```
+
+## College Entrance Exam Scores at least 60
+
+Similar to the previous section, we also show the frequency of each **College_Score** value that is at least 60. The total counts is 128, fewer than the 163 counts with **HighSchool_PR** 80 or above. The distribution is relatively uniform for **College_Score** values between 60 and 73, with a steep decline in the counts of **College_Score** 74 and 75 (max possible score). On the college entrance exam, only four respondents scored 74 and two scored 75. According to the historical statistics of the college entrance exam in Taiwan, **College_Score** 74 and 75 account for approximately 0.2% of all test takers each year, which is quite a small percentage.    
+
+```{r college-score-sequential}
+CS_Score_seg = data_corr$College_Score[which(data_corr$CS_60up == TRUE)]
+length(CS_Score_seg)
+```
+
+```{r college-score-table}
+table(CS_Score_seg)
+```
+
+Before we display the histogram, let's create a table to (approximately) convert **College_Score** into PR (Percentile Rank) using 2001-2014 data^[https://web.archive.org/web/20150207042900/http://www.ceec.edu.tw/AbilityExam/AbilityExamStat.htm]. This gives readers an understanding of what percentage of test takers (high school students in grade 12) get what scores. For example, a **College_Score** of 70 would be at the 98.5th percentile, i.e., PR 98.5.
+
+```{r college-score-pr}
+college_score = c(60,65,70,74,75)
+college_pr = c(88, 95, 98.5, 99.9, 100)
+
+data.frame(college_score, college_pr)
+```
+
+Here is the histogram of the **College_Score** values 60 and above.
+
+```{r college-score-seg-hist}
+hist(CS_Score_seg, xlab="College_Score (max possible is 75)",
+     main="Histogram of College_Score 60 and above")
+```
+
+We also create the breakdown of the **College_Score** ranges: 60-64, 65-69, 70-75. There are 36 records in the 60-64 range, 47 records in 65-69, and 45 records in 70-75. This is also relatively more uniform than the **HighSchool_PR** breakdown (49, 44, and 70 records each).
+
+```{r college-score-segments}
+CS60to64 = length(which(CS_Score_seg >= 60 & CS_Score_seg <= 64))
+CS65to69 = length(which(CS_Score_seg >= 65 & CS_Score_seg <= 69))
+CS70to75 = length(which(CS_Score_seg >= 70 & CS_Score_seg <= 75))
+```
+
+```{r college-score-segments-print}
+print(paste("College_Score 60-64:",CS60to64))
+print(paste("College_Score 65-69:",CS65to69))
+print(paste("College_Score 70-75:",CS70to75))
+```
+
+## Bivariate Exploration of High Scorers
+
+Section \ref{bivariate} explored the bivariate relationship between **HighSchool_PR** and **College_Score**, and this time we would like to focus on the high scorers: respondents with **HighSchool_PR** $\geq$ 80 and/or **College_Score** $\geq$ 60. There are 163 respondents with **HighSchool_PR** $\geq$ 80, 128 respondents with **College_Score** $\geq$ 60, and 120 respondents with both. Since the number of respondents with **HighSchool_PR** $\geq$ 80 does not equal to the number of respondents with **College_Score** $\geq$ 60, we should consider the full 188 records in the data. Hence we add the range 0-79 to **HighSchool_PR**, and the range 0-59 for **College_Score**. We would like to create a 4x4 table for the following ranges:
+
+* **HighSchool_PR** ranges: 0-79, 80-89, 90-94, 95-99
+* **College_Score** ranges: 0-59, 60-64, 65-69, 70-75
+
+Here, we use the `for` loop and `if-else` logic to map **HighSchool_PR** and **College_Score** into their corresponding ranges. The `else if` statement is executed when and only when the `if` statement is not true, so we can assign the score to the appropriate category using sequential `if-else` statements for range boundaries.
+
+```{r contingency-4x4}
+data_corr$HS_range = "set"
+data_corr$CS_range = "set"
+
+for(ii in 1:nrow(data_corr)) {
+        # High School PR categories
+        if (data_corr$HighSchool_PR[ii] <= 79) {
+                data_corr$HS_range[ii] = "0-79"
+        } else if (data_corr$HighSchool_PR[ii] <= 89) {
+                data_corr$HS_range[ii] = "80-89"
+        } else if (data_corr$HighSchool_PR[ii] <= 94) {
+                data_corr$HS_range[ii] = "90-94"
+        } else {
+                data_corr$HS_range[ii] = "95-99"
+        }
+        
+        # College Score Categories
+        if (data_corr$College_Score[ii] <= 59) {
+                data_corr$CS_range[ii] = "0-59"
+        } else if (data_corr$College_Score[ii] <= 64) {
+                data_corr$CS_range[ii] = "60-64"
+        } else if (data_corr$College_Score[ii] <= 69) {
+                data_corr$CS_range[ii] = "65-69"
+        } else {
+                data_corr$CS_range[ii] = "70-75"
+        }
+}
+```
+
+We continue to use the `R` function `table` to create the 4x4 contingency table between the ranges of **HighSchool_PR** and **College_Score**. As we can see in the horizontal rows, the majority of respondents with **HighSchool_PR** less than 80 have a **College_Score** less than 60. For the respondents with **HighSchool_PR** between 80 and 94, the **College_Score** varies widely. The respondents with **HighSchool_PR** 95 or above performed the best in terms of **College_Score** -- most of them scored 65 or higher.  
+
+In the vertical columns, the respondents with **College_Score** less than 60 mostly had a **HighSchool_PR** 94 or below; few came from the group of **HighSchool_PR** 95-99. For the respondents with **College_Score** between 60 and 64, their **HighSchool_PR** varied widely. Approximately half of the respondents with **College_Score** had **HighSchool_PR** 95 or above. For the top group of **College_Score** 70 or above, more than three quarters (34 out of 45) came from the respondents with **HighSchool_PR** 95 or higher.
+
+```{r table-4x4}
+table_4x4 = table(data_corr$HS_range, data_corr$CS_range,
+                  dnn=c("HighSchool_PR","College_Score"))
+table_4x4
+```
+
+The contingency table shows a positive association between **HighSchool_PR** and **College_Score**: Respondents with a good **HighSchool_PR** score are more likely to achieve a good **College_Score**, but this is not guaranteed. Respondents who scored poorly in **HighSchool_PR** still had a small chance to do exceptionally well in **College_Score** later. Our findings align with the conventional wisdom that **HighSchool_PR** and **College_Score** are somewhat related, but a high score on **HighSchool_PR** does not guarantee a high score on **College_Score**.
