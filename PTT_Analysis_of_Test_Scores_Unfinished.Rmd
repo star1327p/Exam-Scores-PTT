@@ -102,32 +102,27 @@ Create more graphs
 
 # Model Validation: Out-of-Sample Prediction {#outsample}
 
-The goal of building this model is to optimize the performance for future input, i.e., incoming students who just obtained their **HighSchool_PR** scores. We need to use the model to predict new data, and this validation method is called out-of-sample prediction.  
+The goal of building this model is to optimize the performance for future input, i.e., incoming students who just obtained their **HighSchool_PR** scores. We need to use the model to predict new data, and this validation method is called out-of-sample prediction. That is, the model has to be able to predict data outside the training sample.   
 
 In-sample prediction (Chapter \ref{validation}) is insufficient because we need to test on unseen data to **avoid overfitting**.^[<https://elitedatascience.com/overfitting-in-machine-learning>] But why is overfitting bad? Because the model would do well on the existing data but perform poorly on the new data, which is undesirable. This is similar to a student who memorizes the answers to score 100% on quizzes without understanding the actual content. Then this student may not do well on the final exam because he/she has not seen the questions before. In order to measure the student's grasp of the knowledge, the instructor usually gives exam questions similar to the practice questions, but not exactly the same.    
 
-\textcolor{red}{Write a transition paragraph of how to create the previously unseen data}  
+Some readers may be wondering how to get "new" data to perform out-of-sample prediction, and the good news is that we already have them. New data means **previously unseen** data by the model; in other words, the data was not involved in training the model. Although training the model requires data, we do not have to feed in all 188 records at once. We can use a part of the records to train the model, and leverage the remaining data to test the model for performance evaluation. In this way, the latter part of the data are considered "new" because they are not seen by the model beforehand. The data involved in the training phase is called the training dataset, and the data used for testing is called the testing dataset.  
 
-Having data != need to feed them in all at once.  
+In this chapter, we demonstrate two methods to implement out-of-sample prediction. The first method is using **separate training and testing datasets** to validate the model, where the two datasets are mutually exclusive. We train the model on the training set, and test the model on the testing set. The second method is **cross validation**, which involves partitioning the data into a number of subsets, then we reserve one subset for testing and train the model on all the remaining subsets. Each subset take turns to be used for testing, and finally we combine the results to estimate the overall prediction performance.    
 
-Some readers may be wondering how to get "new" data to perform out-of-sample prediction, and the good news is that we already have them.  
+\textcolor{red}{Unfinished below: Move the paragraphs to the relevant sections}  
 
-New data means previously unseen data by the model; in other words, the data was not involved in training the model.  
+The first method is to **randomly divide the data into a training set and a testing set**. Then we use the training set to train the model for the parameters, and use the testing set to evaluate the model performance. In other words, the model is trained on some data independent of the testing set, because it would not see the testing data beforehand. Using unseen data is helpful to get a better measure of the prediction power of the model. An extension is to divide the data into **training, validation, and testing** sets. We still use the training set to train the model, but we use the validation set to fine-tune the model parameters.^[<https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7>] Finally we test the model using the testing set. By incorporating a validation set as a mid-step, we do not look at the model results for the testing set until the end. This further reduces the risk of overfitting the testing data.    
 
-\textcolor{red}{Unfinished paragraph above}  
+The second method is **cross validation**, which involves partitioning the data into a number of subsets, then we reserve one subset for testing and train the model on all the remaining subsets. Each subset take turns to be used for testing, and finally we combine the results to estimate the overall prediction performance.   
 
-In the later sections, we will demonstrate two methods to implement out-of-sample prediction, and the first method is to **randomly divide the data into a training set and a testing set**. Then we use the training set to train the model for the parameters, and use the testing set to evaluate the model performance. In other words, the model is trained on some data independent of the testing set, because it would not see the testing data beforehand. Using unseen data is helpful to get a better measure of the prediction power of the model. An extension is to divide the data into **training, validation, and testing** sets. We still use the training set to train the model, but we use the validation set to fine-tune the model parameters.^[<https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7>] Finally we test the model using the testing set. By incorporating a validation set as a mid-step, we do not look at the model results for the testing set until the end. This further reduces the risk of overfitting the testing data.    
-
-The second method is **cross validation**, which involves partitioning the data into a number of subsets, then we reserve one subset for testing and train the model on all the remaining subsets. Each subset take turns to be used for testing, and finally we combine the results to estimate the overall prediction performance. One common implementation is the **K-fold cross validation**, in which we randomly divide the data into $K$ subsets to cross-validate each other. (Typically $K=10$.) For each round of validation, we train the model on the $K-1$ subsets and test the model on the one subset which was excluded in the training. Finally, we combine all $K$ rounds of validation, and each subset gets its predicted result for performance evaluation. Another common implementation is the **leave-one-out cross validation**, in which each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction, but we need to perform $N$ rounds of validation, which may not be feasible when $N$ is extremely large. We will demonstrate both K-fold cross validation and leave-one-out cross validation in this chapter.
+One common implementation is the **K-fold cross validation**, in which we randomly divide the data into $K$ subsets to cross-validate each other. (Typically $K=10$.) For each round of validation, we train the model on the $K-1$ subsets and test the model on the one subset which was excluded in the training. Finally, we combine all $K$ rounds of validation, and each subset gets its predicted result for performance evaluation. Another common implementation is the **leave-one-out cross validation**, in which each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction, but we need to perform $N$ rounds of validation, which may not be feasible when $N$ is extremely large. We will demonstrate both K-fold cross validation and leave-one-out cross validation in this chapter.
 
 Demonstrate both K-fold cross validation and leave-one-out cross validation!  
 
 The goal of writing this document is to instruct the readers on how to perform data analysis using fundamental machine learning concepts. We focus on demonstrating the methodology, so the coding implementation may not be perfectly optimized.  
 
-Explain why overfitting is bad!
-
 Randomly divide the data into a training set and a testing set  
-Set a random seed to ensure reproducibility
 
 If fine-tuning the model is needed: Training set, validation set, testing set  
 Avoid overfitting the testing set!  
@@ -148,7 +143,7 @@ model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
 print("This is a test.")
 ```
 
-### Separate Training and Testing Sets
+## Separate Training and Testing Datasets
 
 Write the description here  
 
@@ -309,7 +304,7 @@ another_test
 
 We are going to have fewer descriptions in the result evaluation of later sections, because we assume that at this point, the readers would already be familiar with the relevant concepts.
 
-### K-Fold Cross Validation
+## K-Fold Cross Validation
 
 Write the description here  
 
