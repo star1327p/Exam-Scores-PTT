@@ -110,25 +110,6 @@ Some readers may be wondering how to get "new" data to perform out-of-sample pre
 
 In this chapter, we demonstrate two methods to implement out-of-sample prediction. The first method is using **separate training and testing datasets** to validate the model, where the two datasets are mutually exclusive. We train the model on the training set, and test the model on the testing set. The second method is **cross validation**, which involves partitioning the data into a number of subsets, then we reserve one subset for testing and train the model on all the remaining subsets. Each subset take turns to be used for testing, and finally we combine the results to estimate the overall prediction performance.    
 
-\textcolor{red}{Unfinished below: Move the paragraphs to the relevant sections}  
-
-The first method is to **randomly divide the data into a training set and a testing set**. Then we use the training set to train the model for the parameters, and use the testing set to evaluate the model performance. In other words, the model is trained on some data independent of the testing set, because it would not see the testing data beforehand. Using unseen data is helpful to get a better measure of the prediction power of the model. An extension is to divide the data into **training, validation, and testing** sets. We still use the training set to train the model, but we use the validation set to fine-tune the model parameters.^[<https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7>] Finally we test the model using the testing set. By incorporating a validation set as a mid-step, we do not look at the model results for the testing set until the end. This further reduces the risk of overfitting the testing data.    
-
-The second method is **cross validation**, which involves partitioning the data into a number of subsets, then we reserve one subset for testing and train the model on all the remaining subsets. Each subset take turns to be used for testing, and finally we combine the results to estimate the overall prediction performance.   
-
-One common implementation is the **K-fold cross validation**, in which we randomly divide the data into $K$ subsets to cross-validate each other. (Typically $K=10$.) For each round of validation, we train the model on the $K-1$ subsets and test the model on the one subset which was excluded in the training. Finally, we combine all $K$ rounds of validation, and each subset gets its predicted result for performance evaluation. Another common implementation is the **leave-one-out cross validation**, in which each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction, but we need to perform $N$ rounds of validation, which may not be feasible when $N$ is extremely large. We will demonstrate both K-fold cross validation and leave-one-out cross validation in this chapter.
-
-Demonstrate both K-fold cross validation and leave-one-out cross validation!  
-
-The goal of writing this document is to instruct the readers on how to perform data analysis using fundamental machine learning concepts. We focus on demonstrating the methodology, so the coding implementation may not be perfectly optimized.  
-
-Randomly divide the data into a training set and a testing set  
-
-If fine-tuning the model is needed: Training set, validation set, testing set  
-Avoid overfitting the testing set!  
-
-Consider cross validation (put this topic after the training-testing method) 
-
 ```{r header-code,include=FALSE}
 data = read.csv("ptt_SENIORHIGH_data.csv")
 names(data)[1] = "pttID"
@@ -145,9 +126,9 @@ print("This is a test.")
 
 ## Separate Training and Testing Datasets
 
-Write the description here  
+In this section, **randomly divide the data into a training set and a testing set**. Then we use the training set to train the model for the parameters, and use the testing set to evaluate the model performance. In other words, the model is trained on some data independent of the testing set, because it would not see the testing data beforehand. Using unseen data is helpful to get a better measure of the prediction power of the model. An extension is to divide the data into **training, validation, and testing** sets. We still use the training set to train the model, but we use the validation set to fine-tune the model parameters.^[<https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7>] Finally we test the model using the testing set. By incorporating a validation set as a mid-step, we do not look at the model results for the testing set until the end. This further reduces the risk of overfitting the testing data. But since our logistic regression model does not involve fine-tuning, we use only the training and testing sets for simplicity.  
 
-**Draft code for training and testing partitions**
+### Implementation
 
 Below is the code to divide the data into the training and testing partitions. We randomly selected 50% of the data (94 out of the 188 records) to be in the training part, and the remaining 50% are in the testing part. This can be done by a random permutation of the indices 1-194. Then the first half of the indices correspond to the training records, and the second half of the indices correspond to the testing records. We set a random seed to ensure reproducibility.
 
@@ -249,8 +230,6 @@ tn = test_confusion["FALSE","FALSE"]
 print(paste(tp,fn,fp,tn))
 ```
 
-\textcolor{red}{Unfinished below}  
-
 We can also calculate the evaluation metrics for the predictive model. The process is similar to Section \ref{interpretation}.  
 
 \begin{align*}
@@ -261,7 +240,7 @@ We can also calculate the evaluation metrics for the predictive model. The proce
 \text{False Negative Rate (FNR)} &= \dfrac{FN}{TP+FN} = \dfrac{12}{34+12} = \dfrac{12}{46} \approx 26.09\%
 \end{align*}
 
-Comparison table
+We also compare the results with the in-sample prediction, and they show similar trends. The accuracy, precision, and recall all hover around 70%.
 
 \begin{table}
     \centering
@@ -270,25 +249,29 @@ Comparison table
     ~                              & Accuracy & Precision & Recall  & FPR     & FNR     \\ \hline
     In-Sample Prediction           & 70.74\%  & 67.29\%   & 78.26\% & 36.46\% & 21.74\% \\ \hline
     Separate Training and Testing  & 72.34\%  & 70.83\%   & 73.91\% & 29.17\% & 26.09\% \\ \hline
-    K-Fold Cross Validation        & ~        & ~         & ~       & ~       & ~       \\ \hline
-    Leave-one-out Cross Validation & ~        & ~         & ~       & ~       & ~       \\ \hline
     \end{tabular}
 \end{table}
+
+### Organizing the Code
+
+\textcolor{red}{\Large Unfinished below} 
 
 ```{r train-test-draft}
 # Draft code for training and testing partitions
 
-# Next: Calculate the accuracy, recall, precision, fpr, fnr
-# => compare with the in-sample prediction.
+# UNFINISHED: Consider writing a large function to automate the
+# training-testing procedure, so that we can input any random seed.
+# => Eventually, we can run this function 10 times and take the avg
+#    of the accuracy/precision/recall/etc. 
 
-# UNFINISHED: Write the description and further analysis of the test results (confusion matrix).
-# Also, compare with the in-sample prediction results.
 
 # Wrote this function for reuse in k-fold validation code.
-prob_to_matrix <- function(test_data, test_prob) {
-  # Convert the test probabilities into binary classification results
+prob_to_matrix <- function(test_data, test_prob, threshold=0.5) {
+  # Convert the test probabilities into binary classification results.
+  # Threshold should be between 0 and 1, set to 0.5 by default.
+  
   test_actual_65up = test_data$CS_65up
-  test_pred_65up = test_prob >= 0.5
+  test_pred_65up = test_prob >= threshold
   
   # Confusion matrix
   test_confusion = table(test_actual_65up, test_pred_65up)
@@ -302,13 +285,19 @@ another_test = prob_to_matrix(test_data, test_prob)
 another_test
 ```
 
-We are going to have fewer descriptions in the result evaluation of later sections, because we assume that at this point, the readers would already be familiar with the relevant concepts.
+We are going to have fewer descriptions in the result evaluation of later sections, because we assume that at this point, the readers would already be familiar with the relevant concepts.  
 
 ## K-Fold Cross Validation
 
-Write the description here  
+Next, we are going to talk about **cross validation**. The "cross" means that each record in the data has the opportunity to serve as the training set AND the testing set (obviously, not at the same time). Cross validation involves partitioning data into a number of subsets, then we reserve one subset for testing and train the model on all the remaining subsets. Each subset take turns to be used for testing, and finally we combine the results to estimate the overall prediction performance.  
+
+One common implementation is the **K-fold cross validation**, in which we randomly divide the data into $K$ subsets to cross-validate each other. (Typically $K=10$.) For each round of validation, we train the model on the $K-1$ subsets and test the model on the one subset which was excluded in the training. Finally, we combine all $K$ rounds of validation, and each subset gets its predicted result for performance evaluation. Another common implementation is the **leave-one-out cross validation**, in which each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction, but we need to perform $N$ rounds of validation, which may not be feasible when $N$ is extremely large. We will demonstrate both ways of cross validation in this section.  
+
+Demonstrate both K-fold cross validation and leave-one-out cross validation!  
 
 **Draft code for k-fold cross validation**
+
+\textcolor{red}{\Large Unfinished below} 
 
 ```{r k-fold-draft}
 # Draft code for k-fold cross validation
@@ -413,6 +402,20 @@ print(paste("False positive:",fp))
 print(paste("False negative:",fn))
 print(paste("True negative:",tn))
 ```
+
+Comparison table
+
+\begin{table}
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+    ~                              & Accuracy & Precision & Recall  & FPR     & FNR     \\ \hline
+    In-Sample Prediction           & 70.74\%  & 67.29\%   & 78.26\% & 36.46\% & 21.74\% \\ \hline
+    Separate Training and Testing  & 72.34\%  & 70.83\%   & 73.91\% & 29.17\% & 26.09\% \\ \hline
+    K-Fold Cross Validation        & ~        & ~         & ~       & ~       & ~       \\ \hline
+    Leave-one-out Cross Validation & ~        & ~         & ~       & ~       & ~       \\ \hline
+    \end{tabular}
+\end{table}
 
 # Discussion and Conclusion
 
