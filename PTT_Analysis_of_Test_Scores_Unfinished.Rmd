@@ -254,17 +254,13 @@ We also compare the results with the in-sample prediction, and they show similar
 
 ### Organizing the Code
 
-\textcolor{red}{\Large Unfinished below} 
+\textcolor{red}{\Large Unfinished below}  
 
-```{r train-test-draft}
-# Draft code for training and testing partitions
+Reusability: Incorporate code into a function  
 
-# UNFINISHED: Consider writing a large function to automate the
-# training-testing procedure, so that we can input any random seed.
-# => Eventually, we can run this function 10 times and take the avg
-#    of the accuracy/precision/recall/etc. 
+Avoid excessive copy-pasting
 
-
+```{r prob-to-matrix}
 # Wrote this function for reuse in k-fold validation code.
 prob_to_matrix <- function(test_data, test_prob, threshold=0.5) {
   # Convert the test probabilities into binary classification results.
@@ -284,6 +280,58 @@ prob_to_matrix <- function(test_data, test_prob, threshold=0.5) {
 another_test = prob_to_matrix(test_data, test_prob)
 another_test
 ```
+
+Write something here
+
+```{r train-test-draft}
+# Draft code for training and testing partitions
+
+# UNFINISHED: Consider writing a large function to automate the
+# training-testing procedure, so that we can input any random seed.
+# => Eventually, we can run this function 10 times and take the avg
+#    of the accuracy/precision/recall/etc. 
+
+# Input: data_corr, random_seed
+# Output: confusion_matrix
+
+train_and_test <- function(data, seed) {
+  
+  set.seed(seed)
+  nn = nrow(data)
+  row_inds = c(1:nn)
+  ind_permute = sample(row_inds)
+  mid_pt = floor(nn/2) # round down
+  
+  # Randomly split the data into 50% training and 50% testing
+  train_inds = ind_permute[1:mid_pt]
+  test_inds = ind_permute[(mid_pt+1):nn]
+  train_inds = sort(train_inds)
+  test_inds = sort(test_inds)
+
+  train_data = data[train_inds,]
+  test_data = data[test_inds,]
+
+  train_model = glm(CS_65up ~ HighSchool_PR, data=train_data, family="binomial")
+  # summary(train_model)
+
+  test_prob = predict.glm(train_model, test_data, type="response")
+  # round(test_prob, digits=3)
+  
+  test_confusion = prob_to_matrix(test_data, test_prob)
+
+  return(test_confusion)
+}
+
+train_and_test(data_corr, seed=10)
+
+```
+
+Try another time
+
+```{r train-and-test-2nd}
+train_and_test(data_corr, seed=123)
+```
+
 
 We are going to have fewer descriptions in the result evaluation of later sections, because we assume that at this point, the readers would already be familiar with the relevant concepts.  
 
