@@ -242,7 +242,7 @@ We can also calculate the evaluation metrics for the predictive model. The proce
 
 We also compare the results with the in-sample prediction, and they show similar trends. The accuracy, precision, and recall all hover around 70%.
 
-\begin{table}
+\begin{table}[h]
     \centering
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
@@ -250,6 +250,8 @@ We also compare the results with the in-sample prediction, and they show similar
     In-Sample Prediction           & 70.74\%  & 67.29\%   & 78.26\% & 36.46\% & 21.74\% \\ \hline
     Separate Training and Testing  & 72.34\%  & 70.83\%   & 73.91\% & 29.17\% & 26.09\% \\ \hline
     \end{tabular}
+    \caption{Comparison of results with in-sample prediction}
+    \label{tab:init-train-test}
 \end{table}
 
 ### Organizing the Code
@@ -281,7 +283,7 @@ another_test = prob_to_matrix(test_data, test_prob)
 another_test
 ```
 
-Write something here
+The results in Table \ref{tab:init-train-test} are for separate training and testing sets from a single random seed. We would like to try more versions of such out-of-sample prediction.
 
 ```{r train-test-draft}
 # Draft code for training and testing partitions
