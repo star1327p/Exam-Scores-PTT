@@ -254,20 +254,15 @@ We also compare the results with the in-sample prediction, and they show similar
     \label{tab:init-train-test}
 \end{table}
 
-### Organizing the Code
+### Organizing the Code for Reusability
 
-\textcolor{red}{\Large Unfinished below}  
+We have demonstrated how to train the logistic regression model on a part of the data, and test the model on the remaining data. But there is one problem -- the code is messy and hence not reusable. If we are going to build another training-testing framework, we may have to copy-paste lots of code from Section \ref{train-test-demo}, which is undesirable. We should avoid excessive copy-pasting because this is prone to mistakes, making the code more difficult to debug.   
 
-We have demonstrated how to train the logistic regression model on a part of the data, and test the model on the remaining data. But there is one problem -- the code is messy and hence not reusable. If we are going to build another training-testing framework, we may have to copy-paste a lot of code from Section \ref{train-test-demo}, which is undesirable.  
+A better solution is to incorporate repetitive code into a function, so that we can keep the same work in one place. In software development, "don't repeat yourself" (DRY) is a principle to reduce code repetitions \cite{foote2014learning}. When we change this part of the program, we only need to edit the code within the function. The modifications would automatically be performed anytime the function is called. In this way, the code can be easily reused and maintained.   
 
-A better solution is to incorporate repetitive code into a function, so that we can keep the same work in one place. In software development, "don't repeat yourself" (DRY) is a principle to reduce code repetitions \cite{foote2014learning}. When we decide to change this part of the program, we only need to edit the code within the function. The modifications would automatically be performed anytime the function is called.  
-
-Reusability: Incorporate code into a function  
-
-Avoid excessive copy-pasting
+As a first example, we need to convert the predictive probabilities into the binary classification results, and show them in a confusion matrix. This compound task is performed in almost every model validation involving binary classifications, so we should encapsulate the task into a function. This function compares the test probabilities with their ground truth (0/1), and outputs the number of true positives, false negatives, false positives, and true negatives. We predict a datapoint to be positive if the estimated probability is at or above a given threshold, which is set to 0.5 by default. Otherwise, we predict the datapoint to be negative.
 
 ```{r prob-to-matrix}
-# Wrote this function for reuse in k-fold validation code.
 prob_to_matrix <- function(test_data, test_prob, threshold=0.5) {
   # Convert the test probabilities into binary classification results.
   # Threshold should be between 0 and 1, set to 0.5 by default.
@@ -282,10 +277,16 @@ prob_to_matrix <- function(test_data, test_prob, threshold=0.5) {
 
   return(test_confusion)
 }
+```
 
+We can call the `prob_to_matrix` function to obtain the confusion matrix, and the results are the same.  
+
+```{r prob-to-matrix-demo}
 another_test = prob_to_matrix(test_data, test_prob)
 another_test
 ```
+
+\textcolor{red}{\Large Unfinished below}   
 
 The results in Table \ref{tab:init-train-test} are for separate training and testing sets from a single random seed. We would like to try more versions of such out-of-sample prediction.
 
