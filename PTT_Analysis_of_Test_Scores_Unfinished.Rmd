@@ -279,7 +279,7 @@ prob_to_matrix <- function(test_data, test_prob, threshold=0.5) {
 }
 ```
 
-We can call the `prob_to_matrix` function to obtain the confusion matrix, and the results are the same.  
+We can call the `prob_to_matrix` function to obtain the confusion matrix, and the output is the same.  
 
 ```{r prob-to-matrix-demo}
 another_test = prob_to_matrix(test_data, test_prob)
@@ -288,20 +288,18 @@ another_test
 
 \textcolor{red}{\Large Unfinished below}   
 
-The results in Table \ref{tab:init-train-test} are for separate training and testing sets from a single random seed. We would like to try more versions of such out-of-sample prediction.
+The results in Table \ref{tab:init-train-test} are for separate training and testing sets from a single random seed. We would like to try more versions of such out-of-sample prediction, so we created the function `train_and_test` to automate the procedure. Note that this procedure calls `prob_to_matrix` at the end. We wrote the latter as a single function because we may also use it in other types of model validation.  
 
-```{r train-test-draft}
-# Draft code for training and testing partitions
+Eventually, we can run this function 10 times and take the average of the accuracy/precision/recall/etc. 
 
-# UNFINISHED: Consider writing a large function to automate the
-# training-testing procedure, so that we can input any random seed.
-# => Eventually, we can run this function 10 times and take the avg
-#    of the accuracy/precision/recall/etc. 
 
-# Input: data_corr, random_seed
-# Output: confusion_matrix
-
+```{r train-test-function}
 train_and_test <- function(data, seed) {
+  # Automate the procedure of using training and testing datasets 
+  # for out-of-sample model validation.
+  
+  # Input: data_corr, random_seed
+  # Output: confusion_matrix
   
   set.seed(seed)
   nn = nrow(data)
@@ -328,12 +326,15 @@ train_and_test <- function(data, seed) {
 
   return(test_confusion)
 }
-
-train_and_test(data_corr, seed=10)
-
 ```
 
-Try another time
+With this function, we can reproduce the predictive outcomes using the same random seed.
+
+```{r train-and-test-1st}
+train_and_test(data_corr, seed=10)
+```
+
+Try a different random seed.
 
 ```{r train-and-test-2nd}
 train_and_test(data_corr, seed=123)
