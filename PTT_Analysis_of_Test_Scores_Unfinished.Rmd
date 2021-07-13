@@ -110,20 +110,6 @@ Some readers may be wondering how to get "new" data to perform out-of-sample pre
 
 In this chapter, we demonstrate two methods to implement out-of-sample prediction. The first method is using **separate training and testing datasets** to validate the model, where the two datasets are mutually exclusive. We train the model on the training set, and test the model on the testing set. The second method is **cross validation**, which involves partitioning the data into a number of subsets, then we reserve one subset for testing and train the model on all the remaining subsets. Each subset take turns to be used for testing, and finally we combine the results to estimate the overall prediction performance.    
 
-```{r header-code,include=FALSE}
-data = read.csv("ptt_SENIORHIGH_data.csv")
-names(data)[1] = "pttID"
-
-missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
-data_corr = data[-missing_rows,]
-
-data_corr$CS_65up = data_corr$College_Score >=65
-
-model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
-
-print("This is a test.")
-```
-
 ## Separate Training and Testing Datasets
 
 In this section, **randomly divide the data into a training set and a testing set**. Then we use the training set to train the model for the parameters, and use the testing set to evaluate the model performance. In other words, the model is trained on some data independent of the testing set, because it would not see the testing data beforehand. Using unseen data is helpful to get a better measure of the prediction power of the model. An extension is to divide the data into **training, validation, and testing** sets. We still use the training set to train the model, but we use the validation set to fine-tune the model parameters.^[<https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7>] Finally we test the model using the testing set. By incorporating a validation set as a mid-step, we do not look at the model results for the testing set until the end. This further reduces the risk of overfitting the testing data. But since our logistic regression model does not involve fine-tuning, we use only the training and testing sets for simplicity.  
@@ -286,12 +272,7 @@ another_test = prob_to_matrix(test_data, test_prob)
 another_test
 ```
 
-\textcolor{red}{\Large Unfinished below}   
-
-The results in Table \ref{tab:init-train-test} are for separate training and testing sets from a single random seed. We would like to try more versions of such out-of-sample prediction, so we created the function `train_and_test` to automate the procedure. Note that this procedure calls `prob_to_matrix` at the end. We wrote the latter as a single function because we may also use it in other types of model validation.  
-
-Eventually, we can run this function 10 times and take the average of the accuracy/precision/recall/etc. 
-
+The results in Table \ref{tab:init-train-test} are for separate training and testing sets from a single random seed. We would like to try more versions of such out-of-sample prediction, so we created the function `train_and_test` to automate the procedure. Note that this procedure calls `prob_to_matrix` at the end. We wrote the latter as a single function because we may also use it in other types of model validation. Eventually, we can run this function multiple times and take the average of the accuracy/precision/recall/etc. 
 
 ```{r train-test-function}
 train_and_test <- function(data, seed) {
@@ -334,14 +315,50 @@ With this function, we can reproduce the predictive outcomes using the same rand
 train_and_test(data_corr, seed=10)
 ```
 
-Try a different random seed.
+We can try a different random seed, and obtain results with a different split of training/testing data.
 
 ```{r train-and-test-2nd}
 train_and_test(data_corr, seed=123)
 ```
 
+\textcolor{red}{\Large Unfinished below}  
+
+Try 10 different random seeds and output the results.
+
+```{r train-and-test-avg}
+# UNFINISHED HERE
+set.seed(55)
+runs = 10
+
+# Discrete uniform distribution:
+# Generate a sequence of random numbers between 1 and 1000 
+# (sample without replacement)
+seed_each = sample(1:1000, runs, replace=F)
+
+# Run train_and_test for 10 times
+# output = train_and_test(data_corr, seed=123)
+# output[1,1]
+# output[1,2]
+# output[2,1]
+# output[2,2]
+```
+
 
 We are going to have fewer descriptions in the result evaluation of later sections, because we assume that at this point, the readers would already be familiar with the relevant concepts.  
+
+```{r header-code,include=FALSE}
+data = read.csv("ptt_SENIORHIGH_data.csv")
+names(data)[1] = "pttID"
+
+missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
+data_corr = data[-missing_rows,]
+
+data_corr$CS_65up = data_corr$College_Score >=65
+
+model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
+
+print("This is a test.")
+```
 
 ## K-Fold Cross Validation
 
