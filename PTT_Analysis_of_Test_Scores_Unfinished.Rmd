@@ -335,6 +335,19 @@ runs = 10
 # (sample without replacement)
 seed_each = sample(1:1000, runs, replace=F)
 
+# Initialize the list with size = number of runs.
+# Don't start with an empty list and append elements later, 
+# because the append function may not work for matrix elements.
+
+out_matrices = rep(list("results"), runs) 
+
+for (iter in 1:runs) {
+  output = train_and_test(data_corr, seed=seed_each[iter])
+  out_matrices[[iter]] = output
+}
+
+out_matrices
+
 # Run train_and_test for 10 times
 # output = train_and_test(data_corr, seed=123)
 # output[1,1]
@@ -343,6 +356,13 @@ seed_each = sample(1:1000, runs, replace=F)
 # output[2,2]
 ```
 
+For each confusion matrix, calculate the accuracy, precision, recall, FPR, and FNR.  
+
+Need to write `R` functions to do so! Don't calculate by hand for all 10 matrices.  
+
+Output to a table with seed and the five metrics as columns. Add the average at the last row.  
+
+More context here  
 
 We are going to have fewer descriptions in the result evaluation of later sections, because we assume that at this point, the readers would already be familiar with the relevant concepts.  
 
