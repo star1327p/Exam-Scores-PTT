@@ -323,12 +323,12 @@ train_and_test(data_corr, seed=123)
 
 \textcolor{red}{\Large Unfinished below}  
 
-Try 10 different random seeds and output the results.
+Try five different random seeds and output the results.
 
 ```{r train-and-test-avg}
 # UNFINISHED HERE
-set.seed(55)
-runs = 10
+set.seed(37)
+runs = 5
 
 # Discrete uniform distribution:
 # Generate a sequence of random numbers between 1 and 1000 
@@ -347,22 +347,38 @@ for (iter in 1:runs) {
 }
 
 out_matrices
-
-# Run train_and_test for 10 times
-# output = train_and_test(data_corr, seed=123)
-# output[1,1]
-# output[1,2]
-# output[2,1]
-# output[2,2]
 ```
 
 For each confusion matrix, calculate the accuracy, precision, recall, FPR, and FNR.  
 
-Need to write `R` functions to do so! Don't calculate by hand for all 10 matrices.  
+Need to write `R` functions to do so! Don't calculate by hand for all 5 matrices.  
 
 Output to a table with seed and the five metrics as columns. Add the average at the last row.  
 
 More context here  
+
+```{r calc-from-matrix}
+# UNFINISHED: Wrap this into a for loop
+# Next: Start converting these into a real function.
+
+output = train_and_test(data_corr, seed=123)
+tp = output[1,1]
+fn = output[1,2]
+fp = output[2,1]
+tn = output[2,2]
+
+accuracy = (tp+tn)/(tp+fn+fp+tn)
+precision = tp/(tp+fp)
+recall = tp/(tp+fn)
+fpr = fp/(tn+fp)
+fnr = fn/(tp+fn)
+
+measures = c(accuracy, precision, recall, fpr, fnr)
+names(measures) = c("Accuracy","Precision","Recall","FPR","FNR")
+
+# Should output the measures in raw numbers.
+round(measures, digits=4)
+```
 
 We are going to have fewer descriptions in the result evaluation of later sections, because we assume that at this point, the readers would already be familiar with the relevant concepts.  
 
