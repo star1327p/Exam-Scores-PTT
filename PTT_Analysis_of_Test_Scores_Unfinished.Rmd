@@ -388,8 +388,20 @@ out_measures = out_measures[-1,] # remove the first placeholder row
 
 # out_measures
 round(out_measures, digits=4)
+```
 
-# UNFINISHED: Calculate the average and include it at the last row
+Calculate the average of the five iterations.
+
+```{r compute-average}
+average = c(mean(out_measures[,"Accuracy"]),
+            mean(out_measures[,"Precision"]),
+            mean(out_measures[,"Recall"]),
+            mean(out_measures[,"FPR"]), mean(out_measures[,"FNR"]))
+
+names(average) = c("Accuracy","Precision","Recall","FPR","FNR")
+
+# average
+round(average, digits=4)
 ```
 
 We are going to have fewer descriptions in the result evaluation of later sections, because we assume that at this point, the readers would already be familiar with the relevant concepts.  
