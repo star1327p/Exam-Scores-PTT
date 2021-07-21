@@ -321,7 +321,9 @@ We can try a different random seed, and obtain results with a different split of
 train_and_test(data_corr, seed=123)
 ```
 
-Let's try five iterations with different random seeds and output the results. We will get five confusion matrices. In the code, we generate the sequence of random seeds from a sequence of random numbers between 1 and 1000 without replacement. In this way, we only need to set a single random seed to get all five runs (which we can increase in the future). 
+Let's try five iterations with different random seeds and output the results. We will get five confusion matrices, and we can summarize the numbers across them. The main reason to try multiple iterations is to avoid getting "an unlucky draw", i.e., a single partition that leads to extreme outcomes.    
+
+In the code, we generate the sequence of random seeds from a sequence of random numbers between 1 and 1000 without replacement. In this way, we only need to set a single random seed to get all five runs (which we can increase in the future). 
 
 ```{r train-and-test-avg}
 set.seed(37)
@@ -345,8 +347,6 @@ for (iter in 1:runs) {
 
 out_matrices
 ```
-
-\textcolor{red}{\Large Unfinished below}  
 
 For each confusion matrix, we need to calculate the accuracy, precision, recall, FPR, and FNR. We calculated these by hand earlier, and now it is time to do them in `R` code for reproducibility. Finally, we output the metrics of each iteration to a table.
 
@@ -383,7 +383,7 @@ out_measures = out_measures[-1,] # remove the first placeholder row
 round(out_measures, digits=4)
 ```
 
-Calculate the average of the five iterations.
+We also calculate the average of the five iterations for each metric. The accuracy, precision, and recall all hover around 70% as expected, just like in Table \ref{tab:init-train-test}.
 
 ```{r compute-average}
 average = c(mean(out_measures[,"Accuracy"]),
@@ -413,20 +413,25 @@ model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
 print("This is a test.")
 ```
 
-## K-Fold Cross Validation
+## Cross Validation
 
 Next, we are going to talk about **cross validation**. The "cross" means that each record in the data has the opportunity to serve as the training set AND the testing set (obviously, not at the same time). Cross validation involves partitioning data into a number of subsets, then we reserve one subset for testing and train the model on all the remaining subsets. Each subset take turns to be used for testing, and finally we combine the results to estimate the overall prediction performance.  
 
-One common implementation is the **K-fold cross validation**, in which we randomly divide the data into $K$ subsets to cross-validate each other. (Typically $K=10$.) For each round of validation, we train the model on the $K-1$ subsets and test the model on the one subset which was excluded in the training. Finally, we combine all $K$ rounds of validation, and each subset gets its predicted result for performance evaluation. Another common implementation is the **leave-one-out cross validation**, in which each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction, but we need to perform $N$ rounds of validation, which may not be feasible when $N$ is extremely large. We will demonstrate both ways of cross validation in this section.  
+One common implementation is the **K-fold cross validation**, in which we randomly divide the data into $K$ subsets to cross-validate each other. (Typically $K=10$.) For each round of validation, we train the model on the $K-1$ subsets and test the model on the one subset which was excluded in the training. Finally, we combine all $K$ rounds of validation, and each subset gets its predicted result for performance evaluation.  
+
+Another common implementation is the **leave-one-out cross validation**, in which each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction, but we need to perform $N$ rounds of validation, which may not be feasible when $N$ is extremely large. We will demonstrate both ways of cross validation in this section.   
+
+### K-fold Cross Validation
+
+\textcolor{red}{\Large Unfinished below}  
 
 Demonstrate both K-fold cross validation and leave-one-out cross validation!  
 
-**Draft code for k-fold cross validation**
-
-\textcolor{red}{\Large Unfinished below} 
+**Draft code for k-fold cross validation**  
 
 ```{r k-fold-draft}
 # Draft code for k-fold cross validation
+# UNFINISHED: Check the code and separate into smaller chunks if necessary.
 
 set.seed(21) # different seed than the training-testing partitions
 
@@ -542,6 +547,10 @@ Comparison table
     Leave-one-out Cross Validation & ~        & ~         & ~       & ~       & ~       \\ \hline
     \end{tabular}
 \end{table}
+
+### Leave-one-out Cross Validation
+
+Write something here
 
 # Discussion and Conclusion
 
