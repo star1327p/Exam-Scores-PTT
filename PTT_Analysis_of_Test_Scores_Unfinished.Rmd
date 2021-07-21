@@ -321,12 +321,9 @@ We can try a different random seed, and obtain results with a different split of
 train_and_test(data_corr, seed=123)
 ```
 
-\textcolor{red}{\Large Unfinished below}  
-
-Try five different random seeds and output the results.
+Let's try five iterations with different random seeds and output the results. We will get five confusion matrices. In the code, we generate the sequence of random seeds from a sequence of random numbers between 1 and 1000 without replacement. In this way, we only need to set a single random seed to get all five runs (which we can increase in the future). 
 
 ```{r train-and-test-avg}
-# UNFINISHED HERE
 set.seed(37)
 runs = 5
 
@@ -349,13 +346,9 @@ for (iter in 1:runs) {
 out_matrices
 ```
 
-For each confusion matrix, calculate the accuracy, precision, recall, FPR, and FNR.  
+\textcolor{red}{\Large Unfinished below}  
 
-Need to write `R` functions to do so! Don't calculate by hand for all 5 matrices.  
-
-Output to a table with seed and the five metrics as columns. Add the average at the last row.  
-
-More context here  
+For each confusion matrix, we need to calculate the accuracy, precision, recall, FPR, and FNR. We calculated these by hand earlier, and now it is time to do them in `R` code for reproducibility. Finally, we output the metrics of each iteration to a table.
 
 ```{r calc-from-matrix}
 # Idea but unsure: Convert these into a real function.
