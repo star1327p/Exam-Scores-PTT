@@ -534,9 +534,26 @@ print(paste("False negative:",fn))
 print(paste("True negative:",tn))
 ```
 
+Convert back to matrix format.
+
+```{r k-fold-summary}
+# Use an existing confusion matrix as a template.
+k_fold_table = partition_matrices[[1]]
+
+k_fold_table[1,1] = tp
+k_fold_table[1,2] = fn
+k_fold_table[2,1] = fp
+k_fold_table[2,2] = tn
+
+k_fold_table
+
+# UNFINISHED: 
+# Write a function to encapsulate the sum-up process of the confusion matrices.
+```
+
 Comparison table
 
-\begin{table}
+\begin{table}[h]
     \centering
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
