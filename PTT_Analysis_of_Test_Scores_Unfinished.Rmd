@@ -504,14 +504,17 @@ for (exclude in 1:length(k_fold)) {
 
 partition_matrices
 
-# This does not work.
-# sum(partition_matrices[[1]] + partition_matrices[[2]]) # 38
-
 ```
 
 Next step: Summarize the results in k-fold cross-validation
 
 ```{r k-fold-evaluate}
+# Cannot directly add the partition matrices together.
+# sum(partition_matrices[[1]] + partition_matrices[[2]]) # 38
+
+# Unlist does not sort the indices, so this does not work, either.
+# prob_to_matrix(data_corr, unlist(partition_probs))
+
 tp = 0
 fp = 0
 fn = 0
@@ -523,9 +526,6 @@ for (part in 1:length(k_fold)) {
   fn = fn + partition_matrices[[part]][3]
   tn = tn + partition_matrices[[part]][4]
 }
-
-# This does not work, either. Because unlist does not sort the indices.
-# prob_to_matrix(data_corr, unlist(partition_probs))
 
 print("Combined results:")
 print(paste("True positive:",tp))
@@ -567,7 +567,11 @@ Comparison table
 
 ### Leave-one-out Cross Validation
 
-Write something here
+Start with the code in k-fold cross validation.  
+
+But we do not need to convert each iteration (test datapoint) into a matrix.  
+
+Just need to summarize the results into tp, fn, fp, tn.
 
 # Discussion and Conclusion
 
