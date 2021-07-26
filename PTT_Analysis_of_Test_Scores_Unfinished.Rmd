@@ -506,9 +506,11 @@ partition_matrices
 
 ```
 
-Next step: Summarize the results in k-fold cross-validation
+Next step: Summarize the results in k-fold cross-validation.  
 
-```{r k-fold-evaluate}
+No need to print the tp, fp, fn, tn. Just output the final confusion matrix.
+
+```{r k-fold-summary}
 # Cannot directly add the partition matrices together.
 # sum(partition_matrices[[1]] + partition_matrices[[2]]) # 38
 
@@ -527,16 +529,6 @@ for (part in 1:length(k_fold)) {
   tn = tn + partition_matrices[[part]][4]
 }
 
-print("Combined results:")
-print(paste("True positive:",tp))
-print(paste("False positive:",fp))
-print(paste("False negative:",fn))
-print(paste("True negative:",tn))
-```
-
-Convert back to matrix format.
-
-```{r k-fold-summary}
 # Use an existing confusion matrix as a template.
 k_fold_table = partition_matrices[[1]]
 
