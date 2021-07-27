@@ -427,12 +427,11 @@ Another common implementation is the **leave-one-out cross validation**, in whic
 
 Demonstrate both K-fold cross validation and leave-one-out cross validation!  
 
+In 10-fold cross validation, we divide the data into 10 partitions of near-equal size. We have 188 records, so there should be eight partitions of 19 records and two partitions of 18 records. We store the indices of each partition in the `partition_list`.
+
 **Draft code for k-fold cross validation**  
 
-```{r k-fold-draft}
-# Draft code for k-fold cross validation
-# UNFINISHED: Check the code and separate into smaller chunks if necessary.
-
+```{r k-fold-partition-gen}
 set.seed(21) # different seed than the training-testing partitions
 
 nn = nrow(data_corr) # total 188 rows of data
@@ -463,7 +462,14 @@ for (ii in 2:length(k_fold)) {
   partition_list[[ii]] = sort(ind_permute[start:end])
 }
 
-# partition_list
+partition_list
+```
+
+Continue the draft code
+
+```{r k-fold-draft}
+# Draft code for k-fold cross validation
+# UNFINISHED: Check the code and separate into smaller chunks if necessary.
 
 # UNFINISHED: Use the partitions for training and testing
 
