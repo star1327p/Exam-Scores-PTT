@@ -37,3 +37,6 @@ rsconnect/
 
 # PyCharm files
 .idea/
+
+# LaTeX intermediate files
+.log
