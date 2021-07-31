@@ -499,9 +499,7 @@ partition_matrices
 
 \textcolor{red}{\Large Unfinished below}  
 
-Now we summarize the results in k-fold cross-validation, i.e., add all 10 partition matrices together.  
-
-No need to print the tp, fp, fn, tn. Just output the final confusion matrix.
+Now we summarize the results in k-fold cross-validation, i.e., combine all 10 confusion matrices into one.  
 
 ```{r k-fold-summary}
 # Cannot directly add the partition matrices together.
@@ -534,6 +532,35 @@ k_fold_table[2,1] = fp
 k_fold_table[2,2] = tn
 
 k_fold_table
+```
+
+Draft function for metrics
+
+```{r confusion-to-measures}
+# UNFINISHED HERE
+# Also need to modify earlier code in training and testing set
+
+confusion_to_measures <- function(output) {
+  tp = output[1,1]
+  fn = output[1,2]
+  fp = output[2,1]
+  tn = output[2,2]
+  
+  accuracy = (tp+tn)/(tp+fn+fp+tn)
+  precision = tp/(tp+fp)
+  recall = tp/(tp+fn)
+  fpr = fp/(tn+fp)
+  fnr = fn/(tp+fn)
+  
+  measures = c(accuracy, precision, recall, fpr, fnr)
+  names(measures) = c("Accuracy","Precision","Recall","FPR","FNR")
+  
+  return(measures)
+}
+
+k_fold_results = confusion_to_measures(k_fold_table)
+
+round(k_fold_results, digits=4)
 ```
 
 Comparison table

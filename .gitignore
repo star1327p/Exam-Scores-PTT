@@ -39,4 +39,4 @@ rsconnect/
 .idea/
 
 # LaTeX intermediate files
-.log
+*.log
