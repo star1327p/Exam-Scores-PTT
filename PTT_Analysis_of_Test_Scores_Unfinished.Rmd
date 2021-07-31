@@ -463,7 +463,6 @@ Other `R` packages may have functions to handle k-fold cross validation, but we 
 
 ```{r k-fold-train-test}
 # Use the partitions for training and testing
-
 partition_probs = list(0,0,0,0,0,0,0,0,0,0)
 partition_matrices = list(0,0,0,0,0,0,0,0,0,0)
 
@@ -495,14 +494,12 @@ for (exclude in 1:length(k_fold)) {
 }
 
 # partition_probs
-
 partition_matrices
-
 ```
 
 \textcolor{red}{\Large Unfinished below}  
 
-Next step: Summarize the results in k-fold cross-validation.  
+Now we summarize the results in k-fold cross-validation, i.e., add all 10 partition matrices together.  
 
 No need to print the tp, fp, fn, tn. Just output the final confusion matrix.
 
