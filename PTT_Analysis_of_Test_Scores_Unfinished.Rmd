@@ -321,7 +321,7 @@ We can try a different random seed, and obtain results with a different split of
 train_and_test(data_corr, seed=123)
 ```
 
-Let's try five iterations with different random seeds and output the results. We will get five confusion matrices, and we can summarize the numbers across them. The main reason to try multiple iterations is to avoid getting "an unlucky draw", i.e., a single partition that leads to extreme outcomes.    
+Let's try five iterations with different random seeds and output the results. We will get five confusion matrices, and we can summarize the numbers across them. The main reason to try multiple iterations is to avoid getting an unlucky draw, i.e., a single partition that leads to extreme outcomes.    
 
 In the code, we generate the sequence of random seeds from a sequence of random numbers between 1 and 1000 without replacement. In this way, we only need to set a single random seed to get all five runs (which we can increase in the future). 
 
@@ -415,20 +415,13 @@ print("This is a test.")
 
 ## Cross Validation
 
-Next, we are going to talk about **cross validation**. The "cross" means that each record in the data has the opportunity to serve as the training set AND the testing set (obviously, not at the same time). Cross validation involves partitioning data into a number of subsets, then we reserve one subset for testing and train the model on all the remaining subsets. Each subset take turns to be used for testing, and finally we combine the results to estimate the overall prediction performance. Two common cross validation methods are **K-fold cross validation** and **leave-one-out cross validation**.
+Next, we are going to talk about **cross validation**. The "cross" means that each record in the data has the opportunity to serve as the training set AND the testing set (obviously, not at the same time). Cross validation involves partitioning data into a number of subsets, then we reserve one subset for testing and train the model on all the remaining subsets. Each subset take turns to be used for testing, and finally we combine the results to estimate the overall prediction performance. Two common cross validation methods are **k-fold cross validation** and **leave-one-out cross validation**.
 
 ### K-fold Cross Validation
 
-In **K-fold cross validation**, we randomly divide the data into $K$ subsets to cross-validate each other. (Typically $K=10$.) For each round of validation, we train the model on the $K-1$ subsets and test the model on the one subset which was excluded in the training. Finally, we combine all $K$ rounds of validation, and each subset gets its predicted result for performance evaluation.   
+In **k-fold cross validation**, we randomly divide the data into $k$ subsets to cross-validate each other. (Typically $k=10$.) For each round of validation, we train the model on the $k-1$ subsets and test the model on the one subset which was excluded in the training. Finally, we combine all $k$ rounds of validation, and each subset gets its predicted result for performance evaluation.   
 
 To implement 10-fold cross validation, we divide the data into 10 partitions of near-equal sizes. We have 188 records, so there should be eight partitions of 19 records and two partitions of 18 records. We store the indices of each partition in the `partition_list`.  
-
-\textcolor{red}{\Large Unfinished below}  
-
-Demonstrate both K-fold cross validation and leave-one-out cross validation!  
-
-
-**Draft code for k-fold cross validation**  
 
 ```{r k-fold-partition-gen}
 set.seed(21) # different seed than the training-testing partitions
@@ -464,13 +457,12 @@ for (ii in 2:length(k_fold)) {
 partition_list
 ```
 
-Continue the draft code
+After obtaining the 10 partitions, we reserve one partition as the testing set and feed the other 9 partitions into the training. Each partition gets the chance to be the testing set, and we obtain all 10 confusion matrices.  
 
-```{r k-fold-draft}
-# Draft code for k-fold cross validation
-# UNFINISHED: Check the code and separate into smaller chunks if necessary.
+Other `R` packages may have functions to handle k-fold cross validation, but we decided to write our own code to show the readers how the method is implemented from scratch. Moreover, this allows maximum flexibility for us to modify the code for future needs.
 
-# UNFINISHED: Use the partitions for training and testing
+```{r k-fold-train-test}
+# Use the partitions for training and testing
 
 partition_probs = list(0,0,0,0,0,0,0,0,0,0)
 partition_matrices = list(0,0,0,0,0,0,0,0,0,0)
@@ -480,18 +472,16 @@ for (exclude in 1:length(k_fold)) {
   testing_with_k = partition_list[[exclude]]
   test_kfold_data = data_corr[testing_with_k,]
   
-  
   # Training parts
   # partition_list[-exclude] shows all elements except the exclude.
   training_without_k = unlist(partition_list[-exclude]) 
   # integer vector of training indices
   train_kfold_data = data_corr[training_without_k,]
+
   
   train_kfold_model = glm(CS_65up ~ HighSchool_PR, 
                           data=train_kfold_data, family="binomial")
   # summary(train_kfold_model)
-  
-  # Make the prediction
   test_kfold_prob = predict.glm(train_kfold_model, 
                                 test_kfold_data, type="response")
   # type="response" gives the predicted probabilities
@@ -502,7 +492,6 @@ for (exclude in 1:length(k_fold)) {
   
   # Store the confusion matrix of each partition in another list
   partition_matrices[[exclude]] = prob_to_matrix(test_kfold_data, test_kfold_prob)
-
 }
 
 # partition_probs
@@ -510,6 +499,8 @@ for (exclude in 1:length(k_fold)) {
 partition_matrices
 
 ```
+
+\textcolor{red}{\Large Unfinished below}  
 
 Next step: Summarize the results in k-fold cross-validation.  
 
@@ -521,6 +512,9 @@ No need to print the tp, fp, fn, tn. Just output the final confusion matrix.
 
 # Unlist does not sort the indices, so this does not work, either.
 # prob_to_matrix(data_corr, unlist(partition_probs))
+
+# UNFINISHED: 
+# Write a function to encapsulate the sum-up process of the confusion matrices.
 
 tp = 0
 fp = 0
@@ -543,9 +537,6 @@ k_fold_table[2,1] = fp
 k_fold_table[2,2] = tn
 
 k_fold_table
-
-# UNFINISHED: 
-# Write a function to encapsulate the sum-up process of the confusion matrices.
 ```
 
 Comparison table
@@ -610,8 +601,6 @@ The author would like to thank her Microsoft colleagues Smit Patel and Dylan Sto
 The author declares that there is no conflict of interest.  
 
 More to add  
-
-Test commit
 
 
 # Appendix {.unnumbered}
