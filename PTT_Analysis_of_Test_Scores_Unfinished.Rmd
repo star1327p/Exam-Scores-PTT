@@ -348,19 +348,10 @@ for (iter in 1:runs) {
 out_matrices
 ```
 
-For each confusion matrix, we need to calculate the accuracy, precision, recall, FPR, and FNR. We calculated these by hand earlier, and now it is time to do them in `R` code for reproducibility. Finally, we output the metrics of each iteration to a table.
+For each confusion matrix, we need to calculate the accuracy, precision, recall, FPR, and FNR. We calculated these by hand earlier, and now it is time to do them in `R` code for reproducibility. We write a function to do the calculations, because these would be reused in other model validation schemes. We also use the first confusion matrix to demonstrate how this function works.
 
-```{r calc-from-matrix}
-# Idea but unsure: Convert these into a real function.
-
-runs = length(out_matrices) 
-
-out_measures = c(0,0,0,0,0,0)
-names(out_measures) = c("Iteration","Accuracy","Precision","Recall","FPR","FNR")
-
-for (iter in 1:runs) {
-  output = out_matrices[[iter]]
-
+```{r calc-from-function}
+confusion_to_measures <- function(output) {
   tp = output[1,1]
   fn = output[1,2]
   fp = output[2,1]
@@ -372,7 +363,27 @@ for (iter in 1:runs) {
   fpr = fp/(tn+fp)
   fnr = fn/(tp+fn)
   
-  measures = c(iter, accuracy, precision, recall, fpr, fnr)
+  measures = c(accuracy, precision, recall, fpr, fnr)
+  names(measures) = c("Accuracy","Precision","Recall","FPR","FNR")
+  
+  return(measures)
+}
+
+sample_output = confusion_to_measures(out_matrices[[1]])
+round(sample_output, digits = 4)
+```
+
+Then we output the metrics of each iteration to a table, using a for loop to run through the iterations.
+
+```{r calc-from-matrix}
+runs = length(out_matrices) 
+
+out_measures = c(0,0,0,0,0,0)
+names(out_measures) = c("Iteration","Accuracy","Precision","Recall","FPR","FNR")
+
+for (iter in 1:runs) {
+  output = confusion_to_measures(out_matrices[[iter]])
+  measures = c(iter, output)
   out_measures = rbind(out_measures, measures)
 }
 
@@ -538,25 +549,7 @@ Draft function for metrics
 
 ```{r confusion-to-measures}
 # UNFINISHED HERE
-# Also need to modify earlier code in training and testing set
-
-confusion_to_measures <- function(output) {
-  tp = output[1,1]
-  fn = output[1,2]
-  fp = output[2,1]
-  tn = output[2,2]
-  
-  accuracy = (tp+tn)/(tp+fn+fp+tn)
-  precision = tp/(tp+fp)
-  recall = tp/(tp+fn)
-  fpr = fp/(tn+fp)
-  fnr = fn/(tp+fn)
-  
-  measures = c(accuracy, precision, recall, fpr, fnr)
-  names(measures) = c("Accuracy","Precision","Recall","FPR","FNR")
-  
-  return(measures)
-}
+# Added the function to the section of training and testing set.
 
 k_fold_results = confusion_to_measures(k_fold_table)
 
