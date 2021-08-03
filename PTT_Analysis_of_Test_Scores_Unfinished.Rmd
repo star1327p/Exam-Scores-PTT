@@ -545,16 +545,24 @@ k_fold_table[2,2] = tn
 k_fold_table
 ```
 
-Draft function for metrics
+After obtaining the k-fold cross validation results in a single confusion matrix, we can calculate the accuracy, precision, recall, FPR, FNR using the `confusion_to_measures` function from the previous section.
 
 ```{r confusion-to-measures}
-# UNFINISHED HERE
-# Added the function to the section of training and testing set.
-
 k_fold_results = confusion_to_measures(k_fold_table)
-
 round(k_fold_results, digits=4)
 ```
+
+Write something more
+
+### Leave-one-out Cross Validation
+
+In **Leave-one-out cross validation**, each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction, but we need to perform $N$ rounds of validation, which may not be feasible when $N$ is extremely large. We will demonstrate both ways of cross validation in this section.  
+
+Start with the code in k-fold cross validation.  
+
+But we do not need to convert each iteration (test datapoint) into a matrix.  
+
+Just need to summarize the results into tp, fn, fp, tn.  
 
 Comparison table
 
@@ -565,20 +573,10 @@ Comparison table
     ~                              & Accuracy & Precision & Recall  & FPR     & FNR     \\ \hline
     In-Sample Prediction           & 70.74\%  & 67.29\%   & 78.26\% & 36.46\% & 21.74\% \\ \hline
     Separate Training and Testing  & 72.34\%  & 70.83\%   & 73.91\% & 29.17\% & 26.09\% \\ \hline
-    K-Fold Cross Validation        & ~        & ~         & ~       & ~       & ~       \\ \hline
+    K-Fold Cross Validation        & 72.87\%  & 69.90\%   & 78.26\% & 32.29\% & 21.74\% \\ \hline
     Leave-one-out Cross Validation & ~        & ~         & ~       & ~       & ~       \\ \hline
     \end{tabular}
 \end{table}
-
-### Leave-one-out Cross Validation
-
-In **Leave-one-out cross validation**, each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction, but we need to perform $N$ rounds of validation, which may not be feasible when $N$ is extremely large. We will demonstrate both ways of cross validation in this section.  
-
-Start with the code in k-fold cross validation.  
-
-But we do not need to convert each iteration (test datapoint) into a matrix.  
-
-Just need to summarize the results into tp, fn, fp, tn.
 
 # Discussion and Conclusion
 
