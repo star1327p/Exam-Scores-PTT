@@ -552,7 +552,9 @@ k_fold_results = confusion_to_measures(k_fold_table)
 round(k_fold_results, digits=4)
 ```
 
-Write something more
+Also consider: Different random seeds for the partition splits.  
+
+Unsure whether we need to do the full implementation here, but we should at least write an explanation for this.
 
 ### Leave-one-out Cross Validation
 
@@ -565,6 +567,8 @@ But we do not need to convert each iteration (test datapoint) into a matrix.
 Just need to summarize the results into tp, fn, fp, tn.  
 
 ```{r leave-one-out}
+# UNFINISHED HERE: Organize the output
+
 nn = nrow(data_corr) # total 188 rows of data
 
 prob_leave1out = rep(c(-1), nn)
@@ -582,12 +586,24 @@ for (ii in 1:nn) {
   # Store the predicted probability to the general list
   prob_leave1out[ii] = test_leave1out
 }
+```
 
-# UNFINISHED HERE: Organize the output
+Summarize the predictive probabilities in a confusion matrix.
 
-summary(train_leave1out)
+```{r leave-one-out-matrix}
+matrix_leave1out = prob_to_matrix(data_corr, prob_leave1out)
+matrix_leave1out
+```
 
-# prob_leave1out
+Note that leave-one-out does not require a random seed.  
+
+More interpretation here  
+
+Exactly same results as the in-sample prediction?
+
+```{r leave-one-out-results}
+leave1out_results = confusion_to_measures(matrix_leave1out)
+round(leave1out_results, digits=4)
 ```
 
 Comparison table
