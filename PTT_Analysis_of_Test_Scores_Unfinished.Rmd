@@ -228,7 +228,7 @@ We can also calculate the evaluation metrics for the predictive model. The proce
 
 We also compare the results with the in-sample prediction, and they show similar trends. The accuracy, precision, and recall all hover around 70%.
 
-\begin{table}[h]
+\begin{table}[ht]
     \centering
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
@@ -564,9 +564,35 @@ But we do not need to convert each iteration (test datapoint) into a matrix.
 
 Just need to summarize the results into tp, fn, fp, tn.  
 
+```{r leave-one-out}
+nn = nrow(data_corr) # total 188 rows of data
+
+prob_leave1out = rep(c(-1), nn)
+
+for (ii in 1:nn) {
+  data_test = data_corr[ii,] # reserve one record for testing
+  data_exclude = data_corr[-ii,]
+
+  train_leave1out = glm(CS_65up ~ HighSchool_PR, data=data_exclude, family="binomial")
+  # summary(train_leave1out)
+  
+  test_leave1out = predict.glm(train_leave1out, data_test, type="response")
+  # type="response" gives the predicted probabilities
+
+  # Store the predicted probability to the general list
+  prob_leave1out[ii] = test_leave1out
+}
+
+# UNFINISHED HERE: Organize the output
+
+summary(train_leave1out)
+
+# prob_leave1out
+```
+
 Comparison table
 
-\begin{table}[h]
+\begin{table}[ht]
     \centering
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
