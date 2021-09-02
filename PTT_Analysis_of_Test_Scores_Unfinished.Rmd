@@ -432,9 +432,14 @@ Next, we are going to talk about **cross validation**. The "cross" means that ea
 
 In **k-fold cross validation**, we randomly divide the data into $k$ subsets to cross-validate each other. (Typically $k=10$.) For each round of validation, we train the model on the $k-1$ subsets and test the model on the one subset which was excluded in the training. Finally, we combine all $k$ rounds of validation, and each subset gets its predicted result for performance evaluation.   
 
-To implement 10-fold cross validation, we divide the data into 10 partitions of near-equal sizes. We have 188 records, so there should be eight partitions of 19 records and two partitions of 18 records. We store the indices of each partition in the `partition_list`.  
+To implement 10-fold cross validation, we divide the data into 10 partitions of near-equal sizes. We have 188 records, so there should be eight partitions of 19 records and two partitions of 18 records. We store the indices of each partition in the `partition_list`. 
+
+\textcolor{red}{\Large Unfinished below}  
 
 ```{r k-fold-partition-gen}
+# UNFINISHED: 
+# Write a function to encapsulate the process
+
 set.seed(21) # different seed than the training-testing partitions
 
 nn = nrow(data_corr) # total 188 rows of data
@@ -472,7 +477,12 @@ After obtaining the 10 partitions, we reserve one partition as the testing set a
 
 Other `R` packages may have functions to handle k-fold cross validation, but we decided to write our own code to show the readers how the method is implemented from scratch. Moreover, this allows maximum flexibility for us to modify the code for future needs.
 
+\textcolor{red}{\Large Unfinished below}  
+
 ```{r k-fold-train-test}
+# UNFINISHED: 
+# Write a function to encapsulate the process
+
 # Use the partitions for training and testing
 partition_probs = list(0,0,0,0,0,0,0,0,0,0)
 partition_matrices = list(0,0,0,0,0,0,0,0,0,0)
@@ -510,38 +520,42 @@ partition_matrices
 
 \textcolor{red}{\Large Unfinished below}  
 
-Now we summarize the results in k-fold cross-validation, i.e., combine all 10 confusion matrices into one.  
+Now we summarize the results in k-fold cross-validation, i.e., combine all 10 confusion matrices into one. We write a function to encapsulate the sum-up process of the confusion matrices, in order to reuse the code later.
 
-```{r k-fold-summary}
+```{r k-fold-comments, include=FALSE}
 # Cannot directly add the partition matrices together.
 # sum(partition_matrices[[1]] + partition_matrices[[2]]) # 38
 
 # Unlist does not sort the indices, so this does not work, either.
 # prob_to_matrix(data_corr, unlist(partition_probs))
+```
 
-# UNFINISHED: 
-# Write a function to encapsulate the sum-up process of the confusion matrices.
+```{r k-fold-summary}
+sum_up_confusion <- function(k_fold, partition_matrices) {
+  tp = 0
+  fp = 0
+  fn = 0
+  tn = 0
+  
+  for (part in 1:length(k_fold)) {
+    tp = tp + partition_matrices[[part]][1]
+    fp = fp + partition_matrices[[part]][2]
+    fn = fn + partition_matrices[[part]][3]
+    tn = tn + partition_matrices[[part]][4]
+  }
+  
+  # Use an existing confusion matrix as a template.
+  k_fold_table = partition_matrices[[1]]
+  
+  k_fold_table[1,1] = tp
+  k_fold_table[1,2] = fn
+  k_fold_table[2,1] = fp
+  k_fold_table[2,2] = tn
+  
+  return(k_fold_table)
+} 
 
-tp = 0
-fp = 0
-fn = 0
-tn = 0
-
-for (part in 1:length(k_fold)) {
-  tp = tp + partition_matrices[[part]][1]
-  fp = fp + partition_matrices[[part]][2]
-  fn = fn + partition_matrices[[part]][3]
-  tn = tn + partition_matrices[[part]][4]
-}
-
-# Use an existing confusion matrix as a template.
-k_fold_table = partition_matrices[[1]]
-
-k_fold_table[1,1] = tp
-k_fold_table[1,2] = fn
-k_fold_table[2,1] = fp
-k_fold_table[2,2] = tn
-
+k_fold_table = sum_up_confusion(k_fold, partition_matrices)
 k_fold_table
 ```
 
