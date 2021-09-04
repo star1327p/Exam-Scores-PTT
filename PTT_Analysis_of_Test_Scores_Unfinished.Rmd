@@ -437,39 +437,38 @@ To implement 10-fold cross validation, we divide the data into 10 partitions of 
 \textcolor{red}{\Large Unfinished below}  
 
 ```{r k-fold-partition-gen}
-# UNFINISHED: 
-# Write a function to encapsulate the process
-
-set.seed(21) # different seed than the training-testing partitions
-
-nn = nrow(data_corr) # total 188 rows of data
-
-row_inds = c(1:nn)
-
-ind_permute = sample(row_inds) 
-# random permutation of row indices 
-# => prepare for the training/testing partitions
-
 # 10-fold cross validation: 
 # Divide 188 records into 10 partitions of near-equal size
 
 # Number of records in each partition:
 # 19, 19, 19, 19, 19, 19, 19, 19, 18, 18
-
 k_fold = c(19, 19, 19, 19, 19, 19, 19, 19, 18, 18)
-
 k_accumulate = c(19, 38, 57, 76, 95, 114, 133, 152, 170, 188)
 
-partition_list = list(0,0,0,0,0,0,0,0,0,0)
-
-# Need to sort the indices within each partition
-partition_list[[1]] = sort(ind_permute[1:k_fold[1]])
-for (ii in 2:length(k_fold)) {
-  start = k_accumulate[ii-1]+1
-  end = start + k_fold[ii] - 1
-  partition_list[[ii]] = sort(ind_permute[start:end])
+k_fold_partition <- function(data, k_fold, seed) {
+  # Generate the 10 partitions for the data
+  
+  set.seed(seed) 
+  nn = nrow(data) # total 188 rows of data
+  row_inds = c(1:nn)
+  ind_permute = sample(row_inds) 
+  # random permutation of row indices 
+  # => prepare for the training/testing partitions
+  
+  partition_list = list(0,0,0,0,0,0,0,0,0,0)
+  
+  # Need to sort the indices within each partition
+  partition_list[[1]] = sort(ind_permute[1:k_fold[1]])
+  for (ii in 2:length(k_fold)) {
+    start = k_accumulate[ii-1]+1
+    end = start + k_fold[ii] - 1
+    partition_list[[ii]] = sort(ind_permute[start:end])
+  }
+  
+  return(partition_list)
 }
 
+partition_list = k_fold_partition(data_corr, k_fold, seed=21)
 partition_list
 ```
 
@@ -480,41 +479,45 @@ Other `R` packages may have functions to handle k-fold cross validation, but we 
 \textcolor{red}{\Large Unfinished below}  
 
 ```{r k-fold-train-test}
-# UNFINISHED: 
 # Write a function to encapsulate the process
 
-# Use the partitions for training and testing
-partition_probs = list(0,0,0,0,0,0,0,0,0,0)
-partition_matrices = list(0,0,0,0,0,0,0,0,0,0)
-
-for (exclude in 1:length(k_fold)) {
-  # Testing parts
-  testing_with_k = partition_list[[exclude]]
-  test_kfold_data = data_corr[testing_with_k,]
+k_fold_train_test <- function(data, partition_list, k_fold) {
+  # Training and testing process for k-fold cross validation
   
-  # Training parts
-  # partition_list[-exclude] shows all elements except the exclude.
-  training_without_k = unlist(partition_list[-exclude]) 
-  # integer vector of training indices
-  train_kfold_data = data_corr[training_without_k,]
-
+  # Use the partitions for training and testing
+  partition_probs = list(0,0,0,0,0,0,0,0,0,0)
+  partition_matrices = list(0,0,0,0,0,0,0,0,0,0)
   
-  train_kfold_model = glm(CS_65up ~ HighSchool_PR, 
-                          data=train_kfold_data, family="binomial")
-  # summary(train_kfold_model)
-  test_kfold_prob = predict.glm(train_kfold_model, 
-                                test_kfold_data, type="response")
-  # type="response" gives the predicted probabilities
+  for (exclude in 1:length(k_fold)) {
+    # Testing parts
+    testing_with_k = partition_list[[exclude]]
+    test_kfold_data = data_corr[testing_with_k,]
+    
+    # Training parts
+    # partition_list[-exclude] shows all elements except the exclude.
+    training_without_k = unlist(partition_list[-exclude]) 
+    # integer vector of training indices
+    train_kfold_data = data_corr[training_without_k,]
+    
+    train_kfold_model = glm(CS_65up ~ HighSchool_PR, 
+                            data=train_kfold_data, family="binomial")
+    # summary(train_kfold_model)
+    test_kfold_prob = predict.glm(train_kfold_model, 
+                                  test_kfold_data, type="response")
+    # type="response" gives the predicted probabilities
+    
+    # Store the predicted probabilities of each partition in a list
+    partition_probs[[exclude]] = test_kfold_prob
+    
+    # Store the confusion matrix of each partition in another list
+    partition_matrices[[exclude]] = prob_to_matrix(test_kfold_data, test_kfold_prob)
+  }
   
-  
-  # Store the predicted probabilities of each partition in a list
-  partition_probs[[exclude]] = test_kfold_prob
-  
-  # Store the confusion matrix of each partition in another list
-  partition_matrices[[exclude]] = prob_to_matrix(test_kfold_data, test_kfold_prob)
+  # partition_probs
+  return(partition_matrices)
 }
 
-# partition_probs
+partition_matrices = k_fold_train_test(data_corr, partition_list, k_fold)
 partition_matrices
 ```
 
