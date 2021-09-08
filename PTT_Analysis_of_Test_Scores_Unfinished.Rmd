@@ -434,8 +434,6 @@ In **k-fold cross validation**, we randomly divide the data into $k$ subsets to 
 
 To implement 10-fold cross validation, we divide the data into 10 partitions of near-equal sizes. We have 188 records, so there should be eight partitions of 19 records and two partitions of 18 records. We store the indices of each partition in the `partition_list`. 
 
-\textcolor{red}{\Large Unfinished below}  
-
 ```{r k-fold-partition-gen}
 # 10-fold cross validation: 
 # Divide 188 records into 10 partitions of near-equal size
@@ -476,11 +474,7 @@ After obtaining the 10 partitions, we reserve one partition as the testing set a
 
 Other `R` packages may have functions to handle k-fold cross validation, but we decided to write our own code to show the readers how the method is implemented from scratch. Moreover, this allows maximum flexibility for us to modify the code for future needs.
 
-\textcolor{red}{\Large Unfinished below}  
-
 ```{r k-fold-train-test}
-# Write a function to encapsulate the process
-
 k_fold_train_test <- function(data, partition_list, k_fold) {
   # Training and testing process for k-fold cross validation
   
@@ -521,8 +515,6 @@ partition_matrices = k_fold_train_test(data_corr, partition_list, k_fold)
 partition_matrices
 ```
 
-\textcolor{red}{\Large Unfinished below}  
-
 Now we summarize the results in k-fold cross-validation, i.e., combine all 10 confusion matrices into one. We write a function to encapsulate the sum-up process of the confusion matrices, in order to reuse the code later.
 
 ```{r k-fold-comments, include=FALSE}
@@ -535,6 +527,7 @@ Now we summarize the results in k-fold cross-validation, i.e., combine all 10 co
 
 ```{r k-fold-summary}
 sum_up_confusion <- function(k_fold, partition_matrices) {
+  # Sum up all k confusion matrices into a single one.
   tp = 0
   fp = 0
   fn = 0
@@ -569,9 +562,27 @@ k_fold_results = confusion_to_measures(k_fold_table)
 round(k_fold_results, digits=4)
 ```
 
-Also consider: Different random seeds for the partition splits.  
+\textcolor{red}{\Large Unfinished below}    
+
+Consider: Different random seeds for the partition splits.  
 
 Unsure whether we need to do the full implementation here, but we should at least write an explanation for this.
+
+```{r k-fold-multiple-times}
+
+partition_list_2 = k_fold_partition(data_corr, k_fold, seed=123456)
+partition_matrices_2 = k_fold_train_test(data_corr, partition_list_2, k_fold)
+k_fold_table_2 = sum_up_confusion(k_fold, partition_matrices_2)
+k_fold_table_2
+```
+
+Also check the results
+
+```{r k-fold-multiple-tests}
+k_fold_results_2 = confusion_to_measures(k_fold_table_2)
+round(k_fold_results_2, digits=4)
+```
+
 
 ### Leave-one-out Cross Validation
 
