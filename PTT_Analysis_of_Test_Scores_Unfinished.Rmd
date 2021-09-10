@@ -566,17 +566,27 @@ round(k_fold_results, digits=4)
 
 Consider: Different random seeds for the partition splits.  
 
-Unsure whether we need to do the full implementation here, but we should at least write an explanation for this.
+Do the full implementation here and write an explanation.
 
 ```{r k-fold-multiple-times}
+set.seed(37)
+runs = 5
+# Discrete uniform distribution:
+# Generate a sequence of random numbers between 1 and 1000
+# (sample without replacement)
+seed_each = sample(1:1000, runs, replace=F)
 
-partition_list_2 = k_fold_partition(data_corr, k_fold, seed=123456)
-partition_matrices_2 = k_fold_train_test(data_corr, partition_list_2, k_fold)
-k_fold_table_2 = sum_up_confusion(k_fold, partition_matrices_2)
-k_fold_table_2
+for (iter in 1:runs){
+  partition_list_2 = k_fold_partition(data_corr, k_fold,seed=seed_each[iter])
+  partition_matrices_2 = k_fold_train_test(data_corr, partition_list_2, k_fold)
+  k_fold_table_2 = sum_up_confusion(k_fold, partition_matrices_2)
+  print(k_fold_table_2)
+}
 ```
 
-Also check the results
+Also check the results.
+
+Need to revise the code!
 
 ```{r k-fold-multiple-tests}
 k_fold_results_2 = confusion_to_measures(k_fold_table_2)
