@@ -375,7 +375,13 @@ round(sample_output, digits = 4)
 
 Then we output the metrics of each iteration to a table, using a for loop to run through the iterations.
 
+\textcolor{red}{\Large Unfinished below}  
+
+State that we need this script in k-fold cross validation as well.
+
 ```{r calc-from-matrix}
+# UNFINISHED HERE: Convert this process into a function
+
 runs = length(out_matrices) 
 
 out_measures = c(0,0,0,0,0,0)
@@ -394,9 +400,13 @@ out_measures = out_measures[-1,] # remove the first placeholder row
 round(out_measures, digits=4)
 ```
 
-We also calculate the average of the five iterations for each metric. The accuracy, precision, and recall all hover around 70% as expected, just like in Table \ref{tab:init-train-test}.
+We also calculate the average of the five iterations for each metric. The accuracy, precision, and recall all hover around 70% as expected, just like in Table \ref{tab:init-train-test}.  
+
+\textcolor{red}{\Large Unfinished below}  
 
 ```{r compute-average}
+# UNFINISHED HERE: Convert this process into a function
+
 average = c(mean(out_measures[,"Accuracy"]),
             mean(out_measures[,"Precision"]),
             mean(out_measures[,"Recall"]),
@@ -555,7 +565,7 @@ k_fold_table = sum_up_confusion(k_fold, partition_matrices)
 k_fold_table
 ```
 
-After obtaining the k-fold cross validation results in a single confusion matrix, we can calculate the accuracy, precision, recall, FPR, FNR using the `confusion_to_measures` function from the previous section.
+After obtaining the 10-fold cross validation results in a single confusion matrix, we can calculate the accuracy, precision, recall, FPR, FNR using the `confusion_to_measures` function from the previous section.
 
 ```{r confusion-to-measures}
 k_fold_results = confusion_to_measures(k_fold_table)
@@ -564,9 +574,7 @@ round(k_fold_results, digits=4)
 
 \textcolor{red}{\Large Unfinished below}    
 
-Consider: Different random seeds for the partition splits.  
-
-Do the full implementation here and write an explanation.
+Since 10-fold cross validation involves randomly partitioning the data into 10 parts of nearly equal size, we can try different random seeds to see how the results change. For each of the five random seeds, the confusion matrices are quite similar.  
 
 ```{r k-fold-multiple-times}
 set.seed(37)
@@ -579,17 +587,20 @@ seed_each = sample(1:1000, runs, replace=F)
 for (iter in 1:runs){
   partition_list_2 = k_fold_partition(data_corr, k_fold,seed=seed_each[iter])
   partition_matrices_2 = k_fold_train_test(data_corr, partition_list_2, k_fold)
-  k_fold_table_2 = sum_up_confusion(k_fold, partition_matrices_2)
-  print(k_fold_table_2)
+  out_matrices[[iter]] = sum_up_confusion(k_fold, partition_matrices_2)
+  print(out_matrices[[iter]])
 }
 ```
 
 Also check the results.
 
+Do the full implementation here and write an explanation.
+
 Need to revise the code!
 
 ```{r k-fold-multiple-tests}
-k_fold_results_2 = confusion_to_measures(k_fold_table_2)
+# UNFINISHED HERE
+k_fold_results_2 = confusion_to_measures(out_matrices[[1]])
 round(k_fold_results_2, digits=4)
 ```
 
