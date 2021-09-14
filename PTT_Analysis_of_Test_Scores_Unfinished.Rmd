@@ -406,7 +406,7 @@ combine_results <- function(out_matrices) {
 
 out_measures = combine_results(out_matrices)
 
-# out_measure
+# out_measures
 round(out_measures, digits=4)
 ```
 
