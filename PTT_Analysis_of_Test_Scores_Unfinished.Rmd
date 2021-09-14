@@ -382,25 +382,35 @@ State that we need this script in k-fold cross validation as well.
 ```{r calc-from-matrix}
 # UNFINISHED HERE: Convert this process into a function
 
-runs = length(out_matrices) 
+combine_results <- function(out_matrices) {
+  # Combine the output results
+  # Input: out_matrices (list of matrices)
+  # Output: out_measures (matrix array)
+  
+  runs = length(out_matrices) 
 
-out_measures = c(0,0,0,0,0,0)
-names(out_measures) = c("Iteration","Accuracy","Precision","Recall","FPR","FNR")
-
-for (iter in 1:runs) {
-  output = confusion_to_measures(out_matrices[[iter]])
-  measures = c(iter, output)
-  out_measures = rbind(out_measures, measures)
+  out_measures = c(0,0,0,0,0,0)
+  names(out_measures) = c("Iteration","Accuracy","Precision","Recall","FPR","FNR")
+  
+  for (iter in 1:runs) {
+    output = confusion_to_measures(out_matrices[[iter]])
+    measures = c(iter, output)
+    out_measures = rbind(out_measures, measures)
+  }
+  
+  row.names(out_measures) = rep(c(""), runs+1) # remove row names
+  out_measures = out_measures[-1,] # remove the first placeholder row
+  
+  return(out_measures)
 }
 
-row.names(out_measures) = rep(c(""), runs+1) # remove row names
-out_measures = out_measures[-1,] # remove the first placeholder row
+out_measures = combine_results(out_matrices)
 
-# out_measures
+# out_measure
 round(out_measures, digits=4)
 ```
 
-We also calculate the average of the five iterations for each metric. The accuracy, precision, and recall all hover around 70% as expected, just like in Table \ref{tab:init-train-test}.  
+We also calculate the average of the five iterations for each metric. The accuracy, precision, and recall all hover around 70% as expected, just like in Table \ref{tab:init-train-test} in Section \ref{train-test-demo}.   
 
 \textcolor{red}{\Large Unfinished below}  
 
