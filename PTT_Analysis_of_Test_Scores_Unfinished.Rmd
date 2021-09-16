@@ -675,7 +675,7 @@ Comparison table
     In-Sample Prediction           & 70.74\%  & 67.29\%   & 78.26\% & 36.46\% & 21.74\% \\ \hline
     Separate Training and Testing  & 72.34\%  & 70.83\%   & 73.91\% & 29.17\% & 26.09\% \\ \hline
     K-Fold Cross Validation        & 72.87\%  & 69.90\%   & 78.26\% & 32.29\% & 21.74\% \\ \hline
-    Leave-one-out Cross Validation & ~        & ~         & ~       & ~       & ~       \\ \hline
+    Leave-one-out Cross Validation & 70.74\%  & 67.29\%   & 78.26\% & 36.46\% & 21.74\% \\ \hline
     \end{tabular}
 \end{table}
 
