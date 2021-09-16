@@ -414,15 +414,19 @@ We also calculate the average of the five iterations for each metric. The accura
 
 \textcolor{red}{\Large Unfinished below}  
 
-```{r compute-average}
-# UNFINISHED HERE: Convert this process into a function
-
-average = c(mean(out_measures[,"Accuracy"]),
+```{r calculate-average}
+calc_average <- function(out_measures) {
+  avg_results = c(mean(out_measures[,"Accuracy"]),
             mean(out_measures[,"Precision"]),
             mean(out_measures[,"Recall"]),
             mean(out_measures[,"FPR"]), mean(out_measures[,"FNR"]))
 
-names(average) = c("Accuracy","Precision","Recall","FPR","FNR")
+  names(avg_results) = c("Accuracy","Precision","Recall","FPR","FNR")
+  
+  return(avg_results)
+}
+
+average = calc_average(out_measures)
 
 # average
 round(average, digits=4)
@@ -595,9 +599,9 @@ runs = 5
 seed_each = sample(1:1000, runs, replace=F)
 
 for (iter in 1:runs){
-  partition_list_2 = k_fold_partition(data_corr, k_fold,seed=seed_each[iter])
-  partition_matrices_2 = k_fold_train_test(data_corr, partition_list_2, k_fold)
-  out_matrices[[iter]] = sum_up_confusion(k_fold, partition_matrices_2)
+  partition_list = k_fold_partition(data_corr, k_fold,seed=seed_each[iter])
+  partition_matrices = k_fold_train_test(data_corr, partition_list, k_fold)
+  out_matrices[[iter]] = sum_up_confusion(k_fold, partition_matrices)
   print(out_matrices[[iter]])
 }
 ```
@@ -610,8 +614,10 @@ Need to revise the code!
 
 ```{r k-fold-multiple-tests}
 # UNFINISHED HERE
-k_fold_results_2 = confusion_to_measures(out_matrices[[1]])
-round(k_fold_results_2, digits=4)
+out_measures = combine_results(out_matrices)
+
+# out_measures
+round(out_measures, digits=4)
 ```
 
 
