@@ -373,15 +373,9 @@ sample_output = confusion_to_measures(out_matrices[[1]])
 round(sample_output, digits = 4)
 ```
 
-Then we output the metrics of each iteration to a table, using a for loop to run through the iterations.
-
-\textcolor{red}{\Large Unfinished below}  
-
-State that we need this script in k-fold cross validation as well.
+Then we output the metrics of each iteration to a table, using a for loop to run through the iterations. We converted this process into the function `combine_results`, because we need to use the same script for k-fold cross validation as well.
 
 ```{r calc-from-matrix}
-# UNFINISHED HERE: Convert this process into a function
-
 combine_results <- function(out_matrices) {
   # Combine the output results
   # Input: out_matrices (list of matrices)
@@ -411,8 +405,6 @@ round(out_measures, digits=4)
 ```
 
 We also calculate the average of the five iterations for each metric. The accuracy, precision, and recall all hover around 70% as expected, just like in Table \ref{tab:init-train-test} in Section \ref{train-test-demo}.   
-
-\textcolor{red}{\Large Unfinished below}  
 
 ```{r calculate-average}
 calc_average <- function(out_measures) {
@@ -610,7 +602,7 @@ Also check the results.
 
 Do the full implementation here and write an explanation.
 
-Need to revise the code!
+Need to revise the code! 
 
 ```{r k-fold-multiple-tests}
 # UNFINISHED HERE
@@ -618,6 +610,16 @@ out_measures = combine_results(out_matrices)
 
 # out_measures
 round(out_measures, digits=4)
+```
+
+Then calculate the average of the five iterations.
+
+```{r k-fold-multiple-avg}
+# UNFINISHED HERE
+average = calc_average(out_measures)
+
+# average
+round(average, digits=4)
 ```
 
 
