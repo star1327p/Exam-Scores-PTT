@@ -1,0 +1,123 @@
+Below is the code to divide the data into the training and testing partitions. We randomly selected 50% of the data (94 out of the 188 records) to be in the training part, and the remaining 50% are in the testing part. This can be done by a random permutation of the indices 1-194. Then the first half of the indices correspond to the training records, and the second half of the indices correspond to the testing records. We set a random seed to ensure reproducibility.
+
+```{r train-test-inds}
+set.seed(10)
+
+nn = nrow(data_corr) # total 188 rows of data
+
+row_inds = c(1:nn)
+
+ind_permute = sample(row_inds) 
+
+train_inds = ind_permute[1:94]
+test_inds = ind_permute[95:188]
+```
+
+The `train_inds` are the indices for the training part of the data:
+
+```{r print-train-inds}
+print(train_inds)
+```
+
+The `test_inds` are the indices for the testing part of the data:
+
+```{r print-test-inds}
+print(test_inds)
+```
+
+We can sort each set of the indices in ascending order, so it will be easier to refer to them later, i.e., better readability. When we obtain the testing results, the records would be in the same order as in the original dataset.
+
+```{r sort-inds}
+train_inds = sort(train_inds)
+test_inds = sort(test_inds)
+```
+
+After sorting, the 94 training indices are in ascending order.
+
+```{r print-train-inds-sorted}
+print(train_inds)
+```
+
+The 94 testing indices are also sorted in ascending order.
+
+```{r print-test-inds-sorted}
+print(test_inds)
+```
+
+Now we slice the data into the training and testing parts using the two sets of indices.
+
+```{r train-test-partitions}
+train_data = data_corr[train_inds,]
+test_data = data_corr[test_inds,]
+```
+
+Then we train the logistic regression model using the 188 records in the training part, and the model summary shows the coefficient point estimates along with the standard error.
+
+```{r train-inds-model}
+train_model = glm(CS_65up ~ HighSchool_PR, data=train_data, family="binomial")
+summary(train_model)
+```
+
+Next, we use the trained model to predict the testing part of the data. The function `predict.glm` allows us to fit the generalized linear model (GLM) on new data. The type 'response' gives the predicted probabilities. The output is a numeric vector with the predicted probabilities, and the header is the record index from the original data. For example, the 1st record in the original data is included in the testing part, and the model predicts the respondent to have a 0.5% probability of obtaining **College_Score** 65 or higher.
+
+```{r test-inds-model}
+test_prob = predict.glm(train_model, test_data, type="response")
+round(test_prob, digits=3)
+```
+
+Then we follow the procedures in Section \ref{in-sample} to convert the test probabilities into binary classification results, i.e., the confusion matrix.
+
+```{r test-confusion-matrix}
+# Convert the test probabilities into binary classification results
+test_actual_65up = test_data$CS_65up
+test_pred_65up = test_prob > 0.5
+
+# Confusion matrix
+test_confusion = table(test_actual_65up, test_pred_65up)
+# revert the order of FALSE and TRUE
+test_confusion = test_confusion[2:1, 2:1]
+
+test_confusion
+```
+
+We can also produce the percentage version of the confusion matrix.
+
+```{r test-confusion-percentage}
+prop.table(test_confusion)
+```
+
+Now we show the number of true positives, false negatives, false positives, and false negatives.
+
+```{r test-all-four-cells}
+# row = actual_65up, column = predicted_65up
+tp = test_confusion["TRUE","TRUE"]
+fn = test_confusion["TRUE","FALSE"]
+fp = test_confusion["FALSE","TRUE"]
+tn = test_confusion["FALSE","FALSE"]
+
+print(paste(tp,fn,fp,tn))
+```
+
+We can also calculate the evaluation metrics for the predictive model. The process is similar to Section \ref{interpretation}.  
+
+\begin{align*}
+\text{Accuracy} &= \dfrac{TP+TN}{TP+FN+FP+TN} = \dfrac{34+34}{34+12+14+34} = \dfrac{68}{94} \approx 72.34\% \\
+\text{Precision} &= \dfrac{TP}{TP+FP} = \dfrac{34}{34+14} = \dfrac{34}{48} \approx 70.83\% \\
+\text{Recall} &= \dfrac{TP}{TP+FN} = \dfrac{34}{34+12} = \dfrac{34}{46} \approx 73.91\% \\
+\text{False Positive Rate (FPR)} &= \dfrac{FP}{TN+FP} = \dfrac{14}{34+14} = \dfrac{14}{48} \approx 29.17\% \\
+\text{False Negative Rate (FNR)} &= \dfrac{FN}{TP+FN} = \dfrac{12}{34+12} = \dfrac{12}{46} \approx 26.09\%
+\end{align*}
+
+We also compare the results with the in-sample prediction, and they show similar trends. The accuracy, precision, and recall all hover around 70%.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+    ~                              & Accuracy & Precision & Recall  & FPR     & FNR     \\ \hline
+    In-Sample Prediction           & 70.74\%  & 67.29\%   & 78.26\% & 36.46\% & 21.74\% \\ \hline
+    Separate Training and Testing  & 72.34\%  & 70.83\%   & 73.91\% & 29.17\% & 26.09\% \\ \hline
+    \end{tabular}
+    \caption{Comparison of results with in-sample prediction}
+    \label{tab:init-train-test}
+\end{table}
