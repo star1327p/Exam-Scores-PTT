@@ -317,7 +317,7 @@ print("This is a test.")
 
 ## Cross Validation
 
-Next, we are going to talk about **cross validation**. The "cross" means that each record in the data has the opportunity to serve as the training set AND the testing set (obviously, not at the same time). Cross validation involves partitioning data into a number of subsets, then we reserve one subset for testing and train the model on all the remaining subsets. Each subset take turns to be used for testing, and finally we combine the results to estimate the overall prediction performance. Two common cross validation methods are **k-fold cross validation** and **leave-one-out cross validation**.
+Next, we are going to talk about **cross validation**. The "cross" means that each record in the data has the opportunity to serve as the training set AND the testing set (obviously, not at the same time). Cross validation involves partitioning data into a number of subsets, then we reserve one subset for testing and train the model on all the remaining subsets. Each subset take turns to be used for testing, and finally we combine the results to estimate the overall prediction performance. Two common cross validation methods are **k-fold cross validation** and **leave-one-out cross validation**. We will demonstrate both ways of cross validation in this section.
 
 ### K-fold Cross Validation
 
@@ -453,8 +453,6 @@ k_fold_results = confusion_to_measures(k_fold_table)
 round(k_fold_results, digits=4)
 ```
 
-\textcolor{red}{\Large Unfinished below}    
-
 Since 10-fold cross validation involves randomly partitioning the data into 10 parts of nearly equal size, we can try different random seeds to see how the results change. For each of the five random seeds, the confusion matrices are quite similar.  
 
 ```{r k-fold-multiple-times}
@@ -473,24 +471,18 @@ for (iter in 1:runs){
 }
 ```
 
-Also check the results.
-
-Do the full implementation here and write an explanation.
-
-Need to revise the code! 
+We also output the results of the five iterations. 
 
 ```{r k-fold-multiple-tests}
-# UNFINISHED HERE
 out_measures = combine_results(out_matrices)
 
 # out_measures
 round(out_measures, digits=4)
 ```
 
-Then calculate the average of the five iterations.
+Then we calculate the average of the five iterations, and the mean accuracy is slightly over 70%. Note that the actual numbers can vary depending on the random seed.
 
 ```{r k-fold-multiple-avg}
-# UNFINISHED HERE
 average = calc_average(out_measures)
 
 # average
@@ -500,7 +492,9 @@ round(average, digits=4)
 
 ### Leave-one-out Cross Validation
 
-In **Leave-one-out cross validation**, each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction, but we need to perform $N$ rounds of validation, which may not be feasible when $N$ is extremely large. We will demonstrate both ways of cross validation in this section.  
+In **leave-one-out cross validation**, each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction, but we need to perform $N$ rounds of validation, which may not be feasible when $N$ is extremely large.   
+
+\textcolor{red}{\Large Unfinished below} 
 
 Start with the code in k-fold cross validation.  
 
@@ -548,7 +542,9 @@ leave1out_results = confusion_to_measures(matrix_leave1out)
 round(leave1out_results, digits=4)
 ```
 
-Comparison table
+Comparison table:
+
+Separate training \& testing and k-fold cross validation are the average results of five iterations each.
 
 \begin{table}[ht]
     \centering
@@ -556,8 +552,8 @@ Comparison table
     \hline
     ~                              & Accuracy & Precision & Recall  & FPR     & FNR     \\ \hline
     In-Sample Prediction           & 70.74\%  & 67.29\%   & 78.26\% & 36.46\% & 21.74\% \\ \hline
-    Separate Training and Testing  & 72.34\%  & 70.83\%   & 73.91\% & 29.17\% & 26.09\% \\ \hline
-    K-Fold Cross Validation        & 72.87\%  & 69.90\%   & 78.26\% & 32.29\% & 21.74\% \\ \hline
+    Separate Training \& Testing   & 71.28\%  & 69.64\%   & 76.59\% & 34.30\% & 23.41\% \\ \hline
+    K-Fold Cross Validation        & 71.60\%  & 68.32\%   & 78.26\% & 34.79\% & 21.74\% \\ \hline
     Leave-one-out Cross Validation & 70.74\%  & 67.29\%   & 78.26\% & 36.46\% & 21.74\% \\ \hline
     \end{tabular}
 \end{table}
