@@ -492,7 +492,8 @@ round(average, digits=4)
 
 ### Leave-one-out Cross Validation
 
-In **leave-one-out cross validation**, each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction, but we need to perform $N$ rounds of validation, which may not be feasible when $N$ is extremely large.   
+In **leave-one-out cross validation**, each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction. Since each record is predicted by all the other records in the data, no randomness is involved in creating the data split. Hence we do not have to set a random seed in the process. The key advantage is that the results are a relatively accurate estimate of the model performance.^[<https://machinelearningmastery.com/loocv-for-evaluating-machine-learning-algorithms/>] Note that when $N$ is extremely large, the computational cost would be high because we need to perform $N$ rounds of validation with $N-1$ records each. The complexity is $O(N^2)$.
+
 
 \textcolor{red}{\Large Unfinished below} 
 
