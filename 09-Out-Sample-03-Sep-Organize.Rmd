@@ -1,0 +1,183 @@
+We have demonstrated how to train the logistic regression model on a part of the data, and test the model on the remaining data. But there is one problem -- the code is messy and hence not reusable. If we are going to build another training-testing framework, we may have to copy-paste lots of code from Section \ref{train-test-demo}, which is undesirable. We should avoid excessive copy-pasting because this is prone to mistakes, making the code more difficult to debug.   
+
+A better solution is to incorporate repetitive code into a function, so that we can keep the same work in one place. In software development, "don't repeat yourself" (DRY) is a principle to reduce code repetitions \cite{foote2014learning}. When we change this part of the program, we only need to edit the code within the function. The modifications would automatically be performed anytime the function is called. In this way, the code can be easily reused and maintained.   
+
+As a first example, we need to convert the predictive probabilities into the binary classification results, and show them in a confusion matrix. This compound task is performed in almost every model validation involving binary classifications, so we should encapsulate the task into a function. This function compares the test probabilities with their ground truth (0/1), and outputs the number of true positives, false negatives, false positives, and true negatives. We predict a datapoint to be positive if the estimated probability is at or above a given threshold, which is set to 0.5 by default. Otherwise, we predict the datapoint to be negative.
+
+```{r prob-to-matrix}
+prob_to_matrix <- function(test_data, test_prob, threshold=0.5) {
+  # Convert the test probabilities into binary classification results.
+  # Threshold should be between 0 and 1, set to 0.5 by default.
+  
+  test_actual_65up = test_data$CS_65up
+  test_pred_65up = test_prob >= threshold
+  
+  # Confusion matrix
+  test_confusion = table(test_actual_65up, test_pred_65up)
+  # revert the order of FALSE and TRUE
+  test_confusion = test_confusion[2:1, 2:1]
+
+  return(test_confusion)
+}
+```
+
+We can call the `prob_to_matrix` function to obtain the confusion matrix, and the output is the same.  
+
+```{r prob-to-matrix-demo}
+another_test = prob_to_matrix(test_data, test_prob)
+another_test
+```
+
+The results in Table \ref{tab:init-train-test} are for separate training and testing sets from a single random seed. We would like to try more versions of such out-of-sample prediction, so we created the function `train_and_test` to automate the procedure. Note that this procedure calls `prob_to_matrix` at the end. We wrote the latter as a single function because we may also use it in other types of model validation. Eventually, we can run this function multiple times and take the average of the accuracy/precision/recall/etc. 
+
+```{r train-test-function}
+train_and_test <- function(data, seed) {
+  # Automate the procedure of using training and testing datasets 
+  # for out-of-sample model validation.
+  
+  # Input: data_corr, random_seed
+  # Output: confusion_matrix
+  
+  set.seed(seed)
+  nn = nrow(data)
+  row_inds = c(1:nn)
+  ind_permute = sample(row_inds)
+  mid_pt = floor(nn/2) # round down
+  
+  # Randomly split the data into 50% training and 50% testing
+  train_inds = ind_permute[1:mid_pt]
+  test_inds = ind_permute[(mid_pt+1):nn]
+  train_inds = sort(train_inds)
+  test_inds = sort(test_inds)
+
+  train_data = data[train_inds,]
+  test_data = data[test_inds,]
+
+  train_model = glm(CS_65up ~ HighSchool_PR, data=train_data, family="binomial")
+  # summary(train_model)
+
+  test_prob = predict.glm(train_model, test_data, type="response")
+  # round(test_prob, digits=3)
+  
+  test_confusion = prob_to_matrix(test_data, test_prob)
+
+  return(test_confusion)
+}
+```
+
+With this function, we can reproduce the predictive outcomes using the same random seed.
+
+```{r train-and-test-1st}
+train_and_test(data_corr, seed=10)
+```
+
+We can try a different random seed, and obtain results with a different split of training/testing data.
+
+```{r train-and-test-2nd}
+train_and_test(data_corr, seed=123)
+```
+
+Let's try five iterations with different random seeds and output the results. We will get five confusion matrices, and we can summarize the numbers across them. The main reason to try multiple iterations is to avoid getting an unlucky draw, i.e., a single partition that leads to extreme outcomes.    
+
+In the code, we generate the sequence of random seeds from a sequence of random numbers between 1 and 1000 without replacement. In this way, we only need to set a single random seed to get all five runs (which we can increase in the future). 
+
+```{r train-and-test-avg}
+set.seed(37)
+runs = 5
+
+# Discrete uniform distribution:
+# Generate a sequence of random numbers between 1 and 1000 
+# (sample without replacement)
+seed_each = sample(1:1000, runs, replace=F)
+
+# Initialize the list with size = number of runs.
+# Don't start with an empty list and append elements later, 
+# because the append function may not work for matrix elements.
+
+out_matrices = rep(list("results"), runs) 
+
+for (iter in 1:runs) {
+  output = train_and_test(data_corr, seed=seed_each[iter])
+  out_matrices[[iter]] = output
+}
+
+out_matrices
+```
+
+For each confusion matrix, we need to calculate the accuracy, precision, recall, FPR, and FNR. We calculated these by hand earlier, and now it is time to do them in `R` code for reproducibility. We write a function to do the calculations, because these would be reused in other model validation schemes. We also use the first confusion matrix to demonstrate how this function works.
+
+```{r calc-from-function}
+confusion_to_measures <- function(output) {
+  tp = output[1,1]
+  fn = output[1,2]
+  fp = output[2,1]
+  tn = output[2,2]
+  
+  accuracy = (tp+tn)/(tp+fn+fp+tn)
+  precision = tp/(tp+fp)
+  recall = tp/(tp+fn)
+  fpr = fp/(tn+fp)
+  fnr = fn/(tp+fn)
+  
+  measures = c(accuracy, precision, recall, fpr, fnr)
+  names(measures) = c("Accuracy","Precision","Recall","FPR","FNR")
+  
+  return(measures)
+}
+
+sample_output = confusion_to_measures(out_matrices[[1]])
+round(sample_output, digits = 4)
+```
+
+Then we output the metrics of each iteration to a table, using a for loop to run through the iterations. We converted this process into the function `combine_results`, because we need to use the same script for k-fold cross validation as well.
+
+```{r calc-from-matrix}
+combine_results <- function(out_matrices) {
+  # Combine the output results
+  # Input: out_matrices (list of matrices)
+  # Output: out_measures (matrix array)
+  
+  runs = length(out_matrices) 
+
+  out_measures = c(0,0,0,0,0,0)
+  names(out_measures) = c("Iteration","Accuracy","Precision","Recall","FPR","FNR")
+  
+  for (iter in 1:runs) {
+    output = confusion_to_measures(out_matrices[[iter]])
+    measures = c(iter, output)
+    out_measures = rbind(out_measures, measures)
+  }
+  
+  row.names(out_measures) = rep(c(""), runs+1) # remove row names
+  out_measures = out_measures[-1,] # remove the first placeholder row
+  
+  return(out_measures)
+}
+
+out_measures = combine_results(out_matrices)
+
+# out_measures
+round(out_measures, digits=4)
+```
+
+We also calculate the average of the five iterations for each metric. The accuracy, precision, and recall all hover around 70% as expected, just like in Table \ref{tab:init-train-test} in Section \ref{train-test-demo}.   
+
+```{r calculate-average}
+calc_average <- function(out_measures) {
+  avg_results = c(mean(out_measures[,"Accuracy"]),
+            mean(out_measures[,"Precision"]),
+            mean(out_measures[,"Recall"]),
+            mean(out_measures[,"FPR"]), mean(out_measures[,"FNR"]))
+
+  names(avg_results) = c("Accuracy","Precision","Recall","FPR","FNR")
+  
+  return(avg_results)
+}
+
+average = calc_average(out_measures)
+
+# average
+round(average, digits=4)
+```
+
+We are going to have fewer descriptions in the result evaluation of later sections, because we assume that at this point, the readers would already be familiar with the relevant concepts.  
