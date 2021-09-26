@@ -152,11 +152,7 @@ In **leave-one-out cross validation**, each record is considered an independent 
 
 \textcolor{red}{\Large Unfinished below} 
 
-Start with the code in k-fold cross validation.  
-
-But we do not need to convert each iteration (test datapoint) into a matrix.  
-
-Just need to summarize the results into tp, fn, fp, tn.  
+Here is the code for leave-one-out cross validation. Since this method predicts one record at a time, we can get all predictive probabilities after the for loop is complete.
 
 ```{r leave-one-out}
 # UNFINISHED HERE: Organize the output
@@ -180,7 +176,9 @@ for (ii in 1:nn) {
 }
 ```
 
-Summarize the predictive probabilities in a confusion matrix.
+Now we summarize the predictive probabilities in a single confusion matrix.  
+
+Exactly same results as the in-sample prediction?
 
 ```{r leave-one-out-matrix}
 matrix_leave1out = prob_to_matrix(data_corr, prob_leave1out)
@@ -189,9 +187,11 @@ matrix_leave1out
 
 Note that leave-one-out does not require a random seed.  
 
+Just need to summarize the results into tp, fn, fp, tn.
+
 More interpretation here  
 
-Exactly same results as the in-sample prediction?
+
 
 ```{r leave-one-out-results}
 leave1out_results = confusion_to_measures(matrix_leave1out)
@@ -208,10 +208,12 @@ Separate training \& testing and k-fold cross validation are the average results
     \hline
     ~                              & Accuracy & Precision & Recall  & FPR     & FNR     \\ \hline
     In-Sample Prediction           & 70.74\%  & 67.29\%   & 78.26\% & 36.46\% & 21.74\% \\ \hline
-    Separate Training \& Testing   & 71.28\%  & 69.64\%   & 76.59\% & 34.30\% & 23.41\% \\ \hline
-    K-Fold Cross Validation        & 71.60\%  & 68.32\%   & 78.26\% & 34.79\% & 21.74\% \\ \hline
+    Separate Training \& Testing (Average)  & 71.28\%  & 69.64\%   & 76.59\% & 34.30\% & 23.41\% \\ \hline
+    K-Fold Cross Validation (Average)       & 71.60\%  & 68.32\%   & 78.26\% & 34.79\% & 21.74\% \\ \hline
     Leave-one-out Cross Validation & 70.74\%  & 67.29\%   & 78.26\% & 36.46\% & 21.74\% \\ \hline
     \end{tabular}
+    \caption{Comparison of results with out-of-sample prediction}
+    \label{tab:out-train-test}
 \end{table}
 
 # Discussion and Conclusion
