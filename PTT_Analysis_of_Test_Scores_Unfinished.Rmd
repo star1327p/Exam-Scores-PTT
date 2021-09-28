@@ -147,16 +147,11 @@ print("This is a test.")
 
 ### Leave-one-out Cross Validation
 
-In **leave-one-out cross validation**, each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction. Since each record is predicted by all the other records in the data, no randomness is involved in creating the data split. Hence we do not have to set a random seed in the process. The key advantage is that the results are a relatively accurate estimate of the model performance.^[<https://machinelearningmastery.com/loocv-for-evaluating-machine-learning-algorithms/>] Note that when $N$ is extremely large, the computational cost would be high because we need to perform $N$ rounds of validation with $N-1$ records each. The complexity is $O(N^2)$.
+In **leave-one-out cross validation**, each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction. The key advantage is that the results are a relatively accurate estimate of the model performance.^[<https://machinelearningmastery.com/loocv-for-evaluating-machine-learning-algorithms/>] Note that when $N$ is extremely large, the computational cost would be high because we need to perform $N$ rounds of validation with $N-1$ records each. The complexity is $O(N^2)$.  
 
-
-\textcolor{red}{\Large Unfinished below} 
-
-Here is the code for leave-one-out cross validation. Since this method predicts one record at a time, we can get all predictive probabilities after the for loop is complete.
+Here is the code for leave-one-out cross validation. Since each record is predicted by all the other records in the data, no randomness is involved in creating the data split. Hence we do not have to set a random seed in the process.  
 
 ```{r leave-one-out}
-# UNFINISHED HERE: Organize the output
-
 nn = nrow(data_corr) # total 188 rows of data
 
 prob_leave1out = rep(c(-1), nn)
@@ -176,31 +171,27 @@ for (ii in 1:nn) {
 }
 ```
 
-Now we summarize the predictive probabilities in a single confusion matrix.  
-
-Exactly same results as the in-sample prediction?
+Now we summarize the predictive probabilities in a single confusion matrix. The results are exactly the same as the in-sample prediction in Section \ref{validation}, which may be a coincidence.
 
 ```{r leave-one-out-matrix}
 matrix_leave1out = prob_to_matrix(data_corr, prob_leave1out)
 matrix_leave1out
 ```
 
-Note that leave-one-out does not require a random seed.  
-
-Just need to summarize the results into tp, fn, fp, tn.
-
-More interpretation here  
-
-
+We also calculate the five metrics: accuracy, precision, recall, FPR, and FNR.  
 
 ```{r leave-one-out-results}
 leave1out_results = confusion_to_measures(matrix_leave1out)
 round(leave1out_results, digits=4)
 ```
 
-Comparison table:
+\textcolor{red}{\Large Unfinished below}   
 
-Separate training \& testing and k-fold cross validation are the average results of five iterations each.
+Comparison table:  
+
+Separate training \& testing and k-fold cross validation are the average results of five iterations each.  
+
+More interpretation here  
 
 \begin{table}[ht]
     \centering
