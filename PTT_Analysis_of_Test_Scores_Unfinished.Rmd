@@ -187,11 +187,13 @@ round(leave1out_results, digits=4)
 
 \textcolor{red}{\Large Unfinished below}   
 
-Comparison table:  
+Table \ref{tab:out-train-test} summarizes the results of in-sample prediction and out-of-sample prediction. Separate training \& testing and k-fold cross validation are the average results of five iterations each. The accuracy is slightly above 70\%, the precision is around 68\%, and the recall is approximately 78\%. Since the outcomes are similar across each method, we are not concerned about overfitting in the logistic regression model.  
 
-Separate training \& testing and k-fold cross validation are the average results of five iterations each.  
+More interpretation here   
 
-More interpretation here  
+Use **HighSchool_PR** scores to predict whether a student would get **College_Score** at least 65 or not.  
+
+Also talk about FPR and FNR
 
 \begin{table}[ht]
     \centering
@@ -206,6 +208,14 @@ More interpretation here
     \caption{Comparison of results with out-of-sample prediction}
     \label{tab:out-train-test}
 \end{table}
+
+# Predictive Modeling
+
+Use the logistic regression to predict new datapoints.  
+
+e.g. **HighSchool_PR** 98 or 99  
+
+Also need to include lower scores (but sufficient for the students to try for college)
 
 # Discussion and Conclusion
 
