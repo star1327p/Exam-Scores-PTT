@@ -92,13 +92,29 @@ Ongoing work since 2019.
 
 ## Breakdown by High School Entrance Exam Scores
 
-Examine the confusion matrices for each group of **HighSchool_PR**: below 80, 80-89, 90-94, 95-99.  
+\section*{\textcolor{red}{Unfinished below}}  
 
-Ensure that each group has a sufficiently large number of respondents.
+Examine the confusion matrices for each group of **HighSchool_PR**: 0-79, 80-89, 90-94, 95-99.  
+
+Ensure that each group has a sufficiently large number of respondents.  
+
+Total: 188 records.  
 
 Refer to Section \ref{HighSchool-PR-80-up} for the details of this categorization.  
 
 Create more graphs  
+
+```{r breakdown-by-pr}
+HS0to79_ind = which(data_corr$HighSchool_PR >=0 & data_corr$HighSchool_PR <= 79)
+HS80to89_ind = which(data_corr$HighSchool_PR >= 80 & data_corr$HighSchool_PR <= 89)
+HS90to94_ind = which(data_corr$HighSchool_PR >= 90 & data_corr$HighSchool_PR <= 94)
+HS95to99_ind = which(data_corr$HighSchool_PR >= 95 & data_corr$HighSchool_PR <= 99)
+
+print(paste("HighSchool_PR 0-79:",length(HS0to79_ind)))
+print(paste("HighSchool_PR 80-89:",length(HS80to89_ind)))
+print(paste("HighSchool_PR 90-94:",length(HS90to94_ind)))
+print(paste("HighSchool_PR 95-99:",length(HS95to99_ind)))
+```
 
 # Model Validation: Out-of-Sample Prediction {#outsample}
 
