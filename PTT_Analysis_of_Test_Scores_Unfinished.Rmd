@@ -201,15 +201,11 @@ leave1out_results = confusion_to_measures(matrix_leave1out)
 round(leave1out_results, digits=4)
 ```
 
+## Comparison of Results
+
 \textcolor{red}{\Large Unfinished below}   
 
 Table \ref{tab:out-train-test} summarizes the results of in-sample prediction and out-of-sample prediction. Separate training \& testing and k-fold cross validation are the average results of five iterations each. The accuracy is slightly above 70\%, the precision is around 68\%, and the recall is approximately 78\%. Since the outcomes are similar across each method, we are not concerned about overfitting in the logistic regression model.  
-
-More interpretation here   
-
-Use **HighSchool_PR** scores to predict whether a student would get **College_Score** at least 65 or not.  
-
-Also talk about FPR and FNR
 
 \begin{table}[ht]
     \centering
@@ -221,9 +217,20 @@ Also talk about FPR and FNR
     K-Fold Cross Validation (Average)       & 71.60\%  & 68.32\%   & 78.26\% & 34.79\% & 21.74\% \\ \hline
     Leave-one-out Cross Validation & 70.74\%  & 67.29\%   & 78.26\% & 36.46\% & 21.74\% \\ \hline
     \end{tabular}
-    \caption{Comparison of results with out-of-sample prediction}
+    \caption{Comparison of results with in-sample and out-of-sample prediction}
     \label{tab:out-train-test}
 \end{table}
+
+This model uses **HighSchool_PR** scores to predict whether a student would get **College_Score** at least 65 or not. But the model is imperfect in prediction, just as we explained in Section \ref{interpretation}.
+
+- The **precision** is the number of true positives divided by the predicted positives. This means among the students with good **HighSchool_PR** scores, around 68\% of them achieved **College_Score** at least 65 three years later.\footnote{The high school is three years in Taiwan (grades 10-12).} 
+
+- The **recall** is the number of true positives divided by the actual positives. This means among the students with **College_Score** at least 65, approximately 78\% them had good **HighSchool_PR** scores three years ago.
+
+Also talk about FPR and FNR  
+
+More interpretation here   
+
 
 # Predictive Modeling
 
