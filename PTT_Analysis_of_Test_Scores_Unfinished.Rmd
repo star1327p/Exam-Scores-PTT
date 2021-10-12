@@ -203,7 +203,7 @@ round(leave1out_results, digits=4)
 
 ## Comparison of Results
 
-Table \ref{tab:out-train-test} summarizes the results of in-sample prediction and out-of-sample prediction. Separate training \& testing and k-fold cross validation are the average results of five iterations each. The accuracy is slightly above 70\%, the precision is around 68\%, and the recall is approximately 78\%. Since the outcomes are similar across each method, we are not concerned about overfitting in the logistic regression model.  
+Table \ref{tab:out-train-test} summarizes the results of in-sample prediction and out-of-sample prediction. Separate training \& testing and k-fold cross validation are the average results of five iterations each. The accuracy is slightly above 70\%, the precision is around 68\%, and the recall is approximately 78\%. Since the outcomes are similar across each method, we are not concerned about overfitting in the logistic regression model. Note that the logistic regression is straightforward to run and does not require parameter tuning. In comparison, some machine learning models have a large number of parameters and they are at more risk of overfitting.
 
 \begin{table}[ht]
     \centering
@@ -225,19 +225,16 @@ This model uses **HighSchool_PR** scores to predict whether a student would get 
 
 - The **recall** is the number of true positives divided by the actual positives. This means among the students with **College_Score** at least 65, approximately 78\% them had good **HighSchool_PR** scores three years ago.
 
-\textcolor{red}{\Large Unfinished below}   
-
 - The **FPR (false positive rate)** is the number of false positives divided by the actual negatives. This means among the students with **College_Score** 64 or below, about 35\% of them were originally predicted to have **College_Score** at least 65.
 
 
 - The **FNR (false negative rate)** is the number of false negatives divided by the actual positives. This means among the students with **College_Score** at least 65, slightly over 20\% of them were "pleasant surprises" because we did not predict them to achieve such scores given their **HighSchool_PR**.
 
-
-More interpretation here   
-
-
+In summary, given the student's **HighSchool_PR**, the model is only about 70\% accurate to predict **College_Score** at least 65 or not. In practical terms, if a student obtains a great **HighSchool_PR** score, he/she should keep up with the good work in order to perform well in **College_Score** three years later. On the other hand, if a student does not obtain a great **HighSchool_PR** score for any reason, he/she still has a second chance to do well in the **College_Score**.  
 
 # Predictive Modeling
+
+\textcolor{red}{\Large Unfinished below}  
 
 Use the logistic regression to predict new datapoints.  
 
