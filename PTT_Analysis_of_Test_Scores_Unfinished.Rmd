@@ -158,6 +158,12 @@ confusion = confusion[2:1, 2:1]
 confusion
 ```
 
+Most respondents with **HighSchool_PR** 95-99 got **College_Score** at least 65. $\Rightarrow$ Increase the cutoff point to 70?  
+
+Need to show the breakdown like the output in _6.4 Bivariate Exploration of High Scorers_.  
+
+But I don't think this makes sense, because **HighSchool_PR** 95-99 does not distinguish students' intellectual ability that much. 
+
 # Model Validation: Out-of-Sample Prediction {#outsample}
 
 ```{r include-out-sample-00, child = '09-Out-Sample-00-Foreword.Rmd'}
@@ -188,77 +194,15 @@ confusion
 ```{r include-out-sample-05, child = '09-Out-Sample-05-K-Fold.Rmd'}
 ```
 
-
 ### Leave-one-out Cross Validation
 
-In **leave-one-out cross validation**, each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction. The key advantage is that the results are a relatively accurate estimate of the model performance.^[<https://machinelearningmastery.com/loocv-for-evaluating-machine-learning-algorithms/>] Note that when $N$ is extremely large, the computational cost would be high because we need to perform $N$ rounds of validation with $N-1$ records each. The complexity is $O(N^2)$.  
-
-Here is the code for leave-one-out cross validation. Since each record is predicted by all the other records in the data, no randomness is involved in creating the data split. Hence we do not have to set a random seed in the process.  
-
-```{r leave-one-out}
-nn = nrow(data_corr) # total 188 rows of data
-
-prob_leave1out = rep(c(-1), nn)
-
-for (ii in 1:nn) {
-  data_test = data_corr[ii,] # reserve one record for testing
-  data_exclude = data_corr[-ii,]
-
-  train_leave1out = glm(CS_65up ~ HighSchool_PR, data=data_exclude, family="binomial")
-  # summary(train_leave1out)
-  
-  test_leave1out = predict.glm(train_leave1out, data_test, type="response")
-  # type="response" gives the predicted probabilities
-
-  # Store the predicted probability to the general list
-  prob_leave1out[ii] = test_leave1out
-}
-```
-
-Now we summarize the predictive probabilities in a single confusion matrix. The results are exactly the same as the in-sample prediction in Section \ref{validation}, which may be a coincidence.
-
-```{r leave-one-out-matrix}
-matrix_leave1out = prob_to_matrix(data_corr, prob_leave1out)
-matrix_leave1out
-```
-
-We also calculate the five metrics: accuracy, precision, recall, FPR, and FNR.  
-
-```{r leave-one-out-results}
-leave1out_results = confusion_to_measures(matrix_leave1out)
-round(leave1out_results, digits=4)
+```{r include-out-sample-06, child = '09-Out-Sample-06-Leave-One-Out.Rmd'}
 ```
 
 ## Comparison of Results
 
-Table \ref{tab:out-train-test} summarizes the results of in-sample prediction and out-of-sample prediction. Separate training \& testing and k-fold cross validation are the average results of five iterations each. The accuracy is slightly above 70\%, the precision is around 68\%, and the recall is approximately 78\%. Since the outcomes are similar across each method, we are not concerned about overfitting in the logistic regression model. Note that the logistic regression is straightforward to run and does not require parameter tuning. In contrast, some machine learning models have a large number of parameters and they are at more risk of overfitting.
-
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{|l|l|l|l|l|l|}
-    \hline
-    ~                              & Accuracy & Precision & Recall  & FPR     & FNR     \\ \hline
-    In-Sample Prediction           & 70.74\%  & 67.29\%   & 78.26\% & 36.46\% & 21.74\% \\ \hline
-    Separate Training \& Testing (Average)  & 71.28\%  & 69.64\%   & 76.59\% & 34.30\% & 23.41\% \\ \hline
-    K-Fold Cross Validation (Average)       & 71.60\%  & 68.32\%   & 78.26\% & 34.79\% & 21.74\% \\ \hline
-    Leave-one-out Cross Validation & 70.74\%  & 67.29\%   & 78.26\% & 36.46\% & 21.74\% \\ \hline
-    \end{tabular}
-    \caption{Comparison of results with in-sample and out-of-sample prediction}
-    \label{tab:out-train-test}
-\end{table}
-
-This model uses **HighSchool_PR** scores to predict whether a student would get **College_Score** at least 65 or not. But the model is imperfect in prediction, just as we explained in Section \ref{interpretation}.
-
-- The **precision** is the number of true positives divided by the predicted positives. This means among the students with good **HighSchool_PR** scores, around 68\% of them achieved **College_Score** at least 65 three years later.\footnote{The high school is three years in Taiwan (grades 10-12).} 
-
-- The **recall** is the number of true positives divided by the actual positives. This means among the students with **College_Score** at least 65, approximately 78\% them had good **HighSchool_PR** scores three years ago.
-
-- The **FPR (false positive rate)** is the number of false positives divided by the actual negatives. This means among the students with **College_Score** 64 or below, about 35\% of them were originally predicted to have **College_Score** at least 65.
-
-
-- The **FNR (false negative rate)** is the number of false negatives divided by the actual positives. This means among the students with **College_Score** at least 65, slightly over 20\% of them were "pleasant surprises" because we did not predict them to achieve such scores given their **HighSchool_PR**.
-
-In summary, given the student's **HighSchool_PR**, the model is only about 70\% accurate to predict **College_Score** at least 65 or not. In practical terms, if a student obtains a great **HighSchool_PR** score, he/she should keep up with the good work in order to perform well in **College_Score** three years later. On the other hand, if a student does not obtain a great **HighSchool_PR** score for any reason, he/she still has a second chance to do well in the **College_Score**.  
+```{r include-out-sample-07, child = '09-Out-Sample-07-Comparison-Results.Rmd'}
+```
 
 # Predictive Modeling
 

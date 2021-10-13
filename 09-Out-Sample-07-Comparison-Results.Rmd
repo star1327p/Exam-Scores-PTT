@@ -1,0 +1,27 @@
+Table \ref{tab:out-train-test} summarizes the results of in-sample prediction and out-of-sample prediction. Separate training \& testing and k-fold cross validation are the average results of five iterations each. The accuracy is slightly above 70\%, the precision is around 68\%, and the recall is approximately 78\%. Since the outcomes are similar across each method, we are not concerned about overfitting in the logistic regression model. Note that the logistic regression is straightforward to run and does not require parameter tuning. In contrast, some machine learning models have a large number of parameters and they are at more risk of overfitting.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+    ~                              & Accuracy & Precision & Recall  & FPR     & FNR     \\ \hline
+    In-Sample Prediction           & 70.74\%  & 67.29\%   & 78.26\% & 36.46\% & 21.74\% \\ \hline
+    Separate Training \& Testing (Average)  & 71.28\%  & 69.64\%   & 76.59\% & 34.30\% & 23.41\% \\ \hline
+    K-Fold Cross Validation (Average)       & 71.60\%  & 68.32\%   & 78.26\% & 34.79\% & 21.74\% \\ \hline
+    Leave-one-out Cross Validation & 70.74\%  & 67.29\%   & 78.26\% & 36.46\% & 21.74\% \\ \hline
+    \end{tabular}
+    \caption{Comparison of results with in-sample and out-of-sample prediction}
+    \label{tab:out-train-test}
+\end{table}
+
+This model uses **HighSchool_PR** scores to predict whether a student would get **College_Score** at least 65 or not. But the model is imperfect in prediction, just as we explained in Section \ref{interpretation}.
+
+- The **precision** is the number of true positives divided by the predicted positives. This means among the students with good **HighSchool_PR** scores, around 68\% of them achieved **College_Score** at least 65 three years later.\footnote{The high school is three years in Taiwan (grades 10-12).} 
+
+- The **recall** is the number of true positives divided by the actual positives. This means among the students with **College_Score** at least 65, approximately 78\% them had good **HighSchool_PR** scores three years ago.
+
+- The **FPR (false positive rate)** is the number of false positives divided by the actual negatives. This means among the students with **College_Score** 64 or below, about 35\% of them were originally predicted to have **College_Score** at least 65.
+
+- The **FNR (false negative rate)** is the number of false negatives divided by the actual positives. This means among the students with **College_Score** at least 65, slightly over 20\% of them were "pleasant surprises" because we did not predict them to achieve such scores given their **HighSchool_PR**.
+
+In summary, given the student's **HighSchool_PR**, the model is only about 70\% accurate to predict **College_Score** at least 65 or not. In practical terms, if a student obtains a great **HighSchool_PR** score, he/she should keep up with the good work in order to perform well in **College_Score** three years later. On the other hand, if a student does not obtain a great **HighSchool_PR** score for any reason, he/she still has a second chance to do well in the **College_Score**.  

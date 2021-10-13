@@ -1,0 +1,37 @@
+In **leave-one-out cross validation**, each record is considered an independent subset. This is essentially setting $K$ to be the number of total records in the data, say $N$. We train the model on the $N-1$ records and test the model on the one left-out record. This allows each record to get its own prediction. The key advantage is that the results are a relatively accurate estimate of the model performance.^[<https://machinelearningmastery.com/loocv-for-evaluating-machine-learning-algorithms/>] Note that when $N$ is extremely large, the computational cost would be high because we need to perform $N$ rounds of validation with $N-1$ records each. The complexity is $O(N^2)$.  
+
+Here is the code for leave-one-out cross validation. Since each record is predicted by all the other records in the data, no randomness is involved in creating the data split. Hence we do not have to set a random seed in the process.  
+
+```{r leave-one-out}
+nn = nrow(data_corr) # total 188 rows of data
+
+prob_leave1out = rep(c(-1), nn)
+
+for (ii in 1:nn) {
+  data_test = data_corr[ii,] # reserve one record for testing
+  data_exclude = data_corr[-ii,]
+
+  train_leave1out = glm(CS_65up ~ HighSchool_PR, data=data_exclude, family="binomial")
+  # summary(train_leave1out)
+  
+  test_leave1out = predict.glm(train_leave1out, data_test, type="response")
+  # type="response" gives the predicted probabilities
+
+  # Store the predicted probability to the general list
+  prob_leave1out[ii] = test_leave1out
+}
+```
+
+Now we summarize the predictive probabilities in a single confusion matrix. The results are exactly the same as the in-sample prediction in Section \ref{validation}, which may be a coincidence.
+
+```{r leave-one-out-matrix}
+matrix_leave1out = prob_to_matrix(data_corr, prob_leave1out)
+matrix_leave1out
+```
+
+We also calculate the five metrics: accuracy, precision, recall, FPR, and FNR.  
+
+```{r leave-one-out-results}
+leave1out_results = confusion_to_measures(matrix_leave1out)
+round(leave1out_results, digits=4)
+```
