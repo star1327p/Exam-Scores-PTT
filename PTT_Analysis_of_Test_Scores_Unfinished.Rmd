@@ -102,7 +102,21 @@ Total: 188 records.
 
 Refer to Section \ref{HighSchool-PR-80-up} for the details of this categorization.  
 
-Create more graphs  
+Create more graphs 
+
+```{r header-code,include=FALSE}
+data = read.csv("ptt_SENIORHIGH_data.csv")
+names(data)[1] = "pttID"
+
+missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
+data_corr = data[-missing_rows,]
+
+data_corr$CS_65up = data_corr$College_Score >=65
+
+model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
+
+print("This is a test.")
+```
 
 ```{r breakdown-by-pr}
 HS0to79_ind = which(data_corr$HighSchool_PR >=0 & data_corr$HighSchool_PR <= 79)
@@ -114,6 +128,34 @@ print(paste("HighSchool_PR 0-79:",length(HS0to79_ind)))
 print(paste("HighSchool_PR 80-89:",length(HS80to89_ind)))
 print(paste("HighSchool_PR 90-94:",length(HS90to94_ind)))
 print(paste("HighSchool_PR 95-99:",length(HS95to99_ind)))
+```
+
+Test code  
+
+Is the confusion matrix still valid in subsets given **HighSchool_PR**?
+
+```{r test-code}
+# UNFINISHED HERE
+# HS0to79_ind has only FALSE predicted outcomes.
+# HS80to89_ind has only FALSE predicted outcomes.
+# HS95to99_ind has only TRUE predicted outcomes.
+
+# Only HS90to94 has both TRUE and FALSE predicted outcomes.
+
+# Data
+actual_65up = data_corr$CS_65up
+# Predicted results
+predicted_65up = model$fitted.values >= 0.5
+
+# Confusion matrix (HighSchool_PR 90-94 only)
+actual_65up = actual_65up[HS90to94_ind]
+predicted_65up = predicted_65up[HS90to94_ind]
+
+confusion = table(actual_65up, predicted_65up)
+# revert the order of FALSE and TRUE
+confusion = confusion[2:1, 2:1]
+
+confusion
 ```
 
 # Model Validation: Out-of-Sample Prediction {#outsample}
@@ -134,20 +176,6 @@ print(paste("HighSchool_PR 95-99:",length(HS95to99_ind)))
 ### Organizing the Code for Reusability
 
 ```{r include-out-sample-03, child = '09-Out-Sample-03-Sep-Organize.Rmd'}
-```
-
-```{r header-code,include=FALSE}
-data = read.csv("ptt_SENIORHIGH_data.csv")
-names(data)[1] = "pttID"
-
-missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
-data_corr = data[-missing_rows,]
-
-data_corr$CS_65up = data_corr$College_Score >=65
-
-model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
-
-print("This is a test.")
 ```
 
 ## Cross Validation
