@@ -92,17 +92,9 @@ Ongoing work since 2019.
 
 ## Breakdown by High School Entrance Exam Scores
 
-\section*{\textcolor{red}{Unfinished below}}  
+Let's examine the confusion matrices for each group of **HighSchool_PR**: 0-79, 80-89, 90-94, 95-99. Readers can refer to Section \ref{HighSchool-PR-80-up} for the details of this categorization. Before going into the analysis, we need to ensure that each group has a sufficiently large number of respondents within the 188 total records.    
 
-Examine the confusion matrices for each group of **HighSchool_PR**: 0-79, 80-89, 90-94, 95-99.  
-
-Ensure that each group has a sufficiently large number of respondents.  
-
-Total: 188 records.  
-
-Refer to Section \ref{HighSchool-PR-80-up} for the details of this categorization.  
-
-Create more graphs 
+The group with **HighSchool_PR** 0-79 has the smallest number of respondents, and 25 is a sufficient sample size. The groups  with **HighSchool_PR** 80-89 and 90-94 contain 49 and 44 respondents, respectively. The group with **HighSchool_PR** 95-99 includes 70 respondents, which is the largest of the four categories.  
 
 ```{r header-code,include=FALSE}
 data = read.csv("ptt_SENIORHIGH_data.csv")
@@ -129,6 +121,8 @@ print(paste("HighSchool_PR 80-89:",length(HS80to89_ind)))
 print(paste("HighSchool_PR 90-94:",length(HS90to94_ind)))
 print(paste("HighSchool_PR 95-99:",length(HS95to99_ind)))
 ```
+
+\section*{\textcolor{red}{Unfinished below}}    
 
 Test code  
 
@@ -160,9 +154,11 @@ confusion
 
 Most respondents with **HighSchool_PR** 95-99 got **College_Score** at least 65. $\Rightarrow$ Increase the cutoff point to 70?  
 
-Need to show the breakdown like the output in _6.4 Bivariate Exploration of High Scorers_.  
+Need to show the breakdown like the output in Section \ref{bivariate-top-scorers}.   
 
 But I don't think this makes sense, because **HighSchool_PR** 95-99 does not distinguish students' intellectual ability that much. 
+
+Create more graphs  
 
 # Model Validation: Out-of-Sample Prediction {#outsample}
 

@@ -68,7 +68,7 @@ print(paste("HighSchool_PR 90-94:",HS90to94))
 print(paste("HighSchool_PR 95-99:",HS95to99))
 ```
 
-## College Entrance Exam Scores at least 60
+## College Entrance Exam Scores at least 60 
 
 Similar to the previous section, we also show the frequency of each **College_Score** value that is at least 60. The total counts is 128, fewer than the 163 counts with **HighSchool_PR** 80 or above. The distribution is relatively uniform for **College_Score** values between 60 and 73, with a steep decline in the counts of **College_Score** 74 and 75 (max possible score). On the college entrance exam, only four respondents scored 74 and two scored 75. According to the historical statistics of the college entrance exam in Taiwan, **College_Score** 74 and 75 account for approximately 0.2% of all test takers each year, which is quite a small percentage.    
 
@@ -111,7 +111,7 @@ print(paste("College_Score 65-69:",CS65to69))
 print(paste("College_Score 70-75:",CS70to75))
 ```
 
-## Bivariate Exploration of High Scorers
+## Bivariate Exploration of High Scorers {#bivariate-top-scorers}
 
 Section \ref{bivariate} explored the bivariate relationship between **HighSchool_PR** and **College_Score**, and this time we would like to focus on the high scorers: respondents with **HighSchool_PR** $\geq$ 80 and/or **College_Score** $\geq$ 60. There are 163 respondents with **HighSchool_PR** $\geq$ 80, 128 respondents with **College_Score** $\geq$ 60, and 120 respondents with both. Since the number of respondents with **HighSchool_PR** $\geq$ 80 does not equal to the number of respondents with **College_Score** $\geq$ 60, we should consider the full 188 records in the data. Hence we add the range 0-79 to **HighSchool_PR**, and the range 0-59 for **College_Score**. We would like to create a 4x4 table for the following ranges:
 
