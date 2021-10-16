@@ -116,10 +116,10 @@ HS80to89_ind = which(data_corr$HighSchool_PR >= 80 & data_corr$HighSchool_PR <= 
 HS90to94_ind = which(data_corr$HighSchool_PR >= 90 & data_corr$HighSchool_PR <= 94)
 HS95to99_ind = which(data_corr$HighSchool_PR >= 95 & data_corr$HighSchool_PR <= 99)
 
-print(paste("HighSchool_PR 0-79:",length(HS0to79_ind)))
-print(paste("HighSchool_PR 80-89:",length(HS80to89_ind)))
-print(paste("HighSchool_PR 90-94:",length(HS90to94_ind)))
-print(paste("HighSchool_PR 95-99:",length(HS95to99_ind)))
+print(paste("HighSchool_PR 0-79:",length(HS0to79_ind), "respondents"))
+print(paste("HighSchool_PR 80-89:",length(HS80to89_ind), "respondents"))
+print(paste("HighSchool_PR 90-94:",length(HS90to94_ind), "respondents"))
+print(paste("HighSchool_PR 95-99:",length(HS95to99_ind), "respondents"))
 ```
 
 \section*{\textcolor{red}{Unfinished below}}    
@@ -128,7 +128,7 @@ Test code
 
 Is the confusion matrix still valid in subsets given **HighSchool_PR**?
 
-```{r test-code}
+```{r confusion-subset}
 # UNFINISHED HERE
 # HS0to79_ind has only FALSE predicted outcomes.
 # HS80to89_ind has only FALSE predicted outcomes.
@@ -141,18 +141,51 @@ actual_65up = data_corr$CS_65up
 # Predicted results
 predicted_65up = model$fitted.values >= 0.5
 
-# Confusion matrix (HighSchool_PR 90-94 only)
-actual_65up = actual_65up[HS90to94_ind]
-predicted_65up = predicted_65up[HS90to94_ind]
-
-confusion = table(actual_65up, predicted_65up)
-# revert the order of FALSE and TRUE
-confusion = confusion[2:1, 2:1]
-
-confusion
+confusion_subset <- function(HS_inds, actual, predicted) {
+  actual = actual[HS_inds]
+  predicted = predicted[HS_inds]
+  confusion = table(actual, predicted)
+  return(confusion)
+}
 ```
 
-Most respondents with **HighSchool_PR** 95-99 got **College_Score** at least 65. $\Rightarrow$ Increase the cutoff point to 70?  
+Confusion matrix (**HighSchool_PR** 0-79 only)
+
+```{r pr-0-79}
+# UNFINISHED HERE
+confusion_0to79 = confusion_subset(HS0to79_ind, actual_65up, predicted_65up)
+# confusion_0to79 = confusion_0to79[2:1,1:1] # This does not work.
+
+confusion_0to79
+# Need to fix this into 2x2 matrix
+```
+
+Test to make the confusion matrix 2x2
+
+```{r test-confusion-code}
+# Should build this into the confusion_subset function, as a toggle feature.
+# dim(confusion_0to79) # 2x1
+#  dimnames(confusion_0to79) # Check this first.
+yt = as.table(cbind(confusion_0to79,c(0,0)))
+colnames(yt) = c("FALSE","TRUE")
+names(dimnames(yt)) = c("act","pred")
+yt
+```
+
+Need to finish writing up for the remaining segments.  
+
+Confusion matrix (**HighSchool_PR** 90-94 only)
+
+```{r pr-90-94}
+confusion_90to94 = confusion_subset(HS90to94_ind, actual_65up, predicted_65up)
+
+# revert the order of FALSE and TRUE
+confusion_90to94 = confusion_90to94[2:1, 2:1]
+confusion_90to94
+```
+
+Most respondents with **HighSchool_PR** 95-99 got **College_Score** at least 65.   
+$\Rightarrow$ Increase the cutoff point to 70?  
 
 Need to show the breakdown like the output in Section \ref{bivariate-top-scorers}.   
 
