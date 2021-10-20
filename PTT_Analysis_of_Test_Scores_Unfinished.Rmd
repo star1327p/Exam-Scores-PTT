@@ -166,11 +166,39 @@ Test to make the confusion matrix 2x2
 # Should build this into the confusion_subset function, as a toggle feature.
 # dim(confusion_0to79) # 2x1
 #  dimnames(confusion_0to79) # Check this first.
+
+# colnames(confusion_0to79) # predicted: "FALSE" only
+
 yt = as.table(cbind(confusion_0to79,c(0,0)))
 colnames(yt) = c("FALSE","TRUE")
 names(dimnames(yt)) = c("act","pred")
 yt
 ```
+
+Test for the other extreme: **HighSchool_PR** 95-99
+
+```{r pr-95-99}
+confusion_95to99 = confusion_subset(HS95to99_ind, actual_65up, predicted_65up)
+
+confusion_95to99
+# Need to fix this into 2x2 matrix
+```
+
+Should we do this?
+
+```{r test-confusion-extreme}
+# Should build this into the confusion_subset function, as a toggle feature.
+# dim(confusion_0to79) # 2x1
+#  dimnames(confusion_0to79) # Check this first.
+
+# colnames(confusion_95to99) # predicted: "TRUE" only
+
+xyt = as.table(cbind(c(0,0), confusion_95to99))
+colnames(xyt) = c("FALSE","TRUE")
+names(dimnames(xyt)) = c("act","pred")
+xyt
+```
+
 
 Need to finish writing up for the remaining segments.  
 
