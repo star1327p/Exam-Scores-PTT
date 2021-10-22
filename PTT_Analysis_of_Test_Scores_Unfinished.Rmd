@@ -145,6 +145,17 @@ confusion_subset <- function(HS_inds, actual, predicted) {
   actual = actual[HS_inds]
   predicted = predicted[HS_inds]
   confusion = table(actual, predicted)
+  
+  if ((dim(confusion)[1] == 2) && (dim(confusion)[2] == 2)) {
+    return(confusion)
+  }
+  
+  else if (colnames(confusion) == c("FALSE")) {
+    confusion = as.table(cbind(confusion,c(0,0)))
+    colnames(confusion) = c("FALSE","TRUE")
+    names(dimnames(confusion)) = c("actual","predicted")
+  }
+  
   return(confusion)
 }
 ```
@@ -169,10 +180,23 @@ Test to make the confusion matrix 2x2
 
 # colnames(confusion_0to79) # predicted: "FALSE" only
 
-yt = as.table(cbind(confusion_0to79,c(0,0)))
-colnames(yt) = c("FALSE","TRUE")
-names(dimnames(yt)) = c("act","pred")
-yt
+# UNFINISHED: To be organized
+# yt = as.table(cbind(confusion_0to79,c(0,0)))
+# colnames(yt) = c("FALSE","TRUE")
+# names(dimnames(yt)) = c("act","pred")
+# yt
+```
+
+
+Confusion matrix (**HighSchool_PR** 80-89 only)
+
+```{r pr-80-89}
+# UNFINISHED HERE
+confusion_80to89 = confusion_subset(HS80to89_ind, actual_65up, predicted_65up)
+# confusion_80to89 = confusion_0to79[2:1,1:1] # This does not work.
+
+confusion_80to89
+# Need to fix this into 2x2 matrix
 ```
 
 Test for the other extreme: **HighSchool_PR** 95-99
