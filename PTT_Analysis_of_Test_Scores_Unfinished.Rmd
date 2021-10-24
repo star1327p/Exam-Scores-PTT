@@ -156,6 +156,12 @@ confusion_subset <- function(HS_inds, actual, predicted) {
     names(dimnames(confusion)) = c("actual","predicted")
   }
   
+  else if (colnames(confusion) == c("TRUE")) {
+    confusion = as.table(cbind(c(0,0), confusion))
+    colnames(confusion) = c("FALSE","TRUE")
+    names(dimnames(confusion)) = c("actual","predicted")
+  }
+  
   return(confusion)
 }
 ```
@@ -217,10 +223,11 @@ Should we do this?
 
 # colnames(confusion_95to99) # predicted: "TRUE" only
 
-xyt = as.table(cbind(c(0,0), confusion_95to99))
-colnames(xyt) = c("FALSE","TRUE")
-names(dimnames(xyt)) = c("act","pred")
-xyt
+# UNFINISHED: To be organized
+# xyt = as.table(cbind(c(0,0), confusion_95to99))
+# colnames(xyt) = c("FALSE","TRUE")
+# names(dimnames(xyt)) = c("act","pred")
+# xyt
 ```
 
 
