@@ -124,17 +124,22 @@ print(paste("HighSchool_PR 95-99:",length(HS95to99_ind), "respondents"))
 
 \section*{\textcolor{red}{Unfinished below}}    
 
-Test code  
+Let's examine the confusion matrix for each of the four groups.   
 
-Is the confusion matrix still valid in subsets given **HighSchool_PR**?
+- HighSchool_PR 0-79 has only FALSE predicted outcomes in **College_Score** at least 65.
+- HighSchool_PR 80-89 has only FALSE predicted outcomes in **College_Score** at least 65.
+- HighSchool_PR 90-94 has both TRUE and FALSE predicted outcomes in **College_Score** at least 65.
+- HighSchool_PR 95-99 has only TRUE predicted outcomes in **College_Score** at least 65.  
+
+Is the confusion matrix still valid in subsets given **HighSchool_PR**?  
+
+Consider: Add the 2x1 confusion matrices to show why we cannot do this directly.  
+Or at least explain what happened before.  
+
+Also consider: Add a subsection for 2x1 (incorrect) and another subsection for 2x2 (correct).
 
 ```{r confusion-subset}
 # UNFINISHED HERE
-# HS0to79_ind has only FALSE predicted outcomes.
-# HS80to89_ind has only FALSE predicted outcomes.
-# HS95to99_ind has only TRUE predicted outcomes.
-
-# Only HS90to94 has both TRUE and FALSE predicted outcomes.
 
 # Data
 actual_65up = data_corr$CS_65up
@@ -146,22 +151,29 @@ confusion_subset <- function(HS_inds, actual, predicted) {
   predicted = predicted[HS_inds]
   confusion = table(actual, predicted)
   
+  # When the confusion matrix has nonzero values in all four cells
   if ((dim(confusion)[1] == 2) && (dim(confusion)[2] == 2)) {
+    # Revert the order of FALSE and TRUE
+    confusion = confusion[2:1, 2:1]
     return(confusion)
   }
   
+  # When all predicted values are FALSE
   else if (colnames(confusion) == c("FALSE")) {
     confusion = as.table(cbind(confusion,c(0,0)))
     colnames(confusion) = c("FALSE","TRUE")
     names(dimnames(confusion)) = c("actual","predicted")
   }
   
+  # When all predicted values are TRUE
   else if (colnames(confusion) == c("TRUE")) {
     confusion = as.table(cbind(c(0,0), confusion))
     colnames(confusion) = c("FALSE","TRUE")
     names(dimnames(confusion)) = c("actual","predicted")
   }
   
+  # Revert the order of FALSE and TRUE
+  confusion = confusion[2:1, 2:1] 
   return(confusion)
 }
 ```
@@ -177,23 +189,6 @@ confusion_0to79
 # Need to fix this into 2x2 matrix
 ```
 
-Test to make the confusion matrix 2x2
-
-```{r test-confusion-code}
-# Should build this into the confusion_subset function, as a toggle feature.
-# dim(confusion_0to79) # 2x1
-#  dimnames(confusion_0to79) # Check this first.
-
-# colnames(confusion_0to79) # predicted: "FALSE" only
-
-# UNFINISHED: To be organized
-# yt = as.table(cbind(confusion_0to79,c(0,0)))
-# colnames(yt) = c("FALSE","TRUE")
-# names(dimnames(yt)) = c("act","pred")
-# yt
-```
-
-
 Confusion matrix (**HighSchool_PR** 80-89 only)
 
 ```{r pr-80-89}
@@ -205,6 +200,16 @@ confusion_80to89
 # Need to fix this into 2x2 matrix
 ```
 
+Confusion matrix (**HighSchool_PR** 90-94 only)
+
+```{r pr-90-94}
+confusion_90to94 = confusion_subset(HS90to94_ind, actual_65up, predicted_65up)
+
+# revert the order of FALSE and TRUE
+# confusion_90to94 = confusion_90to94[2:1, 2:1]
+confusion_90to94
+```
+
 Test for the other extreme: **HighSchool_PR** 95-99
 
 ```{r pr-95-99}
@@ -214,34 +219,8 @@ confusion_95to99
 # Need to fix this into 2x2 matrix
 ```
 
-Should we do this?
-
-```{r test-confusion-extreme}
-# Should build this into the confusion_subset function, as a toggle feature.
-# dim(confusion_0to79) # 2x1
-#  dimnames(confusion_0to79) # Check this first.
-
-# colnames(confusion_95to99) # predicted: "TRUE" only
-
-# UNFINISHED: To be organized
-# xyt = as.table(cbind(c(0,0), confusion_95to99))
-# colnames(xyt) = c("FALSE","TRUE")
-# names(dimnames(xyt)) = c("act","pred")
-# xyt
-```
-
 
 Need to finish writing up for the remaining segments.  
-
-Confusion matrix (**HighSchool_PR** 90-94 only)
-
-```{r pr-90-94}
-confusion_90to94 = confusion_subset(HS90to94_ind, actual_65up, predicted_65up)
-
-# revert the order of FALSE and TRUE
-confusion_90to94 = confusion_90to94[2:1, 2:1]
-confusion_90to94
-```
 
 Most respondents with **HighSchool_PR** 95-99 got **College_Score** at least 65.   
 $\Rightarrow$ Increase the cutoff point to 70?  
