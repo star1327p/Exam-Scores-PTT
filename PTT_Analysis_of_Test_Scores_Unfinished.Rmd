@@ -168,9 +168,23 @@ confusion_80to89
 # Need to fix this into 2x2 matrix
 ```
 
-Confusion matrix (**HighSchool_PR** 90-94 only)  
+Confusion matrix (**HighSchool_PR** 90-94 only)
 
-Test for the other extreme: **HighSchool_PR** 95-99  
+```{r pr-90-94-original}
+confusion_90to94 = confusion_original(HS90to94_ind, actual_65up, predicted_65up)
+
+# revert the order of FALSE and TRUE
+# confusion_90to94 = confusion_90to94[2:1, 2:1]
+confusion_90to94
+```
+
+Test for the other extreme: **HighSchool_PR** 95-99
+
+```{r pr-95-99-original}
+confusion_95to99 = confusion_original(HS95to99_ind, actual_65up, predicted_65up)
+confusion_95to99
+# Need to fix this into 2x2 matrix
+```
 
 ### Confusion Matrices (Correct)
 
@@ -229,9 +243,6 @@ Confusion matrix (**HighSchool_PR** 90-94 only)
 
 ```{r pr-90-94-subset}
 confusion_90to94 = confusion_subset(HS90to94_ind, actual_65up, predicted_65up)
-
-# revert the order of FALSE and TRUE
-# confusion_90to94 = confusion_90to94[2:1, 2:1]
 confusion_90to94
 ```
 
@@ -239,9 +250,7 @@ Test for the other extreme: **HighSchool_PR** 95-99
 
 ```{r pr-95-99-subset}
 confusion_95to99 = confusion_subset(HS95to99_ind, actual_65up, predicted_65up)
-
 confusion_95to99
-# Need to fix this into 2x2 matrix
 ```
 
 
