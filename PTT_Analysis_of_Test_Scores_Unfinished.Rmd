@@ -122,18 +122,18 @@ print(paste("HighSchool_PR 90-94:",length(HS90to94_ind), "respondents"))
 print(paste("HighSchool_PR 95-99:",length(HS95to99_ind), "respondents"))
 ```
 
+Now we can produce a confusion matrix for each of the four groups. Except for **HighSchool_PR** 90-94, all the other three groups contain only one value in the predicted outcomes.    
+
+- **HighSchool_PR** 0-79 has only FALSE predicted outcomes in **College_Score** at least 65.
+- **HighSchool_PR** 80-89 has only FALSE predicted outcomes in **College_Score** at least 65.
+- **HighSchool_PR** 90-94 has TRUE and FALSE predicted outcomes in **College_Score** at least 65.
+- **HighSchool_PR** 95-99 has only TRUE predicted outcomes in **College_Score** at least 65.  
+
+When the predicted outcomes do not include both TRUE and FALSE, the confusion matrix would be 2x1 instead of the full 2x2. Section \ref{confusion-2x1} shows the incorrect 2x1 confusion matrices, and we will add the missing second column back in Section \ref{confusion-2x2-full}.  
+
 \section*{\textcolor{red}{Unfinished below}}    
 
-Let's examine the confusion matrix for each of the four groups.   
-
-- HighSchool_PR 0-79 has only FALSE predicted outcomes in **College_Score** at least 65.
-- HighSchool_PR 80-89 has only FALSE predicted outcomes in **College_Score** at least 65.
-- HighSchool_PR 90-94 has both TRUE and FALSE predicted outcomes in **College_Score** at least 65.
-- HighSchool_PR 95-99 has only TRUE predicted outcomes in **College_Score** at least 65.  
-
-Is the confusion matrix still valid in subsets given **HighSchool_PR**?  
-
-### Confusion Matrices (Incorrect)
+### Confusion Matrices (Incorrect) {#confusion-2x1}
 
 Consider: Add the 2x1 confusion matrices to show why we cannot do this directly.  
 Or at least explain what happened before.  
@@ -186,7 +186,7 @@ confusion_95to99
 # Need to fix this into 2x2 matrix
 ```
 
-### Confusion Matrices (Correct)
+### Confusion Matrices (Correct) {#confusion-2x2-full}
 
 Also consider: Add a subsection for 2x1 (incorrect) and another subsection for 2x2 (correct).
 
