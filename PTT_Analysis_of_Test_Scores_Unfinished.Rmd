@@ -92,7 +92,7 @@ Ongoing work since 2019.
 
 ## Breakdown by High School Entrance Exam Scores
 
-Let's examine the confusion matrices for each group of **HighSchool_PR**: 0-79, 80-89, 90-94, 95-99. Readers can refer to Section \ref{HighSchool-PR-80-up} for the details of this categorization. Before going into the analysis, we need to ensure that each group has a sufficiently large number of respondents within the 188 total records.    
+Let's examine the confusion matrices for each group of **HighSchool_PR**: 0-79, 80-89, 90-94, 95-99. We would like to see if the model performance varies across these groups. Readers can refer to Section \ref{HighSchool-PR-80-up} for the details of this categorization. Before going into the analysis, we need to ensure that each group has a sufficiently large number of respondents within the 188 total records.    
 
 The group with **HighSchool_PR** 0-79 has the smallest number of respondents, and 25 is a sufficient sample size. The groups  with **HighSchool_PR** 80-89 and 90-94 contain 49 and 44 respondents, respectively. The group with **HighSchool_PR** 95-99 includes 70 respondents, which is the largest of the four categories.  
 
@@ -122,21 +122,18 @@ print(paste("HighSchool_PR 90-94:",length(HS90to94_ind), "respondents"))
 print(paste("HighSchool_PR 95-99:",length(HS95to99_ind), "respondents"))
 ```
 
-Now we can produce a confusion matrix for each of the four groups. Except for **HighSchool_PR** 90-94, all the other three groups contain only one value in the predicted outcomes.    
+Now we can produce a confusion matrix for each of the four groups. Except for **HighSchool_PR** 90-94, all the other three groups contain only one value in the predicted outcomes. The higher **HighSchool_PR** the student had, the higher probability the model would predict him/her to achieve **College_Score** at least 65. This is not completely unexpected, but we would like to emphasize that the model is imperfect. There are still some students with a low **HighSchool_PR** but an impressively good **College_Score**.       
 
 - **HighSchool_PR** 0-79 has only FALSE predicted outcomes in **College_Score** at least 65.
 - **HighSchool_PR** 80-89 has only FALSE predicted outcomes in **College_Score** at least 65.
 - **HighSchool_PR** 90-94 has TRUE and FALSE predicted outcomes in **College_Score** at least 65.
 - **HighSchool_PR** 95-99 has only TRUE predicted outcomes in **College_Score** at least 65.  
 
-When the predicted outcomes do not include both TRUE and FALSE, the confusion matrix would be 2x1 instead of the full 2x2. Section \ref{confusion-2x1} shows the incorrect 2x1 confusion matrices, and we will add the missing second column back in Section \ref{confusion-2x2-full}.  
-
-\section*{\textcolor{red}{Unfinished below}}    
+When the predicted outcomes do not include both TRUE and FALSE, the confusion matrix produced in `R` would be 2x1 instead of the full 2x2. Section \ref{confusion-2x1} shows the incorrect 2x1 confusion matrices, and we will add the missing second column back in Section \ref{confusion-2x2-full}. Finally, we will interpret these results in Section \ref{segment-interpret}.
 
 ### Confusion Matrices (Incorrect) {#confusion-2x1}
 
-Consider: Add the 2x1 confusion matrices to show why we cannot do this directly.  
-Or at least explain what happened before.  
+Let's write a function to summarize the actual outcomes and the predicted outcomes into a confusion matrix, using the default settings in `table`. As the readers can see, `table` outputs only the nonzero columns, and that's why we have several 2x1 confusion matrices here.
 
 ```{r confusion-original}
 # Data
@@ -180,9 +177,13 @@ confusion_95to99 = confusion_original(HS95to99_ind, actual_65up, predicted_65up)
 confusion_95to99
 ```
 
+\section*{\textcolor{red}{Unfinished below}}  
+
 ### Confusion Matrices (Correct) {#confusion-2x2-full}
 
-Also consider: Add a subsection for 2x1 (incorrect) and another subsection for 2x2 (correct).
+Also consider: Add a subsection for 2x1 (incorrect) and another subsection for 2x2 (correct).  
+
+Need to explain **why** the code is written this way
 
 ```{r confusion-subset}
 # UNFINISHED HERE
@@ -249,6 +250,10 @@ confusion_95to99
 
 
 Need to finish writing up for the remaining segments.  
+
+### Interpretations {#segment-interpret}
+
+**HighSchool_PR** 90-94 is the most interesting group??  
 
 Most respondents with **HighSchool_PR** 95-99 got **College_Score** at least 65.   
 $\Rightarrow$ Increase the cutoff point to 70?  
