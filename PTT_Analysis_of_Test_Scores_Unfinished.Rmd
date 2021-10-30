@@ -152,38 +152,32 @@ confusion_original <- function(HS_inds, actual, predicted) {
 }
 ```
 
-Confusion matrix (**HighSchool_PR** 0-79 only)  
+Confusion matrix for **HighSchool_PR** 0-79
 
 ```{r pr-0-79-original}
 confusion_0to79 = confusion_original(HS0to79_ind, actual_65up, predicted_65up)
 confusion_0to79
-# Need to fix this into 2x2 matrix
 ```
 
-Confusion matrix (**HighSchool_PR** 80-89 only)  
+Confusion matrix for **HighSchool_PR** 80-89
 
 ```{r pr-80-89-original}
 confusion_80to89 = confusion_original(HS80to89_ind, actual_65up, predicted_65up)
 confusion_80to89
-# Need to fix this into 2x2 matrix
 ```
 
-Confusion matrix (**HighSchool_PR** 90-94 only)
+Confusion matrix for **HighSchool_PR** 90-94
 
 ```{r pr-90-94-original}
 confusion_90to94 = confusion_original(HS90to94_ind, actual_65up, predicted_65up)
-
-# revert the order of FALSE and TRUE
-# confusion_90to94 = confusion_90to94[2:1, 2:1]
 confusion_90to94
 ```
 
-Test for the other extreme: **HighSchool_PR** 95-99
+Confusion matrix for **HighSchool_PR** 95-99
 
 ```{r pr-95-99-original}
 confusion_95to99 = confusion_original(HS95to99_ind, actual_65up, predicted_65up)
 confusion_95to99
-# Need to fix this into 2x2 matrix
 ```
 
 ### Confusion Matrices (Correct) {#confusion-2x2-full}
@@ -225,28 +219,28 @@ confusion_subset <- function(HS_inds, actual, predicted) {
 }
 ```
 
-Confusion matrix (**HighSchool_PR** 0-79 only)
+Confusion matrix for **HighSchool_PR** 0-79
 
 ```{r pr-0-79-subset}
 confusion_0to79 = confusion_subset(HS0to79_ind, actual_65up, predicted_65up)
 confusion_0to79
 ```
 
-Confusion matrix (**HighSchool_PR** 80-89 only)
+Confusion matrix for **HighSchool_PR** 80-89
 
 ```{r pr-80-89-subset}
 confusion_80to89 = confusion_subset(HS80to89_ind, actual_65up, predicted_65up)
 confusion_80to89
 ```
 
-Confusion matrix (**HighSchool_PR** 90-94 only)
+Confusion matrix for **HighSchool_PR** 90-94
 
 ```{r pr-90-94-subset}
 confusion_90to94 = confusion_subset(HS90to94_ind, actual_65up, predicted_65up)
 confusion_90to94
 ```
 
-Test for the other extreme: **HighSchool_PR** 95-99
+Confusion matrix for **HighSchool_PR** 95-99
 
 ```{r pr-95-99-subset}
 confusion_95to99 = confusion_subset(HS95to99_ind, actual_65up, predicted_65up)
