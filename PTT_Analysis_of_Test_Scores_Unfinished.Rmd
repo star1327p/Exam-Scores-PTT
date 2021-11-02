@@ -177,17 +177,15 @@ confusion_95to99 = confusion_original(HS95to99_ind, actual_65up, predicted_65up)
 confusion_95to99
 ```
 
-\section*{\textcolor{red}{Unfinished below}}  
-
 ### Confusion Matrices (Correct) {#confusion-2x2-full}
 
-Also consider: Add a subsection for 2x1 (incorrect) and another subsection for 2x2 (correct).  
+When the confusion matrix has nonzero values in all four cells, we can output the 2x2 confusion matrix. But before doing so, we need to revert the order of FALSE and TRUE in the rows and columns, since `R` sorts names in alphabetical order by default. This can be done by producing the second index (TRUE) before the first index (FALSE).  
 
-Need to explain **why** the code is written this way
+When all predicted values are FALSE, the confusion matrix is missing a TRUE column and we need to add it back. Similarly, When all predicted values are TRUE, the confusion matrix is missing a FALSE column and we also need to add it back. Finally, we revert the order of FALSE and TRUE in the rows and columns, as in the case of an 2x2 confusion matrix.  
+
+By checking the dimensions of the confusing matrices and modifying if necessary, we obtain all four 2x2 confusion matrices for the four categories of **HighSchool_PR**.
 
 ```{r confusion-subset}
-# UNFINISHED HERE
-
 confusion_subset <- function(HS_inds, actual, predicted) {
   actual = actual[HS_inds]
   predicted = predicted[HS_inds]
@@ -248,6 +246,7 @@ confusion_95to99 = confusion_subset(HS95to99_ind, actual_65up, predicted_65up)
 confusion_95to99
 ```
 
+\section*{\textcolor{red}{Unfinished below}}  
 
 Need to finish writing up for the remaining segments.  
 
