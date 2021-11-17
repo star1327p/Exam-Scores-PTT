@@ -260,9 +260,13 @@ Some metrics are not available due to division-by-zero. $\Rightarrow$ Mark them 
 
 \begin{table}[ht]
     \centering
-    \begin{tabular}{|l|l|l|l|l|l|}
+    \begin{tabular}{|c|c|c|c|c|c|}
     \hline
-    ~                              & Accuracy & Precision & Recall  & FPR     & FNR     \\ \hline
+    \textbf{HighSchool$\_$PR}   & Accuracy & Precision & Recall  & FPR     & FNR     \\ \hline
+     0-79 & 84.00\% & & & & \\ \hline
+    80-89 & 71.43\% & & & & \\ \hline
+    90-94 & 45.45\% & & & & \\ \hline
+    95-99 & 81.43\% & & & & \\ \hline
     Overall           & 70.74\%  & 67.29\%   & 78.26\% & 36.46\% & 21.74\% \\ \hline
     \end{tabular}
     \caption{Placeholder table}
