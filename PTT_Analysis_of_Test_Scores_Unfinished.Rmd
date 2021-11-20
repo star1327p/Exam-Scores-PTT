@@ -252,11 +252,12 @@ Need to finish writing up for the remaining segments.
 
 ### Interpretations {#segment-interpret}
 
-Add the table: Accuracy, Precision, Recall, FPR, FNR  
+Start with the numbers, then **interpret** the meaning of the numbers!  
 
-Rows for overall and each **HighSchool_PR** category (0-79, 80-89, 90-94, 95-99)  
+Table \ref{tab:breakdown-pr} shows the model results for each **HighSchool_PR** category (0-79, 80-89, 90-94, 95-99) -- in terms of accuracy, precision, recall, FPR, and FNR.  
 
-The precision is N/A due to division-by-zero for the **HighSchool_PR** 0-79 and 80-89 categories. The model predicted all students in the two categories not to achieve **College_Score** 65 or higher, i.e., zero positive predictions. Note that these students had a non-zero probability to obtain this achievement, but their predicted probability is less than the threshold of 50\%, and that's why the datapoints are predicted as negative. 
+
+For **HighSchool_PR** 0-79 and 80-89, the precision is not available (N/A) due to division-by-zero. The model predicted all students in the two categories not to achieve **College_Score** 65 or higher, i.e., zero positive predictions. Note that these students had a non-zero probability to obtain this achievement, but their predicted probability is less than the threshold of 50\%, and that's why the datapoints are predicted as negative. 
 
 \begin{table}[ht]
     \centering
@@ -269,8 +270,8 @@ The precision is N/A due to division-by-zero for the **HighSchool_PR** 0-79 and 
     95-99   & 81.43\% & 81.43\% & 100\%   & 100\%   & 0\%     \\ \hline
     Overall & 70.74\% & 67.29\% & 78.26\% & 36.46\% & 21.74\% \\ \hline
     \end{tabular}
-    \caption{Placeholder table}
-    \label{tab:temp}
+    \caption{Model results for each \textbf{HighSchool$\_$PR} category}
+    \label{tab:breakdown-pr}
 \end{table}
 
 **HighSchool_PR** 90-94 is the most interesting group??  
