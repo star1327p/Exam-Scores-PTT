@@ -254,10 +254,11 @@ Need to finish writing up for the remaining segments.
 
 Start with the numbers, then **interpret** the meaning of the numbers!  
 
-Table \ref{tab:breakdown-pr} shows the model results for each **HighSchool_PR** category (0-79, 80-89, 90-94, 95-99) -- in terms of accuracy, precision, recall, FPR, and FNR.  
+Table \ref{tab:breakdown-pr} shows the model results for each **HighSchool_PR** category (0-79, 80-89, 90-94, 95-99) -- in terms of accuracy, precision, recall, FPR, and FNR. Any metric that cannot be calculated is marked as N/A.  
 
+Results are quite extreme ??  
 
-For **HighSchool_PR** 0-79 and 80-89, the precision is not available (N/A) due to division-by-zero. The model predicted all students in the two categories not to achieve **College_Score** 65 or higher, i.e., zero positive predictions. Note that these students had a non-zero probability to obtain this achievement, but their predicted probability is less than the threshold of 50\%, and that's why the datapoints are predicted as negative. 
+Add comments about the Accuracy column  
 
 \begin{table}[ht]
     \centering
@@ -273,6 +274,9 @@ For **HighSchool_PR** 0-79 and 80-89, the precision is not available (N/A) due t
     \caption{Model results for each \textbf{HighSchool$\_$PR} category}
     \label{tab:breakdown-pr}
 \end{table}
+
+For **HighSchool_PR** 0-79 and 80-89, the precision is not available (N/A) due to division-by-zero. The model made zero positive predictions, i.e., it predicted all students in the two categories not to achieve **College_Score** 65 or higher. Note that these students had a non-zero probability to obtain this achievement, but their predicted probability is less than the threshold of 50\%, and that's why the datapoints are predicted as negative. The remaining metrics of **HighSchool_PR** 0-79 and 80-89 are straightforward, because they are either 0% or 100%. The recall is 0% because none of the students in these categories received a positive prediction. The FPR is also 0% because all students who did not achieve **College_Score** 65 or higher were not predicted to do so anyway. The FNR is 100% because all students who actually obtained **College_Score** 65 or higher were not predicted to make it, so these datapoints are regarded as unexpected successes.        
+
 
 **HighSchool_PR** 90-94 is the most interesting group??  
 
