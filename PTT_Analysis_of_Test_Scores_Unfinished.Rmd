@@ -254,11 +254,13 @@ Need to finish writing up for the remaining segments.
 
 Start with the numbers, then **interpret** the meaning of the numbers!  
 
-Table \ref{tab:breakdown-pr} shows the model results for each **HighSchool_PR** category (0-79, 80-89, 90-94, 95-99) -- in terms of accuracy, precision, recall, FPR, and FNR. Any metric that cannot be calculated is marked as N/A.  
+Table \ref{tab:breakdown-pr} shows the model results for each **HighSchool_PR** category (0-79, 80-89, 90-94, 95-99) -- in terms of accuracy, precision, recall, FPR, and FNR. Any metric that cannot be calculated is marked as N/A. 
 
 Results are quite extreme ??  
 
-Add comments about the Accuracy column  
+State the predictions for each category  
+
+The overall accuracy is slightly above 70%, while the accuracy for **HighSchool_PR** 90-94 is below 50%. Nevertheless, the group of **HighSchool_PR** 90-94 is the only category with nonzero values in all four cells of the confusion matrix. All the other three **HighSchool_PR** categories have good accuracy, but their FPR and FNR are either 0% or 100% because all predictions within each group have the same value.    
 
 \begin{table}[ht]
     \centering
