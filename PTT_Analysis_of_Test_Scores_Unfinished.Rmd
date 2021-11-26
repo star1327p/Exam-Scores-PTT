@@ -254,11 +254,7 @@ Need to finish writing up for the remaining segments.
 
 Start with the numbers, then **interpret** the meaning of the numbers!  
 
-Table \ref{tab:breakdown-pr} shows the model results for each **HighSchool_PR** category (0-79, 80-89, 90-94, 95-99) -- in terms of accuracy, precision, recall, FPR, and FNR. Any metric that cannot be calculated is marked as N/A. 
-
-Results are quite extreme ??  
-
-State the predictions for each category  
+Table \ref{tab:breakdown-pr} shows the model results for each **HighSchool_PR** category (0-79, 80-89, 90-94, 95-99) -- in terms of accuracy, precision, recall, FPR, and FNR. Any metric that cannot be calculated is marked as N/A. The results are quite extreme because the model predicted negative for all **HighSchool_PR** 0-79 and 80-89, and it predicted positive for all **HighSchool_PR** 95-99. Here, positive means achieving **College_Score** 65 or higher, and negative means not achieving this.  
 
 The overall accuracy is slightly above 70%, while the accuracy for **HighSchool_PR** 90-94 is below 50%. Nevertheless, the group of **HighSchool_PR** 90-94 is the only category with nonzero values in all four cells of the confusion matrix. All the other three **HighSchool_PR** categories have good accuracy, but their FPR and FNR are either 0% or 100% because all predictions within each group have the same value.    
 
@@ -277,10 +273,16 @@ The overall accuracy is slightly above 70%, while the accuracy for **HighSchool_
     \label{tab:breakdown-pr}
 \end{table}
 
+State the predictions for each category  
+
 For **HighSchool_PR** 0-79 and 80-89, the precision is not available (N/A) due to division-by-zero. The model made zero positive predictions, i.e., it predicted all students in the two categories not to achieve **College_Score** 65 or higher. Note that these students had a non-zero probability to obtain this achievement, but their predicted probability is less than the threshold of 50\%, and that's why the datapoints are predicted as negative. The remaining metrics of **HighSchool_PR** 0-79 and 80-89 are straightforward, because they are either 0% or 100%. The recall is 0% because none of the students in these categories received a positive prediction. The FPR is also 0% because all students who did not achieve **College_Score** 65 or higher were not predicted to do so anyway. The FNR is 100% because all students who actually obtained **College_Score** 65 or higher were not predicted to make it, so these datapoints are regarded as unexpected successes.        
 
 
 **HighSchool_PR** 90-94 is the most interesting group??  
+
+Accuracy is less than 50%  
+
+The model predicted 37 out of 44 students in this category to achieve **College_Score** 65 or higher.  
 
 Most respondents with **HighSchool_PR** 95-99 got **College_Score** at least 65.   
 $\Rightarrow$ Increase the cutoff point to 70?  
