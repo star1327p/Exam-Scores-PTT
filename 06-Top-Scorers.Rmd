@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 We are going to take a closer look at the top scorers, given the observation in Section \ref{examine-further}. In Taiwan's education system, the top tier of high schools and colleges can be further segmented. The top of the top tier can be very different than the bottom of top tier. Therefore, we consider the following subcategories:     
 
 * **HighSchool_PR** ranges: 80-89, 90-94, 95-99
@@ -54,7 +59,7 @@ hist(HS_PR_seg, xlab="HighSchool_PR",
 
 Therefore, we create the breakdown of the **HighSchool_PR** ranges: 80-89, 90-94, 95-99. There are 49 records in the 80-89 range, 44 records in 90-94, and 70 records in 95-99. We divided the 90-99 range into 90-94 and 95-99, but the number of **HighSchool_PR** records in the 95-99 range is still higher than any of the other two categories.  
 
-However, it is not a good idea to further divide the 95-99 range into 95-97 and 98-99, due to the lack of geographic information. In Taipei, the high school enrollment is extremely competitive. Students with **HighSchool_PR** 95 and those with **HighSchool_PR** 99 would get admitted to high schools of different rankings^[https://w199584.pixnet.net/blog/post/28321887]. But in other parts of Taiwan, most students with **HighSchool_PR** at least 95 would already qualify for the top local high school, and some rural parts even require a lower **HighSchool_PR** to get into the county's top high school^[http://www.edtung.com/TopNews/NewsContent.aspx?type=4&no=1278].
+However, it is not a good idea to further divide the 95-99 range into 95-97 and 98-99, due to the lack of geographic information. In Taipei, the high school enrollment is extremely competitive. Students with **HighSchool_PR** 95 and those with **HighSchool_PR** 99 would get admitted to high schools of different rankings.^[https://w199584.pixnet.net/blog/post/28321887] But in other parts of Taiwan, most students with **HighSchool_PR** at least 95 would already qualify for the top local high school, and some rural parts even require a lower **HighSchool_PR** to get into the county's top high school.^[http://www.edtung.com/TopNews/NewsContent.aspx?type=4&no=1278]
 
 ```{r high-school-pr-segments}
 HS80to89 = length(which(HS_PR_seg >= 80 & HS_PR_seg <= 89))
