@@ -59,7 +59,7 @@ hist(HS_PR_seg, xlab="HighSchool_PR",
 
 Therefore, we create the breakdown of the **HighSchool_PR** ranges: 80-89, 90-94, 95-99. There are 49 records in the 80-89 range, 44 records in 90-94, and 70 records in 95-99. We divided the 90-99 range into 90-94 and 95-99, but the number of **HighSchool_PR** records in the 95-99 range is still higher than any of the other two categories.  
 
-However, it is not a good idea to further divide the 95-99 range into 95-97 and 98-99, due to the lack of geographic information. In Taipei, the high school enrollment is extremely competitive. Students with **HighSchool_PR** 95 and those with **HighSchool_PR** 99 would get admitted to high schools of different rankings.^[https://w199584.pixnet.net/blog/post/28321887] But in other parts of Taiwan, most students with **HighSchool_PR** at least 95 would already qualify for the top local high school, and some rural parts even require a lower **HighSchool_PR** to get into the county's top high school.^[http://www.edtung.com/TopNews/NewsContent.aspx?type=4&no=1278]
+However, it is not a good idea to further divide the 95-99 range into 95-97 and 98-99, due to the lack of geographic information. In Taipei, the high school enrollment is extremely competitive. Students with **HighSchool_PR** 95 and those with **HighSchool_PR** 99 would get admitted to high schools of different rankings.^[https://w199584.pixnet.net/blog/post/28321887] But in other parts of Taiwan, most students with **HighSchool_PR** at least 95 would already qualify for the top local high school, and some rural parts even require a lower **HighSchool_PR** to get into the county's top high school.
 
 ```{r high-school-pr-segments}
 HS80to89 = length(which(HS_PR_seg >= 80 & HS_PR_seg <= 89))
@@ -73,7 +73,7 @@ print(paste("HighSchool_PR 90-94:",HS90to94))
 print(paste("HighSchool_PR 95-99:",HS95to99))
 ```
 
-## College Entrance Exam Scores at least 60 
+## College Entrance Exam Scores at least 60 {#college-60-up}
 
 Similar to the previous section, we also show the frequency of each **College_Score** value that is at least 60. The total counts is 128, fewer than the 163 counts with **HighSchool_PR** 80 or above. The distribution is relatively uniform for **College_Score** values between 60 and 73, with a steep decline in the counts of **College_Score** 74 and 75 (max possible score). On the college entrance exam, only four respondents scored 74 and two scored 75. According to the historical statistics of the college entrance exam in Taiwan, **College_Score** 74 and 75 account for approximately 0.2% of all test takers each year, which is quite a small percentage.    
 
@@ -86,7 +86,7 @@ length(CS_Score_seg)
 table(CS_Score_seg)
 ```
 
-Before we display the histogram, let's create a table to (approximately) convert **College_Score** into PR (Percentile Rank) using 2001-2014 data^[https://web.archive.org/web/20150207042900/http://www.ceec.edu.tw/AbilityExam/AbilityExamStat.htm]. This gives readers an understanding of what percentage of test takers (high school students in grade 12) get what scores. For example, a **College_Score** of 70 would be at the 98.5th percentile, i.e., PR 98.5.
+Before we display the histogram, let's create a table to (approximately) convert **College_Score** into PR (Percentile Rank) using 2001-2014 data.^[https://web.archive.org/web/20150207042900/http://www.ceec.edu.tw/AbilityExam/AbilityExamStat.htm] This gives readers an understanding of what percentage of test takers (high school students in grade 12) get what scores. For example, a **College_Score** of 70 would be at the 98.5th percentile, i.e., PR 98.5.
 
 ```{r college-score-pr}
 college_score = c(60,65,70,74,75)

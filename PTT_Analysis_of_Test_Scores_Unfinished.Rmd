@@ -279,9 +279,7 @@ Start with the numbers, then **interpret** the meaning of the numbers!
 
 State the predictions for each category  
 
-**HighSchool_PR** 90-94 is the most interesting group, because it is the only category where the model predicts both TRUE and FALSE values. 
-
-Although the accuracy is less than 50%, the recall is impressively high (over 80%). The model predicted 37 out of 44 students in this category to achieve **College_Score** 65 or higher, but 22 of them did not make it.   
+**HighSchool_PR** 90-94 is the most interesting group, because it is the only category where the model predicts both TRUE and FALSE values. Although the accuracy is less than 50%, the recall is impressively high (over 80%). The model predicted 37 out of 44 students in this category to achieve **College_Score** 65 or higher, but 22 of them did not make it. This results in a high FPR and a low FNR. Section \ref{college-60-up} shows that a **College_Score** of 65 is around the 95th percentile of all college entrance exam takers in Taiwan each year. Therefore, it is reasonable to predict that most students with **HighSchool_PR** 90-94 are going to achieve **College_Score** at least 65. Recall that not all high school students are interested in attending college.  
 
 Write more interpretations  
 
