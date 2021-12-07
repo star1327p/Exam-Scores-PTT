@@ -332,17 +332,22 @@ Create more graphs
 ```{r include-out-sample-07, child = '09-Out-Sample-07-Comparison-Results.Rmd'}
 ```
 
-# Predictive Modeling
+# Discussion and Conclusion
 
 \textcolor{red}{\Large Unfinished below}  
 
-Use the logistic regression to predict new datapoints.  
+Add a summary of our thought process in performing the data analysis 
 
-e.g. **HighSchool_PR** 98 or 99  
+e.g. The importance of exploratory data analysis (link to Section)
 
-Also need to include lower scores (but sufficient for the students to try for college)
+e.g. What we can do when the data do not satisfy the assumptions for linear regression  
 
-# Discussion and Conclusion
+In addition to statistical concepts, we also demonstrated:  
+
+machine learning, good coding practices, etc. Add something more!
+
+Don't just list statistics resources. Need to have a context-specific discussion!  
+
 
 The Statistics 101 course provides a starting point for students to perform data analysis. Linear regression is widely used, but it is not a panacea for data analysis. The model assumptions need to be met in the data, as stated at the beginning of Section \ref{linear-reg}.   
 
