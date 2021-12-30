@@ -289,11 +289,10 @@ Add a statement about the lack of geographical information:
 
 But in Taipei, this **HighSchool_PR** is nowhere sufficient to get admitted into any prestigious high schools (a.k.a. "the top three") within the city.^[<https://cclccl-life.blogspot.com/2013/06/blog-post_9.html>]  
 
-**HighSchool_PR** 95-99 contains the top 5% students in the high school entrance exam scores, and that's why the model predicted all of them to achieve **College_Score** at least 65. The recall is 100% due to all datapoints being predicted as TRUE. The FPR is also 100% because all respondents in this category who did not achieve **College_Score** at least 65 were predicted to do so. The FNR is 0% because none of the respondents were predicted not to achieve this.  
+**HighSchool_PR** 95-99 contains the top 5% students in the high school entrance exam scores, and that's why the model predicted all of them to achieve **College_Score** at least 65. The recall is 100% due to all datapoints being predicted as TRUE. The FPR is also 100% because all respondents in this category who did not achieve **College_Score** at least 65 were predicted to do so. The FNR is 0% because none of the respondents were predicted not to achieve this. The accuracy is over 80% because most respondents with **HighSchool_PR** 95-99 actually obtained **College_Score** at least 65.  
 
-Next: Accuracy  
+The 4x4 table in Section \ref{bivariate-top-scorers} shows that 23 of them (32.86%) got **College_Score** between 65 and 69, while 34 of them (48.57%) got **College_Score** between 70 and 75.  
 
-Most respondents with **HighSchool_PR** 95-99 got **College_Score** at least 65.   
 $\Rightarrow$ Increase the cutoff point to 70?  
 
 Need to show the breakdown like the output in Section \ref{bivariate-top-scorers}.   
