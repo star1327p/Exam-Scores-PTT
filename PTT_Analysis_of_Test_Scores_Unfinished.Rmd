@@ -279,21 +279,7 @@ For **HighSchool_PR** 0-79 and 80-89, the precision is not available (N/A) due t
 
 \section*{\textcolor{red}{Unfinished below}}  
 
-Note that **HighSchool_PR** 95-99 does little in distinguishing students' academic capabilities within the group, because it is possible to drop one percentile by getting just one critical question wrong on the exam. In the high school entrance exams prior to 2009, there was a huge score difference between full marks and missing by just one question.^[<https://news.ltn.com.tw/news/life/paper/217325>] This could result in a significant difference of **HighSchool_PR**, because missing five questions in a single subject (full marks for the other four) would have a better score than missing one question in each of the five subjects. Hence it is not meaningful to evaluate students' academic performance solely from **HighSchool_PR**.    
-
-Nevertheless, ... (explain here)  
-
-Similar to the case in **HighSchool_PR** 90-94  
-
-**HighSchool_PR** 95-99:  
-
-Rural areas $\Rightarrow$ top high school, no difference within.  
-
-Taipei $\Rightarrow$ first choice high school requires **HighSchool_PR** at least 99, second choice requires at least 98, and third choice requires at least 97.    
-
-As a result, students in Taipei with **HighSchool_PR** 95 or 96 often end up attending local high schools outside the top tier.  
-
-These schools are still high-quality and provide ample resources, but they are not as prestigious as the top three choices.  
+In our opinion, **HighSchool_PR** 95-99 does little in distinguishing students' academic capabilities within the group, because it is possible to drop one percentile by getting just one critical question wrong on the high school entrance exam. Prior to 2009, there was a huge score difference between full marks and missing by just one question.^[<https://news.ltn.com.tw/news/life/paper/217325>] This could result in a significant difference of **HighSchool_PR**, because missing five questions in a single subject (full marks on the other four) would have a better score than missing one question in each of the five subjects. Hence it is not meaningful to evaluate students' academic performance solely from **HighSchool_PR**. Similar to the case in **HighSchool_PR** 90-94, we cannot make inferences about the within-group differences of **HighSchool_PR** 95-99. In rural areas, students with **HighSchool_PR** 95-99 already meet the admission requirements for the top high school in their region. Almost all of them would attend that school unless they move to a different region. As a comparison, Taipei's first choice high school requires **HighSchool_PR** at least 99, second choice requires at least 98, and third choice requires at least 97.^[<https://chendaneyl.pixnet.net/blog/post/31436728>] As a result, students in Taipei with **HighSchool_PR** 95 or 96 often end up attending local high schools outside the top tier. These schools are still high-quality and provide ample resources, but they are not as prestigious as the top three choices.  
 
 Start with the numbers, then **interpret** the meaning of the numbers!  
 
@@ -392,8 +378,6 @@ Finally, include my own scores as a datapoint for prediction.
 # Acknowledgments {.unnumbered}
 
 The author would like to thank her Microsoft colleagues Smit Patel and Dylan Stout for troubleshooting GitHub issues.  
-
-The author declares that there is no conflict of interest.  
 
 More to add  
 
