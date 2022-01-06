@@ -162,6 +162,10 @@ e.g. The importance of exploratory data analysis (link to Section)
 
 e.g. What we can do when the data do not satisfy the assumptions for linear regression  
 
+e.g. Problem formulation (into a binary prediction task)  
+
+e.g. In-sample prediction vs out-of-sample prediction  
+
 In addition to statistical concepts, we also demonstrated:  
 
 machine learning, good coding practices, etc. Add something more!
