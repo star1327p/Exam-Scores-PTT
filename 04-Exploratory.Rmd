@@ -1,4 +1,4 @@
-The first step in a data project is exploratory data analysis, before we perform any statistical modeling. Therefore, we start with observing the trends of the two main variables, **HighSchool_PR** and **College_Score**.  
+Before we perform any statistical modeling, the first step in a data project is exploratory data analysis, i.e., observing the data. Therefore, we start with examining the trends of the two main variables, **HighSchool_PR** and **College_Score**. We look at each variable separately (univariate analysis), then investigate the relationship between the two variables (bivariate exploration).
 
 ## High School Entrance Exam Scores (Percentile Rank)
 

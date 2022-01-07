@@ -43,7 +43,7 @@ Ongoing work since 2019.
 
 The opinions and views expressed in this manuscript are those of the author and do not necessarily state or reflect those of Microsoft. The author has a statistics and engineering background, without any training in middle school or high school teaching.
 
-# Introduction
+# Introduction {#intro}
 
 \textcolor{red}{Consider making the introduction statistics-oriented, because we would like to focus on the statistical methodology. Most important is how to handle a real-time application problem.}  
 
@@ -52,17 +52,17 @@ The opinions and views expressed in this manuscript are those of the author and 
 ```{r include-intro, child = '01-Introduction.Rmd'}
 ```
 
-# Background
+# Background {#background}
 
 ```{r include-background, child = '02-Background.Rmd'}
 ```
 
-# Data Description
+# Data Description {#data}
 
 ```{r include-data-description, child = '03-Data-Description.Rmd'}
 ```
 
-# Exploratory Data Analysis
+# Exploratory Data Analysis {#eda}
 
 \section*{\textcolor{red}{Unfinished below}}   
 
@@ -78,7 +78,7 @@ Also, add labels to **every** section (subsections are not required).
 ```{r include-linear-reg, child = '05-Linear-Regression.Rmd'}
 ```
 
-# Top Scorers: A Closer Look
+# Top Scorers: A Closer Look {#explore-top}
 
 ```{r include-linear-reg, child = '06-Top-Scorers.Rmd'}
 ```
