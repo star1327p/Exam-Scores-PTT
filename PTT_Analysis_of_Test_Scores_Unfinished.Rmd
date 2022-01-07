@@ -173,7 +173,19 @@ machine learning, good coding practices, etc. Add something more!
 Don't just list statistics resources. Need to have a context-specific discussion!  
 \section*{\textcolor{red}{Unfinished below}}  
 
-The Statistics 101 course provides a starting point for students to perform data analysis. Linear regression is widely used, but it is not a panacea for data analysis. The model assumptions need to be met in the data, as stated at the beginning of Section \ref{linear-reg}.   
+The Statistics 101 course provides a starting point for students to perform data analysis. Linear regression is widely used, but it is not a panacea for data analysis. Section \ref{linear-reg} states the four assumptions to be met in linear regression: linearity, nearly normal residuals, constant variability, and independent observations. When these assumptions are violated, we should not use the linear regression model.  
+
+The good news is that we can continue the data analysis through several ways:
+
+- Transform the data to meet the assumption requirements
+
+- Choose another model to investigate the relationship between the two variables
+
+- Reformulate the problem and answer a different question from the data
+
+Write something more  
+
+Consider moving the above to an earlier section as transition  
 
 For the next steps in learning statistics, we suggest reading *The Statistical Sleuth: A Course in Methods of Data Analysis* \cite{ramsey2013statistical}, which is the textbook for undergraduate-level regression analysis at Duke Statistical Science.^[<https://www2.stat.duke.edu/courses/Fall18/sta210.001/>] The book covers intermediate topics such as ANOVA (Analysis of Variance) and multiple linear regression. It also provides data files for case studies and exercises.^[<http://www.statisticalsleuth.com/>]  
 
