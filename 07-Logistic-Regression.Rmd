@@ -61,7 +61,7 @@ summary(model)
 
 ```
 
-## Model Interpretation: Point Estimates
+## Model Interpretation: Point Estimates {#logit-point-est}
 
 The `Pr(>|z|)` is the p-value of each independent variable, and we can see that **HighSchool_PR** is statistically significant because p-value < 0.05. When **HighSchool_PR** increases by one, the log odds $\log (\dfrac{p}{1-p})$ of getting **College_Score** at least 65 increases by approximately 0.15. After transforming log odds $\log (\dfrac{p}{1-p})$ back to odds $\dfrac{p}{1-p}$, we get that the odds are multiplied by $e = \exp(0.15) \approx 1.161$. In other words, when **HighSchool_PR** increases by one, the odds of getting **College_Score** at least 65 increases by approximately 16.1%. 
 
@@ -125,7 +125,7 @@ print(paste("Number of respondents with HighSchool_PR 99 and College_Score 65 or
 sort(data_corr$College_Score[which(data_corr$HighSchool_PR==99)])
 ```
 
-## Model Interpretation: 95% Confidence Intervals
+## Model Interpretation: 95% Confidence Intervals {#logit-results}
 
 In addition to the point estimates, we also need to provide the corresponding 95% confidence intervals to account for uncertainty. The lower bound is the 2.5th percentile, and the upper bound is the 97.5th percentile. Statistical significance at 5% means that the 95% confidence interval does not include 0. Let's start with the intercept and the coefficient for **HighSchool_PR** using the  `R` function `confint`. Neither the intercept nor the coeffient's confidence interval includes 0, so both are statistically significant.  
 
