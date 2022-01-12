@@ -156,7 +156,9 @@ Also, add labels to **every** section (subsections are not required).
 
 \section*{\textcolor{red}{Unfinished below}}   
 
-Add a summary of our thought process in performing the data analysis 
+Add a summary of our thought process in performing the data analysis  
+
+e.g. Data preprocessing (data cleaning)  
 
 e.g. The importance of exploratory data analysis (link to Section)
 
@@ -171,9 +173,18 @@ In addition to statistical concepts, we also demonstrated:
 machine learning, good coding practices, etc. Add something more!
 
 Don't just list statistics resources. Need to have a context-specific discussion!  
+
 \section*{\textcolor{red}{Unfinished below}}  
 
-The Statistics 101 course provides a starting point for students to perform data analysis. Linear regression is widely used, but it is not a panacea for data analysis. Chapter \ref{linear-reg} states the four assumptions to be met in linear regression: linearity, nearly normal residuals, constant variability, and independent observations. When these assumptions are violated, we should not use the linear regression model.  
+The Statistics 101 course provides a starting point for students to perform data analysis.  
+
+What did we demonstrate in this manuscript?  
+
+Elaborate on this statement above  
+
+Our original problem is to find the relationship between high school entrance exam scores and college entrance exam scores. The exploratory analysis in Chapter \ref{eda} shows a moderate positive association between the two sets of scores, with the correlation coefficient 0.50. However, this does not necessarily mean that the linear regression is the most appropriate model.  
+
+Linear regression is widely used, but it is not a panacea for data analysis. Chapter \ref{linear-reg} states the four assumptions to be met in linear regression: linearity, nearly normal residuals, constant variability, and independent observations. When these assumptions are violated, we should not use the linear regression model.  
 
 The good news is that we can continue the data analysis through several ways:
 
@@ -182,10 +193,6 @@ The good news is that we can continue the data analysis through several ways:
 - Choose another model to investigate the relationship between the two variables
 
 - Reformulate the problem and answer a different question from the data
-
-Our original problem is to find the relationship between high school entrance exam scores and college entrance exam scores.  
-
-Elaborate on this statement above   
 
 In Chapter \ref{logit-reg}, we reformulated the problem to: Given a student's high school entrance exam score, estimate the probability of getting a college entrance exam score of at least 65. This statement binarizes the outcome of college entrance exam scores, so we discovered the relationship of the two variables in a different way. Sections \ref{logit-point-est} and \ref{logit-results} show that when the high school entrance exam score increases by one percentile, the odds of "success" increases by about 16.1% on average, i.e., getting a college entrance exam score at least 65. We are 95% confident  that the odds increase is between 10.6% and 22.9%.  
 
