@@ -54,6 +54,18 @@ The opinions and views expressed in this manuscript are those of the author and 
 
 # Background {#background}
 
+\section*{\textcolor{red}{Unfinished below}}
+
+Elaborate on the following to enhance the background context:
+
+- High school entrance exam in 2014 and later  
+Scores: C, B, B+, B++, A, A+, A++ with independent essay (0-6)
+
+- College entrance exam GSAT: List the five subjects
+
+- COVID-related rules for students who could not attend the exam  
+Start writing about 2021 for both exams, because 2022 is still ongoing
+
 ```{r include-background, child = '02-Background.Rmd'}
 ```
 
