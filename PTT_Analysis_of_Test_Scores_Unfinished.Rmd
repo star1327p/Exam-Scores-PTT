@@ -182,6 +182,10 @@ Ideas to elaborate on:
 
 - In-sample prediction vs out-of-sample prediction  
 
+- Accuracy, precision, recall, FPR, FNR + extreme data situations
+
+- Good coding practices: user-defined functions, descriptive variable names, and helpful comments in code
+
 Incorporated already:
 
 - What we can do when the data do not satisfy the assumptions for linear regression  
@@ -198,9 +202,9 @@ Don't just list statistics resources. Need to have a context-specific discussion
 
 \section*{\textcolor{red}{Unfinished below}}  
 
-The Statistics 101 course provides a starting point for students to perform data analysis.  
+The Statistics 101 course provides a starting point for students to perform data analysis, and this manuscript is a detailed example of a project from data collection to meaningful insights. We obtained small-scale data that are publicly available, and articulated our thought process in the step-to-step execution.  
 
-What did we demonstrate in this manuscript?  
+What else did we demonstrate in this manuscript?  
 
 Elaborate on this statement above  
 
