@@ -173,10 +173,6 @@ From data collection to meaningful insights
 
 Ideas to elaborate on:
 
-- Data preprocessing (data cleaning)  
-
-- The importance of exploratory data analysis (link to Section)
-
 - In-sample prediction vs out-of-sample prediction  
 
 - Accuracy, precision, recall, FPR, FNR + extreme data situations
@@ -184,6 +180,10 @@ Ideas to elaborate on:
 - Good coding practices: user-defined functions, descriptive variable names, and helpful comments in code
 
 Incorporated already:
+
+- Data preprocessing (data cleaning)  
+
+- The importance of exploratory data analysis (link to Section)
 
 - What we can do when the data do not satisfy the assumptions for linear regression  
 
@@ -200,6 +200,8 @@ Don't just list statistics resources. Need to have a context-specific discussion
 \section*{\textcolor{red}{Unfinished below}}  
 
 The Statistics 101 course provides a starting point for students to perform data analysis, and this manuscript is a detailed example of a project from data collection to meaningful insights. We obtained small-scale data that are publicly available, and articulated our thought process in the step-to-step execution.  
+
+We started with data preprocessing (i.e., cleaning the data), explored the data, and applied statistical models to quantify the relationship between the two variables of interest. The first model we try does not always work out, and the model validation can reveal more data issues previously undiscovered in the exploratory phase. Given the new findings, we can try different ways to continue the analysis.  
 
 What else did we demonstrate in this manuscript?  
 
