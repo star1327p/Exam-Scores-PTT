@@ -219,6 +219,10 @@ After implementing the logistic regression model, we also validated the results 
 
 Accuracy is approximately 70%  
 
+Consistent across both types of prediction  
+
+More comments here  
+
 Note that about half of the respondents obtained a college entrance exam score at least 65, so the baseline is around 50% like a coin-flip.  
 
 What else did we demonstrate in this manuscript?  

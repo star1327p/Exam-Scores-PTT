@@ -1,6 +1,6 @@
 Before we perform any statistical modeling, the first step in a data project is exploratory data analysis, i.e., observing the data. The exploratory phase allows us to identify patterns, detect anomalies, and verify assumptions in the data.^[<https://blog.eduonix.com/bigdata-and-hadoop/importance-exploratory-data-analysis-ml-modelling>] This is an important but often overlooked step in data analysis, and failure to explore the data can lead to inefficiencies such as accurate models on the wrong data.^[<https://towardsdatascience.com/exploratory-data-analysis-topic-that-is-neglected-in-data-science-projects-9962ae078a56>]   
 
-Therefore, we start with examining the trends of the two main variables, **HighSchool_PR** and **College_Score**. We look at each variable separately (univariate analysis), then investigate the relationship between the two variables (bivariate exploration).
+Therefore, we start with examining the trends of the two main variables, **HighSchool_PR** and **College_Score**. For each variable, we observe the values and summarize them in a histogram as part of the univariate analysis. Then we investigate the relationship between the two variables, i.e., bivariate exploration.
 
 ## High School Entrance Exam Scores (Percentile Rank)
 
