@@ -114,7 +114,7 @@ Write something more to this section, especially the foreword.
 ```{r include-in-sample-02, child = '08-In-Sample-02-Confusion-Matrix.Rmd'}
 ```
 
-## Breakdown by High School Entrance Exam Scores
+## Breakdown by High School Entrance Exam Scores {#another-breakdown}
 
 ```{r include-in-sample-03, child = '08-In-Sample-03-Score-Breakdown.Rmd'}
 ```
@@ -221,6 +221,12 @@ What about the breakdown by high school entrance exam score category?
 
 Why are we interested in this part? Add link to the relevant sections.  
 
+Exploratory data analysis shows the data are left-skewed, i.e., much more respondents with high scores than low scores.  
+
+After linear regression, Chapter \ref{explore-top} is a deeper dive ??  
+
+Then after logistic regression, Section \ref{another-breakdown} also examines the model results by high school entrance exam score category ??  
+
 More comments here   
 
 What else did we demonstrate in this manuscript?  
@@ -255,6 +261,8 @@ The Department of Electrical Engineering at National Taiwan University (NTUEE)^[
 full marks (15 out of 15) in English, mathematics, and science in **College_Score** for the early admission.^[https://university.1111.com.tw/univ_depinfo9.aspx?sno=100102&mno=520101] Most students at NTUEE had a **College_Score** of 70 or higher, at the time when 75 was the max possible score. But still a significant number of students got admitted through the regular college entrance exam process in July.  
 
 Finally, include my own scores as a datapoint for prediction.  
+
+Treat this part as an anecdote and explain my motivation.  
 
 \textcolor{red}{Don't show the numbers until I am ready to work on this section!}
 
