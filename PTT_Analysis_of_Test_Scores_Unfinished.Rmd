@@ -119,7 +119,7 @@ Write something more to this section, especially the foreword.
 ```{r include-in-sample-03, child = '08-In-Sample-03-Score-Breakdown.Rmd'}
 ```
 
-# Model Validation: Out-of-Sample Prediction {#outsample}
+# Model Validation: Out-of-Sample Prediction {#out-of-sample}
 
 ```{r include-out-sample-00, child = '09-Out-Sample-00-Foreword.Rmd'}
 ```
@@ -154,7 +154,7 @@ Write something more to this section, especially the foreword.
 ```{r include-out-sample-06, child = '09-Out-Sample-06-Leave-One-Out.Rmd'}
 ```
 
-## Comparison of Results
+## Comparison of Results {#cmp-results}
 
 ```{r include-out-sample-07, child = '09-Out-Sample-07-Comparison-Results.Rmd'}
 ```
@@ -215,15 +215,13 @@ In Chapter \ref{logit-reg}, we reformulated the problem to: Given a student's hi
 
 \section*{\textcolor{red}{Unfinished below}}  
 
-After implementing the logistic regression model, we also validated the results using in-sample prediction and out-of-sample prediction.  
+After implementing the logistic regression model, we also validated the results using in-sample prediction (Chapter \ref{validation}) and out-of-sample prediction (Chapter \ref{out-of-sample}). The accuracy is approximately 70% and consistent across both methods of prediction. About half of the respondents obtained a college entrance exam score at least 65, so the baseline is around 50% like a coin-flip. Compared with the baseline, the logistic regression model is doing much better. The detailed metrics are listed and explained in Section \ref{cmp-results}.  
 
-Accuracy is approximately 70%  
+What about the breakdown by high school entrance exam score category?  
 
-Consistent across both types of prediction  
+Why are we interested in this part? Add link to the relevant sections.  
 
-More comments here  
-
-Note that about half of the respondents obtained a college entrance exam score at least 65, so the baseline is around 50% like a coin-flip.  
+More comments here   
 
 What else did we demonstrate in this manuscript?  
 
