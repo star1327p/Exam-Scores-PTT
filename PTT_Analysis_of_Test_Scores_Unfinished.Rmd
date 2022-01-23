@@ -173,9 +173,7 @@ From data collection to meaningful insights
 
 Ideas to elaborate on:
 
-- In-sample prediction vs out-of-sample prediction  
-
-- Accuracy, precision, recall, FPR, FNR + extreme data situations
+- Confusion matrix + extreme data or results
 
 - Good coding practices: user-defined functions, descriptive variable names, and helpful comments in code
 
@@ -188,6 +186,10 @@ Incorporated already:
 - What we can do when the data do not satisfy the assumptions for linear regression  
 
 - Problem formulation (into a binary prediction task)  
+
+- In-sample prediction vs out-of-sample prediction  
+
+- Accuracy, precision, recall, FPR, FNR + extreme data situations
 
 
 
@@ -213,19 +215,15 @@ The good news is that we can continue the data analysis through several ways:
 
 In Chapter \ref{logit-reg}, we reformulated the problem to: Given a student's high school entrance exam score, estimate the probability of getting a college entrance exam score of at least 65. This statement binarizes the outcome of college entrance exam scores, so we discovered the relationship of the two variables in a different way. Sections \ref{logit-point-est} and \ref{logit-results} show that when the high school entrance exam score increases by one percentile, the odds of "success" increases by about 16.1% on average, i.e., getting a college entrance exam score at least 65. We are 95% confident  that the odds increase is between 10.6% and 22.9%.  
 
-\section*{\textcolor{red}{Unfinished below}}  
-
 After implementing the logistic regression model, we also validated the results using in-sample prediction (Chapter \ref{validation}) and out-of-sample prediction (Chapter \ref{out-of-sample}). The accuracy is approximately 70% and consistent across both methods of prediction. About half of the respondents obtained a college entrance exam score at least 65, so the baseline is around 50% like a coin-flip. Compared with the baseline, the logistic regression model is doing much better. The detailed metrics are listed and explained in Section \ref{cmp-results}.  
 
-What about the breakdown by high school entrance exam score category?  
+\section*{\textcolor{red}{Unfinished below}}  
 
-Why are we interested in this part? Add link to the relevant sections.  
-
-Exploratory data analysis shows the data are left-skewed, i.e., much more respondents with high scores than low scores.  
-
-After linear regression, Chapter \ref{explore-top} is a deeper dive ??  
+We also examined the data breakdown by high school entrance exam score category, because a model may have different levels of performance in different ranges of the independent variable. Exploratory data analysis shows the data are left-skewed, i.e., much more respondents with high scores than low scores. Given the findings in the linear regression, we performed a deep dive of the top scorers in Chapter \ref{explore-top}.    
 
 Then after logistic regression, Section \ref{another-breakdown} also examines the model results by high school entrance exam score category ??  
+
+What are the model results?  
 
 More comments here   
 
