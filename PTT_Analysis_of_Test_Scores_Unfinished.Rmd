@@ -223,9 +223,19 @@ After implementing the logistic regression model, we also validated the results 
 
 We also examined the data breakdown by high school entrance exam score category, because a model may have different levels of performance in different ranges of the independent variable. Exploratory data analysis shows the data are left-skewed, i.e., much more respondents with high scores than low scores. Given the findings in the linear regression, we performed a deep dive of the top scorers in Chapter \ref{explore-top}.    
 
-Then after logistic regression, Section \ref{another-breakdown} also examines the model results by high school entrance exam score category ??  
+Then after we implemented the logistic regression model, we also examined the model results by high school entrance exam score category in Section \ref{another-breakdown}. Since this is a binary classification model, we focused on the confusion matrices of each category.  
 
 What are the model results?  
+
+PR = percentile rank  
+
+- PR 0-79: All predictions are FALSE.
+
+- PR 80-89: All predictions are FALSE.
+
+- PR 90-94: Predictions consist of both TRUE and FALSE.
+
+- PR 95-99: All predictions are TRUE.  
 
 More comments here   
 
