@@ -45,9 +45,13 @@ The opinions and views expressed in this manuscript are those of the author and 
 
 # Introduction {#intro}
 
-\textcolor{red}{Consider making the introduction statistics-oriented, because we would like to focus on the statistical methodology. Most important is how to handle a real-time application problem.}  
+\section*{\textcolor{red}{Unfinished below}}
 
-\textcolor{red}{State thie project as open-source and provide the GitHub link somewhere in the manuscript.} 
+Consider making the introduction statistics-oriented, because we would like to focus on the statistical methodology. Most important is how to handle a real-time application problem.  
+
+State this project as open-source and provide the GitHub link somewhere in the manuscript. Note that the name of GitHub repo may be changed later.  
+
+\section*{\textcolor{red}{Unfinished above}}
 
 ```{r include-intro, child = '01-Introduction.Rmd'}
 ```
@@ -74,14 +78,18 @@ Start writing about 2021 for both exams, because 2022 is still ongoing
 
 # Data Description {#data}
 
+\section*{\textcolor{red}{Unfinished below}}
+
+Add the new PTT image and state **when** the registration restrictions were removed.
+
+Also, list several mobile apps for readers to access PTT on a smart phone. Common apps include BePTT, Mo PTT, JPTT, and PiTT.
+
+\section*{\textcolor{red}{Unfinished above}}
+
 ```{r include-data-description, child = '03-Data-Description.Rmd'}
 ```
 
 # Exploratory Data Analysis {#eda}
-
-\section*{\textcolor{red}{Unfinished below}}   
-
-Write something more to this section, especially the foreword.  
 
 ```{r include-exploratory, child = '04-Exploratory.Rmd'}
 ```
