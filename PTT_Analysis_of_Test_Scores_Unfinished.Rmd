@@ -264,12 +264,9 @@ Treat this part as an anecdote and explain my motivation.
 
 # Acknowledgments {.unnumbered}
 
-The author would like to thank her Microsoft colleagues Smit Patel and Dylan Stout for troubleshooting GitHub issues.  
+The author would like to thank Dr. Mine Cetinkaya-Rundel and Dr. David Banks at Duke University; they both motivated the author to teach statistics and create reproducible work in `R`. The author is also grateful to her Microsoft colleagues Smit Patel and Dylan Stout for troubleshooting GitHub issues.  
 
-Also add: Mine Cetinkaya-Rundel and David Banks at Duke Stat   
-
-Motivation for teaching statistics and creating reproducible work  
-
+Finally, the author would like to acknowledge Dr. Cliburn Chan and Dr. Janice McCarthy for introducing her to GitHub in the statistical computation course at Duke University. This provided her the foundations to use GitHub as a modern version control system in the first place.
 
 # Appendix {.unnumbered}
 
