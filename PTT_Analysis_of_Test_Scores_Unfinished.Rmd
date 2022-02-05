@@ -82,7 +82,7 @@ Start writing about 2021 for both exams, because 2022 is still ongoing
 
 \section*{\textcolor{red}{Unfinished below}}
 
-Add the new PTT image and state **when** the registration restrictions were removed.
+Add the new PTT image and state **when** the registration restrictions were removed.  
 
 Also, list several mobile apps for readers to access PTT on a smart phone. Common apps include BePTT, Mo PTT, JPTT, and PiTT.
 
@@ -92,6 +92,8 @@ Also, list several mobile apps for readers to access PTT on a smart phone. Commo
 ```
 
 # Exploratory Data Analysis {#eda}
+
+\textcolor{red}{Move the PTT history description to the appropriate chapter}
 
 ```{r include-exploratory, child = '04-Exploratory.Rmd'}
 ```

@@ -24,7 +24,15 @@ According to the reference score table^[<https://bit.ly/3bAYOvO>] from Wikipedia
 
 On the other hand, the reference score table also shows that the 75th percentile of the college entrance score is between 53 and 58 in Years 2004-2018. The PTT data's 1st quantile is already at 58, so we can also infer that at least 75% of the respondents scored in the top 25% of the college entrance exam.  
 
-Since PTT contains forums for several prestigious universities in Taiwan, it is no surprise that many users attended these colleges because they scored well on the college entrance exam. Nevertheless, PTT did not limit registration to students of these colleges in the past, so the population of PTT is slightly more diverse. Note that as of 2020, PTT changed their eligibility requirements, and limited new account registrations to only people with an email address from National Taiwan University.^[Screenshot obtained on May 26, 2020: <https://imgur.com/33fwrGH>]
+\section*{\textcolor{red}{Unfinished below}}   
+
+Since PTT contains forums for several prestigious universities in Taiwan, it is no surprise that many users attended these colleges because they scored well on the college entrance exam. Nevertheless, PTT did not limit registration to students of these colleges prior to the data were created, so the population of PTT is more diverse.  
+
+Note that from 2018 to 2021, PTT limited new account registrations to only people with an email address from National Taiwan University.^[Screenshot obtained on May 26, 2020: <https://imgur.com/33fwrGH>]  
+
+The good news is that this restriction has been removed.^[Screenshot obtained on February 5, 2022: <https://imgur.com/kaTsRpn>] As of 2022, anyone can register for an account on PTT with email^[<https://www.techbang.com/posts/88695-ptt-registration>] or mobile phone authentication^[<https://free.com.tw/ptt-id-registration-aotp/>].
+
+\section*{\textcolor{red}{Unfinished above}}   
 
 ```{r college-score}
 # College entrance exam scores: Remove missing values
