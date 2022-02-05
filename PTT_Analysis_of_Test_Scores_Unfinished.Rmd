@@ -227,9 +227,13 @@ Consider adding subsections in the Discussion and Conclusion (e.g. Recap, Additi
 
 Consider moving the above to an earlier section as transition  
 
-The Statistics 101 course provides a starting point for students to perform data analysis.  
+The Statistics 101 course covers the fundamental statistical concepts for students to perform data analysis, and the programming component is often included.      
 
 Any resources to serve as a refresher to the readers?  
+
+OpenIntro statistics: Citation needed  
+
+The Coursera course for Statistics 101  
 
 For the next steps in learning statistics, we suggest reading *The Statistical Sleuth: A Course in Methods of Data Analysis* \cite{ramsey2013statistical}, which is the textbook for undergraduate-level regression analysis at Duke Statistical Science.^[<https://www2.stat.duke.edu/courses/Fall18/sta210.001/>] The book covers intermediate topics such as ANOVA (Analysis of Variance) and multiple linear regression. It also provides data files for case studies and exercises.^[<http://www.statisticalsleuth.com/>]  
 
@@ -241,11 +245,7 @@ For the advanced readers, we recommend the following graduate level statistics t
 
 - *Categorical Data Analysis* \cite{agresti2003categorical}
 
-There are many other high-quality statistics textbooks, and we selected these as a starting point. If the readers are interested in a data science career, learning statistics builds the foundations and expands your toolbox to generate insights from data.^[<https://towardsdatascience.com/the-difference-between-data-science-and-statistics-168c7062c201>]  
-
-Hands-on practice: Kaggle datasets^[<https://www.kaggle.com/datasets>]
-
-Write something more
+There are many other high-quality statistics textbooks, and we selected these as a starting point. If the readers are interested in a data science career, learning statistics builds the foundations and expands your toolbox to generate insights from data.^[<https://towardsdatascience.com/the-difference-between-data-science-and-statistics-168c7062c201>] We also recommend exploring Kaggle datasets^[<https://www.kaggle.com/datasets>] for hands-on practice. To get closer to analyzing real-world data, we encourage the readers to attend data hackathons, contribute to open-source projects, and/or volunteer technical skills at nonprofit organizations like Statistics Without Borders.^[<https://www.statisticswithoutborders.org/>]
 
 # Final: Personal Remarks
 

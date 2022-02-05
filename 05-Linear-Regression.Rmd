@@ -120,4 +120,4 @@ P(\text{College$\_$60up is true}) &= \text{$\#$ of respondents with College$\_$S
 nrow(data_corr) # number of all respondents without missing data
 ```
 
-**Remark**: Conditional probability is the foundation of Bayesian statistics, which updates the existing probabilities given the new data. For the interested readers, we recommend the book \textit{An Introduction to Bayesian Thinking} \cite{clyde2018bayesian101} as a starting point to learn Bayesian statistics. It is the supplementary materials for the Bayesian statistics course on Coursera from Duke University.^[<https://www.coursera.org/learn/bayesian>]
+**Remark**: Conditional probability is the foundation of Bayesian statistics, which updates the existing probabilities given the new data. For the interested readers, we recommend the book \textit{An Introduction to Bayesian Thinking} \cite{clyde2018bayesian101} as a start. This book was written as a companion for the Bayesian Statistics course on Coursera from Duke University.^[<https://www.coursera.org/learn/bayesian>] Knowledge of calculus is helpful but not an absolute prerequisite.  
