@@ -233,9 +233,9 @@ The Statistics 101 course covers the fundamental statistical concepts for studen
 
 Any resources to serve as a refresher to the readers?  
 
-OpenIntro statistics: Citation needed  
+*OpenIntro Statistics* \cite{diez2019openintro}  
 
-The Coursera course for Statistics 101  
+Coursera: Statistics with `R` Specialization^[<https://www.coursera.org/specializations/statistics>]  
 
 For the next steps in learning statistics, we suggest reading *The Statistical Sleuth: A Course in Methods of Data Analysis* \cite{ramsey2013statistical}, which is the textbook for undergraduate-level regression analysis at Duke Statistical Science.^[<https://www2.stat.duke.edu/courses/Fall18/sta210.001/>] The book covers intermediate topics such as ANOVA (Analysis of Variance) and multiple linear regression. It also provides data files for case studies and exercises.^[<http://www.statisticalsleuth.com/>]  
 
