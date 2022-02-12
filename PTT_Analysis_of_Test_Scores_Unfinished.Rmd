@@ -241,15 +241,11 @@ Consider adding subsections in the Discussion and Conclusion (e.g. Recap, Additi
 
 Consider moving the above to an earlier section as transition  
 
-The Statistics 101 course covers the fundamental statistical concepts for students to perform data analysis, and the programming component is often included.      
+Here are some resources for the path of learning statistics:  
 
-Any resources to serve as a refresher to the readers?  
+The Statistics 101 course covers the fundamental statistical concepts for students to perform data analysis, and the programming component is often included. For readers who would like a refresher, we recommend the textbook *OpenIntro Statistics* \cite{diez2019openintro} and the online course *Statistics with `R` Specialization* on Coursera.^[<https://www.coursera.org/specializations/statistics>] Basic concepts like hypothesis testing and confidence intervals are also asked in technical interviews for data science jobs. Beware!  
 
-*OpenIntro Statistics* \cite{diez2019openintro}  
-
-Coursera: Statistics with `R` Specialization^[<https://www.coursera.org/specializations/statistics>]  
-
-For the next steps in learning statistics, we suggest reading *The Statistical Sleuth: A Course in Methods of Data Analysis* \cite{ramsey2013statistical}, which is the textbook for undergraduate-level regression analysis at Duke Statistical Science.^[<https://www2.stat.duke.edu/courses/Fall18/sta210.001/>] The book covers intermediate topics such as ANOVA (Analysis of Variance) and multiple linear regression. It also provides data files for case studies and exercises.^[<http://www.statisticalsleuth.com/>]  
+To go further in statistics, we suggest reading *The Statistical Sleuth: A Course in Methods of Data Analysis* \cite{ramsey2013statistical}, which is the textbook for undergraduate-level regression analysis at Duke Statistical Science.^[<https://www2.stat.duke.edu/courses/Fall18/sta210.001/>] The book covers intermediate topics such as ANOVA (Analysis of Variance) and multiple linear regression. It also provides data files for case studies and exercises.^[<http://www.statisticalsleuth.com/>]  
 
 For the advanced readers, we recommend the following graduate level statistics textbooks:
 
