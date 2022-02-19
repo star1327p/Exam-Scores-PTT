@@ -217,31 +217,9 @@ After implementing the logistic regression model, we also validated the results 
 
 We also examined the model results by high school entrance exam score category in Section \ref{another-breakdown}. Since this is a binary classification model, we focused on the confusion matrices of each category. For the respondents whose high school entrance exam score in the 0-79th percentile, the model predicted none of them to obtain a college entrance exam score of at least 65, but some respondents actually did succeed. For the respondents in the 80-89th percentile, the predictions are the same but with a higher proportion of unexpected successes. The model predictions consist of both success and non-success outcomes for the respondents in the 90-94th percentile. Finally, the model predicts all respondents in the 95-99th percentile to obtain a college entrance exam score of at least 65, and inevitably some of them did not achieve this. Given the single outcome prediction in most categories, we added zero columns/rows to ensure the 2x2 size of each confusion matrix.  
 
-\section*{\textcolor{red}{Unfinished below}}
+# Additional Resources
 
-\textcolor{red}{Continue to separate this enormous \texttt{.Rmd} into smaller files.}
-
-# Discussion and Conclusion
-
-\section*{\textcolor{red}{Unfinished below}}   
-
-Add a summary of our thought process in performing the data analysis  
-
-From data collection to meaningful insights  
-
-In addition to statistical concepts, we also demonstrated:  
-
-machine learning, good coding practices, etc. Add something more!
-
-Don't just list statistics resources. Need to have a context-specific discussion!  
-
-\section*{\textcolor{red}{Unfinished below}}  
-
-Consider adding subsections in the Discussion and Conclusion (e.g. Recap, Additional Resources, etc.)  
-
-Consider moving the above to an earlier section as transition  
-
-Here are some resources for the path of learning statistics:  
+Here are some resources we recommend for the path of learning statistics:  
 
 The Statistics 101 course covers the fundamental statistical concepts for students to perform data analysis, and the programming component is often included. For readers who would like a refresher, we recommend the textbook *OpenIntro Statistics* \cite{diez2019openintro} and the online course *Statistics with `R` Specialization* on Coursera.^[<https://www.coursera.org/specializations/statistics>] Basic concepts like hypothesis testing and confidence intervals are also asked in technical interviews for data science jobs. Beware!  
 
@@ -258,6 +236,10 @@ For the advanced readers, we recommend the following graduate level statistics t
 There are many other high-quality statistics textbooks, and we selected these as a starting point. If the readers are interested in a data science career, learning statistics builds the foundations and expands your toolbox to generate insights from data.^[<https://towardsdatascience.com/the-difference-between-data-science-and-statistics-168c7062c201>] We also recommend exploring Kaggle datasets^[<https://www.kaggle.com/datasets>] for hands-on practice. To get closer to analyzing real-world data, we encourage the readers to attend data hackathons, contribute to open-source projects, and/or volunteer technical skills at nonprofit organizations like Statistics Without Borders.^[<https://www.statisticswithoutborders.org/>]
 
 # Final: Personal Remarks
+
+\section*{\textcolor{red}{Unfinished below}}
+
+\textcolor{red}{Continue to separate this enormous \texttt{.Rmd} into smaller files.}  
 
 Write something here  
 
