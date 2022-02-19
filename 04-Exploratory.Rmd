@@ -38,9 +38,9 @@ hist(uni_college_score, main="Histogram of College_Score",
 
 ## Bivariate Exploration {#bivariate}
 
-Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score**, but we have to remove the records with at least one missing score. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores.
+Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score** to examine the relationship between the two, but we have to remove the records with at least one missing score first. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores.
 
-```{r bivariate}
+```{r bivariate} 
 missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
 # Indices: 6  19  71  85  88  96 132 183 195 => nine in total
 
@@ -71,3 +71,20 @@ Same applies to the standard deviation $\sigma_Y$.
 Finally, we can calculate the correlation coefficient as:
 
 $$\rho_{X,Y} = \dfrac{\text{Cov}(X,Y)}{\sigma_X \sigma_Y}.$$
+
+
+The correlation coefficient $\rho_{X,Y}$ is always between -1 and +1. The stronger $|\rho_{X,Y}|$ is, the stronger is the linear relationship. A positive value means the two variables $X,Y$ are positively associated with each other. In other words, when $X$ increases, $Y$ is also expected to increase. A negative value means the two variables $X,Y$ are negatively associated with each other. In this case, when $X$ increases, $Y$ is expected to decrease. The correlation coefficient may be zero, but this simply means that $X$ and $Y$ do not have a linear relationship with each other. There may exist other patterns between the two variables.  
+
+The strength of linear relationship can be interpreted as below:^[<https://www.dummies.com/article/academics-the-arts/math/statistics/how-to-interpret-a-correlation-coefficient-r-169792>]  
+
+- $|\rho_{X,Y}| = 1$: Perfect linear relationship
+
+- $0.6 < |\rho_{X,Y}| < 1$: Strong linear relationship
+
+- $0.4 < |\rho_{X,Y}| < 0.6$: Medium linear relationship
+
+- $0.2 < |\rho_{X,Y}| < 0.4$: Low linear relationship
+
+- $0 < |\rho_{X,Y}| < 0.2$: Little-to-no linear relationship
+
+- $|\rho_{X,Y}| = 0$: No linear relationship
