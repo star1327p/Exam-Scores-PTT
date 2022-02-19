@@ -97,16 +97,6 @@ Also, list several mobile apps for readers to access PTT on a smart phone. Commo
 
 # Exploratory Data Analysis {#eda}
 
-\section*{\textcolor{red}{Unfinished below}}  
-
-Explain the properties of the correlation coefficient.  
-
-e.g. Between -1 and +1  
-
-e.g. Low / medium / high correlation  
-
-\section*{\textcolor{red}{Unfinished above}} 
-
 ```{r include-exploratory, child = '04-Exploratory.Rmd'}
 ```
 
@@ -124,6 +114,14 @@ At least explain to readers what exactly is a linear regression.
 ```
 
 # Top Scorers: A Closer Look {#explore-top}
+
+\section*{\textcolor{red}{Unfinished below}}  
+
+Bivariate exploration subsection:  
+
+Add my thoughts about categorical data analysis (e.g. proportional hazards model?!)
+
+\section*{\textcolor{red}{Unfinished above}}  
 
 ```{r include-linear-reg, child = '06-Top-Scorers.Rmd'}
 ```
@@ -251,6 +249,10 @@ full marks (15 out of 15) in English, mathematics, and science in **College_Scor
 Finally, include my own scores as a datapoint for prediction.  
 
 Treat this part as an anecdote and explain my motivation.  
+
+Instead of dwelling on the past, I decided to redirect my energy to something more meaningful and constructive.  
+
+That's why this manuscript was born.  
 
 \textcolor{red}{Don't show the numbers until I am ready to work on this section!}
 
