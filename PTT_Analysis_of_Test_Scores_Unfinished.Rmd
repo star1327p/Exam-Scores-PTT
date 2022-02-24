@@ -207,10 +207,12 @@ Add my thoughts about categorical data analysis (e.g. proportional hazards model
 
 Finally, include my own scores as a datapoint for prediction.  
 
-The author scored **HighSchool_PR** 95 in Year 2004, but she got admitted to Taipei First Girls' High School because the special class for math and science track had a separate admission process at that time. Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] typically requires **HighSchool_PR** 99 for admission, with few exceptions such as recruited athletes^[<https://www.sa.gov.tw/PageContent?n=1265>] and students with disabilities^[<http://www.rootlaw.com.tw/LawArticle.aspx?LawID=A040080080001900-1020822>]. Several years later, the policy changed so that students had to be admitted to the high school first in order to try for the special class placement. Most students in the special class had **HighSchool_PR** 99 anyway, and the author was one of the few who did not. Hence the author wondered whether she would have similar academic performance, had she enrolled in a different high school commensurate to **HighSchool_PR** 95 in Taipei.    
+The author scored **HighSchool_PR** 95 in Year 2004, but she got admitted to Taipei First Girls' High School because the special class for math and science track had a separate admission process at that time. Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] typically requires **HighSchool_PR** 99 for admission, with few exceptions such as recruited athletes^[<https://www.sa.gov.tw/PageContent?n=1265>] and students with disabilities^[<http://www.rootlaw.com.tw/LawArticle.aspx?LawID=A040080080001900-1020822>]. Several years later, the policy changed so that students had to be admitted to the high school first in order to try for the special class placement within. Most students in the special class had **HighSchool_PR** 99 anyway, and the author was one of the few who did not. Hence the author wondered whether she would have similar academic performance, had she enrolled in a different high school commensurate to **HighSchool_PR** 95 in Taipei.    
 
 
 The author got **College_Score** 69 in Year 2007.    
+
+State the admissions and rejections^[<https://sites.google.com/site/christinepeijinnchai/resume-cv>]  
 
 Write something more  
 
