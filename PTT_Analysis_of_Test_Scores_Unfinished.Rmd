@@ -221,14 +221,15 @@ full marks (15 out of 15) in English, mathematics, and science in **College_Scor
 
 Treat this part as an anecdote and explain my motivation.  
 
-Instead of dwelling on the past, the author decided to redirect her energy to something more meaningful and constructive. That's why this manuscript was born.      
+Instead of dwelling on the past, the author decided to redirect her energy to something more meaningful and constructive.   
 
-In addition to statistical analysis, she also wanted to demonstrate full reproducibility of the project.  
+\textcolor{red}{Write at least one connecting sentence}    
 
+That's how this manuscript was born.  
 
-Inspired by \citet{baumer2014r-markdown} $\Rightarrow$ $\mathsf{R}$ Markdown   
+In addition to statistical analysis, she also wanted to demonstrate full reproducibility of the project. Inspired by \citet{baumer2014r-markdown}, the author decided to incorporate $\mathsf{R}$ Markdown as a reproducible analysis tool into introductory statistics. She also designed her own template to create LaTeX Beamer PDF slides from $\mathsf{R}$ Markdown,^[<https://github.com/star1327p/r-beamer-template>] in which she included some commonly-used LaTeX functions.  
 
-Write something more
+Write something more  
 
 
 # Acknowledgments {.unnumbered}
