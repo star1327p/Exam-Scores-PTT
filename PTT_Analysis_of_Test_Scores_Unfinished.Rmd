@@ -207,6 +207,8 @@ Add my thoughts about categorical data analysis (e.g. proportional hazards model
 
 Finally, include my own scores as a datapoint for prediction.  
 
+\textcolor{red}{Add a topic sentence to bring out the author's motivation}  
+
 The author scored **HighSchool_PR** 95 in Year 2004, but she got admitted to Taipei First Girls' High School because the special class for math and science track had a separate admission process at that time. Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] typically requires **HighSchool_PR** 99 for admission, with few exceptions such as recruited athletes^[<https://www.sa.gov.tw/PageContent?n=1265>] and students with disabilities^[<http://www.rootlaw.com.tw/LawArticle.aspx?LawID=A040080080001900-1020822>]. Several years later, the policy changed so that students had to be admitted to the high school first in order to try for the special class placement within. Most students in the special class had **HighSchool_PR** 99 anyway, and the author was one of the few who did not. Hence the author wondered whether she would have similar academic performance, had she enrolled in a different high school commensurate to **HighSchool_PR** 95 in Taipei.    
 
 
@@ -219,13 +221,13 @@ Write something more
 NTUEE^[https://web.ee.ntu.edu.tw/eng/index.php] typically requires
 full marks (15 out of 15) in English, mathematics, and science in **College_Score** for the early admission through GSAT.^[https://university.1111.com.tw/univ_depinfo9.aspx?sno=100102&mno=520101] Most students at NTUEE had a **College_Score** of 70 or higher, at the time when 75 was the max possible score. But still a significant number of students got admitted through the AST in July.  
 
+\textcolor{red}{Add a graph of where my scores stand in the scatterplot. Also add the predictions of PR95 for getting College Score 65 or higher.}   
+
 Treat this part as an anecdote and explain my motivation.  
 
-Instead of dwelling on the past, the author decided to redirect her energy to something more meaningful and constructive.   
+Instead of dwelling on the past, the author decided to redirect her energy to something more meaningful and constructive. She would like to leverage the opportunity to apply her data science and research skills, and this is why the manuscript was born.   
 
-\textcolor{red}{Write at least one connecting sentence}    
-
-That's how this manuscript was born.  
+Should the reproducibility statement be moved to the introduction?  
 
 In addition to statistical analysis, she also wanted to demonstrate full reproducibility of the project. Inspired by \citet{baumer2014r-markdown}, the author decided to incorporate $\mathsf{R}$ Markdown as a reproducible analysis tool into introductory statistics. She also designed her own template to create LaTeX Beamer PDF slides from $\mathsf{R}$ Markdown,^[<https://github.com/star1327p/r-beamer-template>] in which she included some commonly-used LaTeX functions.  
 
