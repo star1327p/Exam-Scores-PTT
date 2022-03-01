@@ -1,11 +1,9 @@
-RStudio, code reproducibility, etc.
+RStudio, code reproducibility, etc.  
 
 Need to specify the $\mathsf{R}$ libraries.  
 
 This document was created using $\mathsf{R}$ Markdown with `knitr` to PDF.^[<https://rmarkdown.rstudio.com/articles_intro.html>]  
 
-Most graphs in this manuscript are created using the basic `plot` function as the default in RStudio.  
+Most graphs in this manuscript are mainly for demonstration; they are created using the basic `plot` function as the default in RStudio. For advanced data visualization, we highly encourage readers to use the $\mathsf{R}$ package `ggplot2` \cite{ggplot2}. This package incorporates data visualization theory and provides much more capability to convey the message in a graph.        
 
-Advanced data visualization: `ggplot2` \cite{ggplot2}    
-
-The code is mainly for demonstration purposes. To learn about better coding styles, we recommend the book *Code Complete* \cite{mcconnell2004code} instead.
+The code is also for demonstration. To learn about better coding styles, we recommend the computer science books *Clean Code* \cite{martin2009clean} and *Code Complete* \cite{mcconnell2004code}.  
