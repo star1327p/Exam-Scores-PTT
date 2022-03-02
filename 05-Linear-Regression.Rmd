@@ -1,12 +1,12 @@
-We are going to decide whether we should run a linear regression to predict **College_Score** from **HighSchool_PR**. If yes, we would implement the model and check the residuals. If no, we need to explore other options in analyzing the data.  
+Linear regression is a commonly-used statistical model to evaluate the relationship between two continuous variables, and even major companies like IBM endorse linear regression for better decision-making in business.^[<https://www.ibm.com/topics/linear-regression>] Therefore, we are going to decide whether we should run a linear regression to predict **College_Score** from **HighSchool_PR**. If yes, we would implement the model and check the residuals. If no, we need to explore other options in analyzing the data.  
 
-A linear regression can be written in mathematical terms:
+A linear regression model can be written in mathematical terms:
 
 $$Y = \alpha + \beta X + \epsilon$$
 
 $Y$ is the response variable, i.e., what we would like to predict. $X$ is the explanatory variable, i.e., the data used to make the predictions. $\alpha$ is the intercept, and it stands for the estimate $\hat{Y}$ when $X = 0$ (if applicable). $\beta$ is the coefficient, and when $X$ increases by one unit, we can expect $Y$ to increase by $\beta$ units. Last but not least, $\epsilon$ is the error term, which is normally distributed with mean zero.  
 
-*OpenIntro Statistics* \cite{diez2019openintro} states that four requirements need to be met for a linear regression:
+*OpenIntro Statistics* \cite{diez2019openintro} states that four requirements need to be met in a linear regression:
 
 \begin{enumerate}
 \item \textbf{Linearity}: The data has a linear trend, not a curve.
