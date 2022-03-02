@@ -113,7 +113,7 @@ print(paste("College_Score 70-75:",CS70to75))
 
 ## Bivariate Exploration of High Scorers {#bivariate-top-scorers}
 
-Section \ref{bivariate} explored the bivariate relationship between **HighSchool_PR** and **College_Score**, and this time we would like to focus on the high scorers: respondents with **HighSchool_PR** $\geq$ 80 and/or **College_Score** $\geq$ 60. There are 163 respondents with **HighSchool_PR** $\geq$ 80, 128 respondents with **College_Score** $\geq$ 60, and 120 respondents with both. Since the number of respondents with **HighSchool_PR** $\geq$ 80 does not equal to the number of respondents with **College_Score** $\geq$ 60, we should consider the full 188 records in the data. Hence we add the range 0-79 to **HighSchool_PR**, and the range 0-59 for **College_Score**. We would like to create a 4x4 table for the following ranges:
+Section \ref{bivariate} explored the bivariate relationship between **HighSchool_PR** and **College_Score**, and this time we would like to focus on the high scorers: respondents with **HighSchool_PR** at least 80 and/or **College_Score** at least 60. There are 163 respondents with **HighSchool_PR** 80 or higher, 128 respondents with **College_Score** 60 or higher, and 120 respondents with both. Since the number of respondents with **HighSchool_PR** at least 80 does not equal to the number of respondents with **College_Score** at least 60, we should consider the full 188 records in the data. Hence we add the range 0-79 to **HighSchool_PR**, and the range 0-59 for **College_Score**. We would like to create a 4x4 table for the following ranges:
 
 * **HighSchool_PR** ranges: 0-79, 80-89, 90-94, 95-99
 * **College_Score** ranges: 0-59, 60-64, 65-69, 70-75
