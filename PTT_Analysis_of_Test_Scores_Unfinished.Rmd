@@ -117,7 +117,9 @@ At least explain to readers what exactly is a linear regression.
 
 Bivariate exploration subsection:  
 
-Add my thoughts about categorical data analysis (e.g. proportional hazards model?!)
+Add a scatterplot for **HighSchool_PR** at least 80 vs **College_Score** at least 60.  
+
+Add my thoughts about categorical data analysis (e.g. proportional hazards model?!)  
 
 \section*{\textcolor{red}{Unfinished above}}  
 
@@ -209,7 +211,7 @@ Finally, include my own scores as a datapoint for prediction.
 
 \textcolor{red}{Add a topic sentence to bring out the author's motivation}  
 
-The author scored **HighSchool_PR** 95 in Year 2004, but she got admitted to Taipei First Girls' High School because the special class for math and science track had a separate admission process at that time. Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] typically requires **HighSchool_PR** 99 for admission, with few exceptions such as recruited athletes^[<https://www.sa.gov.tw/PageContent?n=1265>] and students with disabilities^[<http://www.rootlaw.com.tw/LawArticle.aspx?LawID=A040080080001900-1020822>]. Several years later, the policy changed so that students had to be admitted to the high school first in order to try for the special class placement within. Most students in the special class had **HighSchool_PR** 99 anyway, and the author was one of the few who did not. Hence the author wondered whether she would have similar academic performance, had she enrolled in a different high school commensurate to **HighSchool_PR** 95 in Taipei.    
+The author scored **HighSchool_PR** 95 in Year 2004, but she got admitted to Taipei First Girls' High School because the special class for math and science track had a separate admission process at that time. Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] typically requires **HighSchool_PR** 99 for admission, with few exceptions such as recruited athletes^[<https://www.sa.gov.tw/PageContent?n=1265>] and students with disabilities.^[<http://www.rootlaw.com.tw/LawArticle.aspx?LawID=A040080080001900-1020822>] Several years later, the policy changed so that students had to be admitted to the high school first in order to try for the special class placement within. Most students in the special class had **HighSchool_PR** 99 anyway, and the author was one of the few who did not. Hence the author wondered whether she would have similar academic performance, had she enrolled in a different high school commensurate to **HighSchool_PR** 95 in Taipei.    
 
 
 The author got **College_Score** 69 on the General Scholastic Ability Test (GSAT) in Year 2007. Later that year, she took the Advanced Subjects Test (AST) and got admitted to The Department of Electrical Engineering at National Taiwan University (NTUEE).   
@@ -223,7 +225,21 @@ full marks (15 out of 15) in English, mathematics, and science in **College_Scor
 
 \textcolor{red}{Add a graph of where my scores stand in the scatterplot. Also add the predictions of PR95 for getting College Score 65 or higher.}   
 
-Treat this part as an anecdote and explain my motivation.  
+Copied the graph from Section \ref{bivariate}  
+
+```{r bivariate-dup}
+plot(data_corr$HighSchool_PR, data_corr$College_Score,
+     main = "High School and College Entrance Exam Scores",
+     xlab="HighSchool_PR",
+     ylab="College_Score")
+
+# UNFINISHED HERE
+# Add the datapoint of (HighSchool_PR = 95, College_Score = 69)
+# Should I add a graph for top-scorers as a zoom-in?
+```
+
+
+\textcolor{red}{Treat this part as an anecdote and explain my motivation.}    
 
 Instead of dwelling on the past, the author decided to redirect her energy to something more meaningful and constructive. She would like to leverage the opportunity to apply her data science and research skills, and this is why the manuscript was born.   
 
