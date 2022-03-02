@@ -100,14 +100,6 @@ Also, list several mobile apps for readers to access PTT on a smart phone. Commo
 
 # Linear Regression {#linear-reg}
 
-\section*{\textcolor{red}{Unfinished below}}  
-
-Elaborate on the foreword, because it cannot be just two lines.  
-
-At least explain to readers what exactly is a linear regression.  
-
-\section*{\textcolor{red}{Unfinished above}}  
-
 ```{r include-linear-reg, child = '05-Linear-Regression.Rmd'}
 ```
 
@@ -222,7 +214,7 @@ Write something more
 
 NTUEE^[https://web.ee.ntu.edu.tw/eng/index.php] typically requires
 full marks (15 out of 15) in English, mathematics, and science in **College_Score** for the early admission through GSAT.^[https://university.1111.com.tw/univ_depinfo9.aspx?sno=100102&mno=520101] Most students at NTUEE had a **College_Score** of 70 or higher, at the time when 75 was the max possible score. But still a significant number of students got admitted through the AST in July.  
-
+  
 \textcolor{red}{Add a graph of where my scores stand in the scatterplot. Also add the predictions of PR95 for getting College Score 65 or higher.}   
 
 Copied the graph from Section \ref{bivariate}  
@@ -233,11 +225,22 @@ plot(data_corr$HighSchool_PR, data_corr$College_Score,
      xlab="HighSchool_PR",
      ylab="College_Score")
 
+points(x=95, y=69, col="red", pch=19)
+
 # UNFINISHED HERE
 # Add the datapoint of (HighSchool_PR = 95, College_Score = 69)
 # Should I add a graph for top-scorers as a zoom-in?
 ```
 
+Check all **College_Score** datapoints for **HighSchool_PR** 95  
+
+```{r HighSchool-PR-95}
+sort(data_corr$College_Score[which(data_corr$HighSchool_PR == 95)])
+```
+
+The median is 68, and the mean is about 67.6.  
+
+Write something more, including the logistic regression prediction  
 
 \textcolor{red}{Treat this part as an anecdote and explain my motivation.}    
 
