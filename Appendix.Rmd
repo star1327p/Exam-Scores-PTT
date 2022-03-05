@@ -1,9 +1,23 @@
+\textcolor{red}{Consider moving the Appendix into Additional Resources}  
+
 RStudio, code reproducibility, etc.  
 
 Need to specify the $\mathsf{R}$ libraries.  
 
-This document was created using $\mathsf{R}$ Markdown with `knitr` to PDF.^[<https://rmarkdown.rstudio.com/articles_intro.html>]  
+This document was created in RStudio, using $\mathsf{R}$ Markdown \cite{r-markdown-pkg} with `knitr` to PDF.^[<https://rmarkdown.rstudio.com/articles_intro.html>]  
 
-Most graphs in this manuscript are mainly for demonstration; they are created using the basic `plot` function as the default in RStudio. For advanced data visualization, we highly encourage readers to use the $\mathsf{R}$ package `ggplot2` \cite{ggplot2}. This package incorporates data visualization theory and provides much more capability to convey the message in a graph.        
+$\mathsf{R}$ Markdown can also generate reports in HTML and Microsoft Word formats.   
 
-The code is also for demonstration. To learn about better coding styles, we recommend the computer science books *Clean Code* \cite{martin2009clean} and *Code Complete* \cite{mcconnell2004code}.  
+What about $\mathsf{R}$ Markdown for presentation slides?   
+
+Supporting file formats  
+
+State why it is error-prone to copy-paste tables and plots to the word processor for the final report \cite{baumer2014r-markdown}.   
+
+Most graphs in this manuscript are mainly for demonstration; they are created using the basic `plot` function as the default in RStudio. For advanced data visualization, we highly encourage readers to use the $\mathsf{R}$ package `ggplot2` \cite{ggplot2}. This package incorporates data visualization theory and provides much more capability to convey the message in a graph.       
+
+$\mathsf{R}$ package `tidyverse`?  
+
+Consider adding books about data visualization theory  
+
+The code is also for demonstration. The author makes every effort to ensure correctness and readability of the code, but errors and inconsistencies are inevitable. Since this is an open-source project on GitHub,^[<https://github.com/star1327p/Exam-Scores-PTT>], readers are welcome to make a pull request and/or report any issues. To learn more about better coding styles, we recommend the computer science books *Clean Code* \cite{martin2009clean} and *Code Complete* \cite{mcconnell2004code}.  
