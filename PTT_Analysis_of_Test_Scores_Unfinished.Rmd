@@ -188,7 +188,7 @@ Add my thoughts about categorical data analysis (e.g. proportional hazards model
 ```{r include-project-recap, child = '10-Project-Recap.Rmd'}
 ```
 
-# Additional Resources {#resources}
+# Additional Resources for Learning {#resources}
 
 ```{r include-additional-resources, child = '11-Additional-Resources.Rmd'}
 ```
@@ -199,11 +199,9 @@ Add my thoughts about categorical data analysis (e.g. proportional hazards model
 
 \textcolor{red}{Continue to separate this enormous \texttt{.Rmd} into smaller files.}  
 
-Finally, include my own scores as a datapoint for prediction.  
+This manuscript was created because the author reflected on her own experience regarding high school and college entrance exams. Instead of dwelling on the past, the author decided to redirect her energy to something more meaningful and constructive. She leveraged the opportunity to apply her data science and research skills. In addition to statistical analysis, she also wanted to demonstrate full reproducibility of the project. Inspired by \citet{baumer2014r-markdown}, the author decided to incorporate $\mathsf{R}$ Markdown as a reproducible analysis tool into introductory statistics. She also designed her own template to create LaTeX Beamer PDF slides from $\mathsf{R}$ Markdown,^[<https://github.com/star1327p/r-beamer-template>] in which she included some commonly-used LaTeX functions.  
 
-\textcolor{red}{Add a topic sentence to bring out the author's motivation}  
-
-The author scored **HighSchool_PR** 95 in Year 2004, but she got admitted to Taipei First Girls' High School because the special class for math and science track had a separate admission process at that time. Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] typically requires **HighSchool_PR** 99 for admission, with few exceptions such as recruited athletes^[<https://www.sa.gov.tw/PageContent?n=1265>] and students with disabilities.^[<http://www.rootlaw.com.tw/LawArticle.aspx?LawID=A040080080001900-1020822>] Several years later, the policy changed so that students had to be admitted to the high school first in order to try for the special class placement within. Most students in the special class had **HighSchool_PR** 99 anyway, and the author was one of the few who did not. Hence the author wondered whether she would have similar academic performance, had she enrolled in a different high school commensurate to **HighSchool_PR** 95 in Taipei.    
+The author scored **HighSchool_PR** 95 in Year 2004, but she got admitted to Taipei First Girls' High School because the special class for math and science track had a separate admission process at that time. Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] usually requires **HighSchool_PR** 99 for admission, with few exceptions such as recruited athletes^[<https://www.sa.gov.tw/PageContent?n=1265>] and students with disabilities.^[<http://www.rootlaw.com.tw/LawArticle.aspx?LawID=A040080080001900-1020822>] Several years later, the policy changed so that students had to be admitted to the high school first in order to try for the special class placement within. Most students in the special class had **HighSchool_PR** 99 anyway, and the author was one of the few who did not. Hence the author wondered whether she would have similar academic performance, had she enrolled in a different high school commensurate to **HighSchool_PR** 95 in Taipei, Taiwan.    
 
 
 The author got **College_Score** 69 on the General Scholastic Ability Test (GSAT) in Year 2007. Later that year, she took the Advanced Subjects Test (AST) and got admitted to The Department of Electrical Engineering at National Taiwan University (NTUEE).   
@@ -213,7 +211,7 @@ State the admissions and rejections^[<https://sites.google.com/site/christinepei
 Write something more  
 
 NTUEE^[https://web.ee.ntu.edu.tw/eng/index.php] typically requires
-full marks (15 out of 15) in English, mathematics, and science in **College_Score** for the early admission through GSAT.^[https://university.1111.com.tw/univ_depinfo9.aspx?sno=100102&mno=520101] Most students at NTUEE had a **College_Score** of 70 or higher, at the time when 75 was the max possible score. But still a significant number of students got admitted through the AST in July.  
+full marks (15 out of 15) in English, mathematics, and science in **College_Score** for the early admission through GSAT.^[https://university.1111.com.tw/univ_depinfo9.aspx?sno=100102&mno=520101] Most students at NTUEE had a **College_Score** of 70 or higher, at the time when 75 was the max possible score. But still a significant number of students got admitted through the AST in July, regardless of their GSAT score.    
   
 \textcolor{red}{Add a graph of where my scores stand in the scatterplot. Also add the predictions of PR95 for getting College Score 65 or higher.}   
 
@@ -240,17 +238,23 @@ sort(data_corr$College_Score[which(data_corr$HighSchool_PR == 95)])
 
 The median is 68, and the mean is about 67.6.  
 
+Nearby values:  
+
+Look at **HighSchool_PR** 94
+
+```{r HighSchool-PR-94}
+sort(data_corr$College_Score[which(data_corr$HighSchool_PR == 94)])
+```
+
+Look at **HighSchool_PR** 96
+
+```{r HighSchool-PR-96}
+sort(data_corr$College_Score[which(data_corr$HighSchool_PR == 96)])
+```
+
+It is unreasonable to compare with **HighSchool_PR** 97 as a nearby value, because the most prestigious high schools in Taipei typically requires **HighSchool_PR** 97 or higher.^[<https://cclccl-life.blogspot.com/2013/06/blog-post_9.html>] Students with **HighSchool_PR** 97 may receive significantly more resources than the ones with **HighSchool_PR** 95, despite the difference is only two percentage points.  
+
 Write something more, including the logistic regression prediction  
-
-\textcolor{red}{Treat this part as an anecdote and explain my motivation.}    
-
-Instead of dwelling on the past, the author decided to redirect her energy to something more meaningful and constructive. She would like to leverage the opportunity to apply her data science and research skills, and this is why the manuscript was born.   
-
-Should the reproducibility statement be moved to the introduction?  
-
-In addition to statistical analysis, she also wanted to demonstrate full reproducibility of the project. Inspired by \citet{baumer2014r-markdown}, the author decided to incorporate $\mathsf{R}$ Markdown as a reproducible analysis tool into introductory statistics. She also designed her own template to create LaTeX Beamer PDF slides from $\mathsf{R}$ Markdown,^[<https://github.com/star1327p/r-beamer-template>] in which she included some commonly-used LaTeX functions.  
-
-Write something more  
 
 
 # Acknowledgments {.unnumbered}
