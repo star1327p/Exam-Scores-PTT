@@ -217,6 +217,10 @@ full marks (15 out of 15) in English, mathematics, and science in **College_Scor
 
 Copied the graph from Section \ref{bivariate}  
 
+The red dot in the top-right indicates where the author's high school and college entrance exam scores stand.  
+
+More interpretation here  
+
 ```{r bivariate-dup}
 plot(data_corr$HighSchool_PR, data_corr$College_Score,
      main = "High School and College Entrance Exam Scores",
@@ -236,30 +240,38 @@ Check all **College_Score** datapoints for **HighSchool_PR** 95
 sort(data_corr$College_Score[which(data_corr$HighSchool_PR == 95)])
 ```
 
-The median is 68, and the mean is about 67.6.  
+Seven datapoints: The median is 68, and the mean is about 67.6.  
 
 Nearby values:  
 
-Look at **HighSchool_PR** 94
+Look at **HighSchool_PR** 94  
 
 ```{r HighSchool-PR-94}
 sort(data_corr$College_Score[which(data_corr$HighSchool_PR == 94)])
 ```
 
-Look at **HighSchool_PR** 96
+Ten datapoints: The median is 66, and the mean is 63.  
+
+Look at **HighSchool_PR** 96  
 
 ```{r HighSchool-PR-96}
 sort(data_corr$College_Score[which(data_corr$HighSchool_PR == 96)])
 ```
 
+Five datapoints: The median is 67, and the mean is 67.4.  
+
 It is unreasonable to compare with **HighSchool_PR** 97 as a nearby value, because the most prestigious high schools in Taipei typically requires **HighSchool_PR** 97 or higher.^[<https://cclccl-life.blogspot.com/2013/06/blog-post_9.html>] Students with **HighSchool_PR** 97 may receive significantly more resources than the ones with **HighSchool_PR** 95, despite the difference is only two percentage points.  
+
+Add: Observe the graph $\Rightarrow$ **College_Score** 69 is about the middle of the **College_Score** datapoints for **HighSchool_PR** 97-99.  
+
+Should I incorporate the median and mean for this group here?  
 
 Write something more, including the logistic regression prediction  
 
 
 # Acknowledgments {.unnumbered}
 
-The author would like to thank Dr. Mine Cetinkaya-Rundel and Dr. David Banks at Duke University; they both motivated the author to teach statistics and create reproducible work in `R`. The author is also grateful to her Microsoft colleagues Smit Patel and Dylan Stout for troubleshooting GitHub issues.  
+The author would like to thank Dr. Mine Cetinkaya-Rundel and Dr. David Banks at Duke University; they both motivated the author to teach statistics and create reproducible work in $\mathsf{R}$. The author is also grateful to her Microsoft colleagues Smit Patel and Dylan Stout for troubleshooting GitHub issues.  
 
 Finally, the author would like to acknowledge Dr. Cliburn Chan and Dr. Janice McCarthy for introducing her to GitHub in the statistical computation course at Duke University. This provided her the foundations to use GitHub as a modern version control system in the first place.
 
