@@ -109,8 +109,6 @@ Also, list several mobile apps for readers to access PTT on a smart phone. Commo
 
 Bivariate exploration subsection:  
 
-Add a scatterplot for **HighSchool_PR** at least 80 vs **College_Score** at least 60.  
-
 Add my thoughts about categorical data analysis (e.g. proportional hazards model?!)  
 
 \section*{\textcolor{red}{Unfinished above}}  
@@ -197,8 +195,6 @@ Add my thoughts about categorical data analysis (e.g. proportional hazards model
 
 \section*{\textcolor{red}{Unfinished below}}
 
-\textcolor{red}{Continue to separate this enormous \texttt{.Rmd} into smaller files.}  
-
 This manuscript was created because the author reflected on her own experience regarding high school and college entrance exams. Instead of dwelling on the past, the author decided to redirect her energy to something more meaningful and constructive. She leveraged the opportunity to apply her data science and research skills. In addition to statistical analysis, she also wanted to demonstrate full reproducibility of the project. Inspired by \citet{baumer2014r-markdown}, the author decided to incorporate $\mathsf{R}$ Markdown as a reproducible analysis tool into introductory statistics. She also designed her own template to create LaTeX Beamer PDF slides from $\mathsf{R}$ Markdown,^[<https://github.com/star1327p/r-beamer-template>] in which she included some commonly-used LaTeX functions.  
 
 The author scored **HighSchool_PR** 95 in Year 2004, but she got admitted to Taipei First Girls' High School because the special class for math and science track had a separate admission process at that time. Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] usually requires **HighSchool_PR** 99 for admission, with few exceptions such as recruited athletes^[<https://www.sa.gov.tw/PageContent?n=1265>] and students with disabilities.^[<http://www.rootlaw.com.tw/LawArticle.aspx?LawID=A040080080001900-1020822>] Several years later, the policy changed so that students had to be admitted to the high school first in order to try for the special class placement within. Most students in the special class had **HighSchool_PR** 99 anyway, and the author was one of the few who did not. Hence the author wondered whether she would have similar academic performance, had she enrolled in a different high school commensurate to **HighSchool_PR** 95 in Taipei, Taiwan.    
@@ -215,11 +211,7 @@ full marks (15 out of 15) in English, mathematics, and science in **College_Scor
   
 \textcolor{red}{Add a graph of where my scores stand in the scatterplot. Also add the predictions of PR95 for getting College Score 65 or higher.}   
 
-Copied the graph from Section \ref{bivariate}  
-
-The red dot in the top-right indicates where the author's high school and college entrance exam scores stand.  
-
-More interpretation here  
+In this graph from Section \ref{bivariate}, the red dot in the top-right indicates where the author's high school and college entrance exam scores stand. **HighSchool_PR** 95 and **College_Score** 69 are definitely above-average scores, despite imperfect.    
 
 ```{r bivariate-dup}
 plot(data_corr$HighSchool_PR, data_corr$College_Score,
@@ -227,12 +219,15 @@ plot(data_corr$HighSchool_PR, data_corr$College_Score,
      xlab="HighSchool_PR",
      ylab="College_Score")
 
+abline(h=60,v=80)
+
 points(x=95, y=69, col="red", pch=19)
 
 # UNFINISHED HERE
-# Add the datapoint of (HighSchool_PR = 95, College_Score = 69)
-# Should I add a graph for top-scorers as a zoom-in?
+# No need to zoom-in for top scorers, because the separation lines show this already.
 ```
+
+
 
 Check all **College_Score** datapoints for **HighSchool_PR** 95  
 
