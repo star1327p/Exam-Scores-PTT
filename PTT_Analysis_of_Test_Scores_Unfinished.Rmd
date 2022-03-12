@@ -197,16 +197,7 @@ This manuscript was created because the author reflected on her own experience r
 
 The author scored **HighSchool_PR** 95 in Year 2004, but she got admitted to Taipei First Girls' High School because the special class for math and science track had a separate admission process at that time. Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] usually requires **HighSchool_PR** 99 for admission, with few exceptions such as recruited athletes^[<https://www.sa.gov.tw/PageContent?n=1265>] and students with disabilities.^[<http://www.rootlaw.com.tw/LawArticle.aspx?LawID=A040080080001900-1020822>] Several years later, the policy changed so that students had to be admitted to the high school first in order to try for the special class placement within. Most students in the special class had **HighSchool_PR** 99 anyway, and the author was one of the few who did not. Hence the author wondered whether she would have similar academic performance, had she enrolled in a different high school commensurate to **HighSchool_PR** 95 in Taipei, Taiwan.    
 
-\section*{\textcolor{red}{Unfinished below}}  
-
-The author got **College_Score** 69 on the General Scholastic Ability Test (GSAT) in Year 2007. Later that year, she took the Advanced Subjects Test (AST) and got admitted to The Department of Electrical Engineering at National Taiwan University (NTUEE).   
-
-State the admissions and rejections^[<https://sites.google.com/site/christinepeijinnchai/resume-cv>]  
-
-Write something more  
-
-NTUEE^[https://web.ee.ntu.edu.tw/eng/index.php] typically requires
-full marks (15 out of 15) in English, mathematics, and science in **College_Score** for the early admission through GSAT.^[https://university.1111.com.tw/univ_depinfo9.aspx?sno=100102&mno=520101] Most students at NTUEE had a **College_Score** of 70 or higher, at the time when 75 was the max possible score. But still a significant number of students got admitted through the AST in July, regardless of their GSAT score.    
+The author got **College_Score** 69 on the General Scholastic Ability Test (GSAT) in Year 2007. She applied to several colleges, and one of them offered her early admission.^[<https://sites.google.com/site/christinepeijinnchai/resume-cv>] However, she was not satisfied with the outcome, so she decided to try for the Advanced Subjects Test (AST). She obtained an excellent score on the AST and got admitted to The Department of Electrical Engineering at National Taiwan University (NTUEE), one of the top colleges in Taiwan. NTUEE^[https://web.ee.ntu.edu.tw/eng/index.php] typically requires full marks (15 out of 15) in English, mathematics, and science in **College_Score** for the early admission through GSAT.^[https://university.1111.com.tw/univ_depinfo9.aspx?sno=100102&mno=520101] Most students at NTUEE had a **College_Score** of 70 or higher, at the time when 75 was the max possible score. But still a significant number of students got admitted through the AST in July, regardless of their GSAT score.    
   
 In the scatterplot from Section \ref{bivariate}, the red dot in the top-right indicates where the author's high school and college entrance exam scores stand. We also added the reference lines for **HighSchool_PR** 80 and **College_Score 60**. **HighSchool_PR** 95 and **College_Score** 69 are definitely above-average scores, despite imperfect.      
 
@@ -222,15 +213,17 @@ points(x=95, y=69, col="red", pch=19)
 
 \section*{\textcolor{red}{Unfinished below}}  
 
+\textcolor{red}{Consider adding subsection headers to this chapter}   
+
 Let's examine all of the **College_Score** datapoints given **HighSchool_PR** 95:    
 
 ```{r HighSchool-PR-95}
 sort(data_corr$College_Score[which(data_corr$HighSchool_PR == 95)])
 ```
 
-Seven datapoints: The median is 68, and the mean is about 67.6.  
+There are seven points in the data, with median 68 and mean about 67.6. One of them is **College_Score** 69, the same score as the author's. (She personally did not respond to this survey in 2015 because she discovered this announcement a few years later.)  
 
-Nearby values:  
+Let's also examine the nearby values, i.e., **HighSchool_PR** 94 and 96.  
 
 Look at **HighSchool_PR** 94  
 
@@ -276,7 +269,7 @@ More interpretation here?
 
 Impostor syndrome $\Rightarrow$ compensated by studying extra hard  
 
-The numbers made the author feel better.  
+The numbers make the author feel better, because she still had a good chance of getting **College_Score** at least 65 given her original **HighSchool_PR**.  
 
 # Acknowledgments {.unnumbered}
 
