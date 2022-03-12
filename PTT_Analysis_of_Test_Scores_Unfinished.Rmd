@@ -256,6 +256,27 @@ Should I incorporate the median and mean for this group here?
 
 Write something more, including the logistic regression prediction  
 
+```{r logit-pred-draft}
+original_model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
+# summary(original_model)
+
+my_data = data.frame(HighSchool_PR = 95, College_Score = 69, CS_65up = TRUE)
+
+pred_prob = predict.glm(original_model, my_data, type="response")
+# type="response" gives the predicted probabilities
+
+pred_prob
+```
+
+Given the author's **HighSchool_PR** 95 score, the predictive probability is about 64.6% in terms of how likely she would have achieved **College_Score** at least 65.  
+
+As a reference, Section \ref{logit-point-est} shows that given **HighSchool_PR** 99, the estimated probability to achieve this is 76.9%.  
+
+More interpretation here?  
+
+Impostor syndrome $\Rightarrow$ compensated by studying extra hard  
+
+The numbers made the author feel better.  
 
 # Acknowledgments {.unnumbered}
 

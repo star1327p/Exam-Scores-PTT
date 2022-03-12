@@ -100,11 +100,11 @@ p_pr99 = exp(alpha + beta*99)/(1+exp(alpha + beta*99))
 p_pr99
 ```
 
-If we look at the data, there are 25 respondents with **HighSchool_PR** 99, and only one of them scored below 65 in the **College_Score**. The data shows the conditional probability to be 96%.  
+If we look at the data, there are 25 respondents with **HighSchool_PR** 99, and only one of them scored below 65 in the **College_Score**. The data show the conditional probability to be 96%.  
 
 $$P(\textbf{College}\_\textbf{Score} \geq 65 | \textbf{HighSchool}\_\textbf{PR} = 99) = \dfrac{24}{25} = 96\%.$$
 
-In this **HighSchool_PR** 99 group, more than half of the respondents (14, to be exact) has a **College_Score** between 71 and 73. Nevertheless, **HighSchool_PR** 99 is not an (almost) necessary condition to achieve **College_Score** 65 or higher. In the group of **College_Score** 65 or higher, only 24 out of the 92 respondents had **HighSchool_PR** 99, which is less than a quarter.  
+In this **HighSchool_PR** 99 group, more than half of the respondents (14, to be exact) had a **College_Score** between 71 and 73. Nevertheless, **HighSchool_PR** 99 is not an (almost) necessary condition to achieve **College_Score** 65 or higher. In the group of **College_Score** 65 or higher, only 24 out of the 92 respondents had **HighSchool_PR** 99, which is less than a quarter.  
 
 $$P(\textbf{HighSchool}\_\textbf{PR} = 99 | \textbf{College}\_\textbf{Score} \geq 65) = \dfrac{24}{92} \approx 26\%.$$
 
