@@ -241,7 +241,19 @@ sort(data_corr$College_Score[which(data_corr$HighSchool_PR == 96)])
 
 Five datapoints: The median is 67, and the mean is 67.4.  
 
-It is unreasonable to compare with **HighSchool_PR** 97 as a nearby value, because the most prestigious high schools in Taipei typically requires **HighSchool_PR** 97 or higher.^[<https://cclccl-life.blogspot.com/2013/06/blog-post_9.html>] Students with **HighSchool_PR** 97 may receive significantly more resources than the ones with **HighSchool_PR** 95, despite the difference is only two percentage points.  
+Look at **HighSchool_PR** 97-99  
+
+(Although this is an unfair comparison, we are still interested in the outcomes.)  
+
+```{r HighSchool-PR-97-to-99}
+pr97to99 = sort(data_corr$College_Score[which(data_corr$HighSchool_PR %in% c(97,98,99))])
+
+print(paste("Number of datapoints:",length(pr97to99)))
+print(paste("Median College_Score:",median(pr97to99)))
+print(paste("Mean College_Score:",round(mean(pr97to99), digits=1)))
+```
+
+It is somewhat unfair to compare **HighSchool_PR** 95 with **HighSchool_PR** 97 as a nearby value, because the most prestigious high schools in Taipei typically requires **HighSchool_PR** 97 or higher.^[<https://cclccl-life.blogspot.com/2013/06/blog-post_9.html>] Students with **HighSchool_PR** 97 may receive significantly more resources than the ones with **HighSchool_PR** 95, despite the difference is only two percentage points.  
 
 Add: Observe the graph $\Rightarrow$ **College_Score** 69 is about the middle of the **College_Score** datapoints for **HighSchool_PR** 97-99.  
 
@@ -269,13 +281,15 @@ More interpretation here?
 
 Impostor syndrome $\Rightarrow$ compensated by studying extra hard  
 
-The numbers make the author feel better, because she still had a good chance of getting **College_Score** at least 65 given her original **HighSchool_PR**.  
+The numbers made the author feel better, because she still had a good chance of getting **College_Score** at least 65 given her original **HighSchool_PR**.  
 
 # Acknowledgments {.unnumbered}
 
 The author would like to thank Dr. Mine Cetinkaya-Rundel and Dr. David Banks at Duke University; they both motivated the author to teach statistics and create reproducible work in $\mathsf{R}$. The author is also grateful to her Microsoft colleagues Smit Patel and Dylan Stout for troubleshooting GitHub issues.  
 
-Finally, the author would like to acknowledge Dr. Cliburn Chan and Dr. Janice McCarthy for introducing her to GitHub in the statistical computation course at Duke University. This provided her the foundations to use GitHub as a modern version control system in the first place.
+The author would also like to acknowledge Dr. Cliburn Chan and Dr. Janice McCarthy for introducing her to GitHub in the statistical computation course at Duke University. This provided her the foundations to use GitHub as a modern version control system in the first place.  
+
+Finally, the author gives a special mention to her significant other, Hugh Hendrickson, for all his support in the author's professional career development.
 
 # Appendix {.unnumbered}
 
