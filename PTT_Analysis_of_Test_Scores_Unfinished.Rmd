@@ -39,7 +39,7 @@ Ongoing work since 2019.
 
 \textcolor{red}{Write something here}
 
-## Disclaimer {.unnumbered}
+# Disclaimer {.unnumbered}
 
 The opinions and views expressed in this manuscript are those of the author and do not necessarily state or reflect those of Microsoft. The author has a statistics and engineering background, without any training in middle school or high school teaching.
 
@@ -186,20 +186,22 @@ Add my thoughts about categorical data analysis (e.g. proportional hazards model
 ```{r include-project-recap, child = '10-Project-Recap.Rmd'}
 ```
 
-# Additional Resources for Learning {#resources}
+# Recommended Resources for Learning {#resources}
 
 ```{r include-additional-resources, child = '11-Additional-Resources.Rmd'}
 ```
 
-# Final: Personal Remarks
+# Final: Personal Scores and Remarks {#personal-remarks}
 
-This manuscript was created because the author reflected on her own experience regarding high school and college entrance exams. Instead of dwelling on the past, the author decided to redirect her energy to something more meaningful and constructive. She leveraged the opportunity to apply her data science and research skills. In addition to statistical analysis, she also wanted to demonstrate full reproducibility of the project. Inspired by \citet{baumer2014r-markdown}, the author decided to incorporate $\mathsf{R}$ Markdown as a reproducible analysis tool into introductory statistics. She also designed her own template to create LaTeX Beamer PDF slides from $\mathsf{R}$ Markdown,^[<https://github.com/star1327p/r-beamer-template>] in which she included some commonly-used LaTeX functions.  
+This manuscript is created because the author reflected on her own experience regarding high school and college entrance exams. Instead of dwelling on the past, the author decided to redirect her energy to something more meaningful and constructive. She leveraged the opportunity to apply her data science and research skills. In addition to statistical analysis, she also wanted to demonstrate full reproducibility of the project. Inspired by \citet{baumer2014r-markdown}, the author decided to incorporate $\mathsf{R}$ Markdown as a reproducible analysis tool into introductory statistics. She also designed her own template to create LaTeX Beamer PDF slides from $\mathsf{R}$ Markdown,^[<https://github.com/star1327p/r-beamer-template>] in which she included some commonly-used LaTeX functions.  
 
 The author scored **HighSchool_PR** 95 in Year 2004, but she got admitted to Taipei First Girls' High School because the special class for math and science track had a separate admission process at that time. Taipei First Girls' High School^[http://web.fg.tp.edu.tw/~tfghweb/EnglishPage/index.php] usually requires **HighSchool_PR** 99 for admission, with few exceptions such as recruited athletes^[<https://www.sa.gov.tw/PageContent?n=1265>] and students with disabilities.^[<http://www.rootlaw.com.tw/LawArticle.aspx?LawID=A040080080001900-1020822>] Several years later, the policy changed so that students had to be admitted to the high school first in order to try for the special class placement within. Most students in the special class had **HighSchool_PR** 99 anyway, and the author was one of the few who did not. Hence the author wondered whether she would have similar academic performance, had she enrolled in a different high school commensurate to **HighSchool_PR** 95 in Taipei, Taiwan.    
 
 The author got **College_Score** 69 on the General Scholastic Ability Test (GSAT) in Year 2007. She applied to several colleges, and one of them offered her early admission.^[<https://sites.google.com/site/christinepeijinnchai/resume-cv>] However, she was not satisfied with the outcome, so she decided to try for the Advanced Subjects Test (AST). She obtained an excellent score on the AST and got admitted to The Department of Electrical Engineering at National Taiwan University (NTUEE), one of the top colleges in Taiwan. NTUEE^[https://web.ee.ntu.edu.tw/eng/index.php] typically requires full marks (15 out of 15) in English, mathematics, and science in **College_Score** for the early admission through GSAT.^[https://university.1111.com.tw/univ_depinfo9.aspx?sno=100102&mno=520101] Most students at NTUEE had a **College_Score** of 70 or higher, at the time when 75 was the max possible score. But still a significant number of students got admitted through the AST in July, regardless of their GSAT score.    
+
+## Comparison with the Data
   
-In the scatterplot from Section \ref{bivariate}, the red dot in the top-right indicates where the author's high school and college entrance exam scores stand. We also added the reference lines for **HighSchool_PR** 80 and **College_Score 60**. **HighSchool_PR** 95 and **College_Score** 69 are definitely above-average scores, despite imperfect.      
+The author's high school and college entrance exam scores are indicated as the red dot in the scatterplot below from Section \ref{bivariate}. We also added the reference lines for **HighSchool_PR** 80 and **College_Score 60**. **HighSchool_PR** 95 and **College_Score** 69 are definitely above-average scores, despite imperfect.      
 
 ```{r bivariate-dup}
 plot(data_corr$HighSchool_PR, data_corr$College_Score,
@@ -211,37 +213,33 @@ abline(h=60,v=80)
 points(x=95, y=69, col="red", pch=19)
 ```
 
-\section*{\textcolor{red}{Unfinished below}}  
-
-\textcolor{red}{Consider adding subsection headers to this chapter}   
-
-Let's examine all of the **College_Score** datapoints given **HighSchool_PR** 95:    
+Let's examine all of the **College_Score** datapoints given **HighSchool_PR** 95. There are seven points in the data, with median 68 and mean about 67.6. One of them is **College_Score** 69, the same score as the author's. (She personally did not respond to this survey in 2015 because she discovered this announcement a few years later.)     
 
 ```{r HighSchool-PR-95}
 sort(data_corr$College_Score[which(data_corr$HighSchool_PR == 95)])
 ```
 
-There are seven points in the data, with median 68 and mean about 67.6. One of them is **College_Score** 69, the same score as the author's. (She personally did not respond to this survey in 2015 because she discovered this announcement a few years later.)  
+Let's also examine the nearby values, i.e., the **College_Score** values given **HighSchool_PR** 94 or 96.   
 
-Let's also examine the nearby values, i.e., **HighSchool_PR** 94 and 96.  
-
-Look at **HighSchool_PR** 94  
+For **HighSchool_PR** 94, there are ten **College_Score** values in the data. The median is 66, and the mean is 63. The author's **College_Score** would be the second highest score in this batch.   
 
 ```{r HighSchool-PR-94}
 sort(data_corr$College_Score[which(data_corr$HighSchool_PR == 94)])
 ```
 
-Ten datapoints: The median is 66, and the mean is 63.  
-
-Look at **HighSchool_PR** 96  
+For **HighSchool_PR** 96, there are five **College_Score** values in the data. The median is 67, and the mean is 67.4. The author's **College_Score** would still be the second highest in this batch.  
 
 ```{r HighSchool-PR-96}
 sort(data_corr$College_Score[which(data_corr$HighSchool_PR == 96)])
 ```
 
-Five datapoints: The median is 67, and the mean is 67.4.  
+\section*{\textcolor{red}{Unfinished below}}   
 
 Look at **HighSchool_PR** 97-99  
+
+Number of datapoints: 58  
+
+The median is 70, and the mean is 68.  
 
 (Although this is an unfair comparison, we are still interested in the outcomes.)  
 
@@ -257,7 +255,10 @@ It is somewhat unfair to compare **HighSchool_PR** 95 with **HighSchool_PR** 97 
 
 Add: Observe the graph $\Rightarrow$ **College_Score** 69 is about the middle of the **College_Score** datapoints for **HighSchool_PR** 97-99.  
 
-Should I incorporate the median and mean for this group here?  
+
+## Comparison with the Model Prediction
+
+\section*{\textcolor{red}{Unfinished below}}  
 
 Write something more, including the logistic regression prediction  
 
