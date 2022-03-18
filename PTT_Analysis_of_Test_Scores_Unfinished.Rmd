@@ -233,19 +233,18 @@ For **HighSchool_PR** 96, there are five **College_Score** values in the data. T
 sort(data_corr$College_Score[which(data_corr$HighSchool_PR == 96)])
 ```
 
-\section*{\textcolor{red}{Unfinished below}}   
-
-Finally, let's explore the **College_Score** values of **HighSchool_PR** 97-99. There are 58 datapoints, which account for 30.8% of the total data. The median of **College_Score** is 70, and the mean is 68. In the earlier graph of this subsection, **College_Score** 69 is about in the middle of the **College_Score** datapoints for **HighSchool_PR** 97-99. This observation is similar to what we discovered in the subset.   
+Finally, let's explore the **College_Score** values of **HighSchool_PR** 97-99. There are 58 datapoints, which account for 30.8% of the total data. The median of **College_Score** is 70, and the mean is 68. Note that the max possible **College_Score** is 75, and few respondents achieved 74 or 75 in the entire dataset. In the earlier graph of this subsection, **College_Score** 69 is about in the middle of the **College_Score** datapoints for **HighSchool_PR** 97-99. This observation is similar to what we discovered in the subset.   
 
 ```{r HighSchool-PR-97-to-99}
 pr97to99 = sort(data_corr$College_Score[which(data_corr$HighSchool_PR %in% c(97,98,99))])
 
+print(pr97to99)
 print(paste("Number of datapoints:",length(pr97to99)))
 print(paste("Median College_Score:",median(pr97to99)))
 print(paste("Mean College_Score:",round(mean(pr97to99), digits=1)))
 ```
 
-**College_Score** 69 is an above-average outcome given the author's **HighSchool_PR** 95 score. Although it is somewhat unfair to compare **HighSchool_PR** 95 with **HighSchool_PR** 97 as a nearby value, **College_Score** 69 is only one point below the median **College_Score** of the **HighSchool_PR** 97-99 group. We do not know whether the positive outcome is due to the fact that the author studied extra hard in high school given the more competitive environment, and/or she received more resources than most respondents with **HighSchool_PR** 95.   
+Given the author's **HighSchool_PR** 95 score, **College_Score** 69 is an above-average outcome. Although it is somewhat unfair to compare **HighSchool_PR** 95 with **HighSchool_PR** 97 as a nearby value, **College_Score** 69 is only one point below the median **College_Score** of the **HighSchool_PR** 97-99 group. We do not know whether the positive outcome is due to the fact that the author studied extra hard in high school given the more competitive environment, and/or she received more resources than most respondents with **HighSchool_PR** 95.   
 
 The most prestigious high schools in Taipei typically requires **HighSchool_PR** 97 or higher.^[<https://cclccl-life.blogspot.com/2013/06/blog-post_9.html>] Students in Taipei with **HighSchool_PR** 97 may receive significantly more resources than the ones with **HighSchool_PR** 95, despite the difference is only two percentage points. This phenomenon is less likely in areas where the **HighSchool_PR** requirement is not as high in their top local high schools. 
 
@@ -254,6 +253,8 @@ The most prestigious high schools in Taipei typically requires **HighSchool_PR**
 \section*{\textcolor{red}{Unfinished below}}  
 
 Write something more, including the logistic regression prediction  
+
+Use the logistic regression model built in Section \ref{threshold-65}.  
 
 ```{r logit-pred-draft}
 original_model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
