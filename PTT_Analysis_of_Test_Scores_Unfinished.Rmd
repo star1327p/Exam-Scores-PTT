@@ -244,7 +244,7 @@ print(paste("Median College_Score:",median(pr97to99)))
 print(paste("Mean College_Score:",round(mean(pr97to99), digits=1)))
 ```
 
-Given the author's **HighSchool_PR** 95 score, **College_Score** 69 is an above-average outcome. Although it is somewhat unfair to compare **HighSchool_PR** 95 with **HighSchool_PR** 97 as a nearby value, **College_Score** 69 is only one point below the median **College_Score** of the **HighSchool_PR** 97-99 group. We do not know whether the positive outcome is due to the fact that the author studied extra hard in high school given the more competitive environment, and/or she received more resources than most respondents with **HighSchool_PR** 95.   
+Given the author's **HighSchool_PR** 95 score, **College_Score** 69 is an above-average outcome. Although it is somewhat unfair to compare **HighSchool_PR** 95 with **HighSchool_PR** 97 as a nearby value, **College_Score** 69 is only one point below the median **College_Score** of the **HighSchool_PR** 97-99 group. We do not know whether the positive outcome is due to the fact that the author studied extra hard given the more competitive environment in her high school, and/or she received more resources than most respondents with **HighSchool_PR** 95.   
 
 The most prestigious high schools in Taipei typically requires **HighSchool_PR** 97 or higher.^[<https://cclccl-life.blogspot.com/2013/06/blog-post_9.html>] Students in Taipei with **HighSchool_PR** 97 may receive significantly more resources than the ones with **HighSchool_PR** 95, despite the difference is only two percentage points. This phenomenon is less likely in areas where the **HighSchool_PR** requirement is not as high in their top local high schools. 
 
@@ -266,16 +266,7 @@ pred_prob
 
 \section*{\textcolor{red}{Unfinished below}}  
 
-Again, the logistic regression model assumes all else are held equal.  
-
-More interpretation here  
-
-What cannot be factored in?  
-
-Impostor syndrome $\Rightarrow$ compensated by studying extra hard  
-
-Impractical to find similarly situated people, but we need to define what is "similarly situated".
-  
+Again, the logistic regression model assumes all else are held equal. We also assume that most respondents attended a high school whose admission requirement is about their own **HighSchool_PR**. From this data, we cannot measure the effect from impostor syndrome -- one decided to study extra hard to compensate that he/she had a much lower **HighSchool_PR** compared with his/her classmates in high school. Given the goal of demonstrating statistical methods in this project, we do not think it is practical to find such people and compare their scores with the people who did not receive this opportunity. This can be a full research project in the education field.  
 
 # Acknowledgments {.unnumbered}
 
