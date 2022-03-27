@@ -10,7 +10,7 @@ State why it is error-prone to copy-paste tables and plots to the word processor
 
 The graphs in this manuscript are mainly for demonstration; they are created using the basic `plot` function as the default in RStudio. For advanced data visualization, we highly encourage readers to use the $\mathsf{R}$ package `ggplot2` \cite{ggplot2}. This package incorporates data visualization theory and provides much more capability to convey the message in a graph.       
 
-$\mathsf{R}$ package `tidyverse`?  
+$\mathsf{R}$ package `tidyverse` \cite{r-tidyverse}  
 
 Consider adding books about data visualization theory, citations needed  
 
