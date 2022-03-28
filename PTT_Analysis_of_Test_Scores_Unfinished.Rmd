@@ -223,14 +223,16 @@ State why it is error-prone to copy-paste tables and plots to the word processor
 
 The graphs in this manuscript are mainly for demonstration; they are created using the basic `plot` function as the default in RStudio. For advanced data visualization, we highly encourage readers to use the $\mathsf{R}$ package `ggplot2` \cite{ggplot2}. This package incorporates data visualization theory and provides much more capability to convey the message in a graph.       
 
-$\mathsf{R}$ package `tidyverse` \cite{r-tidyverse}  
-
 Consider adding books about data visualization theory, citations needed  
 
 - *The Grammar of Graphics*^[<https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=as_li_ss_tl>]
 
 - Add something more  
 
+For advanced operations in $\mathsf{R}$, we recommend the $\mathsf{R}$ package  \cite{r-tidyverse} because it provides a fast, efficient, and organized workflow for general data modeling.^[<https://www.r-bloggers.com/2018/09/why-learn-the-tidyverse/>] The book \textit{$\mathsf{R}$ for Data Science: Import, Tidy, Transform, Visualize, and Model Data} \cite{wickham2016r} demonstrates an end-to-end cycle of using `tidyverse` in data science.  
+
 The code is also for demonstration. The author makes every effort to ensure correctness and readability of the code, but errors and inconsistencies are inevitable. Since this is an open-source project on GitHub,^[<https://github.com/star1327p/Exam-Scores-PTT>], readers are welcome to make a pull request and/or report any issues. To learn more about better coding styles, we recommend the computer science books *Clean Code* \cite{martin2009clean} and *Code Complete* \cite{mcconnell2004code}.  
+
+Talk about Python, `numpy`, and `scikit-learn`, etc?!
 
 # References {.unnumbered #references}
