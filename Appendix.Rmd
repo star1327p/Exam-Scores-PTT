@@ -1,21 +1,3 @@
-\textcolor{red}{Consider moving the Appendix into Additional Resources}  
+\textcolor{red}{This is the file we want to move content into.}  
 
-RStudio, code reproducibility, etc.  
-
-Need to specify the $\mathsf{R}$ libraries.  
-
-This document was created in RStudio, using $\mathsf{R}$ Markdown \cite{r-markdown-pkg} with `knitr` to PDF.^[<https://rmarkdown.rstudio.com/articles_intro.html>] $\mathsf{R}$ Markdown can generate reports in HTML and Microsoft Word formats as well. In addition to reports, $\mathsf{R}$ Markdown also provides a template for presentation slides, and the output can be in HTML, PDF, and Microsoft PowerPoint files.   
-
-State why it is error-prone to copy-paste tables and plots to the word processor for the final report \cite{baumer2014r-markdown}.   
-
-The graphs in this manuscript are mainly for demonstration; they are created using the basic `plot` function as the default in RStudio. For advanced data visualization, we highly encourage readers to use the $\mathsf{R}$ package `ggplot2` \cite{ggplot2}. This package incorporates data visualization theory and provides much more capability to convey the message in a graph.       
-
-$\mathsf{R}$ package `tidyverse` \cite{r-tidyverse}  
-
-Consider adding books about data visualization theory, citations needed  
-
-- *The Grammar of Graphics*^[<https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=as_li_ss_tl>]
-
-- Add something more  
-
-The code is also for demonstration. The author makes every effort to ensure correctness and readability of the code, but errors and inconsistencies are inevitable. Since this is an open-source project on GitHub,^[<https://github.com/star1327p/Exam-Scores-PTT>], readers are welcome to make a pull request and/or report any issues. To learn more about better coding styles, we recommend the computer science books *Clean Code* \cite{martin2009clean} and *Code Complete* \cite{mcconnell2004code}.  
+  
