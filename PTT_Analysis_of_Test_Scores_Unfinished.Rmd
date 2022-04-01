@@ -219,15 +219,19 @@ Need to specify the $\mathsf{R}$ libraries.
 
 This document was created in RStudio, using $\mathsf{R}$ Markdown \cite{r-markdown-pkg} with `knitr` to PDF.^[<https://rmarkdown.rstudio.com/articles_intro.html>] $\mathsf{R}$ Markdown can generate reports in HTML and Microsoft Word formats as well. In addition to reports, $\mathsf{R}$ Markdown also provides a template for presentation slides, and the output can be in HTML, PDF, and Microsoft PowerPoint files.   
 
-State why it is error-prone to copy-paste tables and plots to the word processor for the final report \cite{baumer2014r-markdown}.   
+\textcolor{red}{State why it is error-prone to copy-paste tables and plots to the word processor for the final report \cite{baumer2014r-markdown}.}  
+
+Write something here  
 
 The graphs in this manuscript are mainly for demonstration; they are created using the basic `plot` function as the default in RStudio. For advanced data visualization, we highly encourage readers to use the $\mathsf{R}$ package `ggplot2` \cite{ggplot2}. This package incorporates data visualization theory and provides much more capability to convey the message in a graph.       
 
 Consider adding books about data visualization theory, citations needed  
 
-- *The Grammar of Graphics*^[<https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=as_li_ss_tl>]
+- *The Grammar of Graphics* \cite{wilkinson2012grammar}: mainly for `ggplot2`
 
-- Add something more  
+- *Semiology of Graphics: Diagrams, Networks, Maps* \cite{bertin1983semiology}: deep dive of data visualization theory
+
+- *Visualize This* \cite{yau2011visualize}: simple, hands-on guide for data visualization  
 
 For advanced operations in $\mathsf{R}$, we recommend the $\mathsf{R}$ package  \cite{r-tidyverse} because it provides a fast, efficient, and organized workflow for general data modeling.^[<https://www.r-bloggers.com/2018/09/why-learn-the-tidyverse/>] The book \textit{$\mathsf{R}$ for Data Science: Import, Tidy, Transform, Visualize, and Model Data} \cite{wickham2016r} demonstrates an end-to-end cycle of using `tidyverse` in data science.  
 
