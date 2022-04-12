@@ -213,9 +213,9 @@ Finally, the author gives a special mention to her significant other, Hugh Hendr
 ```{r include-appendix, child = 'Appendix.Rmd'}
 ```
 
-This document was created with $\mathsf{R}$ Markdown \cite{r-markdown-pkg} in RStudio.^[<https://rmarkdown.rstudio.com/articles_intro.html>] $\mathsf{R}$ Markdown has a framework to directly incorporate code and graphs in the report. This not only reduces the errors from copy-pasting tables and plots, but also ensures reproducibility of the data analysis \cite{baumer2014r-markdown}. $\mathsf{R}$ Markdown can generate reports in PDF, HTML, and Microsoft Word formats. $\mathsf{R}$ Markdown also provides a template for presentation slides, and the output can be in HTML, PDF, and Microsoft PowerPoint files.    
+This document was created with $\mathsf{R}$ Markdown \cite{r-markdown-pkg} in RStudio.^[<https://rmarkdown.rstudio.com/articles_intro.html>] $\mathsf{R}$ Markdown has a framework to directly incorporate code and graphs in the report. This not only reduces the errors from copy-pasting tables and plots, but also ensures reproducibility of the data analysis \cite{baumer2014r-markdown}. $\mathsf{R}$ Markdown can generate reports in PDF, HTML, or Microsoft Word formats. $\mathsf{R}$ Markdown also provides a template for presentation slides, and the output can be in HTML, PDF, or Microsoft PowerPoint files.    
 
-Also consider: `bookdown`?!
+Also consider: `bookdown` \cite{r-bookdown}  
 
 The graphs in this manuscript are mainly for demonstration; they are created using the basic `plot` function as the default in RStudio. For advanced data visualization, we highly encourage readers to use the $\mathsf{R}$ package `ggplot2` \cite{ggplot2}. This package incorporates data visualization theory and provides much more capability to convey the message in a graph.       
 
