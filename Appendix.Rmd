@@ -1,3 +1,0 @@
-\textcolor{red}{This is the file we want to move content into.}  
-
-  
