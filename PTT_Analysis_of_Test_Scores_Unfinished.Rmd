@@ -209,9 +209,16 @@ Here are some resources we recommend for the path of learning statistics:
   
 The Statistics 101 course covers the fundamental statistical concepts for students to perform data analysis, and the programming component is often included. For readers who would like a refresher, we recommend the textbook *OpenIntro Statistics* \cite{diez2019openintro} and the online course *Statistics with `R` Specialization* on Coursera.^[<https://www.coursera.org/specializations/statistics>] Basic concepts like hypothesis testing and confidence intervals are also asked in technical interviews for data science jobs. Beware!  
   
-To go further in statistics, we suggest reading *The Statistical Sleuth: A Course in Methods of Data Analysis* \cite{ramsey2013statistical}, which is the textbook for undergraduate-level regression analysis at Duke Statistical Science.^[<https://www2.stat.duke.edu/courses/Fall18/sta210.001/>] The book covers intermediate topics such as ANOVA (Analysis of Variance) and multiple linear regression. It also provides data files for case studies and exercises.^[<http://www.statisticalsleuth.com/>]    
+To go further in statistics, we suggest reading *The Statistical Sleuth: A Course in Methods of Data Analysis* \cite{ramsey2013statistical}, which is the textbook for undergraduate-level regression analysis at Duke Statistical Science.^[<https://www2.stat.duke.edu/courses/Fall18/sta210.001/>] The book covers intermediate topics such as ANOVA (Analysis of Variance) and multiple linear regression. It also provides data files for case studies and exercises.^[<http://www.statisticalsleuth.com/>]   
+
+\textcolor{red}{Elaborate on each textbook and state the math prerequisites}  
 
 Also add textbooks from Duke Stat courses: STA230, STA250, STA611  
+
+- *Statistics: Unlocking the Power of Data* \cite{lock2020statistics}: More applied
+
+- *Probability and Statistics* \cite{degroot2012probability}: More theoretical, and Calculus is a prerequisite.  
+
 
 For the advanced readers, we recommend the following graduate level statistics textbooks:    
 
@@ -219,7 +226,7 @@ For the advanced readers, we recommend the following graduate level statistics t
 
 - *Statistical Inference* \cite{casella2021statistical}
 
-- *Categorical Data Analysis* \cite{agresti2003categorical}
+- *Categorical Data Analysis* \cite{agresti2003categorical}: Logistic regression and others?!
 
 There are many other high-quality statistics textbooks, and we selected these as a starting point. If the readers are interested in a data science career, learning statistics builds the foundations and expands your toolbox to generate insights from data.^[<https://towardsdatascience.com/the-difference-between-data-science-and-statistics-168c7062c201>] We also recommend exploring Kaggle datasets^[<https://www.kaggle.com/datasets>] for hands-on practice. To get closer to analyzing real-world data, we encourage the readers to attend data hackathons, contribute to open-source projects, and/or volunteer technical skills at nonprofit organizations like Statistics Without Borders.^[<https://www.statisticswithoutborders.org/>]   
 
