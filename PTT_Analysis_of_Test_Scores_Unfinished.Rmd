@@ -234,23 +234,17 @@ There are many other high-quality statistics textbooks, and we selected these as
 
 \section*{\textcolor{red}{Unfinished below}}
 
-Add a foreword paragraph?!  
+\textcolor{red}{Add a foreword paragraph?!}    
 
-This document was created with $\mathsf{R}$ Markdown \cite{r-markdown-pkg} in RStudio.^[<https://rmarkdown.rstudio.com/articles_intro.html>] $\mathsf{R}$ Markdown has a framework to directly incorporate code and graphs in the report. This not only reduces the errors from copy-pasting tables and plots, but also ensures reproducibility of the data analysis \cite{baumer2014r-markdown}. $\mathsf{R}$ Markdown can generate reports in PDF, HTML, or Microsoft Word formats. $\mathsf{R}$ Markdown also provides a template for presentation slides, and the output can be in HTML, PDF, or Microsoft PowerPoint files. For a full book with multiple chapters, we recommend using the $\mathsf{R}$ package `bookdown` \cite{r-bookdown} for a comprehensive and reproducible workflow.  
+This document is created with $\mathsf{R}$ Markdown \cite{r-markdown-pkg} in RStudio.^[<https://rmarkdown.rstudio.com/articles_intro.html>] $\mathsf{R}$ Markdown has a framework to directly incorporate code and graphs in the report. This not only reduces the errors from copy-pasting tables and plots, but also ensures reproducibility of the data analysis \cite{baumer2014r-markdown}. $\mathsf{R}$ Markdown can generate reports in PDF, HTML, or Microsoft Word formats. $\mathsf{R}$ Markdown also provides a template for presentation slides, and the output can be in HTML, PDF, or Microsoft PowerPoint files. For a full book with multiple chapters, we recommend using the $\mathsf{R}$ package `bookdown` \cite{r-bookdown} for a comprehensive and reproducible workflow.  
 
-The graphs in this manuscript are mainly for demonstration; they are created using the basic `plot` function as the default in RStudio. For advanced data visualization, we highly encourage readers to use the $\mathsf{R}$ package `ggplot2` \cite{ggplot2}. This package provides much more capability to convey the message in a graph, and the data visualization theory behind `ggplot2` is based on *The Grammar of Graphics* \cite{wilkinson2012grammar}.      
+The graphs in this manuscript are mainly for demonstration; they are created using the basic `plot` function as the default in RStudio. For advanced data visualization, we highly encourage readers to use the $\mathsf{R}$ package `ggplot2` \cite{ggplot2}. This package provides much more capability to convey the message in a graph, and the foundations behind `ggplot2` are based on *The Grammar of Graphics* \cite{wilkinson2012grammar}. For a simple and hands-on guide for data visualization, we recommend the book *Visualize This* \cite{yau2011visualize} to determine which types of graphs are most appropriate for which scenarios. On the other hand, *Semiology of Graphics: Diagrams, Networks, Maps* \cite{bertin1983semiology} is a comprehensive textbook for data visualization theory. Concepts such as human perception are technology-agnostic; the principles apply to almost any tool for data visualization.     
 
-\textcolor{red}{Consider adding books about data visualization theory, citations needed}    
+\section*{\textcolor{red}{Unfinished below}}  
 
-- *Semiology of Graphics: Diagrams, Networks, Maps* \cite{bertin1983semiology}: deep dive of data visualization theory
+The code is also for demonstration. The author makes every effort to ensure correctness and readability of the code, but errors and inconsistencies are inevitable. Since this is an open-source project on GitHub,^[<https://github.com/star1327p/Exam-Scores-PTT>], readers are welcome to make a pull request and/or report any issues. To learn more about better coding styles, we recommend the computer science books *Clean Code* \cite{martin2009clean} and *Code Complete* \cite{mcconnell2004code}. For more complicated operations in $\mathsf{R}$, we recommend the $\mathsf{R}$ package `tidyverse` \cite{r-tidyverse} because it provides a fast, efficient, and organized workflow for general data modeling.^[<https://www.r-bloggers.com/2018/09/why-learn-the-tidyverse/>] The book \textit{$\mathsf{R}$ for Data Science: Import, Tidy, Transform, Visualize, and Model Data} \cite{wickham2016r} demonstrates an end-to-end cycle of using `tidyverse` in data science.  
 
-- *Visualize This* \cite{yau2011visualize}: simple, hands-on guide for data visualization  
-
-The code is also for demonstration. The author makes every effort to ensure correctness and readability of the code, but errors and inconsistencies are inevitable. Since this is an open-source project on GitHub,^[<https://github.com/star1327p/Exam-Scores-PTT>], readers are welcome to make a pull request and/or report any issues. To learn more about better coding styles, we recommend the computer science books *Clean Code* \cite{martin2009clean} and *Code Complete* \cite{mcconnell2004code}.  
-
-For more complicated operations in $\mathsf{R}$, we recommend the $\mathsf{R}$ package `tidyverse` \cite{r-tidyverse} because it provides a fast, efficient, and organized workflow for general data modeling.^[<https://www.r-bloggers.com/2018/09/why-learn-the-tidyverse/>] The book \textit{$\mathsf{R}$ for Data Science: Import, Tidy, Transform, Visualize, and Model Data} \cite{wickham2016r} demonstrates an end-to-end cycle of using `tidyverse` in data science.  
-
-Talk about Python, `numpy`, and `scikit-learn`, etc?!  
+\textcolor{red}{Talk about Python, `numpy`, and `scikit-learn`, etc?!}  
 
 # Final: Personal Scores and Remarks {#personal-remarks}
 
