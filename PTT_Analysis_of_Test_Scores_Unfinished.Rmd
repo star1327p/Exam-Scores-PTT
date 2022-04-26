@@ -207,13 +207,10 @@ Need to elaborate on the first paragraph. Cannot just write one line.
 
 Here are some resources we recommend for the path of learning statistics:  
   
-The Statistics 101 course covers the fundamental statistical concepts for students to perform data analysis, and the programming component is often included. For readers who would like a refresher, we recommend the textbook *OpenIntro Statistics* \cite{diez2019openintro} and the online course series *Statistics with `R` Specialization* on Coursera.^[<https://www.coursera.org/specializations/statistics>] Basic concepts like hypothesis testing and confidence intervals are also asked in technical interviews for data science jobs. Beware!  
-
-\textcolor{red}{Add the Bayesian statistics material, stating that knowledge of Calculus is helpful but not required.}  
-
-- *An Introduction to Bayesian Thinking* \cite{clyde2018bayesian101}: Textbook for the Bayesian Statistics online course on Coursera ^[<https://www.coursera.org/learn/bayesian>]          
+The Statistics 101 course covers the fundamental statistical concepts for students to perform data analysis, and the programming component is often included. For readers who would like a refresher, we recommend the textbook *OpenIntro Statistics* \cite{diez2019openintro} and the online course series *Statistics with `R` Specialization* on Coursera.^[<https://www.coursera.org/specializations/statistics>] Basic concepts like hypothesis testing and confidence intervals are also asked in technical interviews for data science jobs. Beware! For an overview of Bayesian Statistics, we recommend the *Bayesian Statistics* online course on Coursera,^[<https://www.coursera.org/learn/bayesian>] along with the open-source textbook *An Introduction to Bayesian Thinking* \cite{clyde2018bayesian101}. At this stage, knowledge of Calculus is helpful but not required.  
   
-To go further in statistics, we suggest reading *The Statistical Sleuth: A Course in Methods of Data Analysis* \cite{ramsey2013statistical}, which is the textbook for undergraduate-level regression analysis at Duke Statistical Science.^[<https://www2.stat.duke.edu/courses/Fall18/sta210.001/>] The book covers intermediate topics such as ANOVA (Analysis of Variance) and multiple linear regression. It also provides data files for case studies and exercises.^[<http://www.statisticalsleuth.com/>]   
+As the next step beyond the introductory level, we suggest reading *The Statistical Sleuth: A Course in Methods of Data Analysis* \cite{ramsey2013statistical}, which is the textbook for undergraduate-level regression analysis at Duke Statistical Science.^[<https://www2.stat.duke.edu/courses/Fall18/sta210.001/>] The book covers intermediate topics such as ANOVA (Analysis of Variance) and multiple linear regression. It also provides data files for case studies and exercises.^[<http://www.statisticalsleuth.com/>]   
+
 
 \textcolor{red}{Elaborate on each textbook and state the math prerequisites}  
 
@@ -223,7 +220,7 @@ Also add textbooks from Duke Stat courses: STA230, STA250, STA611
 
 - *Probability and Statistics* \cite{degroot2012probability}: More theoretical, and Calculus is a prerequisite.  
 
-
+When the readers go further in statistics, they may realize that college-level mathematics becomes increasingly important. Formulas and equations will gradually appear in the curriculum, especially Calculus for continuous functions and matrix algebra for discrete datapoints.   
 
 For the advanced readers, we recommend the following graduate level statistics textbooks. Note that multivariate Calculus and matrix algebra are absolutely necessary.      
 
@@ -235,7 +232,7 @@ For the advanced readers, we recommend the following graduate level statistics t
 
 - *Categorical Data Analysis* \cite{agresti2003categorical}: Logistic regression and others?!
 
-There are many other high-quality statistics textbooks, and we selected these as a starting point. If the readers are interested in a data science career, learning statistics builds the foundations and expands your toolbox to generate insights from data.^[<https://towardsdatascience.com/the-difference-between-data-science-and-statistics-168c7062c201>] We also recommend exploring Kaggle datasets^[<https://www.kaggle.com/datasets>] for hands-on practice. To get closer to analyzing real-world data, we encourage the readers to attend data hackathons, contribute to open-source projects, and/or volunteer technical skills at nonprofit organizations like Statistics Without Borders.^[<https://www.statisticswithoutborders.org/>]   
+There are many other high-quality statistics textbooks, and we selected these as a starting point. If the readers are interested in a data science career, learning statistics builds the foundations and expands your toolbox to generate insights from data.^[<https://towardsdatascience.com/the-difference-between-data-science-and-statistics-168c7062c201>] We also recommend exploring Kaggle datasets^[<https://www.kaggle.com/datasets>] for hands-on practice. To get closer to analyzing real-world data, we encourage the readers to attend data hackathons, contribute to open-source projects, and/or volunteer technical skills at nonprofit organizations like Statistics Without Borders.^[<https://www.statisticswithoutborders.org/>] These activities are not a comprehensive list, and please feel free to get creative and carve your own professional path forward.    
 
 ## Resources for Data Science and Programming
 
