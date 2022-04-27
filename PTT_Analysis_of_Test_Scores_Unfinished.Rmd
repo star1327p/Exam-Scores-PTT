@@ -199,11 +199,19 @@ Add the foreword and the following subsections:
 ```{r include-additional-resources, child = '11-Additional-Resources.Rmd'}
 ```
 
-State that statistics is the core of data analysis?!  
+
 
 ## Resources for Learning Statistics
 
 \textcolor{red}{Need to elaborate on the first paragraph. Cannot just write one line.}  
+
+Statistics is the core of data analysis.^[<https://datascience.virginia.edu/news/how-much-do-data-scientists-need-know-about-statistics>] Even with the aid of machine learning algorithms and integrated computation tools, people still need to know the fundamental concepts in statistics to appropriately interpret the numbers from the data.  
+
+\textcolor{red}{Give some examples here}  
+
+e.g. Compare the sample mean with the population mean. Is the sample a representative sample?  
+
+e.g. Decide whether the median or mean better describes the data.  
 
 Here are some resources we recommend for the path of learning statistics:  
   
