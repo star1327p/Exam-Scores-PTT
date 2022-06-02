@@ -219,9 +219,15 @@ For the advanced readers, we recommend the following graduate level statistics t
 
 \textcolor{red}{Do I need to add this book?}  
 
+These textbooks build on statistical concepts that readers may have already learned at the beginner to intermediate levels. If we can recommend only one textbook, we would choose *Categorical Data Analysis* \cite{agresti2003categorical} because ...   
+
 - *Categorical Data Analysis* \cite{agresti2003categorical}: Logistic regression and others?!  
 
 Applications: binary classification, modeling ordinal data with proportional odds, etc.  
+
+State why categorical data analysis is important.  
+
+Random Forest and other models to capture nonlinear patterns in the data  
 
 There are many other high-quality statistics textbooks in the universe, and we selected these as a starting point. If the readers are interested in a data science career, learning statistics builds the foundations and expands your toolbox to generate insights from data.^[<https://towardsdatascience.com/the-difference-between-data-science-and-statistics-168c7062c201>] We also recommend exploring Kaggle datasets^[<https://www.kaggle.com/datasets>] for hands-on practice. To get closer to analyzing real-world data, we encourage the readers to attend data hackathons, contribute to open-source projects, and/or volunteer technical skills at nonprofit organizations like Statistics Without Borders.^[<https://www.statisticswithoutborders.org/>] These activities are not a comprehensive list, and please feel free to get creative and carve your own professional path forward.    
 
