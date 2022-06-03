@@ -190,18 +190,17 @@ Add my thoughts about categorical data analysis (e.g. proportional hazards model
 
 \section*{\textcolor{red}{Unfinished below}}
 
-Add the foreword and the following subsections:
+The foreword starts here.  
 
-- Resources for Learning Statistics
+Section \ref{learning-statistics} points to some resources for learning statistics, while Section \ref{learning-data-science} takes a step forward to data science and programming.  
 
-- Resources for Data Science and Programming  
 
 ```{r include-additional-resources, child = '11-Additional-Resources.Rmd'}
 ```
 
 
 
-## Resources for Learning Statistics
+## Resources for Learning Statistics {#learning-statistics}
 
 Statistics is the core of data analysis.^[<https://datascience.virginia.edu/news/how-much-do-data-scientists-need-know-about-statistics>] Even with the aid of machine learning algorithms and integrated computation tools, people still need to know the fundamental concepts in statistics to appropriately interpret the numbers from the data. For instance, when you take a sample from the population data, how do you verify that the sample is a representative sample? How do you interpret the model coefficients in the output? Are all of the predictive probabilities between zero and one? Integrated tools make it easy to build and run a model, but what's more important is to choose an appropriate model to implement for the project goal. We also need to be able to detect and troubleshoot issues in the model output.  
 
@@ -215,7 +214,7 @@ For the advanced readers, we recommend the following graduate level statistics t
 
 There are many other high-quality statistics textbooks in the universe, and we selected these as a starting point. If the readers are interested in a data science career, learning statistics builds the foundations and expands your toolbox to generate insights from data.^[<https://towardsdatascience.com/the-difference-between-data-science-and-statistics-168c7062c201>] We also recommend exploring Kaggle datasets^[<https://www.kaggle.com/datasets>] for hands-on practice. To get closer to analyzing real-world data, we encourage the readers to attend data hackathons, contribute to open-source projects, and/or volunteer technical skills at nonprofit organizations like Statistics Without Borders.^[<https://www.statisticswithoutborders.org/>] These activities are not a comprehensive list, and please feel free to get creative and carve your own professional path forward.    
 
-## Resources for Data Science and Programming
+## Resources for Data Science and Programming {#learning-data-science}
 
 Since we discussed plenty of statistics resources in the previous section, we would like to provide a few pointers to **data science**, one of the hottest fields in tech. Programming is also essential to handle data, so we introduce some practical tools that readers can incorporate them into their data science workflow. (Please don't get overwhelmed with the massive selection of tools; you can try one at a time.)  
 
@@ -225,7 +224,7 @@ The graphs in this manuscript are mainly for demonstration; they are created usi
 
 The $\mathsf{R}$ code is also for demonstration. The author makes every effort to ensure correctness and readability of the code, but errors and inconsistencies are inevitable. Since this is an open-source project on GitHub,^[<https://github.com/star1327p/Exam-Scores-PTT>] readers are welcome to make a pull request and/or report any issues. To learn more about better coding styles, we recommend the computer science books *Clean Code* \cite{martin2009clean} and *Code Complete* \cite{mcconnell2004code}. For complex operations in $\mathsf{R}$, we recommend the $\mathsf{R}$ package `tidyverse` \cite{r-tidyverse} because it provides a fast, efficient, and organized workflow for general data modeling.^[<https://www.r-bloggers.com/2018/09/why-learn-the-tidyverse/>] The book \textit{$\mathsf{R}$ for Data Science: Import, Tidy, Transform, Visualize, and Model Data} \cite{wickham2016r} demonstrates an end-to-end cycle of using `tidyverse` in data science.  
 
-In addition to $\mathsf{R}$, Python is another commonly-used programming language in data science. Python is an object-oriented language which is closer to software development, while $\mathsf{R}$ is more focused on statistical models.^[<https://www.datacamp.com/tutorial/r-or-python-for-data-analysis>] Our suggestion is to learn both $\mathsf{R}$ and Python, so that the readers get to choose the one that fits their unique needs. (The author does not have a strong personal preference, so she often chooses the one that her collaborators use to better leverage their existing code.) After you know a programming language, it would not be difficult to learn a new one because many concepts like for loops are the same. Don't worry!  
+In addition to $\mathsf{R}$, Python is another commonly-used programming language in data science. Python is an object-oriented language which is closer to software development, while $\mathsf{R}$ is more focused on statistical models.^[<https://www.datacamp.com/tutorial/r-or-python-for-data-analysis>] Our suggestion is to learn both $\mathsf{R}$ and Python, so that the readers get to choose the one that fits their unique needs. (The author does not have a strong personal preference, so she often chooses the one that her collaborators use to better leverage their existing code.) After you know a programming language, it would not be difficult to learn a new one because many concepts are similar, such as `for` loops and user-defined functions. Don't worry!  
 
 # Final: Personal Scores and Remarks {#personal-remarks}
 
