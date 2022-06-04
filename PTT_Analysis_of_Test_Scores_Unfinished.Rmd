@@ -190,9 +190,7 @@ Add my thoughts about categorical data analysis (e.g. proportional hazards model
 
 \section*{\textcolor{red}{Unfinished below}}
 
-The foreword starts here.  
-
-Section \ref{learning-statistics} points to some resources for learning statistics, while Section \ref{learning-data-science} takes a step forward to data science and programming.  
+We would like to direct readers to resources for learning statistics and data science, in order to expand their professional skillsets. Online information is abundant and probably overwhelming, so we decided to categorize some examples based on difficulty level and the prerequisites. We also provide a brief description of each resource including goals and/or applications, so that readers can make informed decisions in choosing their own professional development activities. Section \ref{learning-statistics} points to some materials for learning statistics, while Section \ref{learning-data-science} takes a step forward to data science and programming.  
 
 
 ```{r include-additional-resources, child = '11-Additional-Resources.Rmd'}
