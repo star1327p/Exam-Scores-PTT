@@ -111,6 +111,8 @@ Bivariate exploration subsection:
 
 Add my thoughts about categorical data analysis (e.g. proportional hazards model?!)  
 
+What about ROC and AUC (area under the curve) with various probability thresholds?  
+
 \section*{\textcolor{red}{Unfinished above}}  
 
 ```{r include-linear-reg, child = '06-Top-Scorers.Rmd'}
