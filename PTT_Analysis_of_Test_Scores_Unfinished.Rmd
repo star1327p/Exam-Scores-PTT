@@ -53,12 +53,23 @@ State this project as open-source and provide the GitHub link somewhere in the m
 
 Edit the paragraph of this manuscript's structure! Use cross-references for each chapter.  
 
-\textcolor{red}{This is the file we want to move content into.}  
-
-\section*{\textcolor{red}{Unfinished above}}
+\section*{\textcolor{red}{Unfinished above}}  
 
 ```{r include-intro, child = '01-Introduction.Rmd'}
 ```
+
+The goal of writing this manuscript is to instruct the readers on how to perform data analysis using real-life data. We focus on demonstrating the statistical methodology, so the coding implementation may not be perfectly optimized. The target audience would be people with a basic understanding of statistics, equivalent to taking or having completed Statistics 101.  
+
+\textcolor{red}{Why did we select this dataset?}  
+
+The author grew up in Taiwan, so we are curious about the relationship between the high school entrance exam score percentiles and the college entrance scores in Taiwan. It seems obvious that a greater percentage of students from top high schools get admitted to prestigious universities.^[<https://bit.ly/2JSPXKc>]  However, the high school entrance exam is much easier than the college entrance exam, so some people studied little in middle school and was able to get into a good high school. Then some of these people kept studying little and ended up with a bad score on the college entrance exam. On the other hand, we have also seen some students from mediocre high schools studied very hard, and eventually earned a stellar score in the college exam. Therefore, we decided to gather data and create our own analysis. 
+
+Since we do not have the official data from the Taiwan government that links people between their scores on the high school entrance exam and college entrance exam, it is difficult to obtain a representative sample of people's scores. Therefore, we obtained self-reported data from an existing post^[<https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>] in 2015 on PTT, the largest terminal-based bulletin board in Taiwan. Each of the 197 rows of the data contains an anonymous ID, high school entrance exam score (in the form of percentile rank), and college entrance exam score.  
+
+\section*{\textcolor{red}{Unfinished above}}  
+
+The rest of this manuscript is organized as follows. Chapter \ref{background} gives an overview of the high school and college entrance exams in Taiwan, and Chapter \ref{data} provides the description of our dataset. In Chapter \ref{eda}, we start the technical content with exploratory data analysis, in order to identify and visualize the distribution of exam scores. Then in Chapter \ref{linear-reg} we try the linear regression and explain whether this model is appropriate or not. Chapter \ref{explore-top} further examines the top scorers, because they typically came from prestigious high schools and/or colleges. In Chapter \ref{logit-reg}, we modify the problem statement to binary outcomes and implement the logistic regression. Then we perform in-sample validation in Chapter \ref{validation} and out-of-sample validation in Chapter \ref{out-of-sample}. After the model validation is complete, we provide a recap of the project in Chapter \ref{recap} and recommend resources for learning in Chapter \ref{resources}. Finally, we state some personal remarks in Chapter \ref{personal-remarks}.  
+
 
 # Background {#background}
 
