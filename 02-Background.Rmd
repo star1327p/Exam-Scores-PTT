@@ -1,5 +1,31 @@
-In Taiwan, the high school entrance exam score percentiles are between 1% and 99%, and people often refer to the percentile rank (PR value) as from 1 to 99. This scoring system existed from 2001 to 2013.^[<https://bit.ly/2JNQaOI>] The actual exam score ranges were different. For example, the maximum possible score was originally set to 300, but it was increased to 312 in Year 2007. Then the maximum possible score was increased to 412 in Year 2009. Therefore, the percentile ranks (PR values) serves as a normalized tool to compare academic achievements across different years. Starting in 2014, the PR values are replaced with seven grades for each subject (C, B, B+, B++, A, A+, A++) and an independent essay score (0-6).^[<https://www.parenting.com.tw/article/5049351>]    
+Some foreword context here. Need to briefly explain the Taiwan's education system, because readers are from all over the world.  
 
-The college entrance exams are held twice a year in Taiwan; the first exam is for early admission and the second exam is for regular admission. The first exam is called the General Scholastic Ability Test (GSAT) starting in 1994, which is  typically held in late January or early February.^[<https://bit.ly/2W0fdUq>] The second exam is called the Advanced Subjects Test (AST) starting in 2002, and it is almost always held on July 1st, 2nd, and 3rd.^[<https://bit.ly/2J7YxoW>] The GSAT scores are normalized to a range of 0 to 75, regardless of the difficulty level of GSAT each year. On the other hand, the scores of AST can vary widely because each subject is scored separately from 0 to 100. Since the AST scores fluctuate more due to the difficulty level of the exam questions each year, we decided to use the GSAT scores as a benchmark of the college exam scores.
+## High School Exam in Taiwan
 
-**Remark**: The GSAT consists of five subjects (Chinese, English, mathematics, physical sciences, and social sciences), each of which are graded on a 0 to 15 point scale. Starting in 2019, students may choose four of the five subjects for the GSAT. The maximum possible score (i.e., full marks) is reduced from 75 to 60.
+\textcolor{red}{What aggregated data does the Taiwan government publish?}  
+
+\textcolor{red}{What are the five subjects in the high school entrance exam?}  
+
+\textcolor{red}{When were two opportunities given each year? When did it become only one test?}  
+
+In Taiwan, the high school entrance exam score percentiles are between 1% and 99%, and people often refer to the percentile rank (PR value) as from 1 to 99. This scoring system existed from 2001 to 2013.^[<https://bit.ly/2JNQaOI>] The actual exam score ranges were different. For example, the maximum possible score was originally set to 300, but it was increased to 312 in Year 2007. The additional 12 points are due to the addition of an independent essay test, with 0-6 grades based on the quality of the student's essay. The 12 points mean double of the 0-6 grades; i.e., if one scored a 5 on the essay, he/she would receive 10 points.  
+
+\textcolor{red}{Describe the changes from 312 to 412. Each subject is augument from 60 to 80 points. Cite the news article that resulted in such change, because it made headlines at that time.}  
+
+Then the maximum possible score was increased to 412 in Year 2009. Therefore, the percentile ranks (PR values) serves as a normalized tool to compare academic achievements across different years. Starting in 2014, the PR values are replaced with seven letter grades for each subject (C, B, B+, B++, A, A+, A++) and an independent essay score (0-6).^[<https://www.parenting.com.tw/article/5049351>]    
+
+\textcolor{red}{How are the new letter grades used for high school admission decisions? Each region in Taiwan has their own rules; cite a few examples including Taipei's policy.}  
+
+## College Entrance Exam in Taiwan
+
+\textcolor{red}{Describe the early admission and the regular admission rules separately.}  
+
+\textcolor{red}{What aggregated data does the Taiwan government publish?}  
+
+The college entrance exams are held twice a year in Taiwan; the first exam is for early admission and the second exam is for regular admission. The first exam is called the General Scholastic Ability Test (GSAT) starting in 1994, which is typically held in late January or early February.^[<https://bit.ly/2W0fdUq>] The second exam is called the Advanced Subjects Test (AST) starting in 2002, and it is almost always held on July 1st, 2nd, and 3rd.^[<https://bit.ly/2J7YxoW>]   
+
+\textcolor{red}{How is the 0 to 15 point scale calculated?}    
+
+The GSAT consists of five subjects (Chinese, English, mathematics, physical sciences, and social sciences), each of which are graded on a 0 to 15 point scale. The GSAT scores are normalized to a range of 0 to 75, regardless of the difficulty level of GSAT each year. On the other hand, the scores of AST can vary widely because each subject is scored separately from 0 to 100. Since the AST scores fluctuate more due to the difficulty level of the exam questions each year, we decided to use the GSAT scores as a benchmark of the college exam scores.  
+
+**Remark**: Starting in 2019, students may choose four of the five subjects for the GSAT. The maximum possible score (i.e., full marks) is reduced from 75 to 60.
