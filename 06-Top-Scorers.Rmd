@@ -159,4 +159,18 @@ table_4x4 = table(data_corr$HS_range, data_corr$CS_range,
 table_4x4
 ```
 
-The contingency table shows a positive association between **HighSchool_PR** and **College_Score**: Respondents with a good **HighSchool_PR** score are more likely to achieve a good **College_Score**, but this is not guaranteed. Respondents who scored poorly in **HighSchool_PR** still had a small chance to do exceptionally well in **College_Score** later. Our findings align with the conventional wisdom that **HighSchool_PR** and **College_Score** are somewhat related, but a high score on **HighSchool_PR** does not guarantee a high score on **College_Score**.
+The contingency table shows a positive association between **HighSchool_PR** and **College_Score**: Respondents with a good **HighSchool_PR** score are more likely to achieve a good **College_Score**, but this is not guaranteed. Respondents who scored poorly in **HighSchool_PR** still had a small chance to do exceptionally well in **College_Score** later. Our observations align with the conventional wisdom that **HighSchool_PR** and **College_Score** are somewhat related, but a high score on **HighSchool_PR** does not guarantee a high score on **College_Score**.  
+
+\section*{\textcolor{red}{Unfinished below}}  
+
+But how do we validate that the categorical counts of **HighSchool_PR** and **College_Score** are not due to random chance?  
+
+Pearson's chi-squared test  
+
+Specify H0 and H1  
+
+p-value  
+
+```{r chi-squared-test}
+chisq.test(data_corr$HS_range, data_corr$CS_range)
+```

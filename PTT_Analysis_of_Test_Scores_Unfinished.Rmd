@@ -130,6 +130,8 @@ Bivariate exploration subsection:
 
 Add my thoughts about categorical data analysis (e.g. proportional hazards model?!)  
 
+\textcolor{red}{Add chi-squared test to quantify the level of significance}^[<https://data-flair.training/blogs/chi-square-test-in-r/>]      
+
 What about ROC and AUC (area under the curve) with various probability thresholds?  
 
 \textcolor{red}{This is the file we want to move content into.}  
