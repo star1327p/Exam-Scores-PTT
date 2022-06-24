@@ -64,7 +64,7 @@ The author grew up in Taiwan, so we are curious about the relationship between t
 
 \textcolor{red}{lots of citations needed}  
 
-The Taiwan government publishes aggregated data on high school entrance exam scores and college entrance exam scores separately, but does not link between the two sets of data. Therefore, we obtained self-reported data from an existing post^[<https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>] in 2015 on PTT, the largest terminal-based bulletin board in Taiwan. Each of the 197 rows of the data contains an anonymous ID, high school entrance exam score (in the form of percentile rank), and college entrance exam score. Since PTT has been advertised to a wide range of college campuses, many college students as of 2015 were using PTT. Hence the PTT data could be assumed to be diverse, i.e., from people with different levels of academic achievements.    
+The Taiwan government publishes aggregated data on high school entrance exam scores and college entrance exam scores separately, but does not link between the two sets of data. Therefore, we obtained self-reported data from an existing post^[<https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>] in 2015 on PTT, the largest terminal-based bulletin board in Taiwan. Each of the 197 rows of the data contains an anonymous ID, high school entrance exam score (in the form of percentile rank), and college entrance exam score. Since PTT has been advertised to a wide range of college campuses, many college students as of 2015 were using PTT.^[PTT Screenshot obtained on June 24, 2022: <https://imgur.com/Y0pHLiR>] Hence the PTT data could be assumed to be diverse, i.e., from people with different levels of academic achievements.    
 
 The goal of writing this manuscript is to demonstrate how to perform data analysis in `R` using real-life data with a reproducible workflow. The target audience would be people with a basic understanding of statistics, equivalent to taking or having completed Statistics 101. We start from collecting the data, preprocessing the data, exploratory analysis, and finally define a problem statement that can be answered by the data. Then we build the statistical model, validate the results, and provide our interpretations. In this way, readers can follow the step-by-step instructions in this small-scale data science project.  
 
@@ -96,6 +96,8 @@ Start writing about 2021 for both exams, because 2022 is still ongoing
 # Data Description {#data}
 
 \section*{\textcolor{red}{Unfinished below}}
+
+
 
 Add the new PTT image and state **when** the registration restrictions were removed.  
 

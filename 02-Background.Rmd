@@ -23,7 +23,7 @@ Then the maximum possible score was increased to 412 in Year 2009. Therefore, th
 
 \textcolor{red}{What aggregated data does the Taiwan government publish?}  
 
-The college entrance exams in Taiwan are held twice a year; the first exam is for early admission and the second exam is for regular admission. The first exam is called the General Scholastic Ability Test (GSAT) starting in 1994, which is typically held in late January or early February.^[<https://bit.ly/2W0fdUq>] The second exam is called the Advanced Subjects Test (AST) starting in 2002, and it is almost always held on July 1st, 2nd, and 3rd.^[<https://bit.ly/2J7YxoW>]   
+The college entrance exams in Taiwan are held twice a year; the first exam is for early admission and the second exam is for regular admission \cite{chou2015higher}. The first exam is called the General Scholastic Ability Test (GSAT) starting in 1994, which is typically held in late January or early February.^[<https://bit.ly/2W0fdUq>] The second exam is called the Advanced Subjects Test (AST) starting in 2002, and it is almost always held on July 1st, 2nd, and 3rd.^[<https://bit.ly/2J7YxoW>]   
 
 \textcolor{red}{How is the 0 to 15 point scale calculated?}    
 
