@@ -2,7 +2,7 @@ Some foreword context here. Need to briefly explain the Taiwan's education syste
 
 \textcolor{red}{Brief comparison with the US college admission system}
 
-## High School Exam in Taiwan
+## High School Entrance Exam in Taiwan
 
 \textcolor{red}{What aggregated data does the Taiwan government publish?}  
 \textcolor{red}{When were two opportunities given each year? When did it become only one test?}  
@@ -25,7 +25,15 @@ Then the maximum possible score was increased to 412 in Year 2009. Therefore, th
 
 The college entrance exams in Taiwan are held twice a year; the first exam is for early admission and the second exam is for regular admission \cite{chou2015higher}. The first exam is called the General Scholastic Ability Test (GSAT) starting in 1994, which is typically held in late January or early February.^[<https://bit.ly/2W0fdUq>] The second exam is called the Advanced Subjects Test (AST) starting in 2002, and it is almost always held on July 1st, 2nd, and 3rd.^[<https://bit.ly/2J7YxoW>]   
 
-\textcolor{red}{How is the 0 to 15 point scale calculated?}    
+\textcolor{red}{How is the 0 to 15 point scale calculated?}^[<https://bit.ly/3bxIuSn>]    
+
+1. Compute the "top" as the average raw score of the highest 1% among test takers.
+2. Divide the number by 15 to get the scale interval.
+3. Create a table to map raw scores to the 0 to 15 point scale.
+
+For example, if a subject has the "top" of 93.45 (max 100), then the scale interval is 93.45/15 = 6.23, rounded to two decimal points. Zero point is reserved for absolute zero marks on the exam. A student will get 1 point for a raw score between 0.01 and 6.23, and 2 points for a raw score between 6.24 and 12.46, and so on. If we observe from the top of the scale, a student can get 15 points for a raw score between 87.23 and 100, and 14 points for a raw score between 81.00 and 87.22. Note that the threshold (87.23) to achieve 15 points is 14 times of the scale interval (6.23).   
+
+\textcolor{red}{Continue writing below}  
 
 The GSAT consists of five subjects (Chinese, English, mathematics, physical sciences, and social sciences), each of which are graded on a 0 to 15 point scale. The GSAT scores are normalized to a range of 0 to 75, regardless of the difficulty level of GSAT each year. On the other hand, the scores of AST can vary widely because each subject is scored separately from 0 to 100. Since the AST scores fluctuate more due to the difficulty level of the exam questions each year, we decided to use the GSAT scores as a benchmark of the college exam scores.  
 
