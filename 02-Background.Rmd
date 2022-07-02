@@ -4,18 +4,29 @@ Some foreword context here. Need to briefly explain the Taiwan's education syste
 
 ## High School Entrance Exam in Taiwan
 
+\textcolor{red}{Focus on how the max total scores was revised over time. Don't go deep into commentaries or how the society reacted to the changes.}  
+
 \textcolor{red}{What aggregated data does the Taiwan government publish?}  
-\textcolor{red}{When were two opportunities given each year? When did it become only one test?}  
 
-Between 2001 and 2013, the high school entrance exam in Taiwan was officially called The Basic Competence Test for Junior High School Students.^[<https://bit.ly/2JNQaOI>] The exam was typically held in May-June and consisted of five subjects (Chinese, English, mathematics, physical sciences, and social sciences). The report cards contains exam scores and percentile ranks (PR values) from 1 to 99. The PR value refers to the percentage of the student population you scored higher than. For example, PR 86 means you have a higher score than 86% of the student population in Taiwan.  
+Between 2001 and 2013, the high school entrance exam in Taiwan was officially called The Basic Competence Test for Junior High School Students.^[<https://bit.ly/2JNQaOI>] The exam was typically held in May-June and consisted of five subjects (Chinese, English, mathematics, physical sciences, and social sciences). The report card contains exam scores for each subject, the total score, and the percentile rank (PR values from 1 to 99) of the total score. The PR value refers to the percentage of the student population you scored higher than. For example, PR 86 means you have a higher score than 86% of the student population in Taiwan. The PR values serve as a normalized tool to compare academic achievements across years.   
 
-The actual exam score ranges were different. The maximum possible score was originally set to 300, but it was increased to 312 in Year 2007. The additional 12 points are due to the addition of an independent essay test, with 0-6 grades based on the quality of the student's essay. The 12 points mean double of the 0-6 grades; i.e., if one scored a 5 on the essay, he/she would receive 10 points.  
+The actual exam score ranges varied from year to year. In 2001-2006, each of the five subjects had a maximum score of 60, summing up to a total score of 300. In Year 2007, the independent essay question was added for another 12 points, bringing up the maximum total score to 312 points.^[<https://www.945enet.com.tw/epaper/contents/ha/048/03.htm>]  
 
-\textcolor{red}{Describe the changes from 312 to 412. Each subject is augumented from 60 to 80 points. Cite the news article that resulted in such change, because it made headlines at that time.}  
+Then in Year 2009, the maximum possible score was increased to 412. Each subject was augmented from 60 to 80 points, and the independent essay question was still worth 12 points.  
 
-Then the maximum possible score was increased to 412 in Year 2009. Therefore, the percentile ranks (PR values) serves as a normalized tool to compare academic achievements across different years. Starting in 2014, the PR values are replaced with seven letter grades for each subject (C, B, B+, B++, A, A+, A++) and an independent essay score (0-6).^[<https://www.parenting.com.tw/article/5049351>]    
+\textcolor{red}{Describe the changes from 312 to 412. Cite the news article that resulted in such change, because it made headlines at that time.}  
 
-\textcolor{red}{How are the new letter grades used for high school admission decisions? Each region in Taiwan has their own rules; cite a few examples including Taipei's policy.}  
+The scoring of the high school entrance exam had been controversial and generated much discussion in the news^[<https://web.archive.org/web/20090415123425/http://www.libertytimes.com.tw/2007/new/jun/21/today-life1.htm>]. The main issue was the large score difference between full marks and getting only one question wrong in a test subject.^[<https://blog.xuite.net/wmhsu/twblog/147553826>]  
+
+\textcolor{red}{When were two opportunities given each year? When did it become only one test? (I think 2012 and 2013 had only one opportunity, but I am unsure.)}  
+
+Starting in 2014, the PR values are replaced with seven letter grades for each subject (C, B, B+, B++, A, A+, A++) and an independent essay score (0-6).^[<https://www.parenting.com.tw/article/5049351>]    
+
+\textcolor{red}{How are the new letter grades used for high school admission decisions?}  
+
+Each region in Taiwan has their own rules; cite a few examples including Taipei's policy.^[<https://www.facebook.com/JayWangFB/posts/188393636138799/>] 
+
+What are the outcomes?  
 
 ## College Entrance Exam in Taiwan
 
