@@ -54,8 +54,6 @@ The opinions and views expressed in this manuscript are those of the author and 
 
 Elaborate on the following to enhance the background context:
 
-- Starting in 2019, high school students are required to maintain a portfolio each semester to document their learning outcomes.^[<https://www.108epo.com/courses.php>]
-
 - College entrance exam GSAT and AST: New rules in 2022 (not related to COVID)
 
 - COVID-related rules for students who could not attend the exam  
@@ -116,6 +114,20 @@ What about ROC and AUC (area under the curve) with various probability threshold
 \section*{\textcolor{red}{Unfinished above}}  
 
 ```{r include-linear-reg, child = '06-Top-Scorers.Rmd'}
+```
+
+But how do we statistically validate the positive association? Pearson's chi-squared test can be used to evaluate whether the categorical counts of **HighSchool_PR** and **College_Score** are due to random chance.    
+
+Hypothesis testing  
+
+H0 (null hypothesis): No association exist between the categorical counts of **HighSchool_PR** and **College_Score**.  
+
+H1 (alternative hypothesis): A positive association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
+
+p-value  
+
+```{r chi-squared-test}
+chisq.test(data_corr$HS_range, data_corr$CS_range)
 ```
 
 # Logistic Regression {#logit-reg}
