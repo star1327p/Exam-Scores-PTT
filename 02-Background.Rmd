@@ -16,7 +16,7 @@ Then in Year 2009, the maximum possible score was increased to 412. Each subject
 
 \textcolor{red}{Describe the changes from 312 to 412. Cite the news article that resulted in such change, because it made headlines at that time.}  
 
-The scoring of the high school entrance exam had been controversial and generated much discussion in the news^[<https://web.archive.org/web/20090415123425/http://www.libertytimes.com.tw/2007/new/jun/21/today-life1.htm>]. The main issue was the large score difference between full marks and getting only one question wrong in a test subject.^[<https://blog.xuite.net/wmhsu/twblog/147553826>]  
+The scoring of the high school entrance exam had been controversial and generated much discussion in the news.^[<https://web.archive.org/web/20090415123425/http://www.libertytimes.com.tw/2007/new/jun/21/today-life1.htm>] The main issue was the large score difference between full marks and getting only one question wrong in a test subject.^[<https://blog.xuite.net/wmhsu/twblog/147553826>]  
 
 \textcolor{red}{When were two opportunities given each year? When did it become only one test? (I think 2012 and 2013 had only one opportunity, but I am unsure.)}  
 
@@ -48,4 +48,6 @@ For example, if a subject has the "top" of 93.45 (max 100), then the scale inter
 
 The GSAT consists of five subjects (Chinese, English, mathematics, physical sciences, and social sciences), each of which are graded on a 0 to 15 point scale. The GSAT scores are normalized to a range of 0 to 75, regardless of the difficulty level of GSAT each year. On the other hand, the scores of AST can vary widely because each subject is scored separately from 0 to 100. Since the AST scores fluctuate more due to the difficulty level of the exam questions each year, we decided to use the GSAT scores as a benchmark of the college exam scores.  
 
-**Remark**: Starting in 2019, students may choose four of the five subjects for the GSAT. The maximum possible score (i.e., full marks) is reduced from 75 to 60.
+Starting in 2019, students may choose four of the five subjects for the GSAT, and the maximum possible score (i.e., full marks) is reduced from 75 to 60.  
+
+Starting in 2019, high school students are also required to maintain a portfolio each semester to document their learning outcomes.^[<https://www.108epo.com/courses.php>]  
