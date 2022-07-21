@@ -1,7 +1,13 @@
-We are going to take a closer look at the top scorers, given the observation in Section \ref{examine-further}. In Taiwan's education system, the top tier of high schools and colleges can be further segmented. The top of the top tier can be very different than the bottom of top tier. Therefore, we consider the following subcategories:     
+We are going to take a closer look at the top scorers, given the observation in Section \ref{examine-further}. In Taiwan's education system, the top tier of high schools and colleges can be further segmented. The top of the top tier can be very different than the bottom of top tier.  
+
+\textcolor{red}{Examples needed: National Taiwan University vs ?? University}  
+
+Therefore, we consider the following subcategories:     
 
 * **HighSchool_PR** ranges: 80-89, 90-94, 95-99
-* **College_Score** ranges: 60-64, 65-69, 70-75
+* **College_Score** ranges: 60-64, 65-69, 70-75  
+
+\textcolor{red}{Add \textbf{why} we would like to focus on the top scorers. Reasons include media attention (citation needed) and toughness of competition.}  
 
 ## Data Consistency
 
