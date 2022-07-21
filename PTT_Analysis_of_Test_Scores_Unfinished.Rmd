@@ -101,6 +101,8 @@ Also, list several mobile apps for readers to access PTT on a smart phone. Commo
 
 \section*{\textcolor{red}{Unfinished below}}  
 
+Need to elaborate on the foreword in this chapter.  
+
 Bivariate exploration subsection:  
 
 Add my thoughts about categorical data analysis (e.g. proportional hazards model?!)  
@@ -111,24 +113,34 @@ What about ROC and AUC (area under the curve) with various probability threshold
 
 \textcolor{red}{This is the file we want to move content into.}  
 
-\section*{\textcolor{red}{Unfinished above}}  
+\section*{\textcolor{red}{Unfinished below}}  
 
 ```{r include-linear-reg, child = '06-Top-Scorers.Rmd'}
 ```
 
-But how do we statistically validate the positive association? Pearson's chi-squared test can be used to evaluate whether the categorical counts of **HighSchool_PR** and **College_Score** are due to random chance.    
+But how do we statistically validate the positive association?   
 
-Hypothesis testing  
+Need to do hypothesis testing  
 
-H0 (null hypothesis): No association exist between the categorical counts of **HighSchool_PR** and **College_Score**.  
+- H0 (null hypothesis): No association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
 
-H1 (alternative hypothesis): A positive association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
+- H1 (alternative hypothesis): A positive association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
 
-p-value  
+The p-value measures statistical significance, and it is the probability of observing something at least as extreme as the data, given the assumption that the null hypothesis is true \cite{diez2019openintro}. The definition of p-value is often confused with the probability of the null hypothesis being true, which is incorrect.   
+
+\textcolor{red}{Consider adding a footnote/remark to link to Bayesian hypothesis testing and real posterior probabilities.}   
+
+Pearson's chi-squared test can be used to evaluate whether the categorical counts of **HighSchool_PR** and **College_Score** are due to random chance. 
+
+\textcolor{red}{State the equation of pearson's chi-squared test}  
 
 ```{r chi-squared-test}
 chisq.test(data_corr$HS_range, data_corr$CS_range)
 ```
+
+\textcolor{red}{Write the result interpretation here}  
+
+
 
 # Logistic Regression {#logit-reg}
 
