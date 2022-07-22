@@ -1,13 +1,17 @@
-We are going to take a closer look at the top scorers, given the observation in Section \ref{examine-further}. In Taiwan's education system, the top tier of high schools and colleges can be further segmented. The top of the top tier can be very different than the bottom of top tier.  
+We are going to take a closer look at the top scorers, given the observation in Section \ref{examine-further}.   
 
-\textcolor{red}{Examples needed: National Taiwan University vs ?? University}  
+\textcolor{red}{Add \textbf{why} we would like to focus on the top scorers. Reasons include media attention (citation needed) and toughness of competition. Analogy: We see star athletes featured in the news, and rarely see the remaining.}   
 
-Therefore, we consider the following subcategories:     
+In Taiwan's education system, the top tier of high schools and colleges can be further segmented. The top of the range can be very different than the middle or bottom. For example, National Taiwan University is the most prestigious university in Taiwan, and Chang Gung University^[<https://www.cgu.edu.tw/?Lang=en>] is also excellent in medical education. However, many people in the US have heard of the former but not the latter. This does not mean you should always choose the most prestigious college; many other factors should also be considered, such as tuition and majors offered at that college.  
+
+We consider the following subcategories in the entrance exam scores:     
 
 * **HighSchool_PR** ranges: 80-89, 90-94, 95-99
 * **College_Score** ranges: 60-64, 65-69, 70-75  
 
-\textcolor{red}{Add \textbf{why} we would like to focus on the top scorers. Reasons include media attention (citation needed) and toughness of competition.}  
+Data validation $\rightarrow$ **HighSchool_PR** $\rightarrow$ **College_Score** $\rightarrow$ Bivariate Exploration  
+
+\textcolor{red}{Should I move the Data Consistency subsection to the Data Description Chapter?}  
 
 ## Data Consistency
 
