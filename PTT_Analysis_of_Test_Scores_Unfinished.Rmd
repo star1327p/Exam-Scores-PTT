@@ -118,21 +118,31 @@ What about ROC and AUC (area under the curve) with various probability threshold
 ```{r include-linear-reg, child = '06-Top-Scorers.Rmd'}
 ```
 
-But how do we statistically validate the positive association?   
+\textcolor{red}{Should I create a new subsection for hypothesis testing and Pearson's chi-squared test?}  
 
-Need to do hypothesis testing  
+We can perform hypothesis testing to statistically validate the positive association. The hypotheses are set up as follows:   
 
 - H0 (null hypothesis): No association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
 
 - H1 (alternative hypothesis): A positive association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
 
-The p-value measures statistical significance, and it is the probability of observing something at least as extreme as the data, given the assumption that the null hypothesis is true \cite{diez2019openintro}. The definition of p-value is often confused with the probability of the null hypothesis being true, which is incorrect.   
+The p-value measures statistical significance, and it is the probability of observing something at least as extreme as the data, given the assumption that H0 is true \cite{diez2019openintro}.  
+
+When p-value < 0.05, we reject H0 and conclude that H1 is true.  
+
+When p-value > 0.05, we fail to reject H0 and conclude that H0 is true.  
+
+(But note that we don't know the underlying truth and we can make mistakes. Should I talk about Type I error and Type II error?)  
+
+The definition of p-value is often confused with the probability of the null hypothesis being true, which is incorrect.   
 
 \textcolor{red}{Consider adding a footnote/remark to link to Bayesian hypothesis testing and real posterior probabilities.}   
 
-Pearson's chi-squared test can be used to evaluate whether the categorical counts of **HighSchool_PR** and **College_Score** are due to random chance. 
+Pearson's chi-squared test ($\chi^2$) can be used to evaluate whether the categorical counts of **HighSchool_PR** and **College_Score** are due to random chance. 
 
-\textcolor{red}{State the equation of pearson's chi-squared test}  
+\textcolor{red}{State the equation of pearson's chi-squared test and define each term}    
+
+$$\chi^2 = \sum^{n}_{i=1}\dfrac{(O_i - E_i)^2}{E_i}$$
 
 ```{r chi-squared-test}
 chisq.test(data_corr$HS_range, data_corr$CS_range)
