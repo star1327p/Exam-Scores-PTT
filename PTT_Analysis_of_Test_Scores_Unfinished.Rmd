@@ -142,9 +142,11 @@ Pearson's chi-squared test ($\chi^2$) can be used to evaluate whether the catego
 
 $$\chi^2 = \sum^{n}_{i=1}\dfrac{(O_i - E_i)^2}{E_i}$$
 
-There are $n$ cells in the table. For each cell $i$, $O_i$ is the number of observations in that cell and $E_i$ is the number of expected counts under the null hypothesis.  
+There are $n$ cells in the table. For each cell $i$, $O_i$ is the number of observations in that cell and $E_i$ is the number of expected counts under the null hypothesis.   
 
-\textcolor{red}{How to calculate the p-value for $\chi^2$? State the degrees of freedom.}   
+Then the test statistic $\chi^2$ is compared with a $\chi^2$ distribution to calculate the p-value, given the degrees of freedom. When we generate $m$ independent scores from a random sample, we have $m-1$ degrees of freedom because the $m$ scores are restricted by their sample mean. When we have $a$ rows and $b$ columns in the table, we have $(a-1)(b-1)$ degrees of freedom because each row and each column are restricted to the subtotal, on behalf of the grand total (total number of observations in the data).   
+
+\textcolor{red}{Some foreword before using the chisq.test function to calculate}  
 
 ```{r chi-squared-test}
 chisq.test(data_corr$HS_range, data_corr$CS_range)
@@ -152,7 +154,20 @@ chisq.test(data_corr$HS_range, data_corr$CS_range)
 
 \textcolor{red}{Write the result interpretation here}  
 
-Also, why does this variable has 9 degrees of freedom?  
+Why does this variable has 9 degrees of freedom?  
+
+Since p-value < 0.05, what is our conclusion?   
+
+
+\textcolor{red}{Also need to calculate the test statistic by hand}  
+
+Goal is to verify that we are using the `chisq.test` function correctly.  
+The readers should always leverage a package to do the computation when there is one that can do the job.    
+
+Grand total = 188 records  
+With 16 cells, $E_i = 188/16 = 11.75$  
+
+Continue the calculation here, using for loops.  
 
 # Logistic Regression {#logit-reg}
 
