@@ -122,21 +122,25 @@ What about ROC and AUC (area under the curve) with various probability threshold
 
 We can perform hypothesis testing to statistically validate the positive association. The hypotheses are set up as follows:   
 
-- H0 (null hypothesis): No association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
+- $H_0$ (null hypothesis): No association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
 
-- H1 (alternative hypothesis): A positive association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
+- $H_1$ (alternative hypothesis): A positive association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
 
 The p-value measures statistical significance, and it is the probability of observing something at least as extreme as the data, given the assumption that H0 is true \cite{diez2019openintro}.  
 
-When p-value < 0.05, we reject H0 and conclude that H1 is true.  
+When p-value < 0.05, we reject $H_0$ and conclude that $H_1$ is true.  
 
-When p-value > 0.05, we fail to reject H0 and conclude that H0 is true.  
+When p-value > 0.05, we fail to reject $H_0$ and conclude that $H_0$ is true.  
 
 (But note that we don't know the underlying truth and we can make mistakes. Should I talk about Type I error and Type II error?)  
 
-The definition of p-value is often confused with the probability of the null hypothesis being true, which is incorrect.   
+The definition of p-value is often confused with the probability of the null hypothesis being true, which is incorrect \cite{goodman2008dirty}.   
 
 \textcolor{red}{Consider adding a footnote/remark to link to Bayesian hypothesis testing and real posterior probabilities.}   
+
+Bayesian hypothesis testing \cite{kruschke2018bayesian}  
+
+P-values have been widely used and misused in scientific research, up to the extent that the \citet{american2016statement} released a statement on the proper use and interpretation of the p-values. Ideally we should consider the whole research design and the results' practical importance, rather than make conclusions solely based on statistical significance \cite{wasserstein2019moving}.  
 
 Pearson's chi-squared test ($\chi^2$) can be used to evaluate whether the categorical counts of **HighSchool_PR** and **College_Score** are due to random chance. The test statistic $\chi^2$ is defined as below, and it asymptotically approaches a $\chi^2$ distribution.  
 
