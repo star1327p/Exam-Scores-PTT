@@ -118,29 +118,30 @@ What about ROC and AUC (area under the curve) with various probability threshold
 ```{r include-linear-reg, child = '06-Top-Scorers.Rmd'}
 ```
 
-\textcolor{red}{Should I create a new subsection for hypothesis testing and Pearson's chi-squared test?}  
-
-We can perform hypothesis testing to statistically validate the positive association. The hypotheses are set up as follows:   
+We perform hypothesis testing to statistically validate the positive association, and the hypotheses are:   
 
 - $H_0$ (null hypothesis): No association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
 
 - $H_1$ (alternative hypothesis): A positive association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
 
-The p-value measures statistical significance, and it is the probability of observing something at least as extreme as the data, given the assumption that H0 is true \cite{diez2019openintro}.  
+\section*{\textcolor{red}{Unfinished below}}  
 
-When p-value < 0.05, we reject $H_0$ and conclude that $H_1$ is true.  
+The **p-value** measures statistical significance, and it is \textbf{the probability of observing something at least as extreme as the data, given the assumption that $\mathbf{H_0}$ is true} \cite{diez2019openintro}.  
 
-When p-value > 0.05, we fail to reject $H_0$ and conclude that $H_0$ is true.  
+- When p-value < 0.05, we reject $H_0$ and conclude that $H_1$ is true.  
 
-(But note that we don't know the underlying truth and we can make mistakes. Should I talk about Type I error and Type II error?)  
+- When p-value > 0.05, we fail to reject $H_0$ and conclude that $H_0$ is true.  
 
-The definition of p-value is often confused with the probability of the null hypothesis being true, which is incorrect \cite{goodman2008dirty}.   
+\textcolor{red}{(But note that we don't know the underlying truth and we can make mistakes. Should I talk about Type I error and Type II error?)}    
 
-\textcolor{red}{Consider adding a footnote/remark to link to Bayesian hypothesis testing and real posterior probabilities.}   
+Write something here    
+   
 
-Bayesian hypothesis testing \cite{kruschke2018bayesian}  
+The definition of p-value is often confused with the probability of the null hypothesis being true, which is incorrect \cite{goodman2008dirty}. P-values have been widely used and misused in scientific research, up to the extent that the \citet{american2016statement} released a statement on the proper use and interpretation of the p-values. Ideally we should consider the whole research design and the results' practical importance, rather than make conclusions solely based on statistical significance \cite{wasserstein2019moving}.  
 
-P-values have been widely used and misused in scientific research, up to the extent that the \citet{american2016statement} released a statement on the proper use and interpretation of the p-values. Ideally we should consider the whole research design and the results' practical importance, rather than make conclusions solely based on statistical significance \cite{wasserstein2019moving}.  
+**Remark**: Bayesian hypothesis testing \cite{kruschke2018bayesian} outputs real probability values because the whole framework is generated using probability distributions. The Bayesian 95% credible intervals are 95% posterior probabilities, as opposed to the 95% confidence intervals in the frequentist approach, which do not have 95% probability.   
+
+\textcolor{red}{Linking sentence from hypothesis testing to the Pearson's chi-squared test}   
 
 Pearson's chi-squared test ($\chi^2$) can be used to evaluate whether the categorical counts of **HighSchool_PR** and **College_Score** are due to random chance. The test statistic $\chi^2$ is defined as below, and it asymptotically approaches a $\chi^2$ distribution.  
 

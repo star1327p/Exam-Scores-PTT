@@ -170,6 +170,3 @@ table_4x4
 ```
 
 The contingency table seems to show a positive association between **HighSchool_PR** and **College_Score**, because most counts are in the top-left and bottom-right. Respondents with a good **HighSchool_PR** score are more likely to achieve a good **College_Score**, but this is not guaranteed. Respondents who scored poorly in **HighSchool_PR** still had a small chance to do exceptionally well in **College_Score** later. Our observations align with the conventional wisdom that **HighSchool_PR** and **College_Score** are somewhat related, but a high score on **HighSchool_PR** does not guarantee a high score on **College_Score**.  
-
-\section*{\textcolor{red}{Unfinished below}}  
-
