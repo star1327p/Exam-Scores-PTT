@@ -118,28 +118,32 @@ What about ROC and AUC (area under the curve) with various probability threshold
 ```{r include-linear-reg, child = '06-Top-Scorers.Rmd'}
 ```
 
+### Hypothesis Testing Framework
+
 We perform hypothesis testing to statistically validate the positive association, and the hypotheses are:   
 
 - $H_0$ (null hypothesis): No association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
-
 - $H_1$ (alternative hypothesis): A positive association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
-
-\section*{\textcolor{red}{Unfinished below}}  
 
 The **p-value** measures statistical significance, and it is \textbf{the probability of observing something at least as extreme as the data, given the assumption that $\mathbf{H_0}$ is true} \cite{diez2019openintro}.  
 
+- When p-value > 0.05, we fail to reject $H_0$ and conclude that $H_0$ is true. 
 - When p-value < 0.05, we reject $H_0$ and conclude that $H_1$ is true.  
 
-- When p-value > 0.05, we fail to reject $H_0$ and conclude that $H_0$ is true.  
+In the case that p-value < 0.05, we say that the observed difference is statistically significant. But note that we do not know the underlying truth and we can make mistakes. We may make one of the two mistakes in hypothesis testing: 
+  
+- Type 1 error: $H_0$ is true but we reject $H_0$.
+- Type 2 error: $H_0$ is false but we fail to reject $H_0$.
 
-\textcolor{red}{(But note that we don't know the underlying truth and we can make mistakes. Should I talk about Type I error and Type II error?)}    
-
-Write something here    
-   
+The good thing is that with p-value < 0.05, we limit the chances of making a Type 1 error to be less than 5%. This threshold is also called the significance level.^[<https://www.statsdirect.com/help/basics/p_values.htm>] When the cost of making a Type 1 error is higher, we can require p-value < 0.01 or even 0.001 to reject $H_0$ instead.     
 
 The definition of p-value is often confused with the probability of the null hypothesis being true, which is incorrect \cite{goodman2008dirty}. P-values have been widely used and misused in scientific research, up to the extent that the \citet{american2016statement} released a statement on the proper use and interpretation of the p-values. Ideally we should consider the whole research design and the results' practical importance, rather than make conclusions solely based on statistical significance \cite{wasserstein2019moving}.  
 
 **Remark**: Bayesian hypothesis testing \cite{kruschke2018bayesian} outputs real probability values because the whole framework is generated using probability distributions. The Bayesian 95% credible intervals are 95% posterior probabilities, as opposed to the 95% confidence intervals in the frequentist approach, which do not have 95% probability.   
+
+\section*{\textcolor{red}{Unfinished below}}  
+
+### Pearson's Chi-Squared Test
 
 \textcolor{red}{Linking sentence from hypothesis testing to the Pearson's chi-squared test}   
 
@@ -149,12 +153,20 @@ $$\chi^2 = \sum^{n}_{i=1}\dfrac{(O_i - E_i)^2}{E_i}$$
 
 There are $n$ cells in the table. For each cell $i$, $O_i$ is the number of observations in that cell and $E_i$ is the number of expected counts under the null hypothesis.   
 
+\textcolor{red}{Explain that each $E_i$ is conditioned on row and column totals.}  
+
 Then the test statistic $\chi^2$ is compared with a $\chi^2$ distribution to calculate the p-value, given the degrees of freedom. When we generate $m$ independent scores from a random sample, we have $m-1$ degrees of freedom because the $m$ scores are restricted by their sample mean. When we have $a$ rows and $b$ columns in the table, we have $(a-1)(b-1)$ degrees of freedom because each row and each column are restricted to the subtotal, on behalf of the grand total (total number of observations in the data).   
 
 \textcolor{red}{Some foreword before using the chisq.test function to calculate}  
 
 ```{r chi-squared-test}
-chisq.test(data_corr$HS_range, data_corr$CS_range)
+# chisq.test(data_corr$HS_range, data_corr$CS_range)
+# Also consider: chisq.test(a, simulate.p.value = TRUE)
+# https://stats.stackexchange.com/questions/81483/warning-in-r-chi-squared-approximation-may-be-incorrect
+results = chisq.test(table_4x4)
+print(results)
+print(results$observed)
+print(results$expected)
 ```
 
 \textcolor{red}{Write the result interpretation here}  
@@ -163,16 +175,17 @@ Why does this variable has 9 degrees of freedom?
 
 Since p-value < 0.05, what is our conclusion?   
 
-
-\textcolor{red}{Also need to calculate the test statistic by hand}  
+\textcolor{red}{Also need to calculate and explain the test statistic by hand}  
 
 Goal is to verify that we are using the `chisq.test` function correctly.  
 The readers should always leverage a package to do the computation when there is one that can do the job.    
 
 Grand total = 188 records  
-With 16 cells, $E_i = 188/16 = 11.75$  
+With 16 cells, $E_i = 188/16 = 11.75$  $\Rightarrow$ \textcolor{red}{Wrong!}  
 
-Continue the calculation here, using for loops.  
+We need to adhere to the row and column totals.  
+
+
 
 # Logistic Regression {#logit-reg}
 
