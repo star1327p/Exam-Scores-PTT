@@ -1,6 +1,10 @@
 Before we perform any statistical modeling, the first step in a data project is exploratory data analysis, i.e., observing the data. The exploratory phase allows us to identify patterns, detect anomalies, and verify assumptions in the data.^[<https://blog.eduonix.com/bigdata-and-hadoop/importance-exploratory-data-analysis-ml-modelling>] This is an important but often overlooked step in data analysis, and failure to explore the data can lead to inefficiencies such as accurate models on the wrong data.^[<https://towardsdatascience.com/exploratory-data-analysis-topic-that-is-neglected-in-data-science-projects-9962ae078a56>]   
 
-Therefore, we start with examining the trends of the two main variables, **HighSchool_PR** and **College_Score**. For each variable, we observe the values and summarize them in a histogram as part of the univariate analysis. Then we investigate the relationship between the two variables, i.e., bivariate exploration.
+Therefore, we start with examining the trends of the two main variables, **HighSchool_PR** and **College_Score**. For each variable, we observe the values and summarize them in a histogram as part of the univariate analysis. Then we investigate the relationship between the two variables, i.e., bivariate exploration.  
+
+\section*{\textcolor{red}{Unfinished below}}  
+
+\textcolor{red}{Removing missing values should belong in the Data Description chapter!}  
 
 ## High School Entrance Exam Scores (Percentile Rank)
 
@@ -8,7 +12,7 @@ Below shows the descriptive statistics of **HighSchool_PR**, i.e., the percentil
 
 ```{r high-school-pr}
 # High school entrance exam scores: Remove missing values
-uni_HS_score = data$HighSchool_PR[which(data$HighSchool_PR != -1)]
+# uni_HS_score = data$HighSchool_PR[which(data$HighSchool_PR != -1)]
 
 summary(uni_HS_score)
 
@@ -28,7 +32,7 @@ Since PTT contains forums for several prestigious universities in Taiwan, it is 
 
 ```{r college-score}
 # College entrance exam scores: Remove missing values
-uni_college_score = data$College_Score[which(data$College_Score != -1)]
+# uni_college_score = data$College_Score[which(data$College_Score != -1)]
 
 summary(uni_college_score)
 
@@ -41,11 +45,11 @@ hist(uni_college_score, main="Histogram of College_Score",
 Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score** to examine the relationship between the two, but we have to remove the records with at least one missing score first. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores.
 
 ```{r bivariate} 
-missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
+# missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
 # Indices: 6  19  71  85  88  96 132 183 195 => nine in total
 
 # Remove missing data
-data_corr = data[-missing_rows,]
+# data_corr = data[-missing_rows,]
 
 plot(data_corr$HighSchool_PR, data_corr$College_Score,
      main = "High School and College Entrance Exam Scores",

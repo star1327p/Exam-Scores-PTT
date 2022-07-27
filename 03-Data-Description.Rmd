@@ -33,4 +33,43 @@ names(data)[1] = "pttID"
 data[1:10,]
 ```
 
-**Remark**: Data in the real world are messy, and data scientists spend lots of time cleaning (preprocessing) the data, i.e., preparing the data for analysis.^[<https://bit.ly/303IWxY>] But data cleaning is a necessary step for better analysis results, and there are some visualization examples that demonstrate the importance of preprocessing the data \cite{chai2020importance}. Our dataset `ptt_SENIORHIGH_data.csv` is relatively clean, but we still had to recode and flag missing values.
+**Remark**: Data in the real world are messy, and data scientists spend lots of time cleaning (preprocessing) the data, i.e., preparing the data for analysis.^[<https://bit.ly/303IWxY>] But data cleaning is a necessary step for better analysis results, and there are some visualization examples that demonstrate the importance of preprocessing the data \cite{chai2020importance}. Our dataset `ptt_SENIORHIGH_data.csv` is relatively clean, but we still had to recode and flag missing values.  
+
+\section*{\textcolor{red}{Unfinished below}}  
+
+## Data Consistency
+
+Before we start any analysis, we need to ensure consistency in the data. For instance, there are 191 records of valid high school entrance exam scores in the data. But if we consider only the ones with a valid college entrance exam score, the number of available records drops to 188. Although which version we use does not matter much when we look at the univariate distribution, this is going to be problematic when we combine the univariate analysis with the bivariate analysis. Thus, we should use only the 188 records whose college entrance exam scores are also valid. 
+
+```{r high-school-pr80up-univ}
+# High school entrance exam scores: Remove missing values
+uni_HS_score = data$HighSchool_PR[which(data$HighSchool_PR != -1)]
+length(uni_HS_score)
+```
+
+\textcolor{red}{Need to explain} `data_corr`  
+
+```{r data-corr-undefined}
+missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
+# Indices: 6 19 71 85 88 96 132 183 195 => nine in total
+# Remove missing data
+data_corr = data[-missing_rows,]
+```
+
+```{r high-school-pr80up-bivar}
+# Consider only the records with both valid HighSchool_PR and College_Score
+length(data_corr$HighSchool_PR)
+```
+
+The same data consistency requirement also applies to the college entrance scores. There are 194 records of valid high school entrance exam scores in the data, but only 188 of them also have corresponding valid high school entrance exam scores. Accordingly, we should use only the 188 records whose high school entrance exam scores are also valid.
+
+```{r college-score60up}
+# College entrance exam scores: Remove missing values
+uni_college_score = data$College_Score[which(data$College_Score != -1)]
+length(uni_college_score)
+```
+
+```{r college-score60up-bivar}
+# Consider only the records with both valid HighSchool_PR and College_Score
+length(data_corr$College_Score)
+```

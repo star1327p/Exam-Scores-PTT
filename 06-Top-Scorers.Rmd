@@ -11,37 +11,6 @@ We consider the following subcategories in the entrance exam scores:
 
 Data validation $\rightarrow$ **HighSchool_PR** $\rightarrow$ **College_Score** $\rightarrow$ Bivariate Exploration  
 
-\textcolor{red}{Should I move the Data Consistency subsection to the Data Description Chapter?}  
-
-## Data Consistency
-
-Before we start the analysis, we need to ensure consistency in the data. For instance, there are 191 records of valid high school entrance exam scores in the data. But if we consider only the ones with a valid college entrance exam score, the number of available records drops to 188. Although which version we use does not matter much when we look at the univariate distribution, this is going to be problematic when we combine the univariate analysis with the bivariate analysis. Thus, we should use only the 188 records whose college entrance exam scores are also valid. 
-
-```{r high-school-pr80up-univ}
-# High school entrance exam scores: Remove missing values
-# uni_HS_score = data$HighSchool_PR[which(data$HighSchool_PR != -1)]
-length(uni_HS_score)
-
-```
-
-```{r high-school-pr80up-bivar}
-# Consider only the records with both valid HighSchool_PR and College_Score
-length(data_corr$HighSchool_PR)
-```
-
-The same data consistency requirement also applies to the college entrance scores. There are 194 records of valid high school entrance exam scores in the data, but only 188 of them also have corresponding valid high school entrance exam scores. Accordingly, we should use only the 188 records whose high school entrance exam scores are also valid.
-
-```{r college-score60up}
-# College entrance exam scores: Remove missing values
-# uni_college_score = data$College_Score[which(data$College_Score != -1)]
-length(uni_college_score)
-```
-
-```{r college-score60up-bivar}
-# Consider only the records with both valid HighSchool_PR and College_Score
-length(data_corr$College_Score)
-```
-
 ## High School Entrance Exam Scores (Percentile Rank) at least 80 {#HighSchool-PR-80-up}
 
 We use the `R` function `table` to show the frequency of each **HighSchool_PR** value that is at least 80, and we have 163 values in total. In the table below, the first row is the PR (percentile rank), and the second row is the counts. Although we truncated the **HighSchool_PR** to 80 and above, the distribution is still left-skewed. The **HighSchool_PR** 99 has the highest counts, followed by **HighSchool_PR** 97 and **HighSchool_PR** 98.
