@@ -70,7 +70,7 @@ Start writing about 2021 for both exams, because 2022 is still ongoing
 
 \section*{\textcolor{red}{Unfinished below}}
 
-
+\textcolor{red}{Definitely need to fix the Data Consistency section}  
 
 Add the new PTT image and state **when** the registration restrictions were removed.  
 
@@ -122,8 +122,10 @@ What about ROC and AUC (area under the curve) with various probability threshold
 
 We perform hypothesis testing to statistically validate the positive association, and the hypotheses are:   
 
-- $H_0$ (null hypothesis): No association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
-- $H_1$ (alternative hypothesis): A positive association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
+- $H_0$ (null hypothesis): No association exists between the categorical counts of **HighSchool_PR** and **College_Score**.
+- $H_1$ (alternative hypothesis): An association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
+
+Note that we set up a two-sided hypothesis test because we are interested in the association between the two variables, no matter it is positive or negative.^[<https://statisticsbyjim.com/hypothesis-testing/one-tailed-two-tailed-hypothesis-tests/>]   
 
 The **p-value** measures statistical significance, and it is \textbf{the probability of observing something at least as extreme as the data, given the assumption that $\mathbf{H_0}$ is true} \cite{diez2019openintro}.  
 
@@ -145,33 +147,51 @@ The definition of p-value is often confused with the probability of the null hyp
 
 ### Pearson's Chi-Squared Test
 
-\textcolor{red}{Linking sentence from hypothesis testing to the Pearson's chi-squared test}   
-
-Pearson's chi-squared test ($\chi^2$) can be used to evaluate whether the categorical counts of **HighSchool_PR** and **College_Score** are due to random chance. The test statistic $\chi^2$ is defined as below, and it asymptotically approaches a $\chi^2$ distribution.  
+The most common form of hypothesis testing is to check whether a coefficient is zero or not in linear regression, but this is by no means the only form. For categorical data, the Pearson's chi-squared test ($\chi^2$) can be used to evaluate whether the categorical counts of **HighSchool_PR** and **College_Score** are due to random chance. The test statistic $\chi^2$ is defined as below, and it asymptotically approaches a $\chi^2$ distribution.  
 
 $$\chi^2 = \sum^{n}_{i=1}\dfrac{(O_i - E_i)^2}{E_i}$$
 
-There are $n$ cells in the table. For each cell $i$, $O_i$ is the number of observations in that cell and $E_i$ is the number of expected counts under the null hypothesis.   
-
-\textcolor{red}{Explain that each $E_i$ is conditioned on row and column totals.}  
+There are $n$ cells in the table. For each cell $i$, $O_i$ is the number of observations in that cell and $E_i$ is the number of expected counts under the null hypothesis. Each $E_i$ is conditioned on row and column totals (i.e., marginal totals),^[<https://www.stats4stem.org/chi-square-test-for-homogeneity>] so $E_i$ differs for each cell $i$. For example, we have an unfair coin which lands heads 80% of the time, and we toss the coin 100 times. Then $E_{\text{heads}}$ is 80 and and $E_{\text{tails}}$ is 20.   
 
 Then the test statistic $\chi^2$ is compared with a $\chi^2$ distribution to calculate the p-value, given the degrees of freedom. When we generate $m$ independent scores from a random sample, we have $m-1$ degrees of freedom because the $m$ scores are restricted by their sample mean. When we have $a$ rows and $b$ columns in the table, we have $(a-1)(b-1)$ degrees of freedom because each row and each column are restricted to the subtotal, on behalf of the grand total (total number of observations in the data).   
 
 \textcolor{red}{Some foreword before using the chisq.test function to calculate}  
 
 ```{r chi-squared-test}
-# chisq.test(data_corr$HS_range, data_corr$CS_range)
-# Also consider: chisq.test(a, simulate.p.value = TRUE)
-# https://stats.stackexchange.com/questions/81483/warning-in-r-chi-squared-approximation-may-be-incorrect
 results = chisq.test(table_4x4)
-print(results)
+
+results
+```
+
+\textcolor{red}{Write the result interpretation here}  
+
+With p-value < 0.05, we can make the conclusion now?!  
+
+Just like an at-home Covid test, we conclude the test is positive upon seeing two lines.  
+
+\textcolor{red}{But we should still try to understand the rationale behind the chisq.test function.}  
+
+Why does this variable has 9 degrees of freedom?  
+
+**Remark**: We can add `simulate.p.value = TRUE` to suppress the warning `Chi-squared approximation may be incorrect`, so the p-values would be simulated. But given the small cell sizes, the estimates are inaccurate anyway. In fact, `simulate.p.value = TRUE` uses simulation conditional on the marginal totals, so `chisq.test` performs the Fisher's exact test^[<https://mathworld.wolfram.com/FishersExactTest.html>] with the multivariate version of hypergeometric distributions.   
+
+\textcolor{red}{Look at what chisq.test provides us}  
+
+The observed counts are the data in `table_4x4`, as shown earlier in Section \ref{bivariate-top-scorers}.  
+
+```{r chi-squared-observed}
 print(results$observed)
+```
+
+The expected counts are simulated and conditioned on row and column totals.  
+
+```{r chi-squared-expected}
 print(results$expected)
 ```
 
 \textcolor{red}{Write the result interpretation here}  
 
-Why does this variable has 9 degrees of freedom?  
+
 
 Since p-value < 0.05, what is our conclusion?   
 
