@@ -143,8 +143,6 @@ The definition of p-value is often confused with the probability of the null hyp
 
 **Remark**: Bayesian hypothesis testing \cite{kruschke2018bayesian} outputs real probability values because the whole framework is generated using probability distributions. The Bayesian 95% credible intervals are 95% posterior probabilities, as opposed to the 95% confidence intervals in the frequentist approach, which do not have 95% probability.   
 
-\section*{\textcolor{red}{Unfinished below}}  
-
 ### Pearson's Chi-Squared Test
 
 The most common form of hypothesis testing is to check whether a coefficient is zero or not in linear regression, but this is by no means the only form. For categorical data, the Pearson's chi-squared test ($\chi^2$) can be used to evaluate whether the categorical counts of **HighSchool_PR** and **College_Score** are due to random chance. The test statistic $\chi^2$ is defined as below, and it asymptotically approaches a $\chi^2$ distribution.  
@@ -165,32 +163,46 @@ results
 
 **Remark**: We can add `simulate.p.value = TRUE` to suppress the warning `Chi-squared approximation may be incorrect`, so the p-values would be simulated. But given the small cell sizes, the estimates are inaccurate anyway. In fact, `simulate.p.value = TRUE` uses simulation conditional on the marginal totals, so `chisq.test` performs the Fisher's exact test^[<https://mathworld.wolfram.com/FishersExactTest.html>] with the multivariate version of hypergeometric distributions.   
 
-\textcolor{red}{Look at what chisq.test provides us}  
+\section*{\textcolor{red}{Unfinished below}}  
 
-The observed counts are the data in `table_4x4`, as shown earlier in Section \ref{bivariate-top-scorers}.  
+Let's take a look at what `chisq.test` provides us, and verify that we are using the function correctly. We should always leverage a package to do the computation when there is one that can do the job, but we also need to know exactly what we are doing to reap the results.      
+
+The `chisq.test` reads in the observed counts, i.e., the data in `table_4x4`, as shown earlier in Section \ref{bivariate-top-scorers}.  
 
 ```{r chi-squared-observed}
-print(results$observed)
+observed = results$observed
+observed
 ```
 
 The expected counts are simulated and conditioned on row and column totals.  
 
+\textcolor{red}{Elaborate on the expected counts}  
+
 ```{r chi-squared-expected}
-print(results$expected)
+expected = results$expected
+expected
 ```
 
 \textcolor{red}{Write the result interpretation here}  
 
 \textcolor{red}{Also need to calculate and explain the test statistic by hand}  
 
-Goal is to verify that we are using the `chisq.test` function correctly.  
-The readers should always leverage a package to do the computation when there is one that can do the job.    
-
 Grand total = 188 records  
 With 16 cells, $E_i = 188/16 = 11.75$  $\Rightarrow$ \textcolor{red}{Wrong!}  
 
 We need to adhere to the row and column totals.  
 
+```{r chi-squared-verify}
+test_stat = 0
+
+for (ii in 1:nrow(observed)) {
+  for (jj in 1:nrow(observed)) {
+    test_stat = test_stat + ((observed[ii,jj] - expected[ii,jj])^2)/expected[ii,jj]
+  }
+}
+
+test_stat
+```
 
 
 # Logistic Regression {#logit-reg}
