@@ -147,7 +147,10 @@ The definition of p-value is often confused with the probability of the null hyp
 
 The most common form of hypothesis testing is to check whether a coefficient is zero or not in linear regression, but this is by no means the only form. For categorical data, the Pearson's chi-squared test ($\chi^2$) can be used to evaluate whether the categorical counts of **HighSchool_PR** and **College_Score** are due to random chance. The test statistic $\chi^2$ is defined as below, and it asymptotically approaches a $\chi^2$ distribution.  
 
-$$\chi^2 = \sum^{n}_{i=1}\dfrac{(O_i - E_i)^2}{E_i}$$
+\begin{equation}
+\label{eqn:chi-squared-test}
+\chi^2 = \sum^{n}_{i=1}\dfrac{(O_i - E_i)^2}{E_i}
+\end{equation}
 
 There are $n$ cells in the table. For each cell $i$, $O_i$ is the number of observations in that cell and $E_i$ is the number of expected counts under the null hypothesis. Each $E_i$ is conditioned on row and column totals (i.e., marginal totals),^[<https://www.stats4stem.org/chi-square-test-for-homogeneity>] so $E_i$ differs for each cell $i$. For example, we have an unfair coin which lands heads 80% of the time, and we toss the coin 100 times. Then $E_{\text{heads}}$ is 80 and and $E_{\text{tails}}$ is 20.   
 
@@ -174,23 +177,22 @@ observed = results$observed
 observed
 ```
 
-The expected counts are simulated and conditioned on row and column totals.  
-
 \textcolor{red}{Elaborate on the expected counts}  
+
+The expected counts are simulated and conditioned on row and column totals, so each cell has a different number of expected counts. For example, the first row for **HighSchool_PR** 0-79 adds up to 25, which is the same in both `observed` and `expected` tables. The first column for **College_Score** 0-59 adds up to 60, and the sum is also the same in both tables.  
 
 ```{r chi-squared-expected}
 expected = results$expected
 expected
 ```
 
+We cannot just calculate $E_i = 188/16 = 11.75$ given 188 total records and 16 cells, because this does not adhere to the original row and column totals. Setting all cells to have equal expected counts means they are conditioned on only the grand total (188 records), so the degrees of freedom is $16-1=15$. With a 4x4 table, the degrees of freedom should be $(4-1)\times(4-1)=9$.  
+
 \textcolor{red}{Write the result interpretation here}  
 
 \textcolor{red}{Also need to calculate and explain the test statistic by hand}  
 
-Grand total = 188 records  
-With 16 cells, $E_i = 188/16 = 11.75$  $\Rightarrow$ \textcolor{red}{Wrong!}  
-
-We need to adhere to the row and column totals.  
+Use Equation (\ref{eqn:chi-squared-test}) to compute and verify the test statistic.  
 
 ```{r chi-squared-verify}
 test_stat = 0
