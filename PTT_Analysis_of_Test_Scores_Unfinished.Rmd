@@ -105,99 +105,23 @@ Need to elaborate on the foreword in this chapter.
 
 Bivariate exploration subsection:  
 
-Add my thoughts about categorical data analysis (e.g. proportional hazards model?!)  
+- Add my thoughts about categorical data analysis (e.g. proportional hazards model?!)  
 
-What about ROC and AUC (area under the curve) with various probability thresholds?  
+- What about ROC and AUC (area under the curve) with various probability thresholds?  
+
+You don't have to do the full implementation, just write a few lines as a pointer to the concepts.  
 
 \textcolor{red}{This is the file we want to move content into.}  
 
 \section*{\textcolor{red}{Unfinished below}}  
 
-```{r include-linear-reg, child = '06-Top-Scorers.Rmd'}
+```{r include-linear-reg, child = '06-Top-Scorers-01-Univariate.Rmd'}
 ```
 
-### Hypothesis Testing Framework
+## Bivariate Exploration of High Scorers {#bivariate-top-scorers}
 
-We perform hypothesis testing to statistically validate the positive association, and the hypotheses are:   
-
-- $H_0$ (null hypothesis): No association exists between the categorical counts of **HighSchool_PR** and **College_Score**.
-- $H_1$ (alternative hypothesis): An association exists between the categorical counts of **HighSchool_PR** and **College_Score**.  
-
-Note that we set up a two-sided hypothesis test because we are interested in the association between the two variables, no matter it is positive or negative.^[<https://statisticsbyjim.com/hypothesis-testing/one-tailed-two-tailed-hypothesis-tests/>]   
-
-The **p-value** measures statistical significance, and it is \textbf{the probability of observing something at least as extreme as the data, given the assumption that $\mathbf{H_0}$ is true} \cite{diez2019openintro}.  
-
-- When p-value > 0.05, we fail to reject $H_0$ and conclude that $H_0$ is true. 
-- When p-value < 0.05, we reject $H_0$ and conclude that $H_1$ is true.  
-
-In the case that p-value < 0.05, we say that the observed difference is statistically significant. But note that we do not know the underlying truth and we can make mistakes. We may make one of the two mistakes in hypothesis testing: 
-  
-- Type 1 error: $H_0$ is true but we reject $H_0$.
-- Type 2 error: $H_0$ is false but we fail to reject $H_0$.
-
-The good thing is that with p-value < 0.05, we limit the chances of making a Type 1 error to be less than 5%. This threshold is also called the significance level.^[<https://www.statsdirect.com/help/basics/p_values.htm>] When the cost of making a Type 1 error is higher, we can require p-value < 0.01 or even 0.001 to reject $H_0$ instead.     
-
-The definition of p-value is often confused with the probability of the null hypothesis being true, which is incorrect \cite{goodman2008dirty}. P-values have been widely used and misused in scientific research, up to the extent that the \citet{american2016statement} released a statement on the proper use and interpretation of the p-values. Ideally we should consider the whole research design and the results' practical importance, rather than make conclusions solely based on statistical significance \cite{wasserstein2019moving}.  
-
-**Remark**: Bayesian hypothesis testing \cite{kruschke2018bayesian} outputs real probability values because the whole framework is generated using probability distributions. The Bayesian 95% credible intervals are 95% posterior probabilities, as opposed to the 95% confidence intervals in the frequentist approach, which do not have 95% probability.   
-
-### Pearson's Chi-Squared Test
-
-The most common form of hypothesis testing is to check whether a coefficient is zero or not in linear regression, but this is by no means the only form. For categorical data, the Pearson's chi-squared test^[<https://data-flair.training/blogs/chi-square-test-in-r/>] can be used to evaluate whether the categorical counts of **HighSchool_PR** and **College_Score** are due to random chance. The test statistic $\chi^2$ (chi-squared) is defined as below, and it asymptotically approaches a $\chi^2$ distribution.  
-
-\begin{equation}
-\label{eqn:chi-squared-test}
-\chi^2 = \sum^{n}_{i=1}\dfrac{(O_i - E_i)^2}{E_i}
-\end{equation}
-
-There are $n$ cells in the table. For each cell $i$, $O_i$ is the number of observations in that cell and $E_i$ is the number of expected counts under the null hypothesis. Each $E_i$ is conditioned on row and column totals (i.e., marginal totals),^[<https://www.stats4stem.org/chi-square-test-for-homogeneity>] so $E_i$ differs for each cell $i$. For example, we have an unfair coin which lands heads 80% of the time, and we toss the coin 100 times. Then $E_{\text{heads}}$ is 80 and and $E_{\text{tails}}$ is 20.   
-
-Then the test statistic $\chi^2$ is compared with a $\chi^2$ distribution to calculate the p-value, given the degrees of freedom. When we generate $m$ independent scores from a random sample, we have $m-1$ degrees of freedom because the $m$ scores are restricted by their sample mean. When we have $a$ rows and $b$ columns in the table, we have $(a-1)(b-1)$ degrees of freedom because each row and each column are restricted to the subtotal, on behalf of the grand total (total number of observations in the data).   
-
-It is tedious to calculate the Pearson's chi-squared test by hand, so we use the function `chisq.test` in the `R` package `stats`. But we should still try to understand the rationale behind the `chisq.test` function to verify that we are using it correctly. For example, the test statistic $\chi^2$ has `df = 9` degrees of freedom, because `df` is computed as $(4-1)\times(4-1)$.   
-
-The results show p-value < 0.05, so we reject $H_0$ and conclude that a positive association exists between the categorical counts of **HighSchool_PR** and **College_Score**. This is statistical evidence to support our observation in the contingency table.  
-
-```{r chi-squared-test}
-results = chisq.test(table_4x4)
-
-results
+```{r include-chisq-test, child = '06-Top-Scorers-02-Bivariate.Rmd'}
 ```
-
-**Remark**: We can add `simulate.p.value = TRUE` to suppress the warning `Chi-squared approximation may be incorrect`, so the p-values would be simulated. But given the small cell sizes, the estimates are inaccurate anyway. In fact, `simulate.p.value = TRUE` uses simulation conditional on the marginal totals, so `chisq.test` performs the Fisher's exact test^[<https://mathworld.wolfram.com/FishersExactTest.html>] with the multivariate version of hypergeometric distributions.   
-
-Let's take a look at what `chisq.test` provides us, and verify that we are using the function correctly. We should always leverage a package to do the computation when there is one that can do the job, but we also need to know exactly what we are doing to reap the results.      
-
-The `chisq.test` reads in the observed counts, i.e., the data in `table_4x4`, as shown earlier in Section \ref{bivariate-top-scorers}.  
-
-```{r chi-squared-observed}
-observed = results$observed
-observed
-```
-
-The expected counts are simulated and conditioned on row and column totals, so each cell has a different number of expected counts. For example, the first row for **HighSchool_PR** 0-79 adds up to 25, which is the same in both `observed` and `expected` tables. The first column for **College_Score** 0-59 adds up to 60, and the sum is also the same in both tables.  
-
-```{r chi-squared-expected}
-expected = results$expected
-expected
-```
-
-We cannot just assume $E_i = 188/16 = 11.75$ given 188 total records and 16 cells, because this does not adhere to the original row and column totals. Setting all cells to have equal expected counts means they are conditioned on only the grand total (188 records), so the degrees of freedom is $16-1=15$. With a 4x4 table, the degrees of freedom should be $(4-1)\times(4-1)=9$.  
-
-Let's use Equation (\ref{eqn:chi-squared-test}) to compute and verify the test statistic $\chi^2$, and we get the same result as the `chisq.test` function. The manual calculation is for educational purposes only, and readers do not have to do this in a real-time project.   
-
-```{r chi-squared-verify}
-test_stat = 0
-
-for (ii in 1:nrow(observed)) {
-  for (jj in 1:nrow(observed)) {
-    test_stat = test_stat + ((observed[ii,jj] - expected[ii,jj])^2)/expected[ii,jj]
-  }
-}
-
-test_stat
-```
-
 
 # Logistic Regression {#logit-reg}
 

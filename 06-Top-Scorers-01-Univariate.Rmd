@@ -2,7 +2,7 @@ We are going to take a closer look at the top scorers, given the observation in 
 
 \textcolor{red}{Add \textbf{why} we would like to focus on the top scorers. Reasons include media attention (citation needed) and toughness of competition. Analogy: We see star athletes featured in the news, and rarely see the remaining.}   
 
-In Taiwan's education system, the top tier of high schools and colleges can be further segmented. The top of the range can be very different than the middle or bottom. For example, National Taiwan University is the most prestigious university in Taiwan, and Chang Gung University^[<https://www.cgu.edu.tw/?Lang=en>] is also excellent in medical education. However, many people in the US have heard of the former but not the latter. This does not mean you should always choose the most prestigious college; many other factors should also be considered, such as tuition and majors offered at that college.  
+In Taiwan's education system, the top tier of high schools and colleges can be further segmented. The top of the range can be very different than the middle or bottom. For example, National Taiwan University^[<https://www.ntu.edu.tw/english/>] is the most prestigious university in Taiwan, but Chang Gung University^[<https://www.cgu.edu.tw/?Lang=en>] is also excellent in medical education. However, many people in the US have heard of the former but not the latter. This does not mean you should always choose the most prestigious college; many other factors should also be considered, such as tuition and majors offered at that college.  
 
 We consider the following subcategories in the entrance exam scores:     
 
@@ -90,52 +90,3 @@ print(paste("College_Score 65-69:",CS65to69))
 print(paste("College_Score 70-75:",CS70to75))
 ```
 
-## Bivariate Exploration of High Scorers {#bivariate-top-scorers}
-
-Section \ref{bivariate} explored the bivariate relationship between **HighSchool_PR** and **College_Score**, and this time we would like to focus on the high scorers: respondents with **HighSchool_PR** at least 80 and/or **College_Score** at least 60. There are 163 respondents with **HighSchool_PR** 80 or higher, 128 respondents with **College_Score** 60 or higher, and 120 respondents with both. Since the number of respondents with **HighSchool_PR** at least 80 does not equal to the number of respondents with **College_Score** at least 60, we should consider the full 188 records in the data. Hence we add the range 0-79 to **HighSchool_PR**, and the range 0-59 for **College_Score**. We would like to create a 4x4 table for the following ranges:
-
-* **HighSchool_PR** ranges: 0-79, 80-89, 90-94, 95-99
-* **College_Score** ranges: 0-59, 60-64, 65-69, 70-75
-
-Here, we use the `for` loop and `if-else` logic to map **HighSchool_PR** and **College_Score** into their corresponding ranges. The `else if` statement is executed when and only when the `if` statement is not true, so we can assign the score to the appropriate category using sequential `if-else` statements for range boundaries.
-
-```{r contingency-4x4}
-data_corr$HS_range = "set"
-data_corr$CS_range = "set"
-
-for(ii in 1:nrow(data_corr)) {
-        # High School PR categories
-        if (data_corr$HighSchool_PR[ii] <= 79) {
-                data_corr$HS_range[ii] = "0-79"
-        } else if (data_corr$HighSchool_PR[ii] <= 89) {
-                data_corr$HS_range[ii] = "80-89"
-        } else if (data_corr$HighSchool_PR[ii] <= 94) {
-                data_corr$HS_range[ii] = "90-94"
-        } else {
-                data_corr$HS_range[ii] = "95-99"
-        }
-        
-        # College Score Categories
-        if (data_corr$College_Score[ii] <= 59) {
-                data_corr$CS_range[ii] = "0-59"
-        } else if (data_corr$College_Score[ii] <= 64) {
-                data_corr$CS_range[ii] = "60-64"
-        } else if (data_corr$College_Score[ii] <= 69) {
-                data_corr$CS_range[ii] = "65-69"
-        } else {
-                data_corr$CS_range[ii] = "70-75"
-        }
-}
-```
-
-We continue to use the `R` function `table` to create the 4x4 contingency table between the ranges of **HighSchool_PR** and **College_Score**. As we can see in the horizontal rows, the majority of respondents with **HighSchool_PR** less than 80 have a **College_Score** less than 60. For the respondents with **HighSchool_PR** between 80 and 94, the **College_Score** varies widely. The respondents with **HighSchool_PR** 95 or above performed the best in terms of **College_Score** -- most of them scored 65 or higher.  
-
-In the vertical columns, the respondents with **College_Score** less than 60 mostly had a **HighSchool_PR** 94 or below; few came from the group of **HighSchool_PR** 95-99. For the respondents with **College_Score** between 60 and 64, their **HighSchool_PR** varied widely. Approximately half of the respondents with **College_Score** had **HighSchool_PR** 95 or above. For the top group of **College_Score** 70 or above, more than three quarters (34 out of 45) came from the respondents with **HighSchool_PR** 95 or higher.
-
-```{r table-4x4}
-table_4x4 = table(data_corr$HS_range, data_corr$CS_range,
-                  dnn=c("HighSchool_PR","College_Score"))
-table_4x4
-```
-
-The contingency table seems to show a positive association between **HighSchool_PR** and **College_Score**, because most counts are in the top-left and bottom-right. Respondents with a good **HighSchool_PR** score are more likely to achieve a good **College_Score**, but this is not guaranteed. Respondents who scored poorly in **HighSchool_PR** still had a small chance to do exceptionally well in **College_Score** later. Our observations align with the conventional wisdom that **HighSchool_PR** and **College_Score** are somewhat related, but a high score on **HighSchool_PR** does not guarantee a high score on **College_Score**.  
