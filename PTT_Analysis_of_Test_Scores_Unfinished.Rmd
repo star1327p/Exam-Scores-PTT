@@ -103,14 +103,6 @@ Also, list several mobile apps for readers to access PTT on a smart phone. Commo
 
 Need to elaborate on the foreword in this chapter.  
 
-Bivariate exploration subsection:  
-
-- Add my thoughts about categorical data analysis (e.g. proportional hazards model?!)  
-
-- What about ROC and AUC (area under the curve) with various probability thresholds?  
-
-You don't have to do the full implementation, just write a few lines as a pointer to the concepts.  
-
 \textcolor{red}{This is the file we want to move content into.}  
 
 \section*{\textcolor{red}{Unfinished below}}  
@@ -140,10 +132,32 @@ You don't have to do the full implementation, just write a few lines as a pointe
 
 ## Interpretation of Confusion Matrix {#interpretation}
 
+\section*{\textcolor{red}{Unfinished below}}  
+
+What about ROC (receiver operating characteristic) and AUC (area under the curve) with various probability thresholds?  
+
+In many cases, it is not obvious to determine the probability threshold to predict a datapoint to be positive.  
+
+But ROC requires the definitions of TPR and FPR first.  
+
+You don't have to do the full implementation, just write a few lines as a pointer to the concepts.  
+
+\section*{\textcolor{red}{Unfinished above}}  
+
 ```{r include-in-sample-02, child = '08-In-Sample-02-Confusion-Matrix.Rmd'}
 ```
 
 ## Breakdown by High School Entrance Exam Scores {#another-breakdown}
+
+\section*{\textcolor{red}{Unfinished below}}  
+
+Add my thoughts about categorical data analysis (e.g. proportional hazards model?!)  
+
+Example: When **HighSchool_PR** is increased from Category X to Category Y, how does it affect the categories of **College_Score**?  
+
+You don't have to do the full implementation, just write a few lines as a pointer to the concepts.  
+
+\section*{\textcolor{red}{Unfinished above}} 
 
 ```{r include-in-sample-03, child = '08-In-Sample-03-Score-Breakdown.Rmd'}
 ```
@@ -154,6 +168,14 @@ You don't have to do the full implementation, just write a few lines as a pointe
 ```
 
 ## Separate Training and Testing Datasets
+
+\section*{\textcolor{red}{Unfinished below}}  
+
+Add a remark on hyperparameter tuning for random forests.  
+
+Hyperparameter tuning is also necessary for ridge regression and Lasso regression, both of which contain a penalty term to regulate the number of coefficients in the model.  
+
+\section*{\textcolor{red}{Unfinished above}}  
 
 ```{r include-out-sample-01, child = '09-Out-Sample-01-Sep-Explain.Rmd'}
 ```

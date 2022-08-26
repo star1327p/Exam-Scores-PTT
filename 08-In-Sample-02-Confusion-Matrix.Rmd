@@ -68,7 +68,7 @@ In our data analysis, false positive rate and false negative rate have about equ
 
 \subsubsection{Sensitivity and Specificity}
 
-We are going off on a tangent here, because this section is not directly related to the data of high school and college entrance exam scores. But we think it is importance to introduce the concepts of **sensitivity** and **specificity** to the readers, since they are also used to describe the overall testing results, especially in a clinical setting.^[<https://www.healthnewsreview.org/toolkit/tips-for-understanding-studies/understanding-medical-tests-sensitivity-specificity-and-positive-predictive-value/>]   
+We are going off on a tangent here, because this section is not directly related to the data of high school and college entrance exam scores. But we think it is important to introduce the concepts of **sensitivity** and **specificity** to the readers, since they are also used to describe the overall testing results, especially in a clinical setting.^[<https://www.healthnewsreview.org/toolkit/tips-for-understanding-studies/understanding-medical-tests-sensitivity-specificity-and-positive-predictive-value/>]   
 
 Sensitivity means that when a patient actually has the disease (actual positive), the medical test is able to sense it and produce a positive result. That is, the medical test is sensitive enough to identify patients who have the disease.  
 
