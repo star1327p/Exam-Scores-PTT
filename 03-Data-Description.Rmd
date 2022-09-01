@@ -19,7 +19,7 @@ Some people reported their percentile rank (PR) from the mock exam, rather than 
 
 Moreover, there are two college entrance exams in each school year, and some students may do much better on the second exam than the first one. Then they were admitted to a more prestigious school than the first exam score had indicated, so this is also a form of inaccuracy.
 
-## Data at a Glance
+## Data Snapshot
 
 We show the first 10 rows of data here, and `NA` (not available) denotes that the value is missing. Note that only **HS_Inacc** and **College_Inacc** contain `NA`s, because we already recoded missing values to "-1" (an invalid numeric value) for **HighSchool_PR** and **College_Score**.  
 
@@ -35,7 +35,9 @@ data[1:10,]
 
 **Remark**: Data in the real world are messy, and data scientists spend lots of time cleaning (preprocessing) the data, i.e., preparing the data for analysis.^[<https://bit.ly/303IWxY>] But data cleaning is a necessary step for better analysis results, and there are some visualization examples that demonstrate the importance of preprocessing the data \cite{chai2020importance}. Our dataset `ptt_SENIORHIGH_data.csv` is relatively clean, but we still had to recode and flag missing values.  
 
-\section*{\textcolor{red}{Unfinished below}}  
+\section*{\textcolor{red}{Unfinished below}}    
+
+\textcolor{red}{Need to explain} `data_corr`  
 
 ## Data Consistency
 

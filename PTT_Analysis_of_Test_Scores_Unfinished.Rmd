@@ -82,7 +82,7 @@ Also, list several mobile apps for readers to access PTT on a smart phone. Commo
 
 \textcolor{red}{This is the file we want to move content into.}  
 
-\section*{\textcolor{red}{Unfinished above}}
+\section*{\textcolor{red}{Unfinished above}}  
 
 ```{r include-data-description, child = '03-Data-Description.Rmd'}
 ```
@@ -99,18 +99,10 @@ Also, list several mobile apps for readers to access PTT on a smart phone. Commo
 
 # Top Scorers: A Closer Look {#explore-top}
 
-\section*{\textcolor{red}{Unfinished below}}  
-
-Need to elaborate on the foreword in this chapter.  
-
-\textcolor{red}{This is the file we want to move content into.}  
-
-\section*{\textcolor{red}{Unfinished below}}  
-
 ```{r include-linear-reg, child = '06-Top-Scorers-01-Univariate.Rmd'}
 ```
 
-## Bivariate Exploration of High Scorers {#bivariate-top-scorers}
+## Bivariate Exploration of Top Scorers {#bivariate-top-scorers}
 
 ```{r include-chisq-test, child = '06-Top-Scorers-02-Bivariate.Rmd'}
 ```
@@ -142,6 +134,8 @@ But ROC requires the definitions of TPR and FPR first.
 
 You don't have to do the full implementation, just write a few lines as a pointer to the concepts.  
 
+\textcolor{red}{This is the file we want to move content into.}  
+
 \section*{\textcolor{red}{Unfinished above}}  
 
 ```{r include-in-sample-02, child = '08-In-Sample-02-Confusion-Matrix.Rmd'}
@@ -156,6 +150,8 @@ Add my thoughts about categorical data analysis (e.g. proportional hazards model
 Example: When **HighSchool_PR** is increased from Category X to Category Y, how does it affect the categories of **College_Score**?  
 
 You don't have to do the full implementation, just write a few lines as a pointer to the concepts.  
+
+\textcolor{red}{This is the file we want to move content into.}  
 
 \section*{\textcolor{red}{Unfinished above}} 
 
