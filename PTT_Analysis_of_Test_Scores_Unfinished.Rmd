@@ -76,7 +76,7 @@ Start writing about 2021 for both exams, because 2022 is still ongoing
 
 \section*{\textcolor{red}{Unfinished below}}
 
-\textcolor{red}{Definitely need to fix the Data Consistency section}  
+\textcolor{red}{Definitely need to fix both data sections}   
 
 Add the new PTT image and state **when** the registration restrictions were removed.  
 

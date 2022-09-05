@@ -6,16 +6,22 @@ The dataset `ptt_SENIORHIGH_data.csv` contains 197 rows, and the main variables 
 
 - **pttID**: Each person's ID on PTT, which can be anonymous. This column serves as the unique identifier of each person.
 - **HighSchool_PR**: Each person's percentile rank (PR) of the high school entrance exam in Taiwan, ranging from 0 to 99.
-- **College_Score**: Each person's General Scholastic Ability Test (GSAT) score, ranging from 0 to 75.
+- **College_Score**: Each person's General Scholastic Ability Test (GSAT) score, ranging from 0 to 75.  
 
-There are 6 missing values in **HighSchool_PR** and 3 missing values in **College_Score**, so we recorded each of them as "-1" (an invalid numerical value). 
+There are 6 missing values in **HighSchool_PR** and 3 missing values in **College_Score**, so each of them is manually recorded as "-1" (an invalid numerical value for the scores).   
 
 In some cases, the reported scores can be inaccurate based on the respondent's description, so we created two indicators for this issue:  
 
-- **HS_Inacc**: A "1" means the reported score of high school entrance exam is inaccurate, otherwise the value is `NA` (missing).
-- **CS_Inacc**: A "1" means the reported score of college entrance exam is inaccurate, otherwise the value is `NA` (missing).  
+- **HS_Inacc**: A "1" means the reported score of high school entrance exam is inaccurate.
+- **CS_Inacc**: A "1" means the reported score of college entrance exam is inaccurate.  
+
+One obvious reason of inaccurate scores is that a respondent may comment that his/her scores are approximate. Moreover, some people reported their **HighSchool_PR** from the mock exam, rather than from the actual high school entrance exam. In 2012 and 2013, the Ministry of Education in Taiwan allowed students to apply for high schools with their grades in middle school. During that time, if a student got admitted to a high school using this method, he/she would not need to take the high school entrance exam.^[<https://tsjh301.blogspot.com/2014/06/compulsory-education.html>]  
+
+For **College_Score**, the approximate clause still applies. In addition, there are two college entrance exams in each school year, and some students may do much better on the second exam than the first one. Then they were admitted to a more prestigious school than the first exam score had indicated, so this is also a form of inaccuracy.  
 
 \section*{\textcolor{red}{Unfinished below}}  
+
+Let's clean up the data.  
 
 ```{r data-cleaning-initial}
 data = read.csv("ptt_SENIORHIGH_data.csv")
@@ -30,8 +36,13 @@ data$HS_Invalid[(data$HighSchool_PR > 99)|(data$HighSchool_PR < 1)] = 1
 
 data$CS_Invalid = 0
 data$CS_Invalid[(data$CS_Score > 99)|(data$CS_Score < 1)] = 1
+```
 
-# write.csv(data, "ptt_SENIORHIGH_data_clean.csv")
+
+Test
+
+```{r save-data-clean, eval=FALSE}
+write.csv(data, "ptt_SENIORHIGH_data_clean.csv")
 ```
 
 The inaccuracy flag is confusing. Consider adding another set of flags: **HS_Invalid** and **CS_Invalid**.  
@@ -48,9 +59,9 @@ e.g.  The respondent `game275415` provided an approximate value to the **HighSch
 
 \section*{\textcolor{red}{Unfinished above}}   
 
-Some people reported their percentile rank (PR) from the mock exam, rather than the actual high school entrance exam. In 2012 and 2013, the Ministry of Education in Taiwan allowed students to apply for high schools with their grades in middle school. During that time, if a student got admitted to a high school using this method, he/she would not need to take the high school entrance exam.^[<https://tsjh301.blogspot.com/2014/06/compulsory-education.html>]  
 
-Moreover, there are two college entrance exams in each school year, and some students may do much better on the second exam than the first one. Then they were admitted to a more prestigious school than the first exam score had indicated, so this is also a form of inaccuracy.
+
+
 
 ## Data Snapshot
 
@@ -79,7 +90,7 @@ options(width = default_value)
 **Remark**: Data in the real world are messy, and data scientists spend lots of time cleaning (preprocessing) the data, i.e., preparing the data for analysis.^[<https://bit.ly/303IWxY>] But data cleaning is a necessary step for better analysis results, and there are some visualization examples that demonstrate the importance of preprocessing the data \cite{chai2020importance}. Our dataset `ptt_SENIORHIGH_data.csv` is relatively clean, but we still had to recode and flag missing values.  
 
 
-## Data Cleaning
+## Bivariate Validation
 
 We need to clean up the data to prepare for the analysis. For example, we would like to investigate the relationship between **HighSchool_PR** and **College_Score**, we need to ensure that each record consists of both valid scores. There are 191 records of valid **HighSchool_PR** numbers in the data, but if we consider only the ones with a valid **College_Score**, the number of available records drops to 188. Although which version we use does not matter much when we look at the univariate distribution, this will be problematic when we combine the univariate analysis with the bivariate analysis. Thus, we should use only the 188 records whose **College_Score** numbers are also valid.  
 
