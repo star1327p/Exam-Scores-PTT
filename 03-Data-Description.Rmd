@@ -8,9 +8,9 @@ The dataset `ptt_SENIORHIGH_data.csv` contains 197 rows, and the main variables 
 - **HighSchool_PR**: Each person's percentile rank (PR) of the high school entrance exam in Taiwan, ranging from 0 to 99.
 - **College_Score**: Each person's General Scholastic Ability Test (GSAT) score, ranging from 0 to 75.  
 
-There are 6 missing values in **HighSchool_PR** and 3 missing values in **College_Score**, so each of them is manually recorded as "-1" (an invalid numerical value for the scores).   
+There are 6 missing values in **HighSchool_PR** and 3 missing values in **College_Score**, so each of them is recorded as "-1" (an invalid numerical value for the scores).   
 
-In some cases, the reported scores can be inaccurate based on the respondent's description, so we created two indicators for this issue:  
+In some cases, the reported scores can be inaccurate based on the respondent's description, so we read the comments and manually created two indicators for this issue:  
 
 - **HS_Inacc**: A "1" means the reported **HighSchool_PR** is inaccurate.
 - **CS_Inacc**: A "1" means the reported **College_Score** is inaccurate.  
@@ -19,14 +19,12 @@ One obvious reason of inaccurate scores is that a respondent may comment that hi
 
 For **College_Score**, the approximate clause still applies. In addition, there are two college entrance exams in each school year, and some students may do much better on the second exam than the first one. Then they were admitted to a more prestigious school than the first exam score had indicated, so this is also a form of inaccuracy.  
 
-\section*{\textcolor{red}{Unfinished below}}  
-
-Let's clean up the data.  
-
-What did we do in cleaning up?  
+Let's clean up the data. For **HS_Inacc** and **CS_Inacc**, we set the missing values to "0" because the two flags are binary indicators. We add two more indicators to reflect invalid (impossible) values in **HighSchool_PR** and **College_Score**.  
 
 - **HS_Invalid**: A "1" means the reported **HighSchool_PR** is invalid, i.e., outside the range of 1-99.
-- **CS_Invalid**: A "1" means the reported **College_Score** is invalid, i.e., outside the range of 1-75.
+- **CS_Invalid**: A "1" means the reported **College_Score** is invalid, i.e., outside the range of 1-75.  
+
+Again, we set **HS_Invalid** to "0" for a valid **HighSchool_PR**, and set **CS_Invalid** to "0" for a valid **College_Score**.  
 
 ```{r data-cleaning-initial}
 data = read.csv("ptt_SENIORHIGH_data.csv")
@@ -43,12 +41,13 @@ data$CS_Invalid = 0
 data$CS_Invalid[(data$CS_Score > 75)|(data$CS_Score < 1)] = 1
 ```
 
-
 We can save the clean version to a separate `.csv` file for future use.  
 
 ```{r save-data-clean, eval=FALSE}
 write.csv(data, "ptt_SENIORHIGH_data_clean.csv")
 ```
+
+\section*{\textcolor{red}{Unfinished below}}  
 
 The inaccuracy flag is confusing. Consider adding another set of flags: **HS_Invalid** and **CS_Invalid**.  
 
@@ -56,13 +55,17 @@ Generate such flags with code, rather than by hand ?!
 
 \textcolor{red}{Inaccurate does not mean the score is invalid.}  
 
-Change the missing values to zero in **HS_Inacc** and **CS_Inacc**?    
+
 
 \textcolor{red}{Need to explain some respondents' inaccurate reporting.}  
 
 e.g.  The respondent `game275415` provided an approximate value to the **HighSchool_PR**.   
 
-\section*{\textcolor{red}{Unfinished above}}   
+We need to remove invalid scores, not just the missing ones.   
+
+e.g. An invalid score like **HighSchool_PR** 100 should also be treated as missing.  
+
+\section*{\textcolor{red}{Unfinished below}}   
 
 
 
