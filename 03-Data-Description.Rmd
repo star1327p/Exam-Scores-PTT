@@ -50,6 +50,7 @@ write.csv(data, "ptt_SENIORHIGH_data_clean.csv")
 \section*{\textcolor{red}{Unfinished below}}  
 
 \textcolor{red}{Need to explain some respondents' inaccurate reporting.}  
+
 We need to remove invalid scores, not just the missing ones.   
 
 e.g. An invalid score like **HighSchool_PR** 100 should also be treated as missing.  
@@ -105,7 +106,7 @@ Missing values in one of **HighSchool_PR** or **College_Score**
 
 We do not have sufficient information to impute such missing values in our dataset, so we decided to exclude them.  
 
-Pointer to record linkage methods ?!   
+Pointer to record linkage methods \cite{dusetzina2014overview} ?!   
 
 \section*{\textcolor{red}{Unfinished above}}  
 
