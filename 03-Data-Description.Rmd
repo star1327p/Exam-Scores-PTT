@@ -10,7 +10,7 @@ The dataset `ptt_SENIORHIGH_data.csv` contains 197 rows, and the main variables 
 
 There are 6 missing values in **HighSchool_PR** and 3 missing values in **College_Score**, so each of them is recorded as "-1" (an invalid numerical value for the scores).   
 
-In some cases, the reported scores can be inaccurate based on the respondent's description, so we read the comments and manually created two indicators for this issue:  
+In some cases, the reported scores can be inaccurate based on the respondent's description, so we read the comments and manually created two indicators for this issue. Note that inaccurate scores are still valid, so we keep them in the data analysis.    
 
 - **HS_Inacc**: A "1" means the reported **HighSchool_PR** is inaccurate.
 - **CS_Inacc**: A "1" means the reported **College_Score** is inaccurate.  
@@ -49,18 +49,7 @@ write.csv(data, "ptt_SENIORHIGH_data_clean.csv")
 
 \section*{\textcolor{red}{Unfinished below}}  
 
-The inaccuracy flag is confusing. Consider adding another set of flags: **HS_Invalid** and **CS_Invalid**.  
-
-Generate such flags with code, rather than by hand ?!  
-
-\textcolor{red}{Inaccurate does not mean the score is invalid.}  
-
-
-
 \textcolor{red}{Need to explain some respondents' inaccurate reporting.}  
-
-e.g.  The respondent `game275415` provided an approximate value to the **HighSchool_PR**.   
-
 We need to remove invalid scores, not just the missing ones.   
 
 e.g. An invalid score like **HighSchool_PR** 100 should also be treated as missing.  
@@ -69,13 +58,11 @@ e.g. An invalid score like **HighSchool_PR** 100 should also be treated as missi
 
 
 
-
-
 ## Data Snapshot
 
-We show the first 10 rows of data here, and `NA` (not available) denotes that the value is missing. Note that only **HS_Inacc** and **CS_Inacc** contain `NA`s, because we already recoded missing values to "-1" (an invalid numeric value) for **HighSchool_PR** and **College_Score**.  
+We show the first 10 rows of data here, and we already see several anomalies that are flagged. For example, the 1st respondent `game275415` provided an approximate value to the **HighSchool_PR**, so we marked this value as inaccurate and a "1" in **HS_Inacc**. The 4th respondent `heejung` used mock exam scores for the **HighSchool_PR**, so this score is also marked as inaccurate. Then the 6th respondent `robinyu85` claimed to not haven taken the high school entrance exam at all, so his/her missing **HighSchool_PR** is encoded to "-1" and flagged as invalid.   
 
-We also observed that **pttID** contains some information for potential inference, although we are not going to use it. For example, the 6th respondent `robinyu85` could be someone named Robin Yu, and the 8th respondent `godpatrick11` may have the English name Patrick. Nevertheless, this kind of information is simply a heuristic, so it is neither sufficient nor appropriate to include in the data analysis.
+We also observed that **pttID** contains some information for potential inference, although we are not going to use it. For example, the 6th respondent `robinyu85` could be someone named Robin Yu, and the 8th respondent `godpatrick11` may have the English name Patrick. Nevertheless, this kind of information is simply a heuristic, so it is neither sufficient nor appropriate to include in the data analysis.  
 
 ```{r set-width, include=FALSE}
 default_value = getOption("width") # 80
@@ -94,6 +81,8 @@ data[1:10,]
 # Now we reset the width back to default for the rest of the document.
 options(width = default_value)
 ```
+
+\textcolor{red}{Consider moving the Remark to the foreword of the chapter}       
 
 **Remark**: Data in the real world are messy, and data scientists spend lots of time cleaning (preprocessing) the data, i.e., preparing the data for analysis.^[<https://bit.ly/303IWxY>] But data cleaning is a necessary step for better analysis results, and there are some visualization examples that demonstrate the importance of preprocessing the data \cite{chai2020importance}. Our dataset `ptt_SENIORHIGH_data.csv` is relatively clean, but we still had to recode and flag missing values.  
 
@@ -116,7 +105,7 @@ Missing values in one of **HighSchool_PR** or **College_Score**
 
 We do not have sufficient information to impute such missing values in our dataset, so we decided to exclude them.  
 
-Pointer to record linkage methods ?!  
+Pointer to record linkage methods ?!   
 
 \section*{\textcolor{red}{Unfinished above}}  
 
