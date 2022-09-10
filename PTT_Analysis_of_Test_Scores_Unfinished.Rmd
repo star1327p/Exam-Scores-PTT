@@ -78,17 +78,9 @@ Start writing about 2021 for both exams, because 2022 is still ongoing
 
 \textcolor{red}{Definitely need to fix both data sections}   
 
-Add the new PTT image and state **when** the registration restrictions were removed.  
-
-Note that from 2018 to 2021, PTT limited new account registrations to only people with an email address from National Taiwan University.^[Screenshot obtained on May 26, 2020: <https://imgur.com/33fwrGH>]   
-
-The good news is that this restriction has been removed.^[Screenshot obtained on February 5, 2022: <https://imgur.com/kaTsRpn>] As of 2022, anyone can register for an account on PTT with email^[<https://www.techbang.com/posts/88695-ptt-registration>] or mobile phone authentication.^[<https://free.com.tw/ptt-id-registration-aotp/>]    
-
-Also, list several mobile apps for readers to access PTT on a smart phone. Common apps include BePTT, Mo PTT, JPTT, and PiTT.  
-
 \textcolor{red}{This is the file we want to move content into.}  
 
-\section*{\textcolor{red}{Unfinished above}}  
+\section*{\textcolor{red}{Unfinished below}}  
 
 ```{r include-data-description, child = '03-Data-Description.Rmd'}
 ```
