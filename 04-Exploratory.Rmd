@@ -8,7 +8,11 @@ Therefore, we start with examining the trends of the two main variables, **HighS
 
 ## High School Entrance Exam Scores (Percentile Rank)
 
-Below shows the descriptive statistics of **HighSchool_PR**, i.e., the percentile rank of high school entrance exam scores. The missing values are removed beforehand. Approximately 75% of the respondents have a percentile rank (PR) at least 85, indicating that most of the respondents scored in the top 15% of the high school entrance exam. The histogram is also extremely left-skewed.  
+Below shows the descriptive statistics of **HighSchool_PR**, i.e., the percentile rank of high school entrance exam scores. The missing values are removed beforehand. Approximately 75% of the respondents have a percentile rank (PR) at least 85, indicating that 75% of the respondents scored in the top 15% of the high school entrance exam. The histogram is also extremely left-skewed.   
+
+\textcolor{red}{Also talk about the median PR as 92 and compare to high school entrance score requirements.}     
+
+\textcolor{red}{Why median > mean in this situation? Compared with most right-skewed distributions, where median < mean.}   
 
 ```{r high-school-pr}
 # High school entrance exam scores: Remove missing values
@@ -22,13 +26,7 @@ hist(uni_HS_score, main = "Histogram of HighSchool_PR",
 
 ## College Entrance Exam Scores 
 
-Similarly, we also show the descriptive statistics of **College_Score**, i.e., the college entrance exam scores between 0 and 75. The histogram is also left-skewed, but less extreme than **HighSchool_PR**.  
-
-According to the reference score table^[<https://bit.ly/3bAYOvO>] from Wikipedia, the 88th percentile of the college entrance score fluctuates around 60 in Years 2004-2010, and 62-65 in Years 2011-2018. Since the median of **College_Score** is 64.5, we can infer that at least 50% of the respondents scored in the top 12% of the college entrance exam.  
-
-On the other hand, the reference score table also shows that the 75th percentile of the college entrance score is between 53 and 58 in Years 2004-2018. The PTT data's 1st quantile is already at 58, so we can also infer that at least 75% of the respondents scored in the top 25% of the college entrance exam.  
-
-Since PTT contains forums for several prestigious universities in Taiwan, it is no surprise that many users attended these colleges because they scored well on the college entrance exam. Nevertheless, PTT does not limit registration to students of these colleges, so the population of PTT is more diverse.  
+Similarly, we also show the descriptive statistics of **College_Score**, i.e., the college entrance exam scores between 1 and 75. The histogram is also left-skewed, but less extreme than **HighSchool_PR**. According to the reference score table^[<https://bit.ly/3bAYOvO>] from Wikipedia, the 88th percentile of the college entrance score fluctuates around 60 in Years 2004-2010, and 62-65 in Years 2011-2018. Since the median of **College_Score** is 64.5, we can infer that at least 50% of the respondents scored in the top 12% of the college entrance exam. On the other hand, the reference score table also shows that the 75th percentile of the college entrance score is between 53 and 58 in Years 2004-2018. The PTT data's 1st quantile is already at 58, so we can also infer that at least 75% of the respondents scored in the top 25% of the college entrance exam. Since PTT contains forums for several prestigious universities in Taiwan, it is no surprise that many users attended these colleges because they scored well on the college entrance exam. Nevertheless, PTT does not limit registration to students of these colleges, so the population of PTT is relatively diverse.   
 
 ```{r college-score}
 # College entrance exam scores: Remove missing values
