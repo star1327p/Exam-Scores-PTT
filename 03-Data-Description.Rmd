@@ -14,7 +14,7 @@ The dataset `ptt_SENIORHIGH_data.csv` contains 197 rows, and the main variables 
 - **HighSchool_PR**: Each person's percentile rank (PR) of the high school entrance exam in Taiwan, ranging from 0 to 99.
 - **College_Score**: Each person's General Scholastic Ability Test (GSAT) score, ranging from 0 to 75.  
 
-There are 6 missing values in **HighSchool_PR** and 3 missing values in **College_Score**, so each of them is recorded as "-1" (an invalid numerical value for the scores).   
+There are 6 missing values in **HighSchool_PR** and 3 missing values in **College_Score**, so each of them is recorded as "-1" (an invalid numerical value for the scores). In the data entry process, invalid scores like **HighSchool_PR** 100 are also treated as missing.     
 
 In some cases, the reported scores can be inaccurate based on the respondent's description, so we read the comments and manually created two indicators for this issue. Note that inaccurate scores are still valid, so we keep them in the data analysis.    
 
@@ -44,7 +44,7 @@ data$HS_Invalid = 0
 data$HS_Invalid[(data$HighSchool_PR > 99)|(data$HighSchool_PR < 1)] = 1
 
 data$CS_Invalid = 0
-data$CS_Invalid[(data$CS_Score > 75)|(data$CS_Score < 1)] = 1
+data$CS_Invalid[(data$College_Score > 75)|(data$College_Score < 1)] = 1
 ```
 
 We can save the clean version to a separate `.csv` file for future use.  
@@ -53,21 +53,9 @@ We can save the clean version to a separate `.csv` file for future use.
 write.csv(data, "ptt_SENIORHIGH_data_clean.csv")
 ```
 
-\section*{\textcolor{red}{Unfinished below}}  
-
-\textcolor{red}{Need to explain some respondents' inaccurate reporting.}  
-
-We need to remove invalid scores, not just the missing ones.   
-
-e.g. An invalid score like **HighSchool_PR** 100 should also be treated as missing.  
-
-\section*{\textcolor{red}{Unfinished below}}   
-
-
-
 ## Data Snapshot
 
-We show the first 10 rows of data here, and we already see several anomalies that are flagged. For example, the 1st respondent `game275415` provided an approximate value to the **HighSchool_PR**, so we marked this value as inaccurate and a "1" in **HS_Inacc**. The 4th respondent `heejung` used mock exam scores for the **HighSchool_PR**, so this score is also marked as inaccurate. Then the 6th respondent `robinyu85` claimed to not haven taken the high school entrance exam at all, so his/her missing **HighSchool_PR** is encoded to "-1" and flagged as invalid.   
+We show the first 10 rows of data here, and we already see several anomalies that are flagged. For example, the 1st respondent `game275415` provided an approximate value to the **HighSchool_PR**, so we marked this value as inaccurate and a "1" in **HS_Inacc**. The 4th respondent `heejung` used mock exam scores for the **HighSchool_PR**, so this score is also marked as inaccurate. The 6th respondent `robinyu85` claimed to not having taken the high school entrance exam at all, so his/her missing **HighSchool_PR** is encoded to "-1" and flagged as invalid.   
 
 We also observed that **pttID** contains some information for potential inference, although we are not going to use it. For example, the 6th respondent `robinyu85` could be someone named Robin Yu, and the 8th respondent `godpatrick11` may have the English name Patrick. Nevertheless, this kind of information is simply a heuristic, so it is neither sufficient nor appropriate to include in the data analysis.  
 
@@ -90,15 +78,17 @@ options(width = default_value)
 ```
 
 
+\section*{\textcolor{red}{Unfinished below}}  
 
+\textcolor{red}{Need to revise the code for remove invalid values}
 
 ## Bivariate Validation
 
 We need to clean up the data to prepare for the analysis. For example, we would like to investigate the relationship between **HighSchool_PR** and **College_Score**, we need to ensure that each record consists of both valid scores. There are 191 records of valid **HighSchool_PR** numbers in the data, but if we consider only the ones with a valid **College_Score**, the number of available records drops to 188. Although which version we use does not matter much when we look at the univariate distribution, this will be problematic when we combine the univariate analysis with the bivariate analysis. Thus, we should use only the 188 records whose **College_Score** numbers are also valid.  
 
 ```{r high-school-pr80up-univ}
-# High school entrance exam scores: Remove missing values
-uni_HS_score = data$HighSchool_PR[which(data$HighSchool_PR != -1)]
+# High school entrance exam scores: Remove invalid values
+uni_HS_score = data$HighSchool_PR[which(data$HS_Invalid == 0)]
 length(uni_HS_score)
 ```
 
@@ -112,10 +102,10 @@ We do not have sufficient information to impute such missing values in our datas
 
 Pointer to record linkage methods \cite{dusetzina2014overview} ?!   
 
-\section*{\textcolor{red}{Unfinished above}}  
+\textcolor{red}{Move the college score code to directly after high school score part}  
 
 ```{r data-corr-undefined}
-missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
+missing_rows = which(data$HS_Invalid == 1 | data$CS_Invalid == 1)
 # Indices: 6 19 71 85 88 96 132 183 195 => nine in total
 # Remove missing data
 data_corr = data[-missing_rows,]
@@ -130,7 +120,7 @@ The same requirement also applies to **College_Score**. There are 194 records of
 
 ```{r college-score60up}
 # College entrance exam scores: Remove missing values
-uni_college_score = data$College_Score[which(data$College_Score != -1)]
+uni_college_score = data$College_Score[which(data$CS_Invalid == 0)]
 length(uni_college_score)
 ```
 
