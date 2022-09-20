@@ -65,6 +65,8 @@ Elaborate on the following to enhance the background context:
 - COVID-related rules for students who could not attend the exam  
 Start writing about 2021 for both exams, because 2022 is still ongoing  
 
+- If we continue writing this manuscript in 2023, we absolutely need to add the recent changes in 2021 and 2022.  
+
 \textcolor{red}{This is the file we want to move content into.}  
 
 \section*{\textcolor{red}{Unfinished above}}
