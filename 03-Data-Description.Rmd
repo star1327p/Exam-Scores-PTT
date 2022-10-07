@@ -85,12 +85,27 @@ options(width = default_value)
 
 ## Bivariate Validation
 
-We need to clean up the data to prepare for the analysis. For example, we would like to investigate the relationship between **HighSchool_PR** and **College_Score**, we need to ensure that each record consists of both valid scores. There are 191 records of valid **HighSchool_PR** numbers in the data, but if we consider only the ones with a valid **College_Score**, the number of available records drops to 188. Although which version we use does not matter much when we look at the univariate distribution, this will be problematic when we combine the univariate analysis with the bivariate analysis. Thus, we should use only the 188 records whose **College_Score** numbers are also valid.  
+We need to clean up the data to prepare for the analysis. For example, we would like to investigate the relationship between **HighSchool_PR** and **College_Score**, so we need to ensure that each record consists of both valid scores. There are 191 records of valid **HighSchool_PR** numbers in the data, but if we consider only the ones with a valid **College_Score**, the number of available records drops to 188. Although which version we use does not matter much when we look at the univariate distribution, this will be problematic when we combine the univariate analysis with the bivariate analysis. Thus, we should use only the 188 records whose **College_Score** numbers are also valid.  
 
 ```{r high-school-pr80up-univ}
 # High school entrance exam scores: Remove invalid values
 uni_HS_score = data$HighSchool_PR[which(data$HS_Invalid == 0)]
 length(uni_HS_score)
+```
+
+The same requirement also applies to **College_Score**. There are 194 records of valid **College_Score** numbers in the data, but only 188 of them also have corresponding valid **HighSchool_PR** numbers.   
+
+```{r college-score60up}
+# College entrance exam scores: Remove missing values
+uni_college_score = data$College_Score[which(data$CS_Invalid == 0)]
+length(uni_college_score)
+```
+
+We do not have enough information to impute the few missing values in our dataset, so we decided to exclude them from our analysis. There are nine records with invalid or missing values, and we can locate their indices in the data.   
+
+```{r data-missing-indices}
+missing_rows = which(data$HS_Invalid == 1 | data$CS_Invalid == 1)
+missing_rows
 ```
 
 \section*{\textcolor{red}{Unfinished below}}  
@@ -99,19 +114,7 @@ length(uni_HS_score)
 
 Missing values in one of **HighSchool_PR** or **College_Score**  
 
-We do not have sufficient information to impute such missing values in our dataset, so we decided to exclude them.  
-
-Pointer to record linkage methods \cite{dusetzina2014overview} ?!   
-
-\textcolor{red}{Move the college score code to directly after high school score part}  
-
-\textcolor{red}{Indices of the missing values}  
-
-```{r data-missing-indices}
-missing_rows = which(data$HS_Invalid == 1 | data$CS_Invalid == 1)
-# Indices: 6 19 71 85 88 96 132 183 195 => nine in total
-missing_rows
-```
+**Remark**: With larger and/or more complex datasets, researchers often apply record linkage methods \cite{dusetzina2014overview} to impute missing or erroneous values in one dataset from another. This is outside the scope of this manuscript.        
 
 \textcolor{red}{Write something here}  
 
@@ -127,13 +130,6 @@ data_corr = data[-missing_rows,]
 length(data_corr$HighSchool_PR)
 ```
 
-The same requirement also applies to **College_Score**. There are 194 records of valid **College_Score** numbers in the data, but only 188 of them also have corresponding valid **HighSchool_PR** numbers. Accordingly, we should use only the 188 records whose **HighSchool_PR** numbers are also valid.  
-
-```{r college-score60up}
-# College entrance exam scores: Remove missing values
-uni_college_score = data$College_Score[which(data$CS_Invalid == 0)]
-length(uni_college_score)
-```
 
 ```{r college-score60up-bivar}
 # Consider only the records with both valid HighSchool_PR and College_Score
