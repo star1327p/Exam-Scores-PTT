@@ -34,7 +34,7 @@ One obvious reason of inaccurate scores is that a respondent may comment that hi
 
 For **College_Score**, the approximation clause still applies. In addition, there are two college entrance exams in each school year, and some students may do much better on the second exam than the first one. Then they were admitted to a more prestigious school than the first exam score had indicated, so this is also a form of inaccuracy.  
 
-Now we add two more indicators to reflect invalid (impossible) values in **HighSchool_PR** and **College_Score**.  
+We add two more indicators to signal invalid (impossible) values in **HighSchool_PR** and **College_Score**.  
 
 - **HS_Invalid**: A "1" means the reported **HighSchool_PR** is invalid, i.e., outside the range of 1-99.
 - **CS_Invalid**: A "1" means the reported **College_Score** is invalid, i.e., outside the range of 1-75.  
@@ -81,14 +81,12 @@ options(width = default_value)
 
 \section*{\textcolor{red}{Unfinished below}}  
 
-\textcolor{red}{Need to revise the code for remove invalid values}
-
 ## Bivariate Validation
 
 We need to clean up the data to prepare for the analysis. For example, we would like to investigate the relationship between **HighSchool_PR** and **College_Score**, so we need to ensure that each record consists of both valid scores. There are 191 records of valid **HighSchool_PR** numbers in the data, but if we consider only the ones with a valid **College_Score**, the number of available records drops to 188. Although which version we use does not matter much when we look at the univariate distribution, this will be problematic when we combine the univariate analysis with the bivariate analysis. Thus, we should use only the 188 records whose **College_Score** numbers are also valid.  
 
 ```{r high-school-pr80up-univ}
-# High school entrance exam scores: Remove invalid values
+# High school entrance exam scores: Keep only valid numbers
 uni_HS_score = data$HighSchool_PR[which(data$HS_Invalid == 0)]
 length(uni_HS_score)
 ```
@@ -96,7 +94,7 @@ length(uni_HS_score)
 The same requirement also applies to **College_Score**. There are 194 records of valid **College_Score** numbers in the data, but only 188 of them also have corresponding valid **HighSchool_PR** numbers.   
 
 ```{r college-score60up}
-# College entrance exam scores: Remove missing values
+# College entrance exam scores: Keep only valid numbers
 uni_college_score = data$College_Score[which(data$CS_Invalid == 0)]
 length(uni_college_score)
 ```
@@ -108,30 +106,54 @@ missing_rows = which(data$HS_Invalid == 1 | data$CS_Invalid == 1)
 missing_rows
 ```
 
+**Remark**: With larger and/or more complex datasets, researchers often apply record linkage methods \cite{dusetzina2014overview} to impute missing or erroneous values in one dataset from another. This is outside the scope of this manuscript.  
+
 \section*{\textcolor{red}{Unfinished below}}  
 
-\textcolor{red}{Need to explain} `data_corr`  
+Now we build the `R` dataframe `data_corr` (short for "data correlation") for the bivariate analysis. This dataframe excludes any record with at least one missing value in **HighSchool_PR** or **College_Score**.   
 
-Missing values in one of **HighSchool_PR** or **College_Score**  
-
-**Remark**: With larger and/or more complex datasets, researchers often apply record linkage methods \cite{dusetzina2014overview} to impute missing or erroneous values in one dataset from another. This is outside the scope of this manuscript.        
-
-\textcolor{red}{Write something here}  
-
-```{r data-corr-undefined}
+```{r data-corr-defined}
 # Remove missing data
 data_corr = data[-missing_rows,]
 ```
 
 \textcolor{red}{Write something here}  
 
+```{r set-width-again, include=FALSE}
+default_value = getOption("width") # 80
+# print(default_value)
+
+# Increase the width to print all data column names on a single line.
+options(width = 200)
+```
+
+```{r data-corr-view}
+data_corr[1:10,]
+```
+
+```{r restore-width-again, include=FALSE}
+# Now we reset the width back to default for the rest of the document.
+options(width = default_value)
+```
+
+
+\textcolor{red}{Write something here}   
+
+```{r data-corr-size}
+dim(data_corr)
+```
+
+\textcolor{red}{Write something here}   
+
 ```{r high-school-pr80up-bivar}
 # Consider only the records with both valid HighSchool_PR and College_Score
 length(data_corr$HighSchool_PR)
 ```
 
+\textcolor{red}{Write something here}  
 
 ```{r college-score60up-bivar}
 # Consider only the records with both valid HighSchool_PR and College_Score
 length(data_corr$College_Score)
 ```
+
