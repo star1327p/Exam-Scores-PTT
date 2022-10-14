@@ -79,8 +79,6 @@ options(width = default_value)
 ```
 
 
-\section*{\textcolor{red}{Unfinished below}}  
-
 ## Bivariate Validation
 
 We need to clean up the data to prepare for the analysis. For example, we would like to investigate the relationship between **HighSchool_PR** and **College_Score**, so we need to ensure that each record consists of both valid scores. There are 191 records of valid **HighSchool_PR** numbers in the data, but if we consider only the ones with a valid **College_Score**, the number of available records drops to 188. Although which version we use does not matter much when we look at the univariate distribution, this will be problematic when we combine the univariate analysis with the bivariate analysis. Thus, we should use only the 188 records whose **College_Score** numbers are also valid.  
@@ -106,9 +104,7 @@ missing_rows = which(data$HS_Invalid == 1 | data$CS_Invalid == 1)
 missing_rows
 ```
 
-**Remark**: With larger and/or more complex datasets, researchers often apply record linkage methods \cite{dusetzina2014overview} to impute missing or erroneous values in one dataset from another. This is outside the scope of this manuscript.  
-
-\section*{\textcolor{red}{Unfinished below}}  
+**Remark**: With larger and/or more complex datasets, researchers often apply record linkage methods \cite{dusetzina2014overview} to impute missing or erroneous values in one dataset from another. This is outside the scope of this manuscript.   
 
 Now we build the `R` dataframe `data_corr` (short for "data correlation") for the bivariate analysis. This dataframe excludes any record with at least one missing value in **HighSchool_PR** or **College_Score**.   
 
@@ -117,7 +113,7 @@ Now we build the `R` dataframe `data_corr` (short for "data correlation") for th
 data_corr = data[-missing_rows,]
 ```
 
-\textcolor{red}{Write something here}  
+Again, we show the first 10 rows of `data_corr`, and all values in ` HighSchool_PR` and `College_Score` are valid. The indicators `HS_Invalid` and `CS_Invalid` should be zero throughout this version of data.  
 
 ```{r set-width-again, include=FALSE}
 default_value = getOption("width") # 80
@@ -136,24 +132,25 @@ data_corr[1:10,]
 options(width = default_value)
 ```
 
-
-\textcolor{red}{Write something here}   
+The function `dim` retrieves the dimensions of the `R` dataframe `data_corr`. The output reveals that the dataset contains 188 rows and 7 columns, where the 188 rows refer to the 188 records with a valid score in both `HighSchool_PR` and `College_Score`.  
 
 ```{r data-corr-size}
 dim(data_corr)
 ```
 
-\textcolor{red}{Write something here}   
+Alternatively, we can also use the function `length` to find the number of elements in an array. This shows both columns `HighSchool_PR` and `College_Score` contain 188 elements each. Note that `length` does not distinguish between missing and non-missing values. A missing element, often denoted as `NA`, is still counted as one element. 
 
 ```{r high-school-pr80up-bivar}
-# Consider only the records with both valid HighSchool_PR and College_Score
 length(data_corr$HighSchool_PR)
 ```
 
-\textcolor{red}{Write something here}  
-
 ```{r college-score60up-bivar}
-# Consider only the records with both valid HighSchool_PR and College_Score
 length(data_corr$College_Score)
+```
+
+**Remark**: Readers new to `R` programming may wonder where we can find the type of each object, in order to determine how to proceed next. The function `class` returns the type of the input object, and the output confirms that `data_corr` is an `R` dataframe. Then we can leverage the functions available for this data structure.  
+
+```{r check-data-type}
+class(data_corr)
 ```
 
