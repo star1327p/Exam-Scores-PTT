@@ -76,18 +76,18 @@ Start writing about 2021 for both exams, because 2022 is still ongoing
 
 # Data Description {#data}
 
-\section*{\textcolor{red}{Unfinished below}}
-
-\textcolor{red}{Definitely need to fix both data sections}   
-
-\textcolor{red}{This is the file we want to move content into.}  
-
-\section*{\textcolor{red}{Unfinished below}}  
-
 ```{r include-data-description, child = '03-Data-Description.Rmd'}
 ```
 
 # Exploratory Data Analysis {#eda}
+
+\section*{\textcolor{red}{Unfinished below}}
+
+\textcolor{red}{Definitely need to fix the univariate sections}   
+
+\textcolor{red}{This is the file we want to move content into.}  
+
+\section*{\textcolor{red}{Unfinished below}}  
 
 ```{r include-exploratory, child = '04-Exploratory.Rmd'}
 ```

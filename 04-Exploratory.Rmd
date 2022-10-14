@@ -6,6 +6,10 @@ Therefore, we start with examining the trends of the two main variables, **HighS
 
 \textcolor{red}{Removing missing values should belong in the Data Description chapter!}  
 
+Sensitivity analysis: Look at the univariate distribution with vs without the missing values!   
+
+Basically need to explain why we used the full univariate set available, instead of just taking those with a valid second score.  
+
 ## High School Entrance Exam Scores (Percentile Rank)
 
 Below shows the descriptive statistics of **HighSchool_PR**, i.e., the percentile rank of high school entrance exam scores. The missing values are removed beforehand. Approximately 75% of the respondents have a percentile rank (PR) at least 85, indicating that 75% of the respondents scored in the top 15% of the high school entrance exam. The histogram is also extremely left-skewed.   
@@ -90,3 +94,11 @@ The strength of linear relationship can be interpreted as below:^[<https://www.d
 - $0 < |\rho_{X,Y}| < 0.2$: Little-to-no linear relationship
 
 - $|\rho_{X,Y}| = 0$: No linear relationship
+
+\section*{\textcolor{red}{Unfinished below}}  
+
+Add graphical examples to show each $\rho_{X,Y}$.  
+
+For $\rho_{X,Y} = 0$, create one graph with independence and the other graph with an obvious non-linear relationship.  
+
+\section*{\textcolor{red}{Unfinished above}}  
