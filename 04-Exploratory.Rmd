@@ -4,55 +4,82 @@ Therefore, we start with examining the trends of the two main variables, **HighS
 
 \section*{\textcolor{red}{Unfinished below}}  
 
-\textcolor{red}{Removing missing values should belong in the Data Description chapter!}  
+\textcolor{red}{Removing missing values should belong in the Data Description chapter!}   
 
-Sensitivity analysis: Look at the univariate distribution with vs without the missing values!   
+\textcolor{red}{Sensitivity analysis: Look at the univariate distribution with vs without the missing values!}      
 
-Basically need to explain why we used the full univariate set available, instead of just taking those with a valid second score.  
+\textcolor{red}{Basically need to explain why we used the full univariate set available, instead of just taking those with a valid second score.}     
+
+
+\section*{\textcolor{red}{Unfinished below}}   
+
 
 ## High School Entrance Exam Scores (Percentile Rank)
 
-Below shows the descriptive statistics of **HighSchool_PR**, i.e., the percentile rank of high school entrance exam scores. The missing values are removed beforehand. Approximately 75% of the respondents have a percentile rank (PR) at least 85, indicating that 75% of the respondents scored in the top 15% of the high school entrance exam. The histogram is also extremely left-skewed.   
+We show the descriptive statistics of **HighSchool_PR** in our data, i.e., the percentile rank of high school entrance exam scores. The invalid or missing values are removed beforehand. The `summary` function returns the minimum, 1st quartile, median, mean, 3rd quartile, and maximum from the input data.   
 
-\textcolor{red}{Also talk about the median PR as 92 and compare to high school entrance score requirements.}     
-
-\textcolor{red}{Why median > mean in this situation? Compared with most right-skewed distributions, where median < mean.}   
+- **Minimum**: The smallest value in the data.
+- **1st quartile**: The value where 25% of the data is below this point; that is, the middle value between the minimum and the median.
+- **Median**: The value where 50% of the data is below this point, and 50% of the data is above this point.
+- **Mean**: The arithmetic mean, which is calculated as the sum of the data divided by the number of the points.
+- **3rd quartile**: The value where 75% of the data is below this point; that is, the middle value between the median and the maximum.
+- **Maximum**: The largest value in the data.
 
 ```{r high-school-pr}
-# High school entrance exam scores: Remove missing values
-# uni_HS_score = data$HighSchool_PR[which(data$HighSchool_PR != -1)]
-
 summary(uni_HS_score)
-
-hist(uni_HS_score, main = "Histogram of HighSchool_PR",
-     xlab="HighSchool_PR")
 ```
+
+The 1st quartile of **HighSchool_PR** is 85, which means only 25% of the respondents have a percentile rank (PR) below 85. Hence 75% of the respondents have a percentile rank (PR) at least 85, i.e., in the top 15% of the high school entrance exam. The median (92) is higher than the mean (89-90), indicating that the distribution is left-skewed. Half of the respondents scored **HighSchool_PR** 92 or better, and we have few samples of the lower end of the high school entrance exam. In fact, the lowest score we obtained in the data is already 51 -- still slightly above the national median score (50). The maximum is capped at 99.    
+
+The histogram shows a left-skewed distribution, and we can see a long tail to the left. Since our data are self-reported by respondents, the ones with higher scores are more likely to report, resulting in survey non-response bias. It is also possible that many students with extremely low **HighSchool_PR** chose not to attend college, so they would not have a **College_Score** to respond to the survey.  
+
+```{r high-school-pr-histogram}
+hist(uni_HS_score, main = "Histogram of HighSchool_PR", xlab="HighSchool_PR")
+```
+
+If we were to take a sufficiently large random sample from the full database of **HighSchool_PR** in Taiwan, the minimum should be 1 and the maximum would still be at 99. However, the **HighSchool_PR** is the national percentile rank itself, so the 1st quartile should be around 25, median and mean both around 50, and the 3rd quartile around 75.   
+
+\section*{\textcolor{red}{Unfinished below}}   
+
+\textcolor{red}{Generate random data as uniform from 1 to 99, and plot the histogram}    
+
+Note that we used the full univariate set of **HighSchool_PR** available, rather than taking only those with a valid **College_Score**.  
+
+\textcolor{red}{More explanation here}   
+
+```{r high-school-pr-bivariate}
+summary(data_corr$HighSchool_PR)
+```
+
+\textcolor{red}{More explanation here}   
 
 ## College Entrance Exam Scores 
 
-Similarly, we also show the descriptive statistics of **College_Score**, i.e., the college entrance exam scores between 1 and 75. The histogram is also left-skewed, but less extreme than **HighSchool_PR**. According to the reference score table^[<https://bit.ly/3bAYOvO>] from Wikipedia, the 88th percentile of the college entrance score fluctuates around 60 in Years 2004-2010, and 62-65 in Years 2011-2018. Since the median of **College_Score** is 64.5, we can infer that at least 50% of the respondents scored in the top 12% of the college entrance exam. On the other hand, the reference score table also shows that the 75th percentile of the college entrance score is between 53 and 58 in Years 2004-2018. The PTT data's 1st quantile is already at 58, so we can also infer that at least 75% of the respondents scored in the top 25% of the college entrance exam. Since PTT contains forums for several prestigious universities in Taiwan, it is no surprise that many users attended these colleges because they scored well on the college entrance exam. Nevertheless, PTT does not limit registration to students of these colleges, so the population of PTT is relatively diverse.   
+Similarly, we also show the descriptive statistics of **College_Score**, i.e., the college entrance exam scores between 1 and 75. The histogram is also left-skewed, but less extreme than **HighSchool_PR**.      
 
 ```{r college-score}
-# College entrance exam scores: Remove missing values
-# uni_college_score = data$College_Score[which(data$College_Score != -1)]
-
 summary(uni_college_score)
+```
 
+According to the reference score table^[<https://bit.ly/3bAYOvO>] from Wikipedia, the 88th percentile of the college entrance score fluctuates around 60 in Years 2004-2010, and 62-65 in Years 2011-2018. Since the median of **College_Score** is 64.5, we can infer that at least 50% of the respondents scored in the top 12% of the college entrance exam.   
+
+On the other hand, the reference score table also shows that the 75th percentile of the college entrance score is between 53 and 58 in Years 2004-2018. The PTT data's 1st quantile is already at 58, so we can also infer that at least 75% of the respondents scored in the top 25% of the college entrance exam.   
+
+Since PTT contains forums for several prestigious universities in Taiwan, it is no surprise that many users attended these colleges because they scored well on the college entrance exam. Nevertheless, PTT does not limit registration to students of these colleges, so the population of PTT is relatively diverse.   
+
+\textcolor{red}{More explanation here}   
+
+```{r college-score-bivariate}
 hist(uni_college_score, main="Histogram of College_Score",
      xlab="College_Score (max possible is 75)",xlim=c(30,80))
 ```
 
+
 ## Bivariate Exploration {#bivariate}
 
-Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score** to examine the relationship between the two, but we have to remove the records with at least one missing score first. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores.
+Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score** to examine the relationship between the two scores. Obviously, a respondent needs a valid score in both to be included in the bivariate scatterplot. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores.   
 
 ```{r bivariate} 
-# missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
-# Indices: 6  19  71  85  88  96 132 183 195 => nine in total
-
-# Remove missing data
-# data_corr = data[-missing_rows,]
-
 plot(data_corr$HighSchool_PR, data_corr$College_Score,
      main = "High School and College Entrance Exam Scores",
      xlab="HighSchool_PR",
