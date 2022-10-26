@@ -43,9 +43,7 @@ If we were to take a sufficiently large random sample from the full database of 
 
 \textcolor{red}{Generate random data as uniform from 1 to 99, and plot the histogram}    
 
-Note that we used the full univariate set of **HighSchool_PR** available, rather than taking only those with a valid **College_Score**.  
-
-\textcolor{red}{More explanation here}   
+**Remark**: Note that we used the full univariate set of **HighSchool_PR** available, rather than taking only those with a valid **College_Score**. The reason is that we wanted to keep as many records as possible. We can do a quick sensitivity analysis here, and the summary statistics are very similar after we exclude the few records without a valid **College_Score**.   
 
 ```{r high-school-pr-bivariate}
 summary(data_corr$HighSchool_PR)
@@ -69,11 +67,18 @@ Since PTT contains forums for several prestigious universities in Taiwan, it is 
 
 \textcolor{red}{More explanation here}   
 
-```{r college-score-bivariate}
+```{r college-score-histogram}
 hist(uni_college_score, main="Histogram of College_Score",
      xlab="College_Score (max possible is 75)",xlim=c(30,80))
 ```
 
+\textcolor{red}{More explanation here}   
+
+```{r college-score-bivariate}
+summary(data_corr$College_Score)
+```
+
+\textcolor{red}{More explanation here}   
 
 ## Bivariate Exploration {#bivariate}
 
