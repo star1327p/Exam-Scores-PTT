@@ -46,8 +46,6 @@ hist(uni_HS_score, main = "Histogram of HighSchool_PR", xlab="HighSchool_PR")
 
 If we were to take a sufficiently large random sample from the full database of **HighSchool_PR** in Taiwan, the minimum should be 1 and the maximum would still be at 99. However, the **HighSchool_PR** is the national percentile rank itself, so the 1st quartile should be around 25, median and mean both around 50, and the 3rd quartile around 75.   
 
-\section*{\textcolor{red}{Unfinished below}}   
-
 As a baseline, we also simulate this random sample by generating data from a **discrete** uniform distribution between 1 and 99. We manually take a random sample of the same size as the univariate **HighSchool_PR** from the integers 1, 2, ..., 99, and we sample with replacement to allow duplicate values. Note that the function `runif`\footnote{The function name \texttt{runif} is pronounced as \texttt{r-unif}, not \texttt{run-if}.} in the `stats` package generates samples from the **continuous** uniform distribution, and that's why we did not use `runif` here.     
 
 ```{r gen-random-data}
@@ -59,23 +57,29 @@ random_sample = sample(possible_values, size=length(uni_HS_score), replace=TRUE)
 print(random_sample)
 ```
 
-\textcolor{red}{More explanation here}   
+As we can see, the simulated random sample has median and mean close to 50. The 1st quartile is near 25, and the 3rd quartile is near 75. The simulated sample is to demonstrate a nationally representative sample of **HighSchool_PR**. Nevertheless, this would not be appropriate for the evaluation of the relationship between **HighSchool_PR** and **College_Score**, because students with extremely low **HighSchool_PR** may decide not to attend college at all.   
 
 ```{r random-data-stats}
 summary(random_sample)
 ```
 
-\textcolor{red}{Also plot the histogram of the random sample}   
+The histogram of the simulated random sample is flat, as what we expect from a discrete uniform distribution.  
 
 ```{r random-data-histogram}
-hist(random_sample, main = "Histogram of Random Sample", xlab="HighSchool_PR")
+hist(random_sample, main = "Histogram of Simulated Random Sample", xlab="HighSchool_PR")
 ```
 
-## College Entrance Exam Scores 
+\section*{\textcolor{red}{Unfinished below}}   
+
+## College Entrance Exam Scores  
 
 Similarly, we also show the descriptive statistics of **College_Score**, i.e., the college entrance exam scores between 1 and 75. The histogram is also left-skewed, but less extreme than **HighSchool_PR**.      
 
 \textcolor{red}{More explanation here}   
+
+Explain why we cannot simulate a random sample for **College_Score**, even if we can obtain the five scores (88th, 75th, 50th, 25th, 12th percentile).   
+
+Emphasize that **College_Score** are not percentile ranks like **HighSchool_PR**.   
 
 ```{r college-score}
 summary(uni_college_score)
@@ -99,7 +103,6 @@ Since PTT contains forums for several prestigious universities in Taiwan, it is 
 hist(uni_college_score, main="Histogram of College_Score",
      xlab="College_Score (max possible is 75)",xlim=c(30,80))
 ```
-
 
 
 \textcolor{red}{More explanation here}   
