@@ -19,10 +19,10 @@ Therefore, we start with examining the trends of the two main variables, **HighS
 We show the descriptive statistics of **HighSchool_PR** in our data, i.e., the percentile rank of high school entrance exam scores. The invalid or missing values are removed beforehand. The `summary` function returns the minimum, 1st quartile, median, mean, 3rd quartile, and maximum from the input data.   
 
 - **Minimum**: The smallest value in the data.
-- **1st quartile**: The value where 25% of the data is below this point; that is, the middle value between the minimum and the median.
+- **1st Quartile**: The value where 25% of the data is below this point; that is, the middle value between the minimum and the median.
 - **Median**: The value where 50% of the data is below this point, and 50% of the data is above this point.
 - **Mean**: The arithmetic mean, which is calculated as the sum of the data divided by the number of the points.
-- **3rd quartile**: The value where 75% of the data is below this point; that is, the middle value between the median and the maximum.
+- **3rd Quartile**: The value where 75% of the data is below this point; that is, the middle value between the median and the maximum.
 - **Maximum**: The largest value in the data.
 
 ```{r high-school-pr}
@@ -73,31 +73,27 @@ hist(random_sample, main = "Histogram of Simulated Random Sample", xlab="HighSch
 
 ## College Entrance Exam Scores  
 
-Similarly, we also show the descriptive statistics of **College_Score**, i.e., the college entrance exam scores between 1 and 75. The histogram is also left-skewed, but less extreme than **HighSchool_PR**.      
-
-\textcolor{red}{More explanation here}   
-
-Explain why we cannot simulate a random sample for **College_Score**, even if we can obtain the five scores (88th, 75th, 50th, 25th, 12th percentile).   
-
-Emphasize that **College_Score** are not percentile ranks like **HighSchool_PR**.   
+Similarly, we also show the descriptive statistics of **College_Score**, i.e., the college entrance exam scores between 1 and 75. The distribution is also left-skewed, but less extreme than **HighSchool_PR**. The median of **College_Score** is 64.5, indicating that 50% of the respondents have **College_Score** 65 or higher. The 3rd quartile is already at 69, so the top score range 69-75 accounts for 25% of the respondents. This is much higher than the national average.  
 
 ```{r college-score}
 summary(uni_college_score)
 ```
 
-\textcolor{red}{More explanation here}   
+As a sensitivity analysis check, we also examine the `summary` of the **College_Score** datapoints only when they have a corresponding valid **HighSchool_PR**. The distribution is almost the same.  
 
 ```{r college-score-bivariate}
 summary(data_corr$College_Score)
 ```
 
-According to the reference score table^[<https://bit.ly/3bAYOvO>] from Wikipedia, the 88th percentile of the college entrance score fluctuates around 60 in Years 2004-2010, and 62-65 in Years 2011-2018. Since the median of **College_Score** is 64.5, we can infer that at least 50% of the respondents scored in the top 12% of the college entrance exam.   
+According to the reference score table^[<https://bit.ly/3bAYOvO>] from Wikipedia, the 88th percentile of the college entrance score fluctuates around 60 in Years 2004-2010, and 62-65 in Years 2011-2018. Since the median of **College_Score** is 64.5, we can infer that at least 50% of the respondents scored in the top 12% of the college entrance exam. On the other hand, the reference score table also shows that the 75th percentile of the college entrance score is between 53 and 58 in Years 2004-2018. The PTT data's 1st quantile is already at 58, so we can also infer that at least 75% of the respondents scored in the top 25% of the college entrance exam.   
 
-On the other hand, the reference score table also shows that the 75th percentile of the college entrance score is between 53 and 58 in Years 2004-2018. The PTT data's 1st quantile is already at 58, so we can also infer that at least 75% of the respondents scored in the top 25% of the college entrance exam.   
+Since PTT contains forums for several prestigious universities in Taiwan, it is no surprise that many users attended these colleges because they scored well on the college entrance exam. Nevertheless, PTT does not limit registration to students of these colleges, so the population of PTT is relatively diverse but still not very representative of the whole student population.   
 
-Since PTT contains forums for several prestigious universities in Taiwan, it is no surprise that many users attended these colleges because they scored well on the college entrance exam. Nevertheless, PTT does not limit registration to students of these colleges, so the population of PTT is relatively diverse.   
+\section*{\textcolor{red}{Unfinished below}}    
 
 \textcolor{red}{More explanation here}   
+
+Histogram  
 
 ```{r college-score-histogram}
 hist(uni_college_score, main="Histogram of College_Score",
@@ -106,6 +102,12 @@ hist(uni_college_score, main="Histogram of College_Score",
 
 
 \textcolor{red}{More explanation here}   
+
+Emphasize that **College_Score** are not percentile ranks like **HighSchool_PR**.   
+
+Explain why we cannot simulate a random sample for **College_Score**, even if we can obtain the five scores (88th, 75th, 50th, 25th, 12th percentile).   
+
+Technically we can obtain the number of total students for each **College_Score** each year. Background section ?!  
 
 ## Bivariate Exploration {#bivariate}
 
