@@ -107,7 +107,13 @@ Emphasize that **College_Score** are not percentile ranks like **HighSchool_PR**
 
 Explain why we cannot simulate a random sample for **College_Score**, even if we can obtain the five scores (88th, 75th, 50th, 25th, 12th percentile).   
 
-Technically we can obtain the number of total students for each **College_Score** each year. Background section ?!  
+Technically we can obtain the number of total students for each **College_Score** each year.   
+
+In Section \ref{College_Score}, we mentioned that the Taiwan government published detailed statistics of the **College_Score** each year, such as the number of students who got 75 (full marks\footnote{The maximum total score is reduced to 60 starting in 2019.}), 74, 73, and so on.  
+
+However, the exact distribution of **College_Score** differs each year.  
+\textcolor{red}{What is your reasoning?}  
+Any citations needed?  
 
 ## Bivariate Exploration {#bivariate}
 
