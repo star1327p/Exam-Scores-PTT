@@ -2,7 +2,7 @@ Some foreword context here. Need to briefly explain the Taiwan's education syste
 
 \textcolor{red}{Brief comparison with the US college admission system}
 
-## High School Entrance Exam in Taiwan
+## High School Entrance Exam in Taiwan {#HighSchool_PR}
 
 \textcolor{red}{Focus on how the max total scores was revised over time. Don't go deep into commentaries or how the society reacted to the changes.}  
 
@@ -32,7 +32,7 @@ Each region in Taiwan has their own rules; cite a few examples including Taipei'
 
 What are the outcomes?  
 
-## College Entrance Exam in Taiwan
+## College Entrance Exam in Taiwan {#College_Score}
 
 \textcolor{red}{Describe the early admission and the regular admission rules separately.}  
 
