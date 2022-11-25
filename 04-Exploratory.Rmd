@@ -89,17 +89,14 @@ According to the reference score table^[<https://bit.ly/3bAYOvO>] from Wikipedia
 
 Since PTT contains forums for several prestigious universities in Taiwan, it is no surprise that many users attended these colleges because they scored well on the college entrance exam. Nevertheless, PTT does not limit registration to students of these colleges, so the population of PTT is relatively diverse but still not very representative of the whole student population.   
 
-\section*{\textcolor{red}{Unfinished below}}    
-
-\textcolor{red}{More explanation here}   
-
-Histogram  
+The histogram for **College_Score** also shows a left-skewed distribution, but not as extreme as **HighSchool_PR**. Note that right-skewed distributions are more common in real life, such as employee salaries and movie ticket sales.^[<https://www.statology.org/positively-skewed-distribution-examples/>]       
 
 ```{r college-score-histogram}
 hist(uni_college_score, main="Histogram of College_Score",
      xlab="College_Score (max possible is 75)",xlim=c(30,80))
 ```
 
+\section*{\textcolor{red}{Unfinished below}}    
 
 \textcolor{red}{More explanation here}   
 
