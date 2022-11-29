@@ -4,12 +4,9 @@ Therefore, we start with examining the trends of the two main variables, **HighS
 
 \section*{\textcolor{red}{Unfinished below}}  
 
-\textcolor{red}{Removing missing values should belong in the Data Description chapter!}   
+\textcolor{red}{Work on the graphical examples for the correlation coefficient}   
 
-\textcolor{red}{Sensitivity analysis: Look at the univariate distribution with vs without the missing values!}      
-
-\textcolor{red}{Basically need to explain why we used the full univariate set available, instead of just taking those with a valid second score.}     
-
+\textcolor{red}{Start by creating a 2x4 set of empty graphs, just like pp.311 (Section 8.1) in OpenIntro Statistics.}      
 
 \section*{\textcolor{red}{Unfinished below}}   
 
@@ -69,8 +66,6 @@ The histogram of the simulated random sample is flat, as what we expect from a d
 hist(random_sample, main = "Histogram of Simulated Random Sample", xlab="HighSchool_PR")
 ```
 
-\section*{\textcolor{red}{Unfinished below}}   
-
 ## College Entrance Exam Scores  
 
 Similarly, we also show the descriptive statistics of **College_Score**, i.e., the college entrance exam scores between 1 and 75. The distribution is also left-skewed, but less extreme than **HighSchool_PR**. The median of **College_Score** is 64.5, indicating that 50% of the respondents have **College_Score** 65 or higher. The 3rd quartile is already at 69, so the top score range 69-75 accounts for 25% of the respondents. This is much higher than the national average.  
@@ -96,21 +91,11 @@ hist(uni_college_score, main="Histogram of College_Score",
      xlab="College_Score (max possible is 75)",xlim=c(30,80))
 ```
 
-\section*{\textcolor{red}{Unfinished below}}    
+Unlike the case of **HighSchool_PR**, we do not think it is appropriate to simulate a random sample for **College_Score** across years in general. First, **College_Score** are not percentile ranks like **HighSchool_PR**, and there is no statistical nature of how the **College_Score** distribution should look like. Moreover, the exact distribution of **College_Score** differs greatly due to the varying difficulty levels each year. For example, the 88th percentile of **College_Score** was 65 in 2014 and 59 in 2007.^[<https://bit.ly/2W0fdUq>] The 6-point difference in the score is large enough for an applicant to get admitted to a lower or higher tier of universities.   
 
-\textcolor{red}{More explanation here}   
+In Section \ref{College_Score}, we mentioned that the Taiwan government published detailed statistics of the **College_Score** each year, including the five indicators (88th, 75th, 50th, 25th, 12th percentile) of each subject and the total score. However, since our data sample contains **College_Score** across several years, it is not meaningful to generate a simulated distribution here.   
 
-Emphasize that **College_Score** are not percentile ranks like **HighSchool_PR**.   
-
-Explain why we cannot simulate a random sample for **College_Score**, even if we can obtain the five scores (88th, 75th, 50th, 25th, 12th percentile).   
-
-Technically we can obtain the number of total students for each **College_Score** each year.   
-
-In Section \ref{College_Score}, we mentioned that the Taiwan government published detailed statistics of the **College_Score** each year, such as the number of students who got 75 (full marks\footnote{The maximum total score is reduced to 60 starting in 2019.}), 74, 73, and so on.  
-
-However, the exact distribution of **College_Score** differs each year.  
-\textcolor{red}{What is your reasoning?}  
-Any citations needed?  
+\section*{\textcolor{red}{Unfinished below}}  
 
 ## Bivariate Exploration {#bivariate}
 
@@ -145,7 +130,7 @@ $$\rho_{X,Y} = \dfrac{\text{Cov}(X,Y)}{\sigma_X \sigma_Y}.$$
 
 The correlation coefficient $\rho_{X,Y}$ is always between -1 and +1. The stronger $|\rho_{X,Y}|$ is, the stronger is the linear relationship. A positive value means the two variables $X,Y$ are positively associated with each other. In other words, when $X$ increases, $Y$ is also expected to increase. A negative value means the two variables $X,Y$ are negatively associated with each other. In this case, when $X$ increases, $Y$ is expected to decrease. The correlation coefficient may be zero, but this simply means that $X$ and $Y$ do not have a linear relationship with each other. There may exist other patterns between the two variables.  
 
-The strength of linear relationship can be interpreted as below:^[<https://www.dummies.com/article/academics-the-arts/math/statistics/how-to-interpret-a-correlation-coefficient-r-169792>]  
+The strength of linear relationship can be interpreted as below:^[<https://bit.ly/3AUI8PA>]  
 
 - $|\rho_{X,Y}| = 1$: Perfect linear relationship
 
