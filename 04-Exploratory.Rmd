@@ -152,13 +152,41 @@ $\rho_{X,Y} = 1$ example: $y = ax+b$, with $a > 0$.
 
 $\rho_{X,Y} = -1$ example: $y = ax+b$, with $a < 0$.  
 
+```{r draft-perfect-linear}
+
+par(mfrow=c(1,2))
+
+# \rho_{X,Y} = 1
+x = c(-10:10)/2
+y = 2*x+3
+plot(x,y, main=expression(paste(rho," = 1")))
+
+# \rho_{X,Y} = -1
+x = c(-10:10)/2
+y = -2*x+3
+plot(x,y, main=expression(paste(rho," = -1")))
+
+# Need to do this only in the RStudio console; .Rmd does not require this line.
+# par(mfrow=c(1,1)) # restore to defaults
+
+```
+
 \textcolor{red}{Need to decide what to do with a good but imperfect linear relationship.}   
 
 For $\rho_{X,Y} = 0$, create one graph with independence and the other graph with an obvious non-linear relationship.  
 
 e.g. Parabola curve: $y = -x^2 + 25$, set xlim=c(-5,5)   
 
+```{r draft-parabola}
+x = c(-10:10)/2
+y = -x^2 + 25
+
+plot(x,y, main=expression(paste(rho," = 0")))
+
+```
+
 Graph ideas from *OpenIntro Statistics*.  
 <https://github.com/OpenIntroStat/openintro-statistics/tree/master/ch_regr_simple_linear>   
+
 
 \section*{\textcolor{red}{Unfinished above}}  
