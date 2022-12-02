@@ -136,7 +136,7 @@ The strength of linear relationship can be interpreted as below:^[<https://bit.l
 
 - $0.6 < |\rho_{X,Y}| < 1$: Strong linear relationship
 
-- $0.4 < |\rho_{X,Y}| < 0.6$: Medium linear relationship
+- $0.4 < |\rho_{X,Y}| < 0.6$: Moderate linear relationship
 
 - $0.2 < |\rho_{X,Y}| < 0.4$: Low linear relationship
 
@@ -173,6 +173,50 @@ plot(x,y, main=expression(paste(rho," = -1")))
 
 \textcolor{red}{Need to decide what to do with a good but imperfect linear relationship.}   
 
+```{r draft-correlation}
+set.seed(36)
+
+# Consider writing a function to generate such graphs
+# Input: positive vs negative, noise_sd
+
+# Fixed x = c(-10:10)/2
+# If rho > 0 => y = 2*x+3
+# Else (rho < 0) => y = -2*x+3
+
+# noise = rnorm(length(x),0,noise_sd)
+# z = y + noise
+# The higher noise_sd is, the weaker correlation between x and z,
+# i.e., the closer |rho(x,z)| is to zero.
+
+# Formulas: 
+# corr(x,z) = cov(x,z)/sqrt(var(x)*var(z))
+# y = ax + b
+# var(y) = a^2 * var(x)
+
+par(mfrow=c(1,2))
+
+# \rho_{X,Y} = 0.93
+x = c(-10:10)/2
+y = 2*x+3
+noise = rnorm(length(x),0,3)
+z = y + noise
+rho_rnd = round(cor(x,z), digits = 2)
+# print(cor(x,z)) # 0.9285068
+plot(x,z,main=bquote(~ rho == .(rho_rnd)))
+
+
+# \rho_{X,Y} = -0.88
+x = c(-10:10)/2
+y = -2*x+3
+noise = rnorm(length(x),0,3)
+z = y + noise
+rho_rnd = round(cor(x,z), digits = 2)
+# print(cor(x,z)) # -0.8776013
+plot(x,z,main=bquote(~ rho == .(rho_rnd)))
+```
+
+\textcolor{red}{Next steps: Generate the moderate and low correlation graphs.}
+
 For $\rho_{X,Y} = 0$, create one graph with independence and the other graph with an obvious non-linear relationship.  
 
 e.g. Parabola curve: $y = -x^2 + 25$, set xlim=c(-5,5)   
@@ -187,6 +231,5 @@ plot(x,y, main=expression(paste(rho," = 0")))
 
 Graph ideas from *OpenIntro Statistics*.  
 <https://github.com/OpenIntroStat/openintro-statistics/tree/master/ch_regr_simple_linear>   
-
 
 \section*{\textcolor{red}{Unfinished above}}  
