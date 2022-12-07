@@ -143,7 +143,7 @@ exp(confint(model))
 
 We can also calculate the 95\% confidence interval for the predicted probability of getting **College_Score** at least 65, given that the respondent scored a 99 on **HighSchool_PR**. However, the confidence interval is [0.00012, 0.99999], which does not make practical sense because a probability has natural boundaries of [0,1].  
 
-Why is this interval so wide? The linear component is $\alpha + \beta X$, so the range depends on the value of **HighSchool_PR**. When **HighSchool_PR** is large (say, 99), the 95% confidence interval of $\alpha + \beta X$ becomes extremely wide. The interval would be narrow for a small value of **HighSchool_PR**, such as less than 10. But people with extremely low **HighSchool_PR** are unlikely to be interested in taking the college entrance exam at all. Hence we are not going to calculate the 95\% confidence interval for small **HighSchool_PR** values. 
+Why is this interval so wide? The linear component is $\alpha + \beta X$, so the range depends on the value of **HighSchool_PR**. When **HighSchool_PR** is large (say, 99), the 95% confidence interval of $\alpha + \beta X$ becomes extremely wide.  
 
 ```{r pr99-confint, message=FALSE}
 ci_matrix = confint(model)
@@ -153,11 +153,14 @@ p_pr99_ci = exp(alpha_ci + beta_ci*99)/(1+exp(alpha_ci + beta_ci*99))
 p_pr99_ci
 ```
 
-**Remark**: The readers may wonder how the author(s) remember all of the `R` commands for the model. In fact, we don't need to! We can use the function `objects` to find all available outputs from the model, and the object names are descriptive.
+The interval would be narrow for a small value of **HighSchool_PR**, such as less than 10. But people with extremely low **HighSchool_PR** are unlikely to be interested in taking the college entrance exam at all. Hence we are not going to calculate the 95\% confidence interval for small **HighSchool_PR** values.  
+
+**Remark**: The readers may wonder how the author(s) remember all of the `R` commands for the model. In fact, we don't need to! We can use the function `objects` to find all available outputs from the model, and the object names are descriptive.  
 
 ```{r objects-model}
 objects(model)
 ```
+
 
 ## Overall Model Results
 

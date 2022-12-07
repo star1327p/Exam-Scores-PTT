@@ -165,13 +165,18 @@ plot(x,y, main=expression(paste(rho," = 1")))
 x = c(-10:10)/2
 y = -2*x+3
 plot(x,y, main=expression(paste(rho," = -1")))
-
-# Need to do this only in the RStudio console; .Rmd does not require this line.
-# par(mfrow=c(1,1)) # restore to defaults
-
 ```
 
 \textcolor{red}{Need to decide what to do with a good but imperfect linear relationship.}   
+
+```{r draft-comments, include=FALSE}
+# In .Rmd, we don't need to do par(mfrow=c(1,1)) at the end of a plot to restore to defaults.
+# This is required only in the RStudio console.
+
+# Given R UTF8 encoding issues in Windows,
+# we cannot display ">=" or "<=" in the RMarkdown correctly. 
+# Don't waste time to try this again!
+```
 
 ```{r draft-correlation}
 set.seed(36)
@@ -226,7 +231,6 @@ x = c(-10:10)/2
 y = -x^2 + 25
 
 plot(x,y, main=expression(paste(rho," = 0")))
-
 ```
 
 Graph ideas from *OpenIntro Statistics*.  
