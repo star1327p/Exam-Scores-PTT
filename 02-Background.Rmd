@@ -1,6 +1,9 @@
 Some foreword context here. Need to briefly explain the Taiwan's education system, because readers are from all over the world.  
 
-\textcolor{red}{Brief comparison with the US college admission system}
+\textcolor{red}{Brief comparison with the US college admission system}  
+
+Despite multiple attempts of education reform, the high school entrance exam in Taiwan remains a key part to high school admissions \cite{chen2017advancing, chen2008strategic}.  
+
 
 ## High School Entrance Exam in Taiwan {#HighSchool_PR}
 
@@ -8,7 +11,7 @@ Some foreword context here. Need to briefly explain the Taiwan's education syste
 
 \textcolor{red}{What aggregated data does the Taiwan government publish?}  
 
-Between 2001 and 2013, the high school entrance exam in Taiwan was officially called The Basic Competence Test for Junior High School Students\cite{chou2007schooling}.^[<https://bit.ly/2JNQaOI>] The exam was typically held in May-June and consisted of five subjects (Chinese, English, mathematics, physical sciences, and social sciences). The report card contains exam scores for each subject, the total score, and the percentile rank (PR values from 1 to 99) of the total score. The PR value refers to the percentage of the student population you scored higher than. For example, PR 86 means you have a higher score than 86% of the student population in Taiwan. The PR values serve as a normalized tool to compare academic achievements across years.   
+Between 2001 and 2013, the high school entrance exam in Taiwan was officially called The Basic Competence Test for Junior High School Students \cite{chou2007schooling}.^[<https://bit.ly/2JNQaOI>] The exam was typically held in May-June and consisted of five subjects (Chinese, English, mathematics, physical sciences, and social sciences). The report card contains exam scores for each subject, the total score, and the percentile rank (PR values from 1 to 99) of the total score. The PR value refers to the percentage of the student population you scored higher than. For example, PR 86 means you have a higher score than 86% of the student population in Taiwan. The PR values serve as a normalized tool to compare academic achievements across years.   
 
 The actual exam score ranges varied from year to year. In 2001-2006, each of the five subjects had a maximum score of 60, summing up to a total score of 300. In Year 2007, the independent essay question was added for another 12 points, bringing up the maximum total score to 312 points.^[<https://www.945enet.com.tw/epaper/contents/ha/048/03.htm>] The scoring of the high school entrance exam had been controversial and generated much discussion in the news.^[<https://web.archive.org/web/20090415123425/http://www.libertytimes.com.tw/2007/new/jun/21/today-life1.htm>] The main issue was the large score difference between full marks and getting only one question wrong in a test subject.^[<https://blog.xuite.net/wmhsu/twblog/147553826>] For instance, one could get a 60 with all questions correct in a subject, but only 55 by missing just one question. The five-point deduction was regarded as a harsh penalty, given that the knowledge difference was minimal between a perfect score and a near-perfect score.^[<https://m.xuite.net/blog/chioufatymjh/twblog/130262492>]   
 
@@ -38,9 +41,15 @@ What are the outcomes?
 
 \textcolor{red}{What aggregated data does the Taiwan government publish?}  
 
-The college entrance exams in Taiwan are held twice a year; the first exam is for early admission and the second exam is for regular admission \cite{chou2015higher}. The first exam is called the General Scholastic Ability Test (GSAT) starting in 1994, which is typically held in late January or early February.^[<https://bit.ly/2W0fdUq>] The second exam is called the Advanced Subjects Test (AST) starting in 2002, and it is almost always held on July 1st, 2nd, and 3rd each year.^[<https://bit.ly/2J7YxoW>]   
+The college entrance exams in Taiwan are held twice a year; the first exam is for early admission and the second exam is for regular admission \cite{chou2015higher}.   
 
-In 2022, AST was replaced with a completely new scoring system,^[<https://www.ceec.edu.tw/unithome?psid=0J129606443348127072>] and we do not have sufficient data for this part.^[<https://www.cw.com.tw/article/5119369>]   
+The first exam is called the General Scholastic Ability Test (GSAT) starting in 1994, which is typically held in late January or early February.^[<https://bit.ly/2W0fdUq>] Students can use the GSAT scores and additional criteria (i.e., their portfolio documents) to apply to colleges for early admission \cite{hsieh2019preliminary}.
+
+The second exam is called the Advanced Subjects Test (AST) starting in 2002, and it is almost always held on July 1st, 2nd, and 3rd each year.^[<https://bit.ly/2J7YxoW>] In the regular admission phase, the AST scores are directly used for college placements \cite{shy2021comparison}, without consideration of the student's achievements outside the AST scores.^[With limited exceptions of GSAT score requirements. <https://udn.com/news/story/121570/4773243>]     
+
+\textcolor{red}{Elaborate on the new regular admission rules starting in 2022}   
+
+In 2022, AST was replaced with a completely new scoring system,^[<https://www.ceec.edu.tw/unithome?psid=0J129606443348127072>] and we do not have sufficient data for this part yet.^[<https://www.cw.com.tw/article/5119369>]   
 
 
 \textcolor{red}{Continue writing below}  
