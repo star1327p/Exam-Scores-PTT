@@ -178,6 +178,45 @@ plot(x,y, main=expression(paste(rho," = -1")))
 # Don't waste time to try this again!
 ```
 
+
+```{r draft-correlation-graph}
+linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
+  
+  x = c(-10:10)/2
+  
+  if (relationship == "positive") {
+    # rho > 0
+    y = 2*x+3
+  } else {
+    # relationship == "negative"
+    # rho < 0
+    y = -2*x+3
+  }
+  
+  if (noise_sd < 0) {
+    noise_sd = abs(noise_sd)
+    print("Warning: Standard deviation should be a positive value.")
+  }
+  
+  noise = rnorm(length(x),0,noise_sd)
+  z = y + noise
+  rho_rnd = round(cor(x,z), digits = 2)
+  # print(cor(x,z)) # 0.9285068
+  plot(x,z,main=bquote(~ rho == .(rho_rnd)))
+  
+  # return(TRUE) # don't return anything from the function
+}
+
+linear_corr_gen(noise_sd=3, "positive", 23)
+
+# linear_corr_gen(noise_sd=-3, "positive", 23) # this generates a warning
+
+```
+
+\textcolor{red}{Test}   
+
+At the final step, consider hiding the numbers in x-axis and y-axis to make the graph look cleaner.  
+
 ```{r draft-correlation}
 set.seed(36)
 
