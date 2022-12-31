@@ -1,6 +1,6 @@
 ---
-title: "PTT Analysis of Entrance Exam Scores in Taiwan"
-subtitle: "A Statistical Approach with R Code"
+title: "Statistical Analysis of High School and College Entrance Exam Scores in Taiwan with Online Data"
+subtitle: "A Fully Reproducible Approach with R Markdown"
 author:
   - Christine P. Chai
   - Microsoft
@@ -43,7 +43,17 @@ Ongoing work since 2019.
 
 # Executive Summary {.unnumbered}
 
-\textcolor{red}{Write something here}
+\textcolor{red}{Write something here}  
+
+In this project, we analyze the relationship between high school and college entrance exam scores in Taiwan using self-reported data online.   
+
+What is the goal of this project?   
+
+Demonstrate reproducible statistical analysis in $\mathsf{R}$ Markdown and LaTeX to PDF.    
+
+Briefly say about the methods used  
+
+What are the key results?  
 
 # Disclaimer {.unnumbered}
 
