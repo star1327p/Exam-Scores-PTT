@@ -95,11 +95,11 @@ Unlike the case of **HighSchool_PR**, we do not think it is appropriate to simul
 
 In Section \ref{College_Score}, we mentioned that the Taiwan government published detailed statistics of the **College_Score** each year, including the five indicators (88th, 75th, 50th, 25th, 12th percentile) of each subject and the total score. However, since our data sample contains **College_Score** across several years, it is not meaningful to generate a simulated distribution here.   
 
-\section*{\textcolor{red}{Unfinished below}}  
+\section*{\textcolor{red}{Unfinished below}}   
 
 ## Bivariate Exploration {#bivariate}
 
-Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score** to examine the relationship between the two scores. Obviously, a respondent needs a valid score in both to be included in the bivariate scatterplot. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores.   
+Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score** to examine the relationship between the two scores. Obviously, a respondent needs a valid score in both to be included in the bivariate scatterplot. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores. The bivariate scatterplot shows a funnel shape -- respondents with lower **HighSchool_PR** have higher variance in **College_Score**.      
 
 ```{r bivariate} 
 plot(data_corr$HighSchool_PR, data_corr$College_Score,
@@ -107,6 +107,10 @@ plot(data_corr$HighSchool_PR, data_corr$College_Score,
      xlab="HighSchool_PR",
      ylab="College_Score")
 ```
+
+\section*{\textcolor{red}{Unfinished below}}   
+
+\textcolor{red}{State the definition of correlation coefficient in the beginning, and \textbf{why} we would like to use this measure.}    
 
 The correlation coefficient is approximately 0.507, showing a medium strength of positive association between **HighSchool_PR** and **College_Score**. We can interpret that a better score in the high school entrance exam is likely to lead to a better college entrance exam score, but the relationship is not as strong after **HighSchool_PR** reaches 80.
 
@@ -179,6 +183,26 @@ plot(x,y, main=expression(paste(rho," = -1")))
 ```
 
 
+```{r draft-correlation-comments, include=FALSE}
+# Consider writing a function to generate such graphs
+# Input: positive vs negative, noise_sd
+
+# Fixed x = c(-10:10)/2
+# If rho > 0 => y = 2*x+3
+# Else (rho < 0) => y = -2*x+3
+
+# noise = rnorm(length(x),0,noise_sd)
+# z = y + noise
+# The higher noise_sd is, the weaker correlation between x and z,
+# i.e., the closer |rho(x,z)| is to zero.
+
+# Formulas: 
+# corr(x,z) = cov(x,z)/sqrt(var(x)*var(z))
+# y = ax + b
+# var(y) = a^2 * var(x)
+```
+
+
 ```{r draft-correlation-graph}
 linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
   
@@ -201,7 +225,7 @@ linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
   noise = rnorm(length(x),0,noise_sd)
   z = y + noise
   rho_rnd = round(cor(x,z), digits = 2)
-  # print(cor(x,z)) # 0.9285068
+  # print(cor(x,z))
   plot(x,z,main=bquote(~ rho == .(rho_rnd)))
   
   # return(TRUE) # don't return anything from the function
@@ -218,45 +242,24 @@ linear_corr_gen(noise_sd=3, "positive", 23)
 At the final step, consider hiding the numbers in x-axis and y-axis to make the graph look cleaner.  
 
 ```{r draft-correlation}
-set.seed(36)
 
-# Consider writing a function to generate such graphs
-# Input: positive vs negative, noise_sd
+# UNFINISHED HERE
+# Experiment and add more graphs
 
-# Fixed x = c(-10:10)/2
-# If rho > 0 => y = 2*x+3
-# Else (rho < 0) => y = -2*x+3
+par(mfrow=c(2,2))
 
-# noise = rnorm(length(x),0,noise_sd)
-# z = y + noise
-# The higher noise_sd is, the weaker correlation between x and z,
-# i.e., the closer |rho(x,z)| is to zero.
+# \rho_{X,Y} = 1
+linear_corr_gen(noise_sd=0, "positive", 36)
 
-# Formulas: 
-# corr(x,z) = cov(x,z)/sqrt(var(x)*var(z))
-# y = ax + b
-# var(y) = a^2 * var(x)
+# \rho_{X,Y} = -1
+linear_corr_gen(noise_sd=0, "negative", 37)
 
-par(mfrow=c(1,2))
+# \rho_{X,Y} = 0.91
+linear_corr_gen(noise_sd=3, "positive", 38)
 
-# \rho_{X,Y} = 0.93
-x = c(-10:10)/2
-y = 2*x+3
-noise = rnorm(length(x),0,3)
-z = y + noise
-rho_rnd = round(cor(x,z), digits = 2)
-# print(cor(x,z)) # 0.9285068
-plot(x,z,main=bquote(~ rho == .(rho_rnd)))
+# \rho_{X,Y} = -0.93
+linear_corr_gen(noise_sd=2.5, "negative", 39)
 
-
-# \rho_{X,Y} = -0.88
-x = c(-10:10)/2
-y = -2*x+3
-noise = rnorm(length(x),0,3)
-z = y + noise
-rho_rnd = round(cor(x,z), digits = 2)
-# print(cor(x,z)) # -0.8776013
-plot(x,z,main=bquote(~ rho == .(rho_rnd)))
 ```
 
 \textcolor{red}{Next steps: Generate the moderate and low correlation graphs.}
