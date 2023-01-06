@@ -43,17 +43,8 @@ Ongoing work since 2019.
 
 # Executive Summary {.unnumbered}
 
-\textcolor{red}{Write something here}  
+In this project, we investigate the relationship between high school and college entrance exam scores in Taiwan using self-reported data online. The goal is to demonstrate reproducible statistical analysis in $\mathsf{R}$ Markdown and LaTeX to PDF. We start by exploring the data to formulate the problem statement and identify the appropriate model, which can be an iterative process. We eventually decided on a binary outcome of the college entrance exams, and hence implemented a logistic regression to fit the model. We also validated the model with out-of-sample prediction methods, including cross validation as well as separate training and testing sets. The end-to-end data analysis can be compiled with a single button in RStudio, without copying-and-pasting output from one program to another.   
 
-In this project, we analyze the relationship between high school and college entrance exam scores in Taiwan using self-reported data online.   
-
-What is the goal of this project?   
-
-Demonstrate reproducible statistical analysis in $\mathsf{R}$ Markdown and LaTeX to PDF.    
-
-Briefly say about the methods used  
-
-What are the key results?  
 
 # Disclaimer {.unnumbered}
 
