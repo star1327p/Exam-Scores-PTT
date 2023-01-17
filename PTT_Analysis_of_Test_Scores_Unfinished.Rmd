@@ -166,14 +166,6 @@ You don't have to do the full implementation, just write a few lines as a pointe
 
 ## Separate Training and Testing Datasets
 
-\section*{\textcolor{red}{Unfinished below}}  
-
-Add a remark on hyperparameter tuning for random forests.  
-
-Hyperparameter tuning is also necessary for ridge regression and Lasso regression, both of which contain a penalty term to regulate the number of coefficients in the model.  
-
-\section*{\textcolor{red}{Unfinished above}}  
-
 ```{r include-out-sample-01, child = '09-Out-Sample-01-Sep-Explain.Rmd'}
 ```
 
