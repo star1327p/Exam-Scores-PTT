@@ -184,7 +184,7 @@ linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
   # return(TRUE) # don't return anything from the function
 }
 
-linear_corr_gen(noise_sd=3, "positive", 23)
+# linear_corr_gen(noise_sd=3, "positive", 23) # example usage
 
 # linear_corr_gen(noise_sd=-3, "positive", 23) # this generates a warning
 
@@ -241,11 +241,12 @@ Add $\epsilon \sim N(0,\sigma^2)$ as the random noise with mean zero.
 ```
 
 
-
-
 \textcolor{red}{Need to adjust the size of each plot to make the data trends more visible.}      
 
-At the final step, consider hiding the numbers in x-axis and y-axis to make the graph look cleaner.  
+At the final step, consider hiding the numbers in x-axis and y-axis to make the graph look cleaner.   
+
+
+Should I hide the code and function to avoid obscuring the focus of correlation coefficient?  
 
 ```{r draft-correlation}
 
@@ -254,10 +255,10 @@ At the final step, consider hiding the numbers in x-axis and y-axis to make the 
 
 par(mfrow=c(1,2))
 
-# \rho_{X,Y} = 0.96
+# \rho_{X,Y} = 0.89
 linear_corr_gen(noise_sd=3, "positive", 38)
 
-# \rho_{X,Y} = -0.97
+# \rho_{X,Y} = -0.93
 linear_corr_gen(noise_sd=2.5, "negative", 39)
 ```
 
@@ -271,10 +272,10 @@ Mid-correlation graphs
 
 par(mfrow=c(1,2))
 
-# \rho_{X,Y} = 0.46
+# \rho_{X,Y} = 0.64
 linear_corr_gen(noise_sd=7, "positive", 23)
 
-# \rho_{X,Y} = -0.67
+# \rho_{X,Y} = -0.5
 linear_corr_gen(noise_sd=12, "negative", 23)
 ```
 
@@ -282,16 +283,32 @@ linear_corr_gen(noise_sd=12, "negative", 23)
 
 \textcolor{red}{This may come from both x, y are random.}   
 
-For $\rho_{X,Y} = 0$, create one graph with independence and the other graph with an obvious non-linear relationship.  
+For $\rho_{X,Y} = 0$, create one graph with independence and the other graph with an obvious non-linear relationship.   
 
-e.g. Parabola curve: $y = -x^2 + 25$, set xlim=c(-5,5)   
+e.g. Parabola curve: $y = -x^2 + 25$, set xlim=c(-5,5)    
 
-```{r draft-parabola}
+```{r draft-zero-correlation}
+
+# UNFINISHED HERE
+# Experiment and add more graphs
+
+par(mfrow=c(1,2))
+
+# \rho_{X,Y} = 0.03
+set.seed(1000)
+x = runif(100,-10,10)
+y = runif(100,-10,10)
+rho_current = round(cor(x,y), digits = 2)
+plot(x,y,main=bquote(~ rho == .(rho_current)))
+
+# \rho_{X,Y} = 0
 x = c(-10:10)/2
 y = -x^2 + 25
-
-plot(x,y, main=expression(paste(rho," = 0")))
+rho_current = round(cor(x,y), digits = 2)
+# plot(x,y, main=expression(paste(rho," = 0")))
+plot(x,y,main=bquote(~ rho == .(rho_current)))
 ```
+
 
 Graph ideas from *OpenIntro Statistics*.  
 <https://github.com/OpenIntroStat/openintro-statistics/tree/master/ch_regr_simple_linear>   
