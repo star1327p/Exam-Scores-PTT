@@ -148,9 +148,15 @@ The strength of linear relationship can be interpreted as below:^[<https://bit.l
 
 - $|\rho_{X,Y}| = 0$: No linear relationship
 
-\section*{\textcolor{red}{Unfinished below}}  
+\section*{\textcolor{red}{Unfinished below}}   
 
-```{r draft-correlation-graph}
+\textcolor{red}{Write the foreword here}   
+
+Also explain why we decided to hide the code that generated these graphs.  
+
+Avoid obscuring the topic of correlation coefficient.   
+
+```{r correlation-graph-function, echo=FALSE}
 linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
   
   x = c(-100:100)/20
@@ -179,7 +185,7 @@ linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
   z = y + noise
   rho_rnd = round(cor(x,z), digits = 2)
   # print(cor(x,z))
-  plot(x,z,main=bquote(~ rho == .(rho_rnd)))
+  plot(x, z, xlab="", ylab="", main=bquote(~ rho == .(rho_rnd)))
   
   # return(TRUE) # don't return anything from the function
 }
@@ -190,28 +196,8 @@ linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
 
 ```
 
-Add graphical examples to show each $\rho_{X,Y}$.  
 
-$\rho_{X,Y} = 1$ example: $y = ax+b$, with $a > 0$.  
-
-$\rho_{X,Y} = -1$ example: $y = ax+b$, with $a < 0$.  
-
-```{r draft-perfect-linear}
-
-par(mfrow=c(1,2))
-
-# \rho_{X,Y} = 1
-linear_corr_gen(noise_sd=0, "positive", 36)
-
-# \rho_{X,Y} = -1
-linear_corr_gen(noise_sd=0, "negative", 37)
-```
-
-\textcolor{red}{Need to decide what to do with a good but imperfect linear relationship.}   
-
-Add $\epsilon \sim N(0,\sigma^2)$ as the random noise with mean zero.  
-
-```{r draft-comments, include=FALSE}
+```{r graph-comments, include=FALSE}
 # In .Rmd, we don't need to do par(mfrow=c(1,1)) at the end of a plot to restore to defaults.
 # This is required only in the RStudio console.
 
@@ -221,7 +207,7 @@ Add $\epsilon \sim N(0,\sigma^2)$ as the random noise with mean zero.
 ```
 
 
-```{r draft-correlation-comments, include=FALSE}
+```{r correlation-comments, include=FALSE}
 # Consider writing a function to generate such graphs
 # Input: positive vs negative, noise_sd
 
@@ -241,18 +227,29 @@ Add $\epsilon \sim N(0,\sigma^2)$ as the random noise with mean zero.
 ```
 
 
-\textcolor{red}{Need to adjust the size of each plot to make the data trends more visible.}      
+Add graphical examples to show each $\rho_{X,Y}$.  
 
-At the final step, consider hiding the numbers in x-axis and y-axis to make the graph look cleaner.   
+$\rho_{X,Y} = 1$ example: $y = ax+b$, with $a > 0$.  
 
+$\rho_{X,Y} = -1$ example: $y = ax+b$, with $a < 0$.  
 
-Should I hide the code and function to avoid obscuring the focus of correlation coefficient?  
+\textcolor{red}{Need to decide what to do with a good but imperfect linear relationship.}   
 
-```{r draft-correlation}
+Add $\epsilon \sim N(0,\sigma^2)$ as the random noise with mean zero.  
 
-# UNFINISHED HERE
-# Experiment and add more graphs
+```{r perfect-linear-correlation, echo=FALSE}
+par(mfrow=c(1,2))
 
+# \rho_{X,Y} = 1
+linear_corr_gen(noise_sd=0, "positive", 36)
+
+# \rho_{X,Y} = -1
+linear_corr_gen(noise_sd=0, "negative", 37)
+```
+
+\textcolor{red}{Need to change the graph size, so that we can put multiple rows of graphs in the same code chunk and in the same page.}     
+
+```{r high-correlation, echo=FALSE}
 par(mfrow=c(1,2))
 
 # \rho_{X,Y} = 0.89
@@ -265,11 +262,7 @@ linear_corr_gen(noise_sd=2.5, "negative", 39)
 
 Mid-correlation graphs
 
-```{r draft-mid-corr}
-
-# UNFINISHED HERE
-# Experiment and add more graphs
-
+```{r mid-correlation, echo=FALSE}
 par(mfrow=c(1,2))
 
 # \rho_{X,Y} = 0.64
@@ -287,11 +280,7 @@ For $\rho_{X,Y} = 0$, create one graph with independence and the other graph wit
 
 e.g. Parabola curve: $y = -x^2 + 25$, set xlim=c(-5,5)    
 
-```{r draft-zero-correlation}
-
-# UNFINISHED HERE
-# Experiment and add more graphs
-
+```{r low-and-zero-correlation, echo=FALSE}
 par(mfrow=c(1,2))
 
 # \rho_{X,Y} = 0.03
