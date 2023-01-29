@@ -108,24 +108,22 @@ plot(data_corr$HighSchool_PR, data_corr$College_Score,
      ylab="College_Score")
 ```
 
-\section*{\textcolor{red}{Unfinished below}}   
-
-\textcolor{red}{State the definition of correlation coefficient in the beginning, and \textbf{why} we would like to use this measure.}    
-
-The correlation coefficient is approximately 0.507, showing a medium strength of positive association between **HighSchool_PR** and **College_Score**. We can interpret that a better score in the high school entrance exam is likely to lead to a better college entrance exam score, but the relationship is not as strong after **HighSchool_PR** reaches 80.
+We use the correlation coefficient to measure the strength of the linear relationship between **HighSchool_PR** and **College_Score**. The computed value is approximately 0.507, showing a medium strength of positive association between the two variables. We can interpret that a better score in the high school entrance exam is associated with a better college entrance exam score, but the relationship is not as strong after **HighSchool_PR** reaches 80. (Note that correlation does not imply causality!)    
 
 ```{r correlation}
 cor(data_corr$HighSchool_PR, data_corr$College_Score)
 ```
 
-To calculate the correlation coefficient between the random variables $X, Y$, we need to start with the covariance $\text{Cov}(X,Y)$ in the equation below. $E[X]$ denotes the expectation value of $X$, a.k.a. the mean of $X$.
+To find the correlation coefficient between the random variables $X, Y$, we start with the covariance $\text{Cov}(X,Y)$ in the equation below. $E[X]$ denotes the expectation value of $X$, a.k.a. the mean of $X$.
 
 $$\text{Cov}(X,Y) = E[(X-E[X])(Y-E[Y])] = E[XY] - E[X]E[Y].$$
 
 Then we also need to compute the standard deviation $\sigma_X$:
 
 $$\sigma_X = \sqrt{E[(X-E[X])^2]} = \sqrt{E[X^2]-(E[X])^2}.$$
-Same applies to the standard deviation $\sigma_Y$.  
+Similarly, the standard deviation $\sigma_Y$ is:  
+
+$$\sigma_Y = \sqrt{E[(Y-E[Y])^2]} = \sqrt{E[Y^2]-(E[Y])^2}.$$
 
 Finally, we can calculate the correlation coefficient as:
 
