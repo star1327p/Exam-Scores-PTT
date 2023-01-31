@@ -130,29 +130,27 @@ Finally, we can calculate the correlation coefficient as:
 $$\rho_{X,Y} = \dfrac{\text{Cov}(X,Y)}{\sigma_X \sigma_Y}.$$
 
 
-The correlation coefficient $\rho_{X,Y}$ is always between -1 and +1. The stronger $|\rho_{X,Y}|$ is, the stronger is the linear relationship. A positive value means the two variables $X,Y$ are positively associated with each other. In other words, when $X$ increases, $Y$ is also expected to increase. A negative value means the two variables $X,Y$ are negatively associated with each other. In this case, when $X$ increases, $Y$ is expected to decrease. The correlation coefficient may be zero, but this simply means that $X$ and $Y$ do not have a linear relationship with each other. There may exist other patterns between the two variables.  
+The correlation coefficient $\rho$ is always between -1 and +1. The stronger $|\rho_{X,Y}|$ is, the stronger is the linear relationship. A positive value means the two variables $X,Y$ are positively associated with each other. In other words, when $X$ increases, $Y$ is also expected to increase. A negative value means the two variables $X,Y$ are negatively associated with each other. In this case, when $X$ increases, $Y$ is expected to decrease. The correlation coefficient may be zero, but this simply means that $X$ and $Y$ do not have a linear relationship with each other. There may exist other patterns between the two variables.  
 
 The strength of linear relationship can be interpreted as below:^[<https://bit.ly/3AUI8PA>]  
 
-- $|\rho_{X,Y}| = 1$: Perfect linear relationship
+- $|\rho| = 1$: Perfect linear relationship
 
-- $0.6 < |\rho_{X,Y}| < 1$: Strong linear relationship
+- $0.6 < |\rho| < 1$: Strong linear relationship
 
-- $0.4 < |\rho_{X,Y}| < 0.6$: Moderate linear relationship
+- $0.4 < |\rho| < 0.6$: Moderate linear relationship
 
-- $0.2 < |\rho_{X,Y}| < 0.4$: Low linear relationship
+- $0.2 < |\rho| < 0.4$: Low linear relationship
 
-- $0 < |\rho_{X,Y}| < 0.2$: Little-to-no linear relationship
+- $0 < |\rho| < 0.2$: Little-to-no linear relationship
 
-- $|\rho_{X,Y}| = 0$: No linear relationship
+- $|\rho| = 0$: No linear relationship
 
 \section*{\textcolor{red}{Unfinished below}}   
 
 \textcolor{red}{Write the foreword here}   
 
-Also explain why we decided to hide the code that generated these graphs.  
-
-Avoid obscuring the topic of correlation coefficient.   
+Here we are going to visualize bivariate patterns that show different values of the correlation coefficient $\rho$. Note that we conceal the code that generated these graphs to avoid obscuring the topic, and the interested readers can find the code in the raw `.Rmd` files.      
 
 ```{r correlation-graph-function, echo=FALSE}
 linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
@@ -183,7 +181,7 @@ linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
   z = y + noise
   rho_rnd = round(cor(x,z), digits = 2)
   # print(cor(x,z))
-  plot(x, z, xlab="", ylab="", main=bquote(~ rho == .(rho_rnd)))
+  plot(x, z, main=bquote(~ rho == .(rho_rnd)), xlab="", ylab="")
   
   # return(TRUE) # don't return anything from the function
 }
@@ -225,75 +223,66 @@ linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
 ```
 
 
-Add graphical examples to show each $\rho_{X,Y}$.  
+Add graphical examples to show each $\rho$.  
 
-$\rho_{X,Y} = 1$ example: $y = ax+b$, with $a > 0$.  
+$\rho = 1$ example: $y = ax+b$, with $a > 0$.  
 
-$\rho_{X,Y} = -1$ example: $y = ax+b$, with $a < 0$.  
+$\rho = -1$ example: $y = ax+b$, with $a < 0$.  
 
 \textcolor{red}{Need to decide what to do with a good but imperfect linear relationship.}   
 
 Add $\epsilon \sim N(0,\sigma^2)$ as the random noise with mean zero.  
 
-```{r perfect-linear-correlation, echo=FALSE}
-par(mfrow=c(1,2))
+```{r high-linear-correlation, fig.height=8, fig.width=7, echo=FALSE}
+par(mfrow=c(2,2))
 
-# \rho_{X,Y} = 1
+# rho = 1
 linear_corr_gen(noise_sd=0, "positive", 36)
 
-# \rho_{X,Y} = -1
+# rho = -1
 linear_corr_gen(noise_sd=0, "negative", 37)
+
+# rho = 0.89
+linear_corr_gen(noise_sd=3, "positive", 38)
+
+# rho = -0.93
+linear_corr_gen(noise_sd=2.5, "negative", 39)
 ```
 
 \textcolor{red}{Need to change the graph size, so that we can put multiple rows of graphs in the same code chunk and in the same page.}     
 
-```{r high-correlation, echo=FALSE}
-par(mfrow=c(1,2))
-
-# \rho_{X,Y} = 0.89
-linear_corr_gen(noise_sd=3, "positive", 38)
-
-# \rho_{X,Y} = -0.93
-linear_corr_gen(noise_sd=2.5, "negative", 39)
-```
-
-
-Mid-correlation graphs
-
-```{r mid-correlation, echo=FALSE}
-par(mfrow=c(1,2))
-
-# \rho_{X,Y} = 0.64
-linear_corr_gen(noise_sd=7, "positive", 23)
-
-# \rho_{X,Y} = -0.5
-linear_corr_gen(noise_sd=12, "negative", 23)
-```
+Mid-correlation graphs   
 
 \textcolor{red}{Next steps: Generate the low correlation graphs.}   
 
 \textcolor{red}{This may come from both x, y are random.}   
 
-For $\rho_{X,Y} = 0$, create one graph with independence and the other graph with an obvious non-linear relationship.   
+For $\rho = 0$, create one graph with independence and the other graph with an obvious non-linear relationship.   
 
 e.g. Parabola curve: $y = -x^2 + 25$, set xlim=c(-5,5)    
 
-```{r low-and-zero-correlation, echo=FALSE}
-par(mfrow=c(1,2))
+```{r mid-and-low-correlation, fig.height=8, fig.width=7, echo=FALSE}
+par(mfrow=c(2,2))
 
-# \rho_{X,Y} = 0.03
+# rho = 0.64
+linear_corr_gen(noise_sd=7, "positive", 23)
+
+# rho = -0.47
+linear_corr_gen(noise_sd=12, "negative", 40)
+
+# rho = 0.03
 set.seed(1000)
 x = runif(100,-10,10)
 y = runif(100,-10,10)
 rho_current = round(cor(x,y), digits = 2)
-plot(x,y,main=bquote(~ rho == .(rho_current)))
+plot(x,y,main=bquote(~ rho == .(rho_current)), xlab="", ylab="")
 
-# \rho_{X,Y} = 0
+# rho = 0
 x = c(-10:10)/2
 y = -x^2 + 25
 rho_current = round(cor(x,y), digits = 2)
 # plot(x,y, main=expression(paste(rho," = 0")))
-plot(x,y,main=bquote(~ rho == .(rho_current)))
+plot(x,y,main=bquote(~ rho == .(rho_current)), xlab="", ylab="")
 ```
 
 
