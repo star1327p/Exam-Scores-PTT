@@ -148,9 +148,7 @@ The strength of linear relationship can be interpreted as below:^[<https://bit.l
 
 \section*{\textcolor{red}{Unfinished below}}   
 
-\textcolor{red}{Write the foreword here}   
-
-Here we are going to visualize bivariate patterns that show different values of the correlation coefficient $\rho$. Note that we conceal the code that generated these graphs to avoid obscuring the topic, and the interested readers can find the code in the raw `.Rmd` files.      
+Here we visualize some bivariate patterns for different values of the correlation coefficient $\rho$. Note that we hide the code that generated these graphs to avoid obscuring the topic, and the interested readers can find the code in the raw `.Rmd` files. We will discuss more about linear regression in Chapter \ref{linear-reg}.     
 
 ```{r correlation-graph-function, echo=FALSE}
 linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
@@ -181,7 +179,10 @@ linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
   z = y + noise
   rho_rnd = round(cor(x,z), digits = 2)
   # print(cor(x,z))
-  plot(x, z, main=bquote(~ rho == .(rho_rnd)), xlab="", ylab="")
+  plot(x, z, main=bquote(~ rho == .(rho_rnd)), 
+       xlab="", ylab="", axes=FALSE, frame.plot=TRUE)
+  Axis(side=1, labels=FALSE)
+  Axis(side=2, labels=FALSE)
   
   # return(TRUE) # don't return anything from the function
 }
@@ -223,24 +224,31 @@ linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
 ```
 
 
-Add graphical examples to show each $\rho$.  
+The first row of graphs show what $|\rho| = 1$ looks like.
 
-$\rho = 1$ example: $y = ax+b$, with $a > 0$.  
+- For $\rho = 1$, the two variables $X, Y$ have a perfect linear relationship with a positive slope. In mathematical terms, we can write $Y = \alpha + \beta X$ with $\beta > 0$.  
 
-$\rho = -1$ example: $y = ax+b$, with $a < 0$.  
+- For $\rho = -1$, the two variables $X, Y$ have a perfect linear relationship with a negative slope. In mathematical terms, we can write $Y = \alpha + \beta X$ with $\beta < 0$.   
 
-\textcolor{red}{Need to decide what to do with a good but imperfect linear relationship.}   
-
-Add $\epsilon \sim N(0,\sigma^2)$ as the random noise with mean zero.  
-
-```{r high-linear-correlation, fig.height=8, fig.width=7, echo=FALSE}
-par(mfrow=c(2,2))
+```{r perfect-linear-correlation, fig.height=4, fig.width=8, echo=FALSE}
+par(mfrow=c(1,2))
 
 # rho = 1
 linear_corr_gen(noise_sd=0, "positive", 36)
 
 # rho = -1
 linear_corr_gen(noise_sd=0, "negative", 37)
+```
+
+
+\section*{\textcolor{red}{Unfinished below}}   
+
+In the second row, the two variables have a good but imperfect linear relationship. We add a small random noise with mean zero to the data generative process, and the equation becomes $Y = \alpha + \beta X + \epsilon$, where $\epsilon \sim N(0,\sigma^2)$. We assume the random noise $\epsilon$ follows a normal distribution, although this is not always necessary.       
+
+\textcolor{red}{Need to describe the graphs for a good but imperfect linear relationship.}   
+
+```{r high-correlation, fig.height=4, fig.width=8, echo=FALSE}
+par(mfrow=c(1,2))
 
 # rho = 0.89
 linear_corr_gen(noise_sd=3, "positive", 38)
@@ -249,9 +257,20 @@ linear_corr_gen(noise_sd=3, "positive", 38)
 linear_corr_gen(noise_sd=2.5, "negative", 39)
 ```
 
+
 \textcolor{red}{Need to change the graph size, so that we can put multiple rows of graphs in the same code chunk and in the same page.}     
 
 Mid-correlation graphs   
+
+```{r mid-correlation, fig.height=4, fig.width=8, echo=FALSE}
+par(mfrow=c(1,2))
+
+# rho = 0.64
+linear_corr_gen(noise_sd=7, "positive", 23)
+
+# rho = -0.47
+linear_corr_gen(noise_sd=12, "negative", 40)
+```
 
 \textcolor{red}{Next steps: Generate the low correlation graphs.}   
 
@@ -261,28 +280,28 @@ For $\rho = 0$, create one graph with independence and the other graph with an o
 
 e.g. Parabola curve: $y = -x^2 + 25$, set xlim=c(-5,5)    
 
-```{r mid-and-low-correlation, fig.height=8, fig.width=7, echo=FALSE}
-par(mfrow=c(2,2))
-
-# rho = 0.64
-linear_corr_gen(noise_sd=7, "positive", 23)
-
-# rho = -0.47
-linear_corr_gen(noise_sd=12, "negative", 40)
+```{r low-correlation, fig.height=4, fig.width=8, echo=FALSE}
+par(mfrow=c(1,2))
 
 # rho = 0.03
 set.seed(1000)
 x = runif(100,-10,10)
 y = runif(100,-10,10)
 rho_current = round(cor(x,y), digits = 2)
-plot(x,y,main=bquote(~ rho == .(rho_current)), xlab="", ylab="")
+plot(x,y,main=bquote(~ rho == .(rho_current)), 
+     xlab="", ylab="", axes=FALSE, frame.plot=TRUE)
+Axis(side=1, labels=FALSE)
+Axis(side=2, labels=FALSE)
 
 # rho = 0
 x = c(-10:10)/2
 y = -x^2 + 25
 rho_current = round(cor(x,y), digits = 2)
 # plot(x,y, main=expression(paste(rho," = 0")))
-plot(x,y,main=bquote(~ rho == .(rho_current)), xlab="", ylab="")
+plot(x,y,main=bquote(~ rho == .(rho_current)), 
+     xlab="", ylab="", axes=FALSE, frame.plot=TRUE)
+Axis(side=1, labels=FALSE)
+Axis(side=2, labels=FALSE)
 ```
 
 
