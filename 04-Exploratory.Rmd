@@ -148,7 +148,7 @@ The strength of linear relationship can be interpreted as below:^[<https://bit.l
 
 \section*{\textcolor{red}{Unfinished below}}   
 
-Here we visualize some bivariate patterns for different values of the correlation coefficient $\rho$. Note that we hide the code that generated these graphs to avoid obscuring the topic, and the interested readers can find the code in the raw `.Rmd` files. We will discuss more about linear regression in Chapter \ref{linear-reg}.     
+Here we visualize some bivariate patterns for different values of the correlation coefficient $\rho$, with hypothetical data and examples. Note that we hide the code that generated these graphs to avoid obscuring the topic, and the interested readers can find the code in the raw `.Rmd` files. We will discuss more about linear regression in Chapter \ref{linear-reg}.     
 
 ```{r correlation-graph-function, echo=FALSE}
 linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
@@ -226,9 +226,9 @@ linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
 
 The first row of graphs show what $|\rho| = 1$ looks like.
 
-- For $\rho = 1$, the two variables $X, Y$ have a perfect linear relationship with a positive slope. In mathematical terms, we can write $Y = \alpha + \beta X$ with $\beta > 0$.  
+- For $\rho = 1$, the two variables $X, Y$ have a perfect linear relationship with a positive slope. In mathematical terms, we can write $Y = \alpha + \beta X$ with $\beta > 0$ because the sign of $\beta$ controls the direction of the pattern. One example is people's height in cm and height in inches, where the two variables are a linear combination of each other.     
 
-- For $\rho = -1$, the two variables $X, Y$ have a perfect linear relationship with a negative slope. In mathematical terms, we can write $Y = \alpha + \beta X$ with $\beta < 0$.   
+- For $\rho = -1$, the two variables $X, Y$ have a perfect linear relationship with a negative slope. In mathematical terms, we can write $Y = \alpha + \beta X$ with $\beta < 0$ because the sign of $\beta$ controls the direction of the pattern. One example is you eat from a box of 12 cookies. The cookies you ate and the cookies remaining should add up to 12, so they have a perfect negative linear relationship.   
 
 ```{r perfect-linear-correlation, fig.height=4, fig.width=8, echo=FALSE}
 par(mfrow=c(1,2))
@@ -240,12 +240,11 @@ linear_corr_gen(noise_sd=0, "positive", 36)
 linear_corr_gen(noise_sd=0, "negative", 37)
 ```
 
-
-\section*{\textcolor{red}{Unfinished below}}   
-
 In the second row, the two variables have a good but imperfect linear relationship. We add a small random noise with mean zero to the data generative process, and the equation becomes $Y = \alpha + \beta X + \epsilon$, where $\epsilon \sim N(0,\sigma^2)$. We assume the random noise $\epsilon$ follows a normal distribution, although this is not always necessary.       
 
-\textcolor{red}{Need to describe the graphs for a good but imperfect linear relationship.}   
+- The left graph illustrates $\rho = 0.89$. The plot shows a clear and positive relationship with some noise. One example is the height and weight of children of various ages. Taller children usually weigh more, but this is not always the case. (Childhood obesity is a serious health problem.)        
+
+- The right graph illustrates $\rho = -0.93$. The plot shows a clear and negative relationship with some noise. One example is the hours for work and the hours for hobbies. Generally, the more time you spend on work, the less time you spend on hobbies. Although everyone has 24 hours in a day, the time outside work does not always mean you are spending on hobbies for enjoyment.   
 
 ```{r high-correlation, fig.height=4, fig.width=8, echo=FALSE}
 par(mfrow=c(1,2))
@@ -257,10 +256,17 @@ linear_corr_gen(noise_sd=3, "positive", 38)
 linear_corr_gen(noise_sd=2.5, "negative", 39)
 ```
 
+\section*{\textcolor{red}{Unfinished below}}    
 
-\textcolor{red}{Need to change the graph size, so that we can put multiple rows of graphs in the same code chunk and in the same page.}     
+\textcolor{red}{Mid-correlation graphs}      
 
-Mid-correlation graphs   
+$\rho = 0.64$   
+
+One example is students' midterm exam scores and final exam scores. Students who did well on the midterm often continue to do well on the final, but this is not guaranteed. Exam scores often have more variability than people's height and weight.        
+
+$\rho = -0.47$   
+
+One example is adults' muscle mass and their age. Older adults tend to have less muscle than younger ones, but it is well-known that strength training helps preserve some muscle mass.   
 
 ```{r mid-correlation, fig.height=4, fig.width=8, echo=FALSE}
 par(mfrow=c(1,2))
