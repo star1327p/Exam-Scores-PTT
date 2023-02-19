@@ -151,9 +151,13 @@ The strength of linear relationship can be interpreted as below:^[<https://bit.l
 
 \section*{\textcolor{red}{Unfinished below}}   
 
-Here we visualize some bivariate patterns for different values of the correlation coefficient $\rho$, with hypothetical data and examples. Note that we hide the code that generated these graphs to avoid obscuring the topic, and the interested readers can find the code in the raw `.Rmd` files. We will discuss more about linear regression in Chapter \ref{linear-reg}.     
+Here we visualize some bivariate patterns for different values of the correlation coefficient $\rho$, with hypothetical data and examples. The graph ideas came from *OpenIntro Statistics* \cite{diez2019openintro}. We hide the code that generated these graphs to avoid obscuring the topic, and the interested readers can find the code in the raw `.Rmd` files. We will discuss more about linear regression in Chapter \ref{linear-reg}.     
+
 
 ```{r correlation-graph-function, echo=FALSE}
+# Graph ideas from *OpenIntro Statistics*.  
+# https://github.com/OpenIntroStat/openintro-statistics/tree/master/ch_regr_simple_linear   
+
 linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
   
   x = c(-100:100)/20
@@ -282,12 +286,18 @@ The final row shows what little-to-no linear correlation looks like.
 
 \textcolor{red}{Zero correlation does not mean the two variables are independent. They may have a non-linear relationship, which cannot be detected by the correlation coefficient.}     
 
-For a small $\rho$ in absolute value, the two variables barely have any linear relationship. Even when the bivariate scatter plot looks random, the correlation coefficient may not be exactly zero.    
+- The left image shows a bivariate scatter plot with very little correlation. For a small $\rho$ in absolute value, the two variables barely have any linear relationship. Although the bivariate scatter plot looks random, the correlation coefficient may not be exactly zero.    
+
+Need a real-life example.   
+
+- The right image has $\rho = 0$, i.e., no linear relationship at all. However, the graph shows a parabola curve, so the two variables have some non-linear relationship.   
+
+Need a real-life example.   
 
 
-For $\rho = 0$, create one graph with independence and the other graph with an obvious non-linear relationship.   
 
-e.g. Parabola curve: $y = -x^2 + 25$, set xlim=c(-5,5)    
+\section*{\textcolor{red}{Unfinished above}}  
+
 
 ```{r low-correlation, fig.height=4, fig.width=8, echo=FALSE}
 par(mfrow=c(1,2))
@@ -304,6 +314,7 @@ Axis(side=2, labels=FALSE)
 
 # rho = 0
 x = c(-10:10)/2
+
 y = -x^2 + 25
 rho_current = round(cor(x,y), digits = 2)
 # plot(x,y, main=expression(paste(rho," = 0")))
@@ -314,7 +325,3 @@ Axis(side=2, labels=FALSE)
 ```
 
 
-Graph ideas from *OpenIntro Statistics*.  
-<https://github.com/OpenIntroStat/openintro-statistics/tree/master/ch_regr_simple_linear>   
-
-\section*{\textcolor{red}{Unfinished above}}  
