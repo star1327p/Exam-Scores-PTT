@@ -2,6 +2,8 @@ Some foreword context here. Need to briefly explain the Taiwan's education syste
 
 \textcolor{red}{Brief comparison with the US college admission system}  
 
+\textcolor{red}{Consider leveraging ChatGPT for the US part}   
+
 Despite multiple attempts of education reform, the high school entrance exam in Taiwan remains a key part to high school admissions \cite{chen2017advancing, chen2008strategic}.  
 
 
@@ -13,15 +15,13 @@ Despite multiple attempts of education reform, the high school entrance exam in 
 
 Between 2001 and 2013, the high school entrance exam in Taiwan was officially called The Basic Competence Test for Junior High School Students \cite{chou2007schooling}.^[<https://bit.ly/2JNQaOI>] The exam was typically held in May-June and consisted of five subjects (Chinese, English, mathematics, physical sciences, and social sciences). The report card contains exam scores for each subject, the total score, and the percentile rank (PR values from 1 to 99) of the total score. The PR value refers to the percentage of the student population you scored higher than. For example, PR 86 means you have a higher score than 86% of the student population in Taiwan. The PR values serve as a normalized tool to compare academic achievements across years.   
 
-The actual exam score ranges varied from year to year. In 2001-2006, each of the five subjects had a maximum score of 60, summing up to a total score of 300. In Year 2007, the independent essay question was added for another 12 points, bringing up the maximum total score to 312 points.^[<https://www.945enet.com.tw/epaper/contents/ha/048/03.htm>] The scoring of the high school entrance exam had been controversial and generated much discussion in the news.^[<https://web.archive.org/web/20090415123425/http://www.libertytimes.com.tw/2007/new/jun/21/today-life1.htm>] The main issue was the large score difference between full marks and getting only one question wrong in a test subject.^[<https://blog.xuite.net/wmhsu/twblog/147553826>] For instance, one could get a 60 with all questions correct in a subject, but only 55 by missing just one question. The five-point deduction was regarded as a harsh penalty, given that the knowledge difference was minimal between a perfect score and a near-perfect score.^[<https://m.xuite.net/blog/chioufatymjh/twblog/130262492>]   
+The actual exam score range varied from year to year. In 2001-2006, each of the five subjects had a maximum score of 60, summing up to a total score of 300. In Year 2007, the independent essay question was added for another 12 points, bringing up the maximum total score to 312 points.^[<https://www.945enet.com.tw/epaper/contents/ha/048/03.htm>] The scoring of the high school entrance exam had been controversial and generated much discussion in the news.^[<https://web.archive.org/web/20090415123425/http://www.libertytimes.com.tw/2007/new/jun/21/today-life1.htm>] The main issue was the large score difference between full marks and getting only one question wrong in a test subject.^[<https://blog.xuite.net/wmhsu/twblog/147553826>] For instance, one could get a 60 with all questions correct in a subject, but only 55 by missing just one question. The five-point deduction was regarded as a harsh penalty, given that the knowledge difference was minimal between a perfect score and a near-perfect score.^[<https://m.xuite.net/blog/chioufatymjh/twblog/130262492>]   
 
 \section*{\textcolor{red}{Unfinished below}}  
 
-Then in Year 2009, the maximum possible score was increased to 412. Each subject was augmented from 60 to 80 points, and the independent essay question was still worth 12 points.  
+Then in Year 2009, the maximum possible score was increased from 312 to 412 points.^[<https://blog.cybertranslator.idv.tw/archives/2384>] Each subject was augmented from 60 to 80 points, and the independent essay question was still worth 12 points. In the 80-point system, missing one question would result in a two-point loss from the full mark, rather than a substantial five or six points.^[<https://joan044.pixnet.net/blog/post/255140987>]    
 
-\textcolor{red}{Describe the changes from 312 to 412. Cite the news article that resulted in such change, because it made headlines at that time.}  
-
-Also explain that in the 80-point system, missing one question would result in a two-point loss from the full mark, rather than a substantial five or six points.    
+\textcolor{red}{What happened in 2010 and 2011, respectively?}   
 
 \textcolor{red}{When were two opportunities given each year? When did it become only one test?}    
 
