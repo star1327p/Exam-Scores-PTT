@@ -82,14 +82,6 @@ Start writing about 2021 for both exams, because 2022 is still ongoing
 
 # Exploratory Data Analysis {#eda}
 
-\section*{\textcolor{red}{Unfinished below}}
-
-\textcolor{red}{Definitely need to fix the univariate sections}   
-
-\textcolor{red}{This is the file we want to move content into.}  
-
-\section*{\textcolor{red}{Unfinished below}}  
-
 ```{r include-exploratory, child = '04-Exploratory.Rmd'}
 ```
 
@@ -125,20 +117,6 @@ Start writing about 2021 for both exams, because 2022 is still ongoing
 
 ## Interpretation of Confusion Matrix {#interpretation}
 
-\section*{\textcolor{red}{Unfinished below}}  
-
-What about ROC (receiver operating characteristic) and AUC (area under the curve) with various probability thresholds?  
-
-In many cases, it is not obvious to determine the probability threshold to predict a datapoint to be positive.  
-
-But ROC requires the definitions of TPR and FPR first.  
-
-You don't have to do the full implementation, just write a few lines as a pointer to the concepts.  
-
-\textcolor{red}{This is the file we want to move content into.}  
-
-\section*{\textcolor{red}{Unfinished above}}  
-
 ```{r include-in-sample-02, child = '08-In-Sample-02-Confusion-Matrix.Rmd'}
 ```
 
@@ -154,12 +132,33 @@ You don't have to do the full implementation, just write a few lines as a pointe
 
 \textcolor{red}{This is the file we want to move content into.}  
 
-\section*{\textcolor{red}{Unfinished above}} 
+\section*{\textcolor{red}{Unfinished above}}   
 
 ```{r include-in-sample-03, child = '08-In-Sample-03-Score-Breakdown.Rmd'}
 ```
 
 # Model Validation: Out-of-Sample Prediction {#out-of-sample}
+
+\section*{\textcolor{red}{Unfinished below}}  
+
+\textcolor{red}{Add a new section on ROC-AUC (likely to be Section 9.4)}   
+
+What about ROC (receiver operating characteristic) and AUC (area under the curve) with various probability thresholds?  
+
+In many cases, it is not obvious to determine the probability threshold to predict a datapoint to be positive.  
+
+But ROC requires the definitions of TPR and FPR first.  
+
+\textcolor{red}{You have to do the full implementation; don't just write a few lines as a pointer to the concepts.}     
+
+Code line: data.frame(TPR=cumsum(labels)/sum(labels), FPR=cumsum(!labels)/sum(!labels), labels)   
+<https://blog.revolutionanalytics.com/2016/08/roc-curves-in-two-lines-of-code.html>   
+
+Citation needed: Other `R` packages for ROC-AUC include `verification`^[<https://www.digitalocean.com/community/tutorials/plot-roc-curve-r-programming>] and `plotROC`.^[<https://cran.r-project.org/web/packages/plotROC/vignettes/examples.html>]   
+
+\textcolor{red}{This is the file we want to move content into.}  
+
+\section*{\textcolor{red}{Unfinished above}}  
 
 ```{r include-out-sample-00, child = '09-Out-Sample-00-Foreword.Rmd'}
 ```
