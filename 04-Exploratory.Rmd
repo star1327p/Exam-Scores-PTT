@@ -2,15 +2,6 @@ Before we perform any statistical modeling, we need to observe the data and this
 
 Therefore, we start with examining the trends of the two main variables, **HighSchool_PR** and **College_Score**. For each variable, we observe the values and summarize them in a histogram as part of the univariate analysis. Then we investigate the relationship between the two variables, i.e., bivariate exploration.  
 
-\section*{\textcolor{red}{Unfinished below}}  
-
-\textcolor{red}{Work on the graphical examples for the correlation coefficient}   
-
-\textcolor{red}{Start by creating a 2x4 set of empty graphs, just like pp.311 (Section 8.1) in OpenIntro Statistics.}      
-
-\section*{\textcolor{red}{Unfinished below}}   
-
-
 ## High School Entrance Exam Scores (Percentile Rank)
 
 We show the descriptive statistics of **HighSchool_PR** in our data, i.e., the percentile rank of high school entrance exam scores. The invalid or missing values are removed beforehand. The `summary` function returns the minimum, 1st quartile, median, mean, 3rd quartile, and maximum from the input data.   
@@ -149,13 +140,11 @@ The strength of linear relationship can be interpreted as below:^[<https://bit.l
 
 ### Examples of the Correlation Coefficient
 
-\section*{\textcolor{red}{Unfinished below}}   
-
 Here we visualize some bivariate patterns for different values of the correlation coefficient $\rho$, with hypothetical data and examples. The graph ideas came from *OpenIntro Statistics* \cite{diez2019openintro}. We hide the code that generated these graphs to avoid obscuring the topic, and the interested readers can find the code in the raw `.Rmd` files. We will discuss more about linear regression in Chapter \ref{linear-reg}.     
 
 
 ```{r correlation-graph-function, echo=FALSE}
-# Graph ideas from *OpenIntro Statistics*.  
+# Graph ideas from *OpenIntro Statistics*, especially pp.311 (Section 8.1).  
 # https://github.com/OpenIntroStat/openintro-statistics/tree/master/ch_regr_simple_linear   
 
 linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
@@ -280,23 +269,12 @@ linear_corr_gen(noise_sd=7, "positive", 23)
 linear_corr_gen(noise_sd=12, "negative", 40)
 ```
 
-\section*{\textcolor{red}{Unfinished below}}   
 
-The final row shows what little-to-no linear correlation looks like.   
+The final row shows what little-to-no linear correlation looks like. We need to remember that zero correlation does not mean the two variables are independent. They may have a non-linear relationship, which cannot be detected by the correlation coefficient.       
 
-\textcolor{red}{Zero correlation does not mean the two variables are independent. They may have a non-linear relationship, which cannot be detected by the correlation coefficient.}     
+- The left image shows a bivariate scatter plot with very little correlation. For a small $\rho$ in absolute value, the two variables barely have any linear relationship. Although the bivariate scatter plot looks random, the correlation coefficient may not be exactly zero. One example is the daily coffee consumption and intelligence (IQ scores). How much coffee an individual drinks is completely unrelated to his/her intelligence level, so we cannot use one variable to obtain information of the other.^[<https://www.statology.org/no-correlation-examples/>]     
 
-- The left image shows a bivariate scatter plot with very little correlation. For a small $\rho$ in absolute value, the two variables barely have any linear relationship. Although the bivariate scatter plot looks random, the correlation coefficient may not be exactly zero.    
-
-Need a real-life example.   
-
-- The right image has $\rho = 0$, i.e., no linear relationship at all. However, the graph shows a parabola curve, so the two variables have some non-linear relationship.   
-
-Need a real-life example.   
-
-
-
-\section*{\textcolor{red}{Unfinished above}}  
+- The right image has $\rho = 0$, i.e., no linear relationship at all. However, the graph shows a parabola curve, so the two variables have some non-linear relationship. If you throw a ball to another person, the ball's trajectory would look like a parabola.^[<https://www.wondriumdaily.com/mathematics-of-falling-the-parabolic-movement/>] The x-axis is horizontal and parallel to the ground, while the y-axis is vertical and perpendicular to the x-axis.   
 
 
 ```{r low-correlation, fig.height=4, fig.width=8, echo=FALSE}
