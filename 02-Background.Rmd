@@ -1,10 +1,15 @@
-Some foreword context here. Need to briefly explain the Taiwan's education system, because readers are from all over the world.  
 
-\textcolor{red}{Brief comparison with the US college admission system}  
+We briefly explain the high school and college entrance exams in Taiwan for readers all over the world. Like many other places in Asia, Taiwan puts heavy emphasis on standardized tests in high school and college admissions.^[<https://en.wikipedia.org/wiki/Education_in_Taiwan>] This is different from the US college admission system, which values more of students' overall qualifications such as extracurricular activities and personal qualities, not solely on a single test score.^[<https://www.usnews.com/education/best-colleges/articles/college-application-process>]   
 
-\textcolor{red}{Consider leveraging ChatGPT for the US part}   
+\textcolor{red}{Continue writing about the Taiwan education system}  
 
-Despite multiple attempts of education reform, the high school entrance exam in Taiwan remains a key part to high school admissions \cite{chen2017advancing, chen2008strategic}.  
+Topic sentence: Needs to be polished.  
+Taiwan has started to value students' extracurricular activities and personal qualities in addition to the test score ??
+
+Despite multiple attempts of education reform, the high school entrance exam in Taiwan remains a key part to high school admissions \cite{chen2017advancing, chen2008strategic}.   
+
+What about the college entrance exam in Taiwan? More complicated system.  
+
 
 
 ## High School Entrance Exam in Taiwan {#HighSchool_PR}
