@@ -10,27 +10,17 @@ Despite multiple attempts of education reform, the high school entrance exam in 
 
 What about the college entrance exam in Taiwan? More complicated system.  
 
+\section*{\textcolor{red}{Unfinished below}}   
 
+## High School Entrance Exam in Taiwan {#HighSchool_PR}  
 
-## High School Entrance Exam in Taiwan {#HighSchool_PR}
+Between 2001 and 2013, the high school entrance exam in Taiwan was officially called The Basic Competence Test for Junior High School Students \cite{chou2007schooling}.^[<https://bit.ly/2JNQaOI>] The exam consisted of five subjects (Chinese, English, mathematics, physical sciences, and social sciences). Note that two exams was held each year in 2001-2011, and students could take one or both exams because the difficulty level was about equal.^[<https://www.merit-times.com/NewsPage.aspx?unid=120645>] The first exam was during May-June and the second one was in July. Each student could use either set of score (typically the better one) to get their high school placement. The report card contains exam scores for each subject, the total score, and the percentile rank (PR values from 1 to 99) of the total score. The PR value refers to the percentage of the student population you scored higher than. For example, PR 86 means you have a higher score than 86% of the student population in Taiwan. The PR values serve as a normalized tool to compare academic achievements across years.   
 
-\textcolor{red}{Focus on how the max total scores was revised over time. Don't go deep into commentaries or how the society reacted to the changes.}  
+While the PR values remained consistent, the actual exam score range varied across years. In 2001-2006, each of the five subjects had a maximum score of 60, summing up to a total score of 300. In Year 2007, the independent essay question was added for another 12 points, bringing up the maximum total score to 312 points.^[<https://www.945enet.com.tw/epaper/contents/ha/048/03.htm>] The scoring of the high school entrance exam had been controversial and generated much discussion in the news.^[<https://web.archive.org/web/20090415123425/http://www.libertytimes.com.tw/2007/new/jun/21/today-life1.htm>] The main issue was the large score difference between full marks and getting only one question wrong in a test subject.^[<https://blog.xuite.net/wmhsu/twblog/147553826>] For instance, one could get a 60 with all questions correct in a subject, but only 55 by missing just one question. The five-point deduction was regarded as a harsh penalty, given that the knowledge difference was minimal between a perfect score and a near-perfect score.^[<https://m.xuite.net/blog/chioufatymjh/twblog/130262492>] Then in Year 2009, the maximum possible score was increased from 312 to 412 points.^[<https://blog.cybertranslator.idv.tw/archives/2384>] Each subject was augmented from 60 to 80 points, and the independent essay question was still worth 12 points. In the 80-point system, missing one question would result in a two-point loss from the full mark, rather than a substantial five or six points.^[<https://joan044.pixnet.net/blog/post/255140987>]      
 
-\textcolor{red}{What aggregated data does the Taiwan government publish?}  
+In the later stages of this high school entrance exam format, subtle changes were made in 2011 and 2012, until the final year in 2013. The high school entrance exam had used the same questions across the whole country, but in Year 2011, Taipei and its surrounding areas created their own version of entrance exam.^[<https://sites.google.com/site/kleduentrance/01001/07>] The education officials claimed that more granularity was needed to distinguish students' academic ability in such competitive areas.^[<https://bit.ly/3Zq2c6e>] Then in Year 2012, the high school entrance exam was suddenly reduced to one exam per year instead of two,^[<https://m.xuite.net/blog/penghu.dialy/blog/61024095>] and this continued in Year 2013.^[<https://www.ettoday.net/news/20130609/220042.htm>] In 2012 and 2013, the "second exam" was replaced with a pre-exam admission process: Each middle school could submit formal recommendations for their students to high schools, with a limited quota per high school. Students who got admitted by a high school would not have to take the entrance exam.^[<https://news.ltn.com.tw/news/life/breakingnews/537370>] The controversy was that the changes were implemented quickly, so neither students nor teachers in middle schools were adequately prepared to make optimal choices.^[<https://www.nhu.edu.tw/~society/e-j/104/a40.htm>]   
 
-Between 2001 and 2013, the high school entrance exam in Taiwan was officially called The Basic Competence Test for Junior High School Students \cite{chou2007schooling}.^[<https://bit.ly/2JNQaOI>] The exam was typically held in May-June and consisted of five subjects (Chinese, English, mathematics, physical sciences, and social sciences). The report card contains exam scores for each subject, the total score, and the percentile rank (PR values from 1 to 99) of the total score. The PR value refers to the percentage of the student population you scored higher than. For example, PR 86 means you have a higher score than 86% of the student population in Taiwan. The PR values serve as a normalized tool to compare academic achievements across years.   
-
-The actual exam score range varied from year to year. In 2001-2006, each of the five subjects had a maximum score of 60, summing up to a total score of 300. In Year 2007, the independent essay question was added for another 12 points, bringing up the maximum total score to 312 points.^[<https://www.945enet.com.tw/epaper/contents/ha/048/03.htm>] The scoring of the high school entrance exam had been controversial and generated much discussion in the news.^[<https://web.archive.org/web/20090415123425/http://www.libertytimes.com.tw/2007/new/jun/21/today-life1.htm>] The main issue was the large score difference between full marks and getting only one question wrong in a test subject.^[<https://blog.xuite.net/wmhsu/twblog/147553826>] For instance, one could get a 60 with all questions correct in a subject, but only 55 by missing just one question. The five-point deduction was regarded as a harsh penalty, given that the knowledge difference was minimal between a perfect score and a near-perfect score.^[<https://m.xuite.net/blog/chioufatymjh/twblog/130262492>]   
-
-\section*{\textcolor{red}{Unfinished below}}  
-
-Then in Year 2009, the maximum possible score was increased from 312 to 412 points.^[<https://blog.cybertranslator.idv.tw/archives/2384>] Each subject was augmented from 60 to 80 points, and the independent essay question was still worth 12 points. In the 80-point system, missing one question would result in a two-point loss from the full mark, rather than a substantial five or six points.^[<https://joan044.pixnet.net/blog/post/255140987>]    
-
-\textcolor{red}{What happened in 2010 and 2011, respectively?}   
-
-\textcolor{red}{When were two opportunities given each year? When did it become only one test?}    
-
-Year 2012 had only one test,^[<https://m.xuite.net/blog/penghu.dialy/blog/61024095>] and Year 2013 was the same.^[<https://www.ettoday.net/news/20130609/220042.htm>] Note that Year 2013 was the final year to use the PR values in the high school entrance exam.  
+\section*{\textcolor{red}{Unfinished below}}   
 
 A major reform came in Year 2014, and the PR values were replaced with seven letter grades for each subject (C, B, B+, B++, A, A+, A++) and an independent essay score (0-6).^[<https://www.parenting.com.tw/article/5049351>]    
 
@@ -40,9 +30,13 @@ Each region in Taiwan has their own rules; cite a few examples including Taipei'
 
 What are the outcomes?  
 
+\textcolor{red}{Since our data was collected in 2015, the data do not include any of the letter grade version of the high school entrance exam.}    
+
 ## College Entrance Exam in Taiwan {#College_Score}
 
-\textcolor{red}{Describe the early admission and the regular admission rules separately.}  
+\textcolor{red}{Describe the early admission and the regular admission rules separately.}   
+
+\textcolor{red}{Don't go deep into commentaries or how the society reacted to the changes.}   
 
 \textcolor{red}{What aggregated data does the Taiwan government publish?}  
 
