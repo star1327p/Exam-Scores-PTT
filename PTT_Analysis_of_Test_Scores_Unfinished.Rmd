@@ -145,19 +145,6 @@ You don't have to do the full implementation, just write a few lines as a pointe
 
 \textcolor{red}{Add a new section on ROC-AUC (likely to be Section 9.4)}   
 
-What about ROC (receiver operating characteristic) and AUC (area under the curve) with various probability thresholds?  
-
-In many cases, it is not obvious to determine the probability threshold to predict a datapoint to be positive.  
-
-But ROC requires the definitions of TPR and FPR first.  
-
-\textcolor{red}{You have to do the full implementation; don't just write a few lines as a pointer to the concepts.}     
-
-Code line: data.frame(TPR=cumsum(labels)/sum(labels), FPR=cumsum(!labels)/sum(!labels), labels)   
-<https://blog.revolutionanalytics.com/2016/08/roc-curves-in-two-lines-of-code.html>   
-
-Citation needed: Other `R` packages for ROC-AUC include `verification`^[<https://www.digitalocean.com/community/tutorials/plot-roc-curve-r-programming>] and `plotROC`.^[<https://cran.r-project.org/web/packages/plotROC/vignettes/examples.html>]   
-
 \textcolor{red}{This is the file we want to move content into.}  
 
 \section*{\textcolor{red}{Unfinished above}}  
@@ -165,7 +152,7 @@ Citation needed: Other `R` packages for ROC-AUC include `verification`^[<https:/
 ```{r include-out-sample-00, child = '09-Out-Sample-00-Foreword.Rmd'}
 ```
 
-## Separate Training and Testing Datasets
+## Separate Training and Testing Datasets {#sep-train-test}
 
 ```{r include-out-sample-01, child = '09-Out-Sample-01-Sep-Explain.Rmd'}
 ```
@@ -175,22 +162,22 @@ Citation needed: Other `R` packages for ROC-AUC include `verification`^[<https:/
 ```{r include-out-sample-02, child = '09-Out-Sample-02-Sep-Implement.Rmd'}
 ```
 
-### Organizing the Code for Reusability
+### Organizing the Code for Reusability {#org-code-reuse}
 
 ```{r include-out-sample-03, child = '09-Out-Sample-03-Sep-Organize.Rmd'}
 ```
 
-## Cross Validation
+## Cross Validation {#cross-validation}
 
 ```{r include-out-sample-04, child = '09-Out-Sample-04-Cross-Validation.Rmd'}
 ```
 
-### K-fold Cross Validation
+### K-fold Cross Validation {#k-fold}
 
 ```{r include-out-sample-05, child = '09-Out-Sample-05-K-Fold.Rmd'}
 ```
 
-### Leave-one-out Cross Validation
+### Leave-one-out Cross Validation {#leave-one-out}
 
 ```{r include-out-sample-06, child = '09-Out-Sample-06-Leave-One-Out.Rmd'}
 ```
@@ -199,6 +186,14 @@ Citation needed: Other `R` packages for ROC-AUC include `verification`^[<https:/
 
 ```{r include-out-sample-07, child = '09-Out-Sample-07-Comparison-Results.Rmd'}
 ```
+
+\section*{\textcolor{red}{Unfinished below}}  
+
+## Model Metrics: ROC and AUC {#roc-auc}
+```{r include-out-sample-08, child = '09-Out-Sample-08-ROC-AUC.Rmd'}
+```
+
+\section*{\textcolor{red}{Unfinished above}}  
 
 # Recap of the Project {#recap}
 
