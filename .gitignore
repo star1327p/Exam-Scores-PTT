@@ -40,3 +40,4 @@ rsconnect/
 
 # LaTeX intermediate files
 *.log
+*.aux
