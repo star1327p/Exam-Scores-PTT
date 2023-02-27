@@ -1,0 +1,19 @@
+What about ROC (receiver operating characteristic) and AUC (area under the curve) with various probability thresholds?   
+
+\textcolor{red}{Need to state why ROC and AUC are good metrics for the model.}   
+
+At the beginning of Section \ref{in-sample}, we used 0.5 as the default probability threshold to classify whether a student would obtain **College_Score** at least 65 or not. This is acceptable because the data are balanced and 48.9% of students in the data made the cut, i.e., obtained **College_Score** at least 65.      
+
+But the threshold of 0.5 may not be appropriate in imbalanced datasets.   
+
+\textcolor{red}{Provide some examples here}    
+
+In many situations, it is not obvious to determine the probability threshold to predict a datapoint to be positive.   
+
+\textcolor{red}{You have to do the full implementation; don't just write a few lines as a pointer to the concepts.}     
+
+Code line: data.frame(TPR=cumsum(labels)/sum(labels), FPR=cumsum(!labels)/sum(!labels), labels)   
+<https://blog.revolutionanalytics.com/2016/08/roc-curves-in-two-lines-of-code.html>   
+
+Citation needed: Other `R` packages for ROC-AUC include `verification`^[<https://www.digitalocean.com/community/tutorials/plot-roc-curve-r-programming>] and `plotROC`.^[<https://cran.r-project.org/web/packages/plotROC/vignettes/examples.html>]   
+
