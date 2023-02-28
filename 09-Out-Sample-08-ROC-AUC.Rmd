@@ -15,5 +15,5 @@ In many situations, it is not obvious to determine the probability threshold to 
 Code line: data.frame(TPR=cumsum(labels)/sum(labels), FPR=cumsum(!labels)/sum(!labels), labels)   
 <https://blog.revolutionanalytics.com/2016/08/roc-curves-in-two-lines-of-code.html>   
 
-Citation needed: Other `R` packages for ROC-AUC include `verification`^[<https://www.digitalocean.com/community/tutorials/plot-roc-curve-r-programming>] and `plotROC`.^[<https://cran.r-project.org/web/packages/plotROC/vignettes/examples.html>]   
+Citation needed: Other `R` packages for ROC-AUC include `verification`  \cite{r-auc-verification} and `plotROC` \cite{r-plot-roc}.   
 
