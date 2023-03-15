@@ -2,9 +2,7 @@ What about ROC (receiver operating characteristic) and AUC (area under the curve
 
 \textcolor{red}{Need to state why ROC and AUC are good metrics for the model.}   
 
-At the beginning of Section \ref{in-sample}, we used 0.5 as the default probability threshold to classify whether a student would obtain **College_Score** at least 65 or not. This is acceptable because the data are balanced and 48.9% of students in the data made the cut, i.e., obtained **College_Score** at least 65.      
-
-But the threshold of 0.5 may not be appropriate in imbalanced datasets.   
+At the beginning of Section \ref{in-sample}, we used 0.5 as the default probability threshold to classify whether a student would obtain **College_Score** at least 65 or not. This is acceptable because the data are balanced and 48.9% of students in the data made the cut, i.e., obtained **College_Score** at least 65. We are doing this project as an experiment, without trying to optimize any particular metric. But the probability threshold of 0.5 may not be appropriate in imbalanced datasets. If a dataset consists of 80% samples in the majority category and 20% samples in the minority category, the threshold to predict the minority category would be closer to 80% to maximize the accuracy.^[<https://towardsdatascience.com/tackling-imbalanced-data-with-predicted-probabilities-3293602f0f2>] Plus, depending on our goal to maximize recall/prediction/other metrics, we may choose a different threshold for the probability-to-decision conversion.    
 
 \textcolor{red}{Provide some examples here}    
 
@@ -16,48 +14,45 @@ Code line: data.frame(TPR=cumsum(labels)/sum(labels), FPR=cumsum(!labels)/sum(!l
 <https://blog.revolutionanalytics.com/2016/08/roc-curves-in-two-lines-of-code.html>   
 
 Citation needed: Other `R` packages for ROC-AUC include `verification`  \cite{r-auc-verification} and `plotROC` \cite{r-plot-roc}.   
-
-```{r change-prob-threshold}
-original_test = prob_to_matrix(test_data, test_prob, threshold=0.5)
-original_test
-```
-
-```{r change-prob-threshold-high}
-high_test = prob_to_matrix(test_data, test_prob, threshold=0.7)
-high_test
-```
-
-```{r change-prob-threshold-low}
-low_test = prob_to_matrix(test_data, test_prob, threshold=0.3)
-low_test
-```
-
-```{r test-data-stats}
-# print(test_prob)
-
-# test_prob contains row headers, so we cannot apply min or max function directly.
-# The solution is to convert test_prob to a regular numeric array beforehand.
-
-check_test_prob = as.numeric(test_prob)
-
-# print(check_test_prob)
-
-print(paste("Min test_prob:", min(check_test_prob)))
-print(paste("Max test_prob:", max(check_test_prob)))
-```
-
-\textcolor{red}{If the test dataset is too small, consider using the in-sample prediction results for ROC-AUC curve. We'll need to move the ROC-AUC subsection to the in-sample prediction chapter, and explain that this is for demonstration only.}      
+    
 
 Boundary conditions: When the model predicts all points to be true, or when the model predicts all points to be false.   
 
-\textcolor{red}{Alternative: Use the leave-one-out results for ROC-AUC curve.}   
+\textcolor{red}{Use the leave-one-out results for ROC-AUC curve, because leave-one-out cross validation predicts every single record in the data.}      
 
 ```{r test-leave-one-out-stats}
-check_prob_leave1out = as.numeric(prob_leave1out)
-
 # print(prob_leave1out)
+# prob_leave1out contains row headers, so we cannot apply min or max function directly.
+# The solution is to convert prob_leave1out to a regular numeric array beforehand.
+
+check_prob_leave1out = as.numeric(prob_leave1out)
 
 print(paste("Min prob_leave1out:", min(check_prob_leave1out)))
 print(paste("Max prob_leave1out:", max(check_prob_leave1out)))
 ```
+
+```{r change-prob-threshold}
+original_leave1out =  prob_to_matrix(data_corr, prob_leave1out, threshold=0.5)
+print(original_leave1out)
+
+original_results = confusion_to_measures(original_leave1out)
+print(round(original_results, digits=4))
+```
+
+```{r change-prob-threshold-high}
+high_leave1out = prob_to_matrix(data_corr, prob_leave1out, threshold=0.7)
+print(high_leave1out)
+
+high_results = confusion_to_measures(high_leave1out)
+print(round(high_results, digits=4))
+```
+
+```{r change-prob-threshold-low}
+low_leave1out = prob_to_matrix(data_corr, prob_leave1out, threshold=0.3)
+print(low_leave1out)
+
+low_results = confusion_to_measures(low_leave1out)
+print(round(low_results, digits=4))
+```
+
 
