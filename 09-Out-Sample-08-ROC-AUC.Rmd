@@ -6,6 +6,27 @@ ROC curve plots the FPR (false positive rate) against the TPR (true positive rat
 \textcolor{red}{Need to state why ROC and AUC are good metrics for the model.}   
 
 \textcolor{red}{Create a demonstrative AUC plot}      
+
+```{r auc-demo-draft, warning=FALSE, message=FALSE}
+library(verification)
+set.seed(3333)
+outcomes = c(rep(0,500),rep(1,500))
+pred_prob_1 = rnorm(500, mean=0.25,sd=0.3)
+pred_prob_2 = rnorm(500, mean=0.75,sd=0.3)
+pred = c(pred_prob_1, pred_prob_2)
+new_test = roc.plot(outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
+
+print("done")
+print(new_test$roc.vol$Area)
+
+roc.plot(outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
+
+#df = as.data.frame(new_test$plot.data)
+#plot(df$V3,df$V2)
+```
+
+
+
  
 ### Motivation 
 
