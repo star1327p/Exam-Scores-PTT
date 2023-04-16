@@ -22,7 +22,12 @@ print(new_test$roc.vol$Area)
 roc.plot(outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
 
 #df = as.data.frame(new_test$plot.data)
-#plot(df$V3,df$V2)
+#plot(df$V3,df$V2, xlab="FPR", ylab="TPR") 
+
+# df columns:
+# V1 = thresholds
+# V2 = empirical hit (TPR)
+# V3 = false alarm rates (FPR)
 ```
 
 
@@ -85,4 +90,31 @@ low_results = confusion_to_measures(low_leave1out)
 print(round(low_results, digits=4))
 ```
 
+### Implementation
 
+\textcolor{red}{Use the leave-one-out results for ROC-AUC curve, because leave-one-out cross validation predicts every single record in the data.}     
+
+Modify from the demo code below   
+
+```{r auc-another-draft, warning=FALSE, message=FALSE}
+library(verification)
+set.seed(3333)
+outcomes = c(rep(0,500),rep(1,500))
+pred_prob_1 = rnorm(500, mean=0.25,sd=0.3)
+pred_prob_2 = rnorm(500, mean=0.75,sd=0.3)
+pred = c(pred_prob_1, pred_prob_2)
+new_test = roc.plot(outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
+
+print("done")
+print(new_test$roc.vol$Area)
+
+roc.plot(outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
+
+#df = as.data.frame(new_test$plot.data)
+#plot(df$V3,df$V2, xlab="FPR", ylab="TPR") 
+
+# df columns:
+# V1 = thresholds
+# V2 = empirical hit (TPR)
+# V3 = false alarm rates (FPR)
+```
