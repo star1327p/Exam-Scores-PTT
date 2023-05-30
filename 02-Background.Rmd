@@ -49,13 +49,15 @@ In 2022, AST was replaced with a completely new scoring system,^[<https://www.ce
 
 The GSAT consists of five subjects (Chinese, English, mathematics, physical sciences, and social sciences), each of which are graded on a 0 to 15 point scale. The GSAT scores are normalized to a range of 0 to 75, regardless of the difficulty level of GSAT each year. On the other hand, the scores of AST can vary widely because each subject is scored separately from 0 to 100. Since the AST scores fluctuate more due to the difficulty level of the exam questions each year, we decided to use the GSAT scores as a benchmark of the college exam scores.  
 
-\textcolor{red}{How is the 0 to 15 point scale calculated?}^[<https://bit.ly/3bxIuSn>]    
+The 0 to 15 point scale is calculated in three steps:^[<https://bit.ly/3bxIuSn>]    
 
 1. Compute the "top" as the average raw score of the highest 1% among test takers.
 2. Divide the number by 15 to get the scale interval.
-3. Create a table to map raw scores to the 0 to 15 point scale.
+3. Create a table to map raw scores to the 0 to 15 point scale.  
 
 For example, if a subject has the "top" of 93.45 (max 100), then the scale interval is 93.45/15 = 6.23, rounded to two decimal points. Zero point is reserved for absolute zero marks on the exam. A student will get 1 point for a raw score between 0.01 and 6.23, and 2 points for a raw score between 6.24 and 12.46, and so on. If we observe from the top of the scale, a student can get 15 points for a raw score between 87.23 and 100, and 14 points for a raw score between 81.00 and 87.22. Note that the threshold (87.23) to achieve 15 points is 14 times of the scale interval (6.23).   
+
+\textcolor{red}{Continue writing below}   
 
 Starting in 2019, students may choose four of the five subjects for the GSAT, and the maximum possible score (i.e., full marks) is reduced from 75 to 60.  
 
