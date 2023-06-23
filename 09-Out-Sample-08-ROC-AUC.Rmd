@@ -46,15 +46,7 @@ At the beginning of Section \ref{in-sample}, we used 0.5 as the default probabil
 
 In many situations, it is not obvious to determine the probability threshold to predict a datapoint to be positive. A higher probability threshold would result in fewer points to be predicted as positive, so we may not find all of the true positive datapoints. But this model may be better at classifying true negative datapoints as negative, since the requirements are high to predict a datapoint to be positive. On the other hand, a lower probability threshold would predict more points as positive, increasing the chances of capturing all of the true positive datapoints. But this may also result in many true negative datapoints being predicted as positive. Hence there is a tradeoff between recall and precision when we select the probability threshold.    
 
-Let's revisit the leave-one-out cross-validation results from Section \ref{leave-one-out}, and explore how the probability threshold changes the accuracy/precision/recall/FPR/FNR. Before deciding on the threshold, we need to look at the boundary conditions -- the minimum and maximum predicted probabilities in the data. If the threshold is below the minimum, the model will predict all points to be true, which is not useful. If the threshold is above the maximum, the model will predict all points to be false, which is not useful, either.   
-
-Min: 0.0025 and Max: 0.7782  
-
-\textcolor{red}{Add why we decided to use leave-one-out instead of K-fold for demonstration. Since the statement is more than 1-2 sentences, this should be a \textbf{Remark} later in the section.}   
-
-\textcolor{red}{Use the leave-one-out results for ROC-AUC curve, because leave-one-out cross validation predicts every single record in the data.}   
-
-\textcolor{red}{But the K-fold results also do. What I'm trying to say is that in leave-one-out, each datapoint is predicted by a different training sample. In K-fold, two datapoints in the same subset with the same \textbf{HighSchool$\_$PR} will get the same predicted probability for \textbf{College$\_$Score}. This can result in many repeated predicted values, which is impractical in real life.}    
+Let's revisit the leave-one-out cross-validation results from Section \ref{leave-one-out}, and explore how the probability threshold changes the accuracy/precision/recall/FPR/FNR. Before deciding on the threshold, we need to look at the boundary conditions -- the minimum and maximum predicted probabilities in the data. If the threshold is below the minimum, the model will predict all points to be true, which is not useful. If the threshold is above the maximum, the model will predict all points to be false, which is not useful, either. In the array of predictive probabilities `prob_leave1out`, the minimum is 0.0025 and the maximum is 0.7782. We should choose a probability threshold between these two values.    
 
 ```{r test-leave-one-out-stats-hidden, include=FALSE}
 # print(prob_leave1out)
@@ -69,6 +61,14 @@ print(paste("Min prob_leave1out:", min(check_prob_leave1out)))
 print(paste("Max prob_leave1out:", max(check_prob_leave1out)))
 ```
 
+\textcolor{red}{Add why we decided to use leave-one-out instead of K-fold for demonstration. Since the statement is more than 1-2 sentences, this should be a \textbf{Remark} later in the section.}   
+
+\textcolor{red}{Separate training and testing datasets: Only the testing dataset contains predictive probabilities, and we do not think the sample size is large enough for the overall evaluation of model performance.}  
+
+\textcolor{red}{Use the leave-one-out results for ROC-AUC curve, because leave-one-out cross validation predicts every single record in the data.}   
+
+\textcolor{red}{But the K-fold results also do. What I'm trying to say is that in leave-one-out, each datapoint is predicted by a different training sample. In K-fold, two datapoints in the same subset with the same \textbf{HighSchool$\_$PR} will get the same predicted probability for \textbf{College$\_$Score}. This can result in many repeated predicted values, which is impractical in real life.}    
+
 When the probability threshold is 0.5
 
 ```{r change-prob-threshold}
@@ -79,7 +79,11 @@ original_results = confusion_to_measures(original_leave1out)
 print(round(original_results, digits=4))
 ```
 
-When the probability threshold is 0.7
+When the probability threshold is 0.7  
+
+Higher threshold means the model is less likely to predict a datapoint to be True, so the recall decreased from 78% to 52%.  
+
+Precision increased from 67% to 82%. Why??  
 
 ```{r change-prob-threshold-high}
 high_leave1out = prob_to_matrix(data_corr, prob_leave1out, threshold=0.7)
