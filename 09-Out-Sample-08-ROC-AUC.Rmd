@@ -61,15 +61,11 @@ print(paste("Min prob_leave1out:", min(check_prob_leave1out)))
 print(paste("Max prob_leave1out:", max(check_prob_leave1out)))
 ```
 
-\textcolor{red}{Add why we decided to use leave-one-out instead of K-fold for demonstration. Since the statement is more than 1-2 sentences, this should be a \textbf{Remark} later in the section.}   
+\section*{\textcolor{red}{Unfinished below}}  
 
-\textcolor{red}{Separate training and testing datasets: Only the testing dataset contains predictive probabilities, and we do not think the sample size is large enough for the overall evaluation of model performance.}  
+Let's see some examples ???     
 
-\textcolor{red}{Use the leave-one-out results for ROC-AUC curve, because leave-one-out cross validation predicts every single record in the data.}   
-
-\textcolor{red}{But the K-fold results also do. What I'm trying to say is that in leave-one-out, each datapoint is predicted by a different training sample. In K-fold, two datapoints in the same subset with the same \textbf{HighSchool$\_$PR} will get the same predicted probability for \textbf{College$\_$Score}. This can result in many repeated predicted values, which is impractical in real life.}    
-
-When the probability threshold is 0.5
+When the probability threshold is 0.5  
 
 ```{r change-prob-threshold}
 original_leave1out =  prob_to_matrix(data_corr, prob_leave1out, threshold=0.5)
@@ -79,11 +75,7 @@ original_results = confusion_to_measures(original_leave1out)
 print(round(original_results, digits=4))
 ```
 
-When the probability threshold is 0.7  
-
-Higher threshold means the model is less likely to predict a datapoint to be True, so the recall decreased from 78% to 52%.  
-
-Precision increased from 67% to 82%. Why??  
+When the probability threshold is 0.7, the precision increased from 67% to 82%, but the recall decreased from 78% to 52%. A higher probability threshold means the model is less likely to predict a datapoint to be True, so a positive prediction is more likely to be actually positive, increasing the precision. On the other hand, the model may miss more datapoints (i.e., predict as negative) which are actually positive, resulting in a drop in the recall.   
 
 ```{r change-prob-threshold-high}
 high_leave1out = prob_to_matrix(data_corr, prob_leave1out, threshold=0.7)
@@ -93,7 +85,9 @@ high_results = confusion_to_measures(high_leave1out)
 print(round(high_results, digits=4))
 ```
 
-When the probability threshold is 0.3
+When the probability threshold is 0.3, the recall increased from 78% to 89%, but the precision decreased from 67% to 59%.   
+
+A lower probability threshold means the model is more likely to predict a datapoint to be True, then ???   
 
 ```{r change-prob-threshold-low}
 low_leave1out = prob_to_matrix(data_corr, prob_leave1out, threshold=0.3)
@@ -102,6 +96,8 @@ print(low_leave1out)
 low_results = confusion_to_measures(low_leave1out)
 print(round(low_results, digits=4))
 ```
+
+**Remark**: We decided to use the leave-one-out results for ROC-AUC demonstration, rather than the results from K-fold cross-validation or separate training and testing datasets. In the outcomes of separate training and testing datasets (Section \ref{sep-train-test}), only the testing dataset contains predictive probabilities, and we do not think the sample size is large enough for the overall evaluation of model performance. Both leave-one-out and K-fold cross-validation predict every single record in the data. The main difference is that in leave-one-out, each datapoint is predicted by a different training sample. When two datapoints have the same \textbf{HighSchool$\_$PR} but differ in \textbf{College$\_$Score}, they will have different predictive probabilities because the associated training samples are not the same. On the other hand, K-fold has only $K$ different subsets, so two datapoints in the same subset with the same \textbf{HighSchool$\_$PR} will get the same predicted probability for \textbf{College$\_$Score}. This can result in many repeated predicted values, which is impractical in real life.   
 
 ### Implementation
 
