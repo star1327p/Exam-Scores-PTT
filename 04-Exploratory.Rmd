@@ -86,8 +86,6 @@ Unlike the case of **HighSchool_PR**, we do not think it is appropriate to simul
 
 In Section \ref{College_Score}, we mentioned that the Taiwan government published detailed statistics of the **College_Score** each year, including the five indicators (88th, 75th, 50th, 25th, 12th percentile) of each subject and the total score. However, since our data sample contains **College_Score** across several years, it is not meaningful to generate a simulated distribution here.   
 
-\section*{\textcolor{red}{Unfinished below}}   
-
 ## Bivariate Exploration {#bivariate}
 
 Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score** to examine the relationship between the two scores. Obviously, a respondent needs a valid score in both to be included in the bivariate scatterplot. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores. The bivariate scatterplot shows a funnel shape -- respondents with lower **HighSchool_PR** have higher variance in **College_Score**.      
@@ -272,9 +270,9 @@ linear_corr_gen(noise_sd=12, "negative", 40)
 
 The final row shows what little-to-no linear correlation looks like. We need to remember that zero correlation does not mean the two variables are independent. They may have a non-linear relationship, which cannot be detected by the correlation coefficient.       
 
-- The left image shows a bivariate scatter plot with very little correlation. For a small $\rho$ in absolute value, the two variables barely have any linear relationship. Although the bivariate scatter plot looks random, the correlation coefficient may not be exactly zero. One example is the daily coffee consumption and intelligence (IQ scores). How much coffee an individual drinks is completely unrelated to his/her intelligence level, so we cannot use one variable to obtain information of the other.^[<https://www.statology.org/no-correlation-examples/>]     
+- The left image shows a bivariate scatter plot with $\rho = 0.03$, i.e., very little correlation. For a small $\rho$ in absolute value, the two variables barely have any linear relationship. Although the bivariate scatter plot looks random, the correlation coefficient may not be exactly zero. One example is the daily coffee consumption and intelligence (IQ scores). How much coffee an individual drinks is completely unrelated to his/her intelligence level, so we cannot use one variable to obtain information of the other.^[<https://www.statology.org/no-correlation-examples/>]     
 
-- The right image has $\rho = 0$, i.e., no linear relationship at all. However, the graph shows a parabola curve, so the two variables have some non-linear relationship. If you throw a ball to another person, the ball's trajectory would look like a parabola.^[<https://www.wondriumdaily.com/mathematics-of-falling-the-parabolic-movement/>] The x-axis is horizontal and parallel to the ground, while the y-axis is vertical and perpendicular to the x-axis.   
+- The right image has $\rho = 0$ (absolute zero), i.e., no linear relationship at all. However, the graph shows a parabola curve, so the two variables have some non-linear relationship. If you throw a ball to another person, the ball's trajectory would look like a parabola.^[<https://www.wondriumdaily.com/mathematics-of-falling-the-parabolic-movement/>] The x-axis is horizontal and parallel to the ground, while the y-axis is vertical and perpendicular to the x-axis.   
 
 
 ```{r low-correlation, fig.height=4, fig.width=8, echo=FALSE}
