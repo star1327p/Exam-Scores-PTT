@@ -16,6 +16,11 @@ Citation needed: Other `R` packages for ROC-AUC include `verification`  \cite{r-
 
 \textcolor{red}{Create a demonstrative AUC plot}      
 
+Need to explain the `outcomes` and `pred` vectors.   
+
+AUC: 50% is baseline (random guess)  
+Typically we need AUC > 70%.  
+
 ```{r auc-demo-draft, warning=FALSE, message=FALSE}
 library(verification)
 set.seed(3333)
@@ -61,7 +66,7 @@ print(paste("Min prob_leave1out:", min(check_prob_leave1out)))
 print(paste("Max prob_leave1out:", max(check_prob_leave1out)))
 ```
 
-When the probability threshold is set to 0.5 as the default, the precision is 67% and the recall is 78%. We use these numbers as a comparison baseline. We also show the confusion matrix, so that the readers can observe any patterns from different probability thresholds.  
+When the probability threshold is set to 0.5 as the default, the precision is 67% and the recall is 78%. We use these numbers as a comparison baseline. We also show the confusion matrix, so that the readers can observe the patterns from different probability thresholds.  
 
 ```{r change-prob-threshold}
 original_leave1out =  prob_to_matrix(data_corr, prob_leave1out, threshold=0.5)
@@ -122,4 +127,57 @@ roc.plot(outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
 # V1 = thresholds
 # V2 = empirical hit (TPR)
 # V3 = false alarm rates (FPR)
+```
+
+Draft for ROC-AUC with our data
+
+```{r header-code-test,include=FALSE}
+data = read.csv("ptt_SENIORHIGH_data.csv")
+names(data)[1] = "pttID"
+
+missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
+data_corr = data[-missing_rows,]
+
+data_corr$CS_65up = data_corr$College_Score >=65
+
+# model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
+
+# Leave-one-out
+nn = nrow(data_corr) # total 188 rows of data
+
+prob_leave1out = rep(c(-1), nn)
+
+for (ii in 1:nn) {
+  data_test = data_corr[ii,] # reserve one record for testing
+  data_exclude = data_corr[-ii,]
+
+  train_leave1out = glm(CS_65up ~ HighSchool_PR, data=data_exclude, family="binomial")
+  # summary(train_leave1out)
+  
+  test_leave1out = predict.glm(train_leave1out, data_test, type="response")
+  # type="response" gives the predicted probabilities
+
+  # Store the predicted probability to the general list
+  prob_leave1out[ii] = test_leave1out
+}
+
+print("This is a test for leave-one-out.")
+```
+
+```{r draft-roc-auc-with-data}
+library(verification)
+set.seed(1234)
+
+real_outcomes = data_corr$College_Score >=65
+pred_outcomes = as.numeric(prob_leave1out)
+
+roc_data_test = roc.plot(real_outcomes, pred_outcomes, 
+                         xlab = "FPR", ylab="TPR", show.thres = FALSE)
+
+print("done")
+print(roc_data_test$roc.vol$Area)
+
+roc.plot(real_outcomes, pred_outcomes, 
+         xlab = "FPR", ylab="TPR",  show.thres = FALSE)
+
 ```
