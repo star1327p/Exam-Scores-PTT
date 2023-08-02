@@ -1,3 +1,4 @@
+\textcolor{red}{Consider making the Model Metrics a full chapter, rather than a single section.}  
 
 What about ROC (receiver operating characteristic) and AUC (area under the curve) with various probability thresholds?   
 
@@ -14,36 +15,72 @@ Code line: data.frame(TPR=cumsum(labels)/sum(labels), FPR=cumsum(!labels)/sum(!l
 
 Citation needed: Other `R` packages for ROC-AUC include `verification`  \cite{r-auc-verification} and `plotROC` \cite{r-plot-roc}.   
 
+### Demonstrative ROC Curve
+
 \textcolor{red}{Create a demonstrative AUC plot}      
 
-Need to explain the `outcomes` and `pred` vectors.   
+Need to explain the `obs_outcomes` and `pred` vectors.  
+
+- `obs_outcomes` is the actual observed binary outcomes. This vector array consists of only 0's and 1's.
+- `pred` is the predicted probabilities for each datapoint. This vector array consists of probability values, i.e., each value is between 0 and 1.
 
 AUC: 50% is baseline (random guess)  
 Typically we need AUC > 70%.  
 
+The `roc.vol` function:  
+- AUC (area under the curve)  
+- p-value: Against the null hypothesis $H_0$ - AUC = 0.5 (random guess).  
+
 ```{r auc-demo-draft, warning=FALSE, message=FALSE}
 library(verification)
 set.seed(3333)
-outcomes = c(rep(0,500),rep(1,500))
+obs_outcomes = c(rep(0,500),rep(1,500))
 pred_prob_1 = rnorm(500, mean=0.25,sd=0.3)
 pred_prob_2 = rnorm(500, mean=0.75,sd=0.3)
 pred = c(pred_prob_1, pred_prob_2)
-new_test = roc.plot(outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
+new_test = roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
 
 print("done")
-print(new_test$roc.vol$Area)
+print(new_test$roc.vol)
+```
 
-roc.plot(outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
+Or we can retrieve the AUC value directly.
 
-#df = as.data.frame(new_test$plot.data)
-#plot(df$V3,df$V2, xlab="FPR", ylab="TPR") 
+```{r auc-demo-retrieve}
+auc_value = new_test$roc.vol$Area
+print(auc_value)
+```
 
-# df columns:
+Here is the ROC graph.   
+
+More interpretation here  
+
+```{r auc-demo-continued}
+roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE, main=paste("ROC Curve: AUC =", round(auc_value,2)))
+```
+
+
+#### More Details  
+
+This ROC graph also shows the probability threshold used for classification.   
+
+More interpretation here
+
+```{r auc-demo-threshold}
+roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = TRUE)
+```
+
+What about the underlying data for the ROC graph?
+
+```{r auc-demo-roc-data}
+test_df = as.data.frame(new_test$plot.data)
+plot(test_df$V3, test_df$V2, xlab="FPR", ylab="TPR") 
+
+# test_df columns:
 # V1 = thresholds
 # V2 = empirical hit (TPR)
 # V3 = false alarm rates (FPR)
 ```
-
 
 ### Motivation 
 
@@ -109,16 +146,16 @@ Modify from the demo code below
 ```{r auc-another-draft, warning=FALSE, message=FALSE}
 library(verification)
 set.seed(3333)
-outcomes = c(rep(0,500),rep(1,500))
+obs_outcomes = c(rep(0,500),rep(1,500))
 pred_prob_1 = rnorm(500, mean=0.25,sd=0.3)
 pred_prob_2 = rnorm(500, mean=0.75,sd=0.3)
 pred = c(pred_prob_1, pred_prob_2)
-new_test = roc.plot(outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
+new_test = roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
 
 print("done")
 print(new_test$roc.vol$Area)
 
-roc.plot(outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
+roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
 
 #df = as.data.frame(new_test$plot.data)
 #plot(df$V3,df$V2, xlab="FPR", ylab="TPR") 
