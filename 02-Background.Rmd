@@ -1,14 +1,19 @@
 
-We briefly explain the high school and college entrance exams in Taiwan for readers all over the world. Like many other places in Asia, Taiwan puts heavy emphasis on standardized tests in high school and college admissions.^[<https://en.wikipedia.org/wiki/Education_in_Taiwan>] This is different from the US college admission system, which values more of students' overall qualifications such as extracurricular activities and personal qualities, not solely on a single test score.^[<https://www.usnews.com/education/best-colleges/articles/college-application-process>]   
+We briefly explain the high school and college entrance exams in Taiwan for readers all over the world. Like many other places in Asia, Taiwan used to put heavy emphasis on standardized tests in high school and college admissions.^[<https://en.wikipedia.org/wiki/Education_in_Taiwan>] This is different from the US college admission system, which values more of students' overall qualifications such as extracurricular activities and personal qualities, not solely on a single standardized test score.^[<https://www.usnews.com/education/best-colleges/articles/college-application-process>]   
 
 \textcolor{red}{Continue writing about the Taiwan education system}  
 
-Topic sentence: Needs to be polished.  
-Taiwan has started to value students' extracurricular activities and personal qualities in addition to the test score ??
+Nowadays, Taiwan has added some non-exam components for middle and high school students, in order to educate them to be well-rounded.^[<http://www.ater.org.tw/journal/article/9-6/free/12.pdf>]    
 
 Despite multiple attempts of education reform, the high school entrance exam in Taiwan remains a key part to high school admissions \cite{chen2017advancing, chen2008strategic}.   
 
 What about the college entrance exam in Taiwan? More complicated system.  
+
+Changes in the rules every a few years (citation needed).  
+
+Although Taiwan's college admission process requires students to submit their portfolio as part of their application package,^[<https://www.reallygood.com.tw/newExam/inside?str=FD956A48971EAE124F46CACDAFD17584>] students still need to score high enough in the college entrance exam to pass the initial screening round.^[<https://www.thenewslens.com/article/179752>]   
+
+
 
 \section*{\textcolor{red}{Unfinished above}}   
 
