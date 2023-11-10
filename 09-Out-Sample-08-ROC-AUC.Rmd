@@ -1,18 +1,28 @@
 \textcolor{red}{Consider making the Model Metrics a full chapter, rather than a single section.}  
 
-To measure the model performance, we should evaluate the model's capability to distinguish between positive and negative datapoints.^[<https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5>] If we look at the set of metrics compared in Section \ref{cmp-results}, we have to choose a probability threshold in advance to convert the prediction results into the percentages. A predicted probability value is assigned a 1 (positive class) if it is above the threshold, and assigned to 0 (negative class) otherwise. Setting a low threshold allows us to get more predicted positive datapoints, but this increases the risk of getting false positives. On the contrary, setting a high threshold ensures that the predicted positive datapoints are more likely to be actually positive. But the downside is that many actual positive datapoints may not get classified as positives due to the high threshold.   
+To measure the model performance in binary classification, we should evaluate the model's capability to distinguish between positive and negative datapoints.^[<https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5>] If we look at the set of metrics compared in Section \ref{cmp-results}, we have to choose a probability threshold in advance to convert the prediction results into the percentages. A predicted probability value is assigned a 1 (positive class) if it is above the threshold, and assigned to 0 (negative class) otherwise. Setting a low threshold allows us to get more predicted positive datapoints, but this increases the risk of getting false positives. On the contrary, setting a high threshold ensures that the predicted positive datapoints are more likely to be actually positive. But the downside is that many actual positive datapoints may not get classified as positives due to the high threshold.   
 
-Therefore, we introduce the ROC (receiver operating characteristic) as a model performance metric that summarizes over all possible probability thresholds.^[<https://towardsdatascience.com/understanding-the-roc-curve-and-auc-dd4f9a192ecb>] The ROC plots the FPR (false positive rate) against the TPR (true positive rate), and the aggregate measure is called AUC (area under the curve).^[<https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc>]   
+Therefore, we introduce the ROC (receiver operating characteristic) as a model performance metric that summarizes over all possible probability thresholds.^[<https://towardsdatascience.com/understanding-the-roc-curve-and-auc-dd4f9a192ecb>] The ROC plots the FPR (false positive rate) against the TPR (true positive rate), and the aggregate measure is called AUC (area under the curve).^[<https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc>] AUC is between 0 and 1 like a probability. A model that is 100% correct has an AUC of 1, and a model that is 0% correct has an AUC of 0. However, if we know that a model is going to be 0% correct, we can infer that the actual datapoints are the complete opposite of the model's prediction. This gives us the same level of information as if the model had been 100% correct.^[<https://victorzhou.com/blog/information-gain/>] The baseline should be a random guess, where we get 50% correct like a coin flip. Hence the baseline AUC is 0.5.   
 
-\textcolor{red}{Need to state why ROC and AUC are good metrics for the model.}  
+According to \citet{yang2017receiver}, the AUC values can be interpreted as below:     
 
-AUC is between 0 and 1 like a probability. A model that is 100% correct has an AUC of 1, and a model that is 0% correct has an AUC of 0.   
+- AUC = 0.5: Random guess.
 
-Baseline should be a random guess (50% correct like a coin flip), and AUC is 0.5 ??   
+- 0.5 < AUC < 0.6: Unacceptable performance.
 
-In this way, the model performance is quantified by the AUC.     
+- 0.6 < AUC $\leq$ 0.7: Minimally acceptable performance.
 
-\textcolor{red}{You have to do the full implementation; don't just write a few lines as a pointer to the concepts.}   
+- 0.7 < AUC $\leq$ 0.8: Adequate performance. 
+
+- 0.8 < AUC $\leq$ 0.9: Great performance.
+
+- AUC > 0.9: Excellent performance.
+
+In non-clinical data science, AUC > 0.7 is typically required for a model to be effective \cite{han2022utility}. But for extremely difficult tasks, 0.6 < AUC $\leq$ 0.7 may be tolerated \cite{kanter2015deep}.   
+
+\section*{\textcolor{red}{Unfinished below}}   
+
+\textcolor{red}{You have to do the full implementation; don't just write a few lines as a pointer to the concepts.}    
 
 Code line: data.frame(TPR=cumsum(labels)/sum(labels), FPR=cumsum(!labels)/sum(!labels), labels)   
 <https://blog.revolutionanalytics.com/2016/08/roc-curves-in-two-lines-of-code.html>   
@@ -60,7 +70,8 @@ Here is the ROC graph.
 More interpretation here  
 
 ```{r auc-demo-continued}
-roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE, main=paste("ROC Curve: AUC =", round(auc_value,2)))
+roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE,
+         main=paste("ROC Curve: AUC =", round(auc_value,2)))
 ```
 
 
