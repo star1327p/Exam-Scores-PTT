@@ -1,12 +1,16 @@
 \textcolor{red}{Consider making the Model Metrics a full chapter, rather than a single section.}  
 
-What about ROC (receiver operating characteristic) and AUC (area under the curve) with various probability thresholds?   
+To measure the model performance, we should evaluate the model's capability to distinguish between positive and negative datapoints.^[<https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5>] If we look at the set of metrics compared in Section \ref{cmp-results}, we have to choose a probability threshold in advance to convert the prediction results into the percentages. A predicted probability value is assigned a 1 (positive class) if it is above the threshold, and assigned to 0 (negative class) otherwise. Setting a low threshold allows us to get more predicted positive datapoints, but this increases the risk of getting false positives. On the contrary, setting a high threshold ensures that the predicted positive datapoints are more likely to be actually positive. But the downside is that many actual positive datapoints may not get classified as positives due to the high threshold.   
 
-ROC curve plots the FPR (false positive rate) against the TPR (true positive rate), and the aggregate measure is called AUC (area under the curve).^[<https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc>]   
+Therefore, we introduce the ROC (receiver operating characteristic) as a model performance metric that summarizes over all possible probability thresholds.^[<https://towardsdatascience.com/understanding-the-roc-curve-and-auc-dd4f9a192ecb>] The ROC plots the FPR (false positive rate) against the TPR (true positive rate), and the aggregate measure is called AUC (area under the curve).^[<https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc>]   
 
-To measure the model performance, we should evaluate the model's capability to distinguish between positive and negative datapoints regardless of the threshold.^[<https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5>]   
+\textcolor{red}{Need to state why ROC and AUC are good metrics for the model.}  
 
-\textcolor{red}{Need to state why ROC and AUC are good metrics for the model.}   
+AUC is between 0 and 1 like a probability. A model that is 100% correct has an AUC of 1, and a model that is 0% correct has an AUC of 0.   
+
+Baseline should be a random guess (50% correct like a coin flip), and AUC is 0.5 ??   
+
+In this way, the model performance is quantified by the AUC.     
 
 \textcolor{red}{You have to do the full implementation; don't just write a few lines as a pointer to the concepts.}   
 
