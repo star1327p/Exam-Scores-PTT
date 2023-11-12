@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 \textcolor{red}{Consider making the Model Metrics a full chapter, rather than a single section.}  
 
 To measure the model performance in binary classification, we should evaluate the model's capability to distinguish between positive and negative datapoints.^[<https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5>] If we look at the set of metrics compared in Section \ref{cmp-results}, we have to choose a probability threshold in advance to convert the prediction results into the percentages. A predicted probability value is assigned a 1 (positive class) if it is above the threshold, and assigned to 0 (negative class) otherwise. Setting a low threshold allows us to get more predicted positive datapoints, but this increases the risk of getting false positives. On the contrary, setting a high threshold ensures that the predicted positive datapoints are more likely to be actually positive. But the downside is that many actual positive datapoints may not get classified as positives due to the high threshold.   
@@ -24,12 +29,13 @@ In non-clinical data science, AUC > 0.7 is typically required for a model to be 
 
 \textcolor{red}{You have to do the full implementation; don't just write a few lines as a pointer to the concepts.}    
 
-Code line: data.frame(TPR=cumsum(labels)/sum(labels), FPR=cumsum(!labels)/sum(!labels), labels)   
-<https://blog.revolutionanalytics.com/2016/08/roc-curves-in-two-lines-of-code.html>   
+The `R` package `verification` \cite{r-auc-verification} is a tool to generate the ROC plot and calculate the AUC. The package was originally created to verify weather forecast data, and that's how it got the name `verification`. We will start with a demonstrative ROC curve in Section \ref{roc-demo} using simulated data.    
 
-Citation needed: Other `R` packages for ROC-AUC include `verification`  \cite{r-auc-verification} and `plotROC` \cite{r-plot-roc}.   
+Then in Section \ref{roc-prep}, ....    
 
-### Demonstrative ROC Curve
+Finally, we plot the ROC curve and find the AUC in Section \ref{roc-auc-results}.   
+
+### Demonstrative ROC Curve {#roc-demo}
 
 \textcolor{red}{Create a demonstrative AUC plot}      
 
@@ -44,6 +50,8 @@ Typically we need AUC > 70%.
 The `roc.vol` function:  
 - AUC (area under the curve)  
 - p-value: Against the null hypothesis $H_0$ - AUC = 0.5 (random guess).  
+
+\textcolor{red}{Beware of the predictive probabilities! They need to be between 0 and 1, i.e., no negative values are allowed.}   
 
 ```{r auc-demo-draft, warning=FALSE, message=FALSE}
 library(verification)
@@ -97,7 +105,7 @@ plot(test_df$V3, test_df$V2, xlab="FPR", ylab="TPR")
 # V3 = false alarm rates (FPR)
 ```
 
-### Motivation 
+### Data Observation and Processing {#roc-prep} 
 
 At the beginning of Section \ref{in-sample}, we used 0.5 as the default probability threshold to classify whether a student would obtain **College_Score** at least 65 or not. That is, the predicted probability needs to be 0.5 or higher for a datapoint to be predicted as positive (i.e., getting **College_Score** at least 65). This is acceptable because the data are balanced and 48.9% of students in the data made the cut, i.e., obtained **College_Score** at least 65. We are doing this project as an experiment, without trying to optimize any particular metric. But the probability threshold of 0.5 may not be appropriate in imbalanced datasets. If a dataset consists of 80% samples in the majority category and 20% samples in the minority category, the threshold to predict the minority category would be closer to 80% to maximize the accuracy.^[<https://towardsdatascience.com/tackling-imbalanced-data-with-predicted-probabilities-3293602f0f2>] Plus, depending on our goal to maximize recall/prediction/other metrics, we may choose a different threshold for the probability-to-decision conversion.    
 
@@ -150,7 +158,7 @@ print(round(low_results, digits=4))
 
 **Remark**: We decided to use the leave-one-out results for ROC-AUC demonstration, rather than the results from K-fold cross-validation or separate training and testing datasets. In the outcomes of separate training and testing datasets (Section \ref{sep-train-test}), only the testing dataset contains predictive probabilities, and we do not think the sample size is large enough for the overall evaluation of model performance. In comparison, both leave-one-out and K-fold cross-validation (Section \ref{cross-validation}) predict every single record in the data. The main difference is that in leave-one-out, each datapoint is predicted by a different training sample. When two datapoints have the same \textbf{HighSchool$\_$PR} but differ in \textbf{College$\_$Score}, they will have different predictive probabilities because the associated training samples are not the same. On the other hand, K-fold has only $K$ different subsets, so two datapoints in the same subset with the same \textbf{HighSchool$\_$PR} will get the same predicted probability for \textbf{College$\_$Score}. This can result in many repeated predicted values, which is impractical in real life.   
 
-### Implementation
+### Implementation and Results {#roc-auc-results}
 
 \section*{\textcolor{red}{Unfinished below}}   
 
