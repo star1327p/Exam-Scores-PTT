@@ -1,8 +1,3 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
 \textcolor{red}{Consider making the Model Metrics a full chapter, rather than a single section.}  
 
 To measure the model performance in binary classification, we should evaluate the model's capability to distinguish between positive and negative datapoints.^[<https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5>] If we look at the set of metrics compared in Section \ref{cmp-results}, we have to choose a probability threshold in advance to convert the prediction results into the percentages. A predicted probability value is assigned a 1 (positive class) if it is above the threshold, and assigned to 0 (negative class) otherwise. Setting a low threshold allows us to get more predicted positive datapoints, but this increases the risk of getting false positives. On the contrary, setting a high threshold ensures that the predicted positive datapoints are more likely to be actually positive. But the downside is that many actual positive datapoints may not get classified as positives due to the high threshold.   
@@ -42,23 +37,37 @@ Finally, we plot the ROC curve and find the AUC in Section \ref{roc-auc-results}
 Need to explain the `obs_outcomes` and `pred` vectors.  
 
 - `obs_outcomes` is the actual observed binary outcomes. This vector array consists of only 0's and 1's.
-- `pred` is the predicted probabilities for each datapoint. This vector array consists of probability values, i.e., each value is between 0 and 1.
+- `pred` is the predicted probabilities for each datapoint. This vector array consists of probability values, i.e., each value is between 0 and 1.   
+
+\subsection*{\textcolor{red}{Below: Go into the Appendix ?!}}  
+
+\textcolor{red}{Beware of the predictive probabilities! They need to be between 0 and 1, i.e., no negative values are allowed.}   
+
+As a hypothetical example, the first 500 observations are 0 and the remaining 500 observations are 1. We also assume a model: For an observed 0, the model predicts it as average 25% chance to be 1. For an observed 1, the model predicts it as average 75% chance to be 1.   
+
+Normal distribution to generate some random noise.  
+
+Then use another uniform distribution to truncate ?!   
+
+Need to explain `pmax` and `rnorm` and `runif` functions.  
+
+\subsection*{\textcolor{red}{Above: Go into the Appendix ?!}}  
 
 AUC: 50% is baseline (random guess)  
 Typically we need AUC > 70%.  
 
 The `roc.vol` function:  
 - AUC (area under the curve)  
-- p-value: Against the null hypothesis $H_0$ - AUC = 0.5 (random guess).  
+- p-value: Against the null hypothesis $H_0$ as random guess (AUC = 0.5).  
 
-\textcolor{red}{Beware of the predictive probabilities! They need to be between 0 and 1, i.e., no negative values are allowed.}   
 
 ```{r auc-demo-draft, warning=FALSE, message=FALSE}
 library(verification)
 set.seed(3333)
-obs_outcomes = c(rep(0,500),rep(1,500))
-pred_prob_1 = rnorm(500, mean=0.25,sd=0.3)
-pred_prob_2 = rnorm(500, mean=0.75,sd=0.3)
+group_size = 500
+obs_outcomes = c(rep(0,group_size),rep(1,group_size))
+pred_prob_1 = pmax(rnorm(group_size, mean=0.25,sd=0.3), runif(group_size,min=0,max=0.01))
+pred_prob_2 = pmax(rnorm(group_size, mean=0.75,sd=0.3), runif(group_size,min=0,max=0.01))
 pred = c(pred_prob_1, pred_prob_2)
 new_test = roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
 
@@ -75,6 +84,8 @@ print(auc_value)
 
 Here is the ROC graph.   
 
+Curve above the diagonal line   
+
 More interpretation here  
 
 ```{r auc-demo-continued}
@@ -90,7 +101,8 @@ This ROC graph also shows the probability threshold used for classification.
 More interpretation here
 
 ```{r auc-demo-threshold}
-roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = TRUE)
+roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = TRUE,
+         main="ROC Curve with Probability Threshold for Classification")
 ```
 
 What about the underlying data for the ROC graph?
