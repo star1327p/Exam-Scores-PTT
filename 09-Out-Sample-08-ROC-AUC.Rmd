@@ -176,32 +176,17 @@ print(round(low_results, digits=4))
 
 \textcolor{red}{Use the leave-one-out results for ROC-AUC curve, because leave-one-out cross validation predicts every single record in the data.}     
 
-Modify from the demo code below   
+Draft for ROC-AUC with our data   
 
-```{r auc-another-draft, warning=FALSE, message=FALSE}
-library(verification)
-set.seed(3333)
-obs_outcomes = c(rep(0,500),rep(1,500))
-pred_prob_1 = rnorm(500, mean=0.25,sd=0.3)
-pred_prob_2 = rnorm(500, mean=0.75,sd=0.3)
-pred = c(pred_prob_1, pred_prob_2)
-new_test = roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
+The ROC curve contains "steps" and is not smooth, because our model made predictions from discrete data with a relatively small sample size.  
 
-print("done")
-print(new_test$roc.vol$Area)
+Each student with the same **HighSchool_PR** should have the same predictive probability of getting **College_Score** at least 65.  
 
-roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
+The `R` package `pROC` (citation needed) contains many methods to smooth the ROC curve. But `pROC` generates the ROC curve based on specificity and sensitivity, rather than FPR and TPR.   
 
-#df = as.data.frame(new_test$plot.data)
-#plot(df$V3,df$V2, xlab="FPR", ylab="TPR") 
+\textcolor{red}{How do we smooth the ROC curve manually?}     
 
-# df columns:
-# V1 = thresholds
-# V2 = empirical hit (TPR)
-# V3 = false alarm rates (FPR)
-```
-
-Draft for ROC-AUC with our data
+Add a small random noise to **HighSchool_PR** in the data, i.e., jittering ?!  
 
 ```{r header-code-test,include=FALSE}
 data = read.csv("ptt_SENIORHIGH_data.csv")
