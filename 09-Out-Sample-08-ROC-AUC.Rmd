@@ -182,7 +182,7 @@ The ROC curve contains "steps" and is not smooth, because our model made predict
 
 Each student with the same **HighSchool_PR** should have the same predictive probability of getting **College_Score** at least 65.  
 
-The `R` package `pROC` (citation needed) contains many methods to smooth the ROC curve. But `pROC` generates the ROC curve based on specificity and sensitivity, rather than FPR and TPR.   
+The `R` package `pROC` \cite{r-p-roc} contains many methods to smooth the ROC curve. But `pROC` generates the ROC curve based on specificity and sensitivity, rather than FPR and TPR.   
 
 \textcolor{red}{How do we smooth the ROC curve manually?}     
 
