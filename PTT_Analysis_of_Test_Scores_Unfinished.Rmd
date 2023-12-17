@@ -187,25 +187,25 @@ You don't have to do the full implementation, just write a few lines as a pointe
 
 \section*{\textcolor{red}{Unfinished below}}  
 
-## Model Metrics: ROC and AUC {#roc-auc}
-```{r include-out-sample-08, child = '09-Out-Sample-08-ROC-AUC.Rmd'}
+# Model Metrics: ROC and AUC {#roc-auc}
+```{r include-roc-auc, child = '10-Model-Metrics-ROC-AUC.Rmd'}
 ```
 
 \section*{\textcolor{red}{Unfinished above}}  
 
 # Recap of the Project {#recap}
 
-```{r include-project-recap, child = '10-Project-Recap.Rmd'}
+```{r include-project-recap, child = '11-Project-Recap.Rmd'}
 ```
 
 # Recommended Resources for Learning {#resources}
 
-```{r include-additional-resources, child = '11-Additional-Resources.Rmd'}
+```{r include-additional-resources, child = '12-Additional-Resources.Rmd'}
 ```
 
 # Final: Personal Scores and Remarks {#personal-remarks}
 
-```{r include-personal, child = '12-Personal-Scores-Remarks.Rmd'}
+```{r include-personal, child = '13-Personal-Scores-Remarks.Rmd'}
 ```
 
 # Acknowledgments {.unnumbered}
