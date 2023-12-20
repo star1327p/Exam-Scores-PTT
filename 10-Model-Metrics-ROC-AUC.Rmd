@@ -16,19 +16,19 @@ According to \citet{yang2017receiver}, the AUC values can be interpreted as belo
 
 - AUC $\geq$ 0.9: Excellent performance.
 
-In non-clinical data science, AUC $\geq$ 0.7 is typically required for a model to be effective \cite{han2022utility}. But for extremely difficult tasks, 0.6 $\leq$ AUC < 0.7 may be tolerated \cite{kanter2015deep}.   
+In non-clinical data science, AUC $\geq$ 0.7 is typically required for a model to be effective \cite{han2022utility}. For extremely difficult tasks, 0.6 $\leq$ AUC < 0.7 may be tolerated \cite{kanter2015deep}. If the AUC is close to or less than 0.5, the model has little-to-no power in binary classification because the results are similar to a random guess.  
 
 \section*{\textcolor{red}{Unfinished below}}   
 
 \textcolor{red}{You have to do the full implementation; don't just write a few lines as a pointer to the concepts.}    
 
-The `R` package `verification` \cite{r-auc-verification} is a tool to generate the ROC plot and calculate the AUC. The package was originally created to verify weather forecast data, and that's how it got the name `verification`. We will start with a demonstrative ROC curve in Section \ref{roc-demo} using simulated data. Then in Section \ref{roc-prep}, we explore the data and model results, share our observations, and prepare the input for the ROC curve. Finally, we plot the ROC curve and find the AUC in Section \ref{roc-auc-results}.     
+The `R` package `verification` \cite{r-auc-verification} is a tool to generate the ROC plot and calculate the AUC. The package was originally created to verify weather forecast data, and that's how it got the name `verification`. We will start with a demonstrative ROC curve in Section \ref{roc-demo} using simulated data. Then in Section \ref{roc-prep}, we explore the data and model results, share our observations, and prepare the input for the ROC curve. Finally, we plot the ROC curve from our data and find the AUC in Section \ref{roc-auc-results}.     
 
 ## Demonstrative ROC Curve {#roc-demo}
 
-\textcolor{red}{Create a demonstrative AUC plot}      
+\textcolor{red}{Create a demonstrative ROC plot}      
 
-Use the `roc.plot` function in the `R` package `verification`.   
+We can create a demonstrative ROC plot using the `roc.plot` function in the `R` package `verification`, but we need some simulated data first.      
 
 Need to explain the `obs_outcomes` and `pred` vectors.  
 

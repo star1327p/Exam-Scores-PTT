@@ -139,14 +139,6 @@ You don't have to do the full implementation, just write a few lines as a pointe
 
 # Model Validation: Out-of-Sample Prediction {#out-of-sample}
 
-\section*{\textcolor{red}{Unfinished below}}  
-
-\textcolor{red}{Add a new section on ROC-AUC (likely to be Section 9.4)}   
-
-\textcolor{red}{This is the file we want to move content into.}  
-
-\section*{\textcolor{red}{Unfinished above}}  
-
 ```{r include-out-sample-00, child = '09-Out-Sample-00-Foreword.Rmd'}
 ```
 
