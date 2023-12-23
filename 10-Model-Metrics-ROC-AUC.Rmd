@@ -1,10 +1,10 @@
 To measure the model performance in binary classification, we should evaluate the model's capability to distinguish between positive and negative datapoints.^[<https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5>] For the model validation in Section \ref{cmp-results}, we have to choose a probability threshold in advance to convert the prediction results into the percentages. A predicted probability value is assigned a 1 (positive class) if it is above the threshold, and assigned to 0 (negative class) otherwise. Setting a low threshold allows us to get more predicted positive datapoints, but this increases the risk of getting false positives. On the contrary, setting a high threshold ensures that the predicted positive datapoints are more likely to be actually positive. But the downside is that many actual positive datapoints may not get classified as positives due to the high threshold.   
 
-Therefore, we introduce the ROC (receiver operating characteristic) as a model performance metric that summarizes over all possible probability thresholds.^[<https://towardsdatascience.com/understanding-the-roc-curve-and-auc-dd4f9a192ecb>] The ROC plots the FPR (false positive rate) against the TPR (true positive rate), and the aggregate measure is called AUC (area under the curve).^[<https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc>] AUC is between 0 and 1 like a probability. A model that is 100% correct has an AUC of 1, and a model that is 0% correct has an AUC of 0. However, if we know that a model is going to be 0% correct, we can infer that the actual datapoints are the complete opposite of the model's prediction. This gives us the same level of information as if the model had been 100% correct.^[<https://victorzhou.com/blog/information-gain/>] The baseline should be a random guess, where we get 50% correct like a coin flip. Hence the baseline AUC is 0.5.   
+Therefore, we introduce the ROC (receiver operating characteristic) as a model performance metric that summarizes over all possible probability thresholds.^[<https://towardsdatascience.com/understanding-the-roc-curve-and-auc-dd4f9a192ecb>] The ROC plots the FPR (false positive rate) against the TPR (true positive rate), and the aggregate measure is called AUC (area under the curve).^[<https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc>] AUC is between 0 and 1 like a probability. A model that is 100% correct has an AUC of 1, and a model that is 0% correct has an AUC of 0. However, if we know that a model is going to be 0% correct, we can infer that the actual datapoints are the complete opposite of the model's prediction. This gives us the same level of information as if the model had been 100% correct.^[<https://victorzhou.com/blog/information-gain/>] The baseline should be a completely random guess, where we get 50% correct like a coin flip. Hence the baseline AUC is 0.5.   
 
 According to \citet{yang2017receiver}, the AUC values can be interpreted as below:     
 
-- AUC = 0.5: Random guess.
+- AUC = 0.5: Completely random guess, i.e., no classification power at all.
 
 - 0.5 < AUC < 0.6: Unacceptable performance.
 
@@ -28,28 +28,35 @@ The `R` package `verification` \cite{r-auc-verification} is a tool to generate t
 
 \textcolor{red}{Create a demonstrative ROC plot}      
 
-We can create a demonstrative ROC plot using the `roc.plot` function in the `R` package `verification`, but we need some simulated data first.      
+We can create a demonstrative ROC plot using the `roc.plot` function in the `R` package `verification`, but we need some simulated data first. As a hypothetical example, the first 500 observations are 0 and the remaining 500 observations are 1. The vector array `obs_outcomes` is the actual observed binary outcomes. This array consists of elements only 0's and 1's.      
 
-Need to explain the `obs_outcomes` and `pred` vectors.  
+```{r auc-simulated-data, warning=FALSE, message=FALSE}
+library(verification)
+group_size = 500
+obs_outcomes = c(rep(0,group_size),rep(1,group_size))
+```
 
-- `obs_outcomes` is the actual observed binary outcomes. This vector array consists of only 0's and 1's.
-- `pred` is the predicted probabilities for each datapoint. This vector array consists of probability values, i.e., each value is between 0 and 1.   
+We also assume a model: For an observed 0, the model predicts it as average 25% chance to be 1. For an observed 1, the model predicts it as average 75% chance to be 1. Let's generate the (fictitious) predicted probabilities using some statistical distributions. 
 
-\subsection*{\textcolor{red}{Below: Go into the Appendix ?!}}  
+- For an observed 0, we would like the predicted probabilities to be centered at 0.25, so we start with a normal distribution with mean 0.25 and standard deviation 0.3.  
 
-As a hypothetical example, the first 500 observations are 0 and the remaining 500 observations are 1. We also assume a model: For an observed 0, the model predicts it as average 25% chance to be 1. For an observed 1, the model predicts it as average 75% chance to be 1.   
+- For an observed 1, we would like the predicted probabilities to be centered at 0.75, so we start with a normal distribution with mean 0.75 and standard deviation 0.3.  
 
-\textcolor{red}{Beware that the predictive probabilities must fall between 0 and 1.}   
-
-For the predicted probabilities, we use a normal distribution to generate some random noise. Note that a normal distribution may generate values outside the range of [0,1], so we add a uniform distribution to offset this issue. 
+However, a normal distribution may generate values outside the range of [0,1], so we add a uniform distribution to offset this issue. This adjustment ensures all predicted probabilities are valid, i.e., between 0 and 1.     
 
 - When the normal distribution outputs a value less than 0, we should replace the value with another value generated by the uniform distribution between 0 and 0.01.
 
-- When the normal distribution outputs a value larger than 1, we should replace the value with another value generated by the uniform distribution between 0.99 and 1.
+- When the normal distribution outputs a value larger than 1, we should replace the value with another value generated by the uniform distribution between 0.99 and 1.  
 
-This adjustment ensures all predicted probabilities are valid, i.e., non-negative and between 0 and 1.   
+\subsection*{\textcolor{red}{Below: Go into the Appendix ?!}}  
+
+Need to explain the vector arrays `pred_prob_0` and `pred_prob_1`.   
+
+The vector array `pred` is the predicted probabilities for each datapoint. This array consists of probability values, i.e., each value is between 0 and 1.   
 
 Need to explain the functions: `pmax`, `pmin`, `rnorm`, and `runif`.    
+
+The `R` function `runif` uses the uniform distribution, so it is pronounced as "r-unif" instead of "run-if".  
 
 \subsection*{\textcolor{red}{Above: Go into the Appendix ?!}}  
 
@@ -58,47 +65,42 @@ Typically we need AUC > 70%.
 
 The `roc.vol` function:  
 - AUC (area under the curve)  
-- p-value: Against the null hypothesis $H_0$ as random guess (AUC = 0.5).  
+- p-value: Against the null hypothesis $H_0$ as random guess (AUC $\approx$ 0.5).  
 
-
-Data and model generation  
+Predictive probabilities
 
 ```{r auc-demo-draft-gen, warning=FALSE, message=FALSE}
-library(verification)
 set.seed(3333)
-group_size = 500
-obs_outcomes = c(rep(0,group_size),rep(1,group_size))
-
-pred_prob_1 = rnorm(group_size, mean=0.25,sd=0.3)
+pred_prob_0 = rnorm(group_size, mean=0.25,sd=0.3)
+# Ensure all probability values are greater or equal to 0.  
+pred_prob_0 = pmax(pred_prob_0, runif(group_size,min=0,max=0.01))
+# Ensure all probability values are less than or equal to 1.
+pred_prob_0 = pmin(pred_prob_0, runif(group_size,min=0.99,max=1))
+                                      
+pred_prob_1 = rnorm(group_size, mean=0.75,sd=0.3)
 # Ensure all probability values are greater or equal to 0.  
 pred_prob_1 = pmax(pred_prob_1, runif(group_size,min=0,max=0.01))
 # Ensure all probability values are less than or equal to 1.
 pred_prob_1 = pmin(pred_prob_1, runif(group_size,min=0.99,max=1))
-                                      
-pred_prob_2 = rnorm(group_size, mean=0.75,sd=0.3)
-# Ensure all probability values are greater or equal to 0.  
-pred_prob_2 = pmax(pred_prob_2, runif(group_size,min=0,max=0.01))
-# Ensure all probability values are less than or equal to 1.
-pred_prob_2 = pmin(pred_prob_2, runif(group_size,min=0.99,max=1))
 ```
 
 Check that all output probability values are valid.  
 
 ```{r auc-demo-draft-check}
+number_of_valid_prob_0 = sum((pred_prob_0 >= 0) & (pred_prob_0 <= 1))
 number_of_valid_prob_1 = sum((pred_prob_1 >= 0) & (pred_prob_1 <= 1))
-number_of_valid_prob_2 = sum((pred_prob_2 >= 0) & (pred_prob_2 <= 1))
+
+print(paste("Among all",group_size,"values in pred_prob_0,",
+            number_of_valid_prob_0, "of them are valid probabilities."))
 
 print(paste("Among all",group_size,"values in pred_prob_1,",
             number_of_valid_prob_1, "of them are valid probabilities."))
-
-print(paste("Among all",group_size,"values in pred_prob_2,",
-            number_of_valid_prob_2, "of them are valid probabilities."))
 ```
 
 Plot the demonstrative ROC curve   
 
 ```{r auc-demo-draft-roc}
-pred = c(pred_prob_1, pred_prob_2)
+pred = c(pred_prob_0, pred_prob_1)
 new_test = roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
 
 print("done")
