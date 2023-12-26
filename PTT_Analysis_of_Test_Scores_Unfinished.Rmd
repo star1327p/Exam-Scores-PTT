@@ -218,18 +218,12 @@ In addition to the motivations stated in the Introduction (Chapter \ref{intro}) 
 [<https://jnolis.com/blog/data_science_on_book/>]  
 [<https://hookedondata.org/posts/2021-04-06_publishing-a-technical-book-part-3/>]  
 
-This project is the longest manuscript the author has independently completed after her PhD dissertation [citation needed].  
+This project is the longest manuscript the author has independently completed after her PhD dissertation \cite{chai2017phdthesis}. Other long-form publications she has written as a single author include her review article on text preprocessing \cite{chai2023comparison} and her Masters thesis \cite{chai2013masters}.     
 
-Other long-form publications she has written as a single author include NLE [citation needed] and Masters thesis [citation needed].  
+The author has collaborated with others on a wide range of topics throughout the years, including Bayesian statistics \cite{lu2022robust, clyde2018bayesian101}, federal survey analysis [two citations needed], and other statistical applications [citations needed: LDA in 2019 and IMSM in 2015].   
 
-The author has collaborated with others on a wide range of topics throughout the years, including Bayesian statistics [citation needed and Coursera Bayesian book], federal survey analysis [two citations needed], and other statistical applications [citations needed: LDA in 2019 and IMSM in 2015].   
-
-Citations needed:
+Citations needed:   
 - Book *Build a Career in Data Science* by Emily Robinson and Jacqueline Nolis  
-- My PhD dissertation  
-- My Masters thesis  
-- My NLE paper on text preprocessing  
-- Advanced Bayesian statistics (with Jun Lu in 2022)  
 - FHFA technical reports in both 2013 and 2014 (collaborative, both published in 2017)  
 - Teague's LDA paper in 2019  
 - IMSM 2015 technical report  
