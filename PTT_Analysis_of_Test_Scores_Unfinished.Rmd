@@ -208,6 +208,8 @@ Perseverance
 
 Writing on and off for the past several years.  
 
+This may sound like a cliche, but I definitely learned a lot throughout the process (e.g. Git, R, reproducibility).  
+
 Green squares = GitHub commits = sense of progress^[<https://www.palomamedina.com/biceps>]    
 
 Quote from Jodi Picoult, an American bestselling author:^[<https://www.jodipicoult.com/>]     
