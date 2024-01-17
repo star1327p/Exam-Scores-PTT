@@ -134,16 +134,18 @@ roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE,
 
 ### More Details  
 
-This ROC graph also shows the probability threshold used for classification.   
-
-More interpretation here
+The ROC graph is a summary of the model performance across all probability thresholds, and each point on the curve represents the FPR (false positive rate) and TPR (true positive rate) of a single probability threshold. When we set `show.thres = TRUE` in the `roc.plot` function, the graph shows that the probability thresholds range from 0 to 1.       
 
 ```{r auc-demo-threshold}
 roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = TRUE,
          main="ROC Curve with Probability Threshold for Classification")
 ```
 
-What about the underlying data for the ROC graph?
+- At the left of the curve, a high probability threshold such as 0.9 sets a high criteria for the model to predict a datapoint as positive. This results in a low FPR , because when the datapoint is actually negative, the model is extremely unlikely to predict it as positive. But on the other hand, the high probability threshold also makes it relatively difficult to predict a datapoint to be positive. Hence the TPR is low because the actual positive datapoints may or may not receive a positive prediction.  
+
+- At the right of the curve, a low probability threshold such as 0.1 sets a low criteria for the model to predict a datapoint as positive. This results in a high TPR, because when the datapoint is actually positive, the model is extremely likely to predict it as positive. But on the other hand, the low probability threshold also predicts too many datapoints to be positive, and some of them are actually negative. Hence the FPR is also high.   
+
+\textcolor{red}{What about the underlying data for the ROC graph?}
 
 ```{r auc-demo-roc-data}
 test_df = as.data.frame(new_test$plot.data)
