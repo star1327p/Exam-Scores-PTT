@@ -28,13 +28,11 @@ The `R` package `verification` \cite{r-auc-verification} is a tool to generate t
 
 \textcolor{red}{Create a demonstrative ROC plot}      
 
-We can create a demonstrative ROC plot using the `roc.plot` function in the `R` package `verification`.   
-
-\textcolor{red}{Write something more in the section's foreword.}  
+We can create a demonstrative ROC plot with the `roc.plot` function in the `R` package `verification`. We are using data that consist of actual binary outcomes (0/1), along with the predictive probabilities of each datapoint to be 1. Then we will explore different features of the `roc.plot` function, and explain how to interpret the results.   
 
 ### Simulated Data 
 
-We need some simulated data to make the demonstration. As a hypothetical example, the first 500 observations are 0 and the remaining 500 observations are 1. The vector array `obs_outcomes` is the actual observed binary outcomes. This array consists of elements only 0's and 1's.      
+Let's generate some random data as a hypothetical example, where the first 500 observations are 0 and the remaining 500 observations are 1. The vector array `obs_outcomes` is the actual observed binary outcomes. This array consists of elements only 0's and 1's.      
 
 ```{r auc-simulated-data, warning=FALSE, message=FALSE}
 library(verification)
@@ -56,7 +54,7 @@ However, a normal distribution may generate values outside the range of [0,1], s
 
 Now let's generate the predictive probabilities for the actual 0 and 1 datapoints, and we store them in the vector arrays `pred_prob_0` and `pred_prob_1`, respectively.  
 
-```{r auc-demo-draft-gen, warning=FALSE, message=FALSE}
+```{r auc-demo-gen, warning=FALSE, message=FALSE}
 set.seed(3333)
 pred_prob_0 = rnorm(group_size, mean=0.25,sd=0.3)
 # Ensure all probability values are greater or equal to 0.  
@@ -79,7 +77,7 @@ In the code above, we use `set.seed` to specify a random seed to ensure reproduc
 
 Under the scheme of combining the normal distribution and the uniform distribution, we can check that all output values are valid probabilities (i.e., between 0 and 1).  
 
-```{r auc-demo-draft-check}
+```{r auc-demo-check}
 number_of_valid_prob_0 = sum((pred_prob_0 >= 0) & (pred_prob_0 <= 1))
 number_of_valid_prob_1 = sum((pred_prob_1 >= 0) & (pred_prob_1 <= 1))
 
@@ -90,28 +88,34 @@ print(paste("Among all",group_size,"values in pred_prob_1,",
             number_of_valid_prob_1, "of them are valid probabilities."))
 ```
 
-### Plot Function 
+### The `roc.plot` Function 
+
+Now let's make the demonstrative ROC curve using `roc.plot`, which plots the false positive rate (FPR) against the false negative rate (FNR). The first input vector is the actual observed outcomes `obs_outcomes`, and the second input vector is the predicted probabilities `pred`. The graph should be a concave down shape from the bottom left (0,0) to the top right (1,1). We store the output of `roc.plot` in a new object `new_test` for future use, which is of `roc.data` type.   
+
+```{r auc-demo-roc}
+pred = c(pred_prob_0, pred_prob_1)
+new_test = roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
+```
+
+\section*{\textcolor{red}{Unfinished below}}   
+
+We can access the model information using the `roc.vol` label.  
+
+```{r auc-demo-roc-vol}
+print(new_test$roc.vol)
+```
 
 \subsection*{\textcolor{red}{Below: Go into the Appendix ?!}}  
 
 AUC: 50% is baseline (random guess)  
 Typically we need AUC > 70%.  
 
-The `roc.vol` function:  
-- AUC (area under the curve)  
-- p-value: Against the null hypothesis $H_0$ as random guess (AUC $\approx$ 0.5).  
+The `roc.vol` label:  
+- AUC (area under the curve) is under the column `Area`.    
+- p-value: Against the null hypothesis $H_0$ as random guess (AUC $\approx$ 0.5).   
+- `binorm.area`: This applies only if we select a binormal fit for the ROC curve, which is not the case here.   
 
 \subsection*{\textcolor{red}{Above: Go into the Appendix ?!}}  
-
-Plot the demonstrative ROC curve   
-
-```{r auc-demo-draft-roc}
-pred = c(pred_prob_0, pred_prob_1)
-new_test = roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
-
-print("done")
-print(new_test$roc.vol)
-```
 
 Or we can retrieve the AUC value directly.
 
