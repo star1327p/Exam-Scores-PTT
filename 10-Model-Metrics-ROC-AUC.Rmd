@@ -90,45 +90,31 @@ print(paste("Among all",group_size,"values in pred_prob_1,",
 
 ### The `roc.plot` Function 
 
-Now let's make the demonstrative ROC curve using `roc.plot`, which plots the false positive rate (FPR) against the false negative rate (FNR). The first input vector is the actual observed outcomes `obs_outcomes`, and the second input vector is the predicted probabilities `pred`. The graph should be a concave down shape from the bottom left (0,0) to the top right (1,1). We store the output of `roc.plot` in a new object `new_test` for future use, which is of `roc.data` type.   
+Now let's make the demonstrative ROC curve using `roc.plot`, which plots the false positive rate (FPR) against the false negative rate (FNR). The first input vector is the actual observed outcomes `obs_outcomes`, and the second input vector is the predicted probabilities `pred`. The curve should be above the straight line from the bottom left (0,0) to the top right (1,1). We also store the output of `roc.plot` in a new object `new_test` for future use, which is of `roc.data` type.   
 
 ```{r auc-demo-roc}
 pred = c(pred_prob_0, pred_prob_1)
 new_test = roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
 ```
 
-\section*{\textcolor{red}{Unfinished below}}   
-
-We can access the model information using the `roc.vol` label.  
+We can access the model information in the `new_test` object with the `roc.vol` label. 
 
 ```{r auc-demo-roc-vol}
 print(new_test$roc.vol)
 ```
 
-\subsection*{\textcolor{red}{Below: Go into the Appendix ?!}}  
+- The `Area` is the AUC (area under the curve), which is approximately 0.89. Typically we need AUC at least 0.7 for the model performance to be considered adequate. The straight line is the baseline as AUC = 0.5.
+- The `p.value` is calculated against the null hypothesis $H_0$ as random guess (AUC $\approx$ 0.5). In this example, the p-value is extremely small, showing statistically significant evidence to reject $H_0$.
+- The `binorm.area` is `NA` (not available). This applies only if we select a binormal fit.  
 
-AUC: 50% is baseline (random guess)  
-Typically we need AUC > 70%.  
-
-The `roc.vol` label:  
-- AUC (area under the curve) is under the column `Area`.    
-- p-value: Against the null hypothesis $H_0$ as random guess (AUC $\approx$ 0.5).   
-- `binorm.area`: This applies only if we select a binormal fit for the ROC curve, which is not the case here.   
-
-\subsection*{\textcolor{red}{Above: Go into the Appendix ?!}}  
-
-Or we can retrieve the AUC value directly.
+We can also directly retrieve the AUC value.
 
 ```{r auc-demo-retrieve}
 auc_value = new_test$roc.vol$Area
 print(auc_value)
 ```
 
-Here is the ROC graph.   
-
-Curve above the diagonal line   
-
-More interpretation here  
+Let's add the AUC value to the title of the ROC graph.
 
 ```{r auc-demo-continued}
 roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE,
@@ -149,16 +135,22 @@ roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = TRUE,
 
 - At the right of the curve, a low probability threshold such as 0.1 sets a low criteria for the model to predict a datapoint as positive. This results in a high TPR, because when the datapoint is actually positive, the model is extremely likely to predict it as positive. But on the other hand, the low probability threshold also predicts too many datapoints to be positive, and some of them are actually negative. Hence the FPR is also high.   
 
+\section*{\textcolor{red}{Unfinished below}}   
+
 \textcolor{red}{What about the underlying data for the ROC graph?}
+
+The underlying data for the ROC graph is stored in the matrix `new_test$plot.data`. The first column (`V1`) is the probability threshold used to convert predictive probabilities into binary predictions. The second column (`V2`) is the empirical hit rate (true positive rate), and the third column (`V3`) is the false alarm rate (false positive rate).    
+
+\textcolor{red}{Elaborate on the graph and plot FPR vs TPR}   
 
 ```{r auc-demo-roc-data}
 test_df = as.data.frame(new_test$plot.data)
 plot(test_df$V3, test_df$V2, xlab="FPR", ylab="TPR") 
 
 # test_df columns:
-# V1 = thresholds
-# V2 = empirical hit (TPR)
-# V3 = false alarm rates (FPR)
+# V1 = threshold
+# V2 = empirical hit rate (TPR)
+# V3 = false alarm rate (FPR)
 ```
 
 ## Data Observation and Processing {#roc-prep} 
