@@ -204,23 +204,28 @@ You don't have to do the full implementation, just write a few lines as a pointe
 
 \section*{\textcolor{red}{Unfinished below}}
 
-Perseverance  
+The author has been building this project on and off for the past several years. 
 
-Writing on and off for the past several years.  
+Perseverance   
 
-This may sound like a cliche, but I definitely learned a lot throughout the process (e.g. Git, R, reproducibility).  
+With limited time outside her full-time job and various hobbies,  
+
+She completed this whole document little by little.   
+
+Just keep writing.   
+
+
+This may sound like a cliche, but she definitely learned a lot throughout the process (e.g. Git, R, reproducibility).     
 
 Green squares = GitHub commits = sense of progress^[<https://www.palomamedina.com/biceps>]    
 
 Quote from Jodi Picoult, an American bestselling author:^[<https://www.jodipicoult.com/>]     
 "You can always edit a bad page. You can't edit a blank page."^[<https://www.writingforward.com/better-writing/you-cant-edit-a-blank-page>]   
 
-In addition to the motivations stated in the Introduction (Chapter \ref{intro}) and the Personal Scores and Remarks (Chapter \ref{personal-remarks}), the author was also inspired by ...  
+In addition to the motivations stated in the Introduction (Chapter \ref{intro}) and the Personal Scores and Remarks (Chapter \ref{personal-remarks}), the author was also inspired by the book *Build a Career in Data Science* \cite{robinson2020build}. She saw some interesting meta-analysis about the writing process of the book,^[<https://jnolis.com/blog/data_science_on_book/>] such as how many words were written by which person and at what time of the day. She realized that writing a book and/or a long manuscript takes tremendous work,^[<https://hookedondata.org/posts/2021-04-06_publishing-a-technical-book-part-3/>] but the knowledge-sharing benefits are worth the time and energy spent.^[<https://hookedondata.org/posts/2021-04-06_publishing-a-technical-book-part-1/>]   
 
-- Book *Build a Career in Data Science* \cite{robinson2020build}     
 
-[<https://jnolis.com/blog/data_science_on_book/>]  
-[<https://hookedondata.org/posts/2021-04-06_publishing-a-technical-book-part-3/>]  
+ 
 
 This project is the longest manuscript the author has independently completed after her PhD dissertation \cite{chai2017phdthesis}. Other long-form publications she has written as a single author include her review article on text preprocessing \cite{chai2023comparison} and her Masters thesis \cite{chai2013masters}. The author has collaborated with others on a wide range of topics throughout the years, including Bayesian statistics \cite{lu2022robust, clyde2018bayesian101}, federal survey analysis \cite{avery2014profile}, and other statistical applications \cite{henry2019modeling, beckman2015investigating}.   
 
