@@ -2,7 +2,9 @@ To measure the model performance in binary classification, we should evaluate th
 
 Therefore, we introduce the ROC (receiver operating characteristic) as a model performance metric that summarizes over all possible probability thresholds.^[<https://towardsdatascience.com/understanding-the-roc-curve-and-auc-dd4f9a192ecb>] The ROC plots the FPR (false positive rate) against the TPR (true positive rate), and the aggregate measure is called AUC (area under the curve).^[<https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc>] AUC is between 0 and 1 like a probability. A model that is 100% correct has an AUC of 1, and a model that is 0% correct has an AUC of 0. However, if we know that a model is going to be 0% correct, we can infer that the actual datapoints are the complete opposite of the model's prediction. This gives us the same level of information as if the model had been 100% correct.^[<https://victorzhou.com/blog/information-gain/>] The baseline should be a completely random guess, where we get 50% correct like a coin flip. Hence the baseline AUC is 0.5.   
 
-According to \citet{yang2017receiver}, the AUC values can be interpreted as below:     
+According to \citet{yang2017receiver}, the AUC values can be interpreted as below:    
+
+- AUC < 0.5: Performance worse than random guess.
 
 - AUC = 0.5: Completely random guess, i.e., no classification power at all.
 
@@ -214,22 +216,6 @@ print(round(low_results, digits=4))
 
 Draft for ROC-AUC with our data   
 
-The ROC curve contains "steps" and is not smooth, because our model made predictions from discrete data with a relatively small sample size.  
-
-Each student with the same **HighSchool_PR** should have the same predictive probability of getting **College_Score** at least 65.  
-
-The `R` package `pROC` \cite{r-p-roc} contains many methods to smooth the ROC curve. But `pROC` generates the ROC curve based on specificity and sensitivity, rather than FPR and TPR.   
-
-\textcolor{red}{How do we smooth the ROC curve manually?}     
-
-Add a small random noise to **HighSchool_PR** in the data, i.e., jittering ?!  
-
-```{r jitter-example, include=FALSE}
-ttt = c(1:5)
-set.seed(20); jitter(ttt)
-# Should output: 1.151009 2.107413 2.911585 4.011665 5.185163
-```
-
 
 ```{r header-code-test,include=FALSE}
 data = read.csv("ptt_SENIORHIGH_data.csv")
@@ -279,5 +265,90 @@ print(roc_data_test$roc.vol$Area)
 
 roc.plot(real_outcomes, pred_outcomes, 
          xlab = "FPR", ylab="TPR",  show.thres = FALSE)
-
 ```
+
+\section*{\textcolor{red}{Unfinished below}} 
+
+The ROC curve contains "steps" and is not smooth, because our model made predictions from discrete data with a relatively small sample size.  
+
+Each student with the same **HighSchool_PR** should have the same predictive probability of getting **College_Score** at least 65.  
+
+The `R` package `pROC` \cite{r-p-roc} contains many methods to smooth the ROC curve. But `pROC` generates the ROC curve based on specificity and sensitivity, rather than FPR and TPR.   
+
+\textcolor{red}{How do we smooth the ROC curve manually?}   
+
+Still use the `R` package `verification`.  
+
+Add a small random noise to **HighSchool_PR** in the data, i.e., jittering ?!  
+
+```{r jitter-example, include=FALSE}
+ttt = c(1:5)
+set.seed(20); jitter(ttt)
+# Should output: 1.151009 2.107413 2.911585 4.011665 5.185163
+```
+
+```{r jitter-draft}
+# UNFINISHED HERE
+
+# R uses pass by value, so the whole content in data_corr is copied to data_jitter. 
+# Changing the data in data_jitter won't change the values in data_corr (original), 
+# which is good.
+
+# Augment the dataset to 188*10=1880 rows.
+augment_factor = 10
+data_jitter = data_corr
+for (aa in 2:augment_factor) {
+  data_jitter = rbind(data_jitter, data_corr)
+}
+
+set.seed(20)
+data_jitter$HighSchool_jitter = jitter(data_jitter$HighSchool_PR)
+
+# Leave-one-out for the jittered version of data
+nn = nrow(data_jitter) # total 188 rows of data
+
+prob_leave1out_jitter = rep(c(-1), nn)
+
+for (ii in 1:nn) {
+  data_test = data_jitter[ii,] # reserve one record for testing
+  data_exclude = data_jitter[-ii,]
+
+  train_leave1out = glm(CS_65up ~ HighSchool_jitter, data=data_exclude, family="binomial")
+  # summary(train_leave1out)
+  
+  test_leave1out = predict.glm(train_leave1out, data_test, type="response")
+  # type="response" gives the predicted probabilities
+
+  # Store the predicted probability to the general list
+  prob_leave1out_jitter[ii] = test_leave1out
+}
+
+print("This is a test for jitter leave-one-out.")
+
+
+library(verification)
+set.seed(1234)
+
+real_outcomes_jitter = data_jitter$College_Score >=65
+pred_outcomes_jitter = as.numeric(prob_leave1out_jitter)
+
+# UNFINISHED HERE
+# Need to explain why we added the granularity.
+# "Warning: Large amount of unique predictions used as thresholds. 
+#           Consider specifying thresholds."
+granularity = 100
+thresholds = c(1:granularity)/granularity
+
+roc_data_jitter = roc.plot(real_outcomes_jitter, pred_outcomes_jitter, 
+                           thresholds = thresholds,
+                           xlab = "FPR", ylab="TPR", show.thres = FALSE)
+
+print("done")
+print(roc_data_jitter$roc.vol$Area)
+
+roc.plot(real_outcomes_jitter, pred_outcomes_jitter, 
+         thresholds = thresholds,
+         xlab = "FPR", ylab="TPR",  show.thres = FALSE)
+```
+
+

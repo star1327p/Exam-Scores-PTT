@@ -122,18 +122,6 @@ Start writing about 2020, 2021, 2022 for both exams.
 
 ## Breakdown by High School Entrance Exam Scores {#another-breakdown}
 
-\section*{\textcolor{red}{Unfinished below}}  
-
-Add my thoughts about categorical data analysis (e.g. proportional hazards model?!)  
-
-Example: When **HighSchool_PR** is increased from Category X to Category Y, how does it affect the categories of **College_Score**?  
-
-You don't have to do the full implementation, just write a few lines as a pointer to the concepts.  
-
-\textcolor{red}{This is the file we want to move content into.}  
-
-\section*{\textcolor{red}{Unfinished above}}   
-
 ```{r include-in-sample-03, child = '08-In-Sample-03-Score-Breakdown.Rmd'}
 ```
 
