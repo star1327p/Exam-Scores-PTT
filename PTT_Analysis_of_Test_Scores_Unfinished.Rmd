@@ -168,7 +168,25 @@ Start writing about 2020, 2021, 2022 for both exams.
 \section*{\textcolor{red}{Unfinished below}}  
 
 # Model Metrics: ROC and AUC {#roc-auc}
-```{r include-roc-auc, child = '10-Model-Metrics-ROC-AUC.Rmd'}
+
+```{r include-roc-auc-00, child = '10-Model-Metrics-00-Foreword.Rmd'}
+```
+
+## Demonstrative ROC Curve {#roc-demo}
+
+```{r include-roc-auc-01, child = '10-Model-Metrics-01-Demo.Rmd'}
+```
+
+## Data Observation and Processing {#roc-prep} 
+
+```{r include-roc-auc-02, child = '10-Model-Metrics-02-Observation.Rmd'}
+```
+
+\section*{\textcolor{red}{Unfinished below}}   
+
+## Implementation and Results {#roc-auc-results}
+
+```{r include-roc-auc, child = '10-Model-Metrics-03-ROC-AUC.Rmd'}
 ```
 
 \section*{\textcolor{red}{Unfinished above}}  

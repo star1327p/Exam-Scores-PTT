@@ -1,0 +1,153 @@
+```{r header-code-test,include=FALSE}
+data = read.csv("ptt_SENIORHIGH_data.csv")
+names(data)[1] = "pttID"
+
+missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
+data_corr = data[-missing_rows,]
+
+data_corr$CS_65up = data_corr$College_Score >=65
+
+# model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")
+
+# Leave-one-out
+nn = nrow(data_corr) # total 188 rows of data
+
+prob_leave1out = rep(c(-1), nn)
+
+for (ii in 1:nn) {
+  data_test = data_corr[ii,] # reserve one record for testing
+  data_exclude = data_corr[-ii,]
+
+  train_leave1out = glm(CS_65up ~ HighSchool_PR, data=data_exclude, family="binomial")
+  # summary(train_leave1out)
+  
+  test_leave1out = predict.glm(train_leave1out, data_test, type="response")
+  # type="response" gives the predicted probabilities
+
+  # Store the predicted probability to the general list
+  prob_leave1out[ii] = test_leave1out
+}
+
+print("This is a test for leave-one-out.")
+```
+
+In the implementation of ROC-AUC curve, we use the leave-one-out cross validation output because it predicts every single record in the data. In the first `roc.plot` input, we use `plot=NULL` to avoid creating a plot prematurely. We would like to retrieve the AUC value from the `roc.plot` object `roc_data_test`, and add the AUC value to the title of the plot later.  
+
+```{r roc-auc-with-data}
+library(verification)
+set.seed(1234)
+
+real_outcomes = data_corr$College_Score >=65
+pred_outcomes = as.numeric(prob_leave1out)
+
+roc_data_test = roc.plot(real_outcomes, pred_outcomes, 
+                         xlab = "FPR", ylab="TPR", show.thres = FALSE,
+                         plot=NULL)
+
+auc_value_test = roc_data_test$roc.vol$Area
+
+print(auc_value_test)
+```
+
+
+\section*{\textcolor{red}{Unfinished below}}   
+
+Plot the ROC graph from our data  
+
+```{r plot-roc-auc-with-data}
+roc.plot(real_outcomes, pred_outcomes, 
+         xlab = "FPR", ylab="TPR",  show.thres = FALSE,
+         main=paste("ROC Curve: AUC =", round(auc_value_test,2)))
+```
+
+The ROC curve contains "steps" and is not smooth, because our model made predictions from discrete data with a relatively small sample size.  
+
+Each student with the same **HighSchool_PR** should have the same predictive probability of getting **College_Score** at least 65.  
+
+The `R` package `pROC` \cite{r-p-roc} contains many methods to smooth the ROC curve. But `pROC` generates the ROC curve based on specificity and sensitivity, rather than FPR and TPR.   
+
+\textcolor{red}{How do we smooth the ROC curve manually?}   
+
+Still use the `R` package `verification`.  
+
+Add a small random noise to **HighSchool_PR** in the data, i.e., jittering ?!  
+
+```{r jitter-example, include=FALSE}
+ttt = c(1:5)
+set.seed(20); jitter(ttt, factor=2)
+# Should output: 1.302017 2.214827 2.823171 4.023331 5.370326
+```
+
+```{r jitter-draft}
+# UNFINISHED HERE
+
+# R uses pass by value, so the whole content in data_corr is copied to data_jitter. 
+# Changing the data in data_jitter won't change the values in data_corr (original), 
+# which is good.
+
+# Augment the dataset to 188*20=3760 rows.
+augment_factor = 20
+data_jitter = data_corr
+for (aa in 2:augment_factor) {
+  data_jitter = rbind(data_jitter, data_corr)
+}
+
+# UNFINISHED HERE
+# Use a larger variance for the jitter
+# Need to explain the parameter `factor`.
+set.seed(20)
+data_jitter$HighSchool_jitter = jitter(data_jitter$HighSchool_PR, factor=2)
+
+# Leave-one-out for the jittered version of data
+nn = nrow(data_jitter) # total 188 rows of data
+
+prob_leave1out_jitter = rep(c(-1), nn)
+
+for (ii in 1:nn) {
+  data_test = data_jitter[ii,] # reserve one record for testing
+  data_exclude = data_jitter[-ii,]
+
+  train_leave1out = glm(CS_65up ~ HighSchool_jitter, data=data_exclude, family="binomial")
+  # summary(train_leave1out)
+  
+  test_leave1out = predict.glm(train_leave1out, data_test, type="response")
+  # type="response" gives the predicted probabilities
+
+  # Store the predicted probability to the general list
+  prob_leave1out_jitter[ii] = test_leave1out
+}
+
+print("This is a test for jitter leave-one-out.")
+
+
+library(verification)
+set.seed(1234)
+
+real_outcomes_jitter = data_jitter$College_Score >=65
+pred_outcomes_jitter = as.numeric(prob_leave1out_jitter)
+
+# UNFINISHED HERE
+# Need to explain why we added the granularity.
+# "Warning: Large amount of unique predictions used as thresholds. 
+#           Consider specifying thresholds."
+granularity = 100
+thresholds = c(1:granularity)/granularity
+
+roc_data_jitter = roc.plot(real_outcomes_jitter, pred_outcomes_jitter, 
+                           thresholds = thresholds,
+                           xlab = "FPR", ylab="TPR", show.thres = FALSE,
+                           plot=NULL)
+
+print("done")
+
+auc_value_jitter = roc_data_jitter$roc.vol$Area
+
+print(roc_data_jitter$roc.vol$Area)
+
+roc.plot(real_outcomes_jitter, pred_outcomes_jitter, 
+         thresholds = thresholds,
+         xlab = "FPR", ylab="TPR",  show.thres = FALSE,
+         main=paste("ROC Curve: AUC =", round(auc_value_jitter,2)))
+```
+
+

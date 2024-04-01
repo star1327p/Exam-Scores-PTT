@@ -1,0 +1,50 @@
+At the beginning of Section \ref{in-sample}, we used 0.5 as the default probability threshold to classify whether a student would obtain **College_Score** at least 65 or not. That is, the predicted probability needs to be 0.5 or higher for a datapoint to be predicted as positive (i.e., getting **College_Score** at least 65). This is acceptable because the data are balanced and 48.9% of students in the data made the cut, i.e., obtained **College_Score** at least 65. We are doing this project as an experiment, without trying to optimize any particular metric. But the probability threshold of 0.5 may not be appropriate in imbalanced datasets. If a dataset consists of 80% samples in the majority category and 20% samples in the minority category, the threshold to predict the minority category would be closer to 80% to maximize the accuracy.^[<https://towardsdatascience.com/tackling-imbalanced-data-with-predicted-probabilities-3293602f0f2>] Plus, depending on our goal to maximize recall/prediction/other metrics, we may choose a different threshold for the probability-to-decision conversion.    
+
+In many situations, it is not obvious to determine the probability threshold to predict a datapoint to be positive. A higher probability threshold would result in fewer points to be predicted as positive, so we may not find all of the true positive datapoints. But this model may be better at classifying true negative datapoints as negative, since the requirements are high to predict a datapoint to be positive. On the other hand, a lower probability threshold would predict more points as positive, increasing the chances of capturing all of the true positive datapoints. But this may also result in many true negative datapoints being predicted as positive. Hence there is a tradeoff between recall and precision when we select the probability threshold.    
+
+Let's revisit the leave-one-out cross-validation results from Section \ref{leave-one-out}, and explore how the probability threshold changes the accuracy/precision/recall/FPR/FNR. Before deciding on the threshold, we need to look at the boundary conditions -- the minimum and maximum predicted probabilities in the data. If the threshold is below the minimum, the model will predict all points to be true, which is not useful. If the threshold is above the maximum, the model will predict all points to be false, which is not useful, either. In the array of predictive probabilities `prob_leave1out`, the minimum is 0.0025 and the maximum is 0.7782. We should choose a probability threshold between these two values.    
+
+```{r test-leave-one-out-stats-hidden, include=FALSE}
+# print(prob_leave1out)
+# prob_leave1out contains row headers, so we cannot apply min or max function directly.
+# The solution is to convert prob_leave1out to a regular numeric array beforehand.
+```
+
+```{r test-leave-one-out-stats}
+check_prob_leave1out = as.numeric(prob_leave1out)
+
+print(paste("Min prob_leave1out:", min(check_prob_leave1out)))
+print(paste("Max prob_leave1out:", max(check_prob_leave1out)))
+```
+
+When the probability threshold is set to 0.5 as the default, the precision is 67% and the recall is 78%. We use these numbers as a comparison baseline. We also show the confusion matrix, so that the readers can observe the patterns from different probability thresholds.  
+
+```{r change-prob-threshold}
+original_leave1out =  prob_to_matrix(data_corr, prob_leave1out, threshold=0.5)
+print(original_leave1out)
+
+original_results = confusion_to_measures(original_leave1out)
+print(round(original_results, digits=4))
+```
+
+When the probability threshold is 0.7, the precision increased to 82%, but the recall decreased to 52%. A higher probability threshold means the model is less likely to predict a datapoint to be True, so a positive prediction is more likely to be actually positive, increasing the precision. However, the model may miss more datapoints (i.e., predict as negative) which are actually positive, resulting in a drop in the recall.   
+
+```{r change-prob-threshold-high}
+high_leave1out = prob_to_matrix(data_corr, prob_leave1out, threshold=0.7)
+print(high_leave1out)
+
+high_results = confusion_to_measures(high_leave1out)
+print(round(high_results, digits=4))
+```
+
+When the probability threshold is 0.3, the recall increased from 78% to 89%, but the precision decreased from 67% to 59%. A lower probability threshold means the model is more likely to predict a datapoint to be True, so the model has a better chance of catching most of the datapoints which are actually positive, increasing the recall. But the drawback is that when the model predicts a datapoint to be True, the datapoint has a greater risk of not actually being positive. In other words, using a low threshold may result in more false positives, hence reducing the precision.      
+
+```{r change-prob-threshold-low}
+low_leave1out = prob_to_matrix(data_corr, prob_leave1out, threshold=0.3)
+print(low_leave1out)
+
+low_results = confusion_to_measures(low_leave1out)
+print(round(low_results, digits=4))
+```
+
+**Remark**: We decided to use the leave-one-out results for ROC-AUC demonstration, rather than the results from K-fold cross-validation or separate training and testing datasets. In the outcomes of separate training and testing datasets (Section \ref{sep-train-test}), only the testing dataset contains predictive probabilities, and we do not think the sample size is large enough for the overall evaluation of model performance. In comparison, both leave-one-out and K-fold cross-validation predict every single record in the data. The main difference is that in leave-one-out (Section \ref{leave-one-out}), each datapoint is predicted by a different training sample. When two datapoints have the same \textbf{HighSchool$\_$PR} but differ in \textbf{College$\_$Score}, they will have different predictive probabilities because the associated training samples are not the same. On the other hand, K-fold (Section \ref{k-fold}) has only $K$ different subsets, so two datapoints in the same subset with the same \textbf{HighSchool$\_$PR} will get the same predicted probability for \textbf{College$\_$Score}. This can result in many repetitive predicted values, which is impractical in real life.   
