@@ -31,7 +31,7 @@ for (ii in 1:nn) {
 print("This is a test for leave-one-out.")
 ```
 
-In the implementation of ROC-AUC curve, we use the leave-one-out cross validation output because it predicts every single record in the data. In the first `roc.plot` input, we use `plot=NULL` to avoid creating a plot prematurely. We would like to retrieve the AUC value from the `roc.plot` object `roc_data_test`, and add the AUC value to the title of the plot later.  
+In the implementation of ROC-AUC curve, we use the leave-one-out cross validation output because it predicts every single record in the data (Section \ref{leave-one-out}). In the first `roc.plot` input, we use `plot=NULL` to avoid creating a plot prematurely. From the `roc.plot` object `roc_data_test`, we can retrieve the AUC value, which is approximately 0.79. This AUC means our model has good performance, according to the guidelines at the beginning of Chapter \ref{roc-auc}.   
 
 ```{r roc-auc-with-data}
 library(verification)
@@ -45,14 +45,10 @@ roc_data_test = roc.plot(real_outcomes, pred_outcomes,
                          plot=NULL)
 
 auc_value_test = roc_data_test$roc.vol$Area
-
 print(auc_value_test)
 ```
 
-
-\section*{\textcolor{red}{Unfinished below}}   
-
-Plot the ROC graph from our data  
+Now we add the AUC value to the title, and finally plot the ROC graph from our data. However, this ROC curve contains "steps" and is not smooth, because our model made predictions from discrete data with a relatively small sample size.^[<https://forum.posit.co/t/why-do-smooth-roc-curves/121753>] Each student with the same **HighSchool_PR** should have the same predictive probability of getting **College_Score** at least 65, and the repetitive predictive probablities resulted in the discontinuous steps in the graph.     
 
 ```{r plot-roc-auc-with-data}
 roc.plot(real_outcomes, pred_outcomes, 
@@ -60,23 +56,33 @@ roc.plot(real_outcomes, pred_outcomes,
          main=paste("ROC Curve: AUC =", round(auc_value_test,2)))
 ```
 
-The ROC curve contains "steps" and is not smooth, because our model made predictions from discrete data with a relatively small sample size.  
 
-Each student with the same **HighSchool_PR** should have the same predictive probability of getting **College_Score** at least 65.  
+\section*{\textcolor{red}{Unfinished below}}   
 
-The `R` package `pROC` \cite{r-p-roc} contains many methods to smooth the ROC curve. But `pROC` generates the ROC curve based on specificity and sensitivity, rather than FPR and TPR.   
+\textcolor{red}{How do we smooth the ROC curve manually?} 
 
-\textcolor{red}{How do we smooth the ROC curve manually?}   
+Hence we need to smooth the ROC curve. The `R` package `pROC` \cite{r-p-roc} contains many methods to smooth the ROC curve. But `pROC` generates the ROC curve based on specificity and sensitivity, rather than FPR and TPR. If we still use the `R` package `verification`, an easier solution is to manually add a small random noise to **HighSchool_PR** in the data. This modification is called jittering, where we add a small amount of noise to a set of numeric values.   
 
-Still use the `R` package `verification`.  
+How to use the `R` function `jitter`?   
 
-Add a small random noise to **HighSchool_PR** in the data, i.e., jittering ?!  
+The input parameter `factor` controls the variance of the noise.  
 
-```{r jitter-example, include=FALSE}
-ttt = c(1:5)
-set.seed(20); jitter(ttt, factor=2)
-# Should output: 1.302017 2.214827 2.823171 4.023331 5.370326
+```{r jitter-example-1}
+example_vector = c(1:5)
+set.seed(20)
+jitter(example_vector, factor=1)
 ```
+
+```{r jitter-example-2}
+example_vector = c(1:5)
+set.seed(20)
+jitter(example_vector, factor=2)
+```
+
+
+\textcolor{red}{Need context and interpretation here}  
+
+Also need to separate the jitter draft code chunk.  
 
 ```{r jitter-draft}
 # UNFINISHED HERE
