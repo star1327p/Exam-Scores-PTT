@@ -1,4 +1,4 @@
-We decided to use the leave-one-out results for ROC-AUC demonstration, rather than the results from K-fold cross-validation or separate training and testing datasets. In the outcomes of separate training and testing datasets (Section \ref{sep-train-test}), only the testing dataset contains predictive probabilities, and we do not think the sample size is large enough for the overall evaluation of model performance. In comparison, both leave-one-out and K-fold cross-validation predict every single record in the data. The main difference is that in leave-one-out (Section \ref{leave-one-out}), each datapoint is predicted by a different training sample. When two datapoints have the same \textbf{HighSchool$\_$PR} but differ in \textbf{College$\_$Score}, they will have different predictive probabilities because the associated training samples are not the same. On the other hand, K-fold (Section \ref{k-fold}) has only $K$ different subsets, so two datapoints in the same subset with the same \textbf{HighSchool$\_$PR} will get the same predicted probability for \textbf{College$\_$Score}. This can result in many repetitive predicted values, which is impractical in real life.   
+We decided to use the leave-one-out results to plot the ROC-AUC, rather than the results from K-fold cross-validation or separate training and testing datasets. In the outcomes of separate training and testing datasets (Section \ref{sep-train-test}), only the testing dataset contains predictive probabilities, and we do not think the sample size is large enough for the overall evaluation of model performance. In comparison, both leave-one-out and K-fold cross-validation predict every single record in the data. The main difference is that in leave-one-out (Section \ref{leave-one-out}), each datapoint is predicted by a different training sample. When two datapoints have the same \textbf{HighSchool$\_$PR} but differ in \textbf{College$\_$Score}, they will have different predictive probabilities because the associated training samples are not the same. On the other hand, K-fold (Section \ref{k-fold}) has only $K$ different subsets, so two datapoints in the same subset with the same \textbf{HighSchool$\_$PR} will get the same predicted probability for \textbf{College$\_$Score}. This can result in many repetitive predicted values, which is impractical in real life.   
 
 
 ```{r header-code-test,include=FALSE}
@@ -53,7 +53,9 @@ auc_value_test = roc_data_test$roc.vol$Area
 print(auc_value_test)
 ```
 
-Now we add the AUC value to the title, and finally plot the ROC graph from our data. However, this ROC curve contains "steps" and is not smooth, because our model made predictions from discrete data with a relatively small sample size.^[<https://forum.posit.co/t/why-do-smooth-roc-curves/121753>] Each student with the same **HighSchool_PR** should have the same predictive probability of getting **College_Score** at least 65, and the repetitive predictive probablities resulted in the discontinuous steps in the graph.     
+Now we add the AUC value to the title, and finally plot the ROC graph from our data. However, this ROC curve contains "steps" and is not smooth, because our model made predictions from discrete data with a relatively small sample size.^[<https://forum.posit.co/t/why-do-smooth-roc-curves/121753>] Each student with the same **HighSchool_PR** should have the same predictive probability of getting **College_Score** at least 65, and the repetitive predictive probablities resulted in the discontinuous steps in the graph.    
+
+Hence we need to smooth the ROC curve. The `R` package `pROC` \cite{r-p-roc} contains many methods to smooth the ROC curve. But `pROC` generates the ROC curve based on specificity and sensitivity, rather than FPR and TPR. If we still use the `R` package `verification`, an easier solution is to manually add a small random noise to **HighSchool_PR** in the data, i.e., jittering. In this way, each subject's **HighSchool_PR** becomes slightly different than each other, so that we can get distinct values.   
 
 ```{r plot-roc-auc-with-data}
 roc.plot(real_outcomes, pred_outcomes, 
@@ -61,20 +63,19 @@ roc.plot(real_outcomes, pred_outcomes,
          main=paste("ROC Curve: AUC =", round(auc_value_test,2)))
 ```
 
-Hence we need to smooth the ROC curve. The `R` package `pROC` \cite{r-p-roc} contains many methods to smooth the ROC curve. But `pROC` generates the ROC curve based on specificity and sensitivity, rather than FPR and TPR. If we still use the `R` package `verification`, an easier solution is to manually add a small random noise to **HighSchool_PR** in the data. In this way, each subject's **HighSchool_PR** becomes slightly different than each other, so that we can get distinct values.   
 
 ### Jittered Data
 
-Jittering is the process of adding some noise to the numbers, and we can use the `R` function `jitter` perform this modification. The input parameter `factor` controls the variance of the noise. We jitter the numbers from 1 to 5 as an example. Using `factor=2` gives a larger amount of noise than using `factor=1`. We should be careful not to add too much noise, otherwise the original data signal will be buried by the noise. We also need to specify the random seed to ensure reproducibility.   
+Jittering is the process of adding some noise to the numbers, and we can use the `R` function `jitter` perform this modification. The input parameter `factor` controls the variance of the noise. For example, we jitter the numbers 1, 1, 2, 2, 3, 3. Using `factor=2` gives a larger amount of noise than using `factor=1`. Observe that jittering the same value twice generates separate versions of random noise, so the two output numbers are slightly different. We should be careful not to add too much noise, otherwise the original data signal will be buried by the noise. We also need to specify the random seed to ensure reproducibility.   
 
 ```{r jitter-example-1}
-example_vector = c(1:5)
+example_vector = c(1,1,2,2,3,3)
 set.seed(20)
 jitter(example_vector, factor=1)
 ```
 
 ```{r jitter-example-2}
-example_vector = c(1:5)
+example_vector = c(1,1,2,2,3,3)
 set.seed(20)
 jitter(example_vector, factor=2)
 ```
@@ -83,9 +84,16 @@ jitter(example_vector, factor=2)
 
 \textcolor{red}{Need context and interpretation here}  
 
+Before we start jittering the data, we also need to augment the data because we only have 188 valid records in the sample. Data augmentation is the process of artificially generating new data from the original data, mainly for machine learning training purposes.^[<https://aws.amazon.com/what-is/data-augmentation/>]   
+
+
+Duplicate the 188-record dataset by 20 times $\Rightarrow$ 3760 total rows.   
+
+Then jitter all 3760 datapoints of **HighSchool_PR**.   
+
 Also need to separate the jitter draft code chunk.  
 
-Parameters are empirically determined for demonstration.  
+Parameters are empirically determined here.    
 
 e.g. `augment_factor` to augment the data, `factor` in jittering.  
 
@@ -130,8 +138,11 @@ for (ii in 1:nn) {
 }
 
 print("This is a test for jitter leave-one-out.")
+```
 
+\textcolor{red}{Need context and interpretation here}  
 
+```{r jitter-draft-roc-auc}
 library(verification)
 set.seed(1234)
 
