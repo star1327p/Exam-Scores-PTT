@@ -63,6 +63,7 @@ roc.plot(real_outcomes, pred_outcomes,
          main=paste("ROC Curve: AUC =", round(auc_value_test,2)))
 ```
 
+\section*{\textcolor{red}{Unfinished below}}   
 
 ### Jittered Data
 
@@ -80,27 +81,9 @@ set.seed(20)
 jitter(example_vector, factor=2)
 ```
 
-\section*{\textcolor{red}{Unfinished below}}   
+Before we start jittering the data, we also need to augment the data because we only have 188 valid records in the sample. Data augmentation is the process of artificially generating new data from the original data, mainly for machine learning training purposes.^[<https://aws.amazon.com/what-is/data-augmentation/>] Therefore, we duplicate the 188-record dataset by 20 times, resulting in 3760 total rows. Then we jitter all 3760 datapoints of **HighSchool_PR**, using `factor=2` for the level of noise. An earlier example showed that jittering the same number can produce different outputs, so we can rest assured that each jittered value of **HighSchool_PR** is distinct. In the code, we can see that the first two datapoints are approximately 60.3 and 60.2, indicating that both jittered values had an original **HighSchool_PR** of 60. Parameters are empirically determined here.   
 
-\textcolor{red}{Need context and interpretation here}  
-
-Before we start jittering the data, we also need to augment the data because we only have 188 valid records in the sample. Data augmentation is the process of artificially generating new data from the original data, mainly for machine learning training purposes.^[<https://aws.amazon.com/what-is/data-augmentation/>]   
-
-
-Duplicate the 188-record dataset by 20 times $\Rightarrow$ 3760 total rows.   
-
-Then jitter all 3760 datapoints of **HighSchool_PR**.   
-
-Also need to separate the jitter draft code chunk.  
-
-Parameters are empirically determined here.    
-
-e.g. `augment_factor` to augment the data, `factor` in jittering.  
-
-**Remark**: `R` uses pass by value in data assignment, so the whole content in `data_corr` is copied to `data_jitter`. Changing the data in `data_jitter` won't change the original values in `data_corr`, which is good. Compared with the pandas DataFrame in Python, we have to explicitly use the function `copy` to make a deep copy of the data. If we simply use assignment, the new DataFrame is simply a pointer to the original DataFrame. Then editing the new dataset will result in changing the original data.^[<https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.copy.html>]   
-
-
-```{r jitter-draft-augment}
+```{r jitter-data-augment}
 # Augment the dataset to 188*20=3760 rows.
 augment_factor = 20
 data_jitter = data_corr
@@ -108,12 +91,19 @@ for (aa in 2:augment_factor) {
   data_jitter = rbind(data_jitter, data_corr)
 }
 
-# UNFINISHED HERE
-# Use a larger variance for the jitter
-# Need to explain the parameter `factor`.
+# Use a larger variance for the jitter.
 set.seed(20)
 data_jitter$HighSchool_jitter = jitter(data_jitter$HighSchool_PR, factor=2)
+
+# Show the first 10 jittered values
+print(data_jitter$HighSchool_jitter[1:10])
 ```
+
+\section*{\textcolor{red}{Unfinished below}}   
+
+\textcolor{red}{Need context and interpretation here}  
+
+**Remark**: `R` uses pass by value in data assignment, so the whole content in `data_corr` is copied to `data_jitter`. Changing the data in `data_jitter` won't change the original values in `data_corr`, which is good. Compared with the pandas DataFrame in Python, we have to explicitly use the function `copy` to make a deep copy of the data. If we simply use assignment, the new DataFrame is simply a pointer to the original DataFrame. Then editing the new dataset will result in changing the original data.^[<https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.copy.html>]   
 
 \textcolor{red}{Need context and interpretation here}  
 
