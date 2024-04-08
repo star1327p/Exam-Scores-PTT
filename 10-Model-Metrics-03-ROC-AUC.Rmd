@@ -34,7 +34,7 @@ for (ii in 1:nn) {
 print("This is a test for leave-one-out.")
 ```
 
-### Original Data
+### Original Data {#original-roc}
 
 In the implementation of ROC-AUC curve, we use the leave-one-out cross validation output because it predicts every single record in the data (Section \ref{leave-one-out}). In the first `roc.plot` input, we use `plot=NULL` to avoid creating a plot prematurely. From the `roc.plot` object `roc_data_test`, we can retrieve the AUC value, which is approximately 0.79. This AUC means our model has good performance, according to the guidelines at the beginning of Chapter \ref{roc-auc}.   
 
@@ -65,7 +65,7 @@ roc.plot(real_outcomes, pred_outcomes,
 
 \section*{\textcolor{red}{Unfinished below}}   
 
-### Jittered Data
+### Jittered Data {#jittered-roc}
 
 Jittering is the process of adding some noise to the numbers, and we can use the `R` function `jitter` perform this modification. The input parameter `factor` controls the variance of the noise. For example, we jitter the numbers 1, 1, 2, 2, 3, 3. Using `factor=2` gives a larger amount of noise than using `factor=1`. Observe that jittering the same value twice generates separate versions of random noise, so the two output numbers are slightly different. We should be careful not to add too much noise, otherwise the original data signal will be buried by the noise. We also need to specify the random seed to ensure reproducibility.   
 
@@ -132,7 +132,7 @@ print("This is a test for jitter leave-one-out.")
 
 \textcolor{red}{Need context and interpretation here}  
 
-```{r jitter-draft-roc-auc}
+```{r jitter-draft-roc-auc-calc}
 library(verification)
 set.seed(1234)
 
@@ -151,12 +151,17 @@ roc_data_jitter = roc.plot(real_outcomes_jitter, pred_outcomes_jitter,
                            xlab = "FPR", ylab="TPR", show.thres = FALSE,
                            plot=NULL)
 
-print("done")
-
 auc_value_jitter = roc_data_jitter$roc.vol$Area
 
 print(roc_data_jitter$roc.vol$Area)
+```
 
+
+\textcolor{red}{Need context and interpretation here}  
+
+Now the ROC graph is smoother than the original one in Section \ref{original-roc}.  
+
+```{r jitter-draft-roc-auc-plot}
 roc.plot(real_outcomes_jitter, pred_outcomes_jitter, 
          thresholds = thresholds,
          xlab = "FPR", ylab="TPR",  show.thres = FALSE,
@@ -164,3 +169,7 @@ roc.plot(real_outcomes_jitter, pred_outcomes_jitter,
 ```
 
 \textcolor{red}{Add some discussion regarding the AUC value}   
+
+Although the AUC is slightly higher using the jittered data than the original data, the small difference is due to the random noise from jittering. If we select another random seed, the resulting AUC would be close to 79-80% as well.  
+
+
