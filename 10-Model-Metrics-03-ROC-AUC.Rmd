@@ -36,7 +36,7 @@ print("This is a test for leave-one-out.")
 
 ### Original Data {#original-roc}
 
-In the implementation of ROC-AUC curve, we use the leave-one-out cross validation output because it predicts every single record in the data (Section \ref{leave-one-out}). In the first `roc.plot` input, we use `plot=NULL` to avoid creating a plot prematurely. From the `roc.plot` object `roc_data_test`, we can retrieve the AUC value, which is approximately 0.79. This AUC means our model has good performance, according to the guidelines at the beginning of Chapter \ref{roc-auc}.   
+In the implementation of ROC-AUC curve, we use the leave-one-out cross validation output because it predicts every single record in the data. In the first `roc.plot` input, we use `plot=NULL` to avoid creating a plot prematurely. From the `roc.plot` object `roc_data_test`, we can retrieve the AUC value, which is approximately 0.79. This AUC means our model has good performance, according to the guidelines at the beginning of Chapter \ref{roc-auc}.   
 
 ```{r roc-auc-with-data}
 library(verification)
@@ -99,17 +99,15 @@ data_jitter$HighSchool_jitter = jitter(data_jitter$HighSchool_PR, factor=2)
 print(data_jitter$HighSchool_jitter[1:10])
 ```
 
-\section*{\textcolor{red}{Unfinished below}}   
-
-\textcolor{red}{Need context and interpretation here}  
-
 **Remark**: `R` uses pass by value in data assignment, so the whole content in `data_corr` is copied to `data_jitter`. Changing the data in `data_jitter` won't change the original values in `data_corr`, which is good. Compared with the pandas DataFrame in Python, we have to explicitly use the function `copy` to make a deep copy of the data. If we simply use assignment, the new DataFrame is simply a pointer to the original DataFrame. Then editing the new dataset will result in changing the original data.^[<https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.copy.html>]   
 
-\textcolor{red}{Need context and interpretation here}  
+Now let's perform the leave-one-out cross validation on the jittered version of data, which contains 3760 total rows. The approach is exactly the same as described in Section \ref{leave-one-out}. We reserve one record for testing, and use all the other records to train the model. Then the model predicts the one datapoint which was left out before. Given the size of the data, it may take more than a few seconds to complete this part and obtain the predictive probabilities.    
 
-```{r jitter-draft-leave1out}
+```{r jitter-leave1out}
 # Leave-one-out for the jittered version of data
-nn = nrow(data_jitter) # total 188 rows of data
+
+nn = nrow(data_jitter) 
+# 188*20=3760 total rows of data
 
 prob_leave1out_jitter = rep(c(-1), nn)
 
@@ -126,11 +124,19 @@ for (ii in 1:nn) {
   # Store the predicted probability to the general list
   prob_leave1out_jitter[ii] = test_leave1out
 }
-
-print("This is a test for jitter leave-one-out.")
 ```
 
+\section*{\textcolor{red}{Unfinished below}}  
+
 \textcolor{red}{Need context and interpretation here}  
+
+In `roc.plot`, we need to specify the probability thresholds by adding the granularity.  
+
+The specified thresholds are 0.001, 0.002, ..., all the way to 0.999 and 1.000.  
+
+Why is the `granularity` set to 1000 ?!   
+
+Otherwise, the default in `roc.plot` is to use all unique thresholds for each prediction, and there will be way too many unique probability thresholds given a large dataset. We will get the warning message: "Warning: Large amount of unique predictions used as thresholds. Consider specifying thresholds."  
 
 ```{r jitter-draft-roc-auc-calc}
 library(verification)
@@ -141,10 +147,12 @@ pred_outcomes_jitter = as.numeric(prob_leave1out_jitter)
 
 # UNFINISHED HERE
 # Need to explain why we added the granularity.
-# "Warning: Large amount of unique predictions used as thresholds. 
-#           Consider specifying thresholds."
-granularity = 100
+granularity = 1000
 thresholds = c(1:granularity)/granularity
+
+roc_data_jitter = roc.plot(real_outcomes_jitter, pred_outcomes_jitter, 
+                           xlab = "FPR", ylab="TPR", show.thres = FALSE,
+                           plot=NULL)
 
 roc_data_jitter = roc.plot(real_outcomes_jitter, pred_outcomes_jitter, 
                            thresholds = thresholds,
