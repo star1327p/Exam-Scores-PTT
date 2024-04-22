@@ -1,21 +1,8 @@
 
 We briefly explain the high school and college entrance exams in Taiwan for readers all over the world. Like many other places in Asia, Taiwan used to put heavy emphasis on standardized tests in high school and college admissions.^[<https://en.wikipedia.org/wiki/Education_in_Taiwan>] This is different from the US college admission system, which values more of students' overall qualifications such as extracurricular activities and personal qualities, not solely on a single standardized test score.^[<https://www.usnews.com/education/best-colleges/articles/college-application-process>]   
 
-\textcolor{red}{Continue writing about the Taiwan education system}  
+Nowadays, Taiwan has added some non-exam components for middle and high school students, in order to educate them to be well-rounded.^[<http://www.ater.org.tw/journal/article/9-6/free/12.pdf>] Despite multiple attempts of education reform, the high school entrance exam in Taiwan remains a key part to high school admissions \cite{chen2017advancing, chen2008strategic}. The college admission process in Taiwan is a more complicated system \cite{liu2022pathways}. Although Taiwan's college admission process requires students to submit their portfolio as part of their application package,^[<https://www.reallygood.com.tw/newExam/inside?str=FD956A48971EAE124F46CACDAFD17584>] students still need to score high enough in the college entrance exam to pass the initial screening round.^[<https://www.thenewslens.com/article/179752>]   
 
-Nowadays, Taiwan has added some non-exam components for middle and high school students, in order to educate them to be well-rounded.^[<http://www.ater.org.tw/journal/article/9-6/free/12.pdf>]    
-
-Despite multiple attempts of education reform, the high school entrance exam in Taiwan remains a key part to high school admissions \cite{chen2017advancing, chen2008strategic}.   
-
-What about the college entrance exam in Taiwan? More complicated system.  
-
-Changes in the rules every a few years (citation needed).  
-
-Although Taiwan's college admission process requires students to submit their portfolio as part of their application package,^[<https://www.reallygood.com.tw/newExam/inside?str=FD956A48971EAE124F46CACDAFD17584>] students still need to score high enough in the college entrance exam to pass the initial screening round.^[<https://www.thenewslens.com/article/179752>]   
-
-
-
-\section*{\textcolor{red}{Unfinished above}}   
 
 ## High School Entrance Exam in Taiwan {#HighSchool_PR}  
 
@@ -39,12 +26,11 @@ A major reform came in Year 2014, and the high school entrance exam was official
 
 \textcolor{red}{What aggregated data does the Taiwan government publish?}  
 
-The college entrance exams in Taiwan are held twice a year; the first exam is for early admission and the second exam is for regular admission \cite{chou2015higher}.   
+The college entrance exams in Taiwan are held twice a year \cite{chou2015higher, chiang2022exams}. The first exam is called the General Scholastic Ability Test (GSAT), and the scores are used for early admission. The second exam is called the Advanced Subjects Test (AST), and the scores are used for regular admission.      
 
-The first exam is called the General Scholastic Ability Test (GSAT) starting in 1994, which is typically held in late January or early February.^[<https://bit.ly/2W0fdUq>] Students can use the GSAT scores and additional criteria (i.e., their portfolio documents) to apply to colleges for early admission \cite{hsieh2019preliminary}.  
+The GSAT has existed since 1994, and the exam is typically held in late January or early February.^[<https://bit.ly/2W0fdUq>] Students can use the GSAT scores and additional criteria (i.e., their portfolio documents) to apply to colleges for early admission \cite{hsieh2019preliminary}. Starting in 2022, the early admission from GSAT is not as "early" anymore.^[<https://udn.com/news/story/6885/5380520>] The timeline of the first round of college admission has been postponed from March to May, leaving high school students little time to prepare for the upcoming second exam in July.^[<https://www.parenting.com.tw/article/5094739>]  
 
-Starting in 2022, the early admission from GSAT is not as "early" anymore.^[<https://udn.com/news/story/6885/5380520>] The timeline of the first round of college admission has been postponed from March to May, leaving high school students little time to prepare for the upcoming AST in July.^[<https://www.parenting.com.tw/article/5094739>]  
-
+\section*{\textcolor{red}{Unfinished below}}   
 
 The second exam is called the Advanced Subjects Test (AST) from 2002 to 2021, and it was almost always held on July 1st, 2nd, and 3rd each year.^[<https://bit.ly/2J7YxoW>] In the regular admission phase, the AST scores are directly used for college placements \cite{shy2021comparison}, without consideration of the student's achievements outside the AST scores.^[With limited exceptions of GSAT score requirements. <https://udn.com/news/story/121570/4773243>]     
 
@@ -78,12 +64,5 @@ For example, if a subject has the "top" of 93.45 (max 100), then the scale inter
 
 \textcolor{red}{Continue writing below}   
 
-The 2019 education reform in Taiwan^[<http://tinyurl.com/3r5zrzhs>]   
-
-Starting in 2019, students may choose four of the five subjects for the GSAT, and the maximum possible score (i.e., full marks) is reduced from 75 to 60. 
-
-Students in the science track often choose to drop the social sciences subject in the GSAT, and students in the humanities track often choose to skip the physical sciences subject.  
-
-
-High school students are also required to maintain a portfolio each semester to document their learning outcomes, and the portfolio will be evaluated by the colleges they apply to.^[<https://www.108epo.com/courses.php>]  
+Starting in 2019, students may choose four of the five subjects for the GSAT, and the maximum possible score (i.e., full marks) is reduced from 75 to 60.^[<http://tinyurl.com/3r5zrzhs>] Students in the science track often choose to drop the social sciences subject in the GSAT, and students in the humanities track often choose to skip the physical sciences subject. High school students are also required to maintain a portfolio each semester to document their learning outcomes, and the portfolio will be evaluated by the colleges they apply to.^[<https://www.108epo.com/courses.php>]     
 
