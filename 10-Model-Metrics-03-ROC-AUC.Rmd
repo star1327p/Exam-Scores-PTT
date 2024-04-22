@@ -63,8 +63,6 @@ roc.plot(real_outcomes, pred_outcomes,
          main=paste("ROC Curve: AUC =", round(auc_value_test,2)))
 ```
 
-\section*{\textcolor{red}{Unfinished below}}   
-
 ### Jittered Data {#jittered-roc}
 
 Jittering is the process of adding some noise to the numbers, and we can use the `R` function `jitter` perform this modification. The input parameter `factor` controls the variance of the noise. For example, we jitter the numbers 1, 1, 2, 2, 3, 3. Using `factor=2` gives a larger amount of noise than using `factor=1`. Observe that jittering the same value twice generates separate versions of random noise, so the two output numbers are slightly different. We should be careful not to add too much noise, otherwise the original data signal will be buried by the noise. We also need to specify the random seed to ensure reproducibility.   
@@ -126,33 +124,23 @@ for (ii in 1:nn) {
 }
 ```
 
-\section*{\textcolor{red}{Unfinished below}}  
+In `roc.plot`, we need to specify the probability thresholds. Otherwise, the default in `roc.plot` is to use all unique thresholds for each prediction, and there will be way too many unique probability thresholds given a large dataset. We will get the warning message: "Warning: Large amount of unique predictions used as thresholds. Consider specifying thresholds."   
 
-\textcolor{red}{Need context and interpretation here}  
+Hence we specify the thresholds as 0.001, 0.002, ..., all the way to 0.999 and 1.000. There are 1000 thresholds in increments of 0.001 within the interval (0,1], so we can create this numerical vector using `c(1:1000)/1000`. The number 1000 is called the `granularity`.^[<https://www.talon.one/glossary/granularity>]   
 
-In `roc.plot`, we need to specify the probability thresholds by adding the granularity.  
+Although the AUC is slightly higher using the jittered data (81%) than the original data, the small difference is due to the random noise from jittering. If we select another random seed, the resulting AUC would also be close to 80%.  
 
-The specified thresholds are 0.001, 0.002, ..., all the way to 0.999 and 1.000.  
 
-Why is the `granularity` set to 1000 ?!   
-
-Otherwise, the default in `roc.plot` is to use all unique thresholds for each prediction, and there will be way too many unique probability thresholds given a large dataset. We will get the warning message: "Warning: Large amount of unique predictions used as thresholds. Consider specifying thresholds."  
-
-```{r jitter-draft-roc-auc-calc}
+```{r jitter-roc-auc-calc}
 library(verification)
 set.seed(1234)
 
 real_outcomes_jitter = data_jitter$College_Score >=65
 pred_outcomes_jitter = as.numeric(prob_leave1out_jitter)
 
-# UNFINISHED HERE
-# Need to explain why we added the granularity.
+# Probability thresholds: 0.001, 0.002, ..., 0.999, 1.000.
 granularity = 1000
 thresholds = c(1:granularity)/granularity
-
-roc_data_jitter = roc.plot(real_outcomes_jitter, pred_outcomes_jitter, 
-                           xlab = "FPR", ylab="TPR", show.thres = FALSE,
-                           plot=NULL)
 
 roc_data_jitter = roc.plot(real_outcomes_jitter, pred_outcomes_jitter, 
                            thresholds = thresholds,
@@ -164,20 +152,12 @@ auc_value_jitter = roc_data_jitter$roc.vol$Area
 print(roc_data_jitter$roc.vol$Area)
 ```
 
-
-\textcolor{red}{Need context and interpretation here}  
-
 Now the ROC graph is smoother than the original one in Section \ref{original-roc}.  
 
-```{r jitter-draft-roc-auc-plot}
+```{r jitter-roc-auc-plot}
 roc.plot(real_outcomes_jitter, pred_outcomes_jitter, 
          thresholds = thresholds,
          xlab = "FPR", ylab="TPR",  show.thres = FALSE,
          main=paste("ROC Curve: AUC =", round(auc_value_jitter,2)))
 ```
-
-\textcolor{red}{Add some discussion regarding the AUC value}   
-
-Although the AUC is slightly higher using the jittered data than the original data, the small difference is due to the random noise from jittering. If we select another random seed, the resulting AUC would be close to 79-80% as well.  
-
 
