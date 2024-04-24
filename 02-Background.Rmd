@@ -20,37 +20,12 @@ A major reform came in Year 2014, and the high school entrance exam was official
 
 ## College Entrance Exam in Taiwan {#College_Score}
 
-\textcolor{red}{Describe the early admission and the regular admission rules separately.}   
-
-\textcolor{red}{Don't go deep into commentaries or how the society reacted to the changes.}   
-
-\textcolor{red}{What aggregated data does the Taiwan government publish?}  
-
-The college entrance exams in Taiwan are held twice a year \cite{chou2015higher, chiang2022exams}. The first exam is called the General Scholastic Ability Test (GSAT), and the scores are used for early admission. The second exam is called the Advanced Subjects Test (AST), and the scores are used for regular admission.      
-
-The GSAT has existed since 1994, and the exam is typically held in late January or early February.^[<https://bit.ly/2W0fdUq>] Students can use the GSAT scores and additional criteria (i.e., their portfolio documents) to apply to colleges for early admission \cite{hsieh2019preliminary}. Starting in 2022, the early admission from GSAT is not as "early" anymore.^[<https://udn.com/news/story/6885/5380520>] The timeline of the first round of college admission has been postponed from March to May, leaving high school students little time to prepare for the upcoming second exam in July.^[<https://www.parenting.com.tw/article/5094739>]  
-
-\section*{\textcolor{red}{Unfinished below}}   
-
-The second exam is called the Advanced Subjects Test (AST) from 2002 to 2021, and it was almost always held on July 1st, 2nd, and 3rd each year.^[<https://bit.ly/2J7YxoW>] In the regular admission phase, the AST scores are directly used for college placements \cite{shy2021comparison}, without consideration of the student's achievements outside the AST scores.^[With limited exceptions of GSAT score requirements. <https://udn.com/news/story/121570/4773243>]     
-
-\textcolor{red}{Elaborate on the new regular admission rules starting in 2022}   
-
-In 2022, AST was replaced with a new  system,^[<https://www.ceec.edu.tw/unithome?psid=0J129606443348127072>] and we do not have sufficient data for this part yet.^[<https://www.cw.com.tw/article/5119369>]   
+The college entrance exams in Taiwan are held twice a year by the College Entrance Examination Center (CEEC).^[<https://www.ceec.edu.tw/>] The first exam is called the General Scholastic Ability Test (GSAT), and the scores are used for early admission. The second exam is called the Advanced Subjects Test (AST), and the scores are used for regular admission. The college admission rules change slightly every several years, but the format of two entrance exams has been used for 20+ years and is here to stay \cite{chou2015higher, chiang2022exams}.  
 
 
-Updated in 2022:
-Dates changed to mid-July  
-Use the GSAT scores for Chinese and English, so the new system does not have further tests in these two subjects.^[<https://www.cw.com.tw/article/5119369>]  
+### General Scholastic Ability Test (GSAT)  
 
-Original AST: Chinese, English, mathematics A, mathematics B, physics, chemistry, biology, civics & social studies, geography, and history. Ten subjects in total. 
-
-New AST: 
-Wiki link: <http://tinyurl.com/ycvetzsd>  
-Each subject in the new AST is still scored from 0 to 100 points as before.  
-Mathematics A and mathematics B: to be determined, each year is different.  
-
-\textcolor{red}{Continue writing below}  
+The GSAT has been in place since 1994, and the exam is typically held in late January or early February.^[<https://bit.ly/2W0fdUq>] Students can use the GSAT scores and additional criteria (i.e., their portfolio documents) to apply to colleges for early admission \cite{hsieh2019preliminary}. Starting in 2022, the early admission from GSAT is not as "early" anymore.^[<https://udn.com/news/story/6885/5380520>] The timeline of the first round of college admission has been postponed from March to May, leaving high school students little time to prepare for the upcoming second exam in July.^[<https://www.parenting.com.tw/article/5094739>]  
 
 The GSAT consists of five subjects (Chinese, English, mathematics, physical sciences, and social sciences), each of which are graded on a 0 to 15 point scale. The GSAT scores are normalized to a range of 0 to 75, regardless of the difficulty level of GSAT each year. On the other hand, the scores of AST can vary widely because each subject is scored separately from 0 to 100. Since the AST scores fluctuate more due to the difficulty level of the exam questions each year, we decided to use the GSAT scores as a benchmark of the college exam scores.  
 
@@ -62,7 +37,34 @@ The 0 to 15 point scale is calculated in three steps:^[<https://bit.ly/3bxIuSn>]
 
 For example, if a subject has the "top" of 93.45 (max 100), then the scale interval is 93.45/15 = 6.23, rounded to two decimal points. Zero point is reserved for absolute zero marks on the exam. A student will get 1 point for a raw score between 0.01 and 6.23, and 2 points for a raw score between 6.24 and 12.46, and so on. If we observe from the top of the scale, a student can get 15 points for a raw score between 87.23 and 100, and 14 points for a raw score between 81.00 and 87.22. Note that the threshold (87.23) to achieve 15 points is 14 times of the scale interval (6.23).   
 
-\textcolor{red}{Continue writing below}   
-
 Starting in 2019, students may choose four of the five subjects for the GSAT, and the maximum possible score (i.e., full marks) is reduced from 75 to 60.^[<http://tinyurl.com/3r5zrzhs>] Students in the science track often choose to drop the social sciences subject in the GSAT, and students in the humanities track often choose to skip the physical sciences subject. High school students are also required to maintain a portfolio each semester to document their learning outcomes, and the portfolio will be evaluated by the colleges they apply to.^[<https://www.108epo.com/courses.php>]     
+
+### Advanced Subjects Test (AST)
+
+\section*{\textcolor{red}{Unfinished below}}   
+
+The original AST existed from 2002 to 2021, and it was almost always held on July 1st, 2nd, and 3rd each year.^[<https://bit.ly/2J7YxoW>] In the regular admission phase, the AST scores are directly used for college placements \cite{shy2021comparison}, without consideration of the student's achievements outside the AST scores.^[With limited exceptions of GSAT score requirements. <https://udn.com/news/story/121570/4773243>]     
+
+There are ten subjects in the original AST: Chinese, English, mathematics A, mathematics B, physics, chemistry, biology, civics & social studies, geography, and history. 
+
+Students may register for ?? subjects.   
+Depending on specific college requirements.   
+
+\textcolor{red}{Don't go deep into commentaries or how the society reacted to the changes.}     
+\textcolor{red}{Elaborate on the new regular admission rules starting in 2022}   
+
+In 2022, the original AST was replaced with the new AST with major changes.^[<https://www.ceec.edu.tw/unithome?psid=0J129606443348127072>] For instance, Chinese and English are removed from the new AST, and students are required to use the GSAT scores for these two subjects.^[<https://www.cw.com.tw/article/5119369>] The dates were also changed to mid-July.^[<https://www.cw.com.tw/article/5119369>]   
+
+We do not have sufficient data for this part yet.   
+
+
+New AST: 
+Wiki link: <http://tinyurl.com/ycvetzsd>  
+Each subject in the new AST is still scored from 0 to 100 points as before.  
+Mathematics A and mathematics B: to be determined, each year is different.  
+
+\textcolor{red}{Continue writing below}  
+
+
+
 
