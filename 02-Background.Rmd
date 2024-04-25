@@ -43,28 +43,15 @@ Starting in 2019, students may choose four of the five subjects for the GSAT, an
 
 \section*{\textcolor{red}{Unfinished below}}   
 
-The original AST existed from 2002 to 2021, and it was almost always held on July 1st, 2nd, and 3rd each year.^[<https://bit.ly/2J7YxoW>] In the regular admission phase, the AST scores are directly used for college placements \cite{shy2021comparison}, without consideration of the student's achievements outside the AST scores.^[With limited exceptions of GSAT score requirements. <https://udn.com/news/story/121570/4773243>]     
+The original AST existed from 2002 to 2021, and each subject was scored from 0 to 100 points. The  original AST was almost always held on July 1st, 2nd, and 3rd each year.^[<https://bit.ly/2J7YxoW>] In the regular admission phase, the AST scores were directly used for college placements \cite{shy2021comparison}. Only a few colleges had GSAT score requirements in addition to the AST scores.^[<https://udn.com/news/story/121570/4773243>] There were ten subjects in the original AST: Chinese, English, mathematics A, mathematics B, physics, chemistry, biology, civics & social studies, geography, and history. Students may register for 3-10 subjects, depending on specific requirements of each college or department. The difficulty level of each AST subject varied across years, so the scores had a wide variance.^[<https://www.ettoday.net/news/20190702/1480531.htm>]     
 
-There are ten subjects in the original AST: Chinese, English, mathematics A, mathematics B, physics, chemistry, biology, civics & social studies, geography, and history. 
-
-Students may register for ?? subjects.   
-Depending on specific college requirements.   
-
-\textcolor{red}{Don't go deep into commentaries or how the society reacted to the changes.}     
-\textcolor{red}{Elaborate on the new regular admission rules starting in 2022}   
-
-In 2022, the original AST was replaced with the new AST with major changes.^[<https://www.ceec.edu.tw/unithome?psid=0J129606443348127072>] For instance, Chinese and English are removed from the new AST, and students are required to use the GSAT scores for these two subjects.^[<https://www.cw.com.tw/article/5119369>] The dates were also changed to mid-July.^[<https://www.cw.com.tw/article/5119369>]   
-
-We do not have sufficient data for this part yet.   
-
-
-New AST: 
-Wiki link: <http://tinyurl.com/ycvetzsd>  
-Each subject in the new AST is still scored from 0 to 100 points as before.  
-Mathematics A and mathematics B: to be determined, each year is different.  
+In 2022, the original AST was replaced with the new AST with major changes, and each subjects was graded on a 0 to 60 point scale (rather than from 0 to 100 points).^[<https://www.ceec.edu.tw/unithome?psid=0J129606443348127072>] A key difference is that Chinese and English are removed from the new AST, and students are required to use the GSAT scores for these two subjects.^[<https://www.cw.com.tw/article/5119369>] The dates were also changed to mid-July.^[<https://www.cw.com.tw/article/5119369>] During 2022-2024, there were seven subjects available in the AST: mathematics A, physics, chemistry, biology, civics & social studies, geography, and history.^[<https://hengsuyang.tingmao.com.tw/article/inside/a758805f-a687-11ec-8d78-000c2904464e>] Then mathematics B will be added back to the AST starting in 2025.^[<http://tinyurl.com/ycvetzsd>]   
 
 \textcolor{red}{Continue writing below}  
 
+\textcolor{red}{Don't go deep into commentaries or how the society reacted to the changes.}     
+\textcolor{red}{Elaborate on the new regular admission rules starting in 2022.}   
 
+We do not have sufficient data for this part yet.   
 
-
+Cite some recent studies about Taiwan's education reform.  
