@@ -38,7 +38,27 @@ knitr::knit_hooks$set(chunk = function(x, options) {
 })
 ```
 
-Ongoing work since 2019.
+\section*{\textcolor{red}{Unfinished below}}
+
+Ongoing work since 2019.   
+
+To-Do:
+
+1. Proofread the content myself (84 pages).
+
+2. Check every single URL to make sure that it works. Some of the URLs are invalid. Beware! 
+
+3. Also check the references in detail. For instance, the record linkage citation \cite{dusetzina2014overview} needs to be replaced or supplemented by a more recent article.
+
+4. Ask some friends (preferably current high school teachers) to verify the correctness of the high school and college entrance rules in Taiwan.  
+
+5. Ask other friends for feedback on my report.
+
+6. Recheck everything for the final time.
+
+7. Publish this article to ResearchGate.
+
+\section*{\textcolor{red}{Unfinished above}}
 
 # Executive Summary {.unnumbered}
 
@@ -55,21 +75,6 @@ The opinions and views expressed in this manuscript are those of the author, and
 ```
 
 # Background {#background}
-
-\section*{\textcolor{red}{Unfinished below}}
-
-Elaborate on the following to enhance the background context:
-
-- College entrance exam GSAT and AST: New rules in 2022 (not related to COVID) due to the 2019 education reform in Taiwan.^[<http://tinyurl.com/3r5zrzhs>]   
-
-- COVID-related rules for students who could not attend the exam.    
-Start writing about 2020, 2021, 2022 for both exams.   
-
-- If we continue writing this manuscript in 2023, we absolutely need to add the recent changes in 2021 and 2022.  
-
-\textcolor{red}{This is the file we want to move content into.}  
-
-\section*{\textcolor{red}{Unfinished above}}
 
 ```{r include-background, child = '02-Background.Rmd'}
 ```
