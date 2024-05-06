@@ -48,15 +48,23 @@ To-Do:
 
 2. Check every single URL to make sure that it works. Some of the URLs are invalid. Beware! 
 
-3. Also check the references in detail. For instance, the record linkage citation \cite{dusetzina2014overview} needs to be replaced or supplemented by a more recent article.
+- Start checking URLs from Section \ref{HighSchool_PR}.
+
+- Due to the discontinuation of **xuite.net** effective August 31, 2023,^[<https://mrmad.com.tw/xuite-close>] I need to replace these footnote links with something else. 
+
+3. Also check the references in detail. 
 
 4. Ask some friends (preferably current high school teachers) to verify the correctness of the high school and college entrance rules in Taiwan.  
 
 5. Ask other friends for feedback on my report.
 
-6. Recheck everything for the final time.
+6. Revise the report according to the feedback I receive.
 
-7. Publish this article to ResearchGate.
+7. Recheck everything one more time.
+
+8. Obtain approval to list my new affiliation with the disclaimer.
+
+9. Finally, publish this article to ResearchGate.
 
 \section*{\textcolor{red}{Unfinished above}}
 

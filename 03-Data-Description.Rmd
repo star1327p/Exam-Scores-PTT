@@ -104,7 +104,7 @@ missing_rows = which(data$HS_Invalid == 1 | data$CS_Invalid == 1)
 missing_rows
 ```
 
-**Remark**: With larger and/or more complex datasets, researchers often apply record linkage methods \cite{dusetzina2014overview} to impute missing or erroneous values in one dataset from another. This is outside the scope of this manuscript.   
+**Remark**: With larger and/or more complex datasets, researchers often apply record linkage methods to impute missing or erroneous values in one dataset from another \cite{dusetzina2014overview, abramitzky2021automated}. This is outside the scope of this manuscript.   
 
 Now we build the `R` dataframe `data_corr` (short for "data correlation") for the bivariate analysis. This dataframe excludes any record with at least one missing value in **HighSchool_PR** or **College_Score**.   
 
