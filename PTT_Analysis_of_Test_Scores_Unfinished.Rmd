@@ -44,11 +44,15 @@ Ongoing work since 2019.
 
 To-Do:
 
-1. Proofread the content myself (84 pages).
+1. Proofread the content myself (85 pages).
 
 2. Check every single URL to make sure that it works. Some of the URLs are invalid. Beware! 
 
-- Start checking URLs from Section \ref{HighSchool_PR}.
+- Start checking URLs from Section \ref{College_AST}.
+
+- For any URL that is long and/or contains a hash string, shorten the URL to be concise.
+
+Done:
 
 - Due to the discontinuation of **xuite.net** effective August 31, 2023,^[<https://mrmad.com.tw/xuite-close>] I need to replace these footnote links with something else. 
 
