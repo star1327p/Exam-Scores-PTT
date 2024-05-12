@@ -50,11 +50,13 @@ To-Do:
 
 - Start checking URLs from Section \ref{College_AST}.
 
-- For any URL that is long and/or contains a hash string, shorten the URL to be concise.
+- Probably need to add more references, instead of just URLs. Especially on Taiwan's education system, which I have fewer than 10 items listed in the References. Most of my references are about statistics and/or data science itself.
 
 Done:
 
 - Due to the discontinuation of **xuite.net** effective August 31, 2023,^[<https://mrmad.com.tw/xuite-close>] I need to replace these footnote links with something else. 
+
+- For any URL that is long and/or contains a hash string, shorten the URL to be concise.
 
 3. Also check the references in detail. 
 

@@ -68,7 +68,7 @@ In our data analysis, false positive rate and false negative rate have about equ
 
 \subsubsection{Sensitivity and Specificity}
 
-We are going off on a tangent here, because this section is not directly related to the data of high school and college entrance exam scores. But we think it is important to introduce the concepts of **sensitivity** and **specificity** to the readers, since they are also used to describe the overall testing results, especially in a clinical setting.^[<https://www.healthnewsreview.org/toolkit/tips-for-understanding-studies/understanding-medical-tests-sensitivity-specificity-and-positive-predictive-value/>]   
+We are going off on a tangent here, because this section is not directly related to the data of high school and college entrance exam scores. But we think it is important to introduce the concepts of **sensitivity** and **specificity** to the readers, since they are also used to describe the overall testing results, especially in a clinical setting.^[<https://www.ncbi.nlm.nih.gov/books/NBK557491/>]   
 
 Sensitivity means that when a patient actually has the disease (actual positive), the medical test is able to sense it and produce a positive result. That is, the medical test is sensitive enough to identify patients who have the disease.  
 
@@ -104,4 +104,4 @@ $$\begin{aligned}
 
 $$\dfrac{P(\text{Actual Positive}|\text{Test Positive})}{P(\text{Actual Positive})} = \dfrac{9.16\%}{0.1\%} = 91.6.$$
   
-  The statistical calculation tells us that we do not have to be overly concerned about a positive medical test outcome, because the chances are still low for the person to have the disease. However, upon learning the 99% sensitivity and 99% specificity of the test, many doctors seem to associate a positive test with a high probability of having the disease.^[<https://www.washingtonpost.com/news/posteverything/wp/2018/10/05/feature/doctors-are-surprisingly-bad-at-reading-lab-results-its-putting-us-all-at-risk/>] If any of the readers become a medical doctor in the future, please remember the lesson here and make better treatment decisions for the patients.
+  The statistical calculation tells us that we do not have to be overly concerned about a positive medical test outcome, because the chances are still low for the person to have the disease. However, upon learning the 99% sensitivity and 99% specificity of the test, many doctors seem to associate a positive test with a high probability of having the disease.^[<https://bit.ly/4andehj>] If any of the readers become a medical doctor in the future, please remember the lesson here and make better treatment decisions for the patients.
