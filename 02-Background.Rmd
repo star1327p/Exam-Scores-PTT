@@ -21,7 +21,7 @@ A major reform came in Year 2014, and the high school entrance exam was official
 The college entrance exams in Taiwan are held twice a year by the College Entrance Examination Center (CEEC).^[<https://www.ceec.edu.tw/>] The first exam is called the General Scholastic Ability Test (GSAT), and the scores are used for early admission. The second exam is called the Advanced Subjects Test (AST), and the scores are used for regular admission. The college admission rules change slightly every several years, but the format of two entrance exams has been used for 20+ years and is here to stay \cite{chou2015higher, chiang2022exams}.  
 
 
-### General Scholastic Ability Test (GSAT)  
+### General Scholastic Ability Test (GSAT) {#College_GSAT} 
 
 The GSAT has been in place since 1994, and the exam is typically held in late January or early February.^[<https://bit.ly/2W0fdUq>] Students can use the GSAT scores and additional criteria (i.e., their portfolio documents) to apply to colleges for early admission \cite{hsieh2019preliminary}. Starting in 2022, the early admission from GSAT is not as "early" anymore.^[<https://www.mediglobal.org/en/node/561>] The timeline of the first round of college admission has been postponed from March to May, leaving high school students little time to prepare for the upcoming second exam in July.^[<https://www.parenting.com.tw/article/5094739>]  
 
@@ -36,6 +36,14 @@ The 0 to 15 point scale is calculated in three steps:^[<https://bit.ly/3bxIuSn>]
 For example, if a subject has the "top" of 93.45 (max 100), then the scale interval is 93.45/15 = 6.23, rounded to two decimal points. Zero point is reserved for absolute zero marks on the exam. A student will get 1 point for a raw score between 0.01 and 6.23, and 2 points for a raw score between 6.24 and 12.46, and so on. If we observe from the top of the scale, a student can get 15 points for a raw score between 87.23 and 100, and 14 points for a raw score between 81.00 and 87.22. Note that the threshold (87.23) to achieve 15 points is 14 times of the scale interval (6.23).   
 
 Starting in 2019, students may choose four of the five subjects for the GSAT, and the maximum possible score (i.e., full marks) is reduced from 75 to 60.^[<http://tinyurl.com/3r5zrzhs>] Students in the science track often choose to drop the social sciences subject in the GSAT, and students in the humanities track often choose to skip the physical sciences subject. High school students are also required to maintain a portfolio each semester to document their learning outcomes, and the portfolio will be evaluated by the colleges they apply to.^[<https://www.108epo.com/courses.php>]     
+
+\section*{\textcolor{red}{Unfinished below}}
+
+Need to add: Changes in 2022
+
+GSAT contains mathematics A and mathematics B.^[<https://bit.ly/4bEoQ0y>]   
+
+Business, finance majors - some require mathematics A and some require mathematics B.  
 
 ### Advanced Subjects Test (AST) {#College_AST}
 
