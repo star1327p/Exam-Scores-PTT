@@ -48,7 +48,7 @@ To-Do:
 
 2. Check every single URL to make sure that it works. Some of the URLs are invalid. Beware! 
 
-- Start checking URLs from Section \ref{interpretation}.
+- Start checking URLs from Section \ref{roc-prep}.
 
 - Section \ref{College_GSAT}: Add the changes in 2022 -- GSAT contains mathematics A and mathematics B.^[<https://bit.ly/4bEoQ0y>]
 
