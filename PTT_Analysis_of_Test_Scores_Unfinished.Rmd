@@ -46,33 +46,35 @@ To-Do:
 
 1. Proofread the content myself (85 pages).
 
-2. Check every single URL to make sure that it works. Some of the URLs are invalid. Beware! 
+2. Need to add more references, instead of just URLs. Especially on Taiwan's education system, which I have fewer than 10 items listed in the References. Most of my references are about statistics and/or data science itself.
 
-- Start checking URLs from Section \ref{roc-prep}.
+3. Section \ref{College_GSAT}: Add the changes in 2022 -- GSAT contains mathematics A and mathematics B.^[<https://bit.ly/4bEoQ0y>]
 
-- Section \ref{College_GSAT}: Add the changes in 2022 -- GSAT contains mathematics A and mathematics B.^[<https://bit.ly/4bEoQ0y>]
-
-- Probably need to add more references, instead of just URLs. Especially on Taiwan's education system, which I have fewer than 10 items listed in the References. Most of my references are about statistics and/or data science itself.
 
 Done:
 
 - Due to the discontinuation of **xuite.net** effective August 31, 2023,^[<https://mrmad.com.tw/xuite-close>] I need to replace these footnote links with something else. 
 
+- Checked the validity of each URL.
+
 - For any URL that is long and/or contains a hash string, shorten the URL to be concise.
 
-3. Also check the references in detail. 
 
-4. Ask some friends (preferably current high school teachers) to verify the correctness of the high school and college entrance rules in Taiwan.  
+Continue:
 
-5. Ask other friends for feedback on my report.
+4. Also check the references in detail. 
 
-6. Revise the report according to the feedback I receive.
+5. Ask some friends (preferably current high school teachers) to verify the correctness of the high school and college entrance rules in Taiwan.  
 
-7. Recheck everything one more time.
+6. Ask other friends for feedback on my report.
 
-8. Obtain approval to list my new affiliation with the disclaimer.
+7. Revise the report according to the feedback I receive.
 
-9. Finally, publish this article to ResearchGate.
+8. Recheck everything one more time.
+
+9. Obtain approval to list my new affiliation with the disclaimer.
+
+10. Finally, publish this article to ResearchGate.
 
 \section*{\textcolor{red}{Unfinished above}}
 
@@ -229,7 +231,7 @@ The opinions and views expressed in this manuscript are those of the author, and
 
 The author would like to thank Dr. Mine Cetinkaya-Rundel and Dr. David Banks at Duke University; they both motivated the author to teach statistics and create reproducible work in $\mathsf{R}$. The author is also grateful to her former Microsoft colleagues Smit Patel and Dylan Stout for troubleshooting GitHub issues.  
 
-The author would also like to acknowledge Dr. Cliburn Chan and Dr. Janice McCarthy for introducing her to GitHub in the statistical computation course at Duke University. This provided her the foundations to use GitHub as a modern version control system in the first place.  
+The author would also like to acknowledge Dr. Cliburn Chan and Dr. Janice McCarthy for introducing her to GitHub in the statistical computation course at Duke University.^[<https://people.duke.edu/~ccc14/sta-663-2015/>] This provided her the foundations to use GitHub as a modern version control system in the first place.  
 
 Finally, the author gives a special mention to her significant other, Hugh Hendrickson, for all his support in the author's professional career development.
 
