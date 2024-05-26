@@ -44,14 +44,16 @@ Ongoing work since 2019.
 
 To-Do:
 
-1. Proofread the content myself (85 pages).
+1. Need to add more references, instead of just URLs. Especially on Taiwan's education system, which I have very few items listed in the References. Most of my references are about statistics and/or data science itself.
 
-2. Need to add more references, instead of just URLs. Especially on Taiwan's education system, which I have fewer than 10 items listed in the References. Most of my references are about statistics and/or data science itself.
+- Tentative goal: Add enough references for the PDF to have at least 90 pages.
 
-3. Section \ref{College_GSAT}: Add the changes in 2022 -- GSAT contains mathematics A and mathematics B.^[<https://bit.ly/4bEoQ0y>]
+2. Section \ref{College_GSAT}: Add the changes in 2022 -- GSAT contains mathematics A and mathematics B.^[<https://bit.ly/4bEoQ0y>]
 
 
 Done:
+
+- Proofread the content myself (85+ pages).
 
 - Due to the discontinuation of **xuite.net** effective August 31, 2023,^[<https://mrmad.com.tw/xuite-close>] I need to replace these footnote links with something else. 
 
@@ -62,19 +64,19 @@ Done:
 
 Continue:
 
-4. Also check the references in detail. 
+3. Also check the references in detail. 
 
-5. Ask some friends (preferably current high school teachers) to verify the correctness of the high school and college entrance rules in Taiwan.  
+4. Ask some friends (preferably current high school teachers) to verify the correctness of the high school and college entrance rules in Taiwan.  
 
-6. Ask other friends for feedback on my report.
+5. Ask other friends for feedback on my report.
 
-7. Revise the report according to the feedback I receive.
+6. Revise the report according to the feedback I receive.
 
-8. Recheck everything one more time.
+7. Recheck everything one more time.
 
-9. Obtain approval to list my new affiliation with the disclaimer.
+8. Obtain approval to list my new affiliation with the disclaimer.
 
-10. Finally, publish this article to ResearchGate.
+9. Finally, publish this article to ResearchGate.
 
 \section*{\textcolor{red}{Unfinished above}}
 
