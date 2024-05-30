@@ -55,7 +55,7 @@ The most prestigious high schools in Taipei typically requires **HighSchool_PR**
 
 ## Comparison with the Model Prediction
 
-We also apply the logistic regression model in Section \ref{threshold-65}, which predicts the probability of a respondent achieving **College_Score** at least 65 with his/her **HighSchool_PR**. Given the author's **HighSchool_PR** 95 score, the predictive probability is about 64.6% in terms of how likely she would have achieved **College_Score** at least 65. As a reference, Section \ref{logit-point-est} shows that given **HighSchool_PR** 99, the estimated probability to achieve this is 76.9%. The numbers made the author feel better, because she still had a good chance of getting **College_Score** at least 65 given her original **HighSchool_PR**.   
+We also apply the logistic regression model in Section \ref{threshold-65}, which predicts the probability of a respondent achieving **College_Score** at least 65 given their **HighSchool_PR**. Given the author's **HighSchool_PR** 95 score, the predictive probability is about 64.6% in terms of how likely she would have achieved **College_Score** at least 65. As a reference, Section \ref{logit-point-est} shows that given **HighSchool_PR** 99, the estimated probability to achieve this is 76.9%. The numbers made the author feel better, because she still had a good chance of getting **College_Score** at least 65 given her original **HighSchool_PR**.   
 
 ```{r logit-pred-draft}
 original_model = glm(CS_65up ~ HighSchool_PR, data=data_corr, family="binomial")

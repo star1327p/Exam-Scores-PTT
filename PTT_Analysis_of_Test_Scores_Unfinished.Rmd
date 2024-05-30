@@ -48,8 +48,6 @@ To-Do:
 
 - Tentative goal: Add enough references for the PDF to have at least 90 pages.
 
-- Avoid using gender-indicative pronouns like "he/she". Change it to "they" or something not related to gender.
-
 2. Section \ref{College_GSAT}: Add the changes in 2022 -- GSAT contains mathematics A and mathematics B.^[<https://bit.ly/4bEoQ0y>]
 
 
@@ -62,6 +60,9 @@ Done:
 - Checked the validity of each URL.
 
 - For any URL that is long and/or contains a hash string, shorten the URL to be concise.
+
+- Avoid using gender-indicative pronouns like "he/she", "him/her", or "his/her". Change it to "they", "their", or something not related to gender.
+
 
 
 Continue:

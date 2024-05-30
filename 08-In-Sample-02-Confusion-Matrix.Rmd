@@ -27,9 +27,9 @@ $$\text{Precision} = \dfrac{\text{True Positive}}{\text{Predicted Positive}} = \
 Plugging in the numbers from our model, we get
 $$\text{Precision} = \dfrac{72}{72+35} \approx 67.29\%.$$  
 
-The precision would be useful if we use the predictive information to decide to invest in which high school students based on their **HighSchool_PR**. If we predict a student to get **College_Score** at least 65, he/she has about a 67.29% chance to make it, which is more than two-thirds. Since there are different tiers of high schools in Taiwan based on **HighSchool_PR**, many resources are given to the top tier high schools, because these students have the highest chance to do well on the college entrance exam. Nevertheless, other social factors also play a role in the overall policy decision-making process. For example, the government may decide to put more resources into remote rural high schools to empower disadvantaged students to succeed, which is beneficial for upward social mobility.
+The precision would be useful if we use the predictive information to decide to invest in which high school students based on their **HighSchool_PR**. If we predict a student to get **College_Score** at least 65, this student has about a 67.29% chance to make it, which is more than two-thirds. Since there are different tiers of high schools in Taiwan based on **HighSchool_PR**, many resources are given to the top tier high schools, because these students are perceived as having the highest chance to do well on the college entrance exam. Nevertheless, other social factors also play a role in the overall policy decision-making process. For example, the government may decide to put more resources into remote rural schools to empower their students to succeed, which is beneficial for upward social mobility \cite{cwchai2023impact}.   
 
-On the other hand, recall is defined as the percentage of model-predicted positives among all datapoints that are actually positive. In our example, recall is the percentage of the respondents we predicted to have **College_Score** at least 65 given their **HighSchool_PR**, among the respondents who actually made this achievement. 
+On the other hand, the recall is defined as the percentage of model-predicted positives among all datapoints that are actually positive. In our example, the recall is the percentage of the respondents we predicted to have **College_Score** at least 65 given their **HighSchool_PR**, among the respondents who actually made this achievement. 
 
 $$\text{Recall} = \dfrac{\text{True Positive}}{\text{Actual Positive}} = \dfrac{\text{True Positive}}{\text{True Positive + False Negative}}$$  
 
@@ -49,9 +49,9 @@ $$\text{False Positive Rate} = \dfrac{\text{False Positive}}{\text{Actual Negati
 Plugging in the numbers from our model, we get 
 $$\text{False Positive Rate} = \dfrac{35}{35+61} \approx 36.46\%.$$
 
-Given that a student did not get  **College_Score** at least 65, there is a 36.46\% chance that we predicted him/her to achieve this. We would like to give the benefit of the doubt, saying that the student simply did not do well on the first college entrance exam for early admission. It is possible that he/she was able to get into a better school through taking the second college entrance exam for regular admission.
+Given that a student did not get  **College_Score** at least 65, there is a 36.46\% chance that we predicted the student to achieve this. We would like to give the benefit of the doubt, saying that the student simply did not do well on the first college entrance exam for early admission. The student may still get into a better school through taking the second college entrance exam for regular admission.
 
-On the other hand, false negative rate is the probability of an actual positive being classified as a negative. In medical terms, this means someone is tested negative for a disease, but actually has the disease. In our dataset, this means a student actually got **College_Score** at least 65, but we predicted him/her as not achieving this.
+On the other hand, false negative rate is the probability of an actual positive being classified as a negative. In medical terms, this means someone is tested negative for a disease, but actually has the disease. In our dataset, this means a student actually got **College_Score** at least 65, but we predicted that the student is not going to achieve this.
 
 $$\text{False Negative Rate} = \dfrac{\text{False Negative}}{\text{Actual Positive}} = \dfrac{\text{False Negative}}{\text{True Positive + False Negative}}$$
 
@@ -62,7 +62,7 @@ $$\text{False Negative Rate} = 1 - \text{Recall}$$
 Plugging in the numbers from our model, we get 
 $$\text{False Negative Rate} = \dfrac{20}{72+20} \approx 21.74\%.$$
 
-Given that a student actually got **College_Score** at least 65, there is a 21.74\% chance that we did not predict him/her to achieve this. We need to remember that the model is imperfect, so there always exist students who did better in **College_Score** than the model had expected. To put it differently, **HighSchool_PR** is not a full indicator of achieving **College_Score** at least 65 or not. This is an encouraging message to students who did not do well in **HighSchool_PR**, because they still have a chance in **College_Score** to get admitted to a good school.  
+Given that a student actually got **College_Score** at least 65, there is a 21.74\% chance that we did not predict the student to achieve this. We need to remember that the model is imperfect, so there always exist students who did better in **College_Score** than the model had expected. To put it differently, **HighSchool_PR** is not a full indicator of achieving **College_Score** at least 65 or not. This is an encouraging message to students who did not do well in **HighSchool_PR**, because they still have a chance in **College_Score** to get admitted to a good school.  
 
 In our data analysis, false positive rate and false negative rate have about equal importance. But in certain situations, one can be much more important than the other. For instance, false positive rate is an essential measure in the effectiveness of prompting users to re-enter login information to verify identity for social media. The goal of re-entering credentials is to prevent unauthorized logins, but when people get prompted too many times while using their own account, they would get frustrated and leave the website. This leads to significant revenue loss in business.^[<https://www.fullstory.com/user-friction/>] On the contrary, we are more concerned about the false negative rate in medical testing for a rare disease. The goal of medical testing is to identify as many people with the disease as possible, so that these people can receive timely medical treatment. Hence we are more concerned when the test fails to detect a person who actually has the disease.^[<https://brownmath.com/stat/falsepos.htm>]   
 
@@ -90,7 +90,7 @@ Let's see an example in medical testing.^[<https://math.hmc.edu/funfacts/medical
 
 - For the 499,500 people who do not have the disease, 4,995 people tested positive and the remaining 494,505 people tested negative.  
 
-**Given that a patient tested positive, how likely does he/she actually have the disease?**  
+**Given that a patient tested positive, how likely does the patient actually have the disease?**  
   
   Using the Bayes theorem, we get 
 

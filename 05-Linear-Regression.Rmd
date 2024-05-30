@@ -83,7 +83,7 @@ round(prop.table(contingency),4)
 
 ## Conditional Probability 
 
-Using conditional probability, we can answer this question from the data: If a person scores at least 80 on the high school entrance score percentile rank (PR), how likely is he/she going to obtain a score at least 60 on the college entrance exam?  
+Using conditional probability, we can answer this question from the data: If a person scores at least 80 on the high school entrance score percentile rank (PR), how likely is this person going to obtain a score at least 60 on the college entrance exam?  
 
 In mathematical terms, this is equivalent to finding $P(\text{College$\_$60up is true } \vert \text{ HighSchool$\_$80up is true})$. Recall the conditional probability formula and the Bayes theorem:  
 
@@ -107,9 +107,9 @@ $$\begin{aligned}
 &= \frac{120}{43+120} \approx 0.7362.
 \end{aligned}$$
 
-According to this data from PTT, there is a 73.62% chance for a person to score at least 60 on the college entrance exam, given that he/she scored at least 80 on the high school entrance score percentile rank (PR). Note that we use number of respondents rather than percentage to avoid rounding errors.  
+According to this data from PTT, there is a 73.62% chance for a person to get at least 60 on the college entrance exam, given a score of at least 80 on the high school entrance score percentile rank (PR). Note that we use number of respondents rather than percentage to avoid rounding errors.  
 
-In comparison, if we do not know anything about the person's high school entrance score percentile rank (PR), we have a probability of 63.82% in observing the person scoring at least 60 on the college entrance exam. There is an increase of 9.80% in probability after we learn information about his/her high school entrance exam score.
+In comparison, if we do not know anything about the person's high school entrance score percentile rank (PR), we have a probability of 63.82% in observing the person scoring at least 60 on the college entrance exam. There is an increase of 9.80% in probability after we learn information about their high school entrance exam score.
 
 $$\begin{aligned}
 P(\text{College$\_$60up is true}) &= \text{$\#$ of respondents with College$\_$Score $\geq$ 60 / all respondents} \\
