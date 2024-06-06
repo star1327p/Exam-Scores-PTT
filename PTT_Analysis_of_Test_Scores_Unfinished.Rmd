@@ -48,6 +48,10 @@ To-Do:
 
 - Tentative goal: Add enough references for the PDF to have at least 90 pages.
 
+- The Introduction section needs to be stronger and more convincing.
+
+- Definitely need more references for the Background section.
+
 2. Section \ref{College_GSAT}: Add the changes in 2022 -- GSAT contains mathematics A and mathematics B.^[<https://bit.ly/4bEoQ0y>]
 
 
