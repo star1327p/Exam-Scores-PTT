@@ -44,15 +44,15 @@ Ongoing work since 2019.
 
 To-Do:
 
-1. Need to add more references, instead of just URLs. Especially on Taiwan's education system, which I have very few items listed in the References. Most of my references are about statistics and/or data science itself.
+1. Section \ref{College_GSAT}: Add the changes in 2022 -- GSAT contains mathematics A and mathematics B.^[<https://bit.ly/4bEoQ0y>]  
+
+2. Need to add more references, instead of just URLs. Especially on Taiwan's education system, which I have very few items listed in the References. Most of my references are about statistics and/or data science itself.
 
 - Tentative goal: Add enough references for the PDF to have at least 90 pages.
 
 - The Introduction section needs to be stronger and more convincing.
 
 - Definitely need more references for the Background section.
-
-2. Section \ref{College_GSAT}: Add the changes in 2022 -- GSAT contains mathematics A and mathematics B.^[<https://bit.ly/4bEoQ0y>]
 
 
 Done:
