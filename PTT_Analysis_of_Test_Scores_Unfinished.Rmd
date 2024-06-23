@@ -44,9 +44,7 @@ Ongoing work since 2019.
 
 To-Do:
 
-1. Section \ref{College_GSAT}: Add the changes in 2022 -- GSAT contains mathematics A and mathematics B.^[<https://bit.ly/4bEoQ0y>]  
-
-2. Need to add more references, instead of just URLs. Especially on Taiwan's education system, which I have very few items listed in the References. Most of my references are about statistics and/or data science itself.
+1. Need to add more references, instead of just URLs. Especially on Taiwan's education system, which I have very few items listed in the References. Most of my references are about statistics and/or data science itself.
 
 - Tentative goal: Add enough references for the PDF to have at least 90 pages.
 
@@ -67,23 +65,24 @@ Done:
 
 - Avoid using gender-indicative pronouns like "he/she", "him/her", or "his/her". Change it to "they", "their", or something not related to gender.
 
+- Section \ref{College_GSAT}: Add the changes in 2022 -- GSAT contains mathematics A and mathematics B.^[<https://bit.ly/4bEoQ0y>]  
 
 
 Continue:
 
-3. Also check the references in detail. 
+2. Also check the references in detail. 
 
-4. Ask some friends (preferably current high school teachers) to verify the correctness of the high school and college entrance rules in Taiwan.  
+3. Ask some friends (preferably current high school teachers) to verify the correctness of the high school and college entrance rules in Taiwan.  
 
-5. Ask other friends for feedback on my report.
+4. Ask other friends for feedback on my report.
 
-6. Revise the report according to the feedback I receive.
+5. Revise the report according to the feedback I receive.
 
-7. Recheck everything one more time.
+6. Recheck everything one more time.
 
-8. Obtain approval to list my new affiliation with the disclaimer.
+7. Obtain approval to list my new affiliation with the disclaimer.
 
-9. Finally, publish this article to ResearchGate.
+8. Finally, publish this article to ResearchGate.
 
 \section*{\textcolor{red}{Unfinished above}}
 
