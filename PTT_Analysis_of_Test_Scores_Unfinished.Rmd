@@ -50,22 +50,7 @@ To-Do:
 
 - The Introduction section needs to be stronger and more convincing.
 
-- Definitely need more references for the Background section.
-
-
-Done:
-
-- Proofread the content myself (85+ pages).
-
-- Due to the discontinuation of **xuite.net** effective August 31, 2023,^[<https://mrmad.com.tw/xuite-close>] I need to replace these footnote links with something else. 
-
-- Checked the validity of each URL.
-
-- For any URL that is long and/or contains a hash string, shorten the URL to be concise.
-
-- Avoid using gender-indicative pronouns like "he/she", "him/her", or "his/her". Change it to "they", "their", or something not related to gender.
-
-- Section \ref{College_GSAT}: Add the changes in 2022 -- GSAT contains mathematics A and mathematics B.^[<https://bit.ly/4bEoQ0y>]  
+- Definitely need more references for the Background section.s
 
 
 Continue:
