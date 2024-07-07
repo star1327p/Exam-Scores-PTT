@@ -6,7 +6,7 @@ The author got **College_Score** 69 on the General Scholastic Ability Test (GSAT
 
 ## Comparison with the Data
   
-The author's high school and college entrance exam scores are indicated as the red dot in the scatterplot below from Section \ref{bivariate}. We also added the reference lines for **HighSchool_PR** 80 and **College_Score 60**. **HighSchool_PR** 95 and **College_Score** 69 are definitely above-average scores, despite imperfect.      
+The author's high school and college entrance exam scores are indicated as the red dot in the scatterplot below from Section \ref{bivariate}. We also added the reference lines for **HighSchool_PR** 80 and **College_Score** 60. **HighSchool_PR** 95 and **College_Score** 69 are definitely above-average scores, despite imperfect.      
 
 ```{r bivariate-dup}
 plot(data_corr$HighSchool_PR, data_corr$College_Score,
@@ -51,7 +51,7 @@ print(paste("Mean College_Score:",round(mean(pr97to99), digits=1)))
 
 Given the author's **HighSchool_PR** 95 score, **College_Score** 69 is an above-average outcome. Although it is somewhat unfair to compare **HighSchool_PR** 95 with **HighSchool_PR** 97 as a nearby value, **College_Score** 69 is only one point below the median **College_Score** of the **HighSchool_PR** 97-99 group. We do not know whether the positive outcome is due to the fact that the author studied extra hard given the more competitive environment in her high school, and/or she received more resources than most respondents with **HighSchool_PR** 95 \cite{chou2015better}.   
 
-The most prestigious high schools in Taipei typically requires **HighSchool_PR** 97 or higher.^[<https://blog.udn.com/ckhsaturn/5448254>] Students in Taipei with **HighSchool_PR** 97 may receive significantly more resources than the ones with **HighSchool_PR** 95, despite the difference is only two percentage points. This phenomenon is less likely in areas where the **HighSchool_PR** requirement is not as high in their top local high schools. 
+The most prestigious high schools in Taipei typically requires **HighSchool_PR** 97 or higher.^[<https://blog.udn.com/ckhsaturn/5448254>] Students in Taipei with **HighSchool_PR** 97 may receive significantly more resources than the ones with **HighSchool_PR** 95, despite the difference is only two percentage points \cite{jheng2013masters}. This phenomenon is less likely in areas where the **HighSchool_PR** requirement is not as high in their top local high schools. 
 
 ## Comparison with the Model Prediction
 
