@@ -38,38 +38,7 @@ knitr::knit_hooks$set(chunk = function(x, options) {
 })
 ```
 
-\section*{\textcolor{red}{Unfinished below}}
-
-Ongoing work since 2019.   
-
-To-Do:
-
-1. Need to add more references, instead of just URLs. Especially on Taiwan's education system, which I have very few items listed in the References. Most of my references are about statistics and/or data science itself.
-
-- Tentative goal: Add enough references for the PDF to have at least 90 pages.
-
-- The Introduction section needs to be stronger and more convincing.
-
-- Definitely need more references for the Background section.
-
-
-Continue:
-
-2. Also check the references in detail. 
-
-3. Ask some friends (preferably current high school teachers) to verify the correctness of the high school and college entrance rules in Taiwan.  
-
-4. Ask other friends for feedback on my report.
-
-5. Revise the report according to the feedback I receive.
-
-6. Recheck everything one more time.
-
-7. Obtain approval to list my new affiliation with the disclaimer.
-
-8. Finally, publish this article to ResearchGate.
-
-\section*{\textcolor{red}{Unfinished above}}
+\section*{\textcolor{red}{Ongoing work since 2019.}}
 
 # Executive Summary {.unnumbered}
 
