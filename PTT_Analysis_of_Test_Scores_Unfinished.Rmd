@@ -7,6 +7,7 @@ author:
 date: \today
 output: 
         pdf_document:
+                extra_dependencies: ["float"]
                 number_sections: true
                 citation_package: natbib
 header-includes: 
@@ -36,9 +37,21 @@ knitr::knit_hooks$set(chunk = function(x, options) {
   x <- def.chunk.hook(x, options)
   ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
 })
+
+knitr::opts_chunk$set(fig.pos = "H", out.extra = "")
 ```
 
 \section*{\textcolor{red}{Ongoing work since 2019.}}
+
+\section*{\textcolor{red}{Unfinished Below}}
+
+1. Add captions for all figures, starting from Section \ref{EDA-College_Score}.  
+
+2. Add DOI links to every reference whenever possible.  
+
+I may not need to add more references until I fix the two issues above. Then I can ask some friends (preferably current high school teachers) to verify the correctness of the high school and college entrance rules in Taiwan.  
+
+\section*{\textcolor{red}{Unfinished Above}}
 
 # Executive Summary {.unnumbered}
 
