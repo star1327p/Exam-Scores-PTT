@@ -1,6 +1,7 @@
 ## Statistical Analysis of High School and College Entrance Exam Scores in Taiwan with Online Data: A Fully Reproducible Approach with R Markdown  
 
-Christine P. Chai
+Christine P. Chai  
+<cpchai21@gmail.com>
 
 #### Executive Summary
 
@@ -12,8 +13,10 @@ The opinions and views expressed in this manuscript are those of the author, and
 
 #### Data Source
 
-We obtained the high school and college entrance score data sample from [PTT](https://term.ptt.cc/), the largest terminal-based bulletin board in Taiwan.  
-Data link: https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html
+We obtained the high school and college entrance score data sample from [PTT](https://term.ptt.cc/), the largest terminal-based bulletin board in Taiwan. The data
+from PTT are more representative than if we had collected on our own, because almost anyone could get a PTT account and reply to the post. The majority of scores were reported in May 2015, and a few scores were reported in the following month or later.   
+
+Data link: <https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>
 
 #### To-Do:
 
