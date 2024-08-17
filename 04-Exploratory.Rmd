@@ -26,10 +26,11 @@ summary(data_corr$HighSchool_PR)
 
 In the univariate analysis, the 1st quartile of **HighSchool_PR** is 85, which means only 25% of the respondents have a percentile rank (PR) below 85. Hence 75% of the respondents have a percentile rank (PR) at least 85, i.e., in the top 15% of the high school entrance exam. The median (92) is higher than the mean (89-90), indicating that the distribution is left-skewed. Half of the respondents scored **HighSchool_PR** 92 or better, and we have few samples of the lower end of the high school entrance exam. In fact, the lowest score we obtained in the data is already 51 -- still slightly above the national median score (50). The maximum is capped at 99.    
 
-The histogram in Figure \ref{fig:high-school-pr-histogram} shows a left-skewed distribution, and we can see a long tail to the left. Since our data are self-reported by respondents, the ones with higher scores are more likely to report, resulting in survey non-response bias. It is also possible that many students with extremely low **HighSchool_PR** chose not to attend college, so they would not have a **College_Score** to respond to the survey.  
+The histogram of **HighSchool_PR** in Figure \ref{fig:high-school-pr-histogram} shows a left-skewed distribution, and we can see a long tail to the left. Since our data are self-reported by respondents, the ones with higher scores are more likely to report, resulting in survey non-response bias \cite{elston2021participation}. It is also possible that some students with extremely low **HighSchool_PR** chose not to attend college, so they would not have a **College_Score** to respond to the survey.  
 
-```{r high-school-pr-histogram, fig.cap="Histogram of \\textbf{HighSchool$\\_$PR}"}
-hist(uni_HS_score, main = "Histogram of HighSchool_PR", xlab="HighSchool_PR")
+```{r high-school-pr-histogram, fig.cap="Histogram of \\textbf{HighSchool$\\_$PR} (max possible is 99)"}
+hist(uni_HS_score, main = "Histogram of HighSchool_PR", 
+     xlab="HighSchool_PR (max possible is 99)")
 ```
 
 If we were to take a sufficiently large random sample from the full database of **HighSchool_PR** in Taiwan, the minimum should be 1 and the maximum would still be at 99. However, the **HighSchool_PR** is the national percentile rank itself, so the 1st quartile should be around 25, median and mean both around 50, and the 3rd quartile around 75.   
@@ -45,7 +46,7 @@ random_sample = sample(possible_values, size=length(uni_HS_score), replace=TRUE)
 print(random_sample)
 ```
 
-As we can see, the simulated random sample has median and mean close to 50. The 1st quartile is near 25, and the 3rd quartile is near 75. The simulated sample is to demonstrate a nationally representative sample of **HighSchool_PR**. Nevertheless, this would not be appropriate for the evaluation of the relationship between **HighSchool_PR** and **College_Score**, because students with extremely low **HighSchool_PR** may decide not to attend college at all.   
+As we can see, the simulated random sample has median and mean close to 50. The 1st quartile is near 25, and the 3rd quartile is near 75. The simulated sample is to demonstrate a nationally representative sample of **HighSchool_PR**. Nevertheless, this would not be appropriate for the evaluation of the relationship between **HighSchool_PR** and **College_Score**, because students with a higher **HighSchool_PR** tend to be more interested in attending college \cite{yu2018stratification}.   
 
 ```{r random-data-stats}
 summary(random_sample)
@@ -53,8 +54,9 @@ summary(random_sample)
 
 Figure \ref{fig:random-data-histogram} shows that the histogram of the simulated random sample is flat, as what we expect from a discrete uniform distribution.  
 
-```{r random-data-histogram, fig.cap="Histogram of Simulated Random Sample for  \\textbf{HighSchool$\\_$PR}"}
-hist(random_sample, main = "Histogram of Simulated Random Sample", xlab="HighSchool_PR")
+```{r random-data-histogram, fig.cap="Histogram of Simulated Random Sample for  \\textbf{HighSchool$\\_$PR} (max possible is 99)"}
+hist(random_sample, main = "Histogram of Simulated Random Sample", 
+     xlab="HighSchool_PR (max possible is 99)")
 ```
 
 \section*{\textcolor{red}{Unfinished Below}}
@@ -77,11 +79,10 @@ According to the reference score table^[<https://bit.ly/3bAYOvO>] from Wikipedia
 
 Since PTT contains forums for several prestigious universities in Taiwan, it is no surprise that many users attended these colleges because they scored well on the college entrance exam. Nevertheless, PTT does not limit registration to students of these colleges, so the population of PTT is relatively diverse but still not very representative of the whole student population.   
 
-The histogram for **College_Score** also shows a left-skewed distribution, but not as extreme as **HighSchool_PR**. Note that right-skewed distributions are more common in real life, such as employee salaries and movie ticket sales.^[<https://www.statology.org/positively-skewed-distribution-examples/>]       
-
-```{r college-score-histogram}
+The histogram for **College_Score** in Figure \ref{fig:college-score-histogram} also shows a left-skewed distribution, but not as extreme as **HighSchool_PR**. Note that right-skewed distributions are more common in real life, such as employee salaries and movie ticket sales.^[<https://www.statology.org/positively-skewed-distribution-examples/>]       
+```{r college-score-histogram, fig.cap="Histogram of \\textbf{College$\\_$Score} (max possible is 75)"}
 hist(uni_college_score, main="Histogram of College_Score",
-     xlab="College_Score (max possible is 75)",xlim=c(30,80))
+     xlab="College_Score (max possible is 75)", xlim=c(30,80))
 ```
 
 Unlike the case of **HighSchool_PR**, we do not think it is appropriate to simulate a random sample for **College_Score** across years in general. First, **College_Score** are not percentile ranks like **HighSchool_PR**, and there is no statistical nature of how the **College_Score** distribution should look like. Moreover, the exact distribution of **College_Score** differs greatly due to the varying difficulty levels each year. For example, the 88th percentile of **College_Score** was 65 in 2014 and 59 in 2007.^[<https://bit.ly/2W0fdUq>] The 6-point difference in the score is large enough for an applicant to get admitted to a lower or higher tier of universities.   
@@ -90,7 +91,7 @@ In Section \ref{College_Score}, we mentioned that the Taiwan government publishe
 
 ## Bivariate Exploration {#bivariate}
 
-Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score** to examine the relationship between the two scores. Obviously, a respondent needs a valid score in both to be included in the bivariate scatterplot. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores. The bivariate scatterplot shows a funnel shape -- respondents with lower **HighSchool_PR** have higher variance in **College_Score**.      
+Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score** to examine the relationship between the two scores. Obviously, a respondent needs a valid score in both to be included in the bivariate scatterplot. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores. The bivariate scatterplot shows a funnel shape -- respondents with higher **HighSchool_PR** have larger variance in **College_Score**.      
 
 ```{r bivariate} 
 plot(data_corr$HighSchool_PR, data_corr$College_Score,
@@ -99,7 +100,7 @@ plot(data_corr$HighSchool_PR, data_corr$College_Score,
      ylab="College_Score")
 ```
 
-We use the correlation coefficient to measure the strength of the linear relationship between **HighSchool_PR** and **College_Score**. The computed value is approximately 0.507, showing a medium strength of positive association between the two variables. We can interpret that a better score in the high school entrance exam is associated with a better college entrance exam score, but the relationship is not as strong after **HighSchool_PR** reaches 80. (Note that correlation does not imply causality!)    
+We use the correlation coefficient to measure the strength of the linear relationship between **HighSchool_PR** and **College_Score**. The computed value is approximately 0.507, showing a medium strength of positive association between the two variables. We can interpret that a better score in the high school entrance exam is associated with a better college entrance exam score, but the relationship is not as strong after **HighSchool_PR** reaches 80. Note that correlation does not imply causality \cite{ksir2016correlation, schield1995correlation}.     
 
 ```{r correlation}
 cor(data_corr$HighSchool_PR, data_corr$College_Score)
