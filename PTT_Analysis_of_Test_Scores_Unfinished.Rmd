@@ -45,7 +45,7 @@ knitr::opts_chunk$set(fig.pos = "H", out.extra = "")
 
 \section*{\textcolor{red}{Unfinished Below}}
 
-1. Add captions for all figures, starting from Section \ref{EDA-College_Score}.  
+1. Add captions for all figures, starting from Section \ref{bivariate}.  
 
 2. Add DOI links to every reference whenever possible.  
 

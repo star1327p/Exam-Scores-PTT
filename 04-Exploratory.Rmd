@@ -59,8 +59,6 @@ hist(random_sample, main = "Histogram of Simulated Random Sample",
      xlab="HighSchool_PR (max possible is 99)")
 ```
 
-\section*{\textcolor{red}{Unfinished Below}}
-
 ## College Entrance Exam Scores  {#EDA-College_Score}
 
 Similarly, we also show the descriptive statistics of **College_Score**, i.e., the college entrance exam scores between 1 and 75. The distribution is also left-skewed, but less extreme than **HighSchool_PR**. The median of **College_Score** is 64.5, indicating that 50% of the respondents have **College_Score** 65 or higher. The 3rd quartile is already at 69, so the top score range 69-75 accounts for 25% of the respondents. This is much higher than the national average.  
@@ -89,16 +87,19 @@ Unlike the case of **HighSchool_PR**, we do not think it is appropriate to simul
 
 In Section \ref{College_Score}, we mentioned that the Taiwan government published detailed statistics of the **College_Score** each year, including the five indicators (88th, 75th, 50th, 25th, 12th percentile) of each subject and the total score. However, since our data sample contains **College_Score** across several years, it is not meaningful to generate a simulated distribution here.   
 
+\section*{\textcolor{red}{Unfinished Below}}
+
 ## Bivariate Exploration {#bivariate}
 
-Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score** to examine the relationship between the two scores. Obviously, a respondent needs a valid score in both to be included in the bivariate scatterplot. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores. The bivariate scatterplot shows a funnel shape -- respondents with higher **HighSchool_PR** have larger variance in **College_Score**.      
+Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score** in Figure \ref{fig:bivariate} to examine the relationship between the two scores. Obviously, a respondent needs a valid score in both to be included in the bivariate scatterplot. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores. The bivariate scatterplot shows a funnel shape -- respondents with higher **HighSchool_PR** have larger variance in **College_Score**.      
 
-```{r bivariate} 
+```{r bivariate, fig.cap="Bivariate scatterplot of \\textbf{HighSchool$\\_$PR} and  \\textbf{College$\\_$Score}"} 
 plot(data_corr$HighSchool_PR, data_corr$College_Score,
-     main = "High School and College Entrance Exam Scores",
-     xlab="HighSchool_PR",
-     ylab="College_Score")
+     main="High School and College Entrance Exam Scores",
+     xlab="HighSchool_PR", ylab="College_Score")
 ```
+
+### Correlation Coefficient
 
 We use the correlation coefficient to measure the strength of the linear relationship between **HighSchool_PR** and **College_Score**. The computed value is approximately 0.507, showing a medium strength of positive association between the two variables. We can interpret that a better score in the high school entrance exam is associated with a better college entrance exam score, but the relationship is not as strong after **HighSchool_PR** reaches 80. Note that correlation does not imply causality \cite{ksir2016correlation, schield1995correlation}.     
 
@@ -124,7 +125,7 @@ $$\rho_{X,Y} = \dfrac{\text{Cov}(X,Y)}{\sigma_X \sigma_Y}.$$
 
 The correlation coefficient $\rho$ is always between -1 and +1. The stronger $|\rho_{X,Y}|$ is, the stronger is the linear relationship. A positive value means the two variables $X,Y$ are positively associated with each other. In other words, when $X$ increases, $Y$ is also expected to increase. A negative value means the two variables $X,Y$ are negatively associated with each other. In this case, when $X$ increases, $Y$ is expected to decrease. The correlation coefficient may be zero, but this simply means that $X$ and $Y$ do not have a linear relationship with each other. There may exist other patterns between the two variables.  
 
-The strength of linear relationship can be interpreted as below:^[<https://bit.ly/3AUI8PA>]  
+According to \citet{rumsey2016interpret}, the strength of linear relationship can be interpreted as below:     
 
 - $|\rho| = 1$: Perfect linear relationship
 
@@ -138,8 +139,9 @@ The strength of linear relationship can be interpreted as below:^[<https://bit.l
 
 - $|\rho| = 0$: No linear relationship
 
+\section*{\textcolor{red}{Unfinished Below}}
 
-### Examples of the Correlation Coefficient
+### Examples
 
 Here we visualize some bivariate patterns for different values of the correlation coefficient $\rho$, with hypothetical data and examples. The graph ideas came from *OpenIntro Statistics* \cite{diez2019openintro}. We hide the code that generated these graphs to avoid obscuring the topic, and the interested readers can find the code in the raw `.Rmd` files. We will discuss more about linear regression in Chapter \ref{linear-reg}.     
 
@@ -221,13 +223,14 @@ linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
 ```
 
 
-The first row of graphs show what $|\rho| = 1$ looks like -- a straight line, i.e., a perfect linear relationship. In mathematical terms, we can write $Y = \alpha + \beta X$, where the sign of $\beta$ controls the direction of the pattern.  
+Our first set of graphs are created in Figure \ref{fig:perfect-linear-correlation}. These show what $|\rho| = 1$ looks like -- a straight line, i.e., a perfect linear relationship. In mathematical terms, we can write $Y = \alpha + \beta X$, where the sign of $\beta$ controls the direction of the straight line.  
 
 - For $\rho = 1$, the two variables $X, Y$ have a perfect positive linear relationship ($\beta > 0$). One example is people's height in cm and height in inches, where the two variables are a positive linear combination of each other.     
 
 - For $\rho = -1$, the two variables $X, Y$ have a perfect negative linear relationship ($\beta < 0$). One example is you eat from a box of 12 cookies. The cookies you ate and the cookies remaining should add up to 12, so they have a perfect negative linear relationship.   
 
-```{r perfect-linear-correlation, fig.height=4, fig.width=8, echo=FALSE}
+```{r perfect-linear-correlation, fig.height=4, fig.width=8, fig.cap="Perfect linear correlation: $\\rho = 1$ (left) and $\\rho = -1$ (right)", echo=FALSE}
+
 par(mfrow=c(1,2))
 
 # rho = 1
@@ -237,7 +240,7 @@ linear_corr_gen(noise_sd=0, "positive", 36)
 linear_corr_gen(noise_sd=0, "negative", 37)
 ```
 
-In the second row, the two variables in each plot have a good but imperfect linear relationship. The datapoints seem to be on a straight line with some fluctuation. If we start with the linear equation, we can add a small random noise with mean zero to the data generative process. Hence the equation becomes $Y = \alpha + \beta X + \epsilon$, where $\epsilon \sim N(0,\sigma^2)$. We assume the random noise $\epsilon$ follows a normal distribution, although this is not always necessary.       
+In the second set, the two variables in each plot have a good but imperfect linear relationship. The datapoints seem to be on a straight line with some fluctuation. If we start with the linear equation, we can add a small random noise with mean zero to the data generative process. Hence the equation becomes $Y = \alpha + \beta X + \epsilon$, where $\epsilon \sim N(0,\sigma^2)$. We assume the random noise $\epsilon$ follows a normal distribution, although this is not always necessary.       
 
 - The left graph illustrates $\rho = 0.89$. The plot shows a clear and positive relationship with some noise. One example is the height and weight of children of various ages. Taller children usually weigh more, but this is not always the case. (Childhood obesity is a serious health problem.)        
 
@@ -254,7 +257,7 @@ linear_corr_gen(noise_sd=2.5, "negative", 39)
 ```
 
 
-The third row contains graphs that visualize a medium level of linear correlation, where $0.4 < |\rho| < 0.6$. The linear trend is still visible, but with more fluctuation than in the high-correlation graphs.    
+The third set contains graphs that visualize a medium level of linear correlation, where $0.4 < |\rho| < 0.6$. The linear trend is still visible, but with more fluctuation than in the high-correlation graphs.    
 
 - The left figure shows $\rho = 0.64$, as a positive medium correlation of the two variables. One example is students' midterm exam scores and final exam scores. Students who did well on the midterm often continue to do well on the final, but this is not guaranteed. Exam scores often have more variability than people's height and weight.        
 
@@ -271,7 +274,7 @@ linear_corr_gen(noise_sd=12, "negative", 40)
 ```
 
 
-The final row shows what little-to-no linear correlation looks like. We need to remember that zero correlation does not mean the two variables are independent. They may have a non-linear relationship, which cannot be detected by the correlation coefficient.       
+The final set of graphs show what little-to-no linear correlation looks like. We need to remember that zero correlation does not mean the two variables are independent. They may have a non-linear relationship, which cannot be detected by the correlation coefficient.       
 
 - The left image shows a bivariate scatter plot with $\rho = 0.03$, i.e., very little correlation. For a small $\rho$ in absolute value, the two variables barely have any linear relationship. Although the bivariate scatter plot looks random, the correlation coefficient may not be exactly zero. One example is the daily coffee consumption and intelligence (IQ scores). How much coffee an individual drinks is completely unrelated to their intelligence level, so we cannot use one variable to obtain information of the other.^[<https://www.statology.org/no-correlation-examples/>]     
 
