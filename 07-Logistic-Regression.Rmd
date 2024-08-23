@@ -22,7 +22,7 @@ $$p = \dfrac{\exp(\alpha+\beta X)}{1 + \exp(\alpha+\beta X)}$$
 
 The intercept $\alpha$ serves as a baseline when $X = 0$, and the probability $p$ can be estimated by $p = \dfrac{\exp(\alpha)}{1 + \exp(\alpha)}$. Just like in an ordinary linear regression, the intercept may or may not have practical meaning. For example, if we examine the relationship between people's height and weight, nobody is going to have height of 0 inches.  
 
-For the advanced readers, we recommend reading the textbook *Categorical Data Analysis* \cite{agresti2003categorical} to learn more about logistic regression and other generalized linear models for categorical data. 
+For the advanced readers, we recommend reading the textbook *Categorical Data Analysis* \cite{agresti2013categorical} to learn more about logistic regression and other generalized linear models for categorical data. 
 
 ## Estimate the Probability of Scoring Well on the College Entrance Exam {#threshold-65}
 
