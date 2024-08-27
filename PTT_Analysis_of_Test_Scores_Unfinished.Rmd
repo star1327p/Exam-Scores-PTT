@@ -38,7 +38,7 @@ knitr::knit_hooks$set(chunk = function(x, options) {
   ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
 })
 
-knitr::opts_chunk$set(fig.pos = "H", out.extra = "")
+knitr::opts_chunk$set(fig.align = 'center', fig.pos = "H", out.extra = "")
 ```
 
 \section*{\textcolor{red}{Ongoing work since 2019.}}
@@ -47,7 +47,7 @@ knitr::opts_chunk$set(fig.pos = "H", out.extra = "")
 
 1. Add captions for all figures, starting from Section \ref{bivariate}.  
 
-2. Add DOI links to every reference whenever possible.  
+2. Change the size of each figure when necessary. Some figures are too large and take up too much space.
 
 I may not need to add more references until I fix the two issues above. Then I can ask some friends (preferably current high school teachers) to verify the correctness of the high school and college entrance rules in Taiwan.  
 
@@ -56,7 +56,6 @@ I may not need to add more references until I fix the two issues above. Then I c
 # Executive Summary {.unnumbered}
 
 In this project, we investigate the relationship between high school and college entrance exam scores in Taiwan using self-reported data online. The goal is to demonstrate reproducible statistical analysis in $\mathsf{R}$ Markdown and LaTeX to PDF. We start by exploring the data to formulate the problem statement and identify the appropriate model, which can be an iterative process. We eventually decided on a binary outcome of the college entrance exams, and hence implemented a logistic regression model. We also validate the model with out-of-sample prediction methods, including cross validation as well as separate training and testing sets. Finally, we use some metrics to evaluate the model performance. The end-to-end data analysis can be compiled with a single button in RStudio, without copying-and-pasting output from one program to another.   
-
 
 # Disclaimer {.unnumbered}
 
@@ -210,5 +209,4 @@ The author would also like to acknowledge Dr. Cliburn Chan and Dr. Janice McCart
 
 Finally, the author gives a special mention to her significant other, Hugh Hendrickson, for all his support in the author's professional career development.
 
-
-# References {.unnumbered #references}
+\addcontentsline{toc}{section}{References} 
