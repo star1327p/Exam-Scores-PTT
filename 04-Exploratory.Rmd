@@ -141,7 +141,7 @@ According to \citet{rumsey2016interpret}, the strength of linear relationship ca
 
 \section*{\textcolor{red}{Unfinished Below}}
 
-### Examples
+### Examples of Scatterplots
 
 Here we visualize some bivariate patterns for different values of the correlation coefficient $\rho$, with hypothetical data and examples. The graph ideas came from *OpenIntro Statistics* \cite{diez2019openintro}. We hide the code that generated these graphs to avoid obscuring the topic, and the interested readers can find the code in the raw `.Rmd` files. We will discuss more about linear regression in Chapter \ref{linear-reg}.     
 
@@ -222,16 +222,15 @@ linear_corr_gen <- function(noise_sd, relationship="positive", seed=1000){
 # var(y) = a^2 * var(x)
 ```
 
-
 Our first set of graphs are created in Figure \ref{fig:perfect-linear-correlation}. These show what $|\rho| = 1$ looks like -- a straight line, i.e., a perfect linear relationship. In mathematical terms, we can write $Y = \alpha + \beta X$, where the sign of $\beta$ controls the direction of the straight line.  
 
 - For $\rho = 1$, the two variables $X, Y$ have a perfect positive linear relationship ($\beta > 0$). One example is people's height in cm and height in inches, where the two variables are a positive linear combination of each other.     
 
 - For $\rho = -1$, the two variables $X, Y$ have a perfect negative linear relationship ($\beta < 0$). One example is you eat from a box of 12 cookies. The cookies you ate and the cookies remaining should add up to 12, so they have a perfect negative linear relationship.   
 
-```{r perfect-linear-correlation, fig.height=4, fig.width=8, fig.cap="Perfect linear correlation: $\\rho = 1$ (left) and $\\rho = -1$ (right)", echo=FALSE}
+```{r perfect-linear-correlation, fig.height=2.5, fig.width=5, fig.cap="Perfect linear correlation: $\\rho = 1$ (left) and $\\rho = -1$ (right)", echo=FALSE}
 
-par(mfrow=c(1,2))
+par(mfrow=c(1,2), mar = c(1.1, 1.1, 1.1, 1.1))
 
 # rho = 1
 linear_corr_gen(noise_sd=0, "positive", 36)
@@ -240,14 +239,15 @@ linear_corr_gen(noise_sd=0, "positive", 36)
 linear_corr_gen(noise_sd=0, "negative", 37)
 ```
 
-In the second set, the two variables in each plot have a good but imperfect linear relationship. The datapoints seem to be on a straight line with some fluctuation. If we start with the linear equation, we can add a small random noise with mean zero to the data generative process. Hence the equation becomes $Y = \alpha + \beta X + \epsilon$, where $\epsilon \sim N(0,\sigma^2)$. We assume the random noise $\epsilon$ follows a normal distribution, although this is not always necessary.       
+For the second set of graphs in Figure \ref{fig:high-correlation}, the two variables in each plot have a good but imperfect linear relationship. The datapoints seem to be on a straight line with some fluctuation. If we start with the linear equation, we can add a small random noise with mean zero to the data generative process. Hence the equation becomes $Y = \alpha + \beta X + \epsilon$, where $\epsilon \sim N(0,\sigma^2)$. Here we assume the random noise $\epsilon$ follows a normal distribution.       
 
 - The left graph illustrates $\rho = 0.89$. The plot shows a clear and positive relationship with some noise. One example is the height and weight of children of various ages. Taller children usually weigh more, but this is not always the case. (Childhood obesity is a serious health problem.)        
 
 - The right graph illustrates $\rho = -0.93$. The plot shows a clear and negative relationship with some noise. One example is the hours for work and the hours for hobbies. Generally, the more time you spend on work, the less time you spend on hobbies. Although everyone has 24 hours in a day, the time outside work does not always mean you are spending on hobbies for enjoyment.   
 
-```{r high-correlation, fig.height=4, fig.width=8, echo=FALSE}
-par(mfrow=c(1,2))
+```{r high-correlation, fig.height=2.5, fig.width=5, fig.cap="Good but imperfect linear correlation: $\\rho = 0.89$ (left) and $\\rho = -0.93$ (right)", echo=FALSE}
+
+par(mfrow=c(1,2), mar = c(1.1, 1.1, 1.1, 1.1))
 
 # rho = 0.89
 linear_corr_gen(noise_sd=3, "positive", 38)
@@ -256,15 +256,15 @@ linear_corr_gen(noise_sd=3, "positive", 38)
 linear_corr_gen(noise_sd=2.5, "negative", 39)
 ```
 
+The third set of graphs in Figure \ref{fig:mid-correlation} visualizes a medium level of linear correlation, where $0.4 < |\rho| < 0.6$. The linear trend is still visible, but with more fluctuation than in the high-correlation graphs.    
 
-The third set contains graphs that visualize a medium level of linear correlation, where $0.4 < |\rho| < 0.6$. The linear trend is still visible, but with more fluctuation than in the high-correlation graphs.    
+- The left graph shows $\rho = 0.64$, as a positive medium correlation of the two variables. One example is students' midterm exam scores and final exam scores. Students who did well on the midterm often continue to do well on the final, but this is not guaranteed. Exam scores often have more variability than people's height and weight.        
 
-- The left figure shows $\rho = 0.64$, as a positive medium correlation of the two variables. One example is students' midterm exam scores and final exam scores. Students who did well on the midterm often continue to do well on the final, but this is not guaranteed. Exam scores often have more variability than people's height and weight.        
+- The right graph shows $\rho = -0.47$, as a negative medium correlation of the two variables. One example is adults' muscle mass and their age. Older adults tend to have less muscle than younger ones, but it is well-known that strength training helps preserve some muscle mass.^[We are not medical professionals, so we make the caveat that the linear relationship may not be accurate.]     
 
-- The right figure shows $\rho = -0.47$, as a negative medium correlation of the two variables. One example is adults' muscle mass and their age. Older adults tend to have less muscle than younger ones, but it is well-known that strength training helps preserve some muscle mass.^[We are not medical professionals, so we make the caveat that the linear relationship may not be accurate.]     
+```{r mid-correlation, fig.height=2.5, fig.width=5, fig.cap="Medium level of linear correlation: $\\rho = 0.89$ (left) and $\\rho = -0.93$ (right)", echo=FALSE}
 
-```{r mid-correlation, fig.height=4, fig.width=8, echo=FALSE}
-par(mfrow=c(1,2))
+par(mfrow=c(1,2), mar = c(1.1, 1.1, 1.1, 1.1))
 
 # rho = 0.64
 linear_corr_gen(noise_sd=7, "positive", 23)
@@ -273,16 +273,16 @@ linear_corr_gen(noise_sd=7, "positive", 23)
 linear_corr_gen(noise_sd=12, "negative", 40)
 ```
 
+The final set of graphs in Figure \ref{fig:low-correlation} illustrates what little-to-no linear correlation looks like. We need to remember that zero correlation does not mean the two variables are independent. They may have a non-linear relationship, which cannot be detected by the correlation coefficient.       
 
-The final set of graphs show what little-to-no linear correlation looks like. We need to remember that zero correlation does not mean the two variables are independent. They may have a non-linear relationship, which cannot be detected by the correlation coefficient.       
+- The left graph shows a bivariate scatter plot with $\rho = 0.03$, i.e., very little correlation. For a small $\rho$ in absolute value, the two variables barely have any linear relationship. Although the bivariate scatter plot looks random, the correlation coefficient may not be exactly zero. One example is the daily coffee consumption and intelligence (IQ scores). How much coffee an individual drinks is completely unrelated to their intelligence level, so we cannot use one variable to obtain information of the other.^[<https://www.statology.org/no-correlation-examples/>]     
 
-- The left image shows a bivariate scatter plot with $\rho = 0.03$, i.e., very little correlation. For a small $\rho$ in absolute value, the two variables barely have any linear relationship. Although the bivariate scatter plot looks random, the correlation coefficient may not be exactly zero. One example is the daily coffee consumption and intelligence (IQ scores). How much coffee an individual drinks is completely unrelated to their intelligence level, so we cannot use one variable to obtain information of the other.^[<https://www.statology.org/no-correlation-examples/>]     
-
-- The right image has $\rho = 0$ (absolute zero), i.e., no linear relationship at all. However, the graph shows a parabola curve, so the two variables have some non-linear relationship. If you throw a ball to another person, the ball's trajectory would look like a parabola.^[<https://bit.ly/4dF3y4Z>] The x-axis is horizontal and parallel to the ground, while the y-axis is vertical and perpendicular to the x-axis.   
+- The right graph has $\rho = 0$ (absolute zero), i.e., no linear relationship at all. However, the graph shows a parabola curve, so the two variables have some non-linear relationship. If you throw a ball to another person, the ball's trajectory would look like a parabola.^[<https://bit.ly/4dF3y4Z>] The x-axis is horizontal and parallel to the ground, while the y-axis is vertical and perpendicular to the x-axis.   
 
 
-```{r low-correlation, fig.height=4, fig.width=8, echo=FALSE}
-par(mfrow=c(1,2))
+```{r low-correlation, fig.height=2.5, fig.width=5, fig.cap="Little-to-no linear correlation: $\\rho = 0.03$ (left) and $\\rho = 0$ (absolute zero) (right)", echo=FALSE}
+
+par(mfrow=c(1,2), mar = c(1.1, 1.1, 1.1, 1.1))
 
 # rho = 0.03
 set.seed(1000)
@@ -305,5 +305,4 @@ plot(x,y,main=bquote(~ rho == .(rho_current)),
 Axis(side=1, labels=FALSE)
 Axis(side=2, labels=FALSE)
 ```
-
 
