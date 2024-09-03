@@ -60,7 +60,7 @@ Hence we need to smooth the ROC curve. The `R` package `pROC` \cite{r-p-roc} con
 ```{r plot-roc-auc-with-data}
 roc.plot(real_outcomes, pred_outcomes, 
          xlab = "FPR", ylab="TPR",  show.thres = FALSE,
-         main=paste("ROC Curve: AUC =", round(auc_value_test,2)))
+         main=paste("ROC Curve: AUC =", round(auc_value_test,2), "(Original Data)"))
 ```
 
 ### Jittered Data {#jittered-roc}
@@ -157,7 +157,7 @@ Now the ROC graph is smoother than the original one in Section \ref{original-roc
 ```{r jitter-roc-auc-plot}
 roc.plot(real_outcomes_jitter, pred_outcomes_jitter, 
          thresholds = thresholds,
-         xlab = "FPR", ylab="TPR",  show.thres = FALSE,
-         main=paste("ROC Curve: AUC =", round(auc_value_jitter,2)))
+         xlab = "FPR", ylab="TPR", show.thres = FALSE, 
+         main=paste("ROC Curve: AUC =", round(auc_value_jitter,2), "(Jittered Data)"))
 ```
 

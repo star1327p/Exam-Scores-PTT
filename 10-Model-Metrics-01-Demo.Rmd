@@ -64,7 +64,8 @@ Now let's make the demonstrative ROC curve using `roc.plot`, which plots the fal
 
 ```{r auc-demo-roc}
 pred = c(pred_prob_0, pred_prob_1)
-new_test = roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE)
+new_test = roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE,
+                    main="ROC Curve (Simulated Data)")
 ```
 
 We can access the model information in the `new_test` object with the `roc.vol` label. 
@@ -88,7 +89,7 @@ Let's add the AUC value to the title of the ROC graph.
 
 ```{r auc-demo-continued}
 roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE,
-         main=paste("ROC Curve: AUC =", round(auc_value,2)))
+         main=paste("ROC Curve: AUC =", round(auc_value,2), "(Simulated Data)"))
 ```
 
 
@@ -118,5 +119,6 @@ We can manually plot the FPR against the TPR, but this is NOT recommended. We sh
 
 ```{r auc-demo-roc-data}
 test_df = as.data.frame(new_test$plot.data)
-plot(test_df$V3, test_df$V2, xlab="FPR", ylab="TPR") 
+plot(test_df$V3, test_df$V2, xlab="FPR", ylab="TPR",
+     main = "ROC Curve: Manually Created") 
 ```
