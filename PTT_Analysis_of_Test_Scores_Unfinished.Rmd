@@ -1,20 +1,21 @@
 ---
-title: "Statistical Analysis of High School and College Entrance Exam Scores in Taiwan with Online Data"
-subtitle: "A Fully Reproducible Approach with R Markdown"
+title: Statistical Analysis of High School and College Entrance Exam Scores in Taiwan
+  with Online Data
 author:
-  - Christine P. Chai
-  - cpchai21@gmail.com
-date: \today
-output: 
-        pdf_document:
-                extra_dependencies: ["float"]
-                number_sections: true
-                citation_package: natbib
-header-includes: 
-  - \renewcommand{\and}{\\}
+- Christine P. Chai
+- cpchai21@gmail.com
+date: "\today"
+output:
+  pdf_document:
+    extra_dependencies: float
+    number_sections: true
+    citation_package: natbib
+  word_document: default
+subtitle: A Fully Reproducible Approach with R Markdown
+header-includes: \renewcommand{\and}{\\}
 bibliography: references.bib
 biblio-style: apalike
-link-citations: yes
+link-citations: true
 ---
 
 \renewcommand{\cite}{\citep}
@@ -38,7 +39,7 @@ knitr::knit_hooks$set(chunk = function(x, options) {
   ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
 })
 
-knitr::opts_chunk$set(fig.align = 'center', fig.pos = "H", out.extra = "")
+knitr::opts_chunk$set(fig.width=6, fig.align = 'center', fig.pos = "H", out.extra = "")
 ```
 
 \section*{\textcolor{red}{Ongoing work since 2019.}}

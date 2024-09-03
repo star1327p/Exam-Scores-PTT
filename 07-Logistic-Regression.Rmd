@@ -194,7 +194,7 @@ The graph shows different trends for different segments of the **HighSchool_PR**
 yy = model$fitted.values
 xx = data_corr$HighSchool_PR
 plot(xx, yy, ylim=c(0,1),
-     main="Predicted Probability of College_Score >= 65 with HighSchool_PR",
+     main="Predicted Probability of College_Score >= 65",
      xlab="HighSchool_PR",
      ylab="Probability of College_Score >= 65")
 ```
@@ -207,7 +207,7 @@ set.seed(21)
 new_xx = jitter(xx)
 new_yy = jitter(yy)
 plot(new_xx, new_yy, ylim=c(0,1),
-     main="Jittered Probability of College_Score >= 65 with HighSchool_PR",
+     main="Jittered Probability of College_Score >= 65",
      xlab="HighSchool_PR",
      ylab="Probability of College_Score >= 65")
 ```
