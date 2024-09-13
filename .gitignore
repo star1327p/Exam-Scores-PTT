@@ -41,6 +41,8 @@ rsconnect/
 # LaTeX intermediate files
 *.log
 *.aux
+*.bbl
+*.blg
 
 # Other intermediate files
 PTT_Analysis_of_Test_Scores_Unfinished_files/
