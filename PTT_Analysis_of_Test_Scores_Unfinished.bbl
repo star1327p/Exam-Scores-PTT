@@ -1,0 +1,700 @@
+\begin{thebibliography}{}
+
+\bibitem[Abramitzky et~al., 2021]{abramitzky2021automated}
+Abramitzky, R., Boustan, L., Eriksson, K., Feigenbaum, J., and P{\'e}rez, S.
+  (2021).
+\newblock Automated linking of historical data.
+\newblock {\em Journal of Economic Literature}, 59(3):865--918.
+\newblock \url{http://dx.doi.org/10.1257/jel.20201599}.
+
+\bibitem[Agresti, 2013]{agresti2013categorical}
+Agresti, A. (2013).
+\newblock {\em Categorical Data Analysis}.
+\newblock John Wiley \& Sons, Hoboken NJ, United States, 3rd edition.
+
+\bibitem[Albanese et~al., 2021]{albanese2021bricolage}
+Albanese, D., Yu, M.-J., and Wu, J.-J. (2021).
+\newblock Bricolage and the evolution of giftedness and talent in {Taiwan}.
+\newblock In {\em Handbook of Giftedness and Talent Development in the
+  Asia-Pacific}, pages 1011--1044. Springer, Singapore.
+\newblock \url{https://doi.org/10.1007/978-981-13-3041-4}.
+
+\bibitem[Allaire et~al., 2019]{r-markdown-pkg}
+Allaire, J., Horner, J., Xie, Y., Marti, V., and Porte, N. (2019).
+\newblock {\em \texttt{markdown}: Render Markdown with the C Library
+  `Sundown'}.
+\newblock $\mathsf{R}$ package version 1.1.
+  \url{https://CRAN.R-project.org/package=markdown}.
+
+\bibitem[Alpaydin, 2020]{alpaydin2020introduction}
+Alpaydin, E. (2020).
+\newblock {\em Introduction to Machine Learning}.
+\newblock MIT Press, Cambridge MA, United States, 4th edition.
+\newblock MIT stands for Massachusetts Institute of Technology.
+  \url{https://mitpress.mit.edu/9780262043793/introduction-to-machine-learning/}.
+
+\bibitem[{American Statistical Association}, 2016]{american2016statement}
+{American Statistical Association} (2016).
+\newblock Statement on statistical significance and $p$-values.
+\newblock {\em The American Statistician}, 70(2):129--133.
+\newblock \url{https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf}.
+
+\bibitem[Avery et~al., 2017]{avery2014profile}
+Avery, R.~B., Bilinski, M.~F., Bucks, B.~K., Chai, C., Chow, M., Clement, A.,
+  Critchfield, T., Frumkin, S., Keith, I.~H., Mohamed, I.~E., Pafenberg, F.~W.,
+  Patrabansh, S., Schultz, J.~D., and Wood, C.~E. (2017).
+\newblock A profile of 2014 mortgage borrowers: Statistics from the {National
+  Survey of Mortgage Originations}.
+\newblock Technical report, National Mortgage Database, Federal Housing Finance
+  Agency, Washington DC, United States.
+
+\bibitem[Baumer et~al., 2014]{baumer2014r-markdown}
+Baumer, B., Cetinkaya-Rundel, M., Bray, A., Loi, L., and Horton, N.~J. (2014).
+\newblock $\mathsf{R}$ {Markdown}: Integrating a reproducible analysis tool
+  into introductory statistics.
+\newblock {\em Technology Innovations in Statistics Education}, 8(1):1--19.
+\newblock \url{https://doi.org/10.5070/T581020118}.
+
+\bibitem[Beckman et~al., 2015]{beckman2015investigating}
+Beckman, E., Chai, C., Lyu, J., Mahserejian, S., Tran, H., Yavari, S.,
+  Mitchell, H., Calatroni, A., and Kang, E.~L. (2015).
+\newblock Investigating the relationship between the microbiome and
+  environmental characteristics.
+\newblock In {\em Twentyfirst Mathematical and Statistical Modeling Workshop
+  for Graduate Students}, pages 89--112. North Carolina State University.
+
+\bibitem[Bertin, 1983]{bertin1983semiology}
+Bertin, J. (1983).
+\newblock {\em Semiology of Graphics: Diagrams, Networks, Maps}.
+\newblock The University of Wisconsin Press, Madison WI, United States.
+\newblock Originally published in French. Translated to English by William J.
+  Berg in 2010.
+
+\bibitem[Bethlehem, 2010]{bethlehem2010selection}
+Bethlehem, J. (2010).
+\newblock Selection bias in web surveys.
+\newblock {\em International Statistical Review}, 78(2):161--188.
+\newblock \url{https://doi.org/10.1111/j.1751-5823.2010.00112.x}.
+
+\bibitem[Casella and Berger, 2024]{casella2024statistical}
+Casella, G. and Berger, R.~L. (2024).
+\newblock {\em Statistical Inference}.
+\newblock Chapman and Hall/CRC, New York NY, United States, 2nd edition.
+\newblock \url{https://doi.org/10.1201/9781003456285}.
+
+\bibitem[Chai, 2013]{chai2013masters}
+Chai, C.~P. (2013).
+\newblock Facebook account misuse detection -- {A} statistical approach.
+\newblock Master's thesis, National Taiwan University, Taipei, Taiwan.
+
+\bibitem[Chai, 2017]{chai2017phdthesis}
+Chai, C.~P. (2017).
+\newblock {\em Statistical Issues in Quantifying Text Mining Performance}.
+\newblock {PhD} dissertation, Duke University, Durham NC, United States.
+\newblock \url{https://dukespace.lib.duke.edu/dspace/handle/10161/14500}.
+
+\bibitem[Chai, 2020]{chai2020importance}
+Chai, C.~P. (2020).
+\newblock The importance of data cleaning: Three visualization examples.
+\newblock {\em CHANCE}, 33(1):4--9.
+\newblock \url{https://chance.amstat.org/2020/02/data-cleaning/}.
+
+\bibitem[Chai, 2021]{chai-2021-rss-betting}
+Chai, C.~P. (2021).
+\newblock {Christine P. Chai's} contribution to the discussion of ``{Testing}
+  by betting: A strategy for statistical and scientific communication'' by
+  {Glenn Shafer}.
+\newblock {\em Journal of the Royal Statistical Society Series A: Statistics in
+  Society}, 184(2):449--450.
+\newblock \url{https://doi.org/10.1111/rssa.12647}.
+
+\bibitem[Chai, 2023a]{chai-2023-rss-climate}
+Chai, C.~P. (2023a).
+\newblock {Christine P. Chai's} contribution to the discussion of ``{The} first
+  discussion meeting on statistical aspects of climate change''.
+\newblock {\em Journal of the Royal Statistical Society Series C: Applied
+  Statistics}, 72(4):854--855.
+\newblock \url{https://doi.org/10.1093/jrsssc/qlad049}.
+
+\bibitem[Chai, 2023b]{chai2023comparison}
+Chai, C.~P. (2023b).
+\newblock Comparison of text preprocessing methods.
+\newblock {\em Natural Language Engineering}, 29(3):509--553.
+\newblock \url{https://doi.org/10.1017/S1351324922000213}.
+
+\bibitem[Chai, 2024]{chai-2024-rss-census}
+Chai, C.~P. (2024).
+\newblock {Christine P. Chai's} contribution to the discussion of ``{A} system
+  of population estimates compiled from administrative data only'' by {Dunne}
+  and {Zhang}.
+\newblock {\em Journal of the Royal Statistical Society Series A: Statistics in
+  Society}, 187(1):31--32.
+\newblock \url{https://doi.org/10.1093/jrsssa/qnad099}.
+
+\bibitem[Chai et~al., 2023]{cwchai2023impact}
+Chai, C.-W., Hung, M.-K., and Lin, T.-C. (2023).
+\newblock The impact of external resources on the development of an indigenous
+  school in rural areas: Taking a junior high school in {Taiwan} as an example.
+\newblock {\em Heliyon}, 9(12):e22073.
+\newblock \url{https://doi.org/10.1016/j.heliyon.2023.e22073}.
+
+\bibitem[Chang, 2006]{chang2006methods}
+Chang, S.-W. (2006).
+\newblock Methods in scaling the {Basic Competence Test}.
+\newblock {\em Educational and Psychological Measurement}, 66(6):907--929.
+\newblock \url{https://doi.org/10.1177/0013164405285904}.
+
+\bibitem[Chang and Chiu, 2021]{chang2021academic}
+Chang, T.-Y. and Chiu, Y.-C. (2021).
+\newblock The academic portfolio system {(APS)} usage intention of senior high
+  school students in {Taiwan}.
+\newblock {\em Sustainability}, 13(15):8394.
+\newblock \url{https://doi.org/10.3390/su13158394}.
+
+\bibitem[Chao et~al., 2024]{chao2024high}
+Chao, T.-Y., Sung, Y.-T., and Tseng, F.-L. (2024).
+\newblock High-stakes test anxiety among {Taiwanese} adolescents: A
+  longitudinal study.
+\newblock {\em Cogent Education}, 11(1):1--16.
+\newblock \url{https://doi.org/10.1080/2331186X.2024.2321019}.
+
+\bibitem[Chen and Huang, 2017]{chen2017advancing}
+Chen, H.-L.~S. and Huang, H.-Y. (2017).
+\newblock Advancing 21st century competencies in {Taiwan}.
+\newblock Technical report, Asia Society -- Center for Global Education, New
+  York NY, United States.
+\newblock
+  \url{https://asiasociety.org/sites/default/files/21st-century-competencies-taiwan.pdf}.
+
+\bibitem[Chen et~al., 2020]{chen2020exploration}
+Chen, L.-C., Lee, C.-M., and Chen, M.-Y. (2020).
+\newblock Exploration of social media for sentiment analysis using deep
+  learning.
+\newblock {\em Soft Computing}, 24(11):8187--8197.
+\newblock \url{https://doi.org/10.1007/s00500-019-04402-8}.
+
+\bibitem[Chen, 2008]{chen2008strategic}
+Chen, P. (2008).
+\newblock Strategic leadership and school reform in {Taiwan}.
+\newblock {\em School Effectiveness and School Improvement}, 19(3):293--318.
+\newblock \url{https://doi.org/10.1080/09243450802332119}.
+
+\bibitem[Chen et~al., 2010]{chen2010comparison}
+Chen, P.-H., Chiou, J.-M., and Feng-Lan, T. (2010).
+\newblock A comparison of different statistical moderation methods in applying
+  the {GPA} to senior high schools.
+\newblock {\em Journal of Research in Education Sciences}, 55(2):115--139.
+\newblock This article is written in Mandarin.
+  \url{https://doi.org/10.3966/2073753X2010065502004}.
+
+\bibitem[Chiang, 2022]{chiang2022exams}
+Chiang, Y.-L. (2022).
+\newblock Exams or applications? {Elite} {Taiwanese} students’ perceptions
+  and navigation of college admissions systems.
+\newblock {\em International Journal of Comparative Sociology}, 63(1-2):30--50.
+\newblock \url{https://doi.org/10.1177/00207152211053037}.
+
+\bibitem[Chou, 2015]{chou2015higher}
+Chou, C.~P. (2015).
+\newblock Higher education development in {Taiwan}.
+\newblock In {\em Mass Higher Education Development in East Asia}, pages
+  89--103. Springer, Cham, Switzerland.
+\newblock \url{https://doi.org/10.1007/978-3-319-12673-9_5}.
+
+\bibitem[Chou, 2019]{chou2019taiwan}
+Chou, C.~P. (2019).
+\newblock How {Taiwan} education pursues equity in excellence.
+\newblock In {\em Equity in Excellence: Experiences of East {Asian}
+  High-Performing Education Systems}, pages 43--54. Springer, Singapore.
+\newblock \url{https://doi.org/10.1007/978-981-13-2975-3}.
+
+\bibitem[Chou and Ho, 2007]{chou2007schooling}
+Chou, C.~P. and Ho, A.-H. (2007).
+\newblock Schooling in {Taiwan}.
+\newblock In {\em Going to School in East Asia}, pages 344--377. Greenwood, New
+  York NY, United States.
+
+\bibitem[Chou et~al., 2015]{chou2015better}
+Chou, S.-Y., Liu, E., Lin, M.-J., and Liu, J.-T. (2015).
+\newblock Better peers, better scores? {A} study of twin junior high school
+  graduates in {Taiwan}.
+\newblock {\em Applied Economics}, 47(32):3462--3481.
+\newblock \url{https://doi.org/10.1080/00036846.2015.1016209}.
+
+\bibitem[Chu, 2013]{chu2013high}
+Chu, Y.-W. (2013).
+\newblock High school students' perceptions: Self-esteem and entrance
+  examinations.
+\newblock {\em The International Journal of Assessment and Evaluation},
+  19(1):61--75.
+\newblock \url{https://doi.org/10.18848/2327-7920/CGP/v19i01/48383}.
+
+\bibitem[Clyde et~al., 2018]{clyde2018bayesian101}
+Clyde, M., Cetinkaya-Rundel, M., Rundel, C., Banks, D., Chai, C., and Huang, L.
+  (2018).
+\newblock {\em An Introduction to Bayesian Thinking}.
+\newblock GitHub, San Francisco CA, United States, 1st edition.
+\newblock \url{https://statswithr.github.io/book/}.
+
+\bibitem[Coudenys et~al., 2022]{coudenys2022path}
+Coudenys, B., Strohbach, G., Tang, T., and Udabe, R. (2022).
+\newblock On the path toward lifelong learning: An early analysis of {Taiwan}'s
+  12-year basic education reform.
+\newblock In {\em Education to build back better: What can we learn from
+  education reform for a post-pandemic world}, pages 75--98. Springer, Cham,
+  Switzerland.
+\newblock \url{https://doi.org/10.1007/978-3-030-93951-9}.
+
+\bibitem[{CrowdFlower}, 2017]{datasciencereport2017}
+{CrowdFlower} (2017).
+\newblock {2017 Data Science Report}.
+\newblock
+  \url{https://visit.figure-eight.com/rs/416-ZBE-142/images/CrowdFlower_DataScienceReport.pdf}.
+
+\bibitem[DeGroot and Schervish, 2012]{degroot2012probability}
+DeGroot, M.~H. and Schervish, M.~J. (2012).
+\newblock {\em Probability and Statistics}.
+\newblock Pearson Education, Boston MA, United States, 4th edition.
+\newblock
+  \url{http://bio5495.wustl.edu/Probability/Readings/DeGroot4thEdition.pdf}.
+
+\bibitem[Diez et~al., 2019]{diez2019openintro}
+Diez, D.~M., Cetinkaya-Rundel, M., and Barr, C.~D. (2019).
+\newblock {\em OpenIntro Statistics}.
+\newblock OpenIntro, Boston MA, United States, 4th edition.
+\newblock \url{https://www.openintro.org/book/os/}.
+
+\bibitem[Dur et~al., 2022]{dur2022deduction}
+Dur, U., Pathak, P.~A., Song, F., and S{\"o}nmez, T. (2022).
+\newblock Deduction dilemmas: The {Taiwan} assignment mechanism.
+\newblock {\em American Economic Journal: Microeconomics}, 14(1):164--185.
+\newblock \url{https://doi.org/10.1257/mic.20180386}.
+
+\bibitem[Dusetzina et~al., 2014]{dusetzina2014overview}
+Dusetzina, S.~B., Tyree, S., Meyer, A.-M., Meyer, A., Green, L., and Carpenter,
+  W.~R. (2014).
+\newblock An overview of record linkage methods.
+\newblock In {\em Linking Data for Health Services Research: A Framework and
+  Instructional Guide [Internet]}, chapter~4, pages 29--49. Agency for
+  Healthcare Research and Quality (US), Rockville MD, United States.
+\newblock
+  \url{https://www.ncbi.nlm.nih.gov/sites/books/NBK253313/pdf/Bookshelf_NBK253313.pdf}.
+
+\bibitem[Elston, 2021]{elston2021participation}
+Elston, D.~M. (2021).
+\newblock Participation bias, self-selection bias, and response bias.
+\newblock {\em Journal of the American Academy of Dermatology}.
+\newblock \url{https://doi.org/10.1016/j.jaad.2021.06.025}.
+
+\bibitem[Few, 2013]{few2013data}
+Few, S. (2013).
+\newblock Data visualization for human perception.
+\newblock In {\em The Encyclopedia of Human-Computer Interaction}, chapter~35.
+  Interaction Design Foundation, Aarhus, Denmark, 2nd edition.
+\newblock
+  \url{https://www.interaction-design.org/literature/book/the-encyclopedia-of-human-computer-interaction-2nd-ed/data-visualization-for-human-perception}.
+
+\bibitem[Foote, 2014]{foote2014learning}
+Foote, S. (2014).
+\newblock {\em Learning to Program}.
+\newblock Addison-Wesley Professional, Boston MA, United States.
+
+\bibitem[Gilleland, 2015]{r-auc-verification}
+Gilleland, E. (2015).
+\newblock {\em \texttt{verification}: Weather Forecast Verification Utilities}.
+\newblock $\mathsf{R}$ package version 1.42.
+  \url{https://CRAN.R-project.org/package=verification}.
+
+\bibitem[Goodman, 2008]{goodman2008dirty}
+Goodman, S. (2008).
+\newblock A dirty dozen: Twelve $p$-value misconceptions.
+\newblock In {\em Seminars in Hematology}, volume~45, pages 135--140. Elsevier,
+  Amsterdam, Netherlands.
+\newblock \url{https://doi.org/10.1053/j.seminhematol.2008.04.003}.
+
+\bibitem[Greenacre, 2016]{greenacre2016importance}
+Greenacre, Z.~A. (2016).
+\newblock The importance of selection bias in {Internet} surveys.
+\newblock {\em Open Journal of Statistics}, 6(3):397--404.
+\newblock \url{http://dx.doi.org/10.4236/ojs.2016.63035}.
+
+\bibitem[Han, 2022]{han2022utility}
+Han, H. (2022).
+\newblock The utility of receiver operating characteristic curve in educational
+  assessment: Performance prediction.
+\newblock {\em Mathematics}, 10(9):1493.
+\newblock \url{https://doi.org/10.3390/math10091493}.
+
+\bibitem[Henry et~al., 2019]{henry2019modeling}
+Henry, T.~R., Banks, D., Owens-Oas, D., and Chai, C. (2019).
+\newblock Modeling community structure and topics in dynamic text networks.
+\newblock {\em Journal of Classification}, 36(2):322--349.
+\newblock \url{http://dx.doi.org/10.1007/s00357-018-9289-3}.
+
+\bibitem[Hintze, 2007]{diagnosis-test}
+Hintze, J.~L. (2007).
+\newblock Binary diagnostic tests -- single sample.
+\newblock In {\em NCSS User's Guide V: Tabulation, Item Analysis, Proportions,
+  Diagnostic Tests, and Survival / Reliability}, chapter 535. NCSS (Number
+  Cruncher Statistical System), Kaysville UT, United States.
+\newblock \url{https://www.ncss.com/wp-content/uploads/2012/09/NCSSUG5.pdf}.
+
+\bibitem[Ho, 2022]{ho2022gap}
+Ho, C.-C. (2022).
+\newblock Gap between urban and rural education in {Taiwan}: An empirical study
+  on remote rural schools.
+\newblock {\em Journal of Education Research}, (334):4--19.
+\newblock This article is written in Mandarin.
+  \url{https://doi.org/10.53106/168063602022020334001}.
+
+\bibitem[Hoff, 2009]{hoff2009first}
+Hoff, P.~D. (2009).
+\newblock {\em A First Course in Bayesian Statistical Methods}.
+\newblock Springer, New York NY, United States.
+\newblock \url{https://doi.org/10.1007/978-0-387-92407-6}.
+
+\bibitem[Hou et~al., 2021]{hou2021historical}
+Hou, A. Y.-C., Chiang, T.-l., Chan, S.-J., and Lu, I.-J.~G. (2021).
+\newblock Historical development of higher education in {Taiwan} from past to
+  present.
+\newblock In {\em Higher Education in Taiwan: Global, Political and Social
+  Challenges and Future Trends}, pages 3--25. Springer, Singapore.
+\newblock \url{https://doi.org/10.1007/978-981-15-4554-2_1}.
+
+\bibitem[Hsieh, 2013]{hsieh2013taiwan}
+Hsieh, P.-T.~J. (2013).
+\newblock Taiwan: Examinations.
+\newblock In {\em Education in East Asia}, pages 279--301. Bloomsbury
+  Publishing, London, United Kingdom.
+
+\bibitem[Hsieh et~al., 2018]{hsieh2018relations}
+Hsieh, S.-S., Tsai, J.-R., Chang, S.-H., Cheng, C.-F., Sung, Y.-T., and Hung,
+  T.-M. (2018).
+\newblock The relations between 3-year changes in physical fitness and academic
+  performance in nationally representative sample of junior high school
+  students.
+\newblock {\em Nature: Scientific Reports}, 8(1):15978.
+\newblock \url{https://doi.org/10.1038/s41598-018-34370-2}.
+
+\bibitem[Hsieh, 2019]{hsieh2019preliminary}
+Hsieh, T.-L. (2019).
+\newblock A preliminary study of multiple college admission criteria in
+  {Taiwan}: The relationship among motivation, standardized tests, high school
+  achievements, and college success.
+\newblock {\em Higher Education Research \& Development}, 38(4):762--779.
+\newblock \url{https://doi.org/10.1080/07294360.2019.1586841}.
+
+\bibitem[Huang et~al., 2021]{huang2021effect}
+Huang, F.-M., Chan, H.-Y., and Tao, H.-L. (2021).
+\newblock The effect of high school entrance exam reform on adolescents'
+  depressive symptoms in {Taiwan}: A closer look at gender differences.
+\newblock {\em School Psychology International}, 42(5):465--485.
+\newblock \url{https://doi.org/10.1177/01430343211010873}.
+
+\bibitem[Huang, 2019]{huang2019high}
+Huang, M.-H. (2019).
+\newblock High school admission reforms, equality of educational opportunity,
+  and academic performance in {Taiwan}.
+\newblock Technical report, Harvard-Yenching Institute, Cambridge MA, United
+  States.
+
+\bibitem[Hung and Sheng, 2009]{hung2009access}
+Hung, C.-C. and Sheng, C.~Y. (2009).
+\newblock Access and equity: Who are the students at {Taiwan's} top
+  universities?
+\newblock In {\em Inequality in Education: Comparative and International
+  Perspectives}, pages 290--306. Springer, Hong Kong, China.
+\newblock \url{https://doi.org/10.1007/978-90-481-2652-1}.
+
+\bibitem[Hwang and Lee, 2013]{hwang2013implementation}
+Hwang, J.-J. and Lee, Y.-T. (2013).
+\newblock Implementation of {Taiwan's} curriculum reform policy: From the
+  perspective of curriculum guidelines.
+\newblock In {\em Curriculum Innovations in Changing Societies}, pages 61--84.
+  Brill, Leiden, Netherlands.
+
+\bibitem[Jeffrey and Gibbs, 2024]{jeffrey2024unpacking}
+Jeffrey, W. and Gibbs, B.~G. (2024).
+\newblock Unpacking the gap: Socioeconomic background and the stratification of
+  college applications in the {United States}.
+\newblock {\em Research in Higher Education}, 65:705--731.
+\newblock \url{https://doi.org/10.1007/s11162-024-09780-z}.
+
+\bibitem[Jheng, 2013]{jheng2013masters}
+Jheng, Y.-J. (2013).
+\newblock School as a battle over time: How social class influences {Taiwanese}
+  senior high school students' use of time in and after school.
+\newblock Master's thesis, University of California, Los Angeles (UCLA), Los
+  Angeles CA, United States.
+
+\bibitem[Kanter and Veeramachaneni, 2015]{kanter2015deep}
+Kanter, J.~M. and Veeramachaneni, K. (2015).
+\newblock Deep feature synthesis: Towards automating data science endeavors.
+\newblock In {\em 2015 IEEE International Conference on Data Science and
+  Advanced Analytics (DSAA)}, pages 1--10. IEEE.
+\newblock \url{https://doi.org/10.1109/DSAA.2015.7344858}.
+
+\bibitem[Kruschke and Liddell, 2018]{kruschke2018bayesian}
+Kruschke, J.~K. and Liddell, T.~M. (2018).
+\newblock The {Bayesian} new statistics: Hypothesis testing, estimation,
+  meta-analysis, and power analysis from a {Bayesian} perspective.
+\newblock {\em Psychonomic Bulletin \& Review}, 25(1):178--206.
+\newblock \url{https://doi.org/10.3758/s13423-016-1221-4}.
+
+\bibitem[Ksir and Hart, 2016]{ksir2016correlation}
+Ksir, C. and Hart, C.~L. (2016).
+\newblock Correlation still does not imply causation.
+\newblock {\em The Lancet Psychiatry}, 3(5):401.
+\newblock \url{https://doi.org/10.1016/S2215-0366(16)30005-0}.
+
+\bibitem[Liang et~al., 2017]{liang2017brief}
+Liang, L.~S., Lin, Y.-R., and Huang, A. H.-M. (2017).
+\newblock A brief history of the {Taiwenese} {Internet}: The {BBS} culture.
+\newblock In {\em The Routledge Companion to Global Internet Histories}, pages
+  182--196. Routledge, New York NY, United States.
+\newblock \url{https://doi.org/10.4324/9781315748962}.
+
+\bibitem[Lin et~al., 2021]{lin2021taiwan}
+Lin, S.-W., Tzou, H.-I., Lu, I.-C., and Hung, P.-H. (2021).
+\newblock Taiwan: Performance in the programme for international student
+  assessment {(PISA)}.
+\newblock In {\em Improving a Country's Education: PISA 2018 Results in 10
+  Countries}, pages 203--226. Springer, Cham, Switzerland.
+\newblock \url{https://doi.org/10.1007/978-3-030-59031-4}.
+
+\bibitem[Liu, 2022]{liu2022pathways}
+Liu, R.-F. (2022).
+\newblock Pathways to college admissions: Student strategies and class
+  variations in activating cultural knowledge in {Taiwan}.
+\newblock {\em International Studies in Sociology of Education},
+  31(3):284--304.
+\newblock \url{https://doi.org/10.1080/09620214.2020.1852882}.
+
+\bibitem[Liu and Chu, 2023]{liu2023inside}
+Liu, R.-F. and Chu, E.~H. (2023).
+\newblock Inside the black box of college admissions: How universities screen
+  and why variation matters.
+\newblock {\em SocArXiv preprint}.
+\newblock \url{https://doi.org/10.31235/osf.io/khaut}.
+
+\bibitem[Lock et~al., 2020]{lock2020statistics}
+Lock, R.~H., Lock, P.~F., Morgan, K.~L., Lock, E.~F., and Lock, D.~F. (2020).
+\newblock {\em Statistics: Unlocking the Power of Data}.
+\newblock John Wiley \& Sons, Hoboken NJ, United States, 3rd edition.
+\newblock \url{https://www.lock5stat.com/}.
+
+\bibitem[Lu and Chai, 2022]{lu2022robust}
+Lu, J. and Chai, C.~P. (2022).
+\newblock Robust {Bayesian} nonnegative matrix factorization with implicit
+  regularizers.
+\newblock {\em arXiv preprint arXiv:2208.10053}.
+\newblock \url{https://doi.org/10.48550/arXiv.2208.10053}.
+
+\bibitem[Martin, 2009]{martin2009clean}
+Martin, R.~C. (2009).
+\newblock {\em Clean Code: A Handbook of Agile Software Craftsmanship}.
+\newblock Pearson Education, Boston MA, United States, 1st edition.
+\newblock \url{https://tinyurl.com/clean-code-pdf}.
+
+\bibitem[McConnell, 2004]{mcconnell2004code}
+McConnell, S. (2004).
+\newblock {\em Code Complete}.
+\newblock Pearson Education, Boston MA, United States, 2nd edition.
+\newblock \url{https://tinyurl.com/code-complete-book}.
+
+\bibitem[Nardi, 2018]{nardi2018doing}
+Nardi, P.~M. (2018).
+\newblock {\em Doing Survey Research: A Guide to Quantitative Methods}.
+\newblock Routledge, New York NY, United States, 4th edition.
+\newblock \url{https://doi.org/10.4324/9781315172231}.
+
+\bibitem[Ramsey and Schafer, 2013]{ramsey2013statistical}
+Ramsey, F. and Schafer, D. (2013).
+\newblock {\em The Statistical Sleuth: A Course in Methods of Data Analysis}.
+\newblock Cengage Learning, Boston MA, United States.
+\newblock Data files are available on: \url{http://www.statisticalsleuth.com/}.
+
+\bibitem[Robin et~al., 2011]{r-p-roc}
+Robin, X., Turck, N., Hainard, A., Tiberti, N., Lisacek, F., Sanchez, J.-C.,
+  and M\"{u}ller, M. (2011).
+\newblock \texttt{pROC}: An open-source package for $\mathsf{R}$ and
+  $\mathsf{S+}$ to analyze and compare {ROC} curves.
+\newblock {\em BMC Bioinformatics}, 12:77.
+\newblock BMC stands for BioMed Central.
+  \url{https://doi.org/10.1186/1471-2105-12-77}.
+
+\bibitem[Robinson and Nolis, 2020]{robinson2020build}
+Robinson, E. and Nolis, J. (2020).
+\newblock {\em Build a Career in Data Science}.
+\newblock Manning Publications, Shelter Island NY, United States.
+\newblock \url{https://www.manning.com/books/build-a-career-in-data-science}.
+
+\bibitem[Rout et~al., 2018]{rout2018handling}
+Rout, N., Mishra, D., and Mallick, M.~K. (2018).
+\newblock Handling imbalanced data: A survey.
+\newblock In {\em International Proceedings on Advances in Soft Computing,
+  Intelligent Systems and Applications: ASISA 2016}, pages 431--443. Springer.
+\newblock ASISA stands for Advances in Soft Computing, Intelligent Systems and
+  Applications. \url{https://doi.org/10.1007/978-981-10-5272-9_39}.
+
+\bibitem[Rumsey, 2016]{rumsey2016interpret}
+Rumsey, D.~J. (2016).
+\newblock How to interpret a correlation coefficient $\mathsf{R}$.
+\newblock In {\em Statistics for Dummies}, page~26. For Dummies, Hoboken NJ,
+  United States.
+\newblock
+  \url{https://www.dummies.com/article/academics-the-arts/math/statistics/how-to-interpret-a-correlation-coefficient-r-169792/}.
+
+\bibitem[Schield, 1995]{schield1995correlation}
+Schield, M. (1995).
+\newblock Correlation, determination and causality in introductory statistics.
+\newblock {\em American Statistical Association, Section on Statistical
+  Education}, pages 1--6.
+
+\bibitem[Sheather, 2009]{sheather2009modern}
+Sheather, S. (2009).
+\newblock {\em A Modern Approach to Regression with $\mathsf{R}$}.
+\newblock Springer, New York NY, United States.
+\newblock \url{https://doi.org/10.1007/978-0-387-09608-7}.
+
+\bibitem[Shreffler and Huecker, 2023]{shreffler2023diagnostic}
+Shreffler, J. and Huecker, M.~R. (2023).
+\newblock Diagnostic testing accuracy: Sensitivity, specificity, predictive
+  values and likelihood ratios.
+\newblock In {\em StatPearls [Internet]}. StatPearls Publishing, Treasure
+  Island FL, United States.
+\newblock \url{https://www.ncbi.nlm.nih.gov/books/NBK557491/}.
+
+\bibitem[Shy et~al., 2021]{shy2021comparison}
+Shy, H.-Y., Chiu, C.-Y., Chiang, M.-W., and Liao, S.-C. (2021).
+\newblock Comparison of time management ability between medical students who
+  entered medical universities through different approaches.
+\newblock {\em ResearchSquare preprint rs-642312/v1}.
+\newblock \url{https://doi.org/10.21203/rs.3.rs-642312/v1}.
+
+\bibitem[Sung et~al., 2014a]{sung2014standards}
+Sung, Y.-T., Chou, Y.-T., and Tseng, F.-L. (2014a).
+\newblock Standards-based assessments for 12-year basic education in {Taiwan}.
+\newblock {\em Journal of Research in Education Sciences}, 59(1):1--32.
+\newblock This article is written in Mandarin.
+  \url{https://doi.org/10.6209/JORIES.2014.59(1).01}.
+
+\bibitem[Sung et~al., 2014b]{sung2014aspects}
+Sung, Y.-T., Huang, L.-Y., Tseng, F.-L., and Chang, K.-E. (2014b).
+\newblock The aspects and ability groups in which little fish perform worse
+  than big fish: Examining the big-fish-little-pond effect in the context of
+  school tracking.
+\newblock {\em Contemporary Educational Psychology}, 39(3):220--232.
+\newblock \url{https://doi.org/10.1016/j.cedpsych.2014.05.002}.
+
+\bibitem[Sung et~al., 2014c]{sung2014evaluating}
+Sung, Y.-T., Tseng, F.-L., Kuo, N.-P., Chang, T.-Y., and Chiou, J.-M. (2014c).
+\newblock Evaluating the effects of programs for reducing achievement gaps: A
+  case study in {Taiwan}.
+\newblock {\em Asia Pacific Education Review}, 15:99--113.
+\newblock \url{https://doi.org/10.1007/s12564-013-9304-7}.
+
+\bibitem[Tsai and Fu, 2016]{tsai2016underachievement}
+Tsai, K.-F. and Fu, G. (2016).
+\newblock Underachievement in gifted students: A case study of three college
+  physics students in {Taiwan}.
+\newblock {\em Universal Journal of Educational Research}, 4(4):688--695.
+\newblock \url{https://doi.org/10.13189/ujer.2016.040405}.
+
+\bibitem[Wasserstein et~al., 2019]{wasserstein2019moving}
+Wasserstein, R.~L., Schirm, A.~L., and Lazar, N.~A. (2019).
+\newblock Moving to a world beyond ``p $<$ 0.05''.
+\newblock {\em The American Statistician}, 73(sup1):1--19.
+\newblock \url{https://doi.org/10.1080/00031305.2019.1583913}.
+
+\bibitem[Wechsler, 2017]{wechsler2017qualified}
+Wechsler, H.~S. (2017).
+\newblock {\em The qualified student: A history of selective college admission
+  in {America}}.
+\newblock Routledge, New York NY, United States.
+\newblock \url{https://doi.org/10.4324/9781315134420}.
+
+\bibitem[Wickham, 2016]{ggplot2}
+Wickham, H. (2016).
+\newblock {\em \texttt{ggplot2}: Elegant Graphics for Data Analysis}.
+\newblock Springer-Verlag New York, New York NY, United States.
+\newblock \url{https://ggplot2.tidyverse.org}.
+
+\bibitem[Wickham et~al., 2019]{r-tidyverse}
+Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L.~D., Fran\k{c}ois,
+  R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen,
+  T.~L., Miller, E., Bache, S.~M., M\"{u}ller, K., Ooms, J., Robinson, D.,
+  Seidel, D.~P., Spinu, V., Takahashi, K., Vaughan, D., Wilke, C., Woo, K., and
+  Yutani, H. (2019).
+\newblock Welcome to the \texttt{tidyverse}.
+\newblock {\em Journal of Open Source Software}, 4(43):1686.
+\newblock \url{https://doi.org/10.21105/joss.01686}.
+
+\bibitem[Wickham and Grolemund, 2016]{wickham2016r}
+Wickham, H. and Grolemund, G. (2016).
+\newblock {\em $\mathsf{R}$ for Data Science: Import, Tidy, Transform,
+  Visualize, and Model Data}.
+\newblock O'Reilly Media, Inc., Sebastopol CA, United States.
+\newblock \url{https://www.tidyverse.org/}.
+
+\bibitem[Wilkinson, 2012]{wilkinson2012grammar}
+Wilkinson, L. (2012).
+\newblock The grammar of graphics.
+\newblock In {\em Handbook of Computational Statistics: Concepts and Methods},
+  pages 375--414. Springer, Berlin, Heidelberg, Germany.
+\newblock \url{https://doi.org/10.1007/978-3-642-21551-3_13}.
+
+\bibitem[Xie, 2016]{r-bookdown}
+Xie, Y. (2016).
+\newblock {\em \texttt{bookdown}: Authoring Books and Technical Documents with
+  $\mathsf{R}$ Markdown}.
+\newblock Chapman and Hall/CRC, Boca Raton FL, United States.
+\newblock $\mathsf{R}$ package version 0.25.
+  \url{https://bookdown.org/yihui/bookdown}.
+
+\bibitem[Yang, 2021]{yang2021meritocracy}
+Yang, A.~S. (2021).
+\newblock {\em Meritocracy and Marketization of Education: {Taiwanese}
+  Middle-Class Strategies in a Private Secondary School}.
+\newblock {PhD} dissertation, Louisiana State University and Agricultural and
+  Mechanical College, Baton Rouge LA, United States.
+\newblock \url{https://repository.lsu.edu/gradschool_dissertations/5470/}.
+
+\bibitem[Yang and Berdine, 2017]{yang2017receiver}
+Yang, S. and Berdine, G. (2017).
+\newblock The receiver operating characteristic {(ROC)} curve.
+\newblock {\em The Southwest Respiratory and Critical Care Chronicles},
+  5(19):34--36.
+\newblock \url{https://doi.org/10.12746/swrccc.v5i19.391}.
+
+\bibitem[Yau, 2024]{yau2024visualize}
+Yau, N. (2024).
+\newblock {\em Visualize This: The FlowingData Guide to Design, Visualization,
+  and Statistics}.
+\newblock John Wiley \& Sons, Hoboken NJ, United States, 2nd edition.
+\newblock \url{https://book.flowingdata.com/vt2/}.
+
+\bibitem[Yu, 2018]{yu2018stratification}
+Yu, P. (2018).
+\newblock The stratification of higher education in the {USA} and {Taiwan}: A
+  comparative analysis of students' college-choice outcomes.
+\newblock {\em Compare: A Journal of Comparative and International Education},
+  49(5):700--722.
+\newblock \url{https://doi.org/10.1080/03057925.2018.1448971}.
+
+\bibitem[Yu and Chen, 2023]{yu2023understanding}
+Yu, P. and Chen, Y.-C. (2023).
+\newblock Understanding students' college choices in {Taiwan}: An investigation
+  of social-class inequalities in choices of institutional types and college
+  pathways.
+\newblock {\em Asia Pacific Journal of Education}, 43(4):1272--1291.
+\newblock \url{https://doi.org/10.1080/02188791.2022.2114421}.
+
+\bibitem[Yu and Su, 2024]{yu2024benefits}
+Yu, W.-H. and Su, K.-H. (2024).
+\newblock Who benefits from elite colleges' decreased reliance on high-stakes
+  standardized tests? {Evidence} from a quasi-field experiment.
+\newblock {\em Research in Social Stratification and Mobility}, 89:100871.
+\newblock \url{https://doi.org/10.1016/j.rssm.2023.100871}.
+
+\end{thebibliography}

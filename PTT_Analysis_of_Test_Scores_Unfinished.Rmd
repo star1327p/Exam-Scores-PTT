@@ -4,13 +4,12 @@ title: Statistical Analysis of High School and College Entrance Exam Scores in T
 author:
 - Christine P. Chai
 - cpchai21@gmail.com
-date: "\today"
+date: \today
 output:
   pdf_document:
     extra_dependencies: float
     number_sections: true
     citation_package: natbib
-  word_document: default
 subtitle: A Fully Reproducible Approach with R Markdown
 header-includes: \renewcommand{\and}{\\}
 bibliography: references.bib
@@ -46,7 +45,7 @@ knitr::opts_chunk$set(fig.width=6, fig.align = 'center', fig.pos = "H", out.extr
 
 \section*{\textcolor{red}{Unfinished Below}}
 
-1. Add captions for all figures, starting from Section \ref{bivariate}.  
+1. Add captions for all figures, starting from Section \ref{linear-reg}.  
 
 2. Change the size of each figure when necessary. Some figures are too large and take up too much space.
 

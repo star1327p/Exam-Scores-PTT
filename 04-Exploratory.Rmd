@@ -87,8 +87,6 @@ Unlike the case of **HighSchool_PR**, we do not think it is appropriate to simul
 
 In Section \ref{College_Score}, we mentioned that the Taiwan government published detailed statistics of the **College_Score** each year, including the five indicators (88th, 75th, 50th, 25th, 12th percentile) of each subject and the total score. However, since our data sample contains **College_Score** across several years, it is not meaningful to generate a simulated distribution here.   
 
-\section*{\textcolor{red}{Unfinished Below}}
-
 ## Bivariate Exploration {#bivariate}
 
 Next, we create a bivariate scatterplot of **HighSchool_PR** and **College_Score** in Figure \ref{fig:bivariate} to examine the relationship between the two scores. Obviously, a respondent needs a valid score in both to be included in the bivariate scatterplot. Just like what we observed in the univariate plots, both variables are largely concentrated towards the maximum possible scores. The bivariate scatterplot shows a funnel shape -- respondents with higher **HighSchool_PR** have larger variance in **College_Score**.      
@@ -129,17 +127,16 @@ According to \citet{rumsey2016interpret}, the strength of linear relationship ca
 
 - $|\rho| = 1$: Perfect linear relationship
 
-- $0.6 < |\rho| < 1$: Strong linear relationship
+- $0.6 \leq |\rho| < 1$: Strong linear relationship
 
-- $0.4 < |\rho| < 0.6$: Moderate linear relationship
+- $0.4 \leq |\rho| < 0.6$: Moderate linear relationship
 
-- $0.2 < |\rho| < 0.4$: Low linear relationship
+- $0.2 \leq |\rho| < 0.4$: Low linear relationship
 
 - $0 < |\rho| < 0.2$: Little-to-no linear relationship
 
 - $|\rho| = 0$: No linear relationship
 
-\section*{\textcolor{red}{Unfinished Below}}
 
 ### Examples of Scatterplots
 
@@ -256,7 +253,7 @@ linear_corr_gen(noise_sd=3, "positive", 38)
 linear_corr_gen(noise_sd=2.5, "negative", 39)
 ```
 
-The third set of graphs in Figure \ref{fig:mid-correlation} visualizes a medium level of linear correlation, where $0.4 < |\rho| < 0.6$. The linear trend is still visible, but with more fluctuation than in the high-correlation graphs.    
+The third set of graphs in Figure \ref{fig:mid-correlation} visualizes a medium level of linear correlation, where $0.4 \leq |\rho| < 0.6$. The linear trend is still visible, but with more fluctuation than in the high-correlation graphs.    
 
 - The left graph shows $\rho = 0.64$, as a positive medium correlation of the two variables. One example is students' midterm exam scores and final exam scores. Students who did well on the midterm often continue to do well on the final, but this is not guaranteed. Exam scores often have more variability than people's height and weight.        
 
