@@ -5,9 +5,9 @@ Let's start the model validation with in-sample prediction; that is, using the d
 # sum(data_corr$CS_65up) # 92
 # sum(data_corr$CS_65up)/nrow(data_corr) # 0.489
 
-print(paste("There are",nrow(data_corr),"records in the data, with",
+print(paste("There are",nrow(data_corr),"records in the data,",
             sum(data_corr$CS_65up),
-            "of them have College_Score at least 65."))
+            "of which have College_Score at least 65."))
 print(paste("This is a proportion of",
             round(sum(data_corr$CS_65up)/nrow(data_corr),digits=3),
             ", which is close to 0.5."))

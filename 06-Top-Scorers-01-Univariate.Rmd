@@ -23,11 +23,19 @@ table(HS_PR_seg)
 
 \section*{\textcolor{red}{Unfinished Below}}
 
-Or if you prefer a histogram, we can also create one.
+\textcolor{red}{Need to get the $\geq$ symbol in the plot, along with the \texttt{fig.cap} parts.}   
 
-```{r high-school-pr-seg-hist}
+We also create a histogram for **HighSchool_PR** 80 and above, as illustrated in Figure \ref{fig:high-school-pr-seg-hist}.
+
+```{r high-school-pr-seg-hist, fig.cap="Histogram of \\textbf{HighSchool$\\_$PR} 80 and above (max possible is 99)"}
+
+# UNFINISHED HERE
+
 hist(HS_PR_seg, xlab="HighSchool_PR (max possible is 99)",
-     main="Histogram of HighSchool_PR 80 and above")
+     main=expression(plain("Histogram of HighSchool_PR") >= 80))
+
+# hist(HS_PR_seg, xlab="HighSchool_PR (max possible is 99)",
+     # main="Histogram of HighSchool_PR 80 and above")
 ```
 
 Therefore, we create the breakdown of the **HighSchool_PR** ranges: 80-89, 90-94, 95-99. There are 49 records in the 80-89 range, 44 records in 90-94, and 70 records in 95-99. We divided the 90-99 range into 90-94 and 95-99, but the number of **HighSchool_PR** records in the 95-99 range is still higher than any of the other two categories.  
@@ -59,7 +67,7 @@ length(CS_Score_seg)
 table(CS_Score_seg)
 ```
 
-Before we display the histogram, let's create a table to (approximately) convert **College_Score** into PR (Percentile Rank) using 2001-2014 data.^[<https://bit.ly/4bqxYpW>] This gives readers an understanding of what percentage of test takers (high school students in grade 12) get what scores. For example, a **College_Score** of 70 would be at the 98.5th percentile, i.e., PR 98.5.
+Before we display the histogram, let's approximately convert **College_Score** into PR (Percentile Rank) using 2001-2014 data.^[<https://bit.ly/4bqxYpW>] This gives readers an understanding of what percentage of test takers (high school students in grade 12) get what scores. For example, a **College_Score** of 70 would be at the 98.5th percentile, i.e., PR 98.5.
 
 ```{r college-score-pr}
 college_score = c(60,65,70,74,75)
@@ -68,14 +76,14 @@ college_pr = c(88, 95, 98.5, 99.9, 100)
 data.frame(college_score, college_pr)
 ```
 
-Here is the histogram of the **College_Score** values 60 and above.
+Figure \ref{fig:college-score-seg-hist} is the histogram of the **College_Score** values 60 and above.
 
-```{r college-score-seg-hist}
+```{r college-score-seg-hist, fig.cap="Histogram of \\textbf{College$\\_$Score} 60 and above (max possible is 75)"}
 hist(CS_Score_seg, xlab="College_Score (max possible is 75)",
      main="Histogram of College_Score 60 and above", xlim=c(60,80))
 ```
 
-We also create the breakdown of the **College_Score** ranges: 60-64, 65-69, 70-75. There are 36 records in the 60-64 range, 47 records in 65-69, and 45 records in 70-75. This is also relatively more uniform than the **HighSchool_PR** breakdown (49, 44, and 70 records each).
+We also create the breakdown of the **College_Score** ranges: 60-64, 65-69, 70-75. There are 36 records in the 60-64 range, 47 records in 65-69, and 45 records in 70-75. The three bins of **College_Score** are of similar sizes, compared with the **HighSchool_PR** breakdown (49, 44, and 70 records each).
 
 ```{r college-score-segments}
 CS60to64 = length(which(CS_Score_seg >= 60 & CS_Score_seg <= 64))
