@@ -1,4 +1,4 @@
-Linear regression is a commonly-used statistical model to evaluate the relationship between two continuous variables, and even major companies like IBM endorse linear regression for better decision-making in business.^[<https://www.ibm.com/topics/linear-regression>] Therefore, we are going to decide whether we should run a linear regression to predict **College_Score** from **HighSchool_PR**. If yes, we would implement the model and check the residuals. If no, we need to explore other options in analyzing the data.  
+Linear regression is a commonly-used statistical model to evaluate the relationship between two continuous variables, and even major companies (e.g. IBM) endorse linear regression for better decision-making in business.^[<https://www.ibm.com/topics/linear-regression>] Therefore, we are going to decide whether we should run a linear regression to predict **College_Score** from **HighSchool_PR**. If yes, we would implement the model and check the residuals. If no, we need to explore other options in analyzing the data.  
 
 A linear regression model can be written in mathematical terms:
 
@@ -15,13 +15,11 @@ $Y$ is the response variable, i.e., what we would like to predict. $X$ is the ex
 \item \textbf{Independent observations}: Each observation (datapoint) is independent of the others.
 \end{enumerate}
 
-\section*{\textcolor{red}{Unfinished Below}}
-
 ## Should we run a linear regression?
 
-It is inappropriate to perform linear regression directly, because the data do not meet the constant variability assumption. In the bivariate exploratory plot, we can see that the variability of **College_Score** ($Y$) increases as **HighSchool_PR** ($X$) increases. One possible remedy is apply the square root transformation to **College_Score**, in order to reduce the variability. But the scatterplot below shows little to no improvement in variability, and the correlation coefficient even drops from 0.507 to 0.504. Hence we determine that it is not a good idea to run a linear regression model on the whole dataset.   
+It is inappropriate to perform linear regression directly, because the data do not meet the constant variability assumption. Recall the bivariate exploratory plot in Figure \ref{fig:bivariate}, and we observe that the variability of **College_Score** ($Y$) increases as **HighSchool_PR** ($X$) increases. One possible remedy is apply the square root transformation to **College_Score**, in order to reduce the variability. But the scatterplot in Figure \ref{fig:transform-test} shows little to no improvement in variability, and the correlation coefficient even drops from 0.507 to 0.504. Hence we determine that it is not a good idea to run a linear regression model on the whole dataset.   
 
-```{r transform-test}
+```{r transform-test, fig.cap="Bivariate scatterplot of \\textbf{HighSchool$\\_$PR} and  square root of \\textbf{College$\\_$Score}"}
 # data version: already removed missing data
 # data_corr = data[-missing_rows,]
 
@@ -37,9 +35,9 @@ cor(data_corr$HighSchool_PR, sqrt(data_corr$College_Score))
 
 ## Segmenting the Data {#examine-further}
 
-Instead, we should segment the data and further examine the top scorers in the dataset, i.e., those with **HighSchool_PR** 80 or higher. Most of these respondents have **College_Score** of 60 or higher, but the range of **College_Score** is wide. Here, we add horizontal and vertical lines to clarify the graph.
+Instead, we should segment the data and further examine the top scorers in the dataset, i.e., those with **HighSchool_PR** 80 or higher. Most of these respondents have **College_Score** of 60 or higher, but the range of **College_Score** is wide. Here in Figure \ref{fig:high-scorer-obs}, we add horizontal and vertical lines to clarify the graph.
 
-```{r high-scorer-obs}
+```{r high-scorer-obs, fig.cap="Bivariate scatterplot with segment lines at \\textbf{HighSchool$\\_$PR} = 80 and \\textbf{College$\\_$Score} = 60"}
 plot(data_corr$HighSchool_PR, data_corr$College_Score,
      main = "High School and College Entrance Exam Scores",
      xlab="HighSchool_PR",

@@ -45,7 +45,7 @@ knitr::opts_chunk$set(fig.width=6, fig.align = 'center', fig.pos = "H", out.extr
 
 \section*{\textcolor{red}{Unfinished Below}}
 
-1. Add captions for all figures, starting from Section \ref{linear-reg}.  
+1. Add captions for all figures, starting from Section \ref{HighSchool-PR-80-up}.  
 
 2. Change the size of each figure when necessary. Some figures are too large and take up too much space.
 

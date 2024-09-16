@@ -20,10 +20,13 @@ length(HS_PR_seg)
 table(HS_PR_seg)
 ```
 
+
+\section*{\textcolor{red}{Unfinished Below}}
+
 Or if you prefer a histogram, we can also create one.
 
 ```{r high-school-pr-seg-hist}
-hist(HS_PR_seg, xlab="HighSchool_PR",
+hist(HS_PR_seg, xlab="HighSchool_PR (max possible is 99)",
      main="Histogram of HighSchool_PR 80 and above")
 ```
 
@@ -69,7 +72,7 @@ Here is the histogram of the **College_Score** values 60 and above.
 
 ```{r college-score-seg-hist}
 hist(CS_Score_seg, xlab="College_Score (max possible is 75)",
-     main="Histogram of College_Score 60 and above")
+     main="Histogram of College_Score 60 and above", xlim=c(60,80))
 ```
 
 We also create the breakdown of the **College_Score** ranges: 60-64, 65-69, 70-75. There are 36 records in the 60-64 range, 47 records in 65-69, and 45 records in 70-75. This is also relatively more uniform than the **HighSchool_PR** breakdown (49, 44, and 70 records each).
