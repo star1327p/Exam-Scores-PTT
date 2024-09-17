@@ -20,22 +20,11 @@ length(HS_PR_seg)
 table(HS_PR_seg)
 ```
 
-
-\section*{\textcolor{red}{Unfinished Below}}
-
-\textcolor{red}{Need to get the $\geq$ symbol in the plot, along with the \texttt{fig.cap} parts.}   
-
 We also create a histogram for **HighSchool_PR** 80 and above, as illustrated in Figure \ref{fig:high-school-pr-seg-hist}.
 
 ```{r high-school-pr-seg-hist, fig.cap="Histogram of \\textbf{HighSchool$\\_$PR} 80 and above (max possible is 99)"}
-
-# UNFINISHED HERE
-
 hist(HS_PR_seg, xlab="HighSchool_PR (max possible is 99)",
-     main=expression(plain("Histogram of HighSchool_PR") >= 80))
-
-# hist(HS_PR_seg, xlab="HighSchool_PR (max possible is 99)",
-     # main="Histogram of HighSchool_PR 80 and above")
+     main="Histogram of HighSchool_PR 80 and above")
 ```
 
 Therefore, we create the breakdown of the **HighSchool_PR** ranges: 80-89, 90-94, 95-99. There are 49 records in the 80-89 range, 44 records in 90-94, and 70 records in 95-99. We divided the 90-99 range into 90-94 and 95-99, but the number of **HighSchool_PR** records in the 95-99 range is still higher than any of the other two categories.  

@@ -141,7 +141,7 @@ confint(model)
 exp(confint(model))
 ```
 
-We can also calculate the 95\% confidence interval for the predicted probability of getting **College_Score** at least 65, given that the respondent scored a 99 on **HighSchool_PR**. However, the confidence interval is [0.00012, 0.99999], which does not make practical sense because a probability has natural boundaries of [0,1].  
+We can also calculate the 95% confidence interval for the predicted probability of getting **College_Score** at least 65, given that the respondent scored a 99 on **HighSchool_PR**. However, the confidence interval is [0.00012, 0.99999], which does not make practical sense because a probability has natural boundaries of [0,1].  
 
 Why is this interval so wide? The linear component is $\alpha + \beta X$, so the range depends on the value of **HighSchool_PR**. When **HighSchool_PR** is large (say, 99), the 95% confidence interval of $\alpha + \beta X$ becomes extremely wide.  
 
@@ -153,7 +153,7 @@ p_pr99_ci = exp(alpha_ci + beta_ci*99)/(1+exp(alpha_ci + beta_ci*99))
 p_pr99_ci
 ```
 
-The interval would be narrow for a small value of **HighSchool_PR**, such as less than 10. But people with extremely low **HighSchool_PR** are unlikely to be interested in taking the college entrance exam at all. Hence we are not going to calculate the 95\% confidence interval for small **HighSchool_PR** values.  
+The interval would be narrow for a small value of **HighSchool_PR**, such as less than 10. But people with extremely low **HighSchool_PR** are unlikely to be interested in taking the college entrance exam at all. Hence we are not going to calculate the 95% confidence interval for small **HighSchool_PR** values.  
 
 **Remark**: The readers may wonder how the author(s) remember all of the `R` commands for the model. In fact, we don't need to! We can use the function `objects` to find all available outputs from the model, and the object names are descriptive.  
 
@@ -162,7 +162,7 @@ objects(model)
 ```
 
 
-## Overall Model Results
+## Overall Model Results {#logit-overall-graphs}
 
 ```{r model-validation, include=FALSE}
 # objects(model) # to find out what functions are available in the model
@@ -189,14 +189,18 @@ print(paste("This occurs at HighSchool_PR",
 
 The graph shows different trends for different segments of the **HighSchool_PR**. When **HighSchool_PR** is less than 70, the predicted probability of getting **College_Score** at least 65 is close to zero. But we should take this observation with caution, because we have few data points with **HighSchool_PR** less than 70. When **HighSchool_PR** is between 70 and 79, the predicted probability increases with an almost linear trend. Starting at **HighSchool_PR** 80, the predicted probability increases with a steeper slope. Finally, the growth of the predicted probability slows down when **HighSchool_PR** reaches 98 (the maximum possible **HighSchool_PR** is 99).    
 
+\section*{\textcolor{red}{Unfinished Below}}
+
+\textcolor{red}{Need to get the $\geq$ symbol in the \texttt{fig.cap} parts.}   
+
 ```{r validation-draft}
 # First version of graph
 yy = model$fitted.values
 xx = data_corr$HighSchool_PR
 plot(xx, yy, ylim=c(0,1),
-     main="Predicted Probability of College_Score >= 65",
+     main=expression(plain("Predicted Probability of College_Score") >= 65),
      xlab="HighSchool_PR",
-     ylab="Probability of College_Score >= 65")
+     ylab=expression(plain("Probability of College_Score") >= 65))
 ```
 
 Since there are many repetitive values in **HighSchool_PR**, let's apply the `jitter` function to add random noise to the data for display. (Remember to set a random seed for reproducibility.) We can see that the deeper black circles indicate more records in the data, which are concentrated in the higher **HighSchool_PR** values.
@@ -207,8 +211,8 @@ set.seed(21)
 new_xx = jitter(xx)
 new_yy = jitter(yy)
 plot(new_xx, new_yy, ylim=c(0,1),
-     main="Jittered Probability of College_Score >= 65",
+     main=expression(plain("Jittered Probability of College_Score") >= 65),
      xlab="HighSchool_PR",
-     ylab="Probability of College_Score >= 65")
+     ylab=expression(plain("Probability of College_Score") >= 65))
 ```
 
