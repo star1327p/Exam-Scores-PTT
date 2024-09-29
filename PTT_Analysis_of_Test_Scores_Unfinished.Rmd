@@ -63,142 +63,142 @@ The opinions and views expressed in this manuscript are those of the author, and
 
 # Introduction {#intro}
 
-```{r include-intro, child = '01-Introduction.Rmd'}
+```{r include-intro, child = 'Ch01_to_Ch02_Context/01-Introduction.Rmd'}
 ```
 
 # Background {#background}
 
-```{r include-background, child = '02-Background.Rmd'}
+```{r include-background, child = 'Ch01_to_Ch02_Context/02-Background.Rmd'}
 ```
 
 # Data Description {#data}
 
-```{r include-data-description, child = '03-Data-Description.Rmd'}
+```{r include-data-description, child = 'Ch03_to_Ch06_Explore/03-Data-Description.Rmd'}
 ```
 
 # Exploratory Data Analysis {#eda}
 
-```{r include-exploratory, child = '04-Exploratory.Rmd'}
+```{r include-exploratory, child = 'Ch03_to_Ch06_Explore/04-Exploratory.Rmd'}
 ```
 
 # Linear Regression {#linear-reg}
 
-```{r include-linear-reg, child = '05-Linear-Regression.Rmd'}
+```{r include-linear-reg, child = 'Ch03_to_Ch06_Explore/05-Linear-Regression.Rmd'}
 ```
 
 # Top Scorers: A Closer Look {#explore-top}
 
-```{r include-linear-reg, child = '06-Top-Scorers-01-Univariate.Rmd'}
+```{r include-linear-reg, child = 'Ch03_to_Ch06_Explore/06-Top-Scorers-01-Univariate.Rmd'}
 ```
 
 ## Bivariate Exploration of Top Scorers {#bivariate-top-scorers}
 
-```{r include-chisq-test, child = '06-Top-Scorers-02-Bivariate.Rmd'}
+```{r include-chisq-test, child = 'Ch03_to_Ch06_Explore/06-Top-Scorers-02-Bivariate.Rmd'}
 ```
 
 # Logistic Regression {#logit-reg}
 
-```{r include-logit-reg, child = '07-Logistic-Regression.Rmd'}
+```{r include-logit-reg, child = 'Ch07_to_Ch08_Model/07-Logistic-Regression.Rmd'}
 ```
 
 # Model Validation: In-Sample Prediction {#validation}
 
-```{r include-in-sample-00, child = '08-In-Sample-00-Foreword.Rmd'}
+```{r include-in-sample-00, child = 'Ch07_to_Ch08_Model/08-In-Sample-00-Foreword.Rmd'}
 ```
 
 ## Implementation of In-Sample Prediction {#in-sample}
 
-```{r include-in-sample-01, child = '08-In-Sample-01-Implementation.Rmd'}
+```{r include-in-sample-01, child = 'Ch07_to_Ch08_Model/08-In-Sample-01-Implementation.Rmd'}
 ```
 
 ## Interpretation of Confusion Matrix {#interpretation}
 
-```{r include-in-sample-02, child = '08-In-Sample-02-Confusion-Matrix.Rmd'}
+```{r include-in-sample-02, child = 'Ch07_to_Ch08_Model/08-In-Sample-02-Confusion-Matrix.Rmd'}
 ```
 
 ## Breakdown by High School Entrance Exam Scores {#another-breakdown}
 
-```{r include-in-sample-03, child = '08-In-Sample-03-Score-Breakdown.Rmd'}
+```{r include-in-sample-03, child = 'Ch07_to_Ch08_Model/08-In-Sample-03-Score-Breakdown.Rmd'}
 ```
 
 # Model Validation: Out-of-Sample Prediction {#out-of-sample}
 
-```{r include-out-sample-00, child = '09-Out-Sample-00-Foreword.Rmd'}
+```{r include-out-sample-00, child = 'Ch09_Validation/09-Out-Sample-00-Foreword.Rmd'}
 ```
 
 ## Separate Training and Testing Datasets {#sep-train-test}
 
-```{r include-out-sample-01, child = '09-Out-Sample-01-Sep-Explain.Rmd'}
+```{r include-out-sample-01, child = 'Ch09_Validation/09-Out-Sample-01-Sep-Explain.Rmd'}
 ```
 
 ### Implementation {#train-test-demo}
 
-```{r include-out-sample-02, child = '09-Out-Sample-02-Sep-Implement.Rmd'}
+```{r include-out-sample-02, child = 'Ch09_Validation/09-Out-Sample-02-Sep-Implement.Rmd'}
 ```
 
 ### Organizing the Code for Reusability {#org-code-reuse}
 
-```{r include-out-sample-03, child = '09-Out-Sample-03-Sep-Organize.Rmd'}
+```{r include-out-sample-03, child = 'Ch09_Validation/09-Out-Sample-03-Sep-Organize.Rmd'}
 ```
 
 ## Cross Validation {#cross-validation}
 
-```{r include-out-sample-04, child = '09-Out-Sample-04-Cross-Validation.Rmd'}
+```{r include-out-sample-04, child = 'Ch09_Validation/09-Out-Sample-04-Cross-Validation.Rmd'}
 ```
 
 ### K-fold Cross Validation {#k-fold}
 
-```{r include-out-sample-05, child = '09-Out-Sample-05-K-Fold.Rmd'}
+```{r include-out-sample-05, child = 'Ch09_Validation/09-Out-Sample-05-K-Fold.Rmd'}
 ```
 
 ### Leave-one-out Cross Validation {#leave-one-out}
 
-```{r include-out-sample-06, child = '09-Out-Sample-06-Leave-One-Out.Rmd'}
+```{r include-out-sample-06, child = 'Ch09_Validation/09-Out-Sample-06-Leave-One-Out.Rmd'}
 ```
 
 ## Comparison of Results {#cmp-results}
 
-```{r include-out-sample-07, child = '09-Out-Sample-07-Comparison-Results.Rmd'}
+```{r include-out-sample-07, child = 'Ch09_Validation/09-Out-Sample-07-Comparison-Results.Rmd'}
 ```
 
 # Model Metrics: ROC and AUC {#roc-auc}
 
-```{r include-roc-auc-00, child = '10-Model-Metrics-00-Foreword.Rmd'}
+```{r include-roc-auc-00, child = 'Ch10_Eval_Metrics/10-Model-Metrics-00-Foreword.Rmd'}
 ```
 
 ## Demonstrative ROC Curve {#roc-demo}
 
-```{r include-roc-auc-01, child = '10-Model-Metrics-01-Demo.Rmd'}
+```{r include-roc-auc-01, child = 'Ch10_Eval_Metrics/10-Model-Metrics-01-Demo.Rmd'}
 ```
 
 ## Data Observation and Processing {#roc-prep} 
 
-```{r include-roc-auc-02, child = '10-Model-Metrics-02-Observation.Rmd'}
+```{r include-roc-auc-02, child = 'Ch10_Eval_Metrics/10-Model-Metrics-02-Observation.Rmd'}
 ```
 
 ## Implementation and Results {#roc-auc-results}
 
-```{r include-roc-auc-03, child = '10-Model-Metrics-03-ROC-AUC.Rmd'}
+```{r include-roc-auc-03, child = 'Ch10_Eval_Metrics/10-Model-Metrics-03-ROC-AUC.Rmd'}
 ```
 
 # Recap of the Project {#recap}
 
-```{r include-project-recap, child = '11-Project-Recap.Rmd'}
+```{r include-project-recap, child = 'Ch11_to_Ch14_Discuss/11-Project-Recap.Rmd'}
 ```
 
 # Recommended Resources for Learning {#resources}
 
-```{r include-additional-resources, child = '12-Additional-Resources.Rmd'}
+```{r include-additional-resources, child = 'Ch11_to_Ch14_Discuss/12-Additional-Resources.Rmd'}
 ```
 
 # Personal Scores and Remarks {#personal-remarks}
 
-```{r include-personal, child = '13-Personal-Scores-Remarks.Rmd'}
+```{r include-personal, child = 'Ch11_to_Ch14_Discuss/13-Personal-Scores-Remarks.Rmd'}
 ```
 
 # Final Words {.unnumbered}
 
-```{r include-final-words, child = '14-Final-Words.Rmd'}
+```{r include-final-words, child = 'Ch11_to_Ch14_Discuss/14-Final-Words.Rmd'}
 ```
 
 # Acknowledgments {.unnumbered}

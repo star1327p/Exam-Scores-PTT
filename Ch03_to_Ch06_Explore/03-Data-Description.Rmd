@@ -22,7 +22,7 @@ In some cases, the reported scores can be inaccurate based on the respondent's d
 For **HS_Inacc** and **CS_Inacc**, we set the missing values to "0" because the two flags are binary indicators. Otherwise, the missing values would show as `NA`, which are difficult to process in the code.  
 
 ```{r data-cleaning-inaccurate-flags}
-data = read.csv("ptt_SENIORHIGH_data.csv")
+data = read.csv("../ptt_SENIORHIGH_data.csv")
 
 names(data)[1] = "pttID" # system read in as "i..pttID", need to correct this
 
@@ -52,7 +52,7 @@ data$CS_Invalid[(data$College_Score > 75)|(data$College_Score < 1)] = 1
 Finally, we save the clean version to a separate `.csv` file for future use.  
 
 ```{r save-data-clean, eval=FALSE}
-write.csv(data, "ptt_SENIORHIGH_data_clean.csv")
+write.csv(data, "../ptt_SENIORHIGH_data_clean.csv")
 ```
 
 ## Data Snapshot

@@ -3,7 +3,7 @@ Let's examine the confusion matrices for each group of **HighSchool_PR**: 0-79, 
 The group with **HighSchool_PR** 0-79 has the smallest number of respondents, and 25 is a sufficient sample size. The groups  with **HighSchool_PR** 80-89 and 90-94 contain 49 and 44 respondents, respectively. The group with **HighSchool_PR** 95-99 includes 70 respondents, which is the largest of the four categories.  
 
 ```{r header-code,include=FALSE}
-data = read.csv("ptt_SENIORHIGH_data.csv")
+data = read.csv("../ptt_SENIORHIGH_data.csv")
 names(data)[1] = "pttID"
 
 missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")
