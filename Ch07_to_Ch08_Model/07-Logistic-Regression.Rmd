@@ -187,13 +187,16 @@ print(paste("This occurs at HighSchool_PR",
       data_corr$HighSchool_PR[which.max(model$fitted.values)]))
 ```
 
-The graph shows different trends for different segments of the **HighSchool_PR**. When **HighSchool_PR** is less than 70, the predicted probability of getting **College_Score** at least 65 is close to zero. But we should take this observation with caution, because we have few data points with **HighSchool_PR** less than 70. When **HighSchool_PR** is between 70 and 79, the predicted probability increases with an almost linear trend. Starting at **HighSchool_PR** 80, the predicted probability increases with a steeper slope. Finally, the growth of the predicted probability slows down when **HighSchool_PR** reaches 98 (the maximum possible **HighSchool_PR** is 99).    
+The graph in Figure \ref{fig:validation-original} shows different trends for different segments of the **HighSchool_PR**. When **HighSchool_PR** is less than 70, the predicted probability of getting **College_Score** at least 65 is close to zero. But we should take this observation with caution, because we have few data points with **HighSchool_PR** less than 70. When **HighSchool_PR** is between 70 and 79, the predicted probability increases with an almost linear trend. Starting at **HighSchool_PR** 80, the predicted probability increases with a steeper slope. Finally, the growth of the predicted probability slows down when **HighSchool_PR** reaches 98 (the maximum possible **HighSchool_PR** is 99).    
 
-\section*{\textcolor{red}{Unfinished Below}}
+```{r validation-fancy, include=FALSE}
+# \textcolor{red}{A fancy way is to make the axis labels \textbf{HighSchool$\_$PR} and \textbf{College$\_$Score} in bold font.}
+# But we decided not to do this due to aesthetic reasons.
+# e.g. xlab = substitute(paste(bold("HighSchool_PR")))
+# e.g. ylab = expression(paste(plain("Probability of "), bold("College_Score") >= 65))
+```
 
-\textcolor{red}{Need to get the $\geq$ symbol in the \texttt{fig.cap} parts.}   
-
-```{r validation-draft}
+```{r validation-original, fig.cap="Predicted Probability of  \\textbf{College$\\_$Score} $\\geq$ 65"}
 # First version of graph
 yy = model$fitted.values
 xx = data_corr$HighSchool_PR
@@ -203,9 +206,9 @@ plot(xx, yy, ylim=c(0,1),
      ylab=expression(plain("Probability of College_Score") >= 65))
 ```
 
-Since there are many repetitive values in **HighSchool_PR**, let's apply the `jitter` function to add random noise to the data for display. (Remember to set a random seed for reproducibility.) We can see that the deeper black circles indicate more records in the data, which are concentrated in the higher **HighSchool_PR** values.
+Since there are many repetitive values in **HighSchool_PR**, let's apply the `jitter` function to add random noise to the data for display in Figure \ref{fig:validation-jittering}. (Remember to set a random seed for reproducibility.) We can see that the deeper black circles indicate more records in the data, which are concentrated in the higher **HighSchool_PR** values.
 
-```{r validation-jittering}
+```{r validation-jittering, fig.cap="Jittered Probability of  \\textbf{College$\\_$Score} $\\geq$ 65"}
 # Add jittering because of many repetitive values in HighSchool_PR
 set.seed(21)
 new_xx = jitter(xx)

@@ -60,9 +60,9 @@ print(paste("Among all",group_size,"values in pred_prob_1,",
 
 ### The `roc.plot` Function {#roc-plot}
 
-Now let's make the demonstrative ROC curve using `roc.plot`, which plots the false positive rate (FPR) against the false negative rate (FNR). The first input vector is the actual observed outcomes `obs_outcomes`, and the second input vector is the predicted probabilities `pred`. The curve should be above the straight line from the bottom left (0,0) to the top right (1,1). We also store the output of `roc.plot` in a new object `new_test` for future use, which is of `roc.data` type.   
+Now let's make the demonstrative ROC curve in Figure \ref{fig:auc-demo-roc} using `roc.plot`, which plots the false positive rate (FPR) against the false negative rate (FNR). The first input vector is the actual observed outcomes `obs_outcomes`, and the second input vector is the predicted probabilities `pred`. The curve should be above the straight line from the bottom left (0,0) to the top right (1,1). We also store the output of `roc.plot` in a new object `new_test` for future use, which is of `roc.data` type.   
 
-```{r auc-demo-roc}
+```{r auc-demo-roc, fig.cap="ROC Curve (Simulated Data)"}
 pred = c(pred_prob_0, pred_prob_1)
 new_test = roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE,
                     main="ROC Curve (Simulated Data)")
@@ -85,15 +85,16 @@ auc_value = new_test$roc.vol$Area
 print(auc_value)
 ```
 
-Let's add the AUC value to the title of the ROC graph.
+Let's add the AUC value to the title of the ROC graph, as shown in Figure \ref{fig:auc-demo-continued}.
 
-```{r auc-demo-continued}
+```{r auc-demo-continued, fig.cap="ROC Curve: AUC = 0.89 (Simulated Data)"}
 roc.plot(obs_outcomes,pred,xlab = "FPR", ylab="TPR",show.thres = FALSE,
          main=paste("ROC Curve: AUC =", round(auc_value,2), "(Simulated Data)"))
 ```
 
+\section*{\textcolor{red}{Unfinished Below}}
 
-### More Details  
+### More Details  {#roc-plot-details}
 
 The ROC graph is a summary of the model performance across all probability thresholds, and each point on the curve represents the FPR (false positive rate) and TPR (true positive rate) of a single probability threshold. When we set `show.thres = TRUE` in the `roc.plot` function, the graph shows that the probability thresholds range from 0 to 1.       
 
