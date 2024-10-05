@@ -6,13 +6,12 @@ The author got **College_Score** 69 on the General Scholastic Ability Test (GSAT
 
 ## Comparison with the Data
   
-The author's high school and college entrance exam scores are indicated as the red dot in the scatterplot below from Section \ref{bivariate}. We also added the reference lines for **HighSchool_PR** 80 and **College_Score** 60. **HighSchool_PR** 95 and **College_Score** 69 are definitely above-average scores, despite imperfect.      
+The author's high school and college entrance exam scores are indicated as the red dot in the top-right of Figure \ref{fig:bivariate-dup}. This is essentially the same bivariate scatterplot in Section \ref{bivariate}, but we add the reference lines for **HighSchool_PR** 80 and **College_Score** 60. **HighSchool_PR** 95 and **College_Score** 69 are definitely above-average scores, despite imperfect.      
 
-```{r bivariate-dup}
+```{r bivariate-dup, fig.cap="High School and College Entrance Exam Scores"}
 plot(data_corr$HighSchool_PR, data_corr$College_Score,
      main = "High School and College Entrance Exam Scores",
-     xlab="HighSchool_PR",
-     ylab="College_Score")
+     xlab="HighSchool_PR", ylab="College_Score")
 
 abline(h=60,v=80)
 points(x=95, y=69, col="red", pch=19)

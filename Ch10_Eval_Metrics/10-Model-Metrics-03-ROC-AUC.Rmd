@@ -53,11 +53,11 @@ auc_value_test = roc_data_test$roc.vol$Area
 print(auc_value_test)
 ```
 
-Now we add the AUC value to the title, and finally plot the ROC graph from our data. However, this ROC curve contains "steps" and is not smooth, because our model made predictions from discrete data with a relatively small sample size.^[<https://forum.posit.co/t/why-do-smooth-roc-curves/121753>] Each student with the same **HighSchool_PR** should have the same predictive probability of getting **College_Score** at least 65, and the repetitive predictive probablities resulted in the discontinuous steps in the graph.    
+Now we add the AUC value to the title, and finally plot the ROC graph in Figure \ref{fig:plot-roc-auc-with-data} from our data. However, this ROC curve contains "steps" and is not smooth, because our model made predictions from discrete data with a relatively small sample size.^[<https://forum.posit.co/t/why-do-smooth-roc-curves/121753>] Each student with the same **HighSchool_PR** should have the same predictive probability of getting **College_Score** at least 65, and the repetitive predictive probablities resulted in the discontinuous steps in the graph.    
 
 Hence we need to smooth the ROC curve. The `R` package `pROC` \cite{r-p-roc} contains many methods to smooth the ROC curve. But `pROC` generates the ROC curve based on specificity and sensitivity, rather than FPR and TPR. If we still use the `R` package `verification`, an easier solution is to manually add a small random noise to **HighSchool_PR** in the data, i.e., jittering. In this way, each subject's **HighSchool_PR** becomes slightly different than each other, so that we can get distinct values.   
 
-```{r plot-roc-auc-with-data}
+```{r plot-roc-auc-with-data, fig.cap="ROC Curve: AUC = 0.79 (Original Data)"}
 roc.plot(real_outcomes, pred_outcomes, 
          xlab = "FPR", ylab="TPR",  show.thres = FALSE,
          main=paste("ROC Curve: AUC =", round(auc_value_test,2), "(Original Data)"))
@@ -152,9 +152,9 @@ auc_value_jitter = roc_data_jitter$roc.vol$Area
 print(roc_data_jitter$roc.vol$Area)
 ```
 
-Now the ROC graph is smoother than the original one in Section \ref{original-roc}.  
+Now the ROC graph in Figure \ref{fig:jitter-roc-auc-plot} is smoother than the original one in Section \ref{original-roc}.  
 
-```{r jitter-roc-auc-plot}
+```{r jitter-roc-auc-plot, fig.cap="ROC Curve: AUC = 0.81 (Jittered Data)"}
 roc.plot(real_outcomes_jitter, pred_outcomes_jitter, 
          thresholds = thresholds,
          xlab = "FPR", ylab="TPR", show.thres = FALSE, 

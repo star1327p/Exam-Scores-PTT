@@ -44,11 +44,11 @@ knitr::opts_chunk$set(fig.width=6, fig.align = 'center', fig.pos = "H", out.extr
 
 \section*{\textcolor{red}{Unfinished Below}}
 
-1. Add captions for all figures, starting from Section \ref{roc-plot-details}.  
+1. Move the datasets `ptt_SENIORHIGH_data.csv` and `ptt_SENIORHIGH_data_clean.csv` into the `Data_from_PTT` subdirectory. Change the corresponding file paths and re-compile the PDF.
 
 2. Change the size of each figure when necessary. Some figures are too large and take up too much space.
 
-I may not need to add more references until I fix the two issues above. Then I can ask some friends (preferably current high school teachers) to verify the correctness of the high school and college entrance rules in Taiwan.  
+3. Then I need to ask some friends (preferably current high school teachers) to verify the correctness of the high school and college entrance rules in Taiwan.  
 
 \section*{\textcolor{red}{Unfinished Above}}
 
