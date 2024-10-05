@@ -1,0 +1,6 @@
+[submodule "latex-test-template"]
+	path = latex-test-template
+	url = https://github.com/star1327p/latex-test-template.git
+	update = merge
+	branch = main
+	recursive = true
