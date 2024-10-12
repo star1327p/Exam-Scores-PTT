@@ -20,13 +20,9 @@ Data link: <https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>
 
 #### To-Do:
 
-1. Need to add more references, instead of just URLs. Especially on Taiwan's education system, which I have very few items listed in the References. Most of my references are about statistics and/or data science itself.
+1. Move the datasets `ptt_SENIORHIGH_data.csv` and `ptt_SENIORHIGH_data_clean.csv` into the `Data_from_PTT` subdirectory. Change the corresponding file paths and re-compile the PDF.
 
-- Tentative goal: Add enough references for the PDF to have at least 90 pages.
-- The Introduction section needs to be stronger and more convincing.
-- Definitely need more references for the Background section.
-
-2. Also check the references in detail. 
+2. Change the size of each figure when necessary. Some figures are too large and take up too much space.
 
 3. Ask some friends (preferably current high school teachers) to verify the correctness of the high school and college entrance rules in Taiwan.  
 
@@ -36,6 +32,4 @@ Data link: <https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>
 
 6. Recheck everything one more time.
 
-7. Obtain approval to list my new affiliation with the disclaimer.
-
-8. Finally, publish this article to ResearchGate.
+7. Finally, publish this article to ResearchGate and generate a DOI.
