@@ -2,7 +2,7 @@ We decided to use the leave-one-out results to plot the ROC-AUC, rather than the
 
 
 ```{r header-code-test,include=FALSE}
-data = read.csv("../ptt_SENIORHIGH_data.csv")
+data = read.csv("../Data_from_PTT/ptt_SENIORHIGH_data.csv")
 names(data)[1] = "pttID"
 
 missing_rows = which(data$HighSchool_PR == "-1" | data$College_Score == "-1")

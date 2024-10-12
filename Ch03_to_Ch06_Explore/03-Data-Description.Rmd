@@ -1,4 +1,4 @@
-We retrieved data from the SENIORHIGH (high school)^[<https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>] discussion section on PTT,^[If you have a PTT account, you can log into the website using a browser. <https://term.ptt.cc/>] the largest terminal-based bulletin board in Taiwan.^[<https://en.wikipedia.org/wiki/PTT_Bulletin_Board_System>] The data are stored in the file `ptt_SENIORHIGH_data.csv`.^[https://github.com/star1327p/Exam-Scores-PTT/blob/master/ptt_SENIORHIGH_data.csv] The data from PTT are considered a self-response web survey, because almost anyone could get a PTT account and reply to the post. The majority of scores were reported in May 2015, and a few scores were reported in the following month or later. The records indicate that each respondent had taken the college entrance exam in the year 2015 or earlier, so we can safely assume that neither of them had taken the new form of high school entrance exam starting in 2014.   
+We retrieved data from the SENIORHIGH (high school)^[<https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>] discussion section on PTT,^[If you have a PTT account, you can log into the website using a browser. <https://term.ptt.cc/>] the largest terminal-based bulletin board in Taiwan.^[<https://en.wikipedia.org/wiki/PTT_Bulletin_Board_System>] The data are stored in the file `ptt_SENIORHIGH_data.csv`.^[https://github.com/star1327p/Exam-Scores-PTT/blob/master/Data_from_PTT/ptt_SENIORHIGH_data.csv] The data from PTT are considered a self-response web survey, because almost anyone could get a PTT account and reply to the post. The majority of scores were reported in May 2015, and a few scores were reported in the following month or later. The records indicate that each respondent had taken the college entrance exam in the year 2015 or earlier, so we can safely assume that neither of them had taken the new form of high school entrance exam starting in 2014.   
 
 It is a challenge to obtain individual pairs of data as a representative sample. Although it is easy to send out a spreadsheet and ask our friends to report their scores anonymously, this method is inappropriate due to sampling bias \cite{nardi2018doing}. Many of our friends graduated from the same high school and/or college, so we are likely to have similar entrance exam scores. That's why we leveraged the public forum PTT to increase diversity in the data collection. We make the caveat that the PTT data also contain selection bias, because the data were collected via Internet self-response \cite{bethlehem2010selection}. There exist various correction techniques to reduce the selection bias, but these are outside the scope of this manuscript \cite{greenacre2016importance}.   
 
@@ -22,7 +22,7 @@ In some cases, the reported scores can be inaccurate based on the respondent's d
 For **HS_Inacc** and **CS_Inacc**, we set the missing values to "0" because the two flags are binary indicators. Otherwise, the missing values would show as `NA`, which are difficult to process in the code.  
 
 ```{r data-cleaning-inaccurate-flags}
-data = read.csv("../ptt_SENIORHIGH_data.csv")
+data = read.csv("../Data_from_PTT/ptt_SENIORHIGH_data.csv")
 
 names(data)[1] = "pttID" # system read in as "i..pttID", need to correct this
 
@@ -52,7 +52,7 @@ data$CS_Invalid[(data$College_Score > 75)|(data$College_Score < 1)] = 1
 Finally, we save the clean version to a separate `.csv` file for future use.  
 
 ```{r save-data-clean, eval=FALSE}
-write.csv(data, "../ptt_SENIORHIGH_data_clean.csv")
+write.csv(data, "../Data_from_PTT/ptt_SENIORHIGH_data_clean.csv")
 ```
 
 ## Data Snapshot
