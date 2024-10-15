@@ -190,9 +190,9 @@ The opinions and views expressed in this manuscript are those of the author, and
 
 # Acknowledgments {.unnumbered}
 
-The author would like to thank Dr. Mine Cetinkaya-Rundel and Dr. David Banks at Duke University; they both motivated the author to teach statistics and create reproducible work in $\mathsf{R}$. The author is also grateful to her former Microsoft colleagues Smit Patel and Dylan Stout for troubleshooting GitHub issues.  
+The author would like to thank Dr. Mine Cetinkaya-Rundel and Dr. David Banks at Duke University; they both motivated the author to teach statistics and create reproducible work in $\mathsf{R}$. The author would like to acknowledge Dr. Cliburn Chan and Dr. Janice McCarthy for introducing her to GitHub in the statistical computation course at Duke University.^[<https://people.duke.edu/~ccc14/sta-663-2015/>] This provided her the foundations to use GitHub as a modern version control system in the first place.  
 
-The author would also like to acknowledge Dr. Cliburn Chan and Dr. Janice McCarthy for introducing her to GitHub in the statistical computation course at Duke University.^[<https://people.duke.edu/~ccc14/sta-663-2015/>] This provided her the foundations to use GitHub as a modern version control system in the first place.  
+While developing this project, the author also received constructive feedback that is worth mentioning here. The author is grateful to her former Microsoft colleagues Smit Patel and Dylan Stout for helping her troubleshoot GitHub issues. The author also wants to thank her friend Yi-Ting Chang for checking the narratives about Taiwan's education, because Yi-Ting is a high-school teacher in Taiwan as of 2024.  
 
 Finally, the author gives a special mention to her significant other, Hugh Hendrickson, for all his support in the author's professional career development.
 
