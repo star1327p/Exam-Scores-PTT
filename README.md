@@ -20,16 +20,6 @@ Data link: <https://www.ptt.cc/bbs/SENIORHIGH/M.1432729401.A.995.html>
 
 #### To-Do:
 
-1. Move the datasets `ptt_SENIORHIGH_data.csv` and `ptt_SENIORHIGH_data_clean.csv` into the `Data_from_PTT` subdirectory. Change the corresponding file paths and re-compile the PDF.
+1. Recheck everything one more time.
 
-2. Change the size of each figure when necessary. Some figures are too large and take up too much space.
-
-3. Ask some friends (preferably current high school teachers) to verify the correctness of the high school and college entrance rules in Taiwan.  
-
-4. Ask other friends for feedback on my report.
-
-5. Revise the report according to the feedback I receive.
-
-6. Recheck everything one more time.
-
-7. Finally, publish this article to ResearchGate and generate a DOI.
+2. Finally, publish this article to ResearchGate and generate a DOI.
