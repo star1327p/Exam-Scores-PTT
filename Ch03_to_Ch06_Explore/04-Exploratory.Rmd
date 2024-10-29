@@ -259,7 +259,7 @@ The third set of graphs in Figure \ref{fig:mid-correlation} visualizes a medium 
 
 - The right graph shows $\rho = -0.47$, as a negative medium correlation of the two variables. One example is adults' muscle mass and their age. Older adults tend to have less muscle than younger ones, but it is well-known that strength training helps preserve some muscle mass.^[We are not medical professionals, so we make the caveat that the linear relationship may not be accurate.]     
 
-```{r mid-correlation, fig.height=2.5, fig.width=5, fig.cap="Medium level of linear correlation: $\\rho = 0.89$ (left) and $\\rho = -0.93$ (right)", echo=FALSE}
+```{r mid-correlation, fig.height=2.5, fig.width=5, fig.cap="Medium level of linear correlation: $\\rho = 0.64$ (left) and $\\rho = -0.47$ (right)", echo=FALSE}
 
 par(mfrow=c(1,2), mar = c(1.1, 1.1, 1.1, 1.1))
 

@@ -40,8 +40,7 @@ Instead, we should segment the data and further examine the top scorers in the d
 ```{r high-scorer-obs, fig.cap="Bivariate scatterplot with segment lines at \\textbf{HighSchool$\\_$PR} = 80 and \\textbf{College$\\_$Score} = 60"}
 plot(data_corr$HighSchool_PR, data_corr$College_Score,
      main = "High School and College Entrance Exam Scores",
-     xlab="HighSchool_PR",
-     ylab="College_Score")
+     xlab="HighSchool_PR", ylab="College_Score")
 
 abline(h=60,v=80)
 ```
@@ -57,7 +56,6 @@ data_corr$CS_60up = data_corr$College_Score >=60
 
 contingency = table(data_corr$HS_80up, data_corr$CS_60up,
                     dnn=c("HighSchool_80up","College_60up"))
-
 contingency
 ```
 
@@ -107,7 +105,7 @@ $$\begin{aligned}
 &= \frac{120}{43+120} \approx 0.7362.
 \end{aligned}$$
 
-According to this data from PTT, there is a 73.62% chance for a person to get at least 60 on the college entrance exam, given a score of at least 80 on the high school entrance score percentile rank (PR). Note that we use number of respondents rather than percentage to avoid rounding errors.  
+According to this data from PTT, given a score of at least 80 on the high school entrance score percentile rank (PR), this person has a 73.62% chance for a person to get at least 60 on the college entrance exam.  
 
 In comparison, if we do not know anything about the person's high school entrance score percentile rank (PR), we have a probability of 63.82% in observing the person scoring at least 60 on the college entrance exam. There is an increase of 9.80% in probability after we learn information about their high school entrance exam score.
 
@@ -115,9 +113,5 @@ $$\begin{aligned}
 P(\text{College$\_$60up is true}) &= \text{$\#$ of respondents with College$\_$Score $\geq$ 60 / all respondents} \\
 &= \frac{120}{188} \approx 0.6382.
 \end{aligned}$$
-
-```{r unconditional}
-nrow(data_corr) # number of all respondents without missing data
-```
 
 **Remark**: Conditional probability is the foundation of Bayesian statistics, which updates the existing probabilities given the new data. For the interested readers, we recommend the book \textit{An Introduction to Bayesian Thinking} \cite{clyde2018bayesian101} as a start. This book was written as a companion for the Bayesian Statistics course on Coursera from Duke University.^[<https://www.coursera.org/learn/bayesian>] Knowledge of calculus is helpful but not an absolute prerequisite.  
