@@ -60,7 +60,7 @@ The **p-value** measures statistical significance, and it is \textbf{the probabi
 - When p-value > 0.05, we fail to reject $H_0$ and conclude that $H_0$ is true. 
 - When p-value < 0.05, we reject $H_0$ and conclude that $H_1$ is true.  
 
-In the case that p-value < 0.05, we say that the observed difference is statistically significant. But note that we do not know the underlying truth and we can make mistakes. We may make one of the two mistakes in hypothesis testing: 
+In the case that p-value < 0.05, we say that the observed difference is statistically significant. However, since we do not know the underlying truth, we can make one of the two mistakes in hypothesis testing: 
   
 - Type 1 error: $H_0$ is true but we reject $H_0$.
 - Type 2 error: $H_0$ is false but we fail to reject $H_0$.

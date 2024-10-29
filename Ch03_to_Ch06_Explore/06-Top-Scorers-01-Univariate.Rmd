@@ -1,4 +1,4 @@
-We would like to further examine the top scorers, given the high number of records in the data observed in Section \ref{examine-further}. In Taiwan's education system, the top tier of high schools and colleges can be further segmented. The top of the range can be very different than the middle or bottom. For example, National Taiwan University^[<https://www.ntu.edu.tw/english/>] is the most prestigious university in Taiwan, but Chang Gung University^[<https://www.cgu.edu.tw/?Lang=en>] is also excellent in medical education. However, many people in the US have heard of the former but not the latter. This does not mean you should always choose the most prestigious college; many other factors should also be considered, such as tuition and majors offered at that college.  
+We would like to further examine the top scorers, given the large number of records in the data observed in Section \ref{examine-further}. In Taiwan's education system, the top tier of high schools and colleges can be further segmented. The top of the range can be very different than the middle or bottom. For example, National Taiwan University^[<https://www.ntu.edu.tw/english/>] is the most prestigious university in Taiwan, but Chang Gung University^[<https://www.cgu.edu.tw/?Lang=en>] is also excellent in medical education. Nevertheless, many people in the US have heard of the former but not the latter. This does not mean you should always choose the most prestigious college; many other factors should also be considered, such as tuition and majors offered at that college.  
 
 We consider the following subcategories in the entrance exam scores:     
 
@@ -56,7 +56,7 @@ length(CS_Score_seg)
 table(CS_Score_seg)
 ```
 
-Before we display the histogram, let's approximately convert **College_Score** into PR (Percentile Rank) using 2001-2014 data.^[<https://bit.ly/4bqxYpW>] This gives readers an understanding of what percentage of test takers (high school students in grade 12) get what scores. For example, a **College_Score** of 70 would be at the 98.5th percentile, i.e., PR 98.5.
+Before we display the histogram, let's approximately convert **College_Score** into PR (Percentile Rank) using 2001-2014 data.^[<https://www.ceec.edu.tw/xmdoc?xsmsid=0J018604485538810196>] This gives readers an understanding of what percentage of test takers (mostly high school students in grade 12) get what scores. For example, a **College_Score** of 70 would be at the 98.5th percentile, i.e., PR 98.5.
 
 ```{r college-score-pr}
 college_score = c(60,65,70,74,75)
