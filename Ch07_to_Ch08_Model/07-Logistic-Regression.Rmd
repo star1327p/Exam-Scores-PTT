@@ -1,12 +1,10 @@
 We should use a different model to quantify the relationship between **HighSchool_PR** and **College_Score**, because we concluded in Chapter \ref{linear-reg} that it is inappropriate to perform an ordinary linear regression. (We also tried the square root transformation, but it did not work out, either.) Let's try another statistical model to evaluate the relationship between the two variables. Typically when the ordinary linear regression model is ruled out, the next option is a generalized linear model, such as logistic regression and Poisson regression. Choosing a different model may involve modifying the details of the problem statement. The original problem statement is to investigate the relationship between **College_Score** and **HighSchool_PR**, but the relationship does not have to be linear.  
 
-We would like to redefine the problem statement to "estimate the probability of **College_Score** at least 65, given the student's **HighSchool_PR**." Since the variance of **College_Score** depends on **HighSchool_PR**, the assumptions of linear regression are violated, making linear regression an inappropriate model. We decided to focus on whether **College_Score** is at least a particular value instead, so the response variable is binary. We selected 65 as the cutoff point for **College_Score** because this is close to the median, making the number of values about the same in the two categories. We would like to balance the number of datapoints in each category of the response variable.  
-
-Logistic regression is a generalized linear model that uses a binary response variable, and the equation models the probability of an event occurring or not. That's why we set up the new problem statement this way, and Section \ref{logit-intro} gives a brief introduction to the logistic regression model. Although logistic regression is not typically covered at the Statistics 101 level, we would like to give the readers a head start of generalized linear models. We explained the requirements of linear regression in Chapter \ref{linear-reg}, and now we would like to expand the regression model to additional forms. We decided to introduce generalized linear models early on, because we would like to show that there exist methods to analyze the data `ptt_SENIORHIGH_data.csv` other than linear regression.    
+Logistic regression is a generalized linear model that uses a binary response variable, and the equation models the probability of an event occurring or not. That's why we set up the new problem statement this way, and Section \ref{logit-intro} gives a brief intro to the logistic regression model. Although logistic regression is not typically covered at the Statistics 101 level, we would like to give the readers a head start of generalized linear models. We explained the requirements of linear regression in Chapter \ref{linear-reg}, and now we would like to expand the regression model to additional forms. We decided to introduce generalized linear models early on, because we would like to show that there exist methods to analyze the data `ptt_SENIORHIGH_data.csv` other than linear regression.    
 
 We try to explain the logistic regression in basic terminology. But if the readers feel like they cannot understand the mathematics, it is totally fine to skip this chapter and move on to Chapter \ref{validation} for model validation. The model evaluation concepts are not related to the logistic regression itself, so understanding the model details is not always a prerequisite. We can regard the model as a blackbox, which simply produces the binary classification output.  
 
-## Brief Introduction of Logistic Regression {#logit-intro}
+## Brief Intro to Logistic Regression {#logit-intro}
 
 Logistic regression is used to model categorical outcomes, especially a binary response variable. For example, if the response variable is whether an event $Y$ occurs or not, then it can only have two values -- not occurred (0) and occurred (1). We model the probability that the event $Y$ occurred, denoted as $p = P(Y = 1)$, and it is between 0 and 1. But in a linear regression $y = \alpha + \beta x$, the response variable $y$ can be any real number. Therefore, we transform the probability $p$ to the log odds $\log (\dfrac{p}{1-p})$, so that its range spans the whole real line like $y$. Note that the odds $\dfrac{p}{1-p}$ is always positive, as long as $p$ is not exactly 0 or 1.  
 
@@ -26,14 +24,14 @@ For the advanced readers, we recommend reading the textbook *Categorical Data An
 
 ## Estimate the Probability of Scoring Well on the College Entrance Exam {#threshold-65}
 
-We would like to redefine the problem statement to "estimate the probability of **College_Score** at least 65, given the student's **HighSchool_PR**." Since the variance of **College_Score** depends on **HighSchool_PR**, the assumptions of linear regression are violated, making linear regression an inappropriate model. That's why we decided to focus on whether **College_Score** is at least a particular value instead, so the response variable is binary. We selected 65 as the cutoff point for **College_Score** because this is close to the median, making the number of values about the same in the two categories. We would like to balance the number of datapoints in each category of the response variable.  
+We redefine the problem statement to "estimate the probability of **College_Score** at least 65, given the student's **HighSchool_PR**." Since the variance of **College_Score** depends on **HighSchool_PR**, the assumptions of linear regression are violated, making linear regression an inappropriate model. We focus on whether **College_Score** is at least a particular value instead, so that the response variable is binary. We select 65 as the cutoff point for **College_Score** because this is close to the median, making the number of values about the same in the two categories. We would like to balance the number of datapoints in each category of the response variable.  
 
 ```{r college-score-sep-65}
 print(paste("College_Score at least 65:", sum(data_corr$College_Score >= 65)))
 print(paste("College_Score below 65:", sum(data_corr$College_Score < 65)))
 ```
 
-The event $Y$ we would like to observe is getting a **College_Score** at least 65. We define 
+The event $Y$ we would like to observe is getting a **College_Score** at least 65. Let's define 
 
 $$p = P(Y=1) = P(\textbf{College}\_\textbf{Score} \geq 65),$$ 
 
@@ -127,7 +125,7 @@ sort(data_corr$College_Score[which(data_corr$HighSchool_PR==99)])
 
 ## Model Interpretation: 95% Confidence Intervals {#logit-results}
 
-In addition to the point estimates, we also need to provide the corresponding 95% confidence intervals to account for uncertainty. The lower bound is the 2.5th percentile, and the upper bound is the 97.5th percentile. Statistical significance at 5% means that the 95% confidence interval does not include 0. Let's start with the intercept and the coefficient for **HighSchool_PR** using the  `R` function `confint`. Neither the intercept nor the coeffient's confidence interval includes 0, so both are statistically significant.  
+In addition to the point estimates, we also provide the corresponding 95% confidence intervals to account for uncertainty. The lower bound is the 2.5th percentile, and the upper bound is the 97.5th percentile. Statistical significance at 5% means that the 95% confidence interval does not include 0. Let's start with the intercept and the coefficient for **HighSchool_PR** using the  `R` function `confint`. Neither the intercept nor the coeffient's confidence interval includes 0, so both are statistically significant.  
 
 Although the intercept $\alpha$'s confidence interval seems wide, the exponential version $\exp(\alpha)$ is extremely small for both ends. Especially when the intercept (baseline for **HighSchool_PR** = 0) does not have practical meaning in this data, we do not need to be overly concerned about the intercept.    
 
@@ -179,7 +177,7 @@ objects(model)
 # https://www.theanalysisfactor.com/r-glm-plotting/
 ```
 
-In addition to the coefficient estimates, we also need to perform model validation to examine how well the model fits the data. Let's start with visualizing the predicted probability of getting **College_Score** at least 65 and the **HighSchool_PR** values in the data. The former can be obtained from the `fitted.values` object of the model. The highest predicted probability occurs at **HighSchool_PR** 99, but the predicted probability of getting **College_Score** at least 65 is still less than 80%. (So high school students should still study hard for the college entrance exam, despite getting an excellent **HighSchool_PR** score.)
+Now we perform model validation to examine how well the model fits the data. Let's start with visualizing the **HighSchool_PR** values and the predicted probability of getting **College_Score** at least 65. The latter can be obtained from the `fitted.values` object of the model. The highest predicted probability occurs at **HighSchool_PR** 99, but the predicted probability of getting **College_Score** at least 65 is still less than 80%. (So high school students should still study hard for the college entrance exam, despite getting an excellent **HighSchool_PR** score.)
 
 ```{r fitted-values-max}
 print(paste("The highest predicted probability is",max(model$fitted.values)))
