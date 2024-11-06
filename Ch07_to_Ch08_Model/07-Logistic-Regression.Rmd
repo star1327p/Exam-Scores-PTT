@@ -177,7 +177,7 @@ objects(model)
 # https://www.theanalysisfactor.com/r-glm-plotting/
 ```
 
-Now we perform model validation to examine how well the model fits the data. Let's start with visualizing the **HighSchool_PR** values and the predicted probability of getting **College_Score** at least 65. The latter can be obtained from the `fitted.values` object of the model. The highest predicted probability occurs at **HighSchool_PR** 99, but the predicted probability of getting **College_Score** at least 65 is still less than 80%. (So high school students should still study hard for the college entrance exam, despite getting an excellent **HighSchool_PR** score.)
+Now we look at the overall results of the logistic regression model. Let's start with visualizing the **HighSchool_PR** values and the predicted probability of getting **College_Score** at least 65. The latter can be obtained from the `fitted.values` object of the model. The highest predicted probability occurs at **HighSchool_PR** 99, but the predicted probability of getting **College_Score** at least 65 is still less than 80%. (So high school students should still study hard for the college entrance exam, despite getting an excellent **HighSchool_PR** score.)
 
 ```{r fitted-values-max}
 print(paste("The highest predicted probability is",max(model$fitted.values)))
