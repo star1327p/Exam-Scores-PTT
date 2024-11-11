@@ -27,7 +27,7 @@ original_results = confusion_to_measures(original_leave1out)
 print(round(original_results, digits=4))
 ```
 
-When the probability threshold is 0.7, the precision increased to 82%, but the recall decreased to 52%. A higher probability threshold means the model is less likely to predict a datapoint to be True, so a positive prediction is more likely to be actually positive, increasing the precision. However, the model may miss more datapoints (i.e., predict as negative) which are actually positive, resulting in a drop in the recall.   
+When the probability threshold is 0.7, the precision increases to 82%, but the recall decreases to 52%. A higher probability threshold means the model is less likely to predict a datapoint to be True, so a positive prediction is more likely to be actually positive, increasing the precision. However, the model may miss more datapoints (i.e., predict as negative) which are actually positive, resulting in a drop in the recall.   
 
 ```{r change-prob-threshold-high}
 high_leave1out = prob_to_matrix(data_corr, prob_leave1out, threshold=0.7)
@@ -37,7 +37,7 @@ high_results = confusion_to_measures(high_leave1out)
 print(round(high_results, digits=4))
 ```
 
-When the probability threshold is 0.3, the recall increased from 78% to 89%, but the precision decreased from 67% to 59%. A lower probability threshold means the model is more likely to predict a datapoint to be True, so the model has a better chance of catching most of the datapoints which are actually positive, increasing the recall. But the drawback is that when the model predicts a datapoint to be True, the datapoint has a greater risk of not actually being positive. In other words, using a low threshold may result in more false positives, hence reducing the precision.      
+When the probability threshold is 0.3, the recall increases from 78% to 89%, but the precision decreases from 67% to 59%. A lower probability threshold means the model is more likely to predict a datapoint to be True, so the model has a better chance of catching most of the datapoints which are actually positive, increasing the recall. But the drawback is that when the model predicts a datapoint to be True, the datapoint has a greater risk of not actually being positive. In other words, using a low threshold may result in more false positives, hence reducing the precision.      
 
 ```{r change-prob-threshold-low}
 low_leave1out = prob_to_matrix(data_corr, prob_leave1out, threshold=0.3)

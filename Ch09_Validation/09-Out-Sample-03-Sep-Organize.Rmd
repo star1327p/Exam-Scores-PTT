@@ -165,9 +165,10 @@ We also calculate the average of the five iterations for each metric. The accura
 ```{r calculate-average}
 calc_average <- function(out_measures) {
   avg_results = c(mean(out_measures[,"Accuracy"]),
-            mean(out_measures[,"Precision"]),
-            mean(out_measures[,"Recall"]),
-            mean(out_measures[,"FPR"]), mean(out_measures[,"FNR"]))
+                  mean(out_measures[,"Precision"]),
+                  mean(out_measures[,"Recall"]),
+                  mean(out_measures[,"FPR"]), 
+                  mean(out_measures[,"FNR"]))
 
   names(avg_results) = c("Accuracy","Precision","Recall","FPR","FNR")
   

@@ -98,7 +98,7 @@ tn = test_confusion["FALSE","FALSE"]
 print(paste(tp,fn,fp,tn))
 ```
 
-We can also calculate the evaluation metrics for the predictive model. The process is similar to Section \ref{interpretation}.  
+Let's calculate the evaluation metrics for the predictive model. The process is similar to Section \ref{interpretation}.  
 
 \begin{align*}
 \text{Accuracy} &= \dfrac{TP+TN}{TP+FN+FP+TN} = \dfrac{34+34}{34+12+14+34} = \dfrac{68}{94} \approx 72.34\% \\
