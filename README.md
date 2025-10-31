@@ -3,7 +3,7 @@
 Christine P. Chai  
 <cpchai21@gmail.com>
 
-Preprint on ResearchGate: <http://dx.doi.org/10.13140/RG.2.2.29468.91520/1>
+Preprint on ResearchGate: <https://bit.ly/4qz2Dt1>
 
 #### Executive Summary
 
