@@ -3,7 +3,7 @@
 Christine P. Chai  
 <cpchai21@gmail.com>
 
-Preprint on ResearchGate: <https://bit.ly/4qz2Dt1>
+[Preprint on ResearchGate](https://www.researchgate.net/publication/385701589_Statistical_Analysis_of_High_School_and_College_Entrance_Exam_Scores_in_Taiwan_with_Online_Data_A_Fully_Reproducible_Approach_with_R_Markdown)
 
 #### Executive Summary
 
